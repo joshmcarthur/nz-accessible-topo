@@ -26,9 +26,11 @@ B-25, B-11, and B-24 are QML transforms on a pinned checkout, then map deploy, t
 
 1. Log the B-28 decision. Done in the working tree. Not committed yet.
 2. Stock BX24 render (B-22, B-23). Done. Layout name is tiff-50. topographic-system pin is 3b6ec60. Not committed yet.
-3. Upright labels, size floor, and the Atkinson swap (B-25, B-11). Stop for commit.
-4. Symbology (B-24). Stop for commit.
+3. Upright labels, size floor, and the Atkinson swap (B-25, B-11). The transform is `tools/override_topo50_project.py`. It edits map-layer labels only. The print layout stays on Nimbus.
+4. Symbology (B-24) is the same transform, one layer at a time. See the decision on the sheet image. The accessible render writes to `output-accessible/` so it does not replace the stock BX24 files.
 
 ## Constraints
 
 Free disk was about 38 GB when this plan was approved, and Colima was stopped. Stop a render if free space would fall below 8 GB. The national contour parquet is 1.75 GB. BX24 is the print-legend sheet and is flat. A steep sheet is later work (OQ-09).
+
+The exported PNG is the full `tiff-50` layout. It includes the legend, the sheet index, the scale, and the title block. Do not judge a symbology change from that composite alone. Change the map layer. Leave the layout items alone. The legend swatch updates because it is drawn from the layer.

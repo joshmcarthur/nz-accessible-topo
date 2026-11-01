@@ -57,3 +57,35 @@ This is a plain reading of the licences. It is not legal advice.
 ### Consequences
 
 B-22 stays a Nimbus baseline. The accessible label render installs the patched face in the container and points the QML at `NZAT Legible Test`. The web vector style stays on Open Sans until glyph PBFs exist (R-06). B-10 (upstream Ō/ō report) stays open. The patched binary is not committed. A public family name can replace `NZAT Legible Test` later without changing this decision.
+
+
+## Judge accessibility on the map layer, not the sheet image
+
+**Status:** Accepted
+**Date:** 2026-11
+
+### Context
+
+`map export` with layout `tiff-50` writes one PNG of the whole print page. That page holds the map, the legend, the sheet index, the scale, and the title block. A change read off that image can be a legend swatch or a margin note, not a map symbol.
+
+### Decision
+
+Accessibility edits touch the map layers named by the research. They do not restyle layout text. Layout text stays Nimbus Sans LINZ, including its italic.
+
+The layers and the changes:
+
+- `nztopo50_carto_text`: family, style, and size are data-defined fields. The override replaces those fields with expressions. Upright `NZAT Legible Test`. Size at least 7 pt. `relief_point` labels may stay at 6 pt.
+- `contour`: one line symbol. Index is `round(elevation) % 100 = 0`, ink `#8A4F1C`, width 0.28 mm. Other contours are `#C4814B`, width 0.12 mm. `definition` is null on every national row, so indefinite contours are not dashed.
+- `track_line map`: categories are cycle, foot, and vehicle. Closed is `status = 'closed'` (153 national rows, almost all foot). Closed foot tracks get a heavier dash and cross-bars.
+- `water_point`: the renderer category field was `feature_type`. The column is `type`. Hot and cold are `temperature_indicator` (`hot` 85, `cold` 70). The spring marker is a black × when hot and a `#005C8F` circle when cold.
+- `vegetation map`: native and scrub were the same green at two alphas. Native fill is `#E1EAC3`. Scrub fill is `#A3CC90` plus a line hatch. Scattered scrub keeps its dot pattern. Alpha stays below 255 because this layer draws above the contours.
+
+This project's road ink is `#D5B43C`, not the print highway `#EA6300`.
+
+### Rationale
+
+The research already names the layers and the inks. The sheet image cannot separate a map symbol from the legend that repeats it. Layout text is sheet chrome. It is not a map label under R-05 or R-09.
+
+### Consequences
+
+A later pass still has to look at each changed layer on the map face. The pair audit in `tools/pairs-topo50-accessible.json` is the colour check. It is not a substitute for the sheet. Intermediate `#C4814B` does not meet ΔE ≥10 against print highway `#EA6300` for protan and deutan. That miss is recorded as an open question. The starting value from R-04 is still the one rendered.
