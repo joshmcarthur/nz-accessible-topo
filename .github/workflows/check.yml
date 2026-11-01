@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - run: pip install -r requirements.txt
+      - name: Tool sanity tests
+        run: python3 tools/test_tools.py
       - name: Sprites are reproducible
         run: python3 tools/make_sprites.py && git diff --exit-code styles/sprites/
       - name: Styles are reproducible and meet the gates (C1–C6)
