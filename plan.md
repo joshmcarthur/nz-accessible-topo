@@ -55,4 +55,4 @@ The proof renders are four 1 km squares at 600 dpi, map face only:
 
 The old line that put site work out of scope does not cover these comparison images. They are outputs of the style, built by `tools/build_site_assets.py` under the six conditions in `site/src/data/conditions.json`. B-01, B-02, push, tile serving, and user testing stay out of this loop.
 
-B-25, B-11, and B-24 stay open. Along-line water names are black question marks. Intermediate `#C4814B` misses ΔE ≥10 against print highway `#EA6300`.
+R-04, R-05, and R-06 are settled for the style loop. See the decision of the same date. The question marks stay a render defect on the first estuary square.

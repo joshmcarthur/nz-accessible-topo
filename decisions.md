@@ -115,3 +115,31 @@ A second copy of the research would drift from `docs/recommendations.md`. A toke
 ### Consequences
 
 `tools/override_topo50_project.py` and `tools/build_style.py` become readers of the JSON. The vector face may stay Open Sans until macron glyph PBFs exist. Colours and symbol meaning still match. R-04 stays open while `#C4814B` misses ΔE ≥10 against `#EA6300`. R-05 and R-06 stay open while along-line labels are question marks. Tile serving stays later.
+
+
+## R-04, R-05, and R-06 stay settled in the style loop
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The style-loop prompt told the next session to keep three recommendations open. R-04 was open because `#C4814B` misses ΔE ≥10 against print orange `#EA6300`. R-05 and R-06 were open because along-line water names render as black question marks.
+
+### Decision
+
+R-06 stays the patched face `NZAT Legible Test` on the accessible sheet. `font_check` reports all ten macron vowels. The stock sheet keeps Nimbus. The vector style keeps Open Sans until macron glyph PBFs exist. The broken labels do not contain Ō or ō.
+
+R-05 stays upright map labels. The accessible project already has italic count 0 on those styles. Layout italic stays Nimbus.
+
+R-04 keeps index `#8A4F1C` and intermediate `#C4814B`. Judge the contour against the road ink the project paints, `#D5B43C`. That pair is 3.19:1 on white and worst dichromacy ΔE 12.3. The project has no `#EA6300` layer and no pipeline layer. Do not change the intermediate to clear the print-legend orange. `#A8703C` also fails against that orange.
+
+The question marks stay a render defect. On the first render of square 1577000 E, 5178000 N, load the `.ttf` with QFontDatabase. If the marks remain, change `StretchWordSpacingToFit` and render that square again. That defect does not reopen R-05 or R-06.
+
+### Rationale
+
+`#EA6300` is the print-legend orange. Highway layers in this QGIS project use `#D5B43C`. A same-hue brown cannot clear the print orange under protan or deutan simulation, including the older `#A8703C` (protan ΔE 7.2). Offset water names already render as blue letters in the new face, so the font choice and the upright rule are already in the file. The marks are black and limited to one placement mode.
+
+### Consequences
+
+The style loop starts at R-09. The prompt is `docs/plans/2026-11-02-style-loop-prompt.md`. The two questions below are closed by this decision.
