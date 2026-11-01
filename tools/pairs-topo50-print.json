@@ -1,0 +1,134 @@
+[
+ {
+  "name": "Contour vs paper",
+  "a": {
+   "label": "intermediate/index contour",
+   "colour": "#F19100"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "why": "Print contours: how visible?"
+ },
+ {
+  "name": "Contour vs road fill",
+  "a": {
+   "label": "contour",
+   "colour": "#F19100"
+  },
+  "b": {
+   "label": "two-lane road fill",
+   "colour": "#F19100"
+  },
+  "why": "Same ink in print — separated only by road casing + width."
+ },
+ {
+  "name": "Contour vs state highway",
+  "a": {
+   "label": "contour",
+   "colour": "#F19100"
+  },
+  "b": {
+   "label": "state highway",
+   "colour": "#EA6300"
+  },
+  "why": ""
+ },
+ {
+  "name": "Contour vs buried gas pipeline",
+  "a": {
+   "label": "contour",
+   "colour": "#F19100"
+  },
+  "b": {
+   "label": "buried gas pipeline",
+   "colour": "#EA6300"
+  },
+  "why": "Both plain orange lines."
+ },
+ {
+  "name": "Hot vs cold spring",
+  "a": {
+   "label": "hot spring ×",
+   "colour": "#EA6300"
+  },
+  "b": {
+   "label": "cold spring ×",
+   "colour": "#008BCA"
+  },
+  "why": "Same glyph; colour only."
+ },
+ {
+  "name": "Hot spring vs fumarole",
+  "a": {
+   "label": "hot spring ×",
+   "colour": "#EA6300"
+  },
+  "b": {
+   "label": "fumarole ×",
+   "colour": "#EA6300"
+  },
+  "why": "Same ink; distinguished by glyph (× vs ⊗)."
+ },
+ {
+  "name": "Native forest vs scrub",
+  "a": {
+   "label": "native forest fill",
+   "colour": "#E1EAC3"
+  },
+  "b": {
+   "label": "scrub fill",
+   "colour": "#ECF3DA"
+  },
+  "why": "Tint only."
+ },
+ {
+  "name": "Scrub vs water",
+  "a": {
+   "label": "scrub fill",
+   "colour": "#ECF3DA"
+  },
+  "b": {
+   "label": "water fill",
+   "colour": "#D1E7F5"
+  },
+  "why": ""
+ },
+ {
+  "name": "Water label/line vs paper",
+  "a": {
+   "label": "watercourse / water label",
+   "colour": "#008BCA"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "why": "Blue ink, also used for water names."
+ },
+ {
+  "name": "Hot spring vs paper",
+  "a": {
+   "label": "hot spring ×",
+   "colour": "#EA6300"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "why": "Red-orange ink under red light."
+ },
+ {
+  "name": "Foot/closed track vs paper",
+  "a": {
+   "label": "track (black)",
+   "colour": "#000000"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "why": "Closed vs open differ only by gap length (log 0019)."
+ }
+]
