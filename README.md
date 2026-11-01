@@ -20,6 +20,10 @@ does **not** change the data. It changes *how the data is drawn*.
 5. Traceable: every recommendation links to the findings and sources it came
    from, so it can be challenged and improved.
 
+## Handoff
+
+New here or picking this up locally? Start with [HANDOFF.md](HANDOFF.md) and [BACKLOG.md](BACKLOG.md).
+
 ## Where to start reading
 
 - [`docs/README.md`](docs/README.md) — index of the research
