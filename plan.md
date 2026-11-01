@@ -56,3 +56,7 @@ The proof renders are four 1 km squares at 600 dpi, map face only:
 The old line that put site work out of scope does not cover these comparison images. They are outputs of the style, built by `tools/build_site_assets.py` under the six conditions in `site/src/data/conditions.json`. B-01, B-02, push, tile serving, and user testing stay out of this loop.
 
 R-04, R-05, and R-06 are settled for the style loop. See the decision of the same date. The question marks stay a render defect on the first estuary square.
+
+
+The square renderer draws the Map5View layers. That is the tiff-50 map theme. It does not draw layers that theme hides. Along-line labels keep the official `charplace` value. Do not set CurvedLabelMode to 0.
+

@@ -143,3 +143,47 @@ The question marks stay a render defect. On the first render of square 1577000 E
 ### Consequences
 
 The style loop starts at R-09. The prompt is `docs/plans/2026-11-02-style-loop-prompt.md`. The two questions below are closed by this decision.
+
+
+## The square draws the sheet map layers
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The tiff-50 map item follows the Map5View theme. The square renderer drew every layer in the project order. That set includes `landcover_line` and `building_point`. Map5View hides those layers. `landcover_line` categorises on `feature_type`. The column is `type`. Unmatched rows use the empty symbol. That symbol is a 0.66 mm line in `255,0,159`. `building_point` draws a square outline in `229,100,163`. The sheet draws `building_point map` instead.
+
+### Decision
+
+The square draws the layers that are visible in Map5View. It keeps the project draw order. It does not draw a layer that theme hides.
+
+### Rationale
+
+The official style is the starting point. A hidden layer is not part of the sheet. Drawing it adds symbols the sheet does not paint. The pink lines are that extra set.
+
+### Consequences
+
+A later square render uses Map5View. A change to which layers the sheet draws belongs in that theme, not in a second layer list.
+
+
+## Along-line labels keep the official placement
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The accessible patch set CurvedLabelMode to 0 when `charplace` was `StretchWordSpacingToFit`. That mode draws "Heathcote" upside down on the estuary square. The stock project leaves the field. "Estuary" sits upright. The black question marks were missing landcover SVGs.
+
+### Decision
+
+Do not replace CurvedLabelMode. The data field `charplace` stays. `StretchWordSpacingToFit` stays the along-line placement.
+
+### Rationale
+
+The official placement already draws the words upright. Replacing it made the label wrong. The question marks were a missing symbol file, not this placement mode.
+
+### Consequences
+
+The accessible project and the stock project use the same along-line placement. This does not reopen R-05 or R-06.

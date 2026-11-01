@@ -24,3 +24,5 @@ The accessible BX24 render (log 0026) draws large black question marks across th
 The project file has no italic map labels. Fontconfig lists NZAT Legible Test. The PDF has no embedded fonts; QGIS rasterised the page. Fontconfig also reported no writable cache directory because the container user has no home.
 
 Do not treat B-25 or B-11 as done until those marks are gone.
+
+The accessible patch no longer changes that mode. See the decision "Along-line labels keep the official placement".
