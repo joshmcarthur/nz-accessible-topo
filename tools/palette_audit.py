@@ -177,6 +177,8 @@ def text_audit(style, bg):
     for layer in style["layers"]:
         if layer.get("type") != "symbol":
             continue
+        if layer.get("layout", {}).get("text-field") in (None, ""):
+            continue  # icon-only layer: no text to read
         paint = layer.get("paint", {})
         tc = parse_colour(paint.get("text-color", "")) if isinstance(paint.get("text-color"), str) else None
         if not tc:

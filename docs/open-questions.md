@@ -14,3 +14,4 @@
 | OQ-10 | Is Ō/ō missing from Atkinson Hyperlegible Next already reported upstream? | Determines whether R-06 can adopt it | **Partly answered (log 0012):** still missing at upstream HEAD; no report found; draft issue in `docs/upstream/`. Maintainer to check tracker and file |
 | OQ-11 | Which licence for this project's styles and docs? | Must be compatible with LINZ MIT style + CC BY 4.0 data attribution | Maintainer decision |
 | OQ-12 | Does the Shortbread vector schema carry the attributes we need (e.g. contour `definition`, track status)? | R-04 and R-11 depend on attributes | **Partly answered (log 0013):** closed tracks, scattered scrub, index contours available; contour `definition` unknown — inspect MBTiles export |
+| OQ-13 | Do LINZ's served glyph PBFs (Open Sans, Roboto) include the macron vowels in every stack the style uses? | google/fonts builds do; served subsets may not | Fetch `/v1/fonts/{stack}/256-511.pbf` (U+0100–U+017F) per stack |

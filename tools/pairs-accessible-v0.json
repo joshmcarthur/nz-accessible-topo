@@ -1,0 +1,135 @@
+[
+ {
+  "name": "Index contour vs paper",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 3.0,
+   "red": 3.0
+  },
+  "why": ""
+ },
+ {
+  "name": "Intermediate contour vs paper",
+  "a": {
+   "label": "intermediate contour",
+   "colour": "#A8703C"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 3.0,
+   "red": 2.0
+  },
+  "why": "Red-light 2.38: index contours carry relief under red light."
+ },
+ {
+  "name": "Index contour vs state highway",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "state highway fill",
+   "colour": "rgba(240, 164, 82, 1)"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 3.0,
+   "red": 3.0
+  },
+  "why": ""
+ },
+ {
+  "name": "Intermediate contour vs state highway",
+  "a": {
+   "label": "intermediate contour",
+   "colour": "#A8703C"
+  },
+  "b": {
+   "label": "state highway fill",
+   "colour": "rgba(240, 164, 82, 1)"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 2.0,
+   "red": 2.0
+  },
+  "why": "Also separated by highway casing and width."
+ },
+ {
+  "name": "Index contour vs pipeline",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "pipeline",
+   "colour": "rgb(235,137,133)"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 2.5,
+   "red": 2.5
+  },
+  "why": ""
+ },
+ {
+  "name": "Scrub vs scattered scrub",
+  "a": {
+   "label": "scrub",
+   "colour": "rgba(163, 204, 144, 1)"
+  },
+  "b": {
+   "label": "scattered scrub",
+   "colour": "rgba(224, 237, 216, 1)"
+  },
+  "floor": {
+   "de": 10,
+   "grey": 1.4,
+   "red": 1.4
+  },
+  "why": "Greyscale/red-light carried by stipple pattern (nzat:scattered_stipple)."
+ },
+ {
+  "name": "Scrub vs water",
+  "a": {
+   "label": "scrub",
+   "colour": "rgba(163, 204, 144, 1)"
+  },
+  "b": {
+   "label": "lake/river fill",
+   "colour": "rgba(184, 220, 242, 1)"
+  },
+  "floor": {
+   "de": 5
+  },
+  "why": "Carried by shoreline line + context; not solvable by fill colour (log 0009)."
+ },
+ {
+  "name": "Closed-track casing vs paper",
+  "a": {
+   "label": "closed casing",
+   "colour": "rgba(26, 26, 26, 0.55)"
+  },
+  "b": {
+   "label": "paper",
+   "colour": "#FFFFFF"
+  },
+  "floor": {
+   "grey": 2.5,
+   "red": 2.5
+  },
+  "why": "Plus cross-bar pattern (nzat:closed_crossbar)."
+ }
+]

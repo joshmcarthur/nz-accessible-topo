@@ -1,0 +1,16 @@
+{
+ "scattered_stipple": {
+  "x": 0,
+  "y": 0,
+  "width": 32,
+  "height": 32,
+  "pixelRatio": 2
+ },
+ "closed_crossbar": {
+  "x": 36,
+  "y": 0,
+  "width": 24,
+  "height": 16,
+  "pixelRatio": 2
+ }
+}

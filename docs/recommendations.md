@@ -6,6 +6,16 @@ on grade C/D evidence or on transferring evidence from a different task.
 
 Status: draft v0 (2026-11-01). Nothing here has been user-tested yet.
 
+**Implementation status (log 0014):** R-03, R-04, R-05, R-07, R-08, R-09,
+R-10, R-11 are implemented in `styles/accessible-v0*.json` and gated in CI
+(R-14, R-15 done). R-06 met by keeping Open Sans/Roboto. R-01 enforced via
+per-pair floors in `tools/pairs-accessible-v0.json`. Not started: R-12, R-13
+(print + high-contrast variants), R-16 (user testing).
+
+**Note on R-07 values:** the build darkens each failing label colour along
+CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label
+blue is `rgba(0,110,171)` rather than the hand-picked `#005C8F` in palette v0.
+
 ---
 
 ## Principles
@@ -56,7 +66,7 @@ under all simulated dichromacies (palette v0 achieves this).
 
 ### R-05 — No italics for map labels
 **Rests on:** F-05, F-08 · **Best evidence:** B
-**Change from today:** 36 of 68 web label layers are italic, including all
+**Change from today:** 33 of 63 web label layers are italic, including all
 water names.
 **Why:** Italic styles measurably slowed dyslexic readers; the italic-water
 convention is a tradition, not a legibility finding. Carry "this is water"
