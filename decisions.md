@@ -2,7 +2,7 @@
 
 ## B-28: Leave Nimbus Sans LINZ unchanged
 
-**Status:** Accepted
+**Status:** Superseded by the decision below
 **Date:** 2026-11
 
 ### Context
@@ -28,3 +28,32 @@ This is a plain reading of `fonts/LICENSE` and of AGPL-3.0 as it applies to a fo
 ### Consequences
 
 B-25 and B-24 stay in the QML. Rendered PDFs may embed the stock faces. B-11 stays a QML family change to an OFL face. A future glyph change belongs on an OFL font, and needs a new decision if someone proposes editing Nimbus instead.
+
+
+## B-28 revised: accessible sheet uses Atkinson Hyperlegible Next
+
+**Status:** Accepted
+**Date:** 2026-11
+**Supersedes:** B-28: Leave Nimbus Sans LINZ unchanged
+
+### Context
+
+The first B-28 decision left a family swap for later. The accessible map is meant to replace Nimbus Sans LINZ with Atkinson Hyperlegible Next, including the macron vowels that the official Next files do not contain as precomposed glyphs (F-29).
+
+### Decision
+
+The stock BX24 render uses the stock QGIS project and therefore unmodified Nimbus Sans LINZ. Do not modify those font files and do not copy the OTF files into this repo. PDF embedding of that stock render is the exemption in `fonts/LICENSE`.
+
+The accessible render sets label family to Atkinson Hyperlegible Next, built at render time by `tools/patch_atkinson_omacron.py` from the OFL sources. The patch adds U+014C and U+014D and renames the family to `NZAT Legible Test`. Labels are upright. The size floor is unchanged (7 pt, 6 pt for spot heights). B-11 is this swap, done with the label override, not a later trial.
+
+### Rationale
+
+A modified Nimbus would be an AGPL-3.0 font. A swap to the OFL face does not create that derivative. The stock sheet still needs the exemption, because it is the unmodified LINZ project. QGIS can shape Ō/ō without the composites (F-28). The composites are still added so the glyphs are in the font file. The patch is upright statics only, which matches the no-italic rule.
+
+Atkinson Hyperlegible Next has no Narrow master. Stock Narrow labels become the regular width on the accessible sheet. A condensed Atkinson cut would be a new decision.
+
+This is a plain reading of the licences. It is not legal advice.
+
+### Consequences
+
+B-22 stays a Nimbus baseline. The accessible label render installs the patched face in the container and points the QML at `NZAT Legible Test`. The web vector style stays on Open Sans until glyph PBFs exist (R-06). B-10 (upstream Ō/ō report) stays open. The patched binary is not committed. A public family name can replace `NZAT Legible Test` later without changing this decision.
