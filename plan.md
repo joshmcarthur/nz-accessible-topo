@@ -6,7 +6,7 @@ Render Topo50 sheet BX24 with LINZ's map container, then change QML labels and s
 
 ## Scope
 
-In scope: B-28, B-22, B-23, B-25, B-24.
+In scope: B-28, B-22, B-23, B-25, B-11, B-24.
 
 Out of scope: B-01, B-02, B-03, B-26, B-29, tile serving, and site work beyond the evidence-graph refresh that a recommendation edit requires. B-11 is in scope: it is the Atkinson swap on the accessible sheet.
 
