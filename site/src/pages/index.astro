@@ -8,7 +8,7 @@ const used = sources.filter((s: any) => s.used).length;
 <Base title="Overview" current="">
   <h1>Making New Zealand topo maps easier to read</h1>
   <p class="lede">An open research project re-styling LINZ's topographic map layers for people with colour vision deficiency, dyslexia, low vision and ageing eyes, and for field conditions like photocopies and red headtorches.</p>
-  <p>The map data stays exactly as LINZ publishes it. Only how it's drawn changes, and every change can be traced back to the evidence behind it. Today that's {used} sources, {findings.length} findings and {recommendations.length} recommendations, {implemented.length} of them already built into a working web style.</p>
+  <p>The target is Topo50 as served in LINZ Basemaps' <code>topo-raster-gridded</code> layer. The map data stays exactly as LINZ publishes it. Only how it's drawn changes, and every change can be traced back to the evidence behind it. Today that's {used} sources, {findings.length} findings and {recommendations.length} recommendations, {implemented.length} of them already built into an experimental web vector style. The "style changes" column below describes that secondary track; the primary work re-renders Topo50 from LINZ's own QGIS project.</p>
 
   <figure class="wide">
     <h2 style="margin-top:1.5rem">From evidence to map</h2>
@@ -24,7 +24,7 @@ const used = sources.filter((s: any) => s.used).length;
     </figcaption>
   </figure>
 
-  <h2>Built so far</h2>
+  <h2>Built so far (web vector track)</h2>
   <ul>
     {implemented.map((r: any) => {
       const c = changes.find((x: any) => x.rec === r.id);

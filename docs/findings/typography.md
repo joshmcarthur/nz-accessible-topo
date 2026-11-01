@@ -64,6 +64,17 @@ MapLibre break. Licence permits patching (F-26).
 **Sources:** S-ATKINSON (C/D), S-ATKINSON-NEXT (C), `tools/font_check.py` (D).
 **Grade:** D (design rationale) / measured fact for glyph coverage.
 
+## F-30 — Topo50's own labels are mostly condensed italic at 5.5–6.5 pt
+In the carto_text sample shipped with LINZ's production pipeline, **300 of 445
+labels (67%) are italic**, 288 of them *Narrow* (condensed) italic; 394 are
+set at 5.5–6.5 pt. Fonts are Nimbus Sans LINZ (a Helvetica-metric URW font,
+renamed by LINZ) standing in for the legacy "ATTriumMou" faces; all ten macron
+vowels are present. Condensed + italic + small is the combination the
+dyslexia research (F-05, F-07) and crowding mechanism point against.
+**Sources:** S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM (C); S-OUR-QGIS-ANALYSIS (D).
+**Caveat:** a test-area sample, not nationwide. Labels are data-defined, so
+the fix is an override in the QML (style expression), not a data edit.
+
 ## F-11 — Open Sans (LINZ's current face) is already a reasonable choice
 Open Sans has full macron coverage and a large x-height (0.535 em vs 0.496
 for Atkinson Next, 0.478 for Source Sans 3). Noto Sans is near-identical in

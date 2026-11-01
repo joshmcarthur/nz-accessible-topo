@@ -18,6 +18,22 @@ blue is `rgba(0,110,171)` rather than the hand-picked `#005C8F` in palette v0.
 
 ---
 
+## Scope (revised in log 0023)
+
+### R-18 — Make Topo50 itself more accessible: fork LINZ's QGIS symbology and re-render
+**Rests on:** F-30, S-LINZ-RASTER-STYLE, S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM · **Best evidence:** C
+**Why:** the intended starting point, `topo-raster-gridded`, is pre-rendered
+Topo50 imagery. A MapLibre style can only adjust it globally (brightness,
+contrast, saturation, hue) and its client hillshade; it cannot recolour
+contours, change fonts or remove italics. The cartography lives in LINZ's
+MIT-licensed `topographic-qgis` project, rendered by the containerised
+pipeline in `topographic-system`. Forking the QMLs and re-rendering yields
+**both** accessible raster tiles and print (R-13) from one source.
+**Met when:** an accessible QML set renders at least one Topo50 sheet through
+LINZ's `map` container, and the R-01/R-05/R-07/R-11/R-17 gates pass on it.
+**Fonts:** Nimbus Sans LINZ is AGPL-3.0 (with a font exemption); check what
+redistributing a modified font set would require before changing fonts.
+
 ## Principles
 
 ### R-01 — Encode anything safety-relevant in lightness and shape; use hue only as a redundant cue
@@ -68,7 +84,7 @@ under all simulated dichromacies (palette v0 achieves this).
 ## Typography
 
 ### R-05 — No italics for map labels
-**Rests on:** F-05, F-08 · **Best evidence:** B
+**Rests on:** F-05, F-08, F-30 · **Best evidence:** B
 **Change from today:** 33 of 63 web label layers are italic, including all
 water names.
 **Why:** Italic styles measurably slowed dyslexic readers; the italic-water

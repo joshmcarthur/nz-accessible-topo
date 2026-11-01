@@ -24,3 +24,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0020 — Revisions from real-map evidence, and real-scenario tooling](0020-revisions-and-real-scenarios.md)
 - [0021 — Site scaffold: evidence Sankey and "how people see maps"](0021-site-scaffold.md)
 - [0022 — Cross-links, link checking, live-capture ingestion, and a fix to 0021](0022-site-links-and-live-captures.md)
+- [0023 — Correction: the starting point is `topo-raster-gridded`, not `topographic-v2`](0023-rescope-topo-raster-gridded.md)

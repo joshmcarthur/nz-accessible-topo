@@ -3,6 +3,7 @@
 | File | Origin |
 |---|---|
 | `linz-topographic-v2.json` | `linz/basemaps-config` @ `581b44a87dfbd946ced1027c610b586ffa71c838`, path `config/style/topographic-v2.json` |
+| `linz-topo-raster-gridded.json` | `linz/basemaps-config` @ `581b44a`, `config/style/topo-raster-gridded.json` — **the project's intended starting point** (log 0023) |
 | `LICENSE-linz-basemaps-config` | MIT licence, Crown copyright LINZ — must accompany derived styles |
 
 Vendored (not fetched at build time) so builds are reproducible offline and

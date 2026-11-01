@@ -3,9 +3,13 @@
 Research and (eventually) open-source styles for New Zealand topographic map
 layers — print and web — that are easier to read for more people.
 
-The underlying data is LINZ's published topographic data (Topo50 / NZ Topo
-Data Model, and the LINZ Basemaps `topographic-v2` vector tiles). This project
-does **not** change the data. It changes *how the data is drawn*.
+**Target:** LINZ Basemaps' `topo-raster-gridded` layer — Topo50 itself. Because
+that layer is pre-rendered imagery, the primary deliverable is a fork of LINZ's
+MIT-licensed Topo50 QGIS symbology (`linz/topographic-qgis`), re-rendered with
+LINZ's own production pipeline, giving accessible raster tiles **and** print
+(R-18, log 0023). A secondary web-vector track (`styles/accessible-v0*.json`,
+from `topographic-v2`) is kept and gated. The data never changes — only how
+it's drawn.
 
 ## Goals
 

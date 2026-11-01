@@ -43,6 +43,27 @@
    "used": false
   },
   {
+   "id": "S-LINZ-RASTER-STYLE",
+   "grade": "C",
+   "title": "`linz/basemaps-config` `config/style/topo-raster-gridded.json`: Topo50 raster tiles (WebP, grid baked in) + client hillshade at 315°.",
+   "url": "https://github.com/linz/basemaps-config",
+   "used": true
+  },
+  {
+   "id": "S-LINZ-TOPO-QGIS",
+   "grade": "C",
+   "title": "`linz/topographic-qgis` @ c0edcfc (MIT): the Topo50 QGIS project, 43 layer QMLs, spot-colour palette, Nimbus Sans LINZ fonts (AGPL-3.0 with exemption).",
+   "url": "https://github.com/linz/topographic-qgis",
+   "used": true
+  },
+  {
+   "id": "S-LINZ-TOPO-SYSTEM",
+   "grade": "C",
+   "title": "`linz/topographic-system` (MIT): containerised QGIS map production (`packages/map`), carto_text sample.",
+   "url": "https://github.com/linz/topographic-system",
+   "used": true
+  },
+  {
    "id": "S-LINZ-BASEMAPS-CONFIG",
    "grade": "C",
    "title": "`linz/basemaps-config` (MIT), `config/style/topographic-v2.json`.",
@@ -340,6 +361,13 @@
    "id": "S-OUR-PATCH",
    "grade": "D",
    "title": "`tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-QGIS-ANALYSIS",
+   "grade": "D",
+   "title": "`tools/analyse_qgis_project.py` over topographic-qgis + carto_text sample (log 0023)",
    "url": null,
    "used": true
   },
@@ -686,6 +714,19 @@
    "html": "<p>Designed by the Braille Institute (2019; <em>Next</em> 2025) to differentiate\nconfusable characters (I/l/1, O/0, B/8). Evidence base is mostly the\ndesigners' own user testing, not independent peer-reviewed studies.\n<strong>Our check:</strong> Atkinson Hyperlegible Next v2.001 (google/fonts, upstream\ncommit 7925f50) <strong>lacks precomposed Ō/ō</strong> (U+014C/U+014D) while having the\nother macron vowels. It does have a combining macron and mark positioning,\nbut MapLibre's glyph rendering doesn't do OpenType mark positioning, so\n<code>Taupō</code>, <code>Ōtautahi</code>, <code>Ōpōtiki</code>, <code>Ōamaru</code> would break on the web.\n<strong>Refined in log 0018 (F-28):</strong> shaping renderers (HarfBuzz) <em>do</em> render\nthese correctly with the official font; only per-codepoint renderers like\nMapLibre break. Licence permits patching (F-26).\n<strong>Sources:</strong> S-ATKINSON (C/D), S-ATKINSON-NEXT (C), <code>tools/font_check.py</code> (D).\n<strong>Grade:</strong> D (design rationale) / measured fact for glyph coverage.</p>"
   },
   {
+   "id": "F-30",
+   "title": "Topo50's own labels are mostly condensed italic at 5.5–6.5 pt",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-LINZ-TOPO-QGIS",
+    "S-LINZ-TOPO-SYSTEM",
+    "S-OUR-QGIS-ANALYSIS"
+   ],
+   "grade": "C",
+   "html": "<p>In the carto_text sample shipped with LINZ's production pipeline, <strong>300 of 445\nlabels (67%) are italic</strong>, 288 of them <em>Narrow</em> (condensed) italic; 394 are\nset at 5.5–6.5 pt. Fonts are Nimbus Sans LINZ (a Helvetica-metric URW font,\nrenamed by LINZ) standing in for the legacy \"ATTriumMou\" faces; all ten macron\nvowels are present. Condensed + italic + small is the combination the\ndyslexia research (F-05, F-07) and crowding mechanism point against.\n<strong>Sources:</strong> S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM (C); S-OUR-QGIS-ANALYSIS (D).\n<strong>Caveat:</strong> a test-area sample, not nationwide. Labels are data-defined, so\nthe fix is an override in the QML (style expression), not a data edit.</p>"
+  },
+  {
    "id": "F-11",
    "title": "Open Sans (LINZ's current face) is already a reasonable choice",
    "topic": "typography, dyslexia and low vision",
@@ -770,12 +811,13 @@
    "provisional": false,
    "findings": [
     "F-05",
-    "F-08"
+    "F-08",
+    "F-30"
    ],
    "sources": [],
    "grade": "B",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-05, F-08 · <strong>Best evidence:</strong> B\n<strong>Change from today:</strong> 33 of 63 web label layers are italic, including all\nwater names.\n<strong>Why:</strong> Italic styles measurably slowed dyslexic readers; the italic-water\nconvention is a tradition, not a legibility finding. Carry \"this is water\"\nwith colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.\n<strong>Met when:</strong> zero italic faces in the style.</p>"
+   "html": "<p><strong>Rests on:</strong> F-05, F-08, F-30 · <strong>Best evidence:</strong> B\n<strong>Change from today:</strong> 33 of 63 web label layers are italic, including all\nwater names.\n<strong>Why:</strong> Italic styles measurably slowed dyslexic readers; the italic-water\nconvention is a tradition, not a legibility finding. Carry \"this is water\"\nwith colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.\n<strong>Met when:</strong> zero italic faces in the style.</p>"
   },
   {
    "id": "R-06",
@@ -950,6 +992,22 @@
    "grade": "C",
    "implemented": false,
    "html": "<p><strong>Rests on:</strong> P1–P9 (<code>current-state/topo50-print.md</code>), F-21, F-23 · <strong>Best evidence:</strong> measured (D) + C\n- Give <strong>hot and cold springs different glyphs</strong>, not just different inks\n  (P3: 1.13:1 in greyscale). Topo50 already does this well for hot spring vs\n  fumarole (× vs ⊗) — extend the same idea.\n- Separate <strong>native forest from scrub</strong> by a larger lightness step or a\n  texture (P5: ΔE 4.8, 1.1:1 greyscale). This changes route choice.\n- Keep <strong>scattered scrub as a pattern</strong> (P6) — print got this right; the web\n  style should match (R-10 does).\n- Apply R-05 to <strong>contour labels and spot heights</strong>, which are italic in\n  print (P8).\n- Don't use the red-orange ink alone for anything that must be read under a\n  red headtorch (P7).</p>"
+  },
+  {
+   "id": "R-18",
+   "title": "Make Topo50 itself more accessible: fork LINZ's QGIS symbology and re-render",
+   "provisional": false,
+   "findings": [
+    "F-30"
+   ],
+   "sources": [
+    "S-LINZ-RASTER-STYLE",
+    "S-LINZ-TOPO-QGIS",
+    "S-LINZ-TOPO-SYSTEM"
+   ],
+   "grade": "C",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-30, S-LINZ-RASTER-STYLE, S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM · <strong>Best evidence:</strong> C\n<strong>Why:</strong> the intended starting point, <code>topo-raster-gridded</code>, is pre-rendered\nTopo50 imagery. A MapLibre style can only adjust it globally (brightness,\ncontrast, saturation, hue) and its client hillshade; it cannot recolour\ncontours, change fonts or remove italics. The cartography lives in LINZ's\nMIT-licensed <code>topographic-qgis</code> project, rendered by the containerised\npipeline in <code>topographic-system</code>. Forking the QMLs and re-rendering yields\n<strong>both</strong> accessible raster tiles and print (R-13) from one source.\n<strong>Met when:</strong> an accessible QML set renders at least one Topo50 sheet through\nLINZ's <code>map</code> container, and the R-01/R-05/R-07/R-11/R-17 gates pass on it.\n<strong>Fonts:</strong> Nimbus Sans LINZ is AGPL-3.0 (with a font exemption); check what\nredistributing a modified font set would require before changing fonts.</p>"
   }
  ],
  "changes": [

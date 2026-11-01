@@ -12,6 +12,9 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-MCDONALD-2020 | D | McDonald, P. (2020) *One Step at a Time* — context paper for petition to redesign Topo50 track symbols. https://petemcdonald.co/onestep.pdf (see also *Track Symbols on 1:50,000 Printed Topographic Maps*, 2019, https://petemcdonald.co/TrkSym.pdf — not yet read in full) |
 | S-LINZ-BASEMAPS-STYLING | C | LINZ Basemaps, *How to Style our Vector Tiles*. https://basemaps.linz.govt.nz/docs/user-guide/working-with-vector-tiles/styling/ |
 | S-LINZ-BASEMAPS-USAGE | C | LINZ Basemaps, *How to Use our Vector Tiles*. https://basemaps.linz.govt.nz/docs/user-guide/working-with-vector-tiles/usage/ |
+| S-LINZ-RASTER-STYLE | C | `linz/basemaps-config` `config/style/topo-raster-gridded.json`: Topo50 raster tiles (WebP, grid baked in) + client hillshade at 315°. https://github.com/linz/basemaps-config |
+| S-LINZ-TOPO-QGIS | C | `linz/topographic-qgis` @ c0edcfc (MIT): the Topo50 QGIS project, 43 layer QMLs, spot-colour palette, Nimbus Sans LINZ fonts (AGPL-3.0 with exemption). https://github.com/linz/topographic-qgis |
+| S-LINZ-TOPO-SYSTEM | C | `linz/topographic-system` (MIT): containerised QGIS map production (`packages/map`), carto_text sample. https://github.com/linz/topographic-system |
 | S-LINZ-BASEMAPS-CONFIG | C | `linz/basemaps-config` (MIT), `config/style/topographic-v2.json`. https://github.com/linz/basemaps-config |
 
 ## Colour science & simulation
@@ -110,4 +113,5 @@ web audit, P1–P9 → print audit, etc.).
 | S-OUR-SHAPING-TEST | D | Shaped vs unshaped rendering of Atkinson Next (log 0018) |
 | S-OUR-PALETTE-V0 | D | Palette experiment v0 (log 0009) |
 | S-OUR-PATCH | D | `tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018) |
+| S-OUR-QGIS-ANALYSIS | D | `tools/analyse_qgis_project.py` over topographic-qgis + carto_text sample (log 0023) |
 | S-OUR-REAL-RENDER | D | Simulations over LINZ's real Topo50 render (log 0019) |

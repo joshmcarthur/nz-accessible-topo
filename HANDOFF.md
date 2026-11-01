@@ -1,7 +1,12 @@
 # Handoff: research sandbox → local development
 
-State at handoff: 24 commits, logs 0001–0022, all gates green from a clean
+State at handoff: logs 0001–0023, all gates green from a clean
 clone. Next work is in [BACKLOG.md](BACKLOG.md).
+
+> **Read log 0023 first.** The intended starting point is `topo-raster-gridded`
+> (Topo50 raster), not `topographic-v2`. The primary path is now forking
+> `linz/topographic-qgis` and rendering with `linz/topographic-system`'s map
+> container (B-22, B-23 are the first steps; both need Docker locally).
 
 ## Get the repo
 
@@ -68,5 +73,6 @@ ofl/opensans ofl/notosans ofl/atkinsonhyperlegiblenext ofl/roboto`.
 | What we believe and why | `docs/findings/`, `docs/recommendations.md`, `docs/sources.md` |
 | What's unresolved | `docs/open-questions.md`, `BACKLOG.md` |
 | How we got here | `docs/research-log/` (or the site's Research log) |
-| Style parameters | `tools/build_style.py` (`P = {...}`) |
+| Topo50 QGIS cartography (primary target) | `docs/current-state/topo50-qgis-cartography.md`, `tools/analyse_qgis_project.py` |
+| Vector-track style parameters (secondary) | `tools/build_style.py` (`P = {...}`) |
 | Site content sources | `site/README.md` |
