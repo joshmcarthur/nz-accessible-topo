@@ -9,3 +9,12 @@ Against this QGIS project's road ink (`#D5B43C`) the same intermediate passes th
 On paper, intermediate vs white is 3.19:1 in greyscale and 1.74:1 under the red-light model. Index vs white is 6.53:1 and 3.45:1.
 
 The accessible render uses `#C4814B` anyway. A darker intermediate would undo log 0020. Leave the value until a steep sheet (OQ-09) shows whether the light line disappears.
+
+
+## Why do along-line water names render as black question marks?
+
+The accessible BX24 render (log 0026) draws large black question marks across the estuary and the bay. They sit on labels whose placement is AL and whose charplace is StretchWordSpacingToFit. Examples: Pegasus Bay, and Estuary of the Heathcote and Avon Rivers / Ihutai. Those rows are process_blue and Italic in the data. Offset water names (Avon River, placement OL) still read as blue text.
+
+The project file has no italic map labels. Fontconfig lists NZAT Legible Test. The PDF has no embedded fonts; QGIS rasterised the page. Fontconfig also reported no writable cache directory because the container user has no home.
+
+Do not treat B-25 or B-11 as done until those marks are gone.
