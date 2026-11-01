@@ -24,3 +24,33 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-SCHNECK-2014 | B | Schneck, M.E., Haegerstrom-Portnoy, G., Lott, L.A., Brabyn, J.A. (2014) colour vision in older adults (n=865, age 58–102), *Optometry and Vision Science*. Read via ScienceDaily (2014-02-20) and News-Medical summaries — **primary paper not yet read; verify exact title/DOI**. |
 | S-BARBUR-REVIEW | B | Review on S-cone pathways and ageing (PMC5330185), citing Verriest et al. and Knoblauch et al. on tritan-like age losses and their similarity to reduced illuminance. https://pmc.ncbi.nlm.nih.gov/articles/PMC5330185 |
 | S-WUERGER-2013 | B | Wuerger, S. (2013) Colour constancy across the life span: evidence for compensatory mechanisms. *PLOS ONE* 8(5):e63921. (n=185, ages 18–75) |
+
+## Typography, dyslexia, low vision
+
+| ID | Grade | Source |
+|---|---|---|
+| S-RELLO-2013 | B | Rello, L. & Baeza-Yates, R. (2013) Good fonts for dyslexia. *ASSETS '13*. https://doi.org/10.1145/2513383.2513447 |
+| S-RELLO-2016 | B | Rello, L. & Baeza-Yates, R. (2016) The effect of font type on screen readability by people with dyslexia. *ACM TACCESS*. https://doi.org/10.1145/2897736 |
+| S-KUSTER-2018 | B | Kuster, S.M. et al. (2018) Dyslexie font does not benefit reading in children with or without dyslexia. *Annals of Dyslexia* 68(1):25–42. https://doi.org/10.1007/s11881-017-0154-6 |
+| S-WERY-2017 | B | Wery, J.J. & Diliberto, J.A. (2017) The effect of a specialized dyslexia font, OpenDyslexic, on reading rate and accuracy. *Annals of Dyslexia*. (via IDA summary) |
+| S-ZORZI-2012 | B | Zorzi, M. et al. (2012) Extra-large letter spacing improves reading in dyslexia. *PNAS* 109(28):11455–9. https://doi.org/10.1073/pnas.1205566109 |
+| S-SPACING-2018 | B | (2018) Influence of increased letter spacing and font type on the reading ability of dyslexic children. *Annals of Dyslexia* (Oct 2018), PMID 30094714. Authors to be recorded. |
+| S-ATKINSON | C/D | Braille Institute / Applied Design, Atkinson Hyperlegible (2019). https://github.com/googlefonts/atkinson-hyperlegible |
+| S-ATKINSON-NEXT | C | Braille Institute press release (2025-02-10): Atkinson Hyperlegible Next — 7 weights, 150+ languages. |
+
+## Cartographic typography guidance
+
+| ID | Grade | Source |
+|---|---|---|
+| S-AXIS-LABELING | C | Axis Maps, *Labeling and text hierarchy in cartography*. https://www.axismaps.com/guide/labeling |
+| S-COLORADO-TYPO | C | *Making Maps* (Colorado pressbooks), ch. Typography. https://colorado.pressbooks.pub/makingmaps/chapter/typography/ |
+| S-ESRI-MINSIZE | C | Esri, *Guidelines for minimum size for text and symbols on maps*. |
+| S-MN-MAPGUIDE | C | Minnesota IT Services, *Accessibility – Map Design Guide*. |
+| S-USGS-SPECS | C | USGS, US Topo / OnDemand Topo cartographic specifications. https://www.usgs.gov/ngp-standards-and-specifications |
+
+## Place names
+
+| ID | Grade | Source |
+|---|---|---|
+| S-NZGB-2019 | C | NZGB decision, June 2019: 824 Māori place names official, ~300 with macrons added (RNZ, 2019-06-25). |
+| S-LINZ-NZGB-AUCK | C | LINZ news: 541 Māori place names in Auckland made official, 194 macrons added. https://www.linz.govt.nz/node/11612 |
