@@ -1,0 +1,22 @@
+name: check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: pip install -r requirements.txt
+      - name: Sprites are reproducible
+        run: python3 tools/make_sprites.py && git diff --exit-code styles/sprites/
+      - name: Styles are reproducible and meet the gates (C1–C6)
+        run: python3 tools/check.py
+      - name: Styles are valid MapLibre styles
+        run: |
+          npm i --no-save @maplibre/maplibre-gl-style-spec@26.5.0
+          for f in styles/accessible-*.json; do npx gl-style-validate "$f"; done
+      - name: Audit report (informational)
+        run: python3 tools/palette_audit.py styles/accessible-v0.json --pairs tools/pairs-accessible-v0.json

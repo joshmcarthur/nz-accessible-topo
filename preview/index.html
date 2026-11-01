@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NZ Accessible Topo — preview</title>
+<!-- Same pinned version as MapLibre's own multidirectional-hillshade example -->
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.2.0/dist/maplibre-gl.css">
+<style>
+  :root { --bar: #f4f4f2; --ink: #1a1a1a; }
+  @media (prefers-color-scheme: dark) { :root { --bar: #222; --ink: #eee; } }
+  html, body { height: 100%; margin: 0; font: 14px/1.4 system-ui, sans-serif; color: var(--ink); background: var(--bar); }
+  header { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; padding: .5rem .75rem; }
+  header label { display: inline-flex; gap: .35rem; align-items: center; }
+  main { display: grid; grid-template-columns: 1fr 1fr; height: calc(100% - 3.2rem); gap: 2px; }
+  @media (max-width: 700px) { main { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+  .pane { position: relative; }
+  .pane > div { position: absolute; inset: 0; }
+  .tag { position: absolute; z-index: 2; top: .4rem; left: .4rem; background: #fff; color: #000; padding: .15rem .45rem; border-radius: 4px; font-weight: 600; }
+  input[type=password] { width: 16rem; }
+</style>
+</head>
+<body>
+<header>
+  <label>LINZ API key <input id="key" type="password" placeholder="from basemaps.linz.govt.nz"></label>
+  <label>Right: <select id="variant">
+    <option value="accessible-v0">accessible-v0</option>
+    <option value="accessible-v0-multidir">accessible-v0-multidir</option>
+  </select></label>
+  <label>Simulate: <select id="sim">
+    <option value="none">normal vision</option>
+    <option value="protan">protanopia</option>
+    <option value="deutan">deuteranopia</option>
+    <option value="tritan">tritanopia</option>
+    <option value="grey">greyscale print</option>
+    <option value="red">red headtorch</option>
+  </select></label>
+  <button id="go">Load</button>
+</header>
+<main>
+  <div class="pane"><span class="tag">LINZ topographic-v2</span><div id="left"></div></div>
+  <div class="pane"><span class="tag" id="rtag">accessible-v0</span><div id="right"></div></div>
+</main>
+
+<!-- SVG filters run in linearRGB by default, which is what the Machado (2009)
+     matrices expect — so these match tools/palette_audit.py. -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="protan"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
+  <filter id="deutan"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter>
+  <filter id="tritan"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.303900 0 0  0 0 0 1 0"/></filter>
+  <filter id="grey"><feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/></filter>
+  <!-- Red light: paper reflects only the red channel; shown as grey. -->
+  <filter id="red"><feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 1 0"/></filter>
+</svg>
+
+<script src="https://unpkg.com/maplibre-gl@6.2.0/dist/maplibre-gl.js"></script>
+<script>
+const LINZ = "https://basemaps.linz.govt.nz";
+const keyEl = document.getElementById("key");
+try { keyEl.value = localStorage.getItem("linzKey") || ""; } catch (e) {}
+
+// LINZ styles use host-relative URLs (/v1/...) and a {tileMatrix} placeholder.
+function absolutise(style, key) {
+  const s = JSON.parse(JSON.stringify(style.style || style));
+  const fix = (u) => typeof u === "string" ? u.replace("{tileMatrix}", "WebMercatorQuad") : u;
+  for (const src of Object.values(s.sources)) {
+    if (src.url) src.url = fix(src.url);
+    if (src.tiles) src.tiles = src.tiles.map(fix);
+  }
+  if (Array.isArray(s.sprite)) {
+    s.sprite = s.sprite.map(sp => ({ ...sp, url: new URL(sp.url, new URL("../styles/", location.href)).href }));
+  }
+  return s;
+}
+
+function transformRequest(key) {
+  return (url) => {
+    // Relative /v1/... resolves against this page; send it to LINZ instead.
+    const u = new URL(url, location.href);
+    if (u.pathname.startsWith("/v1/") && u.origin !== LINZ) {
+      const t = new URL(u.pathname + u.search, LINZ);
+      t.searchParams.set("api", key);
+      return { url: t.href };
+    }
+    if (u.origin === LINZ) { u.searchParams.set("api", key); return { url: u.href }; }
+    return { url };
+  };
+}
+
+let maps = [];
+async function load() {
+  const key = keyEl.value.trim();
+  if (!key) { alert("Paste a LINZ Basemaps API key first."); return; }
+  try { localStorage.setItem("linzKey", key); } catch (e) {}
+  const variant = document.getElementById("variant").value;
+  document.getElementById("rtag").textContent = variant;
+  const [up, ac] = await Promise.all([
+    fetch("../upstream/linz-topographic-v2.json").then(r => r.json()),
+    fetch(`../styles/${variant}.json`).then(r => r.json()),
+  ]);
+  const view = maps[0] ? { center: maps[0].getCenter(), zoom: maps[0].getZoom() }
+                       : { center: [171.56, -42.94], zoom: 13 }; // Arthur's Pass
+  maps.forEach(m => m.remove());
+  maps = [["left", up], ["right", ac]].map(([id, st]) => new maplibregl.Map({
+    container: id, style: absolutise(st, key), transformRequest: transformRequest(key),
+    hash: id === "left", ...view,
+  }));
+  let syncing = false;
+  maps.forEach((m, i) => m.on("move", () => {
+    if (syncing) return; syncing = true;
+    const o = maps[1 - i];
+    o.jumpTo({ center: m.getCenter(), zoom: m.getZoom(), bearing: m.getBearing(), pitch: m.getPitch() });
+    syncing = false;
+  }));
+  applySim();
+}
+function applySim() {
+  const v = document.getElementById("sim").value;
+  for (const id of ["left", "right"])
+    document.getElementById(id).style.filter = v === "none" ? "" : `url(#${v})`;
+}
+document.getElementById("go").onclick = load;
+document.getElementById("sim").onchange = applySim;
+document.getElementById("variant").onchange = () => maps.length && load();
+if (keyEl.value) load();
+</script>
+</body>
+</html>
