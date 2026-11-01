@@ -1,0 +1,9 @@
+[
+ {"id": "kawarau-gibbston", "zoom": 14, "lat": -45.018, "lon": 168.93, "why": "Same area as LINZ's real Topo50 render (log 0019): dense contours, braided river, state highway"},
+ {"id": "arthurs-pass", "zoom": 14, "lat": -42.94, "lon": 171.56, "why": "Steep alpine relief: contour density (OQ-09), shading (R-03), tracks"},
+ {"id": "tongariro-crossing", "zoom": 14, "lat": -39.135, "lon": 175.65, "why": "Volcanic terrain, scree, popular tracks, Māori names with macrons"},
+ {"id": "rotorua-geothermal", "zoom": 15, "lat": -38.165, "lon": 176.255, "why": "Hot springs, fumaroles, cold springs (P3/P4)"},
+ {"id": "canterbury-plains", "zoom": 13, "lat": -43.49, "lon": 172.11, "why": "Very low relief: supplementary contours, shading on flat ground (OQ-07)"},
+ {"id": "mackinnon-pass", "zoom": 14, "lat": -44.80, "lon": 167.78, "why": "Fiordland: forest/scrub boundaries, closed and open tracks"},
+ {"id": "taupo-town", "zoom": 14, "lat": -38.686, "lon": 176.07, "why": "Urban labels, lake names, macrons (Taupō)"}
+]

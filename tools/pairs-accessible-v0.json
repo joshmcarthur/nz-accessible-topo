@@ -20,7 +20,7 @@
   "name": "Intermediate contour vs paper",
   "a": {
    "label": "intermediate contour",
-   "colour": "#A8703C"
+   "colour": "#C4814B"
   },
   "b": {
    "label": "paper",
@@ -29,9 +29,9 @@
   "floor": {
    "de": 10,
    "grey": 3.0,
-   "red": 2.0
+   "red": 1.6
   },
-  "why": "Red-light 2.38: index contours carry relief under red light."
+  "why": "Red-light 1.75 by design: intermediates stay recessive (real dense slopes, log 0020); index contours carry relief under red light (3.45)."
  },
  {
   "name": "Index contour vs state highway",
@@ -54,7 +54,7 @@
   "name": "Intermediate contour vs state highway",
   "a": {
    "label": "intermediate contour",
-   "colour": "#A8703C"
+   "colour": "#C4814B"
   },
   "b": {
    "label": "state highway fill",
@@ -62,10 +62,10 @@
   },
   "floor": {
    "de": 10,
-   "grey": 2.0,
-   "red": 2.0
+   "grey": 1.2,
+   "red": 1.2
   },
-  "why": "Also separated by highway casing and width."
+  "why": "Close in lightness by design; separated by highway casing and width (same as Topo50 print, where they share one ink)."
  },
  {
   "name": "Index contour vs pipeline",

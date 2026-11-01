@@ -52,7 +52,10 @@ multidirectional/sky layer; evaluated on both Alpine and lowland sheets.
 
 ### R-04 — Darker, solid, wider contours with a clear index/intermediate hierarchy
 **Rests on:** F-18, F-20, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
-**Starting values:** index `#8A4F1C`, intermediate `#A8703C`, no opacity.
+**Starting values:** index `#8A4F1C`, intermediate `#C4814B` (revised in log
+0020 from `#A8703C`: real Topo50 slopes show 20 m intermediates are dense
+enough that they must stay recessive — the lightest same-hue brown meeting
+3.2:1, thinner lines; index contours carry relief under red light), no opacity.
 Web widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).
 Print widths: set by rendering tests on steep sheets (OQ-09).
 **Also:** draw `definition = indefinite` contours dashed, so reduced
@@ -117,6 +120,9 @@ Water keeps its blue shoreline line.
 **Why:** v0 showed colour alone can't separate pale fills in greyscale.
 
 ### R-11 — Closed tracks, hazards and historic sites: meaning in shape, not red
+**Print evidence (log 0019, P2):** in printed Topo50, a closed track differs
+from a foot track *only* by gap length (dash 24/gap 12 vs 23/24). This
+applies to print as much as web.
 **Rests on:** F-21, W7, palette v0 · **Best evidence:** D (mechanism certain)
 **Change:** closed tracks get a dark casing with cross-bars; historic sites
 get a distinct glyph with dark-ink labels.
@@ -129,6 +135,20 @@ we don't have; leave a casing/colour channel unused so it can be added
 without redesign.
 
 ---
+
+### R-17 — Print-specific fixes found in the Topo50 legend — **new, provisional**
+**Rests on:** P1–P9 (`current-state/topo50-print.md`), F-21, F-23 · **Best evidence:** measured (D) + C
+- Give **hot and cold springs different glyphs**, not just different inks
+  (P3: 1.13:1 in greyscale). Topo50 already does this well for hot spring vs
+  fumarole (× vs ⊗) — extend the same idea.
+- Separate **native forest from scrub** by a larger lightness step or a
+  texture (P5: ΔE 4.8, 1.1:1 greyscale). This changes route choice.
+- Keep **scattered scrub as a pattern** (P6) — print got this right; the web
+  style should match (R-10 does).
+- Apply R-05 to **contour labels and spot heights**, which are italic in
+  print (P8).
+- Don't use the red-orange ink alone for anything that must be read under a
+  red headtorch (P7).
 
 ## Products and process
 

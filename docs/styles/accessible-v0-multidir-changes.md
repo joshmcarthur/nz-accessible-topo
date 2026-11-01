@@ -11,9 +11,9 @@ Total changes: 189.
 
 - `Contours-Index` — colour → #8A4F1C (opaque), width ↑
 - `Contours-Index-Halo` — hidden — darker index line no longer needs a 10% offset shadow
-- `Contours-All` — colour → #A8703C (opaque)
-- `Contours-Designated` — colour → #A8703C (opaque)
-- `Contours-Natural` — colour → #A8703C (opaque)
+- `Contours-All` — colour → #C4814B (opaque)
+- `Contours-Designated` — colour → #C4814B (opaque)
+- `Contours-Natural` — colour → #C4814B (opaque)
 
 ## R-05 (39)
 

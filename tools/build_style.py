@@ -29,9 +29,9 @@ WHITE = (255, 255, 255)
 P = {
     "hillshade_direction": 337.5,                         # R-03 (F-14, F-15)
     "contour_index": "#8A4F1C",                           # R-04
-    "contour_intermediate": "#A8703C",                    # R-04
+    "contour_intermediate": "#C4814B",                    # R-04 rev. (log 0020): lightest same-hue brown ≥3.2:1
     "contour_index_width": {"stops": [[10, 0.8], [12, 1.2], [15, 1.8]]},
-    "contour_intermediate_width": {"stops": [[12, 0.8], [16, 1.2]]},
+    "contour_intermediate_width": {"stops": [[12, 0.6], [16, 0.9]]},  # thinner: dense slopes read as texture
     "scrub": "rgba(163, 204, 144, 1)",                    # R-10 (#A3CC90)
     "scattered_scrub": "rgba(224, 237, 216, 1)",          # R-10 (#E0EDD8)
     "closed_track_shadow": "rgba(26, 26, 26, 0.55)",      # R-11

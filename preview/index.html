@@ -57,7 +57,11 @@
 <script>
 const LINZ = "https://basemaps.linz.govt.nz";
 const keyEl = document.getElementById("key");
-try { keyEl.value = localStorage.getItem("linzKey") || ""; } catch (e) {}
+const qs = new URLSearchParams(location.search);  // ?key=&variant=&sim= (used by tools/screenshots)
+try { keyEl.value = qs.get("key") || localStorage.getItem("linzKey") || ""; } catch (e) {}
+if (qs.get("variant")) document.getElementById("variant").value = qs.get("variant");
+if (qs.get("sim")) document.getElementById("sim").value = qs.get("sim");
+window.__mapsIdle = 0;
 
 // LINZ styles use host-relative URLs (/v1/...) and a {tileMatrix} placeholder.
 function absolutise(style, key) {
@@ -105,6 +109,11 @@ async function load() {
     container: id, style: absolutise(st, key), transformRequest: transformRequest(key),
     hash: id === "left", ...view,
   }));
+  // The left map reads the URL hash; align the right map to it before counting idles.
+  maps[0].once("load", () => {
+    maps[1].jumpTo({ center: maps[0].getCenter(), zoom: maps[0].getZoom() });
+    maps.forEach(m => m.once("idle", () => { window.__mapsIdle += 1; }));
+  });
   let syncing = false;
   maps.forEach((m, i) => m.on("move", () => {
     if (syncing) return; syncing = true;
