@@ -72,3 +72,10 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-NZ-WAS-1.2 | C | NZ Government Web Accessibility Standard 1.2. https://digital.govt.nz/web-accessibility-standard/ |
 | S-NZ-WAS-DRAFT | C | Web Accessibility Standard 1.2 — Draft (complex visual maps modified requirement). digital.govt.nz |
 | S-W3C-1411 | C | W3C, Understanding SC 1.4.11 Non-text Contrast. https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast |
+
+## Field use
+
+| ID | Grade | Source |
+|---|---|---|
+| S-FORUM-REDLIGHT | D | Practitioner reports: bushcraftuk.com (2011); paddling.com forum (military "red-brown" note); trawlerforum.com (magenta on air charts). Anecdotal; mechanism is basic reflectance physics. |
+| S-HARVARD-MONO | C | Harvard Library, *Styling Maps for Academic Publishing in QGIS* (greyscale legibility). |
