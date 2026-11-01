@@ -86,3 +86,12 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 |---|---|---|
 | S-MAPLIBRE-SPEC | C | MapLibre Style Spec — hillshade layer properties (default `hillshade-illumination-direction` 335). https://maplibre.org/maplibre-style-spec/ |
 | S-MAPLIBRE-2320 | C | MapLibre Style Spec v23.2.0 release notes: hillshade `multidirectional` method with array-valued illumination. Example: https://maplibre.org/maplibre-gl-js/docs/examples/add-a-multidirectional-hillshade-layer/ |
+
+## Font licensing
+
+| ID | Grade | Source |
+|---|---|---|
+| S-OFL-ATKINSON-NEXT | C | `OFL.txt`, googlefonts/atkinson-hyperlegible-next @ 7925f50 (read directly) |
+| S-DEBIAN-ATKINSON | D | debian-fonts mailing list (2021): Braille Institute download licence is a modified OFL. https://lists.debian.org/debian-fonts/2021/02/msg00050.html |
+| S-SCANCODE-ATKINSON | C | ScanCode LicenseDB, "Atkinson Hyperlegible Font License" (Braille Institute PDF 2020-11-04). https://scancode-licensedb.aboutcode.org/atkinson-hyperlegible-font |
+| S-NEXT-RFN | D | Secondary listing of "License for The Atkinson Hyperlegible Next Font" naming RFNs "ATKINSON", "HYPERLEGIBLE". https://wiki.mobiusconsortium.org/wiki/Special:Version/License/The_Atkinson_Hyperlegible_Next_Font |

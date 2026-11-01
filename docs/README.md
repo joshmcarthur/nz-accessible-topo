@@ -7,6 +7,7 @@
 | Current Topo50 print map | [current-state/topo50-print.md](current-state/topo50-print.md) |
 | Current LINZ web style | [current-state/linz-basemaps-topographic-v2.md](current-state/linz-basemaps-topographic-v2.md) |
 | Tile attributes & hillshade | [current-state/tile-attributes.md](current-state/tile-attributes.md) |
+| Visual comparisons | [visuals/](visuals/) |
 | Built style change logs | [styles/](styles/) |
 | Upstream issues to file | [upstream/](upstream/) |
 | Findings (by topic) | [findings/](findings/) |
@@ -24,3 +25,4 @@
 - [Standards](findings/standards.md) — F-19–F-20
 - [Field conditions](findings/field-conditions.md) — F-21–F-23
 - [Tracks and access](findings/tracks-and-access.md) — F-24–F-25
+- [Atkinson licence and macrons](findings/atkinson-licence.md) — F-26–F-29

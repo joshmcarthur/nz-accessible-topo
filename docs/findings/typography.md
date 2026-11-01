@@ -58,6 +58,9 @@ commit 7925f50) **lacks precomposed Ō/ō** (U+014C/U+014D) while having the
 other macron vowels. It does have a combining macron and mark positioning,
 but MapLibre's glyph rendering doesn't do OpenType mark positioning, so
 `Taupō`, `Ōtautahi`, `Ōpōtiki`, `Ōamaru` would break on the web.
+**Refined in log 0018 (F-28):** shaping renderers (HarfBuzz) *do* render
+these correctly with the official font; only per-codepoint renderers like
+MapLibre break. Licence permits patching (F-26).
 **Sources:** S-ATKINSON (C/D), S-ATKINSON-NEXT (C), `tools/font_check.py` (D).
 **Grade:** D (design rationale) / measured fact for glyph coverage.
 

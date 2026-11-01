@@ -77,9 +77,12 @@ with colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.
 **Rests on:** F-06, F-10, F-11, F-12 · **Best evidence:** A (dyslexia fonts don't help); measured (coverage)
 **Now:** keep **Open Sans** (or **Noto Sans**, near-identical metrics,
 broader coverage). Both have all ten macron vowels and x-height ≈0.535 em.
-**Later:** re-evaluate **Atkinson Hyperlegible Next** once it gains Ō/ō —
-it is designed to separate I/l/1 and O/0, which matters for grid references
-and trig IDs, but today it cannot set Taupō or Ōtautahi.
+**Later:** adopt **Atkinson Hyperlegible Next** once Ō/ō exist in a build we
+can make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding
+two composites (`docs/upstream/`). Interim route: our renamed OFL patch
+(`tools/patch_atkinson_omacron.py`). It's designed to separate I/l/1 and O/0
+(`docs/visuals/05`), which matters for grid references and trig IDs. Print
+via a shaping renderer (QGIS) may work with the official font already (F-28).
 **Met when:** `tools/font_check.py` reports full macron coverage for every
 face in the style (hard gate, F-12).
 

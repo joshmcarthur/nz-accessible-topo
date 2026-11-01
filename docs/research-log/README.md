@@ -18,3 +18,5 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0014 — Build `accessible-v0` from LINZ's style](0014-build-accessible-v0.md)
 - [0015 — CI gate and visual preview](0015-ci-and-preview.md)
 - [0016 — Status and next steps](0016-next-steps.md)
+- [0017 — Visual comparisons](0017-visual-comparisons.md)
+- [0018 — Atkinson licence, and a proof-of-concept Ō/ō patch](0018-atkinson-licence-and-patch.md)
