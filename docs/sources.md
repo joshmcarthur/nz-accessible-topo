@@ -54,3 +54,21 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 |---|---|---|
 | S-NZGB-2019 | C | NZGB decision, June 2019: 824 Māori place names official, ~300 with macrons added (RNZ, 2019-06-25). |
 | S-LINZ-NZGB-AUCK | C | LINZ news: 541 Māori place names in Auckland made official, 194 macrons added. https://www.linz.govt.nz/node/11612 |
+
+## Terrain depiction
+
+| ID | Grade | Source |
+|---|---|---|
+| S-BILAND-2017 | B | Biland, J. & Çöltekin, A. (2017) An empirical assessment of the impact of the light direction on the relief inversion effect in shaded relief maps: NNW is better than NW. *CaGIS* 44(4):358–372. https://doi.org/10.1080/15230406.2016.1185647 |
+| S-COLTEKIN-2018 | B | Çöltekin, A., Rautenbach, V., Coetzee, S., Mokwena, T. (2018) Landform perception accuracy in shaded relief maps: a replication study confirms that NNW lighting is better than NW… *ISPRS Archives* XLII-4:101–106. |
+| S-COLTEKIN-2019 | B | Çöltekin, A. & Biland, J. (2019) Comparing the terrain reversal effect in satellite images and in shaded relief maps. *Int. J. Digital Earth* 12(4). https://doi.org/10.1080/17538947.2018.1447030 |
+| S-COLTEKIN-2023 | B– | Çöltekin, A. et al. (2023) What moderates the terrain reversal effect in shaded relief maps? *Abstr. Int. Cartogr. Assoc.* 6:40. |
+| S-MULTIDIR-2025 | B– | (2025) Multidirectional sky model vs relief inversion — user study. *Abstr. Int. Cartogr. Assoc.* 10:92. Authors to be recorded. |
+
+## Standards
+
+| ID | Grade | Source |
+|---|---|---|
+| S-NZ-WAS-1.2 | C | NZ Government Web Accessibility Standard 1.2. https://digital.govt.nz/web-accessibility-standard/ |
+| S-NZ-WAS-DRAFT | C | Web Accessibility Standard 1.2 — Draft (complex visual maps modified requirement). digital.govt.nz |
+| S-W3C-1411 | C | W3C, Understanding SC 1.4.11 Non-text Contrast. https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast |
