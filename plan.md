@@ -24,8 +24,8 @@ B-25, B-11, and B-24 are QML transforms on a pinned checkout, then map deploy, t
 
 ## Next steps
 
-1. Log the B-28 decision. Stop for commit.
-2. Stock BX24 render (B-22, B-23). Stop for commit.
+1. Log the B-28 decision. Done in the working tree. Not committed yet.
+2. Stock BX24 render (B-22, B-23). Done. Layout name is tiff-50. topographic-system pin is 3b6ec60. Not committed yet.
 3. Upright labels, size floor, and the Atkinson swap (B-25, B-11). Stop for commit.
 4. Symbology (B-24). Stop for commit.
 
