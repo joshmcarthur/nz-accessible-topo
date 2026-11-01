@@ -27,7 +27,7 @@ B-25, B-11, and B-24 are QML transforms on a pinned checkout, then map deploy, t
 1. Log the B-28 decision. Done in the working tree. Not committed yet.
 2. Stock BX24 render (B-22, B-23). Done. Layout name is tiff-50. topographic-system pin is 3b6ec60. Not committed yet.
 3. Upright labels, size floor, and the Atkinson swap (B-25, B-11). The transform is `tools/override_topo50_project.py`. It edits map-layer labels only. The print layout stays on Nimbus.
-4. Symbology (B-24) is the same transform, one layer at a time. See the decision on the sheet image. The accessible render writes to `output-accessible/` so it does not replace the stock BX24 files.
+4. Symbology (B-24) is the same transform, one layer at a time. See the decision on the sheet image. The accessible render is in output-accessible/. It is not accepted. Along-line water names are black question marks (log 0026). B-25, B-11, and B-24 stay open.
 
 ## Constraints
 
