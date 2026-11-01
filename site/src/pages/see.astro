@@ -1,7 +1,10 @@
 ---
 import Base from "../layouts/Base.astro";
 import Compare from "../components/Compare.astro";
-import comparisons from "../data/comparisons.json";
+import curated from "../data/comparisons.json";
+import real from "../data/real-comparisons.json";
+// Live-tile captures (if any) first: they are the most realistic scenes.
+const comparisons = [...real, ...curated];
 import conditions from "../data/conditions.json";
 ---
 <Base title="How people see maps" current="see/">

@@ -23,3 +23,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0019 — Real Topo50 print: legend audit and real-map simulations](0019-real-topo50-print.md)
 - [0020 — Revisions from real-map evidence, and real-scenario tooling](0020-revisions-and-real-scenarios.md)
 - [0021 — Site scaffold: evidence Sankey and "how people see maps"](0021-site-scaffold.md)
+- [0022 — Cross-links, link checking, live-capture ingestion, and a fix to 0021](0022-site-links-and-live-captures.md)

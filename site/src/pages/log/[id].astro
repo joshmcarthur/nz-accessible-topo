@@ -1,18 +1,20 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
+import { linkify } from "../../lib/linkify";
 import { url } from "../../lib/graph";
 export async function getStaticPaths() {
   const entries = (await getCollection("log")).sort((a, b) => a.id.localeCompare(b.id));
-  return entries.map((e, i) => ({ params: { id: e.id }, props: { e, prev: entries[i - 1], next: entries[i + 1] } }));
+  const ids = entries.map((x) => x.id);
+  return entries.map((e, i) => ({ params: { id: e.id }, props: { e, ids, prev: entries[i - 1], next: entries[i + 1] } }));
 }
-const { e, prev, next } = Astro.props;
-const { Content } = await render(e);
+const { e, ids, prev, next } = Astro.props;
+const html = linkify((e as any).rendered?.html ?? "", ids, e.id);
 const t = (x: any) => (x.body.match(/^# (.+)$/m)?.[1] ?? x.id);
 ---
 <Base title={t(e)}>
   <p><a href={url("log/")}>Research log</a></p>
-  <article class="prose"><Content /></article>
+  <article class="prose" set:html={html} />
   <nav class="pager" aria-label="Log entries">
     {prev && <a href={url(`log/${prev.id}/`)}>Previous: {t(prev)}</a>}
     {next && <a href={url(`log/${next.id}/`)}>Next: {t(next)}</a>}

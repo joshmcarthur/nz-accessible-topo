@@ -1,17 +1,20 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { linkify } from "../../lib/linkify";
 import { findings, byId, usedBy, gradeClass, url } from "../../lib/graph";
 export function getStaticPaths() {
   return findings.map((f: any) => ({ params: { id: f.id }, props: { f } }));
 }
 const { f } = Astro.props;
 const recs = usedBy(f.id);
+const logIds = (await getCollection("log")).map((x) => x.id);
 ---
 <Base title={`${f.id} ${f.title}`}>
   <p><a href={url("trace/#findings")}>Evidence trail</a>, {f.topic}</p>
   <h1><span class="id">{f.id}</span> {f.title}</h1>
   <p><span class={`grade ${gradeClass(f.grade)}`}>Best evidence: {f.grade}</span></p>
-  <div class="prose" set:html={f.html} />
+  <div class="prose" set:html={linkify(f.html, logIds, f.id)} />
   <h2>Sources</h2>
   <ul>{f.sources.map((s: string) => <li><a href={url(`trace/#${s}`)}><span class="id">{s}</span></a> {byId[s].url ? <a href={byId[s].url}>{byId[s].title}</a> : byId[s].title} <span class={`grade ${gradeClass(byId[s].grade)}`}>{byId[s].grade}</span></li>)}</ul>
   <h2>Used by</h2>

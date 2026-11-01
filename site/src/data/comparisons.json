@@ -1,29 +1,105 @@
 [
- {"id": "kawarau-real", "title": "Kawarau River, real Topo50 render",
+ {
+  "id": "kawarau-real",
+  "title": "Kawarau River, real Topo50 render",
   "summary": "LINZ's own Topo50 rendering near Gibbston: dense 20 m contours, a braided river, state highway and tracks.",
   "attribution": "Map: Toitū Te Whenua LINZ, via linz/topographic-system (MIT). Data CC BY 4.0.",
-  "variants": [{"label": "Topo50 today", "src": "docs/visuals/source/linz-topo50-kawarau.webp"}],
-  "links": ["R-04", "R-17"]},
- {"id": "tracks-legend", "title": "Foot track or closed track?",
+  "variants": [
+   {
+    "label": "Topo50 today",
+    "src": "docs/visuals/source/linz-topo50-kawarau.webp"
+   }
+  ],
+  "links": [
+   "R-04",
+   "R-17"
+  ]
+ },
+ {
+  "id": "tracks-legend",
+  "title": "Foot track or closed track?",
   "summary": "From the Topo50 legend. A closed, impassable track differs from a foot track only by the length of its gaps.",
   "attribution": "Legend: Toitū Te Whenua LINZ, via linz/topographic-system (MIT).",
-  "variants": [{"label": "Topo50 legend", "src": "docs/visuals/source/topo50-legend-tracks.png"}],
-  "links": ["R-11"]},
- {"id": "springs-legend", "title": "Hot spring or cold spring?",
+  "variants": [
+   {
+    "label": "Topo50 legend",
+    "src": "docs/visuals/source/linz-topo50-legend.tif",
+    "crop": [
+     0,
+     600,
+     2323,
+     980
+    ]
+   }
+  ],
+  "links": [
+   "R-11"
+  ]
+ },
+ {
+  "id": "springs-legend",
+  "title": "Hot spring or cold spring?",
   "summary": "Same × symbol, different ink. Clear in colour; much harder on a photocopy or under a red light.",
   "attribution": "Legend: Toitū Te Whenua LINZ, via linz/topographic-system (MIT).",
-  "variants": [{"label": "Topo50 legend", "src": "docs/visuals/source/topo50-legend-springs.png"}],
-  "links": ["R-17"]},
- {"id": "vegetation-legend", "title": "Native forest, scrub and scattered scrub",
+  "variants": [
+   {
+    "label": "Topo50 legend",
+    "src": "docs/visuals/source/linz-topo50-legend.tif",
+    "crop": [
+     0,
+     8120,
+     2323,
+     8280
+    ]
+   }
+  ],
+  "links": [
+   "R-17"
+  ]
+ },
+ {
+  "id": "vegetation-legend",
+  "title": "Native forest, scrub and scattered scrub",
   "summary": "Forest and scrub are pale tints a few steps apart; scattered scrub is a pattern.",
   "attribution": "Legend: Toitū Te Whenua LINZ, via linz/topographic-system (MIT).",
-  "variants": [{"label": "Topo50 legend", "src": "docs/visuals/source/topo50-legend-vegetation.png"}],
-  "links": ["R-10", "R-17"]},
- {"id": "synthetic-before-after", "title": "Same scene, two styles",
+  "variants": [
+   {
+    "label": "Topo50 legend",
+    "src": "docs/visuals/source/linz-topo50-legend.tif",
+    "crop": [
+     0,
+     8700,
+     2323,
+     9650
+    ]
+   }
+  ],
+  "links": [
+   "R-10",
+   "R-17"
+  ]
+ },
+ {
+  "id": "synthetic-before-after",
+  "title": "Same scene, two styles",
   "summary": "A synthetic test scene drawn with the exact colours, widths and fonts of each web style. Not real terrain: use it to compare styles, not to judge the landscape.",
   "attribution": "Synthetic terrain. Styles: LINZ topographic-v2 (MIT) and accessible-v0.",
   "variants": [
-   {"label": "LINZ topographic-v2", "src": "docs/visuals/scenes/synthetic-linz.png"},
-   {"label": "accessible-v0", "src": "docs/visuals/scenes/synthetic-accessible-v0.png"}],
-  "links": ["R-04", "R-05", "R-07", "R-10", "R-11"]}
+   {
+    "label": "LINZ topographic-v2",
+    "src": "docs/visuals/scenes/synthetic-linz.png"
+   },
+   {
+    "label": "accessible-v0",
+    "src": "docs/visuals/scenes/synthetic-accessible-v0.png"
+   }
+  ],
+  "links": [
+   "R-04",
+   "R-05",
+   "R-07",
+   "R-10",
+   "R-11"
+  ]
+ }
 ]

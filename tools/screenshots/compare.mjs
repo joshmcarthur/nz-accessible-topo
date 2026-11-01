@@ -15,7 +15,9 @@ const key = process.env.LINZ_API_KEY;
 if (!key) { console.error("Set LINZ_API_KEY"); process.exit(1); }
 const base = process.env.PREVIEW_URL || "http://localhost:8000/preview/";
 const variant = process.env.VARIANT || "accessible-v0";
-const sims = (process.env.SIMS || "none,deutan,protan,tritan,grey,red").split(",");
+// Default: normal vision only. The site (tools/build_site_assets.py) applies the
+// simulations itself with the audit models; set SIMS to capture browser-filtered views too.
+const sims = (process.env.SIMS || "none").split(",");
 const all = JSON.parse(fs.readFileSync(new URL("./scenarios.json", import.meta.url)));
 const wanted = process.argv.slice(2);
 const scenarios = wanted.length ? all.filter(s => wanted.includes(s.id)) : all;

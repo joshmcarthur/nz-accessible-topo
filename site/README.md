@@ -22,6 +22,13 @@ npm run dev       # or: npm run build && npm run check
 | Comparison images | `src/data/comparisons.json` + `conditions.json` | `tools/build_site_assets.py` → `public/compare/` (not committed) |
 | Research log | `docs/research-log/*.md` | Astro content collection (read directly) |
 
+## Live-tile comparisons
+
+Run `tools/screenshots/compare.mjs` (see its header) on a machine with a LINZ
+API key. Captures land in `docs/visuals/real/<scenario>/none.png`;
+`npm run data` splits each into LINZ and accessible halves and adds it to the
+"How people see maps" page automatically, under every condition.
+
 ## Adding a comparison
 
 Add an entry to `src/data/comparisons.json`: one or more `variants`, each a
@@ -33,6 +40,7 @@ under every condition in `conditions.json`.
 
 The same ones it argues for, checked in CI by `tools/check_site.py`:
 - axe-core: WCAG 2.2 A/AA + best practice, zero violations;
+- every internal link and #anchor resolves;
 - no rendered italic text (R-05);
 - every token colour used for text ≥4.5:1, every grade colour ≥3:1
   (`export_tokens.py` refuses to write tokens otherwise);
@@ -40,8 +48,8 @@ The same ones it argues for, checked in CI by `tools/check_site.py`:
 
 ## Known gaps
 
-- Links inside research-log entries point at repo paths (e.g.
-  `../findings/…`) and don't resolve on the site yet.
+- Repo paths mentioned in prose (e.g. `tools/check.py`) aren't linked; IDs
+  (F-, R-, S-, log numbers) are, by `src/lib/linkify.ts`.
 - No dark theme: the map is printed on white paper, and the comparisons are
   map images; worth revisiting.
 - Grades on chains are "best single source"; replication isn't shown yet.
