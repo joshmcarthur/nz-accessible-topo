@@ -13,4 +13,4 @@
 | OQ-09 | Do darker contours swamp tracks and labels on steep sheets? | v0 measured contrast, not clutter | Render Arthur's Pass / Fiordland samples |
 | OQ-10 | Is Ō/ō missing from Atkinson Hyperlegible Next already reported upstream? | Determines whether R-06 can adopt it | **Partly answered (log 0012):** still missing at upstream HEAD; no report found; draft issue in `docs/upstream/`. Maintainer to check tracker and file |
 | OQ-11 | Which licence for this project's styles and docs? | Must be compatible with LINZ MIT style + CC BY 4.0 data attribution | Maintainer decision |
-| OQ-12 | Does the Shortbread vector schema carry the attributes we need (e.g. contour `definition`, track status)? | R-04 and R-11 depend on attributes | Inspect topographic-v2 tiles / MBTiles export |
+| OQ-12 | Does the Shortbread vector schema carry the attributes we need (e.g. contour `definition`, track status)? | R-04 and R-11 depend on attributes | **Partly answered (log 0013):** closed tracks, scattered scrub, index contours available; contour `definition` unknown — inspect MBTiles export |

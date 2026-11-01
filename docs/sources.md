@@ -79,3 +79,10 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 |---|---|---|
 | S-FORUM-REDLIGHT | D | Practitioner reports: bushcraftuk.com (2011); paddling.com forum (military "red-brown" note); trawlerforum.com (magenta on air charts). Anecdotal; mechanism is basic reflectance physics. |
 | S-HARVARD-MONO | C | Harvard Library, *Styling Maps for Academic Publishing in QGIS* (greyscale legibility). |
+
+## Rendering platform
+
+| ID | Grade | Source |
+|---|---|---|
+| S-MAPLIBRE-SPEC | C | MapLibre Style Spec — hillshade layer properties (default `hillshade-illumination-direction` 335). https://maplibre.org/maplibre-style-spec/ |
+| S-MAPLIBRE-2320 | C | MapLibre Style Spec v23.2.0 release notes: hillshade `multidirectional` method with array-valued illumination. Example: https://maplibre.org/maplibre-gl-js/docs/examples/add-a-multidirectional-hillshade-layer/ |
