@@ -1,0 +1,158 @@
+[
+ {
+  "name": "Closed vs open foot track (casing)",
+  "a": {
+   "label": "closed track casing (+ cross-bar pattern)",
+   "colour": "#1A1A1A"
+  },
+  "b": {
+   "label": "open track shadow",
+   "colour": "rgba(231, 231, 231, 0.4)"
+  },
+  "why": "Proposed: closed status carried by a dark casing AND a pattern (shape), not a red tint."
+ },
+ {
+  "name": "Contour vs state highway",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "state highway fill",
+   "colour": "rgba(240, 164, 82, 1)"
+  },
+  "why": "Proposed: darker brown contours; highway unchanged."
+ },
+ {
+  "name": "Intermediate contour vs state highway",
+  "a": {
+   "label": "intermediate contour",
+   "colour": "#A8703C"
+  },
+  "b": {
+   "label": "state highway fill",
+   "colour": "rgba(240, 164, 82, 1)"
+  },
+  "why": ""
+ },
+ {
+  "name": "Contour vs pipeline",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "pipeline",
+   "colour": "rgb(235,137,133)"
+  },
+  "why": ""
+ },
+ {
+  "name": "Contour vs vegetation edge",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "vegetation edge",
+   "colour": "#5E8F45"
+  },
+  "why": ""
+ },
+ {
+  "name": "Hot vs cold spring",
+  "a": {
+   "label": "hot spring",
+   "colour": "rgba(141, 0, 3, 1)"
+  },
+  "b": {
+   "label": "cold spring",
+   "colour": "rgba(20, 125, 228, 1)"
+  },
+  "why": ""
+ },
+ {
+  "name": "Historic site label vs paper",
+  "a": {
+   "label": "historic site label (dark ink, distinct symbol)",
+   "colour": "rgba(73, 68, 68, 1)"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "#FFFFFF"
+  },
+  "why": "Proposed: historic sites distinguished by symbol shape; label in dark ink so it survives red light."
+ },
+ {
+  "name": "Scrub vs scattered scrub",
+  "a": {
+   "label": "scrub fill",
+   "colour": "#A3CC90"
+  },
+  "b": {
+   "label": "scattered scrub fill (+ stipple)",
+   "colour": "#E0EDD8"
+  },
+  "why": "Proposed: lightness step + stipple pattern on scattered scrub."
+ },
+ {
+  "name": "Scrub vs water",
+  "a": {
+   "label": "scrub fill",
+   "colour": "#A3CC90"
+  },
+  "b": {
+   "label": "lake/river fill",
+   "colour": "rgba(184, 220, 242, 1)"
+  },
+  "why": "Water also keeps its blue shoreline as a non-colour cue."
+ },
+ {
+  "name": "Water label vs peak label",
+  "a": {
+   "label": "water label (upright)",
+   "colour": "#005C8F"
+  },
+  "b": {
+   "label": "peak label",
+   "colour": "rgba(41, 90, 55, 1)"
+  },
+  "why": ""
+ },
+ {
+  "name": "Index contour vs white (visibility)",
+  "a": {
+   "label": "index contour",
+   "colour": "#8A4F1C"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "#FFFFFF"
+  },
+  "why": ""
+ },
+ {
+  "name": "Intermediate contour vs white (visibility)",
+  "a": {
+   "label": "intermediate contour",
+   "colour": "#A8703C"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "#FFFFFF"
+  },
+  "why": ""
+ },
+ {
+  "name": "Water label vs halo (text)",
+  "a": {
+   "label": "water label",
+   "colour": "#005C8F"
+  },
+  "b": {
+   "label": "halo #EFEFEF",
+   "colour": "#EFEFEF"
+  },
+  "why": ""
+ }
+]

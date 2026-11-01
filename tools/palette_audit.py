@@ -229,21 +229,22 @@ def main():
     ap.add_argument("--md", default=None)
     args = ap.parse_args()
 
-    style = load_style(args.style)
     bg = parse_colour(args.bg)[:3]
     lines = []
     w = lines.append
 
-    rows = text_audit(style, bg)
+    # STYLE may be "-" to audit only a pairs file (e.g. a proposed palette).
+    rows = text_audit(load_style(args.style), bg) if args.style != "-" else []
     italic = sum(1 for r in rows if "Italic" in r[2])
-    w(f"## Text contrast (label vs halo, composited on {args.bg})\n")
-    w(f"Symbol layers with a solid text colour: {len(rows)}. Italic: {italic}.\n")
-    w("| Layer | Contrast | ≥4.5:1 | Font | text-color | halo |")
-    w("|---|---:|:-:|---|---|---|")
-    for lid, cr, font, tc, hc in sorted(rows, key=lambda r: r[1]):
-        w(f"| `{lid}` | {cr:.2f} | {'✅' if cr >= 4.5 else ('⚠️' if cr >= 3 else '❌')} | {font} | `{tc}` | `{hc}` |")
-    fails = [r for r in rows if r[1] < 4.5]
-    w(f"\n**{len(fails)} of {len(rows)} label layers are below 4.5:1.**\n")
+    if rows:
+        w(f"## Text contrast (label vs halo, composited on {args.bg})\n")
+        w(f"Symbol layers with a solid text colour: {len(rows)}. Italic: {italic}.\n")
+        w("| Layer | Contrast | ≥4.5:1 | Font | text-color | halo |")
+        w("|---|---:|:-:|---|---|---|")
+        for lid, cr, font, tc, hc in sorted(rows, key=lambda r: r[1]):
+            w(f"| `{lid}` | {cr:.2f} | {'✅' if cr >= 4.5 else ('⚠️' if cr >= 3 else '❌')} | {font} | `{tc}` | `{hc}` |")
+        fails = [r for r in rows if r[1] < 4.5]
+        w(f"\n**{len(fails)} of {len(rows)} label layers are below 4.5:1.**\n")
 
     if args.pairs:
         pairs = json.load(open(args.pairs))

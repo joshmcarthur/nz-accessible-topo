@@ -1,46 +1,146 @@
 [
-  {"name": "Closed vs open foot track (shadow)",
-   "a": {"label": "closed track shadow", "colour": "rgba(205, 53, 53, 0.4)"},
-   "b": {"label": "open track shadow", "colour": "rgba(231, 231, 231, 0.4)"},
-   "why": "Safety-relevant: a closed track must not be read as open. In the current web style the only difference is the colour of a 40%-opacity shadow."},
-  {"name": "Contour vs state highway",
-   "a": {"label": "contour", "colour": "rgba(206, 103, 6, 0.75)"},
-   "b": {"label": "state highway fill", "colour": "rgba(240, 164, 82, 1)"},
-   "why": "Both orange-family; distinguished mainly by width and casing."},
-  {"name": "Contour vs pipeline",
-   "a": {"label": "contour", "colour": "rgba(206, 103, 6, 0.75)"},
-   "b": {"label": "pipeline", "colour": "rgb(235,137,133)"},
-   "why": "Two thin lines that can run across slopes."},
-  {"name": "Contour vs vegetation edge",
-   "a": {"label": "contour", "colour": "rgba(206, 103, 6, 0.75)"},
-   "b": {"label": "vegetation edge line", "colour": "rgba(148, 199, 111, 0.75)"},
-   "why": "Thin lines that cross frequently; the classic orange/green deutan confusion."},
-  {"name": "Hot vs cold spring",
-   "a": {"label": "hot spring", "colour": "rgba(141, 0, 3, 1)"},
-   "b": {"label": "cold spring", "colour": "rgba(20, 125, 228, 1)"},
-   "why": "Same glyph, colour-only distinction (check: symbol may also differ)."},
-  {"name": "Historic site vs hut label",
-   "a": {"label": "historic site", "colour": "rgba(203, 12, 12, 1)"},
-   "b": {"label": "hut label", "colour": "rgba(73, 68, 68, 1)"},
-   "why": "Red vs near-black text; red is the classic protan/red-light failure."},
-  {"name": "Scrub vs scattered scrub",
-   "a": {"label": "scrub fill", "colour": "rgba(199, 228, 183, 1)"},
-   "b": {"label": "scattered scrub fill", "colour": "rgba(204, 222, 195, 1)"},
-   "why": "Travel-relevant: scrub vs scattered scrub changes route choice."},
-  {"name": "Scrub vs water",
-   "a": {"label": "scrub fill", "colour": "rgba(199, 228, 183, 1)"},
-   "b": {"label": "lake/river fill", "colour": "rgba(184, 220, 242, 1)"},
-   "why": "Pale green vs pale blue — the tritan / ageing-lens axis."},
-  {"name": "Water label vs peak label",
-   "a": {"label": "water label", "colour": "rgba(0, 140, 204, 1)"},
-   "b": {"label": "peak label", "colour": "rgba(41, 90, 55, 1)"},
-   "why": "Label class is signalled by colour (+ italic for water)."},
-  {"name": "Contour vs white (visibility)",
-   "a": {"label": "contour", "colour": "rgba(206, 103, 6, 0.75)"},
-   "b": {"label": "paper / white", "colour": "rgba(255, 255, 255, 1)"},
-   "why": "Can a 0.4–0.6px contour be seen at all? WCAG 1.4.11 asks 3:1 for graphical objects."},
-  {"name": "Foot track vs white (visibility)",
-   "a": {"label": "foot track", "colour": "rgba(78, 78, 78, 0.8)"},
-   "b": {"label": "paper / white", "colour": "rgba(255, 255, 255, 1)"},
-   "why": "Baseline: black-ish tracks are robust."}
+ {
+  "name": "Closed vs open foot track (shadow)",
+  "a": {
+   "label": "closed track shadow",
+   "colour": "rgba(205, 53, 53, 0.4)"
+  },
+  "b": {
+   "label": "open track shadow",
+   "colour": "rgba(231, 231, 231, 0.4)"
+  },
+  "why": "Safety-relevant: a closed track must not be read as open. In the current web style the only difference is the colour of a 40%-opacity shadow."
+ },
+ {
+  "name": "Contour vs state highway",
+  "a": {
+   "label": "contour",
+   "colour": "rgba(206, 103, 6, 0.75)"
+  },
+  "b": {
+   "label": "state highway fill",
+   "colour": "rgba(240, 164, 82, 1)"
+  },
+  "why": "Both orange-family; distinguished mainly by width and casing."
+ },
+ {
+  "name": "Contour vs pipeline",
+  "a": {
+   "label": "contour",
+   "colour": "rgba(206, 103, 6, 0.75)"
+  },
+  "b": {
+   "label": "pipeline",
+   "colour": "rgb(235,137,133)"
+  },
+  "why": "Two thin lines that can run across slopes."
+ },
+ {
+  "name": "Contour vs vegetation edge",
+  "a": {
+   "label": "contour",
+   "colour": "rgba(206, 103, 6, 0.75)"
+  },
+  "b": {
+   "label": "vegetation edge line",
+   "colour": "rgba(148, 199, 111, 0.75)"
+  },
+  "why": "Thin lines that cross frequently; the classic orange/green deutan confusion."
+ },
+ {
+  "name": "Hot vs cold spring",
+  "a": {
+   "label": "hot spring",
+   "colour": "rgba(141, 0, 3, 1)"
+  },
+  "b": {
+   "label": "cold spring",
+   "colour": "rgba(20, 125, 228, 1)"
+  },
+  "why": "Same glyph, colour-only distinction (check: symbol may also differ)."
+ },
+ {
+  "name": "Historic site vs hut label",
+  "a": {
+   "label": "historic site",
+   "colour": "rgba(203, 12, 12, 1)"
+  },
+  "b": {
+   "label": "hut label",
+   "colour": "rgba(73, 68, 68, 1)"
+  },
+  "why": "Red vs near-black text; red is the classic protan/red-light failure."
+ },
+ {
+  "name": "Scrub vs scattered scrub",
+  "a": {
+   "label": "scrub fill",
+   "colour": "rgba(199, 228, 183, 1)"
+  },
+  "b": {
+   "label": "scattered scrub fill",
+   "colour": "rgba(204, 222, 195, 1)"
+  },
+  "why": "Travel-relevant: scrub vs scattered scrub changes route choice."
+ },
+ {
+  "name": "Scrub vs water",
+  "a": {
+   "label": "scrub fill",
+   "colour": "rgba(199, 228, 183, 1)"
+  },
+  "b": {
+   "label": "lake/river fill",
+   "colour": "rgba(184, 220, 242, 1)"
+  },
+  "why": "Pale green vs pale blue — the tritan / ageing-lens axis."
+ },
+ {
+  "name": "Water label vs peak label",
+  "a": {
+   "label": "water label",
+   "colour": "rgba(0, 140, 204, 1)"
+  },
+  "b": {
+   "label": "peak label",
+   "colour": "rgba(41, 90, 55, 1)"
+  },
+  "why": "Label class is signalled by colour (+ italic for water)."
+ },
+ {
+  "name": "Contour vs white (visibility)",
+  "a": {
+   "label": "contour",
+   "colour": "rgba(206, 103, 6, 0.75)"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "rgba(255, 255, 255, 1)"
+  },
+  "why": "Can a 0.4–0.6px contour be seen at all? WCAG 1.4.11 asks 3:1 for graphical objects."
+ },
+ {
+  "name": "Foot track vs white (visibility)",
+  "a": {
+   "label": "foot track",
+   "colour": "rgba(78, 78, 78, 0.8)"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "rgba(255, 255, 255, 1)"
+  },
+  "why": "Baseline: black-ish tracks are robust."
+ },
+ {
+  "name": "Historic site label vs paper",
+  "a": {
+   "label": "historic site label",
+   "colour": "rgba(203, 12, 12, 1)"
+  },
+  "b": {
+   "label": "paper / white",
+   "colour": "#FFFFFF"
+  },
+  "why": "Added in log 0009: red text against paper — does it survive red light?"
+ }
 ]
