@@ -34,3 +34,25 @@ B-25, B-11, and B-24 are QML transforms on a pinned checkout, then map deploy, t
 Free disk was about 38 GB when this plan was approved, and Colima was stopped. Stop a render if free space would fall below 8 GB. The national contour parquet is 1.75 GB. BX24 is the print-legend sheet and is flat. A steep sheet is later work (OQ-09).
 
 The exported PNG is the full `tiff-50` layout. It includes the legend, the sheet index, the scale, and the title block. Do not judge a symbology change from that composite alone. Change the map layer. Leave the layout items alone. The legend swatch updates because it is drawn from the layer.
+
+## Style loop
+
+**Status:** current work
+**Date:** 2026-11-02
+
+The full-page PNG is the wrong comparison. One style file drives the raster project, the vector style, and the site pictures.
+
+Dispatch prompt: `docs/plans/2026-11-02-style-loop-prompt.md`. One paste does one step. The status file is `docs/plans/style-loop-status.md`.
+
+Next step is Step A: create `tools/style-topo50.json` from the current override values. Do not invent colours. Then one recommendation per later paste.
+
+The proof renders are four 1 km squares at 600 dpi, map face only:
+
+- 1577000 E, 5178000 N — estuary water names
+- 1577000 E, 5172000 N — Port Hills contours
+- 1569000 E, 5165000 N — the cold spring
+- 1584000 E, 5173000 N — the closed foot track
+
+The old line that put site work out of scope does not cover these comparison images. They are outputs of the style, built by `tools/build_site_assets.py` under the six conditions in `site/src/data/conditions.json`. B-01, B-02, push, tile serving, and user testing stay out of this loop.
+
+B-25, B-11, and B-24 stay open. Along-line water names are black question marks. Intermediate `#C4814B` misses ΔE ≥10 against print highway `#EA6300`.

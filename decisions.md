@@ -89,3 +89,29 @@ The research already names the layers and the inks. The sheet image cannot separ
 ### Consequences
 
 A later pass still has to look at each changed layer on the map face. The pair audit in `tools/pairs-topo50-accessible.json` is the colour check. It is not a substitute for the sheet. Intermediate `#C4814B` does not meet ΔE ≥10 against print highway `#EA6300` for protan and deutan. That miss is recorded as an open question. The starting value from R-04 is still the one rendered.
+
+
+## One style file drives raster, vector, and the site pictures
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The accessible BX24 page is a full `tiff-50` sheet at 150 dpi. A 1 km square on that image is about 118 px. The override values live in `tools/override_topo50_project.py`. The vector style keeps a second palette in `tools/build_style.py`. The site can already show six vision and light conditions from one source image.
+
+### Decision
+
+Accessible colour, type size, font family, and symbol rules live in `tools/style-topo50.json`. The file has no sheet code. The QGIS apply step and the MapLibre build both read it.
+
+Checks use four 1 km squares, redrawn at 600 dpi, map face only. The site shows stock and accessible for each square. `tools/build_site_assets.py` makes the six conditions in `site/src/data/conditions.json`. Those pictures are renders of the style, then the existing simulators.
+
+Work proceeds by pasting `docs/plans/2026-11-02-style-loop-prompt.md`. One paste changes one recommendation, or creates the config if it does not exist. The loop does not render every NZ sheet. It does not start user testing.
+
+### Rationale
+
+A second copy of the research would drift from `docs/recommendations.md`. A token file is what a renderer can apply. The same file is what keeps the vector style on the raster style. The site already knows the six conditions, so a new vision model is not required. Squares are large enough to compare. The national file is what makes a later full-country render possible.
+
+### Consequences
+
+`tools/override_topo50_project.py` and `tools/build_style.py` become readers of the JSON. The vector face may stay Open Sans until macron glyph PBFs exist. Colours and symbol meaning still match. R-04 stays open while `#C4814B` misses ΔE ≥10 against `#EA6300`. R-05 and R-06 stay open while along-line labels are question marks. Tile serving stays later.
