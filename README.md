@@ -31,7 +31,14 @@ does **not** change the data. It changes *how the data is drawn*.
 
 ## Status
 
-Research phase. No styles yet.
+Research phase. Findings F-01–F-25, draft recommendations R-01–R-16, and a
+measured palette experiment (v0). No style file yet — next step is forking
+LINZ's `topographic-v2` style and applying R-03–R-11 (see `docs/open-questions.md`).
+
+## Tools
+
+- `tools/palette_audit.py` — WCAG contrast + CVD / greyscale / red-light separability
+- `tools/font_check.py` — macron coverage and x-height for candidate fonts
 
 ## Licensing (to be decided by the maintainer)
 
