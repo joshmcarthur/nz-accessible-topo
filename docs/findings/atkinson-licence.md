@@ -16,7 +16,7 @@ Project Authors", with **no Reserved Font Name declared**. Under OFL 1.1:
 | 4 | can't use the authors' names to promote our version (acknowledging them is fine) |
 | 5 | **forward licensing:** modified versions must be distributed entirely under OFL, and nothing else. Maps and documents *made with* the font are not bound by this |
 
-**Sources:** `OFL.txt` in the repo (read directly, C).
+**Sources:** S-OFL-ATKINSON-NEXT — `OFL.txt` in the repo (read directly, C).
 
 ## F-27 — Caution: the Braille Institute's own download uses a different, OFL-derived licence
 The download from brailleinstitute.org/freefont has historically come with a
@@ -46,5 +46,6 @@ bounding box; that rule reproduces their offsets exactly (135, 167). Applying
 it to O and o gives offsets 179 and 96 (the symmetric `o` agrees under both
 centring rules). `tools/patch_atkinson_omacron.py` does this for static
 TTFs and renames the result "NZAT Legible Test".
+**Sources:** S-OUR-PATCH (D, measured).
 **Known gaps:** upright statics only; kerning classes not extended; not
 reviewed by the type designers.

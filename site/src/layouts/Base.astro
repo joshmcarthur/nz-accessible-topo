@@ -1,0 +1,43 @@
+---
+import "@fontsource-variable/open-sans";
+import "../styles/global.css";
+import { url } from "../lib/graph";
+
+interface Props { title: string; description?: string; current?: string }
+const { title, description = "Research and styles for easier-to-read New Zealand topographic maps.", current } = Astro.props;
+const nav = [
+  ["", "Overview"],
+  ["see/", "How people see maps"],
+  ["trace/", "Evidence trail"],
+  ["log/", "Research log"],
+];
+---
+<html lang="en-NZ">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === "Overview" ? "Accessible NZ topo maps" : `${title} | Accessible NZ topo maps`}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="sheet">
+      <header class="site">
+        <a class="name" href={url("/")}>Accessible NZ topo maps</a>
+        <nav aria-label="Main">
+          <ul>
+            {nav.map(([href, label]) => (
+              <li><a href={url(href)} aria-current={current === href ? "page" : undefined}>{label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+      <main id="main">
+        <slot />
+      </main>
+      <footer class="site">
+        <p>Map data and Topo50 imagery © Toitū Te Whenua Land Information New Zealand, CC BY 4.0. LINZ style and tooling used under the MIT licence. This site is a research project and is not affiliated with LINZ.</p>
+      </footer>
+    </div>
+  </body>
+</html>

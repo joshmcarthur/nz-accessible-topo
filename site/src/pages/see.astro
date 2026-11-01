@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import Compare from "../components/Compare.astro";
+import comparisons from "../data/comparisons.json";
+import conditions from "../data/conditions.json";
+---
+<Base title="How people see maps" current="see/">
+  <h1>How different people see the same map</h1>
+  <p class="lede">The same map, as it reaches people with different colour vision, and in conditions every map meets in the field: a photocopy, or a red headtorch in the dark.</p>
+  <p>Each view is generated with the same models our audits use, so what you see here is what the numbers measure. Simulations show the strongest form of each condition; many people with colour vision deficiency see more than this.</p>
+  <nav aria-label="Comparisons on this page">
+    <ul>{comparisons.map((c) => <li><a href={`#${c.id}`}>{c.title}</a></li>)}</ul>
+  </nav>
+  {comparisons.map((c) => <Compare c={c} />)}
+  <h2>About the simulations</h2>
+  <ul>
+    {conditions.map((c) => <li><strong>{c.name}.</strong> {c.who}</li>)}
+  </ul>
+</Base>

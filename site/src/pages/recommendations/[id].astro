@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import { recommendations, changes, byId, gradeClass, url } from "../../lib/graph";
+export function getStaticPaths() {
+  return recommendations.map((r: any) => ({ params: { id: r.id }, props: { r } }));
+}
+const { r } = Astro.props;
+const change = changes.find((c: any) => c.rec === r.id);
+---
+<Base title={`${r.id} ${r.title}`}>
+  <p><a href={url("trace/")}>Evidence trail</a></p>
+  <h1><span class="id">{r.id}</span> {r.title}</h1>
+  <p><span class={`grade ${gradeClass(r.grade)}`}>Best evidence: {r.grade}</span>{r.provisional && <> . Provisional: rests mainly on weaker evidence or on applying research from a different task.</>}</p>
+  <div class="prose" set:html={r.html} />
+
+  <h2>What it rests on</h2>
+  <ul>
+    {r.findings.map((f: string) => <li><a href={url(`findings/${f}/`)}><span class="id">{f}</span> {byId[f].title}</a> <span class={`grade ${gradeClass(byId[f].grade)}`}>{byId[f].grade}</span></li>)}
+    {r.sources.map((s: string) => <li><a href={url(`trace/#${s}`)}><span class="id">{s}</span> {byId[s].title}</a> <span class={`grade ${gradeClass(byId[s].grade)}`}>{byId[s].grade}</span></li>)}
+  </ul>
+
+  <h2 id="changes">In the style</h2>
+  {change
+    ? <p>{change.title} in <code>accessible-v0</code>, listed line by line in the style's change log.</p>
+    : <p>Not built yet.</p>}
+</Base>

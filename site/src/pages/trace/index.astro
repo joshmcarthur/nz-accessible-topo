@@ -1,0 +1,52 @@
+---
+import Base from "../../layouts/Base.astro";
+import { sources, findings, recommendations, gradeClass, citedBy, url } from "../../lib/graph";
+---
+<Base title="Evidence trail" current="trace/">
+  <h1>Evidence trail</h1>
+  <p class="lede">Every recommendation, the findings it rests on, and the sources behind them.</p>
+  <p class="note">A chain's grade is its strongest single source. Replication isn't reflected in the grade yet: the findings pages say where a result has been replicated.</p>
+
+  <h2 id="recommendations">Recommendations</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Recommendation</th><th scope="col">Evidence</th><th scope="col">Rests on</th><th scope="col">Built</th></tr></thead>
+    <tbody>
+      {recommendations.map((r: any) => (
+        <tr>
+          <th scope="row"><a href={url(`recommendations/${r.id}/`)}><span class="id">{r.id}</span> {r.title}</a>{r.provisional && <> (provisional)</>}</th>
+          <td><span class={`grade ${gradeClass(r.grade)}`}>{r.grade}</span></td>
+          <td>{[...r.findings, ...r.sources].map((x: string, i: number) => <>{i ? ", " : ""}<a href={x.startsWith("F-") ? url(`findings/${x}/`) : `#${x}`}>{x}</a></>)}</td>
+          <td>{r.implemented ? "Yes" : "Not yet"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table></div>
+
+  <h2 id="findings">Findings</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Finding</th><th scope="col">Evidence</th><th scope="col">Sources</th></tr></thead>
+    <tbody>
+      {findings.map((f: any) => (
+        <tr>
+          <th scope="row"><a href={url(`findings/${f.id}/`)}><span class="id">{f.id}</span> {f.title}</a></th>
+          <td><span class={`grade ${gradeClass(f.grade)}`}>{f.grade}</span></td>
+          <td>{f.sources.map((s: string, i: number) => <>{i ? ", " : ""}<a href={`#${s}`}>{s}</a></>)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table></div>
+
+  <h2 id="sources">Sources</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Source</th><th scope="col">Grade</th><th scope="col">Cited by</th></tr></thead>
+    <tbody>
+      {sources.map((s: any) => (
+        <tr id={s.id}>
+          <th scope="row"><span class="id">{s.id}</span><br />{s.url ? <a href={s.url}>{s.title}</a> : s.title}</th>
+          <td><span class={`grade ${gradeClass(s.grade)}`}>{s.grade}</span></td>
+          <td>{citedBy(s.id).length ? citedBy(s.id).map((x: any, i: number) => <>{i ? ", " : ""}<a href={url(`${x.id.startsWith("F-") ? "findings" : "recommendations"}/${x.id}/`)}>{x.id}</a></>) : "Background only"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table></div>
+</Base>

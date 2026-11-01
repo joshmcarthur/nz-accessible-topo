@@ -1,0 +1,1010 @@
+{
+ "sources": [
+  {
+   "id": "S-LINZ-GUIDE",
+   "grade": "C",
+   "title": "LINZ, *Topo50 Map Reading Guide* (PDF).",
+   "url": "https://www.linz.govt.nz/sites/default/files/topo50-map-guide_0.pdf",
+   "used": true
+  },
+  {
+   "id": "S-LINZ-DD",
+   "grade": "C",
+   "title": "LINZ NZ Topo Data Dictionary.",
+   "url": "https://docs.topo.linz.govt.nz/data-dictionary/",
+   "used": false
+  },
+  {
+   "id": "S-LINZ-DD-CONTOUR",
+   "grade": "C",
+   "title": "LINZ Data Dictionary, object class `contour`.",
+   "url": "https://docs.topo.linz.govt.nz/data-dictionary/tdd-class-contour.html",
+   "used": true
+  },
+  {
+   "id": "S-MCDONALD-2020",
+   "grade": "D",
+   "title": "McDonald, P. (2020) *One Step at a Time* — context paper for petition to redesign Topo50 track symbols. (see also *Track Symbols on 1:50,000 Printed Topographic Maps*, 2019, — not yet read in full)",
+   "url": "https://petemcdonald.co/onestep.pdf",
+   "used": true
+  },
+  {
+   "id": "S-LINZ-BASEMAPS-STYLING",
+   "grade": "C",
+   "title": "LINZ Basemaps, *How to Style our Vector Tiles*.",
+   "url": "https://basemaps.linz.govt.nz/docs/user-guide/working-with-vector-tiles/styling/",
+   "used": true
+  },
+  {
+   "id": "S-LINZ-BASEMAPS-USAGE",
+   "grade": "C",
+   "title": "LINZ Basemaps, *How to Use our Vector Tiles*.",
+   "url": "https://basemaps.linz.govt.nz/docs/user-guide/working-with-vector-tiles/usage/",
+   "used": false
+  },
+  {
+   "id": "S-LINZ-BASEMAPS-CONFIG",
+   "grade": "C",
+   "title": "`linz/basemaps-config` (MIT), `config/style/topographic-v2.json`.",
+   "url": "https://github.com/linz/basemaps-config",
+   "used": true
+  },
+  {
+   "id": "S-MACHADO-2009",
+   "grade": "B",
+   "title": "Machado, G.M., Oliveira, M.M., Fernandes, L.A.F. (2009) A physiologically-based model for simulation of color vision deficiency. *IEEE TVCG* 15(6):1291–1298.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-SHARMA-2005",
+   "grade": "C",
+   "title": "Sharma, G., Wu, W., Dalal, E.N. (2005) The CIEDE2000 color-difference formula: implementation notes, supplementary test data, and mathematical observations. *Color Research & Application* 30(1).",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-JENNY-KELSO-2007",
+   "grade": "B/C",
+   "title": "Jenny, B. & Kelso, N.V. (2007) Color design for the color vision impaired. *Cartographic Perspectives* 58:61–67. ; also *Designing maps for the colour-vision impaired*, SoC Bulletin 41:9–12. Tool: Color Oracle (colororacle.org).",
+   "url": "https://doi.org/10.14714/CP58.270",
+   "used": true
+  },
+  {
+   "id": "S-SCHNECK-2014",
+   "grade": "B",
+   "title": "Schneck, M.E., Haegerstrom-Portnoy, G., Lott, L.A., Brabyn, J.A. (2014) colour vision in older adults (n=865, age 58–102), *Optometry and Vision Science*. Read via ScienceDaily (2014-02-20) and News-Medical summaries — **primary paper not yet read; verify exact title/DOI**.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-BARBUR-REVIEW",
+   "grade": "B",
+   "title": "Review on S-cone pathways and ageing (PMC5330185), citing Verriest et al. and Knoblauch et al. on tritan-like age losses and their similarity to reduced illuminance.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5330185",
+   "used": true
+  },
+  {
+   "id": "S-WUERGER-2013",
+   "grade": "B",
+   "title": "Wuerger, S. (2013) Colour constancy across the life span: evidence for compensatory mechanisms. *PLOS ONE* 8(5):e63921. (n=185, ages 18–75)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-RELLO-2013",
+   "grade": "B",
+   "title": "Rello, L. & Baeza-Yates, R. (2013) Good fonts for dyslexia. *ASSETS '13*.",
+   "url": "https://doi.org/10.1145/2513383.2513447",
+   "used": true
+  },
+  {
+   "id": "S-RELLO-2016",
+   "grade": "B",
+   "title": "Rello, L. & Baeza-Yates, R. (2016) The effect of font type on screen readability by people with dyslexia. *ACM TACCESS*.",
+   "url": "https://doi.org/10.1145/2897736",
+   "used": true
+  },
+  {
+   "id": "S-KUSTER-2018",
+   "grade": "B",
+   "title": "Kuster, S.M. et al. (2018) Dyslexie font does not benefit reading in children with or without dyslexia. *Annals of Dyslexia* 68(1):25–42.",
+   "url": "https://doi.org/10.1007/s11881-017-0154-6",
+   "used": true
+  },
+  {
+   "id": "S-WERY-2017",
+   "grade": "B",
+   "title": "Wery, J.J. & Diliberto, J.A. (2017) The effect of a specialized dyslexia font, OpenDyslexic, on reading rate and accuracy. *Annals of Dyslexia*. (via IDA summary)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-ZORZI-2012",
+   "grade": "B",
+   "title": "Zorzi, M. et al. (2012) Extra-large letter spacing improves reading in dyslexia. *PNAS* 109(28):11455–9.",
+   "url": "https://doi.org/10.1073/pnas.1205566109",
+   "used": true
+  },
+  {
+   "id": "S-SPACING-2018",
+   "grade": "B",
+   "title": "(2018) Influence of increased letter spacing and font type on the reading ability of dyslexic children. *Annals of Dyslexia* (Oct 2018), PMID 30094714. Authors to be recorded.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-ATKINSON",
+   "grade": "C/D",
+   "title": "Braille Institute / Applied Design, Atkinson Hyperlegible (2019).",
+   "url": "https://github.com/googlefonts/atkinson-hyperlegible",
+   "used": true
+  },
+  {
+   "id": "S-ATKINSON-NEXT",
+   "grade": "C",
+   "title": "Braille Institute press release (2025-02-10): Atkinson Hyperlegible Next — 7 weights, 150+ languages.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-AXIS-LABELING",
+   "grade": "C",
+   "title": "Axis Maps, *Labeling and text hierarchy in cartography*.",
+   "url": "https://www.axismaps.com/guide/labeling",
+   "used": true
+  },
+  {
+   "id": "S-COLORADO-TYPO",
+   "grade": "C",
+   "title": "*Making Maps* (Colorado pressbooks), ch. Typography.",
+   "url": "https://colorado.pressbooks.pub/makingmaps/chapter/typography/",
+   "used": true
+  },
+  {
+   "id": "S-ESRI-MINSIZE",
+   "grade": "C",
+   "title": "Esri, *Guidelines for minimum size for text and symbols on maps*.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-MN-MAPGUIDE",
+   "grade": "C",
+   "title": "Minnesota IT Services, *Accessibility – Map Design Guide*.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-USGS-SPECS",
+   "grade": "C",
+   "title": "USGS, US Topo / OnDemand Topo cartographic specifications.",
+   "url": "https://www.usgs.gov/ngp-standards-and-specifications",
+   "used": true
+  },
+  {
+   "id": "S-NZGB-2019",
+   "grade": "C",
+   "title": "NZGB decision, June 2019: 824 Māori place names official, ~300 with macrons added (RNZ, 2019-06-25).",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-LINZ-NZGB-AUCK",
+   "grade": "C",
+   "title": "LINZ news: 541 Māori place names in Auckland made official, 194 macrons added.",
+   "url": "https://www.linz.govt.nz/node/11612",
+   "used": true
+  },
+  {
+   "id": "S-BILAND-2017",
+   "grade": "B",
+   "title": "Biland, J. & Çöltekin, A. (2017) An empirical assessment of the impact of the light direction on the relief inversion effect in shaded relief maps: NNW is better than NW. *CaGIS* 44(4):358–372.",
+   "url": "https://doi.org/10.1080/15230406.2016.1185647",
+   "used": true
+  },
+  {
+   "id": "S-COLTEKIN-2018",
+   "grade": "B",
+   "title": "Çöltekin, A., Rautenbach, V., Coetzee, S., Mokwena, T. (2018) Landform perception accuracy in shaded relief maps: a replication study confirms that NNW lighting is better than NW… *ISPRS Archives* XLII-4:101–106.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-COLTEKIN-2019",
+   "grade": "B",
+   "title": "Çöltekin, A. & Biland, J. (2019) Comparing the terrain reversal effect in satellite images and in shaded relief maps. *Int. J. Digital Earth* 12(4).",
+   "url": "https://doi.org/10.1080/17538947.2018.1447030",
+   "used": true
+  },
+  {
+   "id": "S-COLTEKIN-2023",
+   "grade": "B–",
+   "title": "Çöltekin, A. et al. (2023) What moderates the terrain reversal effect in shaded relief maps? *Abstr. Int. Cartogr. Assoc.* 6:40.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-MULTIDIR-2025",
+   "grade": "B–",
+   "title": "(2025) Multidirectional sky model vs relief inversion — user study. *Abstr. Int. Cartogr. Assoc.* 10:92. Authors to be recorded.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-NZ-WAS-DRAFT",
+   "grade": "C",
+   "title": "Web Accessibility Standard 1.2 — Draft (complex visual maps modified requirement). digital.govt.nz",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-W3C-1411",
+   "grade": "C",
+   "title": "W3C, Understanding SC 1.4.11 Non-text Contrast.",
+   "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast",
+   "used": true
+  },
+  {
+   "id": "S-FORUM-REDLIGHT",
+   "grade": "D",
+   "title": "Practitioner reports: bushcraftuk.com (2011); paddling.com forum (military \"red-brown\" note); trawlerforum.com (magenta on air charts). Anecdotal; mechanism is basic reflectance physics.",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-HARVARD-MONO",
+   "grade": "C",
+   "title": "Harvard Library, *Styling Maps for Academic Publishing in QGIS* (greyscale legibility).",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-MAPLIBRE-SPEC",
+   "grade": "C",
+   "title": "MapLibre Style Spec — hillshade layer properties (default `hillshade-illumination-direction` 335).",
+   "url": "https://maplibre.org/maplibre-style-spec/",
+   "used": false
+  },
+  {
+   "id": "S-MAPLIBRE-2320",
+   "grade": "C",
+   "title": "MapLibre Style Spec v23.2.0 release notes: hillshade `multidirectional` method with array-valued illumination. Example:",
+   "url": "https://maplibre.org/maplibre-gl-js/docs/examples/add-a-multidirectional-hillshade-layer/",
+   "used": true
+  },
+  {
+   "id": "S-OFL-ATKINSON-NEXT",
+   "grade": "C",
+   "title": "`OFL.txt`, googlefonts/atkinson-hyperlegible-next @ 7925f50 (read directly)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-DEBIAN-ATKINSON",
+   "grade": "D",
+   "title": "debian-fonts mailing list (2021): Braille Institute download licence is a modified OFL.",
+   "url": "https://lists.debian.org/debian-fonts/2021/02/msg00050.html",
+   "used": true
+  },
+  {
+   "id": "S-SCANCODE-ATKINSON",
+   "grade": "C",
+   "title": "ScanCode LicenseDB, \"Atkinson Hyperlegible Font License\" (Braille Institute PDF 2020-11-04).",
+   "url": "https://scancode-licensedb.aboutcode.org/atkinson-hyperlegible-font",
+   "used": true
+  },
+  {
+   "id": "S-NEXT-RFN",
+   "grade": "D",
+   "title": "Secondary listing of \"License for The Atkinson Hyperlegible Next Font\" naming RFNs \"ATKINSON\", \"HYPERLEGIBLE\".",
+   "url": "https://wiki.mobiusconsortium.org/wiki/Special:Version/License/The_Atkinson_Hyperlegible_Next_Font",
+   "used": true
+  },
+  {
+   "id": "S-OUR-AUDIT-WEB",
+   "grade": "D",
+   "title": "`tools/palette_audit.py` on LINZ `topographic-v2` (logs 0004, 0013, 0014)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-AUDIT-PRINT",
+   "grade": "D",
+   "title": "Topo50 legend colour/dash sampling + audit (log 0019)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-FONTCHECK",
+   "grade": "D",
+   "title": "`tools/font_check.py` glyph coverage and x-height (log 0006)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-SHAPING-TEST",
+   "grade": "D",
+   "title": "Shaped vs unshaped rendering of Atkinson Next (log 0018)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-PALETTE-V0",
+   "grade": "D",
+   "title": "Palette experiment v0 (log 0009)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-PATCH",
+   "grade": "D",
+   "title": "`tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018)",
+   "url": null,
+   "used": true
+  },
+  {
+   "id": "S-OUR-REAL-RENDER",
+   "grade": "D",
+   "title": "Simulations over LINZ's real Topo50 render (log 0019)",
+   "url": null,
+   "used": true
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-26",
+   "title": "Yes: the GitHub/Google Fonts release is plain OFL 1.1, with no Reserved Font Name, and it's forward-licensed",
+   "topic": "can we add macrons to Atkinson Hyperlegible Next?",
+   "file": "findings/atkinson-licence.md",
+   "sources": [
+    "S-OFL-ATKINSON-NEXT"
+   ],
+   "grade": "C",
+   "html": "<p>The <code>googlefonts/atkinson-hyperlegible-next</code> repo (HEAD <code>7925f50</code>) ships the\nstandard SIL Open Font License 1.1, copyright \"The Atkinson Hyperlegible Next\nProject Authors\", with <strong>no Reserved Font Name declared</strong>. Under OFL 1.1:</p>\n<table>\n<thead>\n<tr>\n<th>Clause</th>\n<th>Meaning for us</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Permission</td>\n<td>use, study, copy, modify, redistribute modified copies ✅</td>\n</tr>\n<tr>\n<td>1</td>\n<td>can't sell the font <em>by itself</em> (bundling with a map product is fine)</td>\n</tr>\n<tr>\n<td>2</td>\n<td>keep the copyright notice + licence with every copy</td>\n</tr>\n<tr>\n<td>3</td>\n<td>Reserved Font Names can't be used by modified versions — <strong>none are reserved in this release</strong></td>\n</tr>\n<tr>\n<td>4</td>\n<td>can't use the authors' names to promote our version (acknowledging them is fine)</td>\n</tr>\n<tr>\n<td>5</td>\n<td><strong>forward licensing:</strong> modified versions must be distributed entirely under OFL, and nothing else. Maps and documents <em>made with</em> the font are not bound by this</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Sources:</strong> S-OFL-ATKINSON-NEXT — <code>OFL.txt</code> in the repo (read directly, C).</p>"
+  },
+  {
+   "id": "F-27",
+   "title": "Caution: the Braille Institute's own download uses a different, OFL-derived licence",
+   "topic": "can we add macrons to Atkinson Hyperlegible Next?",
+   "file": "findings/atkinson-licence.md",
+   "sources": [
+    "S-DEBIAN-ATKINSON",
+    "S-NEXT-RFN",
+    "S-SCANCODE-ATKINSON"
+   ],
+   "grade": "C",
+   "html": "<p>The download from brailleinstitute.org/freefont has historically come with a\nseparate \"Atkinson Hyperlegible Font License\" — Debian reviewers described it\nas a modified OFL. One listing of the <em>Next</em> licence names Reserved Font Names\n\"ATKINSON\" and \"HYPERLEGIBLE\".\n<strong>Sources:</strong> S-DEBIAN-ATKINSON (D), S-SCANCODE-ATKINSON (C), S-NEXT-RFN (D,\nsecondary listing — not verified against the Braille Institute PDF).\n<strong>Implication:</strong> licences attach to the copy you receive. <strong>Base any patch on\nthe GitHub OFL sources</strong>, and rename the result anyway, so it's compliant\nwhichever text a reader has in mind. Community forks already exist under OFL\n(e.g. \"Atkinson Hyperlegible Pro\").</p>"
+  },
+  {
+   "id": "F-28",
+   "title": "The missing Ō/ō only breaks renderers that don't shape text",
+   "topic": "can we add macrons to Atkinson Hyperlegible Next?",
+   "file": "findings/atkinson-licence.md",
+   "sources": [
+    "S-OUR-SHAPING-TEST"
+   ],
+   "grade": "D",
+   "html": "<p>HarfBuzz-based renderers (Pillow+raqm here; also browsers and Qt/QGIS,\nexpected but not tested) decompose a missing <code>ō</code> into <code>o</code> + U+0304 and place\nthe macron with the font's <code>mark</code> feature — the official font renders\n\"Taupō\" correctly. Renderers that draw <strong>one glyph per codepoint</strong> show a\nmissing-glyph box instead. MapLibre's glyph PBFs work that way.\n<strong>Evidence:</strong> <code>docs/visuals/06-shaping-vs-no-shaping.png</code> (D, measured).\n<strong>Implication:</strong> print via QGIS may work today; web maps need the glyphs to\nexist (patched font, or upstream fix) <em>and</em> glyph PBFs built from that font.</p>"
+  },
+  {
+   "id": "F-29",
+   "title": "The fix is small and mechanical",
+   "topic": "can we add macrons to Atkinson Hyperlegible Next?",
+   "file": "findings/atkinson-licence.md",
+   "sources": [
+    "S-OUR-PATCH"
+   ],
+   "grade": "D",
+   "html": "<p>Ā and Ū are composites of the base letter + <code>uni0304</code>, centred on the base's\nbounding box; that rule reproduces their offsets exactly (135, 167). Applying\nit to O and o gives offsets 179 and 96 (the symmetric <code>o</code> agrees under both\ncentring rules). <code>tools/patch_atkinson_omacron.py</code> does this for static\nTTFs and renames the result \"NZAT Legible Test\".\n<strong>Sources:</strong> S-OUR-PATCH (D, measured).\n<strong>Known gaps:</strong> upright statics only; kerning classes not extended; not\nreviewed by the type designers.</p>"
+  },
+  {
+   "id": "F-01",
+   "title": "Colour-vision deficiency is common enough to be a primary design constraint",
+   "topic": "colour vision",
+   "file": "findings/colour-vision.md",
+   "sources": [
+    "S-JENNY-KELSO-2007"
+   ],
+   "grade": "B/C",
+   "html": "<p>About 8% of men have a colour vision impairment (mostly red–green); those\naffected are slower and less successful at map tasks that depend on colour,\nand make considerably more colour-identification errors under reduced\nillumination. Rarer forms affect under ~0.3% of people.\n<strong>Sources:</strong> S-JENNY-KELSO-2007 (B/C; reviews Birch 1993 and Cole 2004).\n<strong>Grade:</strong> A (prevalence is long-established); B for the map-task effects.</p>"
+  },
+  {
+   "id": "F-02",
+   "title": "Colour vision degrades with age, mostly on the blue–yellow axis",
+   "topic": "colour vision",
+   "file": "findings/colour-vision.md",
+   "sources": [
+    "S-BARBUR-REVIEW",
+    "S-SCHNECK-2014",
+    "S-WUERGER-2013"
+   ],
+   "grade": "B",
+   "html": "<p>In a random sample of 865 adults aged 58–102 with no congenital deficiency,\nabnormal colour vision rose steeply with age, and most errors were\nblue–yellow (pastel blue vs purple, yellow vs green/yellow-green). Common\nage-related eye diseases produce blue–yellow anomalies early. Older\nobservers' tritan-like errors resemble those of younger people tested under\n<strong>dim light</strong>, linking ageing and low-light performance.\n<strong>Sources:</strong> S-SCHNECK-2014 (B; reported via news summaries — primary paper to\nbe read), S-KNOBLAUCH (B, as cited in S-BARBUR-REVIEW), S-WUERGER-2013 (B).\n<strong>Grade:</strong> B.\n<strong>Map implication:</strong> pale green vegetation vs pale blue water vs pale grey\nscree/sand are exactly the confusions this population is prone to.</p>"
+  },
+  {
+   "id": "F-03",
+   "title": "Colour-only distinctions fail; use redundant visual variables",
+   "topic": "colour vision",
+   "file": "findings/colour-vision.md",
+   "sources": [
+    "S-JENNY-KELSO-2007"
+   ],
+   "grade": "B/C",
+   "html": "<p>The cartographic recommendation is to design for colour-impaired readers by\n(a) choosing colours that remain distinct under simulation and (b) adding\nnon-colour cues — pattern, line style, shape, size, lightness.\n<strong>Sources:</strong> S-JENNY-KELSO-2007.\n<strong>Grade:</strong> C (professional guidance grounded in B-grade evidence).</p>"
+  },
+  {
+   "id": "F-04",
+   "title": "The current LINZ web style has measurable CVD weak points",
+   "topic": "colour vision",
+   "file": "findings/colour-vision.md",
+   "sources": [
+    "S-MACHADO-2009",
+    "S-OUR-AUDIT-WEB",
+    "S-SHARMA-2005"
+   ],
+   "grade": "B",
+   "html": "<p>From our audit (W4–W7): scrub vs scattered scrub (ΔE &lt;5 for all dichromats),\ncontour vs highway (ΔE ≈6 for everyone), contour vs pipeline (tritan ΔE\n3.8), and closed-track status carried by a faint shadow.\n<strong>Sources:</strong> our audit (D), using S-MACHADO-2009 simulation and S-SHARMA-2005 ΔE.\n<strong>Grade:</strong> D (model output; needs user validation).</p>"
+  },
+  {
+   "id": "F-21",
+   "title": "Under red light, red ink disappears",
+   "topic": "field conditions",
+   "file": "findings/field-conditions.md",
+   "sources": [
+    "S-FORUM-REDLIGHT",
+    "S-OUR-AUDIT-WEB"
+   ],
+   "grade": "D",
+   "html": "<p>Paper only reflects the wavelengths that hit it. Under a narrow-band red\nheadtorch, red and magenta ink reflect about as much as white paper, so\nthey vanish; blues and greens go dark. Navigators report missing red\nfeatures on charts under red light, and some military land-navigation\ntraining changed red map features to a red-brown for this reason.\n<strong>Sources:</strong> physics (reflectance), S-FORUM-REDLIGHT (D, multiple\npractitioner reports).\n<strong>Grade:</strong> D for the anecdotes; the physical mechanism is not in doubt.\n<strong>Our model:</strong> contours drop to ~1.4:1 against paper; the closed-track red\nshadow to ~1.1:1 (W7, W8).\n<strong>Implication:</strong> anything safety-relevant (closed tracks, hazards, huts)\nmust be encoded in <strong>lightness + shape</strong>, never in red hue alone.</p>"
+  },
+  {
+   "id": "F-22",
+   "title": "Dim light worsens colour discrimination for everyone, more for CVD",
+   "topic": "field conditions",
+   "file": "findings/field-conditions.md",
+   "sources": [
+    "S-BARBUR-REVIEW",
+    "S-JENNY-KELSO-2007"
+   ],
+   "grade": "B",
+   "html": "<p>Under reduced illumination, people with colour vision impairment make\nconsiderably more colour-identification errors (F-01); older observers'\nblue–yellow losses resemble those of young people in dim light (F-02).\n<strong>Sources:</strong> S-JENNY-KELSO-2007 (B/C, citing Cole 2004), S-BARBUR-REVIEW (B).\n<strong>Implication:</strong> design the print palette for dusk/tent light, not a\nwell-lit desk. Lightness contrast is the robust channel.</p>"
+  },
+  {
+   "id": "F-23",
+   "title": "Maps are photocopied, printed mono, and read on e-ink",
+   "topic": "field conditions",
+   "file": "findings/field-conditions.md",
+   "sources": [
+    "S-HARVARD-MONO",
+    "S-OUR-AUDIT-WEB"
+   ],
+   "grade": "C",
+   "html": "<p>Greyscale reproduction is common (club handouts, SAR briefings, e-ink GPS\nunits, some inReach/e-reader devices). Our audit shows several key pairs\nwith near-identical luminance (W4, W5, W6).\n<strong>Sources:</strong> audit (D); S-HARVARD-MONO — practitioner guidance on mono-legible\nmaps (C).</p>"
+  },
+  {
+   "id": "F-14",
+   "title": "Light from NNW reduces terrain-reversal errors compared with NW",
+   "topic": "relief shading and contours",
+   "file": "findings/relief-and-contours.md",
+   "sources": [
+    "S-BILAND-2017",
+    "S-COLTEKIN-2018",
+    "S-LINZ-GUIDE"
+   ],
+   "grade": "B",
+   "html": "<p>The relief inversion (terrain reversal) effect makes valleys look like\nridges when shading is the main depth cue. A controlled study varying light\nazimuth found NNW (337.5°), or even N, gave more accurate landform\nperception than the conventional NW (315°); a replication with a different\npopulation broadly confirmed it. The strongest illusion was at 225° (SW).\n<strong>Sources:</strong> S-BILAND-2017 (B), S-COLTEKIN-2018 (B).\n<strong>Grade:</strong> A– (original + replication).\n<strong>Topo50 today:</strong> NW (S-LINZ-GUIDE).</p>"
+  },
+  {
+   "id": "F-15",
+   "title": "NZ-specific twist: northern light is also physically realistic here",
+   "topic": "relief shading and contours",
+   "file": "findings/relief-and-contours.md",
+   "sources": [
+    "S-COLTEKIN-2023"
+   ],
+   "grade": "B–",
+   "html": "<p>Cartographic NW lighting is a northern-hemisphere convention that happens to\nbe <em>unrealistic</em> for real sun (which is in the south there). In NZ, the sun\nis in the north, so NNW/N lighting agrees both with the perceptual research\n<strong>and</strong> with what users see on real slopes (sunny north faces). There is no\ntrade-off to make here.\n<strong>Sources:</strong> reasoning from F-14 + basic solar geometry (D). Note research\nsuggests the \"light from above\" prior may be learned from indoor lighting\nas much as the sun (S-COLTEKIN-2023), so this is a bonus, not the argument.</p>"
+  },
+  {
+   "id": "F-16",
+   "title": "Multidirectional illumination mitigates inversion",
+   "topic": "relief shading and contours",
+   "file": "findings/relief-and-contours.md",
+   "sources": [
+    "S-MULTIDIR-2025"
+   ],
+   "grade": "B–",
+   "html": "<p>A multidirectional \"sky\" illumination model reduced the relief inversion\nillusion even when the dominant light came from the problematic SW.\n<strong>Sources:</strong> S-MULTIDIR-2025 (B, conference abstract).\n<strong>Grade:</strong> B– (abstract).\n<strong>Implication:</strong> combine NNW primary light with soft multidirectional/sky\nshading for robustness.</p>"
+  },
+  {
+   "id": "F-17",
+   "title": "Shading interacts with colour and texture",
+   "topic": "relief shading and contours",
+   "file": "findings/relief-and-contours.md",
+   "sources": [
+    "S-COLTEKIN-2019"
+   ],
+   "grade": "B",
+   "html": "<p>Adding colour and texture to shaded relief changes 3D-shape identification;\ngreyscale shading had stronger contrast effects than colour. Overlaying land\ncover on semi-transparent shading is a common mitigation.\n<strong>Sources:</strong> S-COLTEKIN-2019 (B).\n<strong>Implication:</strong> test shading under the final vegetation palette, not alone.</p>"
+  },
+  {
+   "id": "F-18",
+   "title": "Contours are a graphical object that must be seen",
+   "topic": "relief shading and contours",
+   "file": "findings/relief-and-contours.md",
+   "sources": [
+    "S-LINZ-DD-CONTOUR",
+    "S-OUR-AUDIT-WEB",
+    "S-W3C-1411"
+   ],
+   "grade": "C",
+   "html": "<p>LINZ's web contours are 0.4–0.6 px at 75% opacity, 2.66:1 against white\n(W3). WCAG 1.4.11 expects 3:1 for graphics needed to understand content\n(see <code>standards.md</code>). Contour accuracy is ±~10 m and worse in forest/snow\n(S-LINZ-DD-CONTOUR) — a reason to keep <em>indefinite</em> contours visually\ndistinct (LINZ data carries a <code>definition = indefinite</code> attribute).\n<strong>Sources:</strong> audit (D), S-W3C-1411 (C), S-LINZ-DD-CONTOUR (C).</p>"
+  },
+  {
+   "id": "F-19",
+   "title": "NZ government web must meet WCAG 2.2 AA, with a maps exception",
+   "topic": "accessibility standards",
+   "file": "findings/standards.md",
+   "sources": [
+    "S-NZ-WAS-DRAFT"
+   ],
+   "grade": "C",
+   "html": "<p>The NZ Government Web Accessibility Standard 1.2 (effective 17 March 2025)\nrequires WCAG 2.2 Level AA, with listed exceptions including <strong>complex\nvisual maps</strong>; the draft modified requirement was that data presented in\ncomplex visual maps be published in open, machine-readable formats via\ndata.govt.nz. A Digital Accessibility Standard is being developed to extend\nbeyond websites.\n<strong>Sources:</strong> S-NZ-WAS-1.2 (C), S-NZ-WAS-DRAFT (C).\n<strong>Implication:</strong> a topo map is likely \"exempt\", but the exemption is about\n<em>equivalent data</em>, not permission to be hard to read. LINZ already publishes\nthe data openly, so our job is purely legibility. We should still adopt\nWCAG ratios as <em>design targets</em> because they encode real low-vision limits.</p>"
+  },
+  {
+   "id": "F-20",
+   "title": "WCAG ratios we will use as targets",
+   "topic": "accessibility standards",
+   "file": "findings/standards.md",
+   "sources": [
+    "S-W3C-1411"
+   ],
+   "grade": "C",
+   "html": "<ul>\n<li>Text: 4.5:1 (1.4.3 AA); 3:1 for large text.</li>\n<li>Graphical objects needed for understanding: 3:1 against adjacent colours\n  (1.4.11). W3C's own guidance treats each line/shape in a chart as a\n  graphical object; where many adjacent colours make 3:1 impossible, giving\n  areas a contrasting border is a common practitioner fix.</li>\n<li>Use of colour (1.4.1): colour must not be the <em>only</em> means of conveying\n  information.\n<strong>Sources:</strong> S-W3C-1411 (C), W3C WAI-IG thread (D).</li>\n</ul>"
+  },
+  {
+   "id": "F-12",
+   "title": "Macrons are mandatory on official names, and the set is growing",
+   "topic": "te reo Māori place names",
+   "file": "findings/te-reo-maori-names.md",
+   "sources": [
+    "S-LINZ-NZGB-AUCK",
+    "S-NZGB-2019"
+   ],
+   "grade": "C",
+   "html": "<p>Ngā Pou Taunaha o Aotearoa (NZ Geographic Board) made 824 Māori place names\nofficial in 2019, adding macrons to about 300 (e.g. Taupō). Further batches\nsince (e.g. 541 Auckland names, 194 gaining macrons). Once official, names\nmust be used on maps, signs, websites and databases.\n<strong>Sources:</strong> S-NZGB-2019 (C), S-LINZ-NZGB-AUCK (C).\n<strong>Grade:</strong> C (statutory).\n<strong>Map implication:</strong> any typeface we choose must render all ten macron\nvowels in every weight/style used, in both the print toolchain and the\nMapLibre glyph PBFs. This is a hard gate, not a preference.</p>"
+  },
+  {
+   "id": "F-13",
+   "title": "Long names stress the label system",
+   "topic": "te reo Māori place names",
+   "file": "findings/te-reo-maori-names.md",
+   "sources": [
+    "S-NZGB-2019"
+   ],
+   "grade": "C",
+   "html": "<p>Official names include very long single words (the 85-character hill name\nin Hawke's Bay) and hyphenated compounds (e.g. Te Horohoroinga-o-ngā-ringa-o-\nKahumatamomoe). Increased letter-spacing (F-07) makes these longer still.\n<strong>Sources:</strong> S-NZGB-2019, LINZ NZGB notices (C).\n<strong>Implication:</strong> letter-spacing needs a ceiling, and line-breaking at\nhyphens/spaces should be allowed (<code>text-max-width</code>).</p>"
+  },
+  {
+   "id": "F-24",
+   "title": "Track symbology is the most criticised part of Topo50",
+   "topic": "tracks and access",
+   "file": "findings/tracks-and-access.md",
+   "sources": [
+    "S-MCDONALD-2020"
+   ],
+   "grade": "D",
+   "html": "<p>Topo50 tracks are all black, symbolised much as in 1977, with three main\ntypes (vehicle, foot, poled route) and a closed-route sign, and no\nindication of public vs private access. A 2020 petition asked LINZ and the\nWalking Access Commission to redesign them; the Commission's online map has\nhad to overlay coloured lines on the black tracks as a stop-gap.\n<strong>Sources:</strong> S-MCDONALD-2020 (D — advocacy document, but detailed and\nwell-referenced).</p>"
+  },
+  {
+   "id": "F-25",
+   "title": "Access status is not in the topo data",
+   "topic": "tracks and access",
+   "file": "findings/tracks-and-access.md",
+   "sources": [
+    "S-MCDONALD-2020"
+   ],
+   "grade": "D",
+   "html": "<p>Access (public/private, gazetted walkway, DOC track) comes from other\ndatasets (Walking Access Commission, DOC). Showing it is a <strong>data</strong>\nquestion as much as a design one, and is out of scope for a pure re-style of\nLINZ layers — but the symbology should leave room for it (e.g. a\nreserved channel such as casing colour/pattern).\n<strong>Sources:</strong> S-MCDONALD-2020.</p>"
+  },
+  {
+   "id": "F-05",
+   "title": "Italics reduce readability for dyslexic readers; roman sans-serif helps",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-RELLO-2013",
+    "S-RELLO-2016"
+   ],
+   "grade": "B",
+   "html": "<p>In an eye-tracking study (48 participants with dyslexia, 12 fonts), sans-serif,\nmonospaced and roman (upright) styles significantly improved reading\nperformance over serif, proportional and italic styles. Arial Italic in\nparticular decreased readability. A later journal version found fonts that\nhelped dyslexic readers were equally good for non-dyslexic readers.\n<strong>Sources:</strong> S-RELLO-2013 (B), S-RELLO-2016 (B).\n<strong>Grade:</strong> B (single lab; consistent across two publications).</p>"
+  },
+  {
+   "id": "F-06",
+   "title": "\"Dyslexia fonts\" do not help",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-KUSTER-2018",
+    "S-RELLO-2016",
+    "S-WERY-2017"
+   ],
+   "grade": "B",
+   "html": "<p>Dyslexie did not improve speed or accuracy for 170 children with dyslexia\n(Exp. 1) or for 102 dyslexic + 45 typical readers (Exp. 2); most preferred\nArial. OpenDyslexic showed no improvement in rate or accuracy either.\n<strong>Sources:</strong> S-KUSTER-2018 (B), S-WERY-2017 (B), S-RELLO-2016 (B).\n<strong>Grade:</strong> A (multiple independent studies agree).\n<strong>Map implication:</strong> don't adopt a novelty \"dyslexia font\". Choose a\nwell-designed roman sans-serif.</p>"
+  },
+  {
+   "id": "F-07",
+   "title": "Extra letter spacing helps dyslexic readers (and rescues bad fonts)",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-SPACING-2018",
+    "S-ZORZI-2012"
+   ],
+   "grade": "B",
+   "html": "<p>Increased inter-letter spacing improved reading accuracy (≈2×) and speed\n(≈20%) for dyslexic children in Italian and French, with no gain for typical\nreaders; the poorest readers benefited most. The proposed mechanism is\n<strong>crowding</strong> — dyslexic readers are abnormally affected by flanking letters.\nA follow-up found spacing, not font, drove the benefit, and that spacing\nremoved the penalty of italic and decorative fonts.\n<strong>Sources:</strong> S-ZORZI-2012 (B), S-SPACING-2018 (B).\n<strong>Grade:</strong> A– (two studies, different labs; children, not adults).\n<strong>Map implication:</strong> map labels are short, isolated words — but they are\n<em>heavily crowded by linework</em>. Tracking (letter-spacing) and halos both\nattack crowding. MapLibre exposes <code>text-letter-spacing</code>.</p>"
+  },
+  {
+   "id": "F-08",
+   "title": "Cartographic convention puts water names in italic",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-AXIS-LABELING",
+    "S-OUR-AUDIT-WEB",
+    "S-USGS-SPECS"
+   ],
+   "grade": "C",
+   "html": "<p>Long-standing guidance labels water features in blue italic; area features\nin spaced capitals. The LINZ web style follows this (36 of 68 label layers\nitalic, all water labels italic).\n<strong>Sources:</strong> S-AXIS-LABELING (C), S-USGS-SPECS (C), audit (D).\n<strong>Tension with F-05:</strong> the convention and the dyslexia evidence point in\nopposite directions. Colour + case/weight can carry the \"this is water\"\nsignal without italics.</p>"
+  },
+  {
+   "id": "F-09",
+   "title": "Minimum label sizes and size steps",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-AXIS-LABELING",
+    "S-COLORADO-TYPO",
+    "S-ESRI-MINSIZE",
+    "S-MN-MAPGUIDE"
+   ],
+   "grade": "C",
+   "html": "<p>Practitioner guidance converges on ~6 pt as an absolute print minimum\n(8 pt preferred), ~9–10 px on screen, and size differences under ~15%\nnot being noticed by readers — so hierarchy steps should be bigger than that.\nx-height matters as much as point size at small sizes.\n<strong>Sources:</strong> S-COLORADO-TYPO (C), S-AXIS-LABELING (C), S-ESRI-MINSIZE (C),\nS-MN-MAPGUIDE (C).\n<strong>Grade:</strong> C.</p>"
+  },
+  {
+   "id": "F-10",
+   "title": "Atkinson Hyperlegible targets character confusions; evidence is thin and it can't yet set all Māori names",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-ATKINSON",
+    "S-ATKINSON-NEXT",
+    "S-OUR-FONTCHECK"
+   ],
+   "grade": "C",
+   "html": "<p>Designed by the Braille Institute (2019; <em>Next</em> 2025) to differentiate\nconfusable characters (I/l/1, O/0, B/8). Evidence base is mostly the\ndesigners' own user testing, not independent peer-reviewed studies.\n<strong>Our check:</strong> Atkinson Hyperlegible Next v2.001 (google/fonts, upstream\ncommit 7925f50) <strong>lacks precomposed Ō/ō</strong> (U+014C/U+014D) while having the\nother macron vowels. It does have a combining macron and mark positioning,\nbut MapLibre's glyph rendering doesn't do OpenType mark positioning, so\n<code>Taupō</code>, <code>Ōtautahi</code>, <code>Ōpōtiki</code>, <code>Ōamaru</code> would break on the web.\n<strong>Refined in log 0018 (F-28):</strong> shaping renderers (HarfBuzz) <em>do</em> render\nthese correctly with the official font; only per-codepoint renderers like\nMapLibre break. Licence permits patching (F-26).\n<strong>Sources:</strong> S-ATKINSON (C/D), S-ATKINSON-NEXT (C), <code>tools/font_check.py</code> (D).\n<strong>Grade:</strong> D (design rationale) / measured fact for glyph coverage.</p>"
+  },
+  {
+   "id": "F-11",
+   "title": "Open Sans (LINZ's current face) is already a reasonable choice",
+   "topic": "typography, dyslexia and low vision",
+   "file": "findings/typography.md",
+   "sources": [
+    "S-OUR-FONTCHECK"
+   ],
+   "grade": "D",
+   "html": "<p>Open Sans has full macron coverage and a large x-height (0.535 em vs 0.496\nfor Atkinson Next, 0.478 for Source Sans 3). Noto Sans is near-identical in\nmetrics with far wider coverage. The issue in the current style is not the\nfamily; it's the <strong>italics</strong>, <strong>contrast</strong> and <strong>spacing</strong>.\n<strong>Sources:</strong> <code>tools/font_check.py</code> output (D, measured).</p>\n<h2>Font check output</h2>\n<table>\n<thead>\n<tr>\n<th>Font</th>\n<th>Macron vowels</th>\n<th style=\"text-align: center;\">U+0304</th>\n<th style=\"text-align: right;\">x-height/em</th>\n<th style=\"text-align: right;\">x/cap</th>\n<th style=\"text-align: right;\">Glyphs</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Open Sans Regular</td>\n<td>all</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.535</td>\n<td style=\"text-align: right;\">0.750</td>\n<td style=\"text-align: right;\">1150</td>\n</tr>\n<tr>\n<td>Atkinson Hyperlegible Regular</td>\n<td>missing Ōō</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.496</td>\n<td style=\"text-align: right;\">0.743</td>\n<td style=\"text-align: right;\">369</td>\n</tr>\n<tr>\n<td>Atkinson Hyperlegible Next Regular</td>\n<td>missing Ōō</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.496</td>\n<td style=\"text-align: right;\">0.743</td>\n<td style=\"text-align: right;\">392</td>\n</tr>\n<tr>\n<td>Source Sans 3</td>\n<td>all</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.478</td>\n<td style=\"text-align: right;\">0.724</td>\n<td style=\"text-align: right;\">2478</td>\n</tr>\n<tr>\n<td>Noto Sans Regular</td>\n<td>all</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.536</td>\n<td style=\"text-align: right;\">0.751</td>\n<td style=\"text-align: right;\">4515</td>\n</tr>\n<tr>\n<td>Lexend Regular</td>\n<td>all</td>\n<td style=\"text-align: center;\">✅</td>\n<td style=\"text-align: right;\">0.525</td>\n<td style=\"text-align: right;\">0.750</td>\n<td style=\"text-align: right;\">850</td>\n</tr>\n<tr>\n<td>-e</td>\n<td></td>\n<td style=\"text-align: center;\"></td>\n<td style=\"text-align: right;\"></td>\n<td style=\"text-align: right;\"></td>\n<td style=\"text-align: right;\"></td>\n</tr>\n<tr>\n<td>Font files from <code>google/fonts</code> @ <code>6c1dbe2</code>.</td>\n<td></td>\n<td style=\"text-align: center;\"></td>\n<td style=\"text-align: right;\"></td>\n<td style=\"text-align: right;\"></td>\n<td style=\"text-align: right;\"></td>\n</tr>\n</tbody>\n</table>"
+  }
+ ],
+ "recommendations": [
+  {
+   "id": "R-01",
+   "title": "Encode anything safety-relevant in lightness and shape; use hue only as a redundant cue",
+   "provisional": false,
+   "findings": [
+    "F-01",
+    "F-02",
+    "F-03",
+    "F-21",
+    "F-22",
+    "F-23"
+   ],
+   "sources": [],
+   "grade": "B",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-01, F-02, F-03, F-21, F-22, F-23 · <strong>Best evidence:</strong> A/B\n<strong>Why:</strong> CVD affects ~8% of men; ageing adds blue–yellow losses; dim light\nand red headtorches remove hue information for everyone. Lightness and shape\nsurvive all of these.\n<strong>Met when:</strong> every pair in the must-distinguish list either reaches ≥3:1\nluminance contrast in the greyscale model <strong>or</strong> differs in pattern/shape,\nand the same holds in the red-light model.</p>"
+  },
+  {
+   "id": "R-02",
+   "title": "Keep the familiar colour grammar; change values within it",
+   "provisional": true,
+   "findings": [
+    "F-24"
+   ],
+   "sources": [
+    "S-LINZ-GUIDE",
+    "S-OUR-AUDIT-WEB"
+   ],
+   "grade": "C",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> S-LINZ-GUIDE (C), F-24 · <strong>Provisional</strong>\n<strong>Why:</strong> Blue = water, brown = relief, green = vegetation, black = culture is\nan international convention that SAR teams, trampers and the Defence Force\nare trained on. The audit shows most problems are <em>lightness</em> problems inside\nthat grammar, not wrong hues.\n<strong>Met when:</strong> a Topo50 user can read the new style without consulting the\nlegend for the core classes. (Test, see R-16.)</p>\n<hr />"
+  },
+  {
+   "id": "R-03",
+   "title": "Light relief shading from NNW (337.5°), with a soft multidirectional component",
+   "provisional": false,
+   "findings": [
+    "F-14",
+    "F-15",
+    "F-16",
+    "F-17"
+   ],
+   "sources": [
+    "S-MAPLIBRE-2320"
+   ],
+   "grade": "B",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-14, F-15, F-16, F-17, S-MAPLIBRE-2320 · <strong>Best evidence:</strong> A–\n<strong>Change from today:</strong> Topo50 uses NW (315°).\n<strong>Why:</strong> Replicated studies show fewer terrain-reversal errors with NNW than\nNW. In the southern hemisphere this is also where the real sun is.\n<strong>Met when:</strong> shaded relief generated at 337.5°, blended with a\nmultidirectional/sky layer; evaluated on both Alpine and lowland sheets.</p>"
+  },
+  {
+   "id": "R-04",
+   "title": "Contours that stay visible: strong index lines, recessive intermediates",
+   "provisional": false,
+   "findings": [
+    "F-18",
+    "F-20"
+   ],
+   "sources": [
+    "S-OUR-AUDIT-WEB",
+    "S-OUR-PALETTE-V0",
+    "S-OUR-REAL-RENDER"
+   ],
+   "grade": "C",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-18, F-20, W3, W5, W6, palette v0 · <strong>Best evidence:</strong> C (WCAG) + D (audit)\n<strong>Starting values:</strong> index <code>#8A4F1C</code>, intermediate <code>#C4814B</code> (revised in log\n0020 from <code>#A8703C</code>: real Topo50 slopes show 20 m intermediates are dense\nenough that they must stay recessive — the lightest same-hue brown meeting\n3.2:1, thinner lines; index contours carry relief under red light), no opacity.\nWeb widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).\nPrint widths: set by rendering tests on steep sheets (OQ-09).\n<strong>Also:</strong> draw <code>definition = indefinite</code> contours dashed, so reduced\naccuracy in forest/snow is visible.\n<strong>Met when:</strong> contours ≥3:1 vs paper; ΔE ≥10 vs highways and pipelines\nunder all simulated dichromacies (palette v0 achieves this).</p>\n<hr />"
+  },
+  {
+   "id": "R-05",
+   "title": "No italics for map labels",
+   "provisional": false,
+   "findings": [
+    "F-05",
+    "F-08"
+   ],
+   "sources": [],
+   "grade": "B",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-05, F-08 · <strong>Best evidence:</strong> B\n<strong>Change from today:</strong> 33 of 63 web label layers are italic, including all\nwater names.\n<strong>Why:</strong> Italic styles measurably slowed dyslexic readers; the italic-water\nconvention is a tradition, not a legibility finding. Carry \"this is water\"\nwith colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.\n<strong>Met when:</strong> zero italic faces in the style.</p>"
+  },
+  {
+   "id": "R-06",
+   "title": "Use a roman, humanist sans with a large x-height and complete macron coverage; do not use \"dyslexia fonts\"",
+   "provisional": false,
+   "findings": [
+    "F-06",
+    "F-10",
+    "F-11",
+    "F-12",
+    "F-26",
+    "F-28",
+    "F-29"
+   ],
+   "sources": [
+    "S-OUR-FONTCHECK"
+   ],
+   "grade": "B",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-06, F-10, F-11, F-12 · <strong>Best evidence:</strong> A (dyslexia fonts don't help); measured (coverage)\n<strong>Now:</strong> keep <strong>Open Sans</strong> (or <strong>Noto Sans</strong>, near-identical metrics,\nbroader coverage). Both have all ten macron vowels and x-height ≈0.535 em.\n<strong>Later:</strong> adopt <strong>Atkinson Hyperlegible Next</strong> once Ō/ō exist in a build we\ncan make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding\ntwo composites (<code>docs/upstream/</code>). Interim route: our renamed OFL patch\n(<code>tools/patch_atkinson_omacron.py</code>). It's designed to separate I/l/1 and O/0\n(<code>docs/visuals/05</code>), which matters for grid references and trig IDs. Print\nvia a shaping renderer (QGIS) may work with the official font already (F-28).\n<strong>Met when:</strong> <code>tools/font_check.py</code> reports full macron coverage for every\nface in the style (hard gate, F-12).</p>"
+  },
+  {
+   "id": "R-07",
+   "title": "All label text ≥4.5:1 against an opaque halo",
+   "provisional": false,
+   "findings": [
+    "F-20"
+   ],
+   "sources": [
+    "S-OUR-AUDIT-WEB"
+   ],
+   "grade": "C",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-20, W1 · <strong>Best evidence:</strong> C\n<strong>Change:</strong> water labels <code>#008CCC</code> → <code>#005C8F</code> (3.3:1 → 6.2:1); contour\nlabels and grey POI labels darkened; halos fully opaque.\n<strong>Met when:</strong> the text-contrast table in the audit has no ⚠️/❌ rows (except\nshield-on-icon false positives, documented).</p>"
+  },
+  {
+   "id": "R-08",
+   "title": "Add modest positive letter-spacing, and allow long names to wrap",
+   "provisional": true,
+   "findings": [
+    "F-07",
+    "F-13"
+   ],
+   "sources": [],
+   "grade": "B",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-07, F-13 · <strong>Best evidence:</strong> A– for continuous reading;\ntransfer to map labels unproven (OQ-06).\n<strong>Starting values:</strong> +0.04–0.08 em tracking on point/area labels; halos\nretained; <code>text-max-width</code> so hyphenated Māori names break at hyphens.\n<strong>Met when:</strong> A/B tested with dyslexic readers on label-finding tasks.</p>"
+  },
+  {
+   "id": "R-09",
+   "title": "Label size floor and hierarchy steps",
+   "provisional": false,
+   "findings": [
+    "F-09"
+   ],
+   "sources": [],
+   "grade": "C",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-09 · <strong>Best evidence:</strong> C\n<strong>Values:</strong> print ≥7 pt default, 6 pt absolute floor (spot heights only);\nweb ≥10 px (≥11 px for place names); adjacent hierarchy levels differ by\n≥20%.</p>\n<hr />"
+  },
+  {
+   "id": "R-10",
+   "title": "Vegetation classes that affect travel get pattern as well as tint",
+   "provisional": false,
+   "findings": [
+    "F-02",
+    "F-04"
+   ],
+   "sources": [
+    "S-OUR-PALETTE-V0"
+   ],
+   "grade": "B",
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-02, F-04, palette v0 · <strong>Best evidence:</strong> B + D\n<strong>Change:</strong> scrub <code>#A3CC90</code>; scattered scrub <code>#E0EDD8</code> <strong>plus stipple</strong>.\nWater keeps its blue shoreline line.\n<strong>Why:</strong> v0 showed colour alone can't separate pale fills in greyscale.</p>"
+  },
+  {
+   "id": "R-11",
+   "title": "Closed tracks, hazards and historic sites: meaning in shape, not red",
+   "provisional": false,
+   "findings": [
+    "F-21"
+   ],
+   "sources": [
+    "S-OUR-AUDIT-PRINT",
+    "S-OUR-AUDIT-WEB",
+    "S-OUR-PALETTE-V0"
+   ],
+   "grade": "D",
+   "implemented": true,
+   "html": "<p><strong>Print evidence (log 0019, P2):</strong> in printed Topo50, a closed track differs\nfrom a foot track <em>only</em> by gap length (dash 24/gap 12 vs 23/24). This\napplies to print as much as web.\n<strong>Rests on:</strong> F-21, W7, palette v0 · <strong>Best evidence:</strong> D (mechanism certain)\n<strong>Change:</strong> closed tracks get a dark casing with cross-bars; historic sites\nget a distinct glyph with dark-ink labels.\n<strong>Met when:</strong> red-light model ≥3:1 vs paper for all safety-relevant marks.</p>"
+  },
+  {
+   "id": "R-12",
+   "title": "Reserve a symbol channel for track access status",
+   "provisional": true,
+   "findings": [
+    "F-24",
+    "F-25"
+   ],
+   "sources": [],
+   "grade": "D",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-24, F-25 · <strong>Provisional</strong>\n<strong>Why:</strong> the most-requested change from the tramping community needs data\nwe don't have; leave a casing/colour channel unused so it can be added\nwithout redesign.</p>\n<hr />"
+  },
+  {
+   "id": "R-13",
+   "title": "Publish three variants from one source",
+   "provisional": false,
+   "findings": [
+    "F-01",
+    "F-02",
+    "F-23"
+   ],
+   "sources": [],
+   "grade": "B",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-01, F-02, F-23 · <strong>Best evidence:</strong> B\nFull colour (web + print), <strong>greyscale-safe print</strong> (F-23), and a\n<strong>high-contrast</strong> web variant for low-vision users.</p>"
+  },
+  {
+   "id": "R-14",
+   "title": "Run the audit in CI on every style change",
+   "provisional": false,
+   "findings": [
+    "F-04"
+   ],
+   "sources": [
+    "S-OUR-AUDIT-WEB",
+    "S-OUR-FONTCHECK"
+   ],
+   "grade": "B",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-04, S-OUR-AUDIT-WEB · <strong>Best evidence:</strong> D\n<code>palette_audit.py</code> and <code>font_check.py</code> against the style; fail on new\n❌ rows. Makes regressions visible and keeps the evidence chain alive.</p>"
+  },
+  {
+   "id": "R-15",
+   "title": "Start from LINZ's MIT-licensed `topographic-v2` style",
+   "provisional": false,
+   "findings": [],
+   "sources": [
+    "S-LINZ-BASEMAPS-CONFIG",
+    "S-LINZ-BASEMAPS-STYLING"
+   ],
+   "grade": "C",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> S-LINZ-BASEMAPS-CONFIG, S-LINZ-BASEMAPS-STYLING · <strong>Best evidence:</strong> C\nFork rather than rewrite: it already maps the Shortbread schema, and staying\nclose to upstream lets improvements flow back to LINZ.</p>"
+  },
+  {
+   "id": "R-16",
+   "title": "Validate with real users before calling anything \"accessible\"",
+   "provisional": false,
+   "findings": [
+    "F-04",
+    "F-06",
+    "F-14"
+   ],
+   "sources": [],
+   "grade": "B",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> F-04, F-06, F-14 · <strong>Best evidence:</strong> A (that model results need validation is a method point)\nGrade D model results must be confirmed. Minimum: (a) CVD readers,\n(b) dyslexic readers, (c) readers 60+, (d) LandSAR / tramping club members\nfamiliar with Topo50. Tasks: identify landform (ridge vs valley), follow a\ntrack, find a named feature, judge vegetation, read a grid reference — on\npaper under daylight, dusk, and red headtorch, and on a phone.</p>"
+  },
+  {
+   "id": "R-17",
+   "title": "Print-specific fixes found in the Topo50 legend",
+   "provisional": true,
+   "findings": [
+    "F-21",
+    "F-23"
+   ],
+   "sources": [
+    "S-OUR-AUDIT-PRINT"
+   ],
+   "grade": "C",
+   "implemented": false,
+   "html": "<p><strong>Rests on:</strong> P1–P9 (<code>current-state/topo50-print.md</code>), F-21, F-23 · <strong>Best evidence:</strong> measured (D) + C\n- Give <strong>hot and cold springs different glyphs</strong>, not just different inks\n  (P3: 1.13:1 in greyscale). Topo50 already does this well for hot spring vs\n  fumarole (× vs ⊗) — extend the same idea.\n- Separate <strong>native forest from scrub</strong> by a larger lightness step or a\n  texture (P5: ΔE 4.8, 1.1:1 greyscale). This changes route choice.\n- Keep <strong>scattered scrub as a pattern</strong> (P6) — print got this right; the web\n  style should match (R-10 does).\n- Apply R-05 to <strong>contour labels and spot heights</strong>, which are italic in\n  print (P8).\n- Don't use the red-orange ink alone for anything that must be read under a\n  red headtorch (P7).</p>"
+  }
+ ],
+ "changes": [
+  {
+   "id": "C-R-03",
+   "rec": "R-03",
+   "count": 1,
+   "title": "1 × hillshade light direction"
+  },
+  {
+   "id": "C-R-04",
+   "rec": "R-04",
+   "count": 5,
+   "title": "5 × contour colours and widths"
+  },
+  {
+   "id": "C-R-05",
+   "rec": "R-05",
+   "count": 39,
+   "title": "39 × italic fonts replaced"
+  },
+  {
+   "id": "C-R-07",
+   "rec": "R-07",
+   "count": 35,
+   "title": "35 × label colours darkened"
+  },
+  {
+   "id": "C-R-08",
+   "rec": "R-08",
+   "count": 79,
+   "title": "79 × letter-spacing added"
+  },
+  {
+   "id": "C-R-09",
+   "rec": "R-09",
+   "count": 18,
+   "title": "18 × text sizes floored"
+  },
+  {
+   "id": "C-R-10",
+   "rec": "R-10",
+   "count": 3,
+   "title": "3 × vegetation fills and stipple"
+  },
+  {
+   "id": "C-R-11",
+   "rec": "R-11",
+   "count": 8,
+   "title": "8 × track, hazard and red-label changes"
+  }
+ ],
+ "unusedSources": [
+  "S-LINZ-BASEMAPS-USAGE",
+  "S-LINZ-DD",
+  "S-MAPLIBRE-SPEC"
+ ]
+}

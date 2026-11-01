@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import Sankey from "../components/Sankey.astro";
+import { recommendations, changes, findings, sources, gradeText, url } from "../lib/graph";
+const implemented = recommendations.filter((r: any) => r.implemented);
+const used = sources.filter((s: any) => s.used).length;
+---
+<Base title="Overview" current="">
+  <h1>Making New Zealand topo maps easier to read</h1>
+  <p class="lede">An open research project re-styling LINZ's topographic map layers for people with colour vision deficiency, dyslexia, low vision and ageing eyes, and for field conditions like photocopies and red headtorches.</p>
+  <p>The map data stays exactly as LINZ publishes it. Only how it's drawn changes, and every change can be traced back to the evidence behind it. Today that's {used} sources, {findings.length} findings and {recommendations.length} recommendations, {implemented.length} of them already built into a working web style.</p>
+
+  <figure class="wide">
+    <h2 style="margin-top:1.5rem">From evidence to map</h2>
+    <p style="max-width:var(--measure)">Read left to right. Each band is one citation. Hover over or tab to any box to trace its full chain.</p>
+    <Sankey />
+    <figcaption>
+      Bands are shaded by the strength of the evidence they carry:
+      <span class="grade a">A</span> {gradeText.a.slice(3)};
+      <span class="grade b">B</span> {gradeText.b.slice(3)};
+      <span class="grade c">C</span> {gradeText.c.slice(3)};
+      <span class="grade d">D</span> {gradeText.d.slice(3)}.
+      The same information is in the <a href={url("trace/")}>evidence trail</a> as tables.
+    </figcaption>
+  </figure>
+
+  <h2>Built so far</h2>
+  <ul>
+    {implemented.map((r: any) => {
+      const c = changes.find((x: any) => x.rec === r.id);
+      return <li><a href={url(`recommendations/${r.id}/`)}><span class="id">{r.id}</span> {r.title}</a> <span>({c?.count} style edits)</span></li>;
+    })}
+  </ul>
+  <p><a href={url("see/")}>See how the maps look to different people</a>.</p>
+</Base>

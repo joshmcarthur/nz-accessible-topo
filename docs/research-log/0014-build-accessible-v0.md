@@ -35,7 +35,7 @@ below 4.5:1, of which **24 are real** (was 28/68 and 26). Both tools now skip
 empty `text-field` layers; current-state docs updated.
 
 ## Result
-| | LINZ topographic-v2 | accessible-v0 |
+| Measure | LINZ topographic-v2 | accessible-v0 |
 |---|---:|---:|
 | Italic label layers | 33 / 63 | 0 |
 | Labels < 4.5:1 (excl. shield false positives) | 24 | 0 |

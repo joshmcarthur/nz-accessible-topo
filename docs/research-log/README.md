@@ -22,3 +22,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0018 — Atkinson licence, and a proof-of-concept Ō/ō patch](0018-atkinson-licence-and-patch.md)
 - [0019 — Real Topo50 print: legend audit and real-map simulations](0019-real-topo50-print.md)
 - [0020 — Revisions from real-map evidence, and real-scenario tooling](0020-revisions-and-real-scenarios.md)
+- [0021 — Site scaffold: evidence Sankey and "how people see maps"](0021-site-scaffold.md)

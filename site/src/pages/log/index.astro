@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { url } from "../../lib/graph";
+const entries = (await getCollection("log")).sort((a, b) => a.id.localeCompare(b.id));
+const title = (e: any) => (e.body.match(/^# (.+)$/m)?.[1] ?? e.id).replace(/^\d{4} — /, "");
+---
+<Base title="Research log" current="log/">
+  <h1>Research log</h1>
+  <p class="lede">Every step of the research, in order: what was asked, what was done, what was found, and what changed. Each entry matches one commit.</p>
+  <ol class="log">
+    {entries.map((e) => <li value={parseInt(e.id)}><a href={url(`log/${e.id}/`)}>{title(e)}</a></li>)}
+  </ol>
+</Base>
+<style>
+  .log { padding-left: 3.5rem; }
+  .log li { margin-bottom: .4rem; }
+  .log li::marker { font-weight: 750; color: var(--contour); }
+</style>

@@ -37,6 +37,7 @@ does **not** change the data. It changes *how the data is drawn*.
 - **CI:** `tools/check.py` gates (no italics, label contrast, NNW light,
   macron-safe fonts, CVD/greyscale/red-light pair floors) + MapLibre validation.
 - **Preview:** `preview/` — side-by-side with CVD / greyscale / red-light simulation.
+- **Site:** `site/` — Astro site with the evidence Sankey and vision comparisons (see `site/README.md`).
 - Not yet: print output, user testing, live-tile visual check.
 
 ## Quick start

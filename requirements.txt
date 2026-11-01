@@ -3,3 +3,6 @@ pillow>=10
 fonttools>=4.40
 matplotlib>=3.8
 contourpy>=1.2
+markdown==3.7
+tifffile>=2024.1
+imagecodecs>=2024.1

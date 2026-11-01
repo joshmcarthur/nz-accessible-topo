@@ -1,0 +1,19 @@
+[
+ {"id": "normal", "name": "Typical colour vision", "model": null,
+  "who": "The baseline most map designs are checked against."},
+ {"id": "deutan", "name": "Deuteranopia", "model": "deuteranopia",
+  "who": "Red–green colour vision deficiency, the most common type. Around 8% of men have some red–green deficiency; most are milder than this simulation.",
+  "sources": ["S-JENNY-KELSO-2007", "S-MACHADO-2009"]},
+ {"id": "protan", "name": "Protanopia", "model": "protanopia",
+  "who": "Red–green deficiency in which reds also look darker. Red symbols lose contrast as well as hue.",
+  "sources": ["S-JENNY-KELSO-2007", "S-MACHADO-2009"]},
+ {"id": "tritan", "name": "Tritanopia", "model": "tritanopia",
+  "who": "Blue–yellow deficiency. Rare from birth, but age-related losses run along this same axis, so it's a useful stand-in for many older map readers.",
+  "sources": ["S-SCHNECK-2014", "S-MACHADO-2009"]},
+ {"id": "grey", "name": "Greyscale print", "model": "greyscale",
+  "who": "Photocopies, mono laser prints, SAR briefing handouts and e-ink GPS screens. Only lightness survives.",
+  "sources": ["S-HARVARD-MONO"]},
+ {"id": "red", "name": "Red headtorch", "model": "red",
+  "who": "Reading a paper map at night with a red light to keep night vision. Red ink reflects like blank paper and disappears.",
+  "sources": ["S-FORUM-REDLIGHT"]}
+]

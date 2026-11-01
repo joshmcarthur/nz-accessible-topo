@@ -18,6 +18,7 @@ must be encoded in **lightness + shape**, never in red hue alone.
 Under reduced illumination, people with colour vision impairment make
 considerably more colour-identification errors (F-01); older observers'
 blue–yellow losses resemble those of young people in dim light (F-02).
+**Sources:** S-JENNY-KELSO-2007 (B/C, citing Cole 2004), S-BARBUR-REVIEW (B).
 **Implication:** design the print palette for dusk/tent light, not a
 well-lit desk. Lightness contrast is the robust channel.
 
@@ -25,5 +26,5 @@ well-lit desk. Lightness contrast is the robust channel.
 Greyscale reproduction is common (club handouts, SAR briefings, e-ink GPS
 units, some inReach/e-reader devices). Our audit shows several key pairs
 with near-identical luminance (W4, W5, W6).
-**Sources:** audit (D); practitioner guidance on mono-legible maps (C,
-Harvard Library QGIS publishing guide).
+**Sources:** audit (D); S-HARVARD-MONO — practitioner guidance on mono-legible
+maps (C).

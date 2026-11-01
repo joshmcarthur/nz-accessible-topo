@@ -1,0 +1,105 @@
+@import "./tokens.css";
+
+/* The site follows the map's own rules: Open Sans, upright only (R-05),
+   every text colour ≥4.5:1 (R-07), meaning never carried by colour alone (R-01). */
+
+:root {
+  --measure: 68ch;
+  --wide: 76rem;
+  --step--1: 0.9375rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3125rem;
+  --step-2: clamp(1.4rem, 1.1rem + 1.4vw, 1.75rem);
+  --step-3: clamp(1.875rem, 1.2rem + 3vw, 2.5rem);
+  --space: 1.5rem;
+  font-family: "Open Sans Variable", "Open Sans", system-ui, sans-serif;
+  font-size: 100%;
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* R-05 applies to the site too: no italics anywhere. Emphasis is weight. */
+em, i, cite, var, dfn, address { font-style: normal; }
+em, i { font-weight: 650; }
+
+body {
+  margin: 0;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  /* The Topo50 1 km grid: 2 cm on the sheet. Faint, and only visible in the margins. */
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--grid) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--grid) 14%, transparent) 1px, transparent 1px);
+  background-size: 76px 76px;
+}
+
+.sheet {
+  max-width: var(--wide);
+  margin: 0 auto;
+  background: var(--paper);
+  min-height: 100vh;
+  padding: 0 clamp(1rem, 4vw, 3rem) 4rem;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--paper); padding: .5rem 1rem; z-index: 10; }
+
+header.site {
+  display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: baseline;
+  padding: 1.25rem 0 1rem;
+  border-bottom: 3px solid var(--contour);
+  margin-bottom: 2.5rem;
+}
+header.site .name { font-weight: 750; font-size: var(--step-1); color: var(--ink); text-decoration: none; letter-spacing: .01em; }
+header.site nav ul { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; list-style: none; margin: 0; padding: 0; }
+header.site nav a { color: var(--ink); text-decoration: none; font-weight: 550; padding: .25rem 0; border-bottom: 2px solid transparent; }
+header.site nav a:hover, header.site nav a[aria-current="page"] { border-bottom-color: var(--water); }
+
+main > * { max-width: var(--measure); }
+main > .wide, main > figure, main > table, main > .table-wrap { max-width: none; }
+
+h1, h2, h3 { line-height: 1.2; font-weight: 750; letter-spacing: -0.005em; }
+h1 { font-size: var(--step-3); margin: 0 0 1rem; max-width: 22ch; }
+h2 { font-size: var(--step-2); margin: 3rem 0 .75rem; }
+h3 { font-size: var(--step-1); margin: 2rem 0 .5rem; }
+p, ul, ol { margin: 0 0 1rem; }
+.lede { font-size: var(--step-1); line-height: 1.5; max-width: 54ch; }
+
+a { color: var(--water); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--water); outline-offset: 2px; border-radius: 2px; }
+
+/* IDs are the project's real identifiers, so they're the visible labels. */
+.id { font-weight: 750; color: var(--contour); letter-spacing: .04em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Evidence grade: a filled bar whose length AND lightness encode the grade, plus the letter. */
+.grade { display: inline-flex; align-items: center; gap: .4rem; font-size: var(--step--1); font-weight: 650; white-space: nowrap; }
+.grade::before { content: ""; display: inline-block; height: .6rem; border-radius: 1px; background: var(--g); width: var(--w); }
+.grade.a { --g: var(--grade-a); --w: 2.4rem; }
+.grade.b { --g: var(--grade-b); --w: 1.8rem; }
+.grade.c { --g: var(--grade-c); --w: 1.2rem; }
+.grade.d { --g: var(--grade-d); --w: .6rem; }
+
+.note { border-left: 4px solid var(--contour-light); padding: .25rem 0 .25rem 1rem; color: var(--ink); }
+
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+.table-wrap { overflow-x: auto; }
+th, td { text-align: left; vertical-align: top; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+th { font-weight: 700; border-bottom: 2px solid var(--ink); }
+td ul { margin: 0; padding-left: 1rem; }
+
+figure { margin: 2rem 0; }
+figcaption { font-size: var(--step--1); max-width: var(--measure); margin-top: .75rem; }
+
+.prose img { max-width: 100%; height: auto; }
+.prose table { margin: 1rem 0; }
+.prose code { font-size: .9em; background: color-mix(in srgb, var(--water-fill) 45%, transparent); padding: .05em .3em; border-radius: 2px; }
+.prose pre { overflow-x: auto; padding: 1rem; background: color-mix(in srgb, var(--water-fill) 30%, transparent); }
+
+footer.site { margin-top: 5rem; padding-top: 1rem; border-top: 1px solid var(--ink); font-size: var(--step--1); max-width: var(--measure); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

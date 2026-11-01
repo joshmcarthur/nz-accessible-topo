@@ -95,3 +95,19 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-DEBIAN-ATKINSON | D | debian-fonts mailing list (2021): Braille Institute download licence is a modified OFL. https://lists.debian.org/debian-fonts/2021/02/msg00050.html |
 | S-SCANCODE-ATKINSON | C | ScanCode LicenseDB, "Atkinson Hyperlegible Font License" (Braille Institute PDF 2020-11-04). https://scancode-licensedb.aboutcode.org/atkinson-hyperlegible-font |
 | S-NEXT-RFN | D | Secondary listing of "License for The Atkinson Hyperlegible Next Font" naming RFNs "ATKINSON", "HYPERLEGIBLE". https://wiki.mobiusconsortium.org/wiki/Special:Version/License/The_Atkinson_Hyperlegible_Next_Font |
+
+## Our own measurements
+
+Reproducible from tools in this repo, graded D until validated with users.
+`tools/extract_graph.py` maps references in findings to these IDs (W1–W8 →
+web audit, P1–P9 → print audit, etc.).
+
+| ID | Grade | Source |
+|---|---|---|
+| S-OUR-AUDIT-WEB | D | `tools/palette_audit.py` on LINZ `topographic-v2` (logs 0004, 0013, 0014) |
+| S-OUR-AUDIT-PRINT | D | Topo50 legend colour/dash sampling + audit (log 0019) |
+| S-OUR-FONTCHECK | D | `tools/font_check.py` glyph coverage and x-height (log 0006) |
+| S-OUR-SHAPING-TEST | D | Shaped vs unshaped rendering of Atkinson Next (log 0018) |
+| S-OUR-PALETTE-V0 | D | Palette experiment v0 (log 0009) |
+| S-OUR-PATCH | D | `tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018) |
+| S-OUR-REAL-RENDER | D | Simulations over LINZ's real Topo50 render (log 0019) |

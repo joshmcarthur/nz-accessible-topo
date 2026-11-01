@@ -372,6 +372,11 @@ def main():
     up = render(os.path.join(ROOT, "upstream", "linz-topographic-v2.json"), a.fonts, sprites, dem, shade_nw)
     v0 = render(os.path.join(ROOT, "styles", "accessible-v0.json"), a.fonts, sprites, dem, shade_nnw)
 
+    # individual scenes (inputs for the site's comparison viewer)
+    os.makedirs(os.path.join(a.out, "scenes"), exist_ok=True)
+    up.save(os.path.join(a.out, "scenes", "synthetic-linz.png"))
+    v0.save(os.path.join(a.out, "scenes", "synthetic-accessible-v0.png"))
+
     # 1. side by side, normal vision
     grid([[caption(up, "LINZ topographic-v2", a.fonts), caption(v0, "accessible-v0", a.fonts)]]).save(
         os.path.join(a.out, "01-side-by-side.png"))

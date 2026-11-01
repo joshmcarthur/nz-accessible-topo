@@ -1,0 +1,82 @@
+---
+// One comparison: each variant of a map image, under a chosen vision or
+// lighting condition. Switching is pure CSS (:has + radio buttons), so it
+// works without JavaScript and is fully keyboard operable.
+import conditions from "../data/conditions.json";
+import assets from "../data/compare-assets.json";
+import { byId, url } from "../lib/graph";
+
+interface Props { c: any }
+const { c } = Astro.props;
+const files = (assets as any)[c.id] ?? [];
+const name = `cond-${c.id}`;
+---
+<section class="compare" id={c.id} aria-labelledby={`${c.id}-h`}>
+  <h2 id={`${c.id}-h`}>{c.title}</h2>
+  <p>{c.summary}</p>
+  <fieldset>
+    <legend>See it as</legend>
+    {conditions.map((cond, i) => (
+      <label>
+        <input type="radio" name={name} value={cond.id} checked={i === 0} />
+        <span>{cond.name}</span>
+      </label>
+    ))}
+  </fieldset>
+  <div class:list={["variants", { two: c.variants.length > 1 }]}>
+    {c.variants.map((v: any, i: number) => (
+      <figure>
+        {conditions.map((cond) => (
+          <a href={url(files[i]?.files[cond.id] ?? "")} data-cond={cond.id} class="full">
+            <img src={url(files[i]?.files[cond.id] ?? "")} width={files[i]?.width} height={files[i]?.height}
+                 loading="lazy" decoding="async"
+                 alt={`${c.title}: ${v.label}, simulated for ${cond.name.toLowerCase()}. Opens full size.`} />
+          </a>
+        ))}
+        {c.variants.length > 1 && <figcaption>{v.label}</figcaption>}
+      </figure>
+    ))}
+  </div>
+  {conditions.map((cond) => (
+    <p class="who" data-cond={cond.id}>
+      <strong>{cond.name}.</strong> {cond.who}
+      {cond.sources && <> Sources: {cond.sources.map((s: string, i: number) => <>{i ? ", " : ""}<a href={url(`trace/#${s}`)}>{s}</a></>)}.</>}
+    </p>
+  ))}
+  <p class="meta">
+    Related: {c.links.map((r: string, i: number) => <>{i ? ", " : ""}<a href={url(`recommendations/${r}/`)}><span class="id">{r}</span> {byId[r]?.title}</a></>)}.
+    <br />{c.attribution}
+  </p>
+</section>
+
+<style>
+  .compare { max-width: none; margin-bottom: 4rem; }
+  .compare > p, .compare > h2 { max-width: var(--measure); }
+  fieldset { border: 0; padding: 0; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+  legend { font-weight: 700; margin-bottom: .5rem; padding: 0; width: 100%; }
+  label { cursor: pointer; }
+  label input { position: absolute; opacity: 0; pointer-events: none; }
+  label span {
+    display: inline-block; padding: .45rem .85rem; border: 2px solid var(--ink); border-radius: 999px;
+    font-weight: 600; font-size: var(--step--1); background: var(--paper);
+  }
+  /* Selected state uses fill AND a check mark, not colour alone (R-01). */
+  label input:checked + span { background: var(--ink); color: var(--paper); }
+  label input:checked + span::before { content: "✓ "; }
+  label input:focus-visible + span { outline: 3px solid var(--water); outline-offset: 2px; }
+  .variants { display: grid; gap: 1rem; }
+  .variants.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); }
+  figure { margin: 0; }
+  .full { display: none; }
+  img { display: block; width: 100%; height: auto; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+  figcaption { font-weight: 700; margin-top: .5rem; }
+  .who { display: none; margin-top: 1rem; max-width: var(--measure); }
+  .meta { font-size: var(--step--1); margin-top: 1rem; }
+  /* Show only the checked condition. */
+  .compare:has(input[value="normal"]:checked) [data-cond="normal"],
+  .compare:has(input[value="deutan"]:checked) [data-cond="deutan"],
+  .compare:has(input[value="protan"]:checked) [data-cond="protan"],
+  .compare:has(input[value="tritan"]:checked) [data-cond="tritan"],
+  .compare:has(input[value="grey"]:checked) [data-cond="grey"],
+  .compare:has(input[value="red"]:checked) [data-cond="red"] { display: block; }
+</style>

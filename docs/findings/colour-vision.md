@@ -32,7 +32,7 @@ non-colour cues — pattern, line style, shape, size, lightness.
 From our audit (W4–W7): scrub vs scattered scrub (ΔE <5 for all dichromats),
 contour vs highway (ΔE ≈6 for everyone), contour vs pipeline (tritan ΔE
 3.8), and closed-track status carried by a faint shadow.
-**Sources:** our audit (D).
+**Sources:** our audit (D), using S-MACHADO-2009 simulation and S-SHARMA-2005 ΔE.
 **Grade:** D (model output; needs user validation).
 
 ## Notes on what is *not* a problem

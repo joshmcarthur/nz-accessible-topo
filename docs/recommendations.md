@@ -43,14 +43,14 @@ legend for the core classes. (Test, see R-16.)
 ## Terrain
 
 ### R-03 — Light relief shading from NNW (337.5°), with a soft multidirectional component
-**Rests on:** F-14, F-15, F-16, F-17 · **Best evidence:** A–
+**Rests on:** F-14, F-15, F-16, F-17, S-MAPLIBRE-2320 · **Best evidence:** A–
 **Change from today:** Topo50 uses NW (315°).
 **Why:** Replicated studies show fewer terrain-reversal errors with NNW than
 NW. In the southern hemisphere this is also where the real sun is.
 **Met when:** shaded relief generated at 337.5°, blended with a
 multidirectional/sky layer; evaluated on both Alpine and lowland sheets.
 
-### R-04 — Darker, solid, wider contours with a clear index/intermediate hierarchy
+### R-04 — Contours that stay visible: strong index lines, recessive intermediates
 **Rests on:** F-18, F-20, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
 **Starting values:** index `#8A4F1C`, intermediate `#C4814B` (revised in log
 0020 from `#A8703C`: real Topo50 slopes show 20 m intermediates are dense
@@ -153,18 +153,22 @@ without redesign.
 ## Products and process
 
 ### R-13 — Publish three variants from one source
+**Rests on:** F-01, F-02, F-23 · **Best evidence:** B
 Full colour (web + print), **greyscale-safe print** (F-23), and a
 **high-contrast** web variant for low-vision users.
 
 ### R-14 — Run the audit in CI on every style change
+**Rests on:** F-04, S-OUR-AUDIT-WEB · **Best evidence:** D
 `palette_audit.py` and `font_check.py` against the style; fail on new
 ❌ rows. Makes regressions visible and keeps the evidence chain alive.
 
 ### R-15 — Start from LINZ's MIT-licensed `topographic-v2` style
+**Rests on:** S-LINZ-BASEMAPS-CONFIG, S-LINZ-BASEMAPS-STYLING · **Best evidence:** C
 Fork rather than rewrite: it already maps the Shortbread schema, and staying
 close to upstream lets improvements flow back to LINZ.
 
 ### R-16 — Validate with real users before calling anything "accessible"
+**Rests on:** F-04, F-06, F-14 · **Best evidence:** A (that model results need validation is a method point)
 Grade D model results must be confirmed. Minimum: (a) CVD readers,
 (b) dyslexic readers, (c) readers 60+, (d) LandSAR / tramping club members
 familiar with Topo50. Tasks: identify landform (ridge vs valley), follow a

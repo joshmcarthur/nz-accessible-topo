@@ -1,0 +1,138 @@
+---
+// Server-rendered Sankey: sources → findings → recommendations → style changes.
+// Works without JavaScript (every node is a link with a full-text title). The
+// small script below adds chain tracing: hover or focus a node to see every
+// source upstream of it and every change downstream.
+import { sankey, sankeyLinkHorizontal } from "d3-sankey";
+import { sources, findings, recommendations, changes, gradeClass, url } from "../lib/graph";
+
+const W = 1180, H = 1750;
+const M = { top: 34, right: 230, bottom: 10, left: 170 };
+
+const used = new Set<string>();
+const links: any[] = [];
+for (const f of findings) for (const s of f.sources) { links.push({ source: s, target: f.id }); used.add(s); }
+for (const r of recommendations) {
+  for (const f of r.findings) links.push({ source: f, target: r.id });
+  for (const s of r.sources) { links.push({ source: s, target: r.id }); used.add(s); }
+}
+for (const c of changes) links.push({ source: c.rec, target: c.id });
+
+const label = (n: any) => n.kind === "change" ? n.title : n.id;
+const nodes = [
+  ...sources.filter((s: any) => used.has(s.id)).map((s: any) => ({ ...s, kind: "source", href: url(`trace/#${s.id}`) })),
+  ...findings.map((f: any) => ({ ...f, kind: "finding", href: url(`findings/${f.id}/`) })),
+  ...recommendations.map((r: any) => ({ ...r, kind: "rec", href: url(`recommendations/${r.id}/`) })),
+  ...changes.map((c: any) => ({ ...c, kind: "change", grade: recommendations.find((r: any) => r.id === c.rec).grade,
+                                 href: url(`recommendations/${c.rec}/#changes`) })),
+];
+
+const graph = sankey()
+  .nodeId((d: any) => d.id)
+  // Fixed columns by kind: a finding nothing uses yet still sits with the findings.
+  .nodeAlign((n: any) => ({ source: 0, finding: 1, rec: 2, change: 3 } as any)[n.kind])
+  .nodeWidth(9)
+  .nodePadding(7)
+  .iterations(64) // default relaxation ordering: far fewer crossings than alphabetical
+  .extent([[M.left, M.top], [W - M.right, H - M.bottom]])({
+    nodes: nodes.map((d) => ({ ...d })),
+    links: links.map((d) => ({ ...d, value: 1 })),
+  });
+
+// For tracing: every node connected to a link, upstream and downstream.
+const up = new Map<string, Set<string>>(), down = new Map<string, Set<string>>();
+for (const n of graph.nodes as any[]) { up.set(n.id, new Set()); down.set(n.id, new Set()); }
+for (const l of graph.links as any[]) { down.get(l.source.id)!.add(l.target.id); up.get(l.target.id)!.add(l.source.id); }
+function closure(id: string, m: Map<string, Set<string>>, acc = new Set<string>()) {
+  for (const n of m.get(id) ?? []) if (!acc.has(n)) { acc.add(n); closure(n, m, acc); }
+  return acc;
+}
+const chainOf = (l: any) => [...new Set([l.source.id, l.target.id, ...closure(l.source.id, up), ...closure(l.target.id, down)])].join(" ");
+const path = sankeyLinkHorizontal();
+const columns = [
+  { x: M.left, label: "Sources" }, { label: "Findings" }, { label: "Recommendations" }, { label: "Style changes", end: true },
+];
+const xs = [...new Set((graph.nodes as any[]).map((n) => n.x0))].sort((a, b) => a - b);
+---
+<div class="sankey-wrap">
+  <svg class="sankey" viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="group"
+       aria-labelledby="sankey-title" aria-describedby="sankey-desc">
+    <title id="sankey-title">How sources lead to findings, recommendations and style changes</title>
+    <desc id="sankey-desc">Each band is one citation. Bands are shaded by evidence grade: darkest is A, lightest is D. The same information is in the evidence trail table.</desc>
+    {xs.map((x, i) => (
+      <text class="col" x={i === xs.length - 1 ? x + 9 : x + 4.5} y="16" text-anchor={i === 0 ? "start" : i === xs.length - 1 ? "start" : "middle"}>{columns[i]?.label}</text>
+    ))}
+    <g class="links" fill="none">
+      {(graph.links as any[]).map((l) => (
+        <path d={path(l)} class={`link g-${gradeClass(l.source.grade)}`} stroke-width={Math.max(1.5, l.width)} data-chain={chainOf(l)} data-s={l.source.id} data-t={l.target.id}>
+          <title>{`${l.source.id} → ${l.target.id}`}</title>
+        </path>
+      ))}
+    </g>
+    <g class="nodes">
+      {(graph.nodes as any[]).map((n) => {
+        const right = n.kind === "change";
+        const left = n.kind === "source";
+        return (
+          <a href={n.href} class={`node k-${n.kind}`} data-id={n.id}
+             aria-label={`${n.id === n.title ? "" : n.kind === "change" ? "" : n.id + ": "}${n.title}. Evidence grade ${n.grade}.`}>
+            <title>{`${n.kind === "change" ? "" : n.id + " — "}${n.title} (grade ${n.grade})`}</title>
+            <rect x={n.x0} y={n.y0} width={n.x1 - n.x0} height={Math.max(2, n.y1 - n.y0)} />
+            <text x={left ? n.x0 - 6 : n.x1 + 6} y={(n.y0 + n.y1) / 2} dy="0.35em" text-anchor={left ? "end" : "start"}>
+              {label(n)}
+            </text>
+          </a>
+        );
+      })}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .sankey-wrap { overflow-x: auto; margin: 1rem 0 0; -webkit-overflow-scrolling: touch; }
+  .sankey { display: block; max-width: 100%; height: auto; min-width: 760px; font-family: inherit; }
+  .col { font-size: 13px; font-weight: 750; fill: var(--ink); }
+  .link { stroke-opacity: .3; transition: stroke-opacity .15s; }
+  .g-a { stroke: var(--grade-a); } .g-b { stroke: var(--grade-b); }
+  .g-c { stroke: var(--grade-c); } .g-d { stroke: var(--grade-d); }
+  .node rect { fill: var(--ink); }
+  .node.k-rec rect { fill: var(--contour); }
+  .node text { font-size: 10.5px; fill: var(--ink); font-weight: 600; letter-spacing: .02em; }
+  .node.k-rec text { font-size: 12px; font-weight: 750; fill: var(--contour); }
+  .node.k-change text { font-weight: 550; }
+  .node:focus-visible { outline: none; }
+  .node:focus-visible rect { stroke: var(--water); stroke-width: 3; }
+  .node:focus-visible text, .node:hover text { text-decoration: underline; }
+  /* Tracing: fade everything not on the chain. */
+  .sankey.tracing .link { stroke-opacity: .07; }
+  .sankey.tracing .link.on { stroke-opacity: .85; }
+  .sankey.tracing .node { opacity: .25; }
+  .sankey.tracing .node.on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
+</style>
+
+<script>
+  for (const svg of document.querySelectorAll<SVGSVGElement>("svg.sankey")) {
+    const links = [...svg.querySelectorAll<SVGPathElement>(".link")];
+    const nodes = [...svg.querySelectorAll<SVGAElement>(".node")];
+    const trace = (id: string | null) => {
+      svg.classList.toggle("tracing", !!id);
+      if (!id) return;
+      const on = new Set<string>([id]);
+      for (const l of links) {
+        const chain = l.dataset.chain!.split(" ");
+        const hit = chain.includes(id);
+        l.classList.toggle("on", hit);
+        if (hit) { on.add(l.dataset.s!); on.add(l.dataset.t!); }
+      }
+      // light only nodes that are endpoints of highlighted bands
+      for (const n of nodes) n.classList.toggle("on", on.has(n.dataset.id!));
+    };
+    for (const n of nodes) {
+      n.addEventListener("pointerenter", () => trace(n.dataset.id!));
+      n.addEventListener("focus", () => trace(n.dataset.id!));
+      n.addEventListener("pointerleave", () => trace(null));
+      n.addEventListener("blur", () => trace(null));
+    }
+  }
+</script>
