@@ -31,14 +31,30 @@ does **not** change the data. It changes *how the data is drawn*.
 
 ## Status
 
-Research phase. Findings F-01–F-25, draft recommendations R-01–R-16, and a
-measured palette experiment (v0). No style file yet — next step is forking
-LINZ's `topographic-v2` style and applying R-03–R-11 (see `docs/open-questions.md`).
+- Research: findings F-01–F-25, recommendations R-01–R-16 (`docs/`).
+- **Styles:** `styles/accessible-v0.json` and `-multidir.json`, generated from
+  LINZ's `topographic-v2` by `tools/build_style.py` (R-03–R-11 applied).
+- **CI:** `tools/check.py` gates (no italics, label contrast, NNW light,
+  macron-safe fonts, CVD/greyscale/red-light pair floors) + MapLibre validation.
+- **Preview:** `preview/` — side-by-side with CVD / greyscale / red-light simulation.
+- Not yet: print output, user testing, live-tile visual check.
+
+## Quick start
+
+```sh
+pip install -r requirements.txt
+python3 tools/build_style.py   # regenerate styles/ from upstream/
+python3 tools/check.py         # accessibility gates
+python3 -m http.server 8000    # then open http://localhost:8000/preview/
+```
 
 ## Tools
 
+- `tools/build_style.py` — upstream LINZ style → accessible styles, with a per-change log
+- `tools/check.py` — CI gates C1–C6
 - `tools/palette_audit.py` — WCAG contrast + CVD / greyscale / red-light separability
 - `tools/font_check.py` — macron coverage and x-height for candidate fonts
+- `tools/make_sprites.py` — stipple and cross-bar patterns
 
 ## Licensing (to be decided by the maintainer)
 

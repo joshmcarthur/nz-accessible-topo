@@ -24,7 +24,9 @@ human actually look at the result?
 - **The gate earned its keep on first run:** C2 caught three layers still
   requesting italic faces (`Poi-Windmill`, `Waterway-Flume-Name`,
   `Poi-Showground-Symbol`). They had empty `text-field`s, so the build
-  skipped them before de-italicising. Fixed by mapping fonts on every layer.
+  skipped them before de-italicising. Fixed by mapping fonts on every layer
+  (the fix landed in the log-0014 build commit, as the gate was run before
+  that commit was made).
   Harmless today, but MapLibre would still fetch italic glyph ranges, and a
   future upstream change filling those fields would have reintroduced italics.
 

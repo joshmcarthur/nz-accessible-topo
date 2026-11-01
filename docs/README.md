@@ -6,6 +6,9 @@
 | Chronological research log | [research-log/](research-log/) |
 | Current Topo50 print map | [current-state/topo50-print.md](current-state/topo50-print.md) |
 | Current LINZ web style | [current-state/linz-basemaps-topographic-v2.md](current-state/linz-basemaps-topographic-v2.md) |
+| Tile attributes & hillshade | [current-state/tile-attributes.md](current-state/tile-attributes.md) |
+| Built style change logs | [styles/](styles/) |
+| Upstream issues to file | [upstream/](upstream/) |
 | Findings (by topic) | [findings/](findings/) |
 | Palette experiments | [palette-experiments/](palette-experiments/) |
 | Recommendations | [recommendations.md](recommendations.md) |

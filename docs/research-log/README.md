@@ -13,3 +13,8 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0009 — Palette experiment v0](0009-palette-experiment-v0.md)
 - [0010 — Draft recommendations v0](0010-recommendations-v0.md)
 - [0011 — Index and next steps](0011-index-and-next-steps.md)
+- [0012 — Is the Atkinson Ō/ō gap known or fixed upstream? (OQ-10)](0012-atkinson-upstream.md)
+- [0013 — What can a style actually use? (OQ-12)](0013-tile-attributes-and-hillshade.md)
+- [0014 — Build `accessible-v0` from LINZ's style](0014-build-accessible-v0.md)
+- [0015 — CI gate and visual preview](0015-ci-and-preview.md)
+- [0016 — Status and next steps](0016-next-steps.md)
