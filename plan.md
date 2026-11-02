@@ -73,3 +73,5 @@ R-08: one attempt. `labels.letter_spacing_em` is 0.05. Vector reads it. Raster a
 R-12: `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Do not pick an access ink. Do not overlay access data. Next is R-03, skip unless the backlog says served raster tiles already bake relief.
 
 Carto text placement: flat one-line names slide on a bounded horizontal line at the stock baseline, or flip below it (log 0042). The `map` container runs QGIS 4.2.2, which has `OverPoint`.
+
+Vegetation map draws below contour. The apply step moves that layer in the layer tree. Custom-order stays off. Vegetation alpha stays 180/200. `vegetation_line map` stays above contours. Vector style already paints contours after vegetation fills.

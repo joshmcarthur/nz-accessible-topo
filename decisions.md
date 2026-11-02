@@ -623,3 +623,27 @@ QGIS prefers the middle of a line, so the stock position wins when free. The all
 ### Consequences
 
 A long all-caps name can exceed its estimated line. Tune `advance_em` or `allowance_mm` if names go missing on the full sheet. A nearest-feature anchor is not needed for the cold spring case.
+
+## Vegetation map draws below contour
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+Stock Topo50 draws `vegetation map` above `contour`. The stock fill is pale, so the brown lines still read. The accessible native and scrub fills are darker and scrub is hatched, so those fills hide the contours on the cold-spring square. `landcover map` is already under `contour`. `vegetation_line map` is line vegetation. The vector style already paints contours after vegetation fills.
+
+### Decision
+
+The QGIS apply step moves `vegetation map` in the layer tree so it sits immediately under `contour`. Custom-order stays off. Tree order is draw order. `vegetation_line map` stays above contours. Vegetation alpha stays 180 native and 200 scrub. Vector style does not change.
+
+The constraint is `draw_order` in `tools/style-topo50.json`: `vegetation map` below `contour`. The apply step reads that pair. It is not a general order engine.
+
+### Rationale
+
+R-04 needs contours that stay visible. R-10 and R-17 need a larger forest versus scrub step. Lowering vegetation alpha would weaken that step. Reordering keeps both. A one-off .qgs edit would be undone by the next apply. Turning on custom-order would rewrite the full draw list.
+
+### Consequences
+
+Accessible sheets diverge from LINZ layer order on this one pair. Stock order stays. Opaque vegetation fills are a later choice. The old note that alpha stays below 255 because vegetation draws above contours is no longer the reason for that alpha.
+
