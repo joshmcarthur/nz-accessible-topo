@@ -556,3 +556,28 @@ The dispatch allows one attempt and says to leave it provisional if the evidence
 ### Consequences
 
 Raster map labels do not gain 0.05 em tracking. A later A/B test is a new choice.
+
+## R-12 reserves an unpainted casing/colour channel
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-12 asks to leave a casing/colour channel unused for track access status. Access (public/private, DOC, walkway) is not in the Topo50 layers (F-25). R-11 already encodes closed tracks with cross-bars. Closed is not access.
+
+### Decision
+
+`tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false.
+
+Do not pick an access ink. Do not overlay Walking Access or DOC data. Do not paint a casing for access on the QGIS apply step or the vector build.
+
+Closed-track casing stays for R-11 on the vector style. That casing is closed status, not access.
+
+### Rationale
+
+The recommendation is to reserve a channel, not to show access. Showing access needs data we do not have. A new hex would be a guess. R-11 did not cover this: it encodes closed tracks, not public versus private access.
+
+### Consequences
+
+A later step that paints access is a new choice. It needs an access attribute or an overlay source.
