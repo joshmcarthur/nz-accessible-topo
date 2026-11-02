@@ -31,3 +31,10 @@ The accessible patch no longer changes that mode. See the decision "Along-line l
 ## Why does a sliding carto label land on a fixed curved label?
 
 With a hint line anchor, QGIS moves `Godley Head` onto `Gun emplacements` on BX24, although water below `Godley` is free. `QgsLabelingResults` boxes are the right size. Rule priority 5 and label engine version 2 do not change it. A guess: under `AllowOverlapIfRequired`, PAL keeps the flexible label and then draws the dropped fixed label over it. Answer this before a hint anchor is tried again.
+
+
+## Which painted road pairs still fail R-04?
+
+**Open 2026-11-03.** Log 0048. Intermediate versus PMS151 `#FF7F00` fails protan ΔE 9.1 and tritan ΔE 7.6. Index versus highway `#E31A1C` fails protan ΔE 0.9. Intermediate versus that highway fails deutan ΔE 8.8. Pipeline is not on Map5View.
+
+The closed question that judged R-04 against gold `#D5B43C` was a measurement error. Contour fills stay. If a same-hue orange cannot meet ΔE ≥10 against `#C4814B`, leave R-04 open and stop.

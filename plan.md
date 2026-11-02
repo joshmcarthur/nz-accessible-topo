@@ -87,3 +87,6 @@ Carto text fit (approved 2026-11-03, in progress). QGIS tests label boxes yes or
 3. BX24 fit run, renders, research log, lore decision.
 
 Long-name wrap (16 chars, `Te` kept joined) and flat line height 0.85 are done in the working tree, not committed.
+
+
+Painted-ink inventory (log 0048). Map5View road fill is PMS151 `#FF7F00`, not gold `#D5B43C`. Highway fill is `#E31A1C`. Road casing is `#232323`. Water fill is `#D1E7F5`. Pipeline is not on Map5View. R-04 is open against those painted inks. Contour fills stay `#8A4F1C` / `#C4814B`. Do not invent a new hue. Next: show the gap table, then own one failing class if that table is accepted. Step C waits.

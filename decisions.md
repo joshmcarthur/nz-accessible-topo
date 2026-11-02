@@ -783,3 +783,30 @@ The raster apply step starts from stock Topo50 and writes only the rules the sty
 
 CI still rebuilds from the catalog and the style file. Layers the JSON does not name can still change when upstream LINZ paint changes. Next is Step C.
 
+
+
+## Painted road ink is PMS151, not gold
+
+**Status:** Accepted
+**Date:** 2026-11-03
+**Supersedes:** the road-ink fact in "R-04, R-05, and R-06 stay settled in the style loop"
+
+### Context
+
+The style loop judged contours against `#D5B43C` and treated that as the project road, including highways. Map5View does not paint that gold as a road fill. Pixel counts on the accessible squares and SimpleLine `line_color` on the map layers both show PMS151.
+
+### Decision
+
+`reference_inks.project_road` is `#FF7F00`. `reference_inks.project_highway` is `#E31A1C`. `reference_inks.project_road_casing` is `#232323`. `reference_inks.water_fill` is `#D1E7F5`. Print highway `#EA6300` stays a reference the style does not paint.
+
+Judge R-04 against those painted inks. Keep contour fills `#8A4F1C` and `#C4814B`. Do not change an intermediate to clear orange.
+
+Gold `#D5B43C` is the bivouac marker colour.
+
+### Rationale
+
+R-04 Met when is ΔE ≥10 versus the highway the map paints. Scoring against a legend colour that is not on the line hid three failing pairs (log 0048).
+
+### Consequences
+
+R-04 is open. Road and highway fills stay unowned until a later step paints them. Dark casing already carries R-01 and R-17 P7 for those classes under red light.
