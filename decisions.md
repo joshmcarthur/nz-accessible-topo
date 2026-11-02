@@ -645,6 +645,29 @@ Four of six BX24 dual names clear. `Ōmawete /` and `Te Upoko-o-Kurī /` still o
 
 Two overlaps stay on BX24. A later fix needs more positions for fixed curved labels or a different split rule, not a longer line.
 
+## Long flat names wrap; fitted names come from carto_fit.json
+
+**Status:** Accepted
+**Date:** 2026-11-03
+
+### Context
+
+QGIS tests label boxes as yes or no. A one-line box is font ascent plus descent, 1.3 em for NZAT Legible Test. On the spring, `Ōmawete / Coopers Knob` fits on one line in ink, but its box collides with `Rhodes Spring` and `A579`, so QGIS puts it below on `A579`. Tight metrics, size priority, obstacles off, and `IgnoreWhitespaceCollisions` did not change that. QGIS cannot pick between two texts for one label.
+
+### Decision
+
+Flat single names longer than `labels.carto_point.wrap_chars` (16) wrap at that length. Dual names keep the slash break. A leading `Te ` gets a no-break space. The flat rule line height is `line_height` (0.85).
+
+The apply step reads an optional `carto_fit.json` beside the `.qgs`: `{row id: {x, y, lines}}`. A listed row gets data-defined `PositionX`/`PositionY` with `Hali 'Center'` and `Vali 'Bottom'`, and `lines: 1` drops the slash break and the wrap. Unlisted rows return NULL and keep normal placement. The fit file is per sheet and is not in the style file.
+
+### Rationale
+
+QGIS's own wrap breaks dual names and `Te` names badly. A hand fit at the spring (x 1570014, y 5165748, one line) draws clear between both neighbours. Data-defined position overrides placement only where a value exists.
+
+### Consequences
+
+The wrap applies to every long single name, even where there was room. At 0.85, `Ōmawete /` sits fully under `Rhodes Spring` until a fit moves it. `tools/fit_carto_labels.py` will write the fit file from ink overlap.
+
 ## Vegetation map draws below contour
 
 **Status:** Accepted
