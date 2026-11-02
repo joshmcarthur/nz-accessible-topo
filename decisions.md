@@ -602,3 +602,24 @@ QGIS already has an ordered-position solver. `O` first keeps the LINZ position w
 ### Consequences
 
 `@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. The slightly positions do not limit the move: QGIS aligns `TSR` to the anchor, so with the anchor at the label centre `TSR` moves a label by half its width, like `TR`. A nearest-feature anchor or a real move limit is a later choice. The `map` container runs QGIS 4.2.2, which has `OverPoint`.
+
+## Flat carto text slides on a bounded line
+
+**Status:** Accepted. Supersedes "Flat carto text uses cartographic placement".
+**Date:** 2026-11-02
+
+### Context
+
+Cartographic point placement around the stock label centre moved `Ōmawete / Coopers Knob` about 500 m east. QGIS aligns every point position, including the "slightly" ones, to the anchor. A centred anchor therefore moves a label by half its width on any sideways step. A point label with its anchor outside the drawn extent is not drawn.
+
+### Decision
+
+The flat one-line rule (`text_placement = 1`, `text_orientation = 0`, no line break) uses parallel line placement (mode 2) with above and below map-oriented flags (14). A geometry generator draws a horizontal line at the stock baseline, centred on the stock label. Its half-length is characters × max(size floor, size) × `advance_em` × points-to-metres / 2 + `allowance_mm`. `overrun_mm` absorbs estimate error. Values in `labels.carto_point`: allowance 1 mm, advance 0.6 em, overrun 0.5 mm. The stock `LabelDistance` from `offset` stays. Curved-only fields are dropped. `AllowOverlapIfRequired` stays.
+
+### Rationale
+
+QGIS prefers the middle of a line, so the stock position wins when free. The allowance caps the sideways move at about 1.5 mm. Below-line gives one vertical step. Line labels draw where the line crosses the extent. Atkinson measures 0.45–0.63 em per character on sample names.
+
+### Consequences
+
+A long all-caps name can exceed its estimated line. Tune `advance_em` or `allowance_mm` if names go missing on the full sheet. A nearest-feature anchor is not needed for the cold spring case.
