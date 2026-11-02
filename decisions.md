@@ -864,3 +864,32 @@ The smallest same-L* pair that is clearly less red and still meets ΔE ≥10 aga
 ### Consequences
 
 The style-loop settled contour hexes are superseded. The next loop paste must keep `#7A5542` / `#B08872`. Road and highway fills stay unowned. Pipeline is still not on Map5View. A steep sheet still answers OQ-09.
+
+
+## Darker orange road fill and index-ink contour numbers
+
+**Status:** Accepted
+**Date:** 2026-11
+**Supersedes:** the unowned-road instruction in "Olive-brown contours close painted R-04"
+
+### Context
+
+PMS151 `#FF7F00` road fill is 2.53:1 grey and 1.00:1 under red light. A dark casing `#232323` still carries the line. Contour-number FontMarkers on `nztopo50_carto_symbol` (`type = contour_number`) use that same orange with no casing. That pair was missing from the list. Josh chose identifiability over leaving the fill unowned, and rejected pale orange.
+
+### Decision
+
+`reference_inks.project_road` is `#EC7000`. That is the same hue as PMS151, darkened to 3.06:1 grey vs paper. Highway fill stays `#E31A1C`. Do not go paler. Do not go darker: the next steps collide with the highway or become maroon.
+
+Contour-number FontMarkers paint `contours.index.colour`. Shape tells a number from a contour line.
+
+The QGIS apply step paints those two inks. The pair list includes contour-number vs paper, vs road, vs highway, vs index, vs intermediate, and vs the contour label, and road vs highway. Ice contours and pipelines stay out of Map5View.
+
+Red-light road fill stays about 1.16. The casing still carries the line under a headtorch. Orange cannot survive red light and stay orange.
+
+### Rationale
+
+Same-hue orange has one window that still reads as a road, meets 3:1 grey, and stays ΔE ≥10 from taupe contours and from the red highway: L* 61 `#EC7000`. Contour numbers in road orange fail R-17 P7. Putting them on the index ink keeps relief as one family.
+
+### Consequences
+
+The apply step now paints a reference ink. Vector layers the style file does not name still keep LINZ road paint until a later R-15 pass owns those layer ids.

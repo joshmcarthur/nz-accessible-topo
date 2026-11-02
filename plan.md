@@ -91,4 +91,6 @@ Step 1 and the long-name wrap and 0.85 line height are committed (ab4af71). Next
 
 Painted-ink inventory (log 0048). Map5View road fill is PMS151 `#FF7F00`, not gold `#D5B43C`. Highway fill is `#E31A1C`. Road casing is `#232323`. Water fill is `#D1E7F5`. Pipeline is not on Map5View.
 
-R-04 owns the contour inks. Index is `#7A5542`. Intermediate is `#B08872`. Casing is the index ink. Roads stay PMS151 and red. Do not lighten them. Log 0050. Next is Step C after that paint is on the squares.
+R-04 owns the contour inks. Index is `#7A5542`. Intermediate is `#B08872`. Casing is the index ink.
+
+Road fill is owned `#EC7000`. Highway stays `#E31A1C`. Contour-number FontMarkers use the index ink. Pair list covers those painted classes. Log 0051. Next is Step C after that paint is on the squares.
