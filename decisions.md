@@ -290,3 +290,36 @@ Island labels are a second ladder. `Place-Label-Island-12`, `Place-Label-Island-
 
 Print size floors stay. A later island rank list is a new choice. Do not invent that list in this step.
 
+
+## R-07 draws the configured label buffer
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-07 says label text is at least 4.5:1 against an opaque halo. The vector build sets an existing halo alpha to 1. It does not add a halo.
+
+In this QGIS project, 36 of 37 map text styles have a buffer colour and a buffer size. bufferDraw is 0 on those styles. One road label draws its buffer. That buffer is already opaque.
+
+Water names use process_blue (0,158,255). That ink is 2.86:1 on white. The names sit on the water fill.
+
+The recommendations note says the build darkens along L* to 4.8:1. The shipped water blue is not the hand-picked #005C8F.
+
+### Decision
+
+Draw the buffer the text style already has. Set bufferDraw to 1. Set buffer opacity to 1. Set the buffer colour alpha to 255. Keep the buffer size. Keep the buffer colour.
+
+Darken a label ink that is below label_contrast.min_ratio (4.8) against that buffer. Use the same L* step as the vector build. Do not switch water names to #005C8F.
+
+Do not draw a buffer on layout text.
+
+### Rationale
+
+A buffer with draw off is not a halo. The size and the colour are already in the project. This step does not invent them.
+
+#005C8F passes the floor. The vector build does not use it. The raster uses the same 4.8 darken.
+
+### Consequences
+
+Map labels gain the halo already described in the text style. Layout text does not. A later step does not turn those buffers off.
