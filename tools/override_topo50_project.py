@@ -7,6 +7,7 @@ Changes are on the map layers the research names:
 - labels: upright NZAT Legible Test, size floor (R-05, R-06, R-09)
 - labels: draw the buffer already on the text style, and darken ink below the contrast floor (R-07)
 - labels: a multiline carto_text name is split onto the forward passes of a folded baseline
+- labels: stretch-to-fit curved modes use normal letter spacing, so the larger type is not squeezed onto the stock line
 - contour: index vs intermediate ink and width (R-04)
 - track_line map: closed tracks get a heavier line and cross-bars (R-11)
 - water_point: hot and cold springs get different glyphs (R-17)
@@ -384,6 +385,14 @@ def wrap_baseline_expression():
     )
 
 
+def curved_label_mode_expression():
+    """Keep normal spacing. Stretch-to-fit squeezes the larger type onto the stock line."""
+    return (
+        "CASE WHEN \"charplace\" IN ('StretchWordSpacingToFit', 'StretchCharacterSpacingToFit')"
+        " THEN 'default' ELSE \"charplace\" END"
+    )
+
+
 def patch_wrap_baseline(layer):
     """Put each line of a folded carto_text name on its own forward pass."""
     placement = layer.find("./labeling/settings/placement")
@@ -425,8 +434,8 @@ def patch_labels(layer, layer_name, style=None, palette=None):
             put_expr(props, "FontStyle", _style_expr(style))
         if "Size" in present:
             put_expr(props, "Size", size_expr)
-        # charplace stays. StretchWordSpacingToFit is the official along-line placement.
-        # Mode 0 draws "Heathcote" upside down. The black question marks were missing SVGs.
+        if layer_name == CARTO_TEXT_LAYER and "CurvedLabelMode" in present:
+            put_expr(props, "CurvedLabelMode", curved_label_mode_expression())
     if layer_name == CARTO_TEXT_LAYER:
         patch_wrap_baseline(layer)
     patch_label_contrast(layer, style, palette)

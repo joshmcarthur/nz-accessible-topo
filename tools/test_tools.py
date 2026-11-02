@@ -46,7 +46,7 @@ def test_upright_style_and_size_floor():
 
 def test_overrides_skip_the_print_layout():
     # Catches a change that restyles the legend or the sheet title.
-    # Also catches a patch that replaces the official charplace field.
+    # Also catches a stretch-to-fit mode left on a curved name.
     root = ET.fromstring(
         """
         <qgis>
@@ -181,9 +181,9 @@ def test_overrides_skip_the_print_layout():
     assert props.find("Option[@name='Family']/Option[@name='expression']").get("value") == f"'{ov.FAMILY}'"
     assert "italic" in props.find("Option[@name='FontStyle']/Option[@name='expression']").get("value")
     assert props.find("Option[@name='Family']/Option[@name='field']") is None
-    curved = props.find("Option[@name='CurvedLabelMode']")
-    assert curved.find("Option[@name='field']").get("value") == "charplace"
-    assert curved.find("Option[@name='expression']") is None
+    curved = props.find("Option[@name='CurvedLabelMode']/Option[@name='expression']")
+    assert "StretchWordSpacingToFit" in curved.get("value")
+    assert "'default'" in curved.get("value")
     contour = root.find("projectlayers/maplayer[layername='contour']")
     assert contour.find(".//text-style").get("fontSize") == "7"
     color = contour.find(".//layer[@class='SimpleLine']/data_defined_properties//Option[@name='outlineColor']")
@@ -402,8 +402,8 @@ def test_multiline_baseline_splits_at_a_fold():
     assert placement.get("geometryGeneratorEnabled") == "1"
     assert placement.get("geometryGeneratorType") == "LineGeometry"
     assert "text_string" in placement.get("geometryGenerator")
-    curved = root.find(".//Option[@name='CurvedLabelMode']")
-    assert curved.find("Option[@name='field']").get("value") == "charplace"
+    curved = root.find(".//Option[@name='CurvedLabelMode']/Option[@name='expression']")
+    assert curved.get("value") == ov.curved_label_mode_expression()
 
 
 def test_qgis_prefix_uses_the_environment():
