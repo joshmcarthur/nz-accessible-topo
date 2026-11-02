@@ -700,3 +700,31 @@ Contours already carry relief. A baked grey wash cannot be turned off on paper a
 
 The four squares stay unshaded until a DEM is dropped. QGIS multidirectional is the project boolean, not the three MapLibre fill azimuths. Those fill azimuths stay for the vector variant. A later print variant that wants shade uses the same flag.
 
+
+## R-14 pair colours resolve from the style file
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-14 asks the pair audit to run on every style change and fail on new ❌ rows. Pair files still copied hex that already lived in `tools/style-topo50.json`. A colour change in the style file would not change the audit.
+
+### Decision
+
+Pair files keep names, floors, and why. A colour that lives in `tools/style-topo50.json` is a dotted path. `palette_audit.py` resolves that path before it measures. Closed-track casing may also name `tracks.closed_foot.casing_alpha`.
+
+Literal hex stays for paper and for LINZ inks the style file does not own. Historic label ink stays a literal: it is a darkened result, not a configured colour.
+
+`check.py` C6 still reads `tools/pairs-accessible-v0.json`. It resolves those pairs first. Do not add `pairs-topo50-accessible.json` to C6. Do not fail C6 against `#EA6300`. This project does not paint that ink.
+
+Do not put the pair list in the style file.
+
+### Rationale
+
+The style file is the paint source. The pair file is the must-distinguish list. Path references keep one paint source. C6 already gates the vector pairs that the built style paints.
+
+### Consequences
+
+A colour change in the style file changes the audit. Paper and LINZ highway, pipeline, and water fills stay as hex until those inks live in the style file.
+

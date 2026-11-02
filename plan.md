@@ -71,7 +71,8 @@ R-17: vector native fill and spring inks come from the style file. LINZ spring i
 R-01 is met. Intermediate casing 0.2 mm `#8A4F1C`, fill `#C4814B`, index 0.45 mm. Josh accepted the Port Hills step.
 R-08: one attempt. `labels.letter_spacing_em` is 0.05. Vector reads it. Raster along-line labels stay at normal spacing. Leave provisional. Next is R-12.
 R-12: `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Do not pick an access ink. Do not overlay access data.
-R-03: hillshade is an optional overlay. Azimuth 337.5°. `painted` true. Raster file `dem.tif` beside the `.qgs`. Missing file is not an error. Do not bake shade. Vector reads the same numbers. Next is R-14.
+R-03: hillshade is an optional overlay. Azimuth 337.5°. `painted` true. Raster file `dem.tif` beside the `.qgs`. Missing file is not an error. Do not bake shade. Vector reads the same numbers.
+R-14: pair colours that live in `tools/style-topo50.json` are dotted paths. `palette_audit.py` resolves them. C6 stays on `pairs-accessible-v0.json`. Do not fail C6 against `#EA6300`. Next is R-13 after R-14 lands.
 
 Carto text placement: flat one-line names slide on a bounded horizontal line at the stock baseline, or flip below it (log 0042). The `map` container runs QGIS 4.2.2, which has `OverPoint`.
 
