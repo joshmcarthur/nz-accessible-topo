@@ -833,3 +833,34 @@ R-04 Met when is ΔE ≥10 versus the highway the map paints. Scoring against a 
 ### Consequences
 
 R-04 is open. Road and highway fills stay unowned until a later step paints them. Dark casing already carries R-01 and R-17 P7 for those classes under red light.
+
+
+## Olive-brown contours close painted R-04
+
+**Status:** Accepted
+**Date:** 2026-11
+**Supersedes:** the contour-ink instruction in "Painted road ink is PMS151, not gold"
+
+### Context
+
+R-04 Met when is ΔE ≥10 versus the highway and road the map paints. Those fills are PMS151 `#FF7F00` and highway `#E31A1C`. Index `#8A4F1C` versus the highway is protan ΔE 0.9. Intermediate `#C4814B` versus the road fails protan and tritan. A same-hue lightness sweep of those oranges cannot meet the bar without a pale fill or a non-orange. Pale orange is not a landmark.
+
+Identifiability beats the old Topo50 orange-brown contour grammar. Roads must stay strong landmarks.
+
+### Decision
+
+Keep road fill `#FF7F00` and highway fill `#E31A1C`. Do not lighten them.
+
+Index contour is `#7A5542`. Intermediate fill is `#B08872`. Intermediate casing stays the index ink. Lightness of both contour fills stays the same as `#8A4F1C` / `#C4814B`.
+
+Do not return to `#8A4F1C` / `#C4814B`. Do not invent R-13 palettes in this step.
+
+### Rationale
+
+Protanopia collapses a*. An olive shift of a* alone cannot separate index from highway. Reducing b* by about 22 moves the contour off the yellow-red axis protans still see. Reducing a* by 8 takes remaining redness out of the brown. The pair is olive-taupe, not orange. L* is unchanged, so the fill mass on dense slopes does not darken (OQ-09).
+
+The smallest same-L* pair that is clearly less red and still meets ΔE ≥10 against both painted fills is this one. A mauve shift that keeps a* fails the "less red" choice. A paler road fails the landmark choice.
+
+### Consequences
+
+The style-loop settled contour hexes are superseded. The next loop paste must keep `#7A5542` / `#B08872`. Road and highway fills stay unowned. Pipeline is still not on Map5View. A steep sheet still answers OQ-09.

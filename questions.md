@@ -35,9 +35,7 @@ With a hint line anchor, QGIS moves `Godley Head` onto `Gun emplacements` on BX2
 
 ## Which painted road pairs still fail R-04?
 
-**Open 2026-11-03.** Log 0048. Intermediate versus PMS151 `#FF7F00` fails protan ΔE 9.1 and tritan ΔE 7.6. Index versus highway `#E31A1C` fails protan ΔE 0.9. Intermediate versus that highway fails deutan ΔE 8.8. Pipeline is not on Map5View.
+**Closed 2026-11-03.** Contours moved off the orange/red axis. Roads stayed landmarks. See "Olive-brown contours close painted R-04".
 
-The closed question that judged R-04 against gold `#D5B43C` was a measurement error. Contour fills stay. If a same-hue orange cannot meet ΔE ≥10 against `#C4814B`, leave R-04 open and stop.
-
-Log 0049: a PMS151 lightness sweep meets the bar only as pale orange (`#FFA83B`–`#FFB94C`) or as dark maroon. Highway hue has no L* that meets both contour browns. R-04 stays open. Road and highway fills stay unowned.
+Log 0048 named the failing pairs. Log 0049 showed same-hue orange cannot close them without a pale road. Index is now `#7A5542`. Intermediate is now `#B08872`. Pipeline is still not on Map5View.
 
