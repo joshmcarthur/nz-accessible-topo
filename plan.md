@@ -73,7 +73,8 @@ R-08: one attempt. `labels.letter_spacing_em` is 0.05. Vector reads it. Raster a
 R-12: `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Do not pick an access ink. Do not overlay access data.
 R-03: hillshade is an optional overlay. Azimuth 337.5°. `painted` true. Raster file `dem.tif` beside the `.qgs`. Missing file is not an error. Do not bake shade. Vector reads the same numbers.
 R-14: pair colours that live in `tools/style-topo50.json` are dotted paths. `palette_audit.py` resolves them. C6 stays on `pairs-accessible-v0.json`. Do not fail C6 against `#EA6300`.
-R-13 stays open. Do not invent greyscale or high-contrast inks. The site grey condition is a simulation, not a second painted style. Next is R-15.
+R-13 stays open. Do not invent greyscale or high-contrast inks. The site grey condition is a simulation, not a second painted style.
+R-15: the vector style is the raster style on Shortbread tiles. `topographic-v2` is the catalog only. Owned paint comes from `tools/style-topo50.json`. Unowned layers keep LINZ paint. `P` holds no colour hex. Next is Step C.
 
 Carto text placement: flat one-line names slide on a bounded horizontal line at the stock baseline, or flip below it (log 0042). The `map` container runs QGIS 4.2.2, which has `OverPoint`.
 

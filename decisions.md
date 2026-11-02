@@ -754,3 +754,32 @@ The loop must not guess values that are missing from the dispatch, the recommend
 
 B-14 stays later. Next in the loop is R-15.
 
+
+## R-15 vector style is the raster style on Shortbread
+
+**Status:** Accepted
+**Date:** 2026-11-02
+**Supersedes:** the R-15 line that the vector style is a fork of `topographic-v2`
+
+### Context
+
+Josh rejected a vector style that is a fork of LINZ `topographic-v2`. The vector style must be a vector form of the raster style in `tools/style-topo50.json`. That file does not name a tile source. Josh chose LINZ Basemaps Shortbread tiles. For layers the style file does not name, keep LINZ paint, as the QGIS apply step keeps stock paint.
+
+### Decision
+
+`styles/accessible-v0.json` is the vector form of `tools/style-topo50.json`. It is not a LINZ `topographic-v2` fork.
+
+`upstream/linz-topographic-v2.json` is the layer catalog: sources, glyphs, layer ids, filters, source-layers, minzoom, and paint for unowned layers.
+
+Owned paint (contours, vegetation, springs, closed tracks, label size, upright faces, halo, tracking, contrast darken, hillshade) comes from the style file. `P` in `tools/build_style.py` holds no colour hex. Vector zoom width stops stay in the builder. They are not a palette.
+
+The vector face stays Open Sans until macron glyph PBFs exist.
+
+### Rationale
+
+The raster apply step starts from stock Topo50 and writes only the rules the style file owns. The vector build does the same on Shortbread. A new tile pipeline is out of this loop.
+
+### Consequences
+
+CI still rebuilds from the catalog and the style file. Layers the JSON does not name can still change when upstream LINZ paint changes. Next is Step C.
+
