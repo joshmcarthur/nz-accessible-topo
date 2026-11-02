@@ -601,4 +601,4 @@ QGIS already has an ordered-position solver. `O` first keeps the LINZ position w
 
 ### Consequences
 
-`@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. A nearest-feature anchor or a move limit is a later choice. Check the `map` container QGIS for `OverPoint` in `PredefinedPositionOrder` before a sheet export.
+`@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. A nearest-feature anchor or a move limit is a later choice. The `map` container runs QGIS 4.2.2, which has `OverPoint`.

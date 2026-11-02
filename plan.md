@@ -72,4 +72,4 @@ R-01 is met. Intermediate casing 0.2 mm `#8A4F1C`, fill `#C4814B`, index 0.45 mm
 R-08: one attempt. `labels.letter_spacing_em` is 0.05. Vector reads it. Raster along-line labels stay at normal spacing. Leave provisional. Next is R-12.
 R-12: `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Do not pick an access ink. Do not overlay access data. Next is R-03, skip unless the backlog says served raster tiles already bake relief.
 
-Carto text placement: flat one-line names use cartographic placement around the stock label centre (log 0042). Container `OverPoint` support is not checked.
+Carto text placement: flat one-line names use cartographic placement around the stock label centre (log 0042). The `map` container runs QGIS 4.2.2, which has `OverPoint`.
