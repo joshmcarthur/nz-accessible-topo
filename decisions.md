@@ -399,3 +399,31 @@ The Met when text is the 3:1 red-light floor. The casing already meets it. The v
 ### Consequences
 
 `warm_red` becomes about `145,0,0`. That ink is 3.02:1 under red light. A later step that paints a grey-brown historic label is a new choice.
+
+
+## R-17 copies native fill and spring inks
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-17 asks for different hot and cold spring glyphs, a native versus scrub lightness step or texture, scattered scrub as a pattern, upright contour and spot labels, and no meaning that exists only as red-orange.
+
+The raster project already paints those values from `tools/style-topo50.json`. Hot is `cross2` in `#141414`. Cold is `circle` in `#005C8F`. Native fill is `#E1EAC3`. Scrub keeps the R-10 hatch. Vector native fill still uses LINZ zoom greens. Vector spring inks still come from `topographic-v2`. The LINZ icons already differ: `spring_hot_pnt` and `spring_cold_pnt`.
+
+### Decision
+
+`Vegetation-Native` fill is `vegetation.native.colour` (`#E1EAC3`). One colour. Drop the zoom stops.
+
+`Water-Spring-Hot` text is `springs.hot.colour` (`#141414`). `Water-Spring-Cold` icon and text are `springs.cold.colour` (`#005C8F`). Keep `spring_hot_pnt` and `spring_cold_pnt`. Do not add a sprite.
+
+Do not add a native hatch on the vector. Raster scrub already has the hatch. Do not pick new colours.
+
+### Rationale
+
+The JSON already holds the R-17 values. The vector build must copy them. The LINZ icons already carry hot versus cold in shape. A native hatch on the vector would be a new pattern.
+
+### Consequences
+
+Native versus scrub on the vector list is the lightness step `#E1EAC3` versus `#A3CC90`. Grey contrast stays 1.45:1. The raster hatch carries that pair in greyscale. A later native vector pattern is a new choice.
