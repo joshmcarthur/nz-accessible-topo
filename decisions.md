@@ -487,3 +487,30 @@ The surviving ink under red light is the index brown already on the sheet. A cas
 ### Consequences
 
 The pair audit judges the intermediate line against paper as the casing ink. Index outer width stays 0.28 mm. Intermediate outer width stays 0.2 mm. If the Port Hills square no longer reads as contours, revert the casing.
+
+## R-01 index contour is 0.45 mm
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The intermediate casing uses index ink `#8A4F1C` at 0.2 mm. Index was 0.28 mm in the same ink. The outer-width step was 1.4×. Port Hills no longer showed a clear index versus intermediate step.
+
+Darkening `#C4814B` is forbidden. Removing the casing would drop red-light contrast versus paper to 1.74:1. Dashed intermediates would collide with indefinite contours. Ticks and a double index line would change what a contour looks like.
+
+Closed foot tracks already use 0.45 mm.
+
+### Decision
+
+`contours.index.width_mm` is 0.45. Intermediate fill stays 0.12 mm. Intermediate casing stays 0.2 mm in `#8A4F1C`.
+
+Scale the vector index width stops by 0.45/0.28. Do not add ticks. Do not draw a double index line.
+
+### Rationale
+
+0.45 mm versus 0.2 mm is a 2.25× outer-width step. That is the same order as the pre-casing 0.28 mm versus 0.12 mm step. The number is already in the style file on closed foot tracks. The tan fill still marks an intermediate in normal light. The casing still carries the line under red light.
+
+### Consequences
+
+Index lines read heavier on dense slopes. If Port Hills still cannot separate index from intermediate, the next choice is a shape channel on index, not a new brown.
