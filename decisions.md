@@ -581,3 +581,24 @@ The recommendation is to reserve a channel, not to show access. Showing access n
 ### Consequences
 
 A later step that paints access is a new choice. It needs an access attribute or an overlay source.
+
+## Flat carto text uses cartographic placement
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The larger accessible type and the halo make `nztopo50_carto_text` names collide in busy areas. Each row has one hand-drawn baseline for 6–7 pt Nimbus. Curved placement on that one baseline gives QGIS no other position, so `AllowOverlapIfRequired` draws names on top of each other. No row links to the feature it labels (`example_point_id` is null).
+
+### Decision
+
+On the accessible project, `nztopo50_carto_text` labeling is rule-based with two rules. Rows with `text_placement = 1`, `text_orientation = 0`, and no line break use placement 6 (cartographic). The anchor is a point geometry generator at the stock label centre. The order comes from `labels.carto_point` in `tools/style-topo50.json`: `O, T, B, R, L, TR, TL, BR, BL`, 0.3 mm. `PreferPositionOrdering`. `AllowOverlapIfRequired` stays. All other rows keep the curved settings and the fold split. The point rule drops the line-only data-defined fields (`LabelDistance` from `offset`, line placement flags, line anchor, curved mode).
+
+### Rationale
+
+QGIS already has an ordered-position solver. `O` first keeps the LINZ position when it is free. `PreventOverlap` would remove names from a topo map. A line flag change (above and below) only flips a label across its baseline. An offline solver would duplicate PAL.
+
+### Consequences
+
+`@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. A nearest-feature anchor or a move limit is a later choice. Check the `map` container QGIS for `OverPoint` in `PredefinedPositionOrder` before a sheet export.
