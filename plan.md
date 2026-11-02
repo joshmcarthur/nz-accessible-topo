@@ -79,3 +79,11 @@ R-15: the vector style is the raster style on Shortbread tiles. `topographic-v2`
 Carto text placement: flat one-line names slide on a bounded horizontal line at the stock baseline, or flip below it (log 0042). The `map` container runs QGIS 4.2.2, which has `OverPoint`.
 
 Vegetation map draws below contour. The apply step moves that layer in the layer tree. Custom-order stays off. Vegetation alpha stays 180/200. `vegetation_line map` stays above contours. Vector style already paints contours after vegetation fills.
+
+Carto text fit (approved 2026-11-03, in progress). QGIS tests label boxes yes or no and cannot minimise ink overlap. Plan:
+
+1. Apply step reads an optional `carto_fit.json` beside the `.qgs` (drop-in, like `dem.tif`). Each entry: row `id`, `x`, `y`, `lines` (1 or 2). Those rows get a data-defined position and text form on the flat rule. Missing file changes nothing. Fit data stays out of the style file.
+2. `tools/fit_carto_labels.py` (QGIS Python, no new packages): render the face, read `QgsLabelingResults`, cluster flat names whose boxes collide, try one/two lines, above/below, and 0.25 mm sideways steps within the allowance. Score on glyph outlines with halo, plus a small move cost. Neighbours: flat names as glyph outlines, curved names as QGIS per-letter boxes. Point symbols are not neighbours in v1; stop and ask if a name lands on one. Write `carto_fit.json` in topo50-bx24.
+3. BX24 fit run, renders, research log, lore decision.
+
+Long-name wrap (16 chars, `Te` kept joined) and flat line height 0.85 are done in the working tree, not committed.
