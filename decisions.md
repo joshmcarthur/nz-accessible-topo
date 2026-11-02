@@ -213,7 +213,7 @@ The style loop does not restart. R-09 stays the open recommendation. A square co
 
 ## This Mac QGIS cannot open the square project
 
-**Status:** Accepted
+**Status:** Superseded by the decision below
 **Date:** 2026-11-02
 **Supersedes:** Square draws use the Mac QGIS app
 
@@ -233,3 +233,36 @@ The Mac app is older than the project. It does not reach the national file read.
 
 The style loop does not restart. R-09 stays open. A later Mac app that can open a QGIS 4.0.3 project can use `QGIS_PREFIX_PATH` without a new script.
 
+## Square draws use QGIS 4.2.3
+
+**Status:** Accepted
+**Date:** 2026-11-02
+**Supersedes:** This Mac QGIS cannot open the square project
+
+### Context
+
+The cask app is `/Applications/QGIS-final-4_2_3.app`. It is QGIS 4.2.3-Belém do Pará. The square project was saved by QGIS 4.0.3-Norrköping. QGIS 3.36.3-Maidenhead loaded no Map5View layers.
+
+The app Python does not start unless `PYTHONHOME` is `Contents/Frameworks`. A draw with no `PROJ_DATA` writes a white square. `proj.db` is at `Contents/Resources/qgis/proj`.
+
+### Decision
+
+Square draws use this app. The interpreter is `Contents/MacOS/python3.12`. Set these before the process starts:
+
+- `QGIS_PREFIX_PATH` = `Contents/MacOS`
+- `PYTHONHOME` = `Contents/Frameworks`
+- `PYTHONPATH` = `Contents/Resources/python3.12/site-packages`
+- `DYLD_LIBRARY_PATH` includes `Contents/MacOS` and `Contents/Frameworks`
+- `PROJ_DATA` and `PROJ_LIB` = `Contents/Resources/qgis/proj`
+- `GDAL_DATA` = `Contents/Resources/qgis/gdal`
+- `QT_QPA_PLATFORM` = `offscreen`
+
+Do not set `HOME` to `/tmp` on the Mac. An empty `QGIS_PREFIX_PATH` still means `/usr` inside the map image. The sheet export stays on the map image. Do not build an arm64 image.
+
+### Rationale
+
+Eight 472 px squares took about 130 seconds. The same eight squares on the emulated map image took 46 minutes. The estuary name is upright. The hot-pink pixel count is 0. The pictures match the container squares. The national GeoParquet read stays. The emulation cost does not.
+
+### Consequences
+
+Do not draw squares with QGIS 3.36.3. R-09 stays open. The hierarchy list is still not named. Do not start R-07.
