@@ -427,3 +427,31 @@ The JSON already holds the R-17 values. The vector build must copy them. The LIN
 ### Consequences
 
 Native versus scrub on the vector list is the lightness step `#E1EAC3` versus `#A3CC90`. Grey contrast stays 1.45:1. The raster hatch carries that pair in greyscale. A later native vector pattern is a new choice.
+
+## Curved names keep normal letter spacing
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+Along-line labels kept `charplace` `StretchWordSpacingToFit`. That mode fits the text to the baseline. The accessible type is larger than the stock type those baselines were drawn for, and the halo adds width. Stretch-to-fit shrinks the gaps. `Gun emplacements`, `Mt Cavendish`, and `SUMMIT ROAD` stay readable on the stock face and overlap on the accessible face.
+
+A stacked name is a separate gap. `Richmond Hill` and `Farm` are 2 mm apart. A 7 pt letter is taller than that gap.
+
+Setting CurvedLabelMode to the integer 0 drew Heathcote upside down before the fold split. The fold split now gives each text line its own forward pass.
+
+### Decision
+
+On `nztopo50_carto_text`, map `StretchWordSpacingToFit` and `StretchCharacterSpacingToFit` to `default`. Letters keep their normal width. A short line may run past its end. The size floor and the halo stay. The fold split stays. Other `charplace` values stay on the field.
+
+Do not move the stacked passes apart in this step.
+
+### Rationale
+
+The baseline length is the stock length. Forcing the larger type onto that length is what overlaps the words. Default curved placement keeps the spacing and can use the existing overrun. The upside-down Heathcote result was the folded line, which the split already removes.
+
+### Consequences
+
+A long name no longer stretches to fill its line. Stacked lines that are 2 mm apart still touch. Moving those passes apart is a later choice. Revert the source commit to put the stretch modes back.
+
