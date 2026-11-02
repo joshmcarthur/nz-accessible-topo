@@ -371,3 +371,31 @@ The fold is the baseline used for stacked text. The reverse segment is the conne
 
 The accessible project draws stacked names on separate passes. 17 multiline names do not match this fold. Those keep every pass, including a reverse pass. Single-line names on a real bend are unchanged. The stock LINZ project still draws the fold as one line. Revert the source commit that adds the generator to restore the old placement. That commit is marked high risk for that reason.
 
+
+
+## R-11 keeps hue and the existing casing
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-11 says closed tracks get a dark casing with cross-bars, and historic sites get a distinct glyph with dark-ink labels. Met when: red-light model ≥3:1 vs paper for all safety-relevant marks.
+
+The raster project already draws a heavier closed foot track and black cross-bars. The vector style already draws `rgba(26, 26, 26, 0.55)` plus `nzat:closed_crossbar`. That casing on white is 3.89:1 under red light. Palette experiment v0 used `rgba(73, 68, 68, 1)` for historic labels. The vector build already darkens a failing label along L* until red-light 3:1 and keeps hue. Raster `warm_red` after the R-07 contrast step is `218,28,0`, which is 1.40:1 under red light.
+
+### Decision
+
+`tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is `0.55`. `label_contrast.red_light_min` is `3.0`. Those numbers live in `tools/style-topo50.json`.
+
+The vector closed-track casing reads those numbers. The raster apply step does not paint that casing. Raster closed tracks keep the heavier line and the cross-bars.
+
+Raster map labels use the same red-light floor as the vector build. Hue is kept. Historic labels are not switched to `rgba(73, 68, 68)`. Do not add a historic glyph. The raster project already has the historic SVG. The vector style already has `historic_site_pnt`.
+
+### Rationale
+
+The Met when text is the 3:1 red-light floor. The casing already meets it. The vector darken already meets it. `rgba(73, 68, 68)` is not in the dispatch prompt, the recommendation hex, or an earlier lore decision. A new historic glyph would be a new choice.
+
+### Consequences
+
+`warm_red` becomes about `145,0,0`. That ink is 3.02:1 under red light. A later step that paints a grey-brown historic label is a new choice.
