@@ -647,3 +647,35 @@ R-04 needs contours that stay visible. R-10 and R-17 need a larger forest versus
 
 Accessible sheets diverge from LINZ layer order on this one pair. Stock order stays. Opaque vegetation fills are a later choice. The old note that alpha stays below 255 because vegetation draws above contours is no longer the reason for that alpha.
 
+
+## R-03 hillshade is an optional overlay
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-03 asks for NNW 337.5° shading with a soft multidirectional component. Printed Topo50 uses NW. This QGIS project has elevation shading off and a flat terrain. Served raster tiles may already bake NW relief (B-26). Baking a second light into the accessible pixels would lock a grey wash onto labels and contours. Josh asked that raster shading be as simple as dropping a DEM beside the project, and that shipped tiles keep shade optional.
+
+### Decision
+
+Hillshade is an overlay. Do not bake it into Topo50 pixels.
+
+`tools/style-topo50.json` holds `hillshade`: azimuth 337.5°, altitude 45°, QGIS multidirectional true, `raster_file` `dem.tif`, `painted` true.
+
+The QGIS apply step writes those numbers onto the existing `elevation-shading-renderer`. It turns the shader on only when `painted` is true and `dem.tif` sits beside the `.qgs`. A missing file is not an error. Dropping a GeoTIFF at that name is enough to rasterise with shade. Set `painted` to false to disable even if the file is present.
+
+The square renderer copies that shader. If the file is present at draw time, it loads the DEM even if apply ran without it.
+
+The vector build reads the same azimuth and fill lights. It does not keep `hillshade_direction` in `P`. When `painted` is false, the MapLibre hillshade layer is not visible.
+
+Do not add a DEM to this repo. Do not fetch LINZ elevation in this step. R-03 stays open until shading is evaluated on an Alpine sheet and a lowland sheet.
+
+### Rationale
+
+Contours already carry relief. A baked grey wash cannot be turned off on paper and can hide the R-01 contour work. A MapLibre hillshade layer is already a separate overlay. The QGIS project already has an elevation-shading switch. A fixed relative GeoTIFF path matches the parquet drop-in pattern.
+
+### Consequences
+
+The four squares stay unshaded until a DEM is dropped. QGIS multidirectional is the project boolean, not the three MapLibre fill azimuths. Those fill azimuths stay for the vector variant. A later print variant that wants shade uses the same flag.
+
