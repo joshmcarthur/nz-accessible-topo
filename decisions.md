@@ -347,3 +347,27 @@ Print already carries scattered scrub by pattern. Adding a fill would need an al
 ### Consequences
 
 Raster and vector match on scrub colour and on meaning in shape. They do not match on scattered fill colour. A later step that paints a scattered fill on the raster is a new choice.
+
+## Multiline label folds keep the forward passes
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+Along-line labels keep `charplace` `StretchWordSpacingToFit`. Setting CurvedLabelMode to 0 draws Heathcote upside down.
+
+A multiline `nztopo50_carto_text` row stores one linestring that folds back on itself. The estuary name is `Estuary of the Heathcote`, then a line break, then `and Avon Rivers / Ihutai`. The line runs east, back west, then east. The passes are 195 m apart. QGIS stretches the whole string along every pass, so the words land on top of each other. 7279 multiline names have one forward pass per text line, with a reverse connector between them. The layer already sets multipart behavior to `SplitLabelTextLinesOverParts`. That setting needs one geometry part per text line.
+
+### Decision
+
+On `nztopo50_carto_text`, a label geometry generator splits a multiline baseline where the turn is sharper than 90 degrees. It keeps the passes that head within 45 degrees of the first pass, when there are at least as many of those as text lines. Each text line is placed on one of those passes. `charplace` stays `StretchWordSpacingToFit`. A label with one text line is not split. The stock project is not changed.
+
+### Rationale
+
+The fold is the baseline used for stacked text. The reverse segment is the connector between two baselines that read the same way. Stretch-to-fit on the whole fold stacks the words. Splitting the geometry uses the multipart setting the project already has. Changing `charplace` would reopen the upside-down Heathcote result.
+
+### Consequences
+
+The accessible project draws stacked names on separate passes. 17 multiline names do not match this fold. Those keep every pass, including a reverse pass. Single-line names on a real bend are unchanged. The stock LINZ project still draws the fold as one line. Revert the source commit that adds the generator to restore the old placement. That commit is marked high risk for that reason.
+
