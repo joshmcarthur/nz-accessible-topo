@@ -728,3 +728,29 @@ The style file is the paint source. The pair file is the must-distinguish list. 
 
 A colour change in the style file changes the audit. Paper and LINZ highway, pipeline, and water fills stay as hex until those inks live in the style file.
 
+
+## R-13 stays open until the variant inks are named
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-13 asks for three products from one source: full colour, greyscale-safe print, and a high-contrast web variant. The dispatch, the recommendations, and lore do not name those inks. R-13 has no Met when text.
+
+### Decision
+
+Do not invent palettes. Do not add a greyscale style or a high-contrast style in this loop. R-13 stays open.
+
+The main style remains the full-colour product. The site grey condition stays a simulation of that product. R-01 already requires greyscale or shape on the main style.
+
+A later step that paints the other two products must name the inks first.
+
+### Rationale
+
+The loop must not guess values that are missing from the dispatch, the recommendations, and lore.
+
+### Consequences
+
+B-14 stays later. Next in the loop is R-15.
+
