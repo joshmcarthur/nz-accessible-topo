@@ -22,6 +22,7 @@ import palette_audit as pa  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UPSTREAM = os.path.join(ROOT, "upstream", "linz-topographic-v2.json")
+STYLE_PATH = os.path.join(ROOT, "tools", "style-topo50.json")
 WHITE = (255, 255, 255)
 
 # ------------------------------------------------------------------ parameters
@@ -32,12 +33,8 @@ P = {
     "contour_intermediate": "#C4814B",                    # R-04 rev. (log 0020): lightest same-hue brown ≥3.2:1
     "contour_index_width": {"stops": [[10, 0.8], [12, 1.2], [15, 1.8]]},
     "contour_intermediate_width": {"stops": [[12, 0.6], [16, 0.9]]},  # thinner: dense slopes read as texture
-    "scrub": "rgba(163, 204, 144, 1)",                    # R-10 (#A3CC90)
-    "scattered_scrub": "rgba(224, 237, 216, 1)",          # R-10 (#E0EDD8)
     "closed_track_shadow": "rgba(26, 26, 26, 0.55)",      # R-11
-    "text_contrast_min": 4.8,                             # R-07: WCAG 4.5 + 0.3 margin for antialiasing / print variance
     "red_light_min": 3.0,                                 # R-11 (F-21)
-    "text_size_min": 10,                                  # R-09 (F-09), web px
     "letter_spacing_em": 0.05,                            # R-08 provisional (F-07)
     # Glyph stacks served by the LINZ glyph endpoint that are already used by
     # the upstream style — we only map onto stacks known to exist.
@@ -52,6 +49,59 @@ P = {
 }
 
 SPRITE_ID = "nzat"
+
+
+def load_style_rules(path=None):
+    with open(path or STYLE_PATH, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+RULES = load_style_rules()
+
+
+def is_place_name(layer_id, text_field):
+    """A place-name label is a Place-Label layer with text to read."""
+    if text_field in (None, ""):
+        return False
+    return isinstance(layer_id, str) and layer_id.startswith("Place-Label-")
+
+
+def label_floor_px(layer_id, text_field, rules=None):
+    """Return the web size floor in px for this label."""
+    labels = (rules or RULES)["labels"]
+    if is_place_name(layer_id, text_field):
+        return labels["place_name_floor_px"]
+    return labels["web_floor_px"]
+
+
+def floor_text_size(size, floor):
+    """Raise one text size to the floor. Keep a size that is already high enough."""
+    if isinstance(size, (int, float)) and not isinstance(size, bool) and size < floor:
+        return floor
+    return size
+
+
+def place_rank_size(layer_id, rules=None):
+    """Return the place-rank size in px. A layer with no rank returns None."""
+    labels = (rules or RULES)["labels"]
+    for rank in labels["place_hierarchy"]:
+        if layer_id in rank["layers"]:
+            return rank["size_px"]
+    return None
+
+
+def hierarchy_ratios(ranks):
+    """Return the size ratio of each rank to the rank before it."""
+    sizes = [rank["size_px"] for rank in ranks]
+    return [sizes[i + 1] / sizes[i] for i in range(len(sizes) - 1)]
+
+
+def resolved_text_size(size, floor, rank_size):
+    """Return the size after the floor. A place rank replaces that size."""
+    sized = floor_text_size(size, floor)
+    if rank_size is None:
+        return sized
+    return floor_text_size(rank_size, floor)
 
 
 # ------------------------------------------------------------------ colour helpers
@@ -85,6 +135,30 @@ def darken_until(rgb, ok):
         L -= 0.5
         cur = lab_to_rgb((L, a, b))
     return cur
+
+
+def text_contrast_min(rules=None):
+    """Return the label contrast floor. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["label_contrast"]["min_ratio"]
+
+
+def halo_alpha(rules=None):
+    """Return the opaque halo alpha. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["label_contrast"]["halo_alpha"]
+
+
+def vegetation_fill(kind, rules=None):
+    """Return the opaque vector fill for a vegetation class. Colour lives in tools/style-topo50.json."""
+    colour = (rules or RULES)["vegetation"][kind]["colour"]
+    return fmt(pa.parse_colour(colour)[:3])
+
+
+def darken_for_text(rgb, behind, min_ratio):
+    """Lower L* until the ink meets min_ratio against behind. Keep hue."""
+    def ok(colour):
+        return pa.contrast_ratio(pa.rel_luminance(colour), pa.rel_luminance(behind)) >= min_ratio
+
+    return darken_until(rgb, ok)
 
 
 # ------------------------------------------------------------------ build
@@ -150,11 +224,13 @@ class Builder:
 
     # R-10 ----------------------------------------------------------------
     def vegetation(self):
-        self.layer("Vegetation-Scrub")["paint"]["fill-color"] = P["scrub"]
-        self.note("R-10", "Vegetation-Scrub", f"fill → {P['scrub']}")
+        scrub = vegetation_fill("scrub")
+        scattered = vegetation_fill("scattered")
+        self.layer("Vegetation-Scrub")["paint"]["fill-color"] = scrub
+        self.note("R-10", "Vegetation-Scrub", f"fill → {scrub}")
         sc = self.layer("Vegetation-Scatteredscrub")
-        sc["paint"]["fill-color"] = P["scattered_scrub"]
-        self.note("R-10", "Vegetation-Scatteredscrub", f"fill → {P['scattered_scrub']}")
+        sc["paint"]["fill-color"] = scattered
+        self.note("R-10", "Vegetation-Scatteredscrub", f"fill → {scattered}")
         stipple = {
             "id": "NZAT-Vegetation-Scatteredscrub-Stipple",
             "type": "fill",
@@ -214,16 +290,23 @@ class Builder:
             if lay.get("text-field") in (None, ""):
                 continue  # icon-only layer (empty text-field) — nothing to read
 
-            # R-09 size floor
+            # R-09 size floor and place ranks. The numbers live in tools/style-topo50.json.
+            floor = label_floor_px(lid, lay.get("text-field"))
             ts = lay.get("text-size")
-            if isinstance(ts, (int, float)) and ts < P["text_size_min"]:
-                lay["text-size"] = P["text_size_min"]
-                self.note("R-09", lid, f"text-size {ts} → {P['text_size_min']}")
+            rank_size = place_rank_size(lid)
+            if isinstance(ts, (int, float)) and not isinstance(ts, bool):
+                new_ts = resolved_text_size(ts, floor, rank_size)
+                if new_ts != ts:
+                    lay["text-size"] = new_ts
+                    self.note("R-09", lid, f"text-size {ts} → {new_ts}")
             elif isinstance(ts, dict) and "stops" in ts:
-                new = [[z, max(v, P["text_size_min"])] if isinstance(v, (int, float)) else [z, v] for z, v in ts["stops"]]
+                new = [
+                    [z, floor_text_size(v, floor)] if isinstance(v, (int, float)) and not isinstance(v, bool) else [z, v]
+                    for z, v in ts["stops"]
+                ]
                 if new != ts["stops"]:
                     ts["stops"] = new
-                    self.note("R-09", lid, f"text-size stops floored at {P['text_size_min']}")
+                    self.note("R-09", lid, f"text-size stops floored at {floor}")
 
             # R-08 letter-spacing (provisional)
             if not shield and "text-letter-spacing" not in lay:
@@ -237,18 +320,20 @@ class Builder:
             if not tcol:
                 continue
 
-            # R-07 opaque halo
+            # R-07 opaque halo. The floor and the alpha live in tools/style-topo50.json.
+            contrast_floor = text_contrast_min()
+            target_alpha = halo_alpha()
             hc = paint.get("text-halo-color")
             hcol = pa.parse_colour(hc) if isinstance(hc, str) else None
-            if hcol and hcol[3] < 1:
-                paint["text-halo-color"] = fmt(hcol[:3], 1)
-                self.note("R-07", lid, f"halo alpha {hcol[3]:g} → 1")
-                hcol = (*hcol[:3], 1.0)
+            if hcol and hcol[3] < target_alpha:
+                paint["text-halo-color"] = fmt(hcol[:3], target_alpha)
+                self.note("R-07", lid, f"halo alpha {hcol[3]:g} → {target_alpha:g}")
+                hcol = (*hcol[:3], float(target_alpha))
             behind = pa.composite(hcol, WHITE) if hcol else WHITE
             fg = pa.composite(tcol, behind)
 
             def contrast_ok(rgb):
-                return pa.contrast_ratio(pa.rel_luminance(rgb), pa.rel_luminance(behind)) >= P["text_contrast_min"]
+                return pa.contrast_ratio(pa.rel_luminance(rgb), pa.rel_luminance(behind)) >= contrast_floor
 
             def redlight_ok(rgb):
                 return pa.contrast_ratio(pa.red_light_reflectance(rgb), pa.red_light_reflectance(behind)) >= P["red_light_min"]
@@ -263,11 +348,11 @@ class Builder:
                 after_cr = pa.contrast_ratio(pa.rel_luminance(new), pa.rel_luminance(behind))
                 after_rl = pa.contrast_ratio(pa.red_light_reflectance(new), pa.red_light_reflectance(behind))
                 why = []
-                if before_cr < P["text_contrast_min"]:
+                if before_cr < contrast_floor:
                     why.append(f"contrast {before_cr:.2f}→{after_cr:.2f}")
                 if before_rl < P["red_light_min"]:
                     why.append(f"red-light {before_rl:.2f}→{after_rl:.2f}")
-                rid = "R-07" if before_cr < P["text_contrast_min"] else "R-11"
+                rid = "R-07" if before_cr < contrast_floor else "R-11"
                 self.note(rid, lid, f"text {tc} → {fmt(new)} (L* lowered, hue kept; {', '.join(why)})")
 
     # sprite + metadata ------------------------------------------------------

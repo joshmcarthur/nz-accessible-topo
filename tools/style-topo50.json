@@ -1,0 +1,60 @@
+{
+  "fonts": {
+    "raster_family": "NZAT Legible Test",
+    "raster_upright_style": "Regular",
+    "stock_family": "Nimbus Sans LINZ",
+    "vector_family": "Open Sans"
+  },
+  "labels": {
+    "size_floor_pt": 7,
+    "spot_height_floor_pt": 6,
+    "spot_height_layer_contains": "relief_point",
+    "web_floor_px": 10,
+    "place_name_floor_px": 11,
+    "place_hierarchy": [
+      {"rank": "suburb-locality", "layers": ["Place-Label-Suburb", "Place-Label-Locality"], "size_px": 11},
+      {"rank": "town", "layers": ["Place-Label-Town"], "size_px": 14},
+      {"rank": "city", "layers": ["Place-Label-City-14", "Place-Label-City-7"], "size_px": 17}
+    ]
+  },
+  "label_contrast": {
+    "min_ratio": 4.8,
+    "halo_alpha": 1
+  },
+  "contours": {
+    "index": {"colour": "#8A4F1C", "width_mm": 0.28},
+    "intermediate": {"colour": "#C4814B", "width_mm": 0.12}
+  },
+  "reference_inks": {
+    "project_road": "#D5B43C",
+    "print_legend_highway": "#EA6300"
+  },
+  "vegetation": {
+    "native": {"colour": "#E1EAC3", "alpha": 180},
+    "scrub": {"colour": "#A3CC90", "alpha": 200},
+    "scattered": {"colour": "#E0EDD8"},
+    "scrub_hatch": {
+      "colour": "#3F6B32",
+      "angle_deg": 45,
+      "distance_mm": 3,
+      "line_width_mm": 0.15
+    }
+  },
+  "tracks": {
+    "closed_foot": {
+      "width_mm": 0.45,
+      "open_width_mm": 0.15,
+      "closed_dash": "6;0.4",
+      "open_dash": "1;0.5",
+      "crossbar_colour": "#000000",
+      "crossbar_interval_mm": 4,
+      "crossbar_size_mm": 2.4,
+      "crossbar_outline_width_mm": 0.2,
+      "crossbar_angle_deg": 90
+    }
+  },
+  "springs": {
+    "hot": {"glyph": "cross2", "colour": "#141414"},
+    "cold": {"glyph": "circle", "colour": "#005C8F"}
+  }
+}
