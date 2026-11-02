@@ -60,3 +60,4 @@ R-04, R-05, and R-06 are settled for the style loop. See the decision of the sam
 
 The square renderer draws the Map5View layers. That is the tiff-50 map theme. It does not draw layers that theme hides. Along-line labels keep the official `charplace` value. Do not set CurvedLabelMode to 0.
 
+Square draws use the Mac QGIS app. The sheet export stays on the map image.

@@ -187,3 +187,26 @@ The official placement already draws the words upright. Replacing it made the la
 ### Consequences
 
 The accessible project and the stock project use the same along-line placement. This does not reopen R-05 or R-06.
+
+
+## Square draws use the Mac QGIS app
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+The `map` image is linux/amd64. This Mac is arm64. Docker emulates the image. Eight 472 px squares took 46 minutes. The Mac has QGIS 3.36.3-Maidenhead at `/Applications/QGIS.app`. The sheet export still uses the flatpak image `ghcr.io/linz/qgis-flatpak:linz-qgis_v4.2.2_f1431d-297752_build-48`.
+
+### Decision
+
+Square draws use `/Applications/QGIS.app`. The QGIS prefix comes from `QGIS_PREFIX_PATH`. The container prefix stays `/usr` when that variable is empty. The sheet export stays on the `map` image. Do not build an arm64 image of the flatpak.
+
+### Rationale
+
+An arm64 image means a new build of the LINZ QGIS flatpak. The Mac app is already here. The national GeoParquet read stays. The emulation cost does not. The Mac app is not the flatpak build, so a native square can differ a little from the sheet export.
+
+### Consequences
+
+The style loop does not restart. R-09 stays the open recommendation. A square command sets `QGIS_PREFIX_PATH=/Applications/QGIS.app/Contents/MacOS` and runs `tools/render_square.py` with the app Python.
+
