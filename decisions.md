@@ -593,7 +593,7 @@ The larger accessible type and the halo make `nztopo50_carto_text` names collide
 
 ### Decision
 
-On the accessible project, `nztopo50_carto_text` labeling is rule-based with two rules. Rows with `text_placement = 1`, `text_orientation = 0`, and no line break use placement 6 (cartographic). The anchor is a point geometry generator at the stock label centre. The order comes from `labels.carto_point` in `tools/style-topo50.json`: `O, T, B, R, L, TR, TL, BR, BL`, 0.3 mm. `PreferPositionOrdering`. `AllowOverlapIfRequired` stays. All other rows keep the curved settings and the fold split. The point rule drops the line-only data-defined fields (`LabelDistance` from `offset`, line placement flags, line anchor, curved mode).
+On the accessible project, `nztopo50_carto_text` labeling is rule-based with two rules. Rows with `text_placement = 1`, `text_orientation = 0`, and no line break use placement 6 (cartographic). The anchor is a point geometry generator at the stock label centre. The order comes from `labels.carto_point` in `tools/style-topo50.json`: `O, T, B, TSR, TSL, BSR, BSL, TR, TL, BR, BL`, 0.3 mm. `PreferPositionOrdering`. `AllowOverlapIfRequired` stays. All other rows keep the curved settings and the fold split. The point rule drops the line-only data-defined fields (`LabelDistance` from `offset`, line placement flags, line anchor, curved mode).
 
 ### Rationale
 
@@ -601,4 +601,4 @@ QGIS already has an ordered-position solver. `O` first keeps the LINZ position w
 
 ### Consequences
 
-`@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. A nearest-feature anchor or a move limit is a later choice. The `map` container runs QGIS 4.2.2, which has `OverPoint`.
+`@map_scale` is null in a label geometry generator. The anchor lift uses the fixed 1:50,000 scale. A point label whose anchor is outside the drawn extent is not drawn, so a 1 km square can drop a name that crosses its edge. A name that moves sideways can land far from its feature: `Ōmawete / Coopers Knob` moves about 500 m east on the cold spring square. The slightly positions do not limit the move: QGIS aligns `TSR` to the anchor, so with the anchor at the label centre `TSR` moves a label by half its width, like `TR`. A nearest-feature anchor or a real move limit is a later choice. The `map` container runs QGIS 4.2.2, which has `OverPoint`.
