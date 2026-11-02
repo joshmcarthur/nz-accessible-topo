@@ -455,3 +455,35 @@ The baseline length is the stock length. Forcing the larger type onto that lengt
 
 A long name no longer stretches to fill its line. Stacked lines that are 2 mm apart still touch. Moving those passes apart is a later choice. Revert the source commit to put the stretch modes back.
 
+## R-01 intermediate contours use an index-ink casing
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-01 requires every must-distinguish pair to meet ≥3:1 greyscale or a pattern/shape, and the same under red light. Intermediate fill `#C4814B` versus paper is 3.19:1 grey and 1.74:1 red. Weight does not change that measured pair. Darkening `#C4814B` is forbidden (R-04).
+
+Index ink `#8A4F1C` versus paper is 6.53:1 grey and 3.45:1 red. Closed tracks already use a 0.2 mm outline.
+
+### Decision
+
+Keep index `#8A4F1C` at 0.28 mm, one solid line.
+
+Keep intermediate fill `#C4814B` at 0.12 mm.
+
+Add `contours.intermediate.casing_colour` `#8A4F1C` and `casing_width_mm` 0.2 to `tools/style-topo50.json`.
+
+The QGIS apply step inserts a second SimpleLine under the fill. The casing is enabled only when the line is not an index contour.
+
+The vector build inserts `NZAT-Contours-All-Casing` behind `Contours-All`. Casing colour is the JSON value. Casing width is the intermediate width stops scaled by 0.2/0.12.
+
+Do not add a new brown. Do not darken the fill. The Port Hills square must still read as contours before R-01 is met.
+
+### Rationale
+
+The surviving ink under red light is the index brown already on the sheet. A casing is shape, so R-04 can keep the recessive fill. A heavier fill of `#C4814B` would not pass 3:1 red. A darker fill would reopen R-04.
+
+### Consequences
+
+The pair audit judges the intermediate line against paper as the casing ink. Index outer width stays 0.28 mm. Intermediate outer width stays 0.2 mm. If the Port Hills square no longer reads as contours, revert the casing.
