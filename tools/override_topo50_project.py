@@ -9,6 +9,7 @@ Changes are on the map layers the research names:
 - labels: a multiline carto_text name is split onto the forward passes of a folded baseline
 - labels: stretch-to-fit curved modes use normal letter spacing, so the larger type is not squeezed onto the stock line
 - labels: flat one-line carto_text names sit on a short horizontal line around the stock label, so QGIS can slide or flip a name that collides
+- labels: a flat carto_text name listed in carto_fit.json beside the project is drawn at its fitted point and line count
 - contour: index vs intermediate ink and width, plus an index-ink casing on intermediates (R-04, R-01)
 - track_line map: closed tracks get a heavier line and cross-bars (R-11)
 - track_line map: track access is a reserved unpainted casing_colour channel (R-12)
@@ -443,7 +444,41 @@ CURVED_ONLY_PROPERTIES = (
 )
 ABOVE_BELOW_MAP_ORIENTED = 2 | 4 | 8
 MULTILINE_CENTRE = "1"
-CARTO_FLAT_TEXT = "replace(\"text_string\", ' / ', ' /\\n')"
+CARTO_FLAT_TEXT = "regexp_replace(replace(\"text_string\", ' / ', ' /\\n'), '^Te ', 'Te\u00a0')"
+
+
+def carto_flat_wrap_expression(style=None):
+    """Wrap a long single name; a dual name already breaks after its slash."""
+    chars = (style or STYLE)["labels"]["carto_point"]["wrap_chars"]
+    return (
+        f"CASE WHEN strpos(\"text_string\", ' / ') = 0 AND length(\"text_string\") > {chars}"
+        f" THEN {chars} ELSE 0 END"
+    )
+
+
+CARTO_FIT_FILE = "carto_fit.json"
+
+
+def load_carto_fit(project_dir):
+    """Return fitted flat names by row id from carto_fit.json beside the project, or {} when absent."""
+    if not project_dir:
+        return {}
+    path = os.path.join(project_dir, CARTO_FIT_FILE)
+    if not os.path.isfile(path):
+        return {}
+    with open(path, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def carto_fit_value(fit, key):
+    """Expression for one fitted value of this row; NULL for a row with no fit."""
+    literal = json.dumps(fit, separators=(",", ":")).replace("'", "''")
+    return f"map_get(map_get(json_to_map('{literal}'), \"id\"), '{key}')"
+
+
+def carto_fit_text_expression(fit):
+    """A row fitted to one line drops the slash break."""
+    return f"CASE WHEN {carto_fit_value(fit, 'lines')} = 1 THEN \"text_string\" ELSE {CARTO_FLAT_TEXT} END"
 
 
 def carto_flat_line_expression(style=None):
@@ -477,10 +512,11 @@ def _rule(settings, filter_expression, description):
     return rule
 
 
-def patch_carto_point_labels(layer, style=None):
+def patch_carto_point_labels(layer, style=None, fit=None):
     """Let QGIS slide a flat one-line carto_text name a short way, or flip it below its baseline.
 
-    A dual name breaks after its slash, so the label is narrower and easier to place.
+    A dual name breaks after its slash and a long single name wraps, so the label is narrower and easier to place.
+    A row in fit is drawn at its fitted bottom-centre point, on one line or in the default form.
     """
     style = style or STYLE
     labeling = layer.find("labeling")
@@ -502,16 +538,28 @@ def patch_carto_point_labels(layer, style=None):
     placement.set("multipartBehavior", "LabelLargestPartOnly")
     text_style = point.find("text-style")
     if text_style is not None:
-        text_style.set("fieldName", CARTO_FLAT_TEXT)
+        text_style.set("fieldName", carto_fit_text_expression(fit) if fit else CARTO_FLAT_TEXT)
         text_style.set("isExpression", "1")
+        text_style.set("multilineHeight", str(carto["line_height"]))
+        text_style.set("multilineHeightUnit", "Percentage")
     text_format = point.find("text-format")
     if text_format is not None:
         text_format.set("multilineAlign", MULTILINE_CENTRE)
+        text_format.set("useMaxLineLengthForAutoWrap", "1")
     props = _settings_props(point)
     if props is not None:
         for child in list(props):
             if child.get("name") in CURVED_ONLY_PROPERTIES:
                 props.remove(child)
+        wrap = carto_flat_wrap_expression(style)
+        if fit:
+            wrap = f"CASE WHEN {carto_fit_value(fit, 'lines')} = 1 THEN 0 ELSE {wrap} END"
+        put_expr(props, "AutoWrapLength", wrap)
+        if fit:
+            put_expr(props, "PositionX", carto_fit_value(fit, "x"))
+            put_expr(props, "PositionY", carto_fit_value(fit, "y"))
+            put_expr(props, "Hali", "'Center'")
+            put_expr(props, "Vali", "'Bottom'")
     labeling.remove(settings)
     labeling.set("type", "rule-based")
     rules = ET.SubElement(labeling, "rules", {"key": "{" + str(uuid.uuid4()) + "}"})
@@ -519,7 +567,7 @@ def patch_carto_point_labels(layer, style=None):
     rules.append(_rule(point, CARTO_POINT_FILTER, "Flat one-line"))
 
 
-def patch_labels(layer, layer_name, style=None, palette=None):
+def patch_labels(layer, layer_name, style=None, palette=None, fit=None):
     style = style or STYLE
     family = style["fonts"]["raster_family"]
     labels = style["labels"]
@@ -554,7 +602,7 @@ def patch_labels(layer, layer_name, style=None, palette=None):
             put_expr(props, "CurvedLabelMode", curved_label_mode_expression())
     if layer_name == CARTO_TEXT_LAYER:
         patch_wrap_baseline(layer)
-        patch_carto_point_labels(layer, style)
+        patch_carto_point_labels(layer, style, fit)
     patch_label_contrast(layer, style, palette)
     return count
 
@@ -1037,9 +1085,10 @@ def apply(root, project_dir=None):
     labels = 0
     seen = set()
     palette = project_palette(root)
+    fit = load_carto_fit(project_dir)
     for layer in layers.findall("maplayer"):
         name = layer.findtext("layername") or ""
-        labels += patch_labels(layer, name, palette=palette)
+        labels += patch_labels(layer, name, palette=palette, fit=fit)
         if name == "contour":
             patch_contour(layer)
             seen.add(name)

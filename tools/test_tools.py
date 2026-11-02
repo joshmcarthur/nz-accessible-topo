@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Sanity tests for the measurement and rendering tools. Run: python3 tools/test_tools.py"""
+import json
 import os
 import sys
 import tempfile
@@ -695,6 +696,25 @@ def test_springs_and_native_read_the_style_file():
     assert native.get("value").startswith("225,234,195")
 
 
+CARTO_TEXT_LAYER_XML = """
+<maplayer>
+  <layername>nztopo50_carto_text</layername>
+  <labeling type="simple"><settings>
+    <text-style fontFamily="Nimbus Sans LINZ" fontItalic="0" fontSize="7" namedStyle="Regular"/>
+    <placement geometryGenerator="" geometryGeneratorEnabled="0" geometryGeneratorType="PointGeometry"/>
+    <dd_properties><Option type="Map">
+      <Option name="properties" type="Map">
+        <Option name="CurvedLabelMode" type="Map">
+          <Option name="field" type="QString" value="charplace"/>
+          <Option name="type" type="int" value="2"/>
+        </Option>
+      </Option>
+    </Option></dd_properties>
+  </settings></labeling>
+</maplayer>
+"""
+
+
 def test_multiline_baseline_splits_at_a_fold():
     # Catches the estuary name left on one folded line, so the words still stack.
     estuary = [
@@ -710,25 +730,7 @@ def test_multiline_baseline_splits_at_a_fold():
     reverse = [(0.0, 0.0), (400.0, 0.0), (0.0, -80.0)]
     assert len(ov.split_wrap_baseline(reverse, 2)) == 2
     assert ov.split_wrap_baseline(estuary, 1) == [estuary]
-    root = ET.fromstring(
-        """
-        <maplayer>
-          <layername>nztopo50_carto_text</layername>
-          <labeling type="simple"><settings>
-            <text-style fontFamily="Nimbus Sans LINZ" fontItalic="0" fontSize="7" namedStyle="Regular"/>
-            <placement geometryGenerator="" geometryGeneratorEnabled="0" geometryGeneratorType="PointGeometry"/>
-            <dd_properties><Option type="Map">
-              <Option name="properties" type="Map">
-                <Option name="CurvedLabelMode" type="Map">
-                  <Option name="field" type="QString" value="charplace"/>
-                  <Option name="type" type="int" value="2"/>
-                </Option>
-              </Option>
-            </Option></dd_properties>
-          </settings></labeling>
-        </maplayer>
-        """
-    )
+    root = ET.fromstring(CARTO_TEXT_LAYER_XML)
     ov.patch_labels(root, "nztopo50_carto_text")
     assert root.find("labeling").get("type") == "rule-based"
     line_rule, point_rule = root.findall("./labeling/rules/rule")
@@ -756,6 +758,37 @@ def test_multiline_baseline_splits_at_a_fold():
     assert "' /\\n'" in ov.CARTO_FLAT_TEXT
     assert point.get("multipartBehavior") == "LabelLargestPartOnly"
     assert line_rule.find("settings/text-style").get("isExpression") is None
+    # Catches a wrap that also breaks dual names, a lone leading "Te", or the line height left at 1.
+    wrap = point_rule.find(".//Option[@name='AutoWrapLength']/Option[@name='expression']")
+    assert wrap.get("value") == ov.carto_flat_wrap_expression()
+    assert "strpos(\"text_string\", ' / ') = 0" in wrap.get("value")
+    assert "'Te\u00a0'" in ov.CARTO_FLAT_TEXT
+    assert point_text.get("multilineHeight") == str(ov.STYLE["labels"]["carto_point"]["line_height"])
+    assert line_rule.find(".//Option[@name='AutoWrapLength']") is None
+    assert point_rule.find(".//Option[@name='PositionX']") is None
+
+
+def test_carto_fit_places_listed_names():
+    # Catches a fit file that is not read, a fitted row not pinned to its point, or a one-line fit that still breaks.
+    with tempfile.TemporaryDirectory() as folder:
+        assert ov.load_carto_fit(folder) == {}
+        with open(os.path.join(folder, ov.CARTO_FIT_FILE), "w", encoding="utf-8") as handle:
+            json.dump({"row-1": {"x": 1569900.5, "y": 5165760.0, "lines": 1}}, handle)
+        fit = ov.load_carto_fit(folder)
+    root = ET.fromstring(CARTO_TEXT_LAYER_XML)
+    ov.patch_labels(root, "nztopo50_carto_text", fit=fit)
+    point_rule = root.findall("./labeling/rules/rule")[1]
+    props = point_rule.find("settings/dd_properties/Option/Option[@name='properties']")
+    assert ov._expr(props, "PositionX") == ov.carto_fit_value(fit, "x")
+    assert ov._expr(props, "PositionY") == ov.carto_fit_value(fit, "y")
+    assert "1569900.5" in ov._expr(props, "PositionX")
+    assert ov._expr(props, "Hali") == "'Center'"
+    assert ov._expr(props, "Vali") == "'Bottom'"
+    text = point_rule.find("settings/text-style").get("fieldName")
+    assert text == ov.carto_fit_text_expression(fit)
+    assert text.startswith("CASE WHEN ") and ov.CARTO_FLAT_TEXT in text
+    assert ov._expr(props, "AutoWrapLength").startswith("CASE WHEN ")
+    assert "O''Brien" in ov.carto_fit_value({"O'Brien": {"x": 1}}, "x")
 
 
 def test_hillshade_is_an_optional_overlay():

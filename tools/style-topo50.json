@@ -15,7 +15,9 @@
     "carto_point": {
       "allowance_mm": 1,
       "advance_em": 0.6,
-      "overrun_mm": 0.5
+      "overrun_mm": 0.5,
+      "wrap_chars": 16,
+      "line_height": 0.85
     },
     "place_hierarchy": [
       {"rank": "suburb-locality", "layers": ["Place-Label-Suburb", "Place-Label-Locality"], "size_px": 11},
