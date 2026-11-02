@@ -514,3 +514,45 @@ Scale the vector index width stops by 0.45/0.28. Do not add ticks. Do not draw a
 ### Consequences
 
 Index lines read heavier on dense slopes. If Port Hills still cannot separate index from intermediate, the next choice is a shape channel on index, not a new brown.
+
+## R-01 is met on the Port Hills square
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+Intermediate contours use a 0.2 mm `#8A4F1C` casing under a `#C4814B` fill. Index is 0.45 mm in `#8A4F1C`. Josh accepted the index versus intermediate step on the Port Hills square and the BX24 compare.
+
+### Decision
+
+R-01 is met for this loop. Casing versus paper is 6.53:1 grey and 3.45:1 red. The tan fill stays `#C4814B`. Do not darken it. Do not add ticks or a double index line.
+
+### Rationale
+
+The Met when text allows ≥3:1 grey or a pattern/shape, and the same under red light. The casing carries the line under red light. Weight carries index versus intermediate.
+
+### Consequences
+
+R-13 may run later. Do not reopen the contour inks in this loop.
+
+## R-08 one attempt stays provisional
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-08 asks for +0.04–0.08 em tracking on point/area labels. Met when is an A/B test with dyslexic readers. This loop skips user testing. Vector already paints 0.05 em from `P`. Raster along-line labels keep normal spacing so type is not squeezed onto the stock line.
+
+### Decision
+
+`labels.letter_spacing_em` is 0.05 in `tools/style-topo50.json`. The vector build reads that number. Do not add tracking on QGIS along-line labels. Do not run an A/B test. Leave R-08 provisional.
+
+### Rationale
+
+The dispatch allows one attempt and says to leave it provisional if the evidence is still weak. The Met when text is user testing, which this loop skips. Tracking on curved names would undo the normal-spacing decision.
+
+### Consequences
+
+Raster map labels do not gain 0.05 em tracking. A later A/B test is a new choice.
