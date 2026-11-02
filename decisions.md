@@ -191,7 +191,7 @@ The accessible project and the stock project use the same along-line placement. 
 
 ## Square draws use the Mac QGIS app
 
-**Status:** Accepted
+**Status:** Superseded by the decision below
 **Date:** 2026-11-02
 
 ### Context
@@ -209,4 +209,27 @@ An arm64 image means a new build of the LINZ QGIS flatpak. The Mac app is alread
 ### Consequences
 
 The style loop does not restart. R-09 stays the open recommendation. A square command sets `QGIS_PREFIX_PATH=/Applications/QGIS.app/Contents/MacOS` and runs `tools/render_square.py` with the app Python.
+
+
+## This Mac QGIS cannot open the square project
+
+**Status:** Accepted
+**Date:** 2026-11-02
+**Supersedes:** Square draws use the Mac QGIS app
+
+### Context
+
+`/Applications/QGIS.app` is QGIS 3.36.3-Maidenhead. The square project was saved by QGIS 4.0.3-Norrköping. A native estuary draw prints that warning. `Map5View` then has no valid layers. The run stops in about 8 seconds and writes no picture.
+
+### Decision
+
+Square draws stay on the `map` image. Do not draw squares with QGIS 3.36.3. `QGIS_PREFIX_PATH` remains the way a newer app would point the same script at itself. An empty value stays `/usr`.
+
+### Rationale
+
+The Mac app is older than the project. It does not reach the national file read. An arm64 flatpak build is still a new QGIS build. The working draw is the current image.
+
+### Consequences
+
+The style loop does not restart. R-09 stays open. A later Mac app that can open a QGIS 4.0.3 project can use `QGIS_PREFIX_PATH` without a new script.
 
