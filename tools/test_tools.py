@@ -14,6 +14,7 @@ import render_comparison as rc  # noqa: E402
 import override_topo50_project as ov  # noqa: E402
 import build_style as bs  # noqa: E402
 import render_square as rs  # noqa: E402
+import fit_carto_labels as fc  # noqa: E402
 
 
 def test_ciede2000_reference():
@@ -789,6 +790,20 @@ def test_carto_fit_places_listed_names():
     assert text.startswith("CASE WHEN ") and ov.CARTO_FLAT_TEXT in text
     assert ov._expr(props, "AutoWrapLength").startswith("CASE WHEN ")
     assert "O''Brien" in ov.carto_fit_value({"O'Brien": {"x": 1}}, "x")
+
+
+def test_carto_fit_prefers_less_ink_overlap():
+    # Catches a grid that cannot keep a name in place, or a score that ignores ink overlap or move cost.
+    assert 0 in fc.steps_mm(-1.6, 0.5)
+    near_ink = np.zeros((20, 40), bool)
+    near_ink[5:10, 0:20] = True
+    near_halo = near_ink.copy()
+    ink = np.ones((5, 10), bool)
+    on_top = ("on top", ink, ink, 5, 5, 0)
+    clear = ("clear", ink, ink, 25, 5, 0.5)
+    far = ("far", ink, ink, 25, 12, 1.0)
+    outside = ("outside", ink, ink, 35, 5, 0)
+    assert fc.best_candidate([on_top, clear, far, outside], near_ink, near_halo)[0] == "clear"
 
 
 def test_hillshade_is_an_optional_overlay():

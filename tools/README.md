@@ -26,3 +26,20 @@ Known limitations:
   map background and show as false failures.
 - Simulation is for *dichromacy* (severity 1.0). Anomalous trichromats see
   more than this; it is a worst case.
+
+## fit_carto_labels.py
+
+Fits flat `carto_text` names whose labels collide. QGIS tests label boxes as
+yes or no. This tool scores glyph ink and halo, so it can choose the position
+with the least overlap. It tries each name on one line or in its wrapped form,
+moved in 0.25 mm steps. It writes `carto_fit.json` beside the project. Run the
+apply step again to draw the fitted names.
+
+```
+python tools/fit_carto_labels.py --project accessible/nztopo50.qgs \
+    --font fonts --extent 1564000,5154000,1588000,5190000
+python3 tools/override_topo50_project.py stock/nztopo50.qgs accessible/nztopo50.qgs
+```
+
+Run it with the QGIS Python. Other labels count as filled boxes. Point symbols
+are not counted. The glyph masks are about 2.5% smaller than the QGIS boxes.
