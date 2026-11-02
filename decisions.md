@@ -266,3 +266,27 @@ Eight 472 px squares took about 130 seconds. The same eight squares on the emula
 ### Consequences
 
 Do not draw squares with QGIS 3.36.3. R-09 stays open. The hierarchy list is still not named. Do not start R-07.
+
+## Place label ranks for R-09
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-09 says adjacent hierarchy levels differ by at least 20%. It does not name the layers. Josh named the list on 2026-11-02.
+
+### Decision
+
+Suburb and Locality are one rank, at 11 px. Town is the next rank, at 14 px. City is the rank after Town, at 17 px. `Place-Label-City-14` and `Place-Label-City-7` are the city rank.
+
+Island labels are a second ladder. `Place-Label-Island-12`, `Place-Label-Island-8`, `Place-Label-Island-6`, and `Place-Label-Island-4` are zoom bands. The number in the id is the max zoom. This decision does not name adjacent island ranks. This step does not change those sizes.
+
+### Rationale
+
+11 px to 12 px is 9%. 13/11 is 18%. 14 is the smallest integer px that is at least 20% above 11. 17 is the smallest integer px that is at least 20% above 14. The island layers do not share one zoom, so they are not one adjacent pair.
+
+### Consequences
+
+Print size floors stay. A later island rank list is a new choice. Do not invent that list in this step.
+

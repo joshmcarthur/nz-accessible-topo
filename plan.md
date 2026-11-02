@@ -63,3 +63,4 @@ The square renderer draws the Map5View layers. That is the tiff-50 map theme. It
 Square draws use the Mac QGIS app. The sheet export stays on the map image.
 
 Square draws use `/Applications/QGIS-final-4_2_3.app` (QGIS 4.2.3). The sheet export stays on the map image. Set `PROJ_DATA` or the square is white.
+R-09 place ranks: Suburb and Locality are 11 px. Town is 14 px. City is 17 px. Island layers stay zoom bands.
