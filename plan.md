@@ -66,3 +66,5 @@ Square draws use `/Applications/QGIS-final-4_2_3.app` (QGIS 4.2.3). The sheet ex
 R-09 place ranks: Suburb and Locality are 11 px. Town is 14 px. City is 17 px. Island layers stay zoom bands.
 
 R-07 draws the label buffer the text style already has. It sets that buffer opaque. It darkens a label ink that is below 4.8:1 against that buffer. It does not use the hand-picked #005C8F.
+R-10: vector vegetation colours come from the style file. Scrub is #A3CC90. Scattered is #E0EDD8 plus nzat:scattered_stipple. Raster keeps the stock scattered dots and the scrub hatch. Do not add a fill under those dots. Native forest stays for R-17.
+Next step is R-11.

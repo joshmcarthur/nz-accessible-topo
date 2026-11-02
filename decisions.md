@@ -323,3 +323,27 @@ A buffer with draw off is not a halo. The size and the colour are already in the
 ### Consequences
 
 Map labels gain the halo already described in the text style. Layout text does not. A later step does not turn those buffers off.
+
+
+## R-10 raster keeps stock scattered dots
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+R-10 sets scrub to `#A3CC90` and scattered scrub to `#E0EDD8` plus stipple. Print already draws scattered scrub as a PointPatternFill (P6). The stock fill under those dots is not `#E0EDD8`. A raster alpha for a new fill is not in the recommendation.
+
+### Decision
+
+Keep the stock scattered-scrub dots. Do not add a `#E0EDD8` fill under those dots. Do not invent a scattered alpha.
+
+The vector style paints `#E0EDD8` plus `nzat:scattered_stipple`. Raster scrub stays `#A3CC90` plus the existing line hatch. Native forest stays `#E1EAC3` for R-17.
+
+### Rationale
+
+Print already carries scattered scrub by pattern. Adding a fill would need an alpha, and this layer sits above the contours. The web style lost the pattern, so it needs the tint and the stipple.
+
+### Consequences
+
+Raster and vector match on scrub colour and on meaning in shape. They do not match on scattered fill colour. A later step that paints a scattered fill on the raster is a new choice.
