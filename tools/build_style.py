@@ -28,14 +28,10 @@ WHITE = (255, 255, 255)
 # ------------------------------------------------------------------ parameters
 # Values come from docs/recommendations.md and docs/palette-experiments/proposed-v0.md.
 P = {
-    "hillshade_direction": 337.5,                         # R-03 (F-14, F-15)
     "contour_index": "#8A4F1C",                           # R-04
     "contour_intermediate": "#C4814B",                    # R-04 rev. (log 0020): lightest same-hue brown ≥3.2:1
-    "contour_index_width": {"stops": [[10, 0.8], [12, 1.2], [15, 1.8]]},
+    "contour_index_width": {"stops": [[10, 1.3], [12, 1.9], [15, 2.9]]},  # 0.45/0.28 × original stops
     "contour_intermediate_width": {"stops": [[12, 0.6], [16, 0.9]]},  # thinner: dense slopes read as texture
-    "closed_track_shadow": "rgba(26, 26, 26, 0.55)",      # R-11
-    "red_light_min": 3.0,                                 # R-11 (F-21)
-    "letter_spacing_em": 0.05,                            # R-08 provisional (F-07)
     # Glyph stacks served by the LINZ glyph endpoint that are already used by
     # the upstream style — we only map onto stacks known to exist.
     "deitalicise": {                                      # R-05 (F-05)
@@ -153,10 +149,82 @@ def vegetation_fill(kind, rules=None):
     return fmt(pa.parse_colour(colour)[:3])
 
 
-def darken_for_text(rgb, behind, min_ratio):
-    """Lower L* until the ink meets min_ratio against behind. Keep hue."""
+def spring_colour(kind, rules=None):
+    """Return the spring ink. Colour lives in tools/style-topo50.json."""
+    colour = (rules or RULES)["springs"][kind]["colour"]
+    return fmt(pa.parse_colour(colour)[:3])
+
+
+def red_light_min(rules=None):
+    """Return the red-light contrast floor. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["label_contrast"]["red_light_min"]
+
+
+def closed_track_casing(rules=None):
+    """Return the vector closed-track casing. Colour lives in tools/style-topo50.json."""
+    track = (rules or RULES)["tracks"]["closed_foot"]
+    colour = pa.parse_colour(track["casing_colour"])[:3]
+    return fmt(colour, track["casing_alpha"])
+
+
+def track_access_reserved_channel(rules=None):
+    """Return the unused track-access channel. The name lives in tools/style-topo50.json."""
+    return (rules or RULES)["tracks"]["access"]["reserved_channel"]
+
+
+def track_access_painted(rules=None):
+    """Return whether track access is painted. Access is reserved and unpainted."""
+    return (rules or RULES)["tracks"]["access"]["painted"]
+
+
+def contour_colour(kind, rules=None):
+    """Return a contour ink. Colour lives in tools/style-topo50.json."""
+    return (rules or RULES)["contours"][kind]["colour"]
+
+
+def intermediate_casing_colour(rules=None):
+    """Return the intermediate contour casing. Colour lives in tools/style-topo50.json."""
+    return (rules or RULES)["contours"]["intermediate"]["casing_colour"]
+
+
+def intermediate_casing_width(rules=None):
+    """Return vector casing width stops. Scale the fill stops by the millimetre ratio."""
+    mid = (rules or RULES)["contours"]["intermediate"]
+    factor = mid["casing_width_mm"] / mid["width_mm"]
+    return {"stops": [[z, round(w * factor, 2)] for z, w in P["contour_intermediate_width"]["stops"]]}
+
+
+def letter_spacing_em(rules=None):
+    """Return label tracking in em. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["labels"]["letter_spacing_em"]
+
+
+def hillshade_azimuth(rules=None):
+    """Return the primary hillshade light. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["hillshade"]["azimuth_deg"]
+
+
+def hillshade_fill_azimuths(rules=None):
+    """Return the weaker fill lights. The numbers live in tools/style-topo50.json."""
+    return (rules or RULES)["hillshade"]["fill_azimuths_deg"]
+
+
+def hillshade_painted(rules=None):
+    """Return whether the vector hillshade layer is visible."""
+    return (rules or RULES)["hillshade"]["painted"]
+
+
+def darken_for_text(rgb, behind, min_ratio, red_min=None):
+    """Lower L* until the ink meets min_ratio against behind. Keep hue.
+
+    When red_min is set, the ink must also meet that floor under the red-light model.
+    """
     def ok(colour):
-        return pa.contrast_ratio(pa.rel_luminance(colour), pa.rel_luminance(behind)) >= min_ratio
+        contrast = pa.contrast_ratio(pa.rel_luminance(colour), pa.rel_luminance(behind)) >= min_ratio
+        if red_min is None:
+            return contrast
+        red = pa.contrast_ratio(pa.red_light_reflectance(colour), pa.red_light_reflectance(behind)) >= red_min
+        return contrast and red
 
     return darken_until(rgb, ok)
 
@@ -185,47 +253,84 @@ class Builder:
 
     # R-03 ----------------------------------------------------------------
     def hillshade(self, multidirectional=False):
+        azimuth = hillshade_azimuth()
+        fills = hillshade_fill_azimuths()
+        painted = hillshade_painted()
         for l in self.style["layers"]:
             if l["type"] != "hillshade":
                 continue
             p = l["paint"]
             old = p.get("hillshade-illumination-direction")
+            if not painted:
+                l.setdefault("layout", {})["visibility"] = "none"
+                self.note("R-03", l["id"], "visibility none — hillshade.painted is false")
+                continue
             if not multidirectional:
-                p["hillshade-illumination-direction"] = P["hillshade_direction"]
-                self.note("R-03", l["id"], f"illumination direction {old} → {P['hillshade_direction']} (NNW)")
+                p["hillshade-illumination-direction"] = azimuth
+                self.note("R-03", l["id"], f"illumination direction {old} → {azimuth} (NNW)")
             else:
                 p["hillshade-method"] = "multidirectional"
-                p["hillshade-illumination-direction"] = [337.5, 292.5, 22.5]
+                p["hillshade-illumination-direction"] = [azimuth, *fills]
                 p["hillshade-illumination-altitude"] = [45, 45, 45]
                 # Static colours: zoom-interpolated arrays are not assumed supported.
                 p["hillshade-highlight-color"] = ["rgba(255,255,255,0.30)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.12)"]
                 p["hillshade-shadow-color"] = ["rgba(12,12,12,0.45)", "rgba(12,12,12,0.18)", "rgba(12,12,12,0.18)"]
                 p.pop("hillshade-accent-color", None)
-                self.note("R-03", l["id"], "multidirectional: primary 337.5° + weaker 292.5°/22.5° fill lights "
-                          "(F-16). Colours are provisional — tune visually (OQ-07)")
+                self.note(
+                    "R-03",
+                    l["id"],
+                    f"multidirectional: primary {azimuth}° + weaker {'/'.join(str(item) for item in fills)}° fill lights "
+                    "(F-16). Colours are provisional — tune visually (OQ-07)",
+                )
 
     # R-04 ----------------------------------------------------------------
     def contours(self):
         idx = self.layer("Contours-Index")
-        idx["paint"]["line-color"] = P["contour_index"]
+        idx_colour = contour_colour("index")
+        idx["paint"]["line-color"] = idx_colour
         idx["paint"]["line-opacity"] = {"stops": [[10, 0.6], [11, 1]]}
         idx["paint"]["line-width"] = P["contour_index_width"]
-        self.note("R-04", "Contours-Index", f"colour → {P['contour_index']} (opaque), width ↑")
+        self.note("R-04", "Contours-Index", f"colour → {idx_colour} (opaque), width ↑")
         halo = self.layer("Contours-Index-Halo")
         halo.setdefault("layout", {})["visibility"] = "none"
         self.note("R-04", "Contours-Index-Halo", "hidden — darker index line no longer needs a 10% offset shadow")
+        mid_colour = contour_colour("intermediate")
         for lid in ("Contours-All", "Contours-Designated", "Contours-Natural"):
             l = self.layer(lid)
-            l["paint"]["line-color"] = P["contour_intermediate"]
+            l["paint"]["line-color"] = mid_colour
             if lid == "Contours-All":
                 l["paint"]["line-width"] = P["contour_intermediate_width"]
                 l["paint"]["line-opacity"] = {"stops": [[13, 0.6], [14, 1]]}
-            self.note("R-04", lid, f"colour → {P['contour_intermediate']} (opaque)")
+            self.note("R-04", lid, f"colour → {mid_colour} (opaque)")
+        all_layer = self.layer("Contours-All")
+        casing = {
+            "id": "NZAT-Contours-All-Casing",
+            "type": "line",
+            "source": all_layer["source"],
+            "source-layer": all_layer["source-layer"],
+            "filter": copy.deepcopy(all_layer["filter"]),
+            "minzoom": all_layer.get("minzoom", 13),
+            "layout": copy.deepcopy(all_layer.get("layout", {})),
+            "paint": {
+                "line-color": intermediate_casing_colour(),
+                "line-width": intermediate_casing_width(),
+                "line-opacity": copy.deepcopy(all_layer["paint"].get("line-opacity", 1)),
+            },
+        }
+        self.insert_after(
+            "Contours-Index-Halo",
+            casing,
+            "R-01",
+            "index-ink casing under intermediate fill so the line meets 3:1 under red light",
+        )
 
     # R-10 ----------------------------------------------------------------
     def vegetation(self):
+        native = vegetation_fill("native")
         scrub = vegetation_fill("scrub")
         scattered = vegetation_fill("scattered")
+        self.layer("Vegetation-Native")["paint"]["fill-color"] = native
+        self.note("R-17", "Vegetation-Native", f"fill → {native}")
         self.layer("Vegetation-Scrub")["paint"]["fill-color"] = scrub
         self.note("R-10", "Vegetation-Scrub", f"fill → {scrub}")
         sc = self.layer("Vegetation-Scatteredscrub")
@@ -242,11 +347,33 @@ class Builder:
         }
         self.insert_after(sc["id"], stipple, "R-10", "stipple so scattered scrub survives greyscale and CVD")
 
+    # R-17 ----------------------------------------------------------------
+    def springs(self):
+        hot = spring_colour("hot")
+        cold = spring_colour("cold")
+        hot_layer = self.layer("Water-Spring-Hot")
+        hot_layer["paint"]["text-color"] = hot
+        if "icon-color" in hot_layer["paint"]:
+            hot_layer["paint"]["icon-color"] = hot
+        self.note("R-17", "Water-Spring-Hot", f"text → {hot}; icon stays spring_hot_pnt")
+        cold_layer = self.layer("Water-Spring-Cold")
+        cold_layer["paint"]["text-color"] = cold
+        cold_layer["paint"]["icon-color"] = cold
+        self.note("R-17", "Water-Spring-Cold", f"icon+text → {cold}; icon stays spring_cold_pnt")
+
     # R-11 ----------------------------------------------------------------
     def closed_tracks(self):
+        if track_access_painted():
+            raise RuntimeError("track access is reserved and must not be painted")
+        self.note(
+            "R-12",
+            "(tracks.access)",
+            f"reserved {track_access_reserved_channel()} channel is not painted (F-25)",
+        )
+        casing = closed_track_casing()
         for lid in ("Transport-ClosedFootTracks-Shadow", "Transport-ClosedFootRouteTracks-Shadow"):
-            self.layer(lid)["paint"]["line-color"] = P["closed_track_shadow"]
-            self.note("R-11", lid, "red 40% shadow → dark casing (lightness, not hue)")
+            self.layer(lid)["paint"]["line-color"] = casing
+            self.note("R-11", lid, f"red 40% shadow → dark casing {casing} (lightness, not hue)")
         for lid in ("All-ClosedFootTrack-Labels", "All-ClosedFootRouteTrack-Labels"):
             p = self.layer(lid)["paint"]
             p["text-halo-color"] = "rgba(255, 255, 255, 1)"
@@ -309,9 +436,10 @@ class Builder:
                     self.note("R-09", lid, f"text-size stops floored at {floor}")
 
             # R-08 letter-spacing (provisional)
+            spacing = letter_spacing_em()
             if not shield and "text-letter-spacing" not in lay:
-                lay["text-letter-spacing"] = P["letter_spacing_em"]
-                self.note("R-08", lid, f"letter-spacing +{P['letter_spacing_em']} em (provisional)")
+                lay["text-letter-spacing"] = spacing
+                self.note("R-08", lid, f"letter-spacing +{spacing} em (provisional)")
 
             if shield:
                 continue
@@ -331,16 +459,11 @@ class Builder:
                 hcol = (*hcol[:3], float(target_alpha))
             behind = pa.composite(hcol, WHITE) if hcol else WHITE
             fg = pa.composite(tcol, behind)
-
-            def contrast_ok(rgb):
-                return pa.contrast_ratio(pa.rel_luminance(rgb), pa.rel_luminance(behind)) >= contrast_floor
-
-            def redlight_ok(rgb):
-                return pa.contrast_ratio(pa.red_light_reflectance(rgb), pa.red_light_reflectance(behind)) >= P["red_light_min"]
+            red_floor = red_light_min()
 
             before_cr = pa.contrast_ratio(pa.rel_luminance(fg), pa.rel_luminance(behind))
             before_rl = pa.contrast_ratio(pa.red_light_reflectance(fg), pa.red_light_reflectance(behind))
-            new = darken_until(fg, lambda c: contrast_ok(c) and redlight_ok(c))
+            new = darken_for_text(fg, behind, contrast_floor, red_floor)
             if new != fg:
                 paint["text-color"] = fmt(new)
                 if "text-opacity" in paint and isinstance(paint["text-opacity"], (int, float)):
@@ -350,7 +473,7 @@ class Builder:
                 why = []
                 if before_cr < contrast_floor:
                     why.append(f"contrast {before_cr:.2f}→{after_cr:.2f}")
-                if before_rl < P["red_light_min"]:
+                if before_rl < red_floor:
                     why.append(f"red-light {before_rl:.2f}→{after_rl:.2f}")
                 rid = "R-07" if before_cr < contrast_floor else "R-11"
                 self.note(rid, lid, f"text {tc} → {fmt(new)} (L* lowered, hue kept; {', '.join(why)})")
@@ -376,6 +499,7 @@ def build(multidirectional=False):
     b.hillshade(multidirectional)
     b.contours()
     b.vegetation()
+    b.springs()
     b.closed_tracks()
     b.text()
     b.sprite_and_meta(variant)

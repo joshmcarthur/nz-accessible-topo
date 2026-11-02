@@ -5,13 +5,17 @@ The print layout (legend, sheet index, scale, title) is left alone.
 Changes are on the map layers the research names:
 
 - labels: upright NZAT Legible Test, size floor (R-05, R-06, R-09)
-- labels: draw the buffer already on the text style, and darken ink below the contrast floor (R-07)
+- labels: draw the buffer already on the text style, cap it at halo_max_mm, and darken ink below the contrast floor and the red-light floor (R-07, R-11)
 - labels: a multiline carto_text name is split onto the forward passes of a folded baseline
 - labels: stretch-to-fit curved modes use normal letter spacing, so the larger type is not squeezed onto the stock line
-- contour: index vs intermediate ink and width (R-04)
+- labels: flat one-line carto_text names sit on a short horizontal line around the stock label, so QGIS can slide or flip a name that collides
+- contour: index vs intermediate ink and width, plus an index-ink casing on intermediates (R-04, R-01)
 - track_line map: closed tracks get a heavier line and cross-bars (R-11)
+- track_line map: track access is a reserved unpainted casing_colour channel (R-12)
 - water_point: hot and cold springs get different glyphs (R-17)
 - vegetation map: native forest and scrub use a larger lightness step (R-10, R-17)
+- vegetation map: draws below contour so the darker fills do not hide relief (R-04)
+- hillshade: optional overlay at 337.5°. Turns on when dem.tif sits beside the project (R-03)
 
 Usage: python3 tools/override_topo50_project.py IN.qgs OUT.qgs
 
@@ -19,6 +23,7 @@ Colour, type size, font family, and symbol rules come from
 tools/style-topo50.json. This script does not paint reference_inks.
 """
 
+import copy
 import json
 import math
 import os
@@ -40,9 +45,12 @@ def load_style(path=None):
 
 STYLE = load_style()
 FAMILY = STYLE["fonts"]["raster_family"]
+DEM_LAYER_NAME = "dem"
+DEM_LAYER_ID = "dem_hillshade"
 CARTO_TEXT_LAYER = "nztopo50_carto_text"
 WRAP_TURN_DEG = 90
 WRAP_HEADING_DEG = 45
+SHEET_SCALE = 50000
 
 
 def _hex_rgb(colour):
@@ -229,12 +237,30 @@ def _settings_props(settings):
     return props
 
 
-def draw_configured_buffer(buffer_el):
-    """Draw the buffer the text style already has. Keep its size and its colour."""
+def capped_buffer_mm(size_text, max_mm):
+    """Return the buffer width in mm. Do not go above max_mm."""
+    try:
+        size = float(size_text)
+    except (TypeError, ValueError):
+        return None
+    return min(size, float(max_mm))
+
+
+def format_buffer_mm(size):
+    return f"{size:g}"
+
+
+def draw_configured_buffer(buffer_el, max_mm):
+    """Draw the buffer the text style already has. Cap its size. Keep its colour."""
     if buffer_el is None:
         return
     buffer_el.set("bufferDraw", "1")
     buffer_el.set("bufferOpacity", "1")
+    units = (buffer_el.get("bufferSizeUnits") or "MM").upper()
+    if units == "MM":
+        capped = capped_buffer_mm(buffer_el.get("bufferSize"), max_mm)
+        if capped is not None:
+            buffer_el.set("bufferSize", format_buffer_mm(capped))
     parsed = parse_qgis_colour(buffer_el.get("bufferColor"))
     if parsed is None:
         return
@@ -253,7 +279,7 @@ def label_behind(buffer_el):
     return pa.composite((red, green, blue, alpha / 255.0), WHITE)
 
 
-def colour_expression(palette, behind, min_ratio):
+def colour_expression(palette, behind, min_ratio, red_min=None):
     """Map a named project colour that fails the floor to a darker ink."""
     clauses = []
     for name, colour_text in palette:
@@ -264,7 +290,7 @@ def colour_expression(palette, behind, min_ratio):
             continue
         red, green, blue, alpha = parsed
         fg = pa.composite((red, green, blue, alpha / 255.0), behind)
-        new = bs.darken_for_text(fg, behind, min_ratio)
+        new = bs.darken_for_text(fg, behind, min_ratio, red_min)
         if _rgb_key(new) == _rgb_key(fg):
             continue
         nr, ng, nb = _rgb_key(new)
@@ -274,13 +300,13 @@ def colour_expression(palette, behind, min_ratio):
     return "CASE " + " ".join(clauses) + " ELSE project_color_object(\"colour\") END"
 
 
-def _darken_text_color(text_style, behind, min_ratio):
+def _darken_text_color(text_style, behind, min_ratio, red_min=None):
     parsed = parse_qgis_colour(text_style.get("textColor"))
     if parsed is None:
         return
     red, green, blue, alpha = parsed
     fg = pa.composite((red, green, blue, alpha / 255.0), behind)
-    new = bs.darken_for_text(fg, behind, min_ratio)
+    new = bs.darken_for_text(fg, behind, min_ratio, red_min)
     if _rgb_key(new) == _rgb_key(fg):
         return
     text_style.set("textColor", format_qgis_colour(new, 255))
@@ -290,22 +316,24 @@ def patch_label_contrast(layer, style=None, palette=None):
     """Draw each configured label buffer. Darken ink that misses the contrast floor."""
     style = style or STYLE
     min_ratio = style["label_contrast"]["min_ratio"]
+    red_min = style["label_contrast"]["red_light_min"]
+    max_mm = style["label_contrast"]["halo_max_mm"]
     named = palette or []
     for settings in layer.findall(".//settings"):
         text_style = settings.find("text-style")
         if text_style is None:
             continue
         buffer_el = text_style.find("text-buffer")
-        draw_configured_buffer(buffer_el)
+        draw_configured_buffer(buffer_el, max_mm)
         behind = label_behind(buffer_el)
         props = _settings_props(settings)
         expression = _expr(props, "Color") if props is not None else None
         if _is_named_project_colour(expression):
-            updated = colour_expression(named, behind, min_ratio)
+            updated = colour_expression(named, behind, min_ratio, red_min)
             if updated:
                 put_expr(props, "Color", updated)
             continue
-        _darken_text_color(text_style, behind, min_ratio)
+        _darken_text_color(text_style, behind, min_ratio, red_min)
 
 
 def _heading(start, end):
@@ -403,6 +431,94 @@ def patch_wrap_baseline(layer):
     placement.set("geometryGeneratorType", "LineGeometry")
 
 
+CARTO_POINT_FILTER = (
+    "\"text_placement\" = 1 AND \"text_orientation\" = 0"
+    " AND strpos(coalesce(\"text_string\", ''), '\\n') = 0"
+)
+CURVED_ONLY_PROPERTIES = (
+    "LinePlacementFlags",
+    "LineAnchorPercent",
+    "LineAnchorTextPoint",
+    "CurvedLabelMode",
+)
+ABOVE_BELOW_MAP_ORIENTED = 2 | 4 | 8
+MULTILINE_CENTRE = "1"
+CARTO_FLAT_TEXT = "replace(\"text_string\", ' / ', ' /\\n')"
+
+
+def carto_flat_line_expression(style=None):
+    """Horizontal line at the stock baseline, centred on the stock label.
+
+    It is the estimated width of the longest label line plus the allowance at each end.
+    @map_scale is null in a label geometry generator, so the sheet scale is fixed.
+    """
+    style = style or STYLE
+    carto = style["labels"]["carto_point"]
+    floor = style["labels"]["size_floor_pt"]
+    metres_per_pt = 0.3528 / 1000 * SHEET_SCALE
+    metres_per_mm = SHEET_SCALE / 1000
+    longest = f"array_max(array_foreach(string_to_array({CARTO_FLAT_TEXT}, '\\n'), length(@element)))"
+    half = (
+        f"({longest} * max({floor}, coalesce(\"size\", {floor}))"
+        f" * {carto['advance_em']} * {metres_per_pt:g} / 2 + {carto['allowance_mm'] * metres_per_mm:g})"
+    )
+    return (
+        "with_variable('cx', x(centroid(bounds(@geometry))), with_variable('y', y_min(@geometry), "
+        f"make_line(make_point(@cx - {half}, @y), make_point(@cx + {half}, @y))))"
+    )
+
+
+def _rule(settings, filter_expression, description):
+    rule = ET.Element(
+        "rule",
+        {"description": description, "filter": filter_expression, "key": "{" + str(uuid.uuid4()) + "}"},
+    )
+    rule.append(settings)
+    return rule
+
+
+def patch_carto_point_labels(layer, style=None):
+    """Let QGIS slide a flat one-line carto_text name a short way, or flip it below its baseline.
+
+    A dual name breaks after its slash, so the label is narrower and easier to place.
+    """
+    style = style or STYLE
+    labeling = layer.find("labeling")
+    if labeling is None or labeling.get("type") != "simple":
+        return
+    settings = labeling.find("settings")
+    if settings is None or settings.find("placement") is None:
+        return
+    point = copy.deepcopy(settings)
+    carto = style["labels"]["carto_point"]
+    placement = point.find("placement")
+    placement.set("placement", "2")
+    placement.set("placementFlags", str(ABOVE_BELOW_MAP_ORIENTED))
+    placement.set("overrunDistance", str(carto["overrun_mm"]))
+    placement.set("overrunDistanceUnit", "MM")
+    placement.set("geometryGenerator", carto_flat_line_expression(style))
+    placement.set("geometryGeneratorEnabled", "1")
+    placement.set("geometryGeneratorType", "LineGeometry")
+    placement.set("multipartBehavior", "LabelLargestPartOnly")
+    text_style = point.find("text-style")
+    if text_style is not None:
+        text_style.set("fieldName", CARTO_FLAT_TEXT)
+        text_style.set("isExpression", "1")
+    text_format = point.find("text-format")
+    if text_format is not None:
+        text_format.set("multilineAlign", MULTILINE_CENTRE)
+    props = _settings_props(point)
+    if props is not None:
+        for child in list(props):
+            if child.get("name") in CURVED_ONLY_PROPERTIES:
+                props.remove(child)
+    labeling.remove(settings)
+    labeling.set("type", "rule-based")
+    rules = ET.SubElement(labeling, "rules", {"key": "{" + str(uuid.uuid4()) + "}"})
+    rules.append(_rule(settings, f"NOT ({CARTO_POINT_FILTER})", "Baseline"))
+    rules.append(_rule(point, CARTO_POINT_FILTER, "Flat one-line"))
+
+
 def patch_labels(layer, layer_name, style=None, palette=None):
     style = style or STYLE
     family = style["fonts"]["raster_family"]
@@ -438,6 +554,7 @@ def patch_labels(layer, layer_name, style=None, palette=None):
             put_expr(props, "CurvedLabelMode", curved_label_mode_expression())
     if layer_name == CARTO_TEXT_LAYER:
         patch_wrap_baseline(layer)
+        patch_carto_point_labels(layer, style)
     patch_label_contrast(layer, style, palette)
     return count
 
@@ -448,23 +565,66 @@ def patch_contour(layer, style=None):
     intermediate = style["contours"]["intermediate"]
     _require_field(layer, "elevation")
     symbol = layer.find("renderer-v2/symbols/symbol")
-    line = symbol.find("layer[@class='SimpleLine']")
-    props = _properties_map(line.find("data_defined_properties"))
+    lines = symbol.findall("layer[@class='SimpleLine']")
+    if not lines:
+        raise RuntimeError("contour symbol has no SimpleLine")
+    if len(lines) == 1:
+        casing = copy.deepcopy(lines[0])
+        casing.set("id", "{" + str(uuid.uuid4()) + "}")
+        symbol.insert(list(symbol).index(lines[0]), casing)
+        fill = lines[0]
+    else:
+        casing = lines[0]
+        fill = lines[1]
     # definition is null on the national contour table, so indefinite
     # contours cannot be dashed from that field.
+    casing_props = _properties_map(casing.find("data_defined_properties"))
     put_expr(
-        props,
+        casing_props,
+        "enabled",
+        '"elevation" IS NOT NULL AND round("elevation") % 100 <> 0',
+    )
+    put_expr(casing_props, "outlineColor", _rgb_call(intermediate["casing_colour"]))
+    put_expr(casing_props, "outlineWidth", str(intermediate["casing_width_mm"]))
+    _set_option(casing, "line_color", _rgba(intermediate["casing_colour"], 255))
+    _set_option(casing, "line_width", str(intermediate["casing_width_mm"]))
+    fill_props = _properties_map(fill.find("data_defined_properties"))
+    put_expr(
+        fill_props,
         "outlineColor",
         "CASE WHEN \"elevation\" IS NOT NULL AND round(\"elevation\") % 100 = 0"
         f" THEN {_rgb_call(index['colour'])}"
         f" ELSE {_rgb_call(intermediate['colour'])} END",
     )
     put_expr(
-        props,
+        fill_props,
         "outlineWidth",
         'CASE WHEN "elevation" IS NOT NULL AND round("elevation") % 100 = 0'
         f" THEN {index['width_mm']} ELSE {intermediate['width_mm']} END",
     )
+
+
+def _mask_contour_casing(root):
+    contour = None
+    for layer in root.findall("projectlayers/maplayer"):
+        if (layer.findtext("layername") or "") == "contour":
+            contour = layer
+            break
+    if contour is None:
+        return
+    lines = contour.findall("renderer-v2/symbols/symbol/layer[@class='SimpleLine']")
+    if len(lines) < 2:
+        return
+    fill_id = lines[1].get("id")
+    casing_id = lines[0].get("id")
+    if not fill_id or not casing_id:
+        return
+    layer_id = contour.findtext("id") or ""
+    token = f"{layer_id};{casing_id}" if layer_id else casing_id
+    for mask in root.iter("text-mask"):
+        current = mask.get("maskedSymbolLayers") or ""
+        if fill_id in current and casing_id not in current:
+            mask.set("maskedSymbolLayers", current + ";" + token)
 
 
 def _closed_crossbar(style=None):
@@ -560,6 +720,8 @@ def _closed_crossbar(style=None):
 
 def patch_tracks(layer, style=None):
     style = style or STYLE
+    if style["tracks"]["access"]["painted"]:
+        raise RuntimeError("track access is reserved and must not be painted")
     track = style["tracks"]["closed_foot"]
     _require_field(layer, "status")
     symbol = _category_symbol(layer, "foot")
@@ -721,7 +883,153 @@ def patch_springs(layer, style=None):
     )
 
 
-def apply(root):
+def _tree_layer_parent(group, name):
+    """Return (parent, node) for a layer-tree-layer with this name."""
+    for child in list(group):
+        if child.tag == "layer-tree-layer" and child.get("name") == name:
+            return group, child
+        if child.tag == "layer-tree-group":
+            found = _tree_layer_parent(child, name)
+            if found is not None:
+                return found
+    return None
+
+
+def hillshade_rules(style=None):
+    """Return the hillshade block. Values live in tools/style-topo50.json."""
+    return (style or STYLE)["hillshade"]
+
+
+def dem_path(project_dir, style=None):
+    """Return the DEM path beside the project."""
+    return os.path.join(project_dir, hillshade_rules(style)["raster_file"])
+
+
+def hillshade_should_paint(project_dir, style=None):
+    """Return whether raster hillshade should turn on."""
+    if not project_dir:
+        return False
+    if not hillshade_rules(style)["painted"]:
+        return False
+    return os.path.isfile(dem_path(project_dir, style))
+
+
+def _copy_project_srs(root):
+    source = root.find("projectCrs/spatialrefsys")
+    if source is None:
+        raise RuntimeError("project has no projectCrs")
+    return copy.deepcopy(source)
+
+
+def _ensure_dem_layer(root, style=None):
+    layers = root.find("projectlayers")
+    if layers is None:
+        raise RuntimeError("project has no projectlayers")
+    rules = hillshade_rules(style)
+    existing = None
+    for layer in layers.findall("maplayer"):
+        if layer.findtext("layername") == DEM_LAYER_NAME:
+            existing = layer
+            break
+    if existing is None:
+        layer = ET.SubElement(layers, "maplayer")
+        layer.set("type", "raster")
+        layer.set("styleCategories", "AllStyleCategories")
+        ident = ET.SubElement(layer, "id")
+        ident.text = DEM_LAYER_ID
+        name = ET.SubElement(layer, "layername")
+        name.text = DEM_LAYER_NAME
+        provider = ET.SubElement(layer, "provider")
+        provider.text = "gdal"
+        srs = ET.SubElement(layer, "srs")
+        srs.append(_copy_project_srs(root))
+        pipe = ET.SubElement(layer, "pipe")
+        renderer = ET.SubElement(pipe, "rasterrenderer")
+        renderer.set("type", "singlebandgray")
+        renderer.set("opacity", "0")
+        renderer.set("grayBand", "1")
+        elevation = ET.SubElement(layer, "elevation")
+        elevation.set("enabled", "1")
+        elevation.set("mode", "RepresentsElevationSurface")
+        elevation.set("band", "1")
+        tree = root.find("layer-tree-group")
+        if tree is not None:
+            node = ET.SubElement(tree, "layer-tree-layer")
+            node.set("checked", "Qt::Unchecked")
+            node.set("expanded", "0")
+            node.set("id", DEM_LAYER_ID)
+            node.set("name", DEM_LAYER_NAME)
+            node.set("providerKey", "gdal")
+            node.set("source", f"./{rules['raster_file']}")
+        existing = layer
+    datasource = existing.find("datasource")
+    if datasource is None:
+        datasource = ET.SubElement(existing, "datasource")
+    datasource.text = f"./{rules['raster_file']}"
+
+
+def _set_raster_terrain(root):
+    props = root.find("ElevationProperties")
+    if props is None:
+        props = ET.SubElement(root, "ElevationProperties")
+    provider = props.find("terrainProvider")
+    if provider is None:
+        provider = ET.SubElement(props, "terrainProvider")
+    provider.set("type", "raster")
+    inner = provider.find("TerrainProvider")
+    if inner is None:
+        inner = ET.SubElement(provider, "TerrainProvider")
+        inner.set("offset", "0")
+        inner.set("scale", "1")
+    inner.set("layer", DEM_LAYER_ID)
+
+
+def patch_hillshade(root, project_dir=None, style=None):
+    """Write R-03 lights onto the project shader. Turn it on only when dem.tif is present."""
+    renderer = root.find("elevation-shading-renderer")
+    if renderer is None:
+        return
+    rules = hillshade_rules(style)
+    renderer.set("light-azimuth", str(rules["azimuth_deg"]))
+    renderer.set("light-altitude", str(rules["altitude_deg"]))
+    renderer.set("hillshading-is-multidirectional", "1" if rules["multidirectional"] else "0")
+    renderer.set("hillshading-z-factor", str(rules["z_factor"]))
+    on = hillshade_should_paint(project_dir, style)
+    renderer.set("is-active", "1" if on else "0")
+    renderer.set("hillshading-is-active", "1" if on else "0")
+    if on:
+        _ensure_dem_layer(root, style)
+        _set_raster_terrain(root)
+
+
+def patch_draw_order(root, style=None):
+    """Move named layer-tree nodes so each sits immediately under its pair."""
+    style = style or STYLE
+    rules = style.get("draw_order") or []
+    if not rules:
+        return
+    tree = root.find("layer-tree-group")
+    if tree is None:
+        raise RuntimeError("project has no layer-tree-group")
+    for rule in rules:
+        moving_name = rule["name"]
+        below_name = rule["below"]
+        moving_found = _tree_layer_parent(tree, moving_name)
+        below_found = _tree_layer_parent(tree, below_name)
+        if moving_found is None:
+            raise RuntimeError(f"missing layer-tree node: {moving_name}")
+        if below_found is None:
+            raise RuntimeError(f"missing layer-tree node: {below_name}")
+        parent, moving = moving_found
+        below_parent, below = below_found
+        if parent is not below_parent:
+            raise RuntimeError(f"{moving_name} and {below_name} are not in the same group")
+        parent.remove(moving)
+        index = list(parent).index(below)
+        parent.insert(index + 1, moving)
+
+
+def apply(root, project_dir=None):
     """Patch map layers. Return a count of label styles touched."""
     layers = root.find("projectlayers")
     if layers is None:
@@ -747,6 +1055,9 @@ def apply(root):
     missing = {"contour", "track_line map", "vegetation map", "water_point"} - seen
     if missing:
         raise RuntimeError(f"missing layers: {', '.join(sorted(missing))}")
+    _mask_contour_casing(root)
+    patch_draw_order(root)
+    patch_hillshade(root, project_dir)
     return labels
 
 
@@ -757,7 +1068,7 @@ def main(src, dst):
         if first.startswith("<!DOCTYPE"):
             doctype = first if first.endswith("\n") else first + "\n"
     root = ET.parse(src).getroot()
-    labels = apply(root)
+    labels = apply(root, project_dir=os.path.dirname(os.path.abspath(dst)))
     body = ET.tostring(root, encoding="unicode")
     with open(dst, "w", encoding="utf-8") as handle:
         handle.write(doctype)

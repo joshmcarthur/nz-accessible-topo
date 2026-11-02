@@ -11,6 +11,7 @@ Set HOME=/tmp before QGIS starts so fontconfig can write a cache.
 
 import argparse
 import glob
+import json
 import os
 import sys
 
@@ -19,6 +20,29 @@ DPI = 600
 PX = 472
 SHEET_PRESET = "Map5View"
 CONTAINER_PREFIX = "/usr"
+STYLE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "style-topo50.json")
+DEM_LAYER_NAME = "dem"
+
+
+def hillshade_rules(path=None):
+    """Return the hillshade block. Values live in tools/style-topo50.json."""
+    with open(path or STYLE_PATH, encoding="utf-8") as handle:
+        return json.load(handle)["hillshade"]
+
+
+def dem_path(project_dir, rules=None):
+    """Return the DEM path beside the project."""
+    return os.path.join(project_dir, (rules or hillshade_rules())["raster_file"])
+
+
+def hillshade_should_paint(project_dir, rules=None):
+    """Return whether raster hillshade should turn on."""
+    if not project_dir:
+        return False
+    rules = rules or hillshade_rules()
+    if not rules["painted"]:
+        return False
+    return os.path.isfile(dem_path(project_dir, rules))
 
 
 def square_extent(east, north, metres=METRES):
@@ -59,6 +83,13 @@ def sheet_layer_ids(ordered_ids, visible_ids):
     """Keep the layers the sheet map draws. Keep the project draw order."""
     visible = set(visible_ids)
     return [layer_id for layer_id in ordered_ids if layer_id in visible]
+
+
+def with_dem_layer(layers, dem_layer):
+    """Put a valid DEM under the map layers so elevation shading can read it."""
+    if dem_layer is None:
+        return layers
+    return [dem_layer] + [layer for layer in layers if layer is not dem_layer]
 
 
 def map_layers(project, preset=SHEET_PRESET):
@@ -138,6 +169,27 @@ def main():
         if not layers:
             print(f"theme {SHEET_PRESET} has no valid map layers", file=sys.stderr)
             return 1
+        project_dir = os.path.dirname(os.path.abspath(args.project))
+        dem_layer = None
+        rules = hillshade_rules()
+        if hillshade_should_paint(project_dir, rules):
+            from qgis.core import QgsElevationUtils, QgsRasterLayer  # noqa: E402
+
+            for layer in project.mapLayers().values():
+                if layer.name() == DEM_LAYER_NAME and layer.isValid():
+                    dem_layer = layer
+                    break
+            if dem_layer is None:
+                dem_layer = QgsRasterLayer(dem_path(project_dir, rules), DEM_LAYER_NAME)
+                if not dem_layer.isValid():
+                    print(f"dem not loaded: {dem_path(project_dir, rules)}", file=sys.stderr)
+                    dem_layer = None
+                else:
+                    QgsElevationUtils.enableElevationForLayer(dem_layer)
+                    print(f"dem loaded: {dem_path(project_dir, rules)}")
+        else:
+            print(f"hillshade off: no {rules['raster_file']}")
+        layers = with_dem_layer(layers, dem_layer)
         print(f"layers {len(layers)} theme {SHEET_PRESET}")
         for layer in layers:
             print(f"layer {layer.name()}")
@@ -163,6 +215,15 @@ def main():
             settings.setBackgroundColor(QColor(255, 255, 255))
             settings.setTransformContext(project.transformContext())
             settings.setExpressionContext(color_context)
+            renderer = project.elevationShadingRenderer()
+            if hillshade_should_paint(project_dir, rules):
+                renderer.setActive(True)
+                renderer.setActiveHillshading(True)
+                renderer.setLightAzimuth(rules["azimuth_deg"])
+                renderer.setLightAltitude(rules["altitude_deg"])
+                renderer.setHillshadingMultidirectional(rules["multidirectional"])
+                renderer.setHillshadingZFactor(rules["z_factor"])
+            settings.setElevationShadingRenderer(renderer)
             if flag is not None:
                 settings.setFlag(flag, True)
 

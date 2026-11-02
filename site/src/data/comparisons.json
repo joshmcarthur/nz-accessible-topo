@@ -101,5 +101,93 @@
    "R-10",
    "R-11"
   ]
+ },
+ {
+  "id": "estuary-water-names",
+  "title": "Estuary water names",
+  "summary": "1 km square. South-west corner 1577000 E, 5178000 N. Stock and accessible at the same extent and the same scale.",
+  "attribution": "Map: Toitū Te Whenua LINZ, via linz/topographic-system (MIT). Data CC BY 4.0.",
+  "variants": [
+   {
+    "label": "stock",
+    "src": "docs/visuals/squares/estuary-water-names-stock.png"
+   },
+   {
+    "label": "accessible",
+    "src": "docs/visuals/squares/estuary-water-names-accessible.png"
+   }
+  ],
+  "links": [
+   "R-07",
+   "R-09",
+   "R-10"
+  ]
+ },
+ {
+  "id": "port-hills-contours",
+  "title": "Port Hills contours",
+  "summary": "1 km square. South-west corner 1577000 E, 5172000 N. Stock and accessible at the same extent and the same scale.",
+  "attribution": "Map: Toitū Te Whenua LINZ, via linz/topographic-system (MIT). Data CC BY 4.0.",
+  "variants": [
+   {
+    "label": "stock",
+    "src": "docs/visuals/squares/port-hills-contours-stock.png"
+   },
+   {
+    "label": "accessible",
+    "src": "docs/visuals/squares/port-hills-contours-accessible.png"
+   }
+  ],
+  "links": [
+   "R-01",
+   "R-07",
+   "R-09",
+   "R-10"
+  ]
+ },
+ {
+  "id": "cold-spring",
+  "title": "The cold spring",
+  "summary": "1 km square. South-west corner 1569000 E, 5165000 N. Stock and accessible at the same extent and the same scale.",
+  "attribution": "Map: Toitū Te Whenua LINZ, via linz/topographic-system (MIT). Data CC BY 4.0.",
+  "variants": [
+   {
+    "label": "stock",
+    "src": "docs/visuals/squares/cold-spring-stock.png"
+   },
+   {
+    "label": "accessible",
+    "src": "docs/visuals/squares/cold-spring-accessible.png"
+   }
+  ],
+  "links": [
+   "R-07",
+   "R-09",
+   "R-10",
+   "R-17"
+  ]
+ },
+ {
+  "id": "closed-foot-track",
+  "title": "The closed foot track",
+  "summary": "1 km square. South-west corner 1584000 E, 5173000 N. Stock and accessible at the same extent and the same scale.",
+  "attribution": "Map: Toitū Te Whenua LINZ, via linz/topographic-system (MIT). Data CC BY 4.0.",
+  "variants": [
+   {
+    "label": "stock",
+    "src": "docs/visuals/squares/closed-foot-track-stock.png"
+   },
+   {
+    "label": "accessible",
+    "src": "docs/visuals/squares/closed-foot-track-accessible.png"
+   }
+  ],
+  "links": [
+   "R-07",
+   "R-09",
+   "R-10",
+   "R-11",
+   "R-12"
+  ]
  }
 ]

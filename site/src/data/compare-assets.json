@@ -80,5 +80,109 @@
     "red": "compare/synthetic-before-after/1-red.webp"
    }
   }
+ ],
+ "estuary-water-names": [
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/estuary-water-names/0-normal.webp",
+    "deutan": "compare/estuary-water-names/0-deutan.webp",
+    "protan": "compare/estuary-water-names/0-protan.webp",
+    "tritan": "compare/estuary-water-names/0-tritan.webp",
+    "grey": "compare/estuary-water-names/0-grey.webp",
+    "red": "compare/estuary-water-names/0-red.webp"
+   }
+  },
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/estuary-water-names/1-normal.webp",
+    "deutan": "compare/estuary-water-names/1-deutan.webp",
+    "protan": "compare/estuary-water-names/1-protan.webp",
+    "tritan": "compare/estuary-water-names/1-tritan.webp",
+    "grey": "compare/estuary-water-names/1-grey.webp",
+    "red": "compare/estuary-water-names/1-red.webp"
+   }
+  }
+ ],
+ "port-hills-contours": [
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/port-hills-contours/0-normal.webp",
+    "deutan": "compare/port-hills-contours/0-deutan.webp",
+    "protan": "compare/port-hills-contours/0-protan.webp",
+    "tritan": "compare/port-hills-contours/0-tritan.webp",
+    "grey": "compare/port-hills-contours/0-grey.webp",
+    "red": "compare/port-hills-contours/0-red.webp"
+   }
+  },
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/port-hills-contours/1-normal.webp",
+    "deutan": "compare/port-hills-contours/1-deutan.webp",
+    "protan": "compare/port-hills-contours/1-protan.webp",
+    "tritan": "compare/port-hills-contours/1-tritan.webp",
+    "grey": "compare/port-hills-contours/1-grey.webp",
+    "red": "compare/port-hills-contours/1-red.webp"
+   }
+  }
+ ],
+ "cold-spring": [
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/cold-spring/0-normal.webp",
+    "deutan": "compare/cold-spring/0-deutan.webp",
+    "protan": "compare/cold-spring/0-protan.webp",
+    "tritan": "compare/cold-spring/0-tritan.webp",
+    "grey": "compare/cold-spring/0-grey.webp",
+    "red": "compare/cold-spring/0-red.webp"
+   }
+  },
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/cold-spring/1-normal.webp",
+    "deutan": "compare/cold-spring/1-deutan.webp",
+    "protan": "compare/cold-spring/1-protan.webp",
+    "tritan": "compare/cold-spring/1-tritan.webp",
+    "grey": "compare/cold-spring/1-grey.webp",
+    "red": "compare/cold-spring/1-red.webp"
+   }
+  }
+ ],
+ "closed-foot-track": [
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/closed-foot-track/0-normal.webp",
+    "deutan": "compare/closed-foot-track/0-deutan.webp",
+    "protan": "compare/closed-foot-track/0-protan.webp",
+    "tritan": "compare/closed-foot-track/0-tritan.webp",
+    "grey": "compare/closed-foot-track/0-grey.webp",
+    "red": "compare/closed-foot-track/0-red.webp"
+   }
+  },
+  {
+   "width": 472,
+   "height": 472,
+   "files": {
+    "normal": "compare/closed-foot-track/1-normal.webp",
+    "deutan": "compare/closed-foot-track/1-deutan.webp",
+    "protan": "compare/closed-foot-track/1-protan.webp",
+    "tritan": "compare/closed-foot-track/1-tritan.webp",
+    "grey": "compare/closed-foot-track/1-grey.webp",
+    "red": "compare/closed-foot-track/1-red.webp"
+   }
+  }
  ]
 }

@@ -1,11 +1,15 @@
 # Change log: accessible-v0-multidir (generated)
 
 Every change `tools/build_style.py` made to `upstream/linz-topographic-v2.json`, grouped by recommendation.
-Total changes: 189.
+Total changes: 200.
+
+## R-01 (1)
+
+- `NZAT-Contours-All-Casing` — added after `Contours-Index-Halo` — index-ink casing under intermediate fill so the line meets 3:1 under red light
 
 ## R-03 (1)
 
-- `hillshade` — multidirectional: primary 337.5° + weaker 292.5°/22.5° fill lights (F-16). Colours are provisional — tune visually (OQ-07)
+- `hillshade` — multidirectional: primary 337.5° + weaker 292.5/22.5° fill lights (F-16). Colours are provisional — tune visually (OQ-07)
 
 ## R-04 (5)
 
@@ -57,7 +61,7 @@ Total changes: 189.
 - `Place-Label-Sea` — font Open Sans Bold Italic → Open Sans Bold
 - `Place-Label-Lake-7` — font Open Sans Bold Italic → Open Sans Bold
 
-## R-07 (35)
+## R-07 (34)
 
 - `Contours-Label` — text rgba(193, 104, 9, 1) → rgba(140, 61, 0, 1) (L* lowered, hue kept; contrast 3.60→6.78, red-light 1.62→3.02)
 - `Poi-Beacon` — text rgba(224, 168, 33, 1) → rgba(149, 104, 0, 1) (L* lowered, hue kept; contrast 2.14→4.93, red-light 1.32→3.00)
@@ -72,7 +76,6 @@ Total changes: 189.
 - `Housenumber` — halo alpha 0.7 → 1
 - `Waterway-Rapid-Names` — halo alpha 0.8 → 1
 - `Waterway-Rapid-Names` — text rgba(0, 140, 204, 1) → rgba(0, 110, 171, 1) (L* lowered, hue kept; contrast 3.25→4.80)
-- `Water-Spring-Cold` — text rgba(20, 125, 228, 1) → rgba(0, 113, 214, 1) (L* lowered, hue kept; contrast 4.13→4.87)
 - `Transport-Tunnel-Label` — halo alpha 0.5 → 1
 - `Aeroway-Aerodrome-Label` — text rgba(129, 123, 123, 1) → rgba(118, 112, 112, 1) (L* lowered, hue kept; contrast 4.16→4.88)
 - `All-Reef-Names` — text rgba(0, 140, 204, 1) → rgba(0, 110, 171, 1) (L* lowered, hue kept; contrast 3.25→4.80)
@@ -177,7 +180,7 @@ Total changes: 189.
 - `Place-Label-Peak-11` — letter-spacing +0.05 em (provisional)
 - `Place-Label-Island-4` — letter-spacing +0.05 em (provisional)
 
-## R-09 (18)
+## R-09 (25)
 
 - `Contours-Label` — text-size stops floored at 10
 - `Height-Point-Labels` — text-size stops floored at 10
@@ -197,6 +200,13 @@ Total changes: 189.
 - `All-Highway-Labels-standard` — text-size stops floored at 10
 - `All-Road-Labels` — text-size stops floored at 10
 - `Waterway-Waterfall-Pt` — text-size stops floored at 10
+- `Place-Label-Lake` — text-size 10 → 11
+- `Place-Label-Bay` — text-size 10 → 11
+- `Place-Label-Suburb` — text-size 10 → 11
+- `Place-Label-Town` — text-size 12 → 14
+- `Place-Label-City-14` — text-size 15 → 17
+- `Place-Label-Lake-7` — text-size 10 → 11
+- `Place-Label-City-7` — text-size 15 → 17
 
 ## R-10 (3)
 
@@ -206,14 +216,24 @@ Total changes: 189.
 
 ## R-11 (8)
 
-- `Transport-ClosedFootTracks-Shadow` — red 40% shadow → dark casing (lightness, not hue)
-- `Transport-ClosedFootRouteTracks-Shadow` — red 40% shadow → dark casing (lightness, not hue)
+- `Transport-ClosedFootTracks-Shadow` — red 40% shadow → dark casing rgba(26, 26, 26, 0.55) (lightness, not hue)
+- `Transport-ClosedFootRouteTracks-Shadow` — red 40% shadow → dark casing rgba(26, 26, 26, 0.55) (lightness, not hue)
 - `All-ClosedFootTrack-Labels` — red translucent halo → opaque white (restores text contrast)
 - `All-ClosedFootRouteTrack-Labels` — red translucent halo → opaque white (restores text contrast)
 - `NZAT-Closed-foot_route_closed-Crossbar` — added after `Transport-FootTracks` — cross-bar pattern: closed status carried by shape
 - `NZAT-Closed-foot_closed-Crossbar` — added after `Transport-FootTracks` — cross-bar pattern: closed status carried by shape
 - `Poi-Historic-Site` — text rgba(203, 12, 12, 1) → rgba(149, 0, 0, 1) (L* lowered, hue kept; red-light 1.62→3.00)
 - `Landcover-Fumarole` — text rgba(176, 0, 0, 1) → rgba(148, 0, 0, 1) (L* lowered, hue kept; red-light 2.17→3.04)
+
+## R-12 (1)
+
+- `(tracks.access)` — reserved casing_colour channel is not painted (F-25)
+
+## R-17 (3)
+
+- `Vegetation-Native` — fill → rgba(225, 234, 195, 1)
+- `Water-Spring-Hot` — text → rgba(20, 20, 20, 1); icon stays spring_hot_pnt
+- `Water-Spring-Cold` — icon+text → rgba(0, 92, 143, 1); icon stays spring_cold_pnt
 
 ## infra (1)
 

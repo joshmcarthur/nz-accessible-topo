@@ -1,0 +1,80 @@
+[
+ {
+  "name": "Index vs intermediate contour",
+  "a": {"label": "index contour", "colour": "#8A4F1C"},
+  "b": {"label": "intermediate contour", "colour": "#C4814B"},
+  "why": "R-04. Same hue, different weight and lightness."
+ },
+ {
+  "name": "Index contour vs print highway",
+  "a": {"label": "index contour", "colour": "#8A4F1C"},
+  "b": {"label": "print highway", "colour": "#EA6300"},
+  "why": "R-04. Print highway ink is #EA6300."
+ },
+ {
+  "name": "Intermediate contour vs print highway",
+  "a": {"label": "intermediate contour", "colour": "#C4814B"},
+  "b": {"label": "print highway", "colour": "#EA6300"},
+  "why": "R-04. Intermediate was lightened in log 0020."
+ },
+ {
+  "name": "Index contour vs project road",
+  "a": {"label": "index contour", "colour": "#8A4F1C"},
+  "b": {"label": "project road", "colour": "#D5B43C"},
+  "why": "This QGIS project paints roads gold, not print orange."
+ },
+ {
+  "name": "Intermediate contour vs project road",
+  "a": {"label": "intermediate contour", "colour": "#C4814B"},
+  "b": {"label": "project road", "colour": "#D5B43C"},
+  "why": "Same project road ink."
+ },
+ {
+  "name": "Index contour vs paper",
+  "a": {"label": "index contour", "colour": "#8A4F1C"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-04. Contours at least 3:1 on paper."
+ },
+ {
+  "name": "Intermediate contour vs paper",
+  "a": {"label": "intermediate contour casing", "colour": "#8A4F1C"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. The 0.2 mm index-ink casing carries the line on paper and under red light. Fill stays #C4814B."
+ },
+ {
+  "name": "Native forest vs scrub",
+  "a": {"label": "native forest fill", "colour": "#E1EAC3"},
+  "b": {"label": "scrub fill", "colour": "#A3CC90"},
+  "why": "R-10 and R-17. Larger lightness step than the print pair."
+ },
+ {
+  "name": "Hot spring vs cold spring",
+  "a": {"label": "hot spring cross", "colour": "#141414"},
+  "b": {"label": "cold spring circle", "colour": "#005C8F"},
+  "why": "R-17. Glyphs differ. Ink is dark, not red-orange."
+ },
+ {
+  "name": "Hot spring vs paper",
+  "a": {"label": "hot spring cross", "colour": "#141414"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-11. Safety mark must survive red light."
+ },
+ {
+  "name": "Closed-track cross-bar vs paper",
+  "a": {"label": "closed-track cross-bar", "colour": "#000000"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-11. Shape carries closed status. Raster paints this ink."
+ },
+ {
+  "name": "Closed-track casing vs paper",
+  "a": {"label": "closed-track casing", "colour": "rgba(26, 26, 26, 0.55)"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-11. Vector casing. Raster does not paint this ink."
+ },
+ {
+  "name": "Historic label vs paper",
+  "a": {"label": "historic site label", "colour": "rgb(145, 0, 0)"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-11. Hue kept. Red-light floor 3:1."
+ }
+]

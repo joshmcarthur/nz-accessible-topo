@@ -11,6 +11,12 @@
     "spot_height_layer_contains": "relief_point",
     "web_floor_px": 10,
     "place_name_floor_px": 11,
+    "letter_spacing_em": 0.05,
+    "carto_point": {
+      "allowance_mm": 1,
+      "advance_em": 0.6,
+      "overrun_mm": 0.5
+    },
     "place_hierarchy": [
       {"rank": "suburb-locality", "layers": ["Place-Label-Suburb", "Place-Label-Locality"], "size_px": 11},
       {"rank": "town", "layers": ["Place-Label-Town"], "size_px": 14},
@@ -19,11 +25,18 @@
   },
   "label_contrast": {
     "min_ratio": 4.8,
-    "halo_alpha": 1
+    "halo_alpha": 1,
+    "halo_max_mm": 0.4,
+    "red_light_min": 3.0
   },
   "contours": {
-    "index": {"colour": "#8A4F1C", "width_mm": 0.28},
-    "intermediate": {"colour": "#C4814B", "width_mm": 0.12}
+    "index": {"colour": "#8A4F1C", "width_mm": 0.45},
+    "intermediate": {
+      "colour": "#C4814B",
+      "width_mm": 0.12,
+      "casing_colour": "#8A4F1C",
+      "casing_width_mm": 0.2
+    }
   },
   "reference_inks": {
     "project_road": "#D5B43C",
@@ -40,12 +53,21 @@
       "line_width_mm": 0.15
     }
   },
+  "draw_order": [
+    {"name": "vegetation map", "below": "contour"}
+  ],
   "tracks": {
+    "access": {
+      "reserved_channel": "casing_colour",
+      "painted": false
+    },
     "closed_foot": {
       "width_mm": 0.45,
       "open_width_mm": 0.15,
       "closed_dash": "6;0.4",
       "open_dash": "1;0.5",
+      "casing_colour": "#1A1A1A",
+      "casing_alpha": 0.55,
       "crossbar_colour": "#000000",
       "crossbar_interval_mm": 4,
       "crossbar_size_mm": 2.4,
@@ -56,5 +78,14 @@
   "springs": {
     "hot": {"glyph": "cross2", "colour": "#141414"},
     "cold": {"glyph": "circle", "colour": "#005C8F"}
+  },
+  "hillshade": {
+    "painted": true,
+    "raster_file": "dem.tif",
+    "azimuth_deg": 337.5,
+    "altitude_deg": 45,
+    "multidirectional": true,
+    "z_factor": 1,
+    "fill_azimuths_deg": [292.5, 22.5]
   }
 }

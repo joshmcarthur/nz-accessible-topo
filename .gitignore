@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Local Topo50 renders. The LINZ checkout and GeoParquet cache stay outside
+# this repo. This pattern covers a work directory placed inside the repo.
+/render/

@@ -1,0 +1,10 @@
+- date: 2026-11-02
+- step: B
+- recommendation: R-03
+- result: open
+- reason: Hillshade is an overlay. `hillshade.azimuth_deg` is 337.5. `hillshade.painted` is true. `hillshade.raster_file` is `dem.tif`. The QGIS shader stays off until that GeoTIFF sits beside the project. The vector build reads the same numbers. `hillshade_direction` is gone from `P`. Met when needs shade on an Alpine sheet and a lowland sheet. No DEM was dropped, so R-03 stays open.
+- files changed: `tools/style-topo50.json`, `tools/build_style.py`, `tools/override_topo50_project.py`, `tools/render_square.py`, `tools/test_tools.py`, `styles/accessible-v0.json`, `styles/accessible-v0-multidir.json`, `docs/styles/accessible-v0-changes.md`, `docs/styles/accessible-v0-multidir-changes.md`, `docs/style-topo50.md`, `site/src/data/compare-assets.json`, `docs/visuals/squares/`, `docs/research-log/0044-optional-hillshade.md`, `docs/research-log/README.md`, `docs/plans/style-loop-status.md`, `BACKLOG.md`
+- next step: B, R-14
+- loop finished: no
+- thermo-nuclear verdict: Approve — already the judo. Add `hillshade` to the existing style file. Patch the elevation-shading-renderer that is already in the project. Do not add a DEM. Do not bake shade.
+- test: `test_hillshade_is_an_optional_overlay` catches azimuth other than 337.5, a missing painted flag, a raster file other than `dem.tif`, or `hillshade_direction` left in `P`. `test_hillshade_stays_off_without_a_dem` and `test_hillshade_turns_on_when_dem_is_present` catch the shader left on without a file, or a present file that does not turn it on. `python3 tools/test_tools.py` passed outside the sandbox. `python3 tools/check.py` passed.
