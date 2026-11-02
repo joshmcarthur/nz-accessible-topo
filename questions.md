@@ -26,3 +26,8 @@ The project file has no italic map labels. Fontconfig lists NZAT Legible Test. T
 Do not treat B-25 or B-11 as done until those marks are gone.
 
 The accessible patch no longer changes that mode. See the decision "Along-line labels keep the official placement".
+
+
+## Why does a sliding carto label land on a fixed curved label?
+
+With a hint line anchor, QGIS moves `Godley Head` onto `Gun emplacements` on BX24, although water below `Godley` is free. `QgsLabelingResults` boxes are the right size. Rule priority 5 and label engine version 2 do not change it. A guess: under `AllowOverlapIfRequired`, PAL keeps the flexible label and then draws the dropped fixed label over it. Answer this before a hint anchor is tried again.

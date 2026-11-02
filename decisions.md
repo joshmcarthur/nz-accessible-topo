@@ -624,6 +624,27 @@ QGIS prefers the middle of a line, so the stock position wins when free. The all
 
 A long all-caps name can exceed its estimated line. Tune `advance_em` or `allowance_mm` if names go missing on the full sheet. A nearest-feature anchor is not needed for the cold spring case.
 
+## Flat dual names draw on two lines; the strict anchor stays
+
+**Status:** Accepted
+**Date:** 2026-11-02
+
+### Context
+
+On the full BX24 face, long flat dual names such as `Ōmawete / Coopers Knob` still collided on the bounded line. The flat rule copies the stock strict line anchor at 50 %. That anchor holds the label at the middle of its line, so the allowance gives no sideways move.
+
+### Decision
+
+The flat rule's label text is `replace("text_string", ' / ', ' /\n')`, centred, with `multipartBehavior` `LabelLargestPartOnly`. The line length uses the longest text line. The strict anchor stays. Squares and crops are not used to judge placement; the full face is.
+
+### Rationale
+
+Four of six BX24 dual names clear. `Ōmawete /` and `Te Upoko-o-Kurī /` still overlap; with `PreventOverlap` they are not drawn, so no free position exists. A hint anchor lets labels slide but moves `Godley Head` onto `Gun emplacements` and `Ōrongomai` onto `505`. A 2 mm allowance, the on-line position, a lower spot-height priority, rule priority 5, and label engine version 2 gave no gain. The copied `SplitLabelTextLinesOverParts` drew only the first text line on a one-part line. A crop moves labels to fit its extent.
+
+### Consequences
+
+Two overlaps stay on BX24. A later fix needs more positions for fixed curved labels or a different split rule, not a longer line.
+
 ## Vegetation map draws below contour
 
 **Status:** Accepted
