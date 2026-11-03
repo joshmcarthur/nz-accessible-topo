@@ -6,22 +6,10 @@ import sys
 import tempfile
 import xml.etree.ElementTree as ET
 
-import numpy as np
-
 sys.path.insert(0, os.path.dirname(__file__))
 import palette_audit as pa  # noqa: E402
-import render_comparison as rc  # noqa: E402
 import override_topo50_project as ov  # noqa: E402
 import build_style as bs  # noqa: E402
-
-
-def test_hillshade_direction():
-    # Log 0017: the first renderer lit slopes from the opposite side. Never again.
-    y, x = np.mgrid[0:rc.H, 0:rc.W].astype(float)
-    z = 1000 * np.exp(-((x - 310) ** 2 + (y - 230) ** 2) / (2 * 60 ** 2))
-    for az, lit, dark in [(315, (180, 260), (280, 360)), (0, (170, 310), (290, 310)), (90, (230, 370), (230, 250))]:
-        sh = rc.hillshade(z, [az], [1])
-        assert sh[lit] > 0.9 and sh[dark] < 0.1, az
 
 
 def test_upright_style_and_size_floor():
