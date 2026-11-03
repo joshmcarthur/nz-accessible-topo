@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - run: uv sync --frozen
+      - name: Moved package tests
+        run: uv run pytest
       - name: Tool sanity tests
         run: uv run python tools/test_tools.py
       - name: Sprites are reproducible

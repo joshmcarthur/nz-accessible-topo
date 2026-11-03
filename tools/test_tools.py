@@ -17,16 +17,6 @@ import render_square as rs  # noqa: E402
 import fit_carto_labels as fc  # noqa: E402
 
 
-def test_ciede2000_reference():
-    # Sharma, Wu & Dalal (2005) test pairs 1 and 3
-    assert round(pa.ciede2000((50, 2.6772, -79.7751), (50, 0, -82.7485)), 4) == 2.0425
-    assert round(pa.ciede2000((50, -1.1848, -84.8006), (50, 0, -82.7485)), 4) == 1.0
-
-
-def test_contrast_black_white():
-    assert round(pa.contrast_ratio(pa.rel_luminance((0, 0, 0)), pa.rel_luminance((255, 255, 255))), 2) == 21.0
-
-
 def test_hillshade_direction():
     # Log 0017: the first renderer lit slopes from the opposite side. Never again.
     y, x = np.mgrid[0:rc.H, 0:rc.W].astype(float)
@@ -366,87 +356,6 @@ def test_style_file_has_no_sheet_code():
     assert style["tracks"]["access"]["painted"] is False
     assert style["draw_order"] == [{"name": "vegetation map", "below": "contour"}]
     assert style["label_contrast"]["red_light_min"] == 3.0
-
-
-def test_pair_audit_reads_the_style_file():
-    # Catches a pair colour that stays hardcoded after the style file changes, or a casing that drops its alpha.
-    rules = json.loads(json.dumps(bs.RULES))
-    pairs_path = os.path.join(os.path.dirname(__file__), "pairs-accessible-v0.json")
-    raw = json.load(open(pairs_path))
-    index_raw = next(pair for pair in raw if pair["name"] == "Index contour vs paper")
-    assert index_raw["a"]["colour"] == "contours.index.colour"
-    assert index_raw["a"]["alpha"] == "contours.index.alpha"
-    mid_raw = next(pair for pair in raw if pair["name"] == "Intermediate contour vs paper")
-    assert mid_raw["a"]["alpha"] == "contours.intermediate.alpha"
-    assert mid_raw["floor"]["grey"] < 3
-    assert mid_raw["floor"]["red"] < 3
-    highway_raw = next(pair for pair in raw if pair["name"] == "Index contour vs state highway")
-    assert highway_raw["b"]["colour"].startswith("rgba(")
-    casing_raw = next(pair for pair in raw if pair["name"] == "Closed-track casing vs paper")
-    assert casing_raw["a"]["colour"] == "tracks.closed_foot.casing_colour"
-    assert casing_raw["a"]["alpha"] == "tracks.closed_foot.casing_alpha"
-
-    resolved = pa.resolve_pairs(raw, rules)
-    index = next(pair for pair in resolved if pair["name"] == "Index contour vs paper")
-    parsed_index = pa.parse_colour(index["a"]["colour"])
-    assert parsed_index[:3] == pa.parse_colour(rules["contours"]["index"]["colour"])[:3]
-    assert parsed_index[3] == 0.85
-
-    casing = next(pair for pair in resolved if pair["name"] == "Closed-track casing vs paper")
-    got = pa.parse_colour(casing["a"]["colour"])
-    expect = pa.parse_colour(rules["tracks"]["closed_foot"]["casing_colour"])
-    assert got[:3] == expect[:3]
-    assert got[3] == rules["tracks"]["closed_foot"]["casing_alpha"]
-
-    topo_path = os.path.join(os.path.dirname(__file__), "pairs-topo50-accessible.json")
-    topo = json.load(open(topo_path))
-    index_topo = next(pair for pair in topo if pair["name"] == "Index contour vs paper")
-    assert index_topo["a"]["alpha"] == "contours.index.alpha"
-    mid_topo = next(pair for pair in topo if pair["name"] == "Intermediate contour vs paper")
-    assert mid_topo["a"]["alpha"] == "contours.intermediate.alpha"
-    road_raw = next(pair for pair in topo if pair["name"] == "Intermediate contour vs project road")
-    assert road_raw["b"]["colour"] == "reference_inks.project_road"
-    highway_raw = next(pair for pair in topo if pair["name"] == "Intermediate contour vs project highway")
-    assert highway_raw["b"]["colour"] == "reference_inks.project_highway"
-    number_raw = next(pair for pair in topo if pair["name"] == "Contour number vs project road")
-    assert number_raw["a"]["colour"] == "contours.index.colour"
-    road_highway_raw = next(pair for pair in topo if pair["name"] == "Project road vs project highway")
-    assert road_highway_raw["a"]["colour"] == "reference_inks.project_road"
-    water_raw = next(pair for pair in topo if pair["name"] == "Scrub vs water")
-    assert water_raw["b"]["colour"] == "reference_inks.water_fill"
-    historic_raw = next(pair for pair in topo if pair["name"] == "Historic label vs paper")
-    assert historic_raw["a"]["colour"] == "rgb(145, 0, 0)"
-
-    rules["contours"]["index"]["colour"] = "#000000"
-    changed = pa.resolve_pairs(raw, rules)
-    index2 = next(pair for pair in changed if pair["name"] == "Index contour vs paper")
-    assert pa.parse_colour(index2["a"]["colour"])[:3] == (0, 0, 0)
-
-
-def test_painted_contour_pairs_meet_r04():
-    # Catches contour inks that fail ΔE ≥10 against painted road and highway fills.
-    topo_path = os.path.join(os.path.dirname(__file__), "pairs-topo50-accessible.json")
-    rules = json.loads(json.dumps(bs.RULES))
-    names = (
-        "Index contour vs project road",
-        "Intermediate contour vs project road",
-        "Index contour vs project highway",
-        "Intermediate contour vs project highway",
-        "Index contour vs paper",
-        "Contour number vs project road",
-        "Project road vs project highway",
-        "Project road vs paper",
-    )
-    raw = [pair for pair in json.load(open(topo_path)) if pair["name"] in names]
-    assert {pair["name"] for pair in raw} == set(names)
-    resolved = pa.resolve_pairs(raw, rules)
-    for result in pa.pair_audit(resolved, (255, 255, 255)):
-        worst = min(result[key] for key in ("normal", "protanopia", "deuteranopia", "tritanopia"))
-        assert worst >= 10, result["name"]
-        if result["name"] in ("Index contour vs paper", "Project road vs paper"):
-            assert result["grey_cr"] >= 3, result["name"]
-        if result["name"] == "Index contour vs paper":
-            assert result["red_cr"] >= 3
 
 
 def test_vector_size_floor_reads_the_style_file():
