@@ -907,7 +907,7 @@ Opaque index #7A5542 vs paper is 6.55:1 grey and 4.29:1 red. Alpha composites th
 
 ### Decision
 
-contours.index.alpha is 0.85. contours.intermediate.alpha is 0.65. Hexes stay #7A5542 / #B08872. Contour-number FontMarkers stay opaque.
+contours.index.alpha is 0.85. contours.intermediate.alpha is 0.5. Hexes stay #7A5542 / #B08872. Contour-number FontMarkers stay opaque.
 
 Index vs paper stays a 3:1 grey and red gate after composite (4.60 / 3.28). Intermediate vs paper is measured, not a 3:1 fail gate.
 
@@ -915,7 +915,7 @@ The QGIS apply step paints those alphas with color_rgba. The vector build sets l
 
 ### Rationale
 
-Transparency lowers ink mass without a new brown. Index at 0.85 still meets both paper floors. The busy mesh is the intermediate casing in that same ink. Alpha 0.65 on that casing (and the taupe fill) recedes the 20 m lines. Dropping the casing was rejected for this play so red-light shape on intermediates remains, weaker.
+Transparency lowers ink mass without a new brown. Index at 0.85 still meets both paper floors. The busy mesh is the intermediate casing in that same ink. Alpha 0.5 on that casing (and the taupe fill) recedes the 20 m lines. 0.65 was still too heavy on BX24 (log 0054). Dropping the casing was rejected for this play so red-light shape on intermediates remains, weaker.
 
 ### Consequences
 
