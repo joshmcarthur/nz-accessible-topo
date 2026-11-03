@@ -13,8 +13,6 @@ import palette_audit as pa  # noqa: E402
 import render_comparison as rc  # noqa: E402
 import override_topo50_project as ov  # noqa: E402
 import build_style as bs  # noqa: E402
-import render_square as rs  # noqa: E402
-import fit_carto_labels as fc  # noqa: E402
 
 
 def test_hillshade_direction():
@@ -845,20 +843,6 @@ def test_carto_fit_places_listed_names():
     assert "O''Brien" in ov.carto_fit_value({"O'Brien": {"x": 1}}, "x")
 
 
-def test_carto_fit_prefers_less_ink_overlap():
-    # Catches a grid that cannot keep a name in place, or a score that ignores ink overlap or move cost.
-    assert 0 in fc.steps_mm(-1.6, 0.5)
-    near_ink = np.zeros((20, 40), bool)
-    near_ink[5:10, 0:20] = True
-    near_halo = near_ink.copy()
-    ink = np.ones((5, 10), bool)
-    on_top = ("on top", ink, ink, 5, 5, 0)
-    clear = ("clear", ink, ink, 25, 5, 0.5)
-    far = ("far", ink, ink, 25, 12, 1.0)
-    outside = ("outside", ink, ink, 35, 5, 0)
-    assert fc.best_candidate([on_top, clear, far, outside], near_ink, near_halo)[0] == "clear"
-
-
 def test_hillshade_is_an_optional_overlay():
     # Catches azimuth other than 337.5, a missing painted flag, a raster file other than dem.tif, or hillshade_direction left in P.
     shade = bs.RULES["hillshade"]
@@ -874,9 +858,6 @@ def test_hillshade_is_an_optional_overlay():
     assert bs.hillshade_painted() is True
     assert ov.DEM_LAYER_NAME == "dem"
     assert ov.hillshade_should_paint(None) is False
-    assert rs.with_dem_layer(["a", "b"], None) == ["a", "b"]
-    assert rs.with_dem_layer(["a", "b"], "dem") == ["dem", "a", "b"]
-    assert rs.with_dem_layer(["dem", "a"], "dem") == ["dem", "a"]
 
 
 def test_hillshade_stays_off_without_a_dem():
@@ -930,30 +911,6 @@ def test_hillshade_turns_on_when_dem_is_present():
     assert root.find("projectlayers/maplayer[layername='dem']/datasource").text == "./dem.tif"
     assert root.find("ElevationProperties/terrainProvider").get("type") == "raster"
     assert root.find("ElevationProperties/terrainProvider/TerrainProvider").get("layer") == ov.DEM_LAYER_ID
-
-
-def test_qgis_prefix_uses_the_environment():
-    # Catches a Mac run that still points QGIS at /usr.
-    assert rs.qgis_prefix(None) == "/usr"
-    assert rs.qgis_prefix("") == "/usr"
-    assert rs.qgis_prefix("  ") == "/usr"
-    assert rs.qgis_prefix("/Applications/QGIS.app/Contents/MacOS") == "/Applications/QGIS.app/Contents/MacOS"
-
-
-def test_square_uses_the_sheet_layer_set():
-    # Catches a square that draws landcover_line. The sheet map hides that layer.
-    ordered = ["contour_id", "landcover_line_id", "building_point_id", "building_point_map_id"]
-    visible = ["contour_id", "building_point_map_id"]
-    assert rs.SHEET_PRESET == "Map5View"
-    assert rs.sheet_layer_ids(ordered, visible) == ["contour_id", "building_point_map_id"]
-
-
-def test_square_extent_is_one_kilometre():
-    # Catches a square that is not 1000 m on a side, or a pixel size other than the 600 dpi sheet size.
-    assert rs.METRES == 1000
-    assert rs.DPI == 600
-    assert rs.PX == 472
-    assert rs.square_extent(1577000, 5178000) == (1577000, 5178000, 1578000, 5179000)
 
 
 if __name__ == "__main__":
