@@ -100,5 +100,5 @@ R-04 owns the contour inks. Index is `#7A5542`. Intermediate is `#B08872`. Casin
 
 Road fill is owned `#EC7000`. Highway stays `#E31A1C`. Contour-number FontMarkers use the index ink. Pair list covers those painted classes. Log 0051. Next is Step C after that paint is on the squares.
 
-Contour stroke alpha (approved 2026-11-03). Index 0.85. Intermediate 0.5 (lowered from 0.65 in log 0054). Hexes unchanged. Contour numbers stay opaque. Index vs paper still 3:1 grey and red. Intermediate vs paper is not a 3:1 gate. Proof is the Port Hills square (OQ-09). Do not redraw the BX24 composite until that square is accepted.
+Contour stroke alpha (accepted 2026-11-03). Index 0.85. Intermediate 0.5. Hexes unchanged. Contour numbers stay opaque. Index vs paper still 3:1 grey and red. Intermediate vs paper is not a 3:1 gate. Josh accepted this paint on the BX24 composite (log 0054). A steeper Alpine sheet still answers OQ-09.
 

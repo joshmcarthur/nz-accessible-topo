@@ -919,4 +919,4 @@ Transparency lowers ink mass without a new brown. Index at 0.85 still meets both
 
 ### Consequences
 
-C6 must not treat intermediate vs paper as a 3:1 gate once pairs include that alpha. A steep square (Port Hills) answers OQ-09 for this paint. If the mesh is still too heavy, lower intermediate alpha next. Do not darken the hexes.
+C6 must not treat intermediate vs paper as a 3:1 gate once pairs include that alpha. Josh accepted index 0.85 and intermediate 0.5 on the BX24 composite (log 0054). Do not keep lowering alpha on this sheet. A steeper Alpine sheet still answers OQ-09. Do not darken the hexes.
