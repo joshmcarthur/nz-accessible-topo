@@ -86,7 +86,12 @@ Carto text fit (approved 2026-11-03, in progress). QGIS tests label boxes yes or
 2. `tools/fit_carto_labels.py` (QGIS Python, no new packages): render the face, read `QgsLabelingResults`, cluster flat names whose boxes collide, try one/two lines, above/below, and 0.25 mm sideways steps within the allowance. Score on glyph outlines with halo, plus a small move cost. Neighbours: flat names as glyph outlines, curved names as QGIS per-letter boxes. Point symbols are not neighbours in v1; stop and ask if a name lands on one. Write `carto_fit.json` in topo50-bx24.
 3. BX24 fit run, renders, research log, lore decision.
 
-Step 1 and the long-name wrap and 0.85 line height are committed (ab4af71). Next is step 2, the fitting tool.
+Step 1 and the long-name wrap and 0.85 line height are committed (ab4af71). Step 2 is committed (5d11a61). Weights: ink on ink 10, ink in a halo 3, halo on halo 1, move 40 per mm. The step grid includes 0. Step 3 waits for the spread fix.
+
+Carto text spread (approved 2026-11-03). Stock stretches words or letters to fill the baseline. b9f78d2 set every stretch mode to default, so names lost their spread. The flat filter also took curved area names (Banks Peninsula) onto a short line.
+A. Curved rule: keep the stock stretch mode when the name is one line and the baseline is longer than the estimated text width (chars x size x advance_em). Else default. One shared width helper with the flat line.
+B. Flat filter adds `num_points($geometry) <= 2`. 30 curved one-line rows on BX24 go back to the curved rule. Use point count, not text_bend: 20 bent rows have a straight 2-point line.
+Then re-run the fit tool, render, log 0051. Flat straight names (Waipuna Saddle) stay compact for the fit tool.
 
 
 Painted-ink inventory (log 0048). Map5View road fill is PMS151 `#FF7F00`, not gold `#D5B43C`. Highway fill is `#E31A1C`. Road casing is `#232323`. Water fill is `#D1E7F5`. Pipeline is not on Map5View.
