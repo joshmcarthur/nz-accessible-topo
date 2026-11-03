@@ -5,11 +5,11 @@ import { sources, findings, recommendations, gradeClass, citedBy, url } from "..
 <Base title="Evidence trail" current="trace/">
   <h1>Evidence trail</h1>
   <p class="lede">Every recommendation, the findings it rests on, and the sources behind them.</p>
-  <p class="note">A chain's grade is its strongest single source. Replication isn't reflected in the grade yet: the findings pages say where a result has been replicated.</p>
+  <p class="note">A chain's grade is its strongest single source. Replication isn't reflected in the grade yet: the findings pages say where a result has been replicated. The Web vector style column records that style only. Current attention is on the topographic raster style.</p>
 
   <h2 id="recommendations">Recommendations</h2>
   <div class="table-wrap"><table>
-    <thead><tr><th scope="col">Recommendation</th><th scope="col">Evidence</th><th scope="col">Rests on</th><th scope="col">Built</th></tr></thead>
+    <thead><tr><th scope="col">Recommendation</th><th scope="col">Evidence</th><th scope="col">Rests on</th><th scope="col">Web vector style</th></tr></thead>
     <tbody>
       {recommendations.map((r: any) => (
         <tr>

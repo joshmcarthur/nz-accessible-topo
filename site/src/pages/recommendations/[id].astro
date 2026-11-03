@@ -22,7 +22,8 @@ const logIds = (await getCollection("log")).map((x) => x.id);
     {r.sources.map((s: string) => <li><a href={url(`trace/#${s}`)}><span class="id">{s}</span> {byId[s].title}</a> <span class={`grade ${gradeClass(byId[s].grade)}`}>{byId[s].grade}</span></li>)}
   </ul>
 
-  <h2 id="changes">In the style</h2>
+  <h2 id="changes">In the web vector style</h2>
+  <p>Current attention is on the topographic raster style. This section records the web vector style.</p>
   {change
     ? <p>{change.title} in <code>accessible-v0</code>, listed line by line in the style's change log.</p>
     : <p>Not built yet.</p>}

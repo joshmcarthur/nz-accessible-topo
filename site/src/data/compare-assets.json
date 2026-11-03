@@ -1,83 +1,27 @@
 {
- "kawarau-real": [
-  {
-   "width": 1308,
-   "height": 749,
-   "files": {
-    "normal": "compare/kawarau-real/0-normal.webp",
-    "deutan": "compare/kawarau-real/0-deutan.webp",
-    "protan": "compare/kawarau-real/0-protan.webp",
-    "tritan": "compare/kawarau-real/0-tritan.webp",
-    "grey": "compare/kawarau-real/0-grey.webp",
-    "red": "compare/kawarau-real/0-red.webp"
-   }
-  }
- ],
- "tracks-legend": [
+ "bx24-hills": [
   {
    "width": 1400,
-   "height": 229,
+   "height": 1330,
    "files": {
-    "normal": "compare/tracks-legend/0-normal.webp",
-    "deutan": "compare/tracks-legend/0-deutan.webp",
-    "protan": "compare/tracks-legend/0-protan.webp",
-    "tritan": "compare/tracks-legend/0-tritan.webp",
-    "grey": "compare/tracks-legend/0-grey.webp",
-    "red": "compare/tracks-legend/0-red.webp"
-   }
-  }
- ],
- "springs-legend": [
-  {
-   "width": 1400,
-   "height": 96,
-   "files": {
-    "normal": "compare/springs-legend/0-normal.webp",
-    "deutan": "compare/springs-legend/0-deutan.webp",
-    "protan": "compare/springs-legend/0-protan.webp",
-    "tritan": "compare/springs-legend/0-tritan.webp",
-    "grey": "compare/springs-legend/0-grey.webp",
-    "red": "compare/springs-legend/0-red.webp"
-   }
-  }
- ],
- "vegetation-legend": [
-  {
-   "width": 1400,
-   "height": 573,
-   "files": {
-    "normal": "compare/vegetation-legend/0-normal.webp",
-    "deutan": "compare/vegetation-legend/0-deutan.webp",
-    "protan": "compare/vegetation-legend/0-protan.webp",
-    "tritan": "compare/vegetation-legend/0-tritan.webp",
-    "grey": "compare/vegetation-legend/0-grey.webp",
-    "red": "compare/vegetation-legend/0-red.webp"
-   }
-  }
- ],
- "synthetic-before-after": [
-  {
-   "width": 1240,
-   "height": 920,
-   "files": {
-    "normal": "compare/synthetic-before-after/0-normal.webp",
-    "deutan": "compare/synthetic-before-after/0-deutan.webp",
-    "protan": "compare/synthetic-before-after/0-protan.webp",
-    "tritan": "compare/synthetic-before-after/0-tritan.webp",
-    "grey": "compare/synthetic-before-after/0-grey.webp",
-    "red": "compare/synthetic-before-after/0-red.webp"
+    "normal": "compare/bx24-hills/0-normal.webp",
+    "deutan": "compare/bx24-hills/0-deutan.webp",
+    "protan": "compare/bx24-hills/0-protan.webp",
+    "tritan": "compare/bx24-hills/0-tritan.webp",
+    "grey": "compare/bx24-hills/0-grey.webp",
+    "red": "compare/bx24-hills/0-red.webp"
    }
   },
   {
-   "width": 1240,
-   "height": 920,
+   "width": 1400,
+   "height": 1330,
    "files": {
-    "normal": "compare/synthetic-before-after/1-normal.webp",
-    "deutan": "compare/synthetic-before-after/1-deutan.webp",
-    "protan": "compare/synthetic-before-after/1-protan.webp",
-    "tritan": "compare/synthetic-before-after/1-tritan.webp",
-    "grey": "compare/synthetic-before-after/1-grey.webp",
-    "red": "compare/synthetic-before-after/1-red.webp"
+    "normal": "compare/bx24-hills/1-normal.webp",
+    "deutan": "compare/bx24-hills/1-deutan.webp",
+    "protan": "compare/bx24-hills/1-protan.webp",
+    "tritan": "compare/bx24-hills/1-tritan.webp",
+    "grey": "compare/bx24-hills/1-grey.webp",
+    "red": "compare/bx24-hills/1-red.webp"
    }
   }
  ],

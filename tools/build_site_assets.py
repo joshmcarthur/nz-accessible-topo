@@ -91,10 +91,12 @@ def main():
             if img.width > MAX_W:
                 img = img.resize((MAX_W, round(img.height * MAX_W / img.width)), Image.LANCZOS)
             files = {}
+            # Squares stay lossless. A large overview may set lossy so the page stays small.
+            lossless = not c.get("lossy")
             for cond in conds:
                 name = f"{i}-{cond['id']}.webp"
-                # lossless: lossy compression would smear exactly the fine lines we're judging
-                simulate(img, MODELS[cond["model"]]).save(os.path.join(d, name), "WEBP", lossless=True, quality=80)
+                simulate(img, MODELS[cond["model"]]).save(
+                    os.path.join(d, name), "WEBP", lossless=lossless, quality=80)
                 files[cond["id"]] = f"compare/{c['id']}/{name}"
             index[c["id"]].append({"width": img.width, "height": img.height, "files": files})
         print("built", c["id"])
