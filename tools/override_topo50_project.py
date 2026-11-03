@@ -753,10 +753,24 @@ def _mask_contour_casing(root):
             mask.set("maskedSymbolLayers", current + ";" + token)
 
 
+def _mm(value):
+    text = f"{value:.4f}".rstrip("0").rstrip(".")
+    return text or "0"
+
+
+def closed_bar_placement(track):
+    """Return the interval and the offset that put one bar in each dash gap."""
+    on_text, off_text = track["closed_dash"].split(";")
+    on = float(on_text)
+    off = float(off_text)
+    return _mm(on + off), _mm(on + off / 2)
+
+
 def _closed_crossbar(style=None):
     style = style or STYLE
     track = style["tracks"]["closed_foot"]
     ink = _rgba(track["crossbar_colour"], 255)
+    interval, along = closed_bar_placement(track)
     layer = ET.Element(
         "layer",
         {
@@ -769,10 +783,10 @@ def _closed_crossbar(style=None):
     )
     options = ET.SubElement(layer, "Option", {"type": "Map"})
     for name, value, kind in (
-        ("interval", str(track["crossbar_interval_mm"]), "QString"),
+        ("interval", interval, "QString"),
         ("interval_unit", "MM", "QString"),
         ("offset", "0", "QString"),
-        ("offset_along_line", "0", "QString"),
+        ("offset_along_line", along, "QString"),
         ("offset_along_line_unit", "MM", "QString"),
         ("offset_unit", "MM", "QString"),
         ("place_on_every_part", "true", "bool"),
@@ -858,7 +872,9 @@ def _closed_marker(symbol):
 def _sync_closed_crossbar(marker, style):
     track = style["tracks"]["closed_foot"]
     ink = _rgba(track["crossbar_colour"], 255)
-    _set_option(marker, "interval", str(track["crossbar_interval_mm"]))
+    interval, along = closed_bar_placement(track)
+    _set_option(marker, "interval", interval)
+    _set_option(marker, "offset_along_line", along)
     simple = marker.find("symbol/layer[@class='SimpleMarker']")
     if simple is None:
         raise RuntimeError("closed cross-bar has no marker")

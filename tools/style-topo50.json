@@ -75,10 +75,9 @@
       "casing_colour": "#1A1A1A",
       "casing_alpha": 0.55,
       "crossbar_colour": "#000000",
-      "crossbar_interval_mm": 4,
       "crossbar_size_mm": 1,
       "crossbar_outline_width_mm": 0.2,
-      "crossbar_angle_deg": 60
+      "crossbar_angle_deg": 45
     }
   },
   "springs": {

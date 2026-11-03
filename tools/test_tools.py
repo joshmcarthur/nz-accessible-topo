@@ -614,7 +614,7 @@ def test_track_access_channel_is_reserved():
 
 
 def test_closed_tracks_read_the_style_file():
-    # Catches a vector closed-track casing that ignores the JSON, a second apply that leaves the 90° bar, or a raster warm_red left below 3:1 under red light.
+    # Catches a vector closed-track casing that ignores the JSON, a second apply that leaves the 90° bar, a bar left every 4 mm, or a raster warm_red left below 3:1 under red light.
     track = bs.RULES["tracks"]["closed_foot"]
     assert track["casing_colour"] == "#1A1A1A"
     assert track["casing_alpha"] == 0.55
@@ -683,6 +683,10 @@ def test_closed_tracks_read_the_style_file():
     size = track_layer.find(".//layer[@class='SimpleMarker']/Option/Option[@name='size']")
     assert angle.get("value") == str(ov.STYLE["tracks"]["closed_foot"]["crossbar_angle_deg"])
     assert size.get("value") == str(ov.STYLE["tracks"]["closed_foot"]["crossbar_size_mm"])
+    interval = track_layer.find(".//layer[@class='MarkerLine']/Option/Option[@name='interval']")
+    along = track_layer.find(".//layer[@class='MarkerLine']/Option/Option[@name='offset_along_line']")
+    assert interval.get("value") == "1.5"
+    assert along.get("value") == "1.25"
     width = track_layer.find(".//Option[@name='outlineWidth']/Option[@name='expression']").get("value")
     assert "0.15" in width
     assert "0.45" not in width

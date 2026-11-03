@@ -76,7 +76,7 @@ The vector build reads `tracks.closed_foot.casing_colour` and `tracks.closed_foo
 
 `tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is 0.55.
 
-The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. Cross-bars at `tracks.closed_foot.crossbar_angle_deg` mark it closed. That angle is 60. A second apply writes the angle onto the marker that is already in the project.
+The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. One cross-bar sits in each gap. The bar angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 45. A second apply writes the angle and the gap position onto the marker that is already in the project.
 
 `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false.
 
