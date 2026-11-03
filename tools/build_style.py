@@ -1,559 +1,161 @@
 #!/usr/bin/env python3
-"""
-build_style.py — write the vector form of tools/style-topo50.json.
+"""CLI wrapper. Implementation lives in src/nzat/. Other tools still import this module."""
 
-The Shortbread catalog is upstream/linz-topographic-v2.json: sources, glyphs,
-layer ids, filters, and paint for layers the style file does not own.
-Owned paint comes from the style file. Re-run after updating upstream/ to
-rebase the catalog on LINZ.
-
-Usage:
-    python3 tools/build_style.py                      # writes styles/*.json + docs/styles/*-changes.md
-    python3 tools/build_style.py --check-only         # build in memory, print summary
-"""
-import argparse
-import copy
-import json
-import math
-import os
 import sys
 
-sys.path.insert(0, os.path.dirname(__file__))
-import palette_audit as pa  # noqa: E402
+import _bootstrap  # noqa: F401
+from nzat.colour.darken import darken_for_text
+from nzat.colour.lab_to_rgb import lab_to_rgb
+from nzat.paths import ROOT as ROOT_PATH
+from nzat.paths import STYLE_PATH as STYLE_PATH_OBJ
+from nzat.paths import UPSTREAM as UPSTREAM_PATH
+from nzat.style.build import build
+from nzat.style.build_main import main
+from nzat.style.builder import Builder
+from nzat.style.closed_track_casing import closed_track_casing as _closed_track_casing
+from nzat.style.floor_text_size import floor_text_size
+from nzat.style.fmt import fmt
+from nzat.style.hierarchy_ratios import hierarchy_ratios
+from nzat.style.index_line_width import index_line_width as _index_line_width
+from nzat.style.intermediate_casing_width import (
+    intermediate_casing_width as _intermediate_casing_width,
+)
+from nzat.style.is_place_name import is_place_name
+from nzat.style.label_floor_px import label_floor_px as _label_floor_px
+from nzat.style.load_rules import load_rules
+from nzat.style.lookup_style_path import lookup_style_path
+from nzat.style.place_rank_size import place_rank_size as _place_rank_size
+from nzat.style.resolved_text_size import resolved_text_size
+from nzat.style.spring_colour import spring_colour as _spring_colour
+from nzat.style.vector_params import SPRITE_ID, P
+from nzat.style.vegetation_fill import vegetation_fill as _vegetation_fill
+from nzat.style.write_changes import write_changes
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-UPSTREAM = os.path.join(ROOT, "upstream", "linz-topographic-v2.json")
-STYLE_PATH = os.path.join(ROOT, "tools", "style-topo50.json")
+ROOT = str(ROOT_PATH)
+UPSTREAM = str(UPSTREAM_PATH)
+STYLE_PATH = str(STYLE_PATH_OBJ)
 WHITE = (255, 255, 255)
-
-# ------------------------------------------------------------------ parameters
-# Colour lives in tools/style-topo50.json. P holds vector zoom stops and the
-# italic-to-upright font map. Those are not a palette.
-P = {
-    "contour_index_width": {"stops": [[10, 1.3], [12, 1.9], [15, 2.9]]},  # calibrated at 0.45 mm; scaled by index.width_mm
-    "contour_intermediate_width": {"stops": [[12, 0.6], [16, 0.9]]},  # thinner: dense slopes read as texture
-    # Glyph stacks served by the LINZ glyph endpoint that are already used by
-    # the catalog — we only map onto stacks known to exist.
-    "deitalicise": {                                      # R-05 (F-05)
-        "Open Sans Italic": "Open Sans Regular",
-        "Open Sans Bold Italic": "Open Sans Bold",
-        "Open Sans Light Italic": "Open Sans Regular",
-        "Roboto Italic": "Open Sans Regular",
-        "Roboto Bold Italic": "Roboto Bold",
-        "Roboto Black Italic": "Roboto Black",
-    },
-}
-
-SPRITE_ID = "nzat"
-
-
-def load_style_rules(path=None):
-    with open(path or STYLE_PATH, encoding="utf-8") as handle:
-        return json.load(handle)
-
-
-RULES = load_style_rules()
-
-
-def is_place_name(layer_id, text_field):
-    """A place-name label is a Place-Label layer with text to read."""
-    if text_field in (None, ""):
-        return False
-    return isinstance(layer_id, str) and layer_id.startswith("Place-Label-")
+load_style_rules = load_rules
+RULES = load_rules()
 
 
 def label_floor_px(layer_id, text_field, rules=None):
-    """Return the web size floor in px for this label."""
-    labels = (rules or RULES)["labels"]
-    if is_place_name(layer_id, text_field):
-        return labels["place_name_floor_px"]
-    return labels["web_floor_px"]
-
-
-def floor_text_size(size, floor):
-    """Raise one text size to the floor. Keep a size that is already high enough."""
-    if isinstance(size, (int, float)) and not isinstance(size, bool) and size < floor:
-        return floor
-    return size
+    return _label_floor_px(layer_id, text_field, rules or RULES)
 
 
 def place_rank_size(layer_id, rules=None):
-    """Return the place-rank size in px. A layer with no rank returns None."""
-    labels = (rules or RULES)["labels"]
-    for rank in labels["place_hierarchy"]:
-        if layer_id in rank["layers"]:
-            return rank["size_px"]
-    return None
-
-
-def hierarchy_ratios(ranks):
-    """Return the size ratio of each rank to the rank before it."""
-    sizes = [rank["size_px"] for rank in ranks]
-    return [sizes[i + 1] / sizes[i] for i in range(len(sizes) - 1)]
-
-
-def resolved_text_size(size, floor, rank_size):
-    """Return the size after the floor. A place rank replaces that size."""
-    sized = floor_text_size(size, floor)
-    if rank_size is None:
-        return sized
-    return floor_text_size(rank_size, floor)
-
-
-# ------------------------------------------------------------------ colour helpers
-
-def lab_to_rgb(lab):
-    L, a, b = lab
-    fy = (L + 16) / 116
-    fx = fy + a / 500
-    fz = fy - b / 200
-
-    def finv(t):
-        return t ** 3 if t > 6 / 29 else 3 * (6 / 29) ** 2 * (t - 4 / 29)
-
-    x, y, z = finv(fx) * 0.95047, finv(fy), finv(fz) * 1.08883
-    r = 3.2406 * x - 1.5372 * y - 0.4986 * z
-    g = -0.9689 * x + 1.8758 * y + 0.0415 * z
-    bb = 0.0557 * x - 0.2040 * y + 1.0570 * z
-    return tuple(float(v) for v in pa.linear_to_srgb([r, g, bb]))
-
-
-def fmt(rgb, a=1.0):
-    r, g, b = (int(round(max(0, min(255, v)))) for v in rgb)
-    return f"rgba({r}, {g}, {b}, {a:g})"
-
-
-def darken_until(rgb, ok):
-    """Lower CIELAB L* (hue/chroma kept) until ok(rgb) is True."""
-    L, a, b = pa.rgb_to_lab(rgb)
-    cur = rgb
-    while not ok(cur) and L > 0:
-        L -= 0.5
-        cur = lab_to_rgb((L, a, b))
-    return cur
-
-
-def text_contrast_min(rules=None):
-    """Return the label contrast floor. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["label_contrast"]["min_ratio"]
-
-
-def halo_alpha(rules=None):
-    """Return the opaque halo alpha. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["label_contrast"]["halo_alpha"]
+    return _place_rank_size(layer_id, rules or RULES)
 
 
 def vegetation_fill(kind, rules=None):
-    """Return the opaque vector fill for a vegetation class. Colour lives in tools/style-topo50.json."""
-    colour = (rules or RULES)["vegetation"][kind]["colour"]
-    return fmt(pa.parse_colour(colour)[:3])
+    return _vegetation_fill(kind, rules or RULES)
 
 
 def spring_colour(kind, rules=None):
-    """Return the spring ink. Colour lives in tools/style-topo50.json."""
-    colour = (rules or RULES)["springs"][kind]["colour"]
-    return fmt(pa.parse_colour(colour)[:3])
-
-
-def red_light_min(rules=None):
-    """Return the red-light contrast floor. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["label_contrast"]["red_light_min"]
+    return _spring_colour(kind, rules or RULES)
 
 
 def closed_track_casing(rules=None):
-    """Return the vector closed-track casing. Colour lives in tools/style-topo50.json."""
-    track = (rules or RULES)["tracks"]["closed_foot"]
-    colour = pa.parse_colour(track["casing_colour"])[:3]
-    return fmt(colour, track["casing_alpha"])
-
-
-def track_access_reserved_channel(rules=None):
-    """Return the unused track-access channel. The name lives in tools/style-topo50.json."""
-    return (rules or RULES)["tracks"]["access"]["reserved_channel"]
-
-
-def track_access_painted(rules=None):
-    """Return whether track access is painted. Access is reserved and unpainted."""
-    return (rules or RULES)["tracks"]["access"]["painted"]
-
-
-def contour_colour(kind, rules=None):
-    """Return a contour ink. Colour lives in tools/style-topo50.json."""
-    return (rules or RULES)["contours"][kind]["colour"]
-
-
-def contour_opacity(kind, rules=None):
-    """Return contour stroke alpha. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["contours"][kind]["alpha"]
+    return _closed_track_casing(rules or RULES)
 
 
 def index_line_width(rules=None):
-    """Return vector index width stops. Scale the 0.45 mm calibration by the print width."""
-    width = (rules or RULES)["contours"]["index"]["width_mm"]
-    factor = width / 0.45
-    return {"stops": [[z, round(w * factor, 2)] for z, w in P["contour_index_width"]["stops"]]}
-
-
-def intermediate_casing_colour(rules=None):
-    """Return the intermediate contour casing. Colour lives in tools/style-topo50.json."""
-    return (rules or RULES)["contours"]["intermediate"]["casing_colour"]
+    return _index_line_width(rules or RULES)
 
 
 def intermediate_casing_width(rules=None):
-    """Return vector casing width stops. Scale the fill stops by the millimetre ratio."""
-    mid = (rules or RULES)["contours"]["intermediate"]
-    factor = mid["casing_width_mm"] / mid["width_mm"]
-    return {"stops": [[z, round(w * factor, 2)] for z, w in P["contour_intermediate_width"]["stops"]]}
+    return _intermediate_casing_width(rules or RULES)
+
+
+def text_contrast_min(rules=None):
+    return lookup_style_path(rules or RULES, "label_contrast.min_ratio")
+
+
+def halo_alpha(rules=None):
+    return lookup_style_path(rules or RULES, "label_contrast.halo_alpha")
+
+
+def red_light_min(rules=None):
+    return lookup_style_path(rules or RULES, "label_contrast.red_light_min")
+
+
+def track_access_reserved_channel(rules=None):
+    return lookup_style_path(rules or RULES, "tracks.access.reserved_channel")
+
+
+def track_access_painted(rules=None):
+    return lookup_style_path(rules or RULES, "tracks.access.painted")
+
+
+def contour_colour(kind, rules=None):
+    return lookup_style_path(rules or RULES, f"contours.{kind}.colour")
+
+
+def contour_opacity(kind, rules=None):
+    return lookup_style_path(rules or RULES, f"contours.{kind}.alpha")
+
+
+def intermediate_casing_colour(rules=None):
+    return lookup_style_path(rules or RULES, "contours.intermediate.casing_colour")
 
 
 def letter_spacing_em(rules=None):
-    """Return label tracking in em. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["labels"]["letter_spacing_em"]
+    return lookup_style_path(rules or RULES, "labels.letter_spacing_em")
 
 
 def hillshade_azimuth(rules=None):
-    """Return the primary hillshade light. The number lives in tools/style-topo50.json."""
-    return (rules or RULES)["hillshade"]["azimuth_deg"]
+    return lookup_style_path(rules or RULES, "hillshade.azimuth_deg")
 
 
 def hillshade_fill_azimuths(rules=None):
-    """Return the weaker fill lights. The numbers live in tools/style-topo50.json."""
-    return (rules or RULES)["hillshade"]["fill_azimuths_deg"]
+    return lookup_style_path(rules or RULES, "hillshade.fill_azimuths_deg")
 
 
 def hillshade_painted(rules=None):
-    """Return whether the vector hillshade layer is visible."""
-    return (rules or RULES)["hillshade"]["painted"]
+    return lookup_style_path(rules or RULES, "hillshade.painted")
 
 
-def darken_for_text(rgb, behind, min_ratio, red_min=None):
-    """Lower L* until the ink meets min_ratio against behind. Keep hue.
-
-    When red_min is set, the ink must also meet that floor under the red-light model.
-    """
-    def ok(colour):
-        contrast = pa.contrast_ratio(pa.rel_luminance(colour), pa.rel_luminance(behind)) >= min_ratio
-        if red_min is None:
-            return contrast
-        red = pa.contrast_ratio(pa.red_light_reflectance(colour), pa.red_light_reflectance(behind)) >= red_min
-        return contrast and red
-
-    return darken_until(rgb, ok)
-
-
-# ------------------------------------------------------------------ build
-
-class Builder:
-    def __init__(self, style):
-        self.doc = copy.deepcopy(style)
-        self.style = self.doc.get("style", self.doc)
-        self.log = []
-
-    def note(self, rid, layer, what):
-        self.log.append((rid, layer, what))
-
-    def layer(self, lid):
-        for l in self.style["layers"]:
-            if l["id"] == lid:
-                return l
-        raise KeyError(lid)
-
-    def insert_after(self, lid, new_layer, rid, why):
-        idx = next(i for i, l in enumerate(self.style["layers"]) if l["id"] == lid)
-        self.style["layers"].insert(idx + 1, new_layer)
-        self.note(rid, new_layer["id"], f"added after `{lid}` — {why}")
-
-    # R-03 ----------------------------------------------------------------
-    def hillshade(self, multidirectional=False):
-        azimuth = hillshade_azimuth()
-        fills = hillshade_fill_azimuths()
-        painted = hillshade_painted()
-        for l in self.style["layers"]:
-            if l["type"] != "hillshade":
-                continue
-            p = l["paint"]
-            old = p.get("hillshade-illumination-direction")
-            if not painted:
-                l.setdefault("layout", {})["visibility"] = "none"
-                self.note("R-03", l["id"], "visibility none — hillshade.painted is false")
-                continue
-            if not multidirectional:
-                p["hillshade-illumination-direction"] = azimuth
-                self.note("R-03", l["id"], f"illumination direction {old} → {azimuth} (NNW)")
-            else:
-                p["hillshade-method"] = "multidirectional"
-                p["hillshade-illumination-direction"] = [azimuth, *fills]
-                p["hillshade-illumination-altitude"] = [45, 45, 45]
-                # Static colours: zoom-interpolated arrays are not assumed supported.
-                p["hillshade-highlight-color"] = ["rgba(255,255,255,0.30)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.12)"]
-                p["hillshade-shadow-color"] = ["rgba(12,12,12,0.45)", "rgba(12,12,12,0.18)", "rgba(12,12,12,0.18)"]
-                p.pop("hillshade-accent-color", None)
-                self.note(
-                    "R-03",
-                    l["id"],
-                    f"multidirectional: primary {azimuth}° + weaker {'/'.join(str(item) for item in fills)}° fill lights "
-                    "(F-16). Colours are provisional — tune visually (OQ-07)",
-                )
-
-    # R-04 ----------------------------------------------------------------
-    def contours(self):
-        idx = self.layer("Contours-Index")
-        idx_colour = contour_colour("index")
-        idx_alpha = contour_opacity("index")
-        idx["paint"]["line-color"] = idx_colour
-        idx["paint"]["line-opacity"] = {"stops": [[10, round(0.6 * idx_alpha, 2)], [11, idx_alpha]]}
-        idx["paint"]["line-width"] = index_line_width()
-        self.note("R-04", "Contours-Index", f"colour → {idx_colour} alpha {idx_alpha}, width ↑")
-        halo = self.layer("Contours-Index-Halo")
-        halo.setdefault("layout", {})["visibility"] = "none"
-        self.note("R-04", "Contours-Index-Halo", "hidden — darker index line no longer needs a 10% offset shadow")
-        mid_colour = contour_colour("intermediate")
-        mid_alpha = contour_opacity("intermediate")
-        for lid in ("Contours-All", "Contours-Designated", "Contours-Natural"):
-            l = self.layer(lid)
-            l["paint"]["line-color"] = mid_colour
-            if lid == "Contours-All":
-                l["paint"]["line-width"] = P["contour_intermediate_width"]
-                l["paint"]["line-opacity"] = {"stops": [[13, round(0.6 * mid_alpha, 2)], [14, mid_alpha]]}
-            else:
-                l["paint"]["line-opacity"] = mid_alpha
-            self.note("R-04", lid, f"colour → {mid_colour} alpha {mid_alpha}")
-        all_layer = self.layer("Contours-All")
-        casing = {
-            "id": "NZAT-Contours-All-Casing",
-            "type": "line",
-            "source": all_layer["source"],
-            "source-layer": all_layer["source-layer"],
-            "filter": copy.deepcopy(all_layer["filter"]),
-            "minzoom": all_layer.get("minzoom", 13),
-            "layout": copy.deepcopy(all_layer.get("layout", {})),
-            "paint": {
-                "line-color": intermediate_casing_colour(),
-                "line-width": intermediate_casing_width(),
-                "line-opacity": copy.deepcopy(all_layer["paint"].get("line-opacity", 1)),
-            },
-        }
-        self.insert_after(
-            "Contours-Index-Halo",
-            casing,
-            "R-01",
-            "index-ink casing under intermediate fill so the line meets 3:1 under red light",
-        )
-
-    # R-10 ----------------------------------------------------------------
-    def vegetation(self):
-        native = vegetation_fill("native")
-        scrub = vegetation_fill("scrub")
-        scattered = vegetation_fill("scattered")
-        self.layer("Vegetation-Native")["paint"]["fill-color"] = native
-        self.note("R-17", "Vegetation-Native", f"fill → {native}")
-        self.layer("Vegetation-Scrub")["paint"]["fill-color"] = scrub
-        self.note("R-10", "Vegetation-Scrub", f"fill → {scrub}")
-        sc = self.layer("Vegetation-Scatteredscrub")
-        sc["paint"]["fill-color"] = scattered
-        self.note("R-10", "Vegetation-Scatteredscrub", f"fill → {scattered}")
-        stipple = {
-            "id": "NZAT-Vegetation-Scatteredscrub-Stipple",
-            "type": "fill",
-            "source": sc["source"],
-            "source-layer": sc["source-layer"],
-            "filter": copy.deepcopy(sc["filter"]),
-            "minzoom": 11,
-            "paint": {"fill-pattern": f"{SPRITE_ID}:scattered_stipple"},
-        }
-        self.insert_after(sc["id"], stipple, "R-10", "stipple so scattered scrub survives greyscale and CVD")
-
-    # R-17 ----------------------------------------------------------------
-    def springs(self):
-        hot = spring_colour("hot")
-        cold = spring_colour("cold")
-        hot_layer = self.layer("Water-Spring-Hot")
-        hot_layer["paint"]["text-color"] = hot
-        if "icon-color" in hot_layer["paint"]:
-            hot_layer["paint"]["icon-color"] = hot
-        self.note("R-17", "Water-Spring-Hot", f"text → {hot}; icon stays spring_hot_pnt")
-        cold_layer = self.layer("Water-Spring-Cold")
-        cold_layer["paint"]["text-color"] = cold
-        cold_layer["paint"]["icon-color"] = cold
-        self.note("R-17", "Water-Spring-Cold", f"icon+text → {cold}; icon stays spring_cold_pnt")
-
-    # R-11 ----------------------------------------------------------------
-    def closed_tracks(self):
-        if track_access_painted():
-            raise RuntimeError("track access is reserved and must not be painted")
-        self.note(
-            "R-12",
-            "(tracks.access)",
-            f"reserved {track_access_reserved_channel()} channel is not painted (F-25)",
-        )
-        casing = closed_track_casing()
-        for lid in ("Transport-ClosedFootTracks-Shadow", "Transport-ClosedFootRouteTracks-Shadow"):
-            self.layer(lid)["paint"]["line-color"] = casing
-            self.note("R-11", lid, f"red 40% shadow → dark casing {casing} (lightness, not hue)")
-        for lid in ("All-ClosedFootTrack-Labels", "All-ClosedFootRouteTrack-Labels"):
-            p = self.layer(lid)["paint"]
-            p["text-halo-color"] = "rgba(255, 255, 255, 1)"
-            p["text-opacity"] = 1
-            if "icon-halo-color" in p:
-                p["icon-halo-color"] = "rgba(255, 255, 255, 1)"
-            self.note("R-11", lid, "red translucent halo → opaque white (restores text contrast)")
-        anchor = "Transport-FootTracks"
-        for subclass in ("foot_route_closed", "foot_closed"):
-            src = self.layer("Transport-ClosedFootTracks-Shadow")
-            bar = {
-                "id": f"NZAT-Closed-{subclass}-Crossbar",
-                "type": "line",
-                "source": src["source"],
-                "source-layer": src["source-layer"],
-                "filter": ["all", ["==", "kind", "track"], ["==", "subclass", subclass]],
-                "minzoom": 12,
-                "paint": {"line-pattern": f"{SPRITE_ID}:closed_crossbar",
-                          "line-width": {"stops": [[12, 5], [15, 7], [19, 10]]}},
-            }
-            self.insert_after(anchor, bar, "R-11", "cross-bar pattern: closed status carried by shape")
-
-    # R-05, R-07, R-08, R-09, R-11 (text) -------------------------------------
-    def text(self):
-        for l in self.style["layers"]:
-            if l["type"] != "symbol":
-                continue
-            lay, paint = l.setdefault("layout", {}), l.setdefault("paint", {})
-            lid = l["id"]
-            shield = "Highway-Labels" in lid  # white text drawn on an icon
-
-            # R-05 de-italicise — on every layer that names a font, even if the
-            # text-field is empty or data-driven, so no italic face is requested.
-            f = lay.get("text-font")
-            if isinstance(f, list) and f and all(isinstance(x, str) for x in f):
-                nf = [P["deitalicise"].get(x, x) for x in f]
-                if nf != f:
-                    lay["text-font"] = nf
-                    self.note("R-05", lid, f"font {f[0]} → {nf[0]}")
-
-            if lay.get("text-field") in (None, ""):
-                continue  # icon-only layer (empty text-field) — nothing to read
-
-            # R-09 size floor and place ranks. The numbers live in tools/style-topo50.json.
-            floor = label_floor_px(lid, lay.get("text-field"))
-            ts = lay.get("text-size")
-            rank_size = place_rank_size(lid)
-            if isinstance(ts, (int, float)) and not isinstance(ts, bool):
-                new_ts = resolved_text_size(ts, floor, rank_size)
-                if new_ts != ts:
-                    lay["text-size"] = new_ts
-                    self.note("R-09", lid, f"text-size {ts} → {new_ts}")
-            elif isinstance(ts, dict) and "stops" in ts:
-                new = [
-                    [z, floor_text_size(v, floor)] if isinstance(v, (int, float)) and not isinstance(v, bool) else [z, v]
-                    for z, v in ts["stops"]
-                ]
-                if new != ts["stops"]:
-                    ts["stops"] = new
-                    self.note("R-09", lid, f"text-size stops floored at {floor}")
-
-            # R-08 letter-spacing (provisional)
-            spacing = letter_spacing_em()
-            if not shield and "text-letter-spacing" not in lay:
-                lay["text-letter-spacing"] = spacing
-                self.note("R-08", lid, f"letter-spacing +{spacing} em (provisional)")
-
-            if shield:
-                continue
-            tc = paint.get("text-color")
-            tcol = pa.parse_colour(tc) if isinstance(tc, str) else None
-            if not tcol:
-                continue
-
-            # R-07 opaque halo. The floor and the alpha live in tools/style-topo50.json.
-            contrast_floor = text_contrast_min()
-            target_alpha = halo_alpha()
-            hc = paint.get("text-halo-color")
-            hcol = pa.parse_colour(hc) if isinstance(hc, str) else None
-            if hcol and hcol[3] < target_alpha:
-                paint["text-halo-color"] = fmt(hcol[:3], target_alpha)
-                self.note("R-07", lid, f"halo alpha {hcol[3]:g} → {target_alpha:g}")
-                hcol = (*hcol[:3], float(target_alpha))
-            behind = pa.composite(hcol, WHITE) if hcol else WHITE
-            fg = pa.composite(tcol, behind)
-            red_floor = red_light_min()
-
-            before_cr = pa.contrast_ratio(pa.rel_luminance(fg), pa.rel_luminance(behind))
-            before_rl = pa.contrast_ratio(pa.red_light_reflectance(fg), pa.red_light_reflectance(behind))
-            new = darken_for_text(fg, behind, contrast_floor, red_floor)
-            if new != fg:
-                paint["text-color"] = fmt(new)
-                if "text-opacity" in paint and isinstance(paint["text-opacity"], (int, float)):
-                    paint["text-opacity"] = 1
-                after_cr = pa.contrast_ratio(pa.rel_luminance(new), pa.rel_luminance(behind))
-                after_rl = pa.contrast_ratio(pa.red_light_reflectance(new), pa.red_light_reflectance(behind))
-                why = []
-                if before_cr < contrast_floor:
-                    why.append(f"contrast {before_cr:.2f}→{after_cr:.2f}")
-                if before_rl < red_floor:
-                    why.append(f"red-light {before_rl:.2f}→{after_rl:.2f}")
-                rid = "R-07" if before_cr < contrast_floor else "R-11"
-                self.note(rid, lid, f"text {tc} → {fmt(new)} (L* lowered, hue kept; {', '.join(why)})")
-
-    # sprite + metadata ------------------------------------------------------
-    def sprite_and_meta(self, variant):
-        old = self.style.get("sprite")
-        self.style["sprite"] = [{"id": "default", "url": old}, {"id": SPRITE_ID, "url": "./sprites/nzat"}]
-        self.note("infra", "(style)", f"sprite → multi-sprite: LINZ default + `{SPRITE_ID}` (patterns for R-10/R-11)")
-        self.style["name"] = f"NZ Accessible Topo {variant}"
-        self.style.setdefault("metadata", {})["nzat:derived-from"] = (
-            "Vector form of tools/style-topo50.json on the Shortbread catalog "
-            "linz/basemaps-config config/style/topographic-v2.json (MIT, Crown copyright LINZ). "
-            "Data: LINZ CC BY 4.0. See upstream/README.md.")
-        self.style["id"] = f"nzat_{variant.replace('-', '_')}"
-        if "id" in self.doc and self.doc is not self.style:
-            self.doc["id"] = self.style["id"]
-            self.doc["name"] = self.style["name"]
-
-
-def build(multidirectional=False):
-    variant = "v0-multidir" if multidirectional else "v0"
-    b = Builder(json.load(open(UPSTREAM)))
-    b.hillshade(multidirectional)
-    b.contours()
-    b.vegetation()
-    b.springs()
-    b.closed_tracks()
-    b.text()
-    b.sprite_and_meta(variant)
-    return variant, b
-
-
-def write_changes(variant, b, path):
-    by = {}
-    for rid, lid, what in b.log:
-        by.setdefault(rid, []).append((lid, what))
-    out = [f"# Change log: accessible-{variant} (generated)", "",
-           "Owned paint `tools/build_style.py` wrote from `tools/style-topo50.json` onto the Shortbread catalog, grouped by recommendation.",
-           f"Total changes: {len(b.log)}.", ""]
-    for rid in sorted(by):
-        out.append(f"## {rid} ({len(by[rid])})\n")
-        out += [f"- `{lid}` — {what}" for lid, what in by[rid]]
-        out.append("")
-    open(path, "w").write("\n".join(out))
-
-
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--check-only", action="store_true")
-    a = ap.parse_args()
-    for md in (False, True):
-        variant, b = build(md)
-        counts = {}
-        for rid, _, _ in b.log:
-            counts[rid] = counts.get(rid, 0) + 1
-        print(variant, dict(sorted(counts.items())))
-        if a.check_only:
-            continue
-        os.makedirs(os.path.join(ROOT, "styles"), exist_ok=True)
-        os.makedirs(os.path.join(ROOT, "docs", "styles"), exist_ok=True)
-        json.dump(b.doc, open(os.path.join(ROOT, "styles", f"accessible-{variant}.json"), "w"), indent=2, ensure_ascii=False)
-        write_changes(variant, b, os.path.join(ROOT, "docs", "styles", f"accessible-{variant}-changes.md"))
+__all__ = [
+    "Builder",
+    "P",
+    "ROOT",
+    "RULES",
+    "SPRITE_ID",
+    "STYLE_PATH",
+    "UPSTREAM",
+    "WHITE",
+    "build",
+    "closed_track_casing",
+    "contour_colour",
+    "contour_opacity",
+    "darken_for_text",
+    "floor_text_size",
+    "fmt",
+    "halo_alpha",
+    "hierarchy_ratios",
+    "hillshade_azimuth",
+    "hillshade_fill_azimuths",
+    "hillshade_painted",
+    "index_line_width",
+    "intermediate_casing_colour",
+    "intermediate_casing_width",
+    "is_place_name",
+    "lab_to_rgb",
+    "label_floor_px",
+    "letter_spacing_em",
+    "load_style_rules",
+    "main",
+    "place_rank_size",
+    "red_light_min",
+    "resolved_text_size",
+    "spring_colour",
+    "text_contrast_min",
+    "track_access_painted",
+    "track_access_reserved_channel",
+    "vegetation_fill",
+    "write_changes",
+]
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

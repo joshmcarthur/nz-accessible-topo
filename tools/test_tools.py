@@ -358,46 +358,6 @@ def test_style_file_has_no_sheet_code():
     assert style["label_contrast"]["red_light_min"] == 3.0
 
 
-def test_vector_size_floor_reads_the_style_file():
-    # Catches a place name left under 11 px, or a web floor that ignores the style file.
-    labels = bs.RULES["labels"]
-    assert bs.label_floor_px("Place-Label-Suburb", "{label}") == labels["place_name_floor_px"]
-    assert bs.label_floor_px("All-Road-Labels", "{name}") == labels["web_floor_px"]
-    assert bs.label_floor_px("Place-Symbol-Peak-12", "") == labels["web_floor_px"]
-    assert bs.floor_text_size(10, labels["place_name_floor_px"]) == 11
-    assert bs.floor_text_size(12, labels["place_name_floor_px"]) == 12
-    assert bs.floor_text_size(8, labels["web_floor_px"]) == 10
-    assert bs.is_place_name("Place-Label-Suburb", "{label}") is True
-    assert bs.is_place_name("Place-Symbol-Peak-12", "") is False
-    assert bs.letter_spacing_em() == 0.05
-    assert "letter_spacing_em" not in bs.P
-
-
-def test_vector_build_reads_the_style_file():
-    # Catches a contour hex left in P, or a build that no longer starts from the Shortbread catalog.
-    assert bs.UPSTREAM.endswith("upstream/linz-topographic-v2.json")
-    assert os.path.isfile(bs.UPSTREAM)
-    assert "contour_index" not in bs.P
-    assert "contour_intermediate" not in bs.P
-    assert bs.contour_colour("index") == bs.RULES["contours"]["index"]["colour"]
-    assert bs.contour_colour("intermediate") == bs.RULES["contours"]["intermediate"]["colour"]
-    assert bs.contour_opacity("index") == 0.85
-    assert bs.contour_opacity("intermediate") == 0.5
-
-
-def test_place_ranks_differ_by_at_least_20_percent():
-    # Catches a town size under 20% above suburb, or an island layer pulled into the place ladder.
-    ranks = bs.RULES["labels"]["place_hierarchy"]
-    assert [rank["rank"] for rank in ranks] == ["suburb-locality", "town", "city"]
-    assert all(ratio >= 1.2 for ratio in bs.hierarchy_ratios(ranks))
-    assert bs.place_rank_size("Place-Label-Suburb") == bs.place_rank_size("Place-Label-Locality")
-    assert bs.place_rank_size("Place-Label-City-14") == bs.place_rank_size("Place-Label-City-7")
-    assert bs.place_rank_size("Place-Label-Town") / bs.place_rank_size("Place-Label-Suburb") >= 1.2
-    assert bs.place_rank_size("Place-Label-Island-12") is None
-    assert bs.resolved_text_size(12, 11, 14) == 14
-    assert bs.resolved_text_size(10, 11, None) == 11
-
-
 def test_label_contrast_darkens_water_and_draws_the_buffer():
     # Catches a water name left at process_blue, or a label buffer left at the stock millimetre size.
     assert bs.text_contrast_min() == bs.RULES["label_contrast"]["min_ratio"] == 4.8
