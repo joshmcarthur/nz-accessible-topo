@@ -7,7 +7,7 @@ Changes are on the map layers the research names:
 - labels: upright NZAT Legible Test, size floor (R-05, R-06, R-09)
 - labels: draw the buffer already on the text style, cap it at halo_max_mm, and darken ink below the contrast floor and the red-light floor (R-07, R-11)
 - labels: a multiline carto_text name is split onto the forward passes of a folded baseline
-- labels: stretch-to-fit curved modes use normal letter spacing, so the larger type is not squeezed onto the stock line
+- labels: stretch-to-fit curved modes keep the stock spread only on a one-line name whose baseline is longer than the name, so the larger type is not squeezed
 - labels: flat one-line carto_text names sit on a short horizontal line around the stock label, so QGIS can slide or flip a name that collides
 - labels: a flat carto_text name listed in carto_fit.json beside the project is drawn at its fitted point and line count
 - contour: index vs intermediate ink and width, plus an index-ink casing on intermediates (R-04, R-01)
@@ -414,10 +414,23 @@ def wrap_baseline_expression():
     )
 
 
-def curved_label_mode_expression():
-    """Keep normal spacing. Stretch-to-fit squeezes the larger type onto the stock line."""
+def carto_text_width_expression(chars, style=None):
+    """Estimated width in metres of a carto_text line of chars characters at the sheet scale."""
+    style = style or STYLE
+    floor = style["labels"]["size_floor_pt"]
+    metres_per_pt = 0.3528 / 1000 * SHEET_SCALE
+    return (
+        f"({chars} * max({floor}, coalesce(\"size\", {floor}))"
+        f" * {style['labels']['carto_point']['advance_em']} * {metres_per_pt:g})"
+    )
+
+
+def curved_label_mode_expression(style=None):
+    """Keep the stock stretch only where it adds space. A baseline shorter than the name would squeeze it."""
+    width = carto_text_width_expression("length(\"text_string\")", style)
     return (
         "CASE WHEN \"charplace\" IN ('StretchWordSpacingToFit', 'StretchCharacterSpacingToFit')"
+        f" AND (strpos(\"text_string\", '\\n') > 0 OR length($geometry) <= {width})"
         " THEN 'default' ELSE \"charplace\" END"
     )
 
@@ -435,6 +448,7 @@ def patch_wrap_baseline(layer):
 CARTO_POINT_FILTER = (
     "\"text_placement\" = 1 AND \"text_orientation\" = 0"
     " AND strpos(coalesce(\"text_string\", ''), '\\n') = 0"
+    " AND num_points($geometry) <= 2"
 )
 CURVED_ONLY_PROPERTIES = (
     "LinePlacementFlags",
@@ -488,15 +502,9 @@ def carto_flat_line_expression(style=None):
     @map_scale is null in a label geometry generator, so the sheet scale is fixed.
     """
     style = style or STYLE
-    carto = style["labels"]["carto_point"]
-    floor = style["labels"]["size_floor_pt"]
-    metres_per_pt = 0.3528 / 1000 * SHEET_SCALE
-    metres_per_mm = SHEET_SCALE / 1000
+    allowance = style["labels"]["carto_point"]["allowance_mm"] * SHEET_SCALE / 1000
     longest = f"array_max(array_foreach(string_to_array({CARTO_FLAT_TEXT}, '\\n'), length(@element)))"
-    half = (
-        f"({longest} * max({floor}, coalesce(\"size\", {floor}))"
-        f" * {carto['advance_em']} * {metres_per_pt:g} / 2 + {carto['allowance_mm'] * metres_per_mm:g})"
-    )
+    half = f"({carto_text_width_expression(longest, style)} / 2 + {allowance:g})"
     return (
         "with_variable('cx', x(centroid(bounds(@geometry))), with_variable('y', y_min(@geometry), "
         f"make_line(make_point(@cx - {half}, @y), make_point(@cx + {half}, @y))))"
@@ -599,7 +607,7 @@ def patch_labels(layer, layer_name, style=None, palette=None, fit=None):
         if "Size" in present:
             put_expr(props, "Size", size_expr)
         if layer_name == CARTO_TEXT_LAYER and "CurvedLabelMode" in present:
-            put_expr(props, "CurvedLabelMode", curved_label_mode_expression())
+            put_expr(props, "CurvedLabelMode", curved_label_mode_expression(style))
     if layer_name == CARTO_TEXT_LAYER:
         patch_wrap_baseline(layer)
         patch_carto_point_labels(layer, style, fit)

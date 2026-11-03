@@ -47,3 +47,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0042 — Flat carto text moves to free space](0042-carto-point-placement.md)
 - [0043 — Contours above vegetation](0043-contours-above-vegetation.md)
 - [0044 — Optional hillshade overlay](0044-optional-hillshade.md)
+- [0052 — Carto text fit and stock spread](0052-carto-text-fit-and-spread.md)

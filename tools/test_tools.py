@@ -742,8 +742,13 @@ def test_multiline_baseline_splits_at_a_fold():
     assert "text_string" in placement.get("geometryGenerator")
     curved = line_rule.find(".//Option[@name='CurvedLabelMode']/Option[@name='expression']")
     assert curved.get("value") == ov.curved_label_mode_expression()
+    # Catches a stretch that squeezes a name onto a short baseline, or that drops the stock spread on a long one.
+    assert "length($geometry) <= " + ov.carto_text_width_expression("length(\"text_string\")") in curved.get("value")
+    assert "THEN 'default' ELSE \"charplace\" END" in curved.get("value")
     # Catches a flat one-line name left on its fixed baseline.
     assert point_rule.get("filter") == ov.CARTO_POINT_FILTER
+    # Catches a curved area name, such as Banks Peninsula, pulled off its long baseline.
+    assert "num_points($geometry) <= 2" in ov.CARTO_POINT_FILTER
     point = point_rule.find("settings/placement")
     assert point.get("placement") == "2"
     assert point.get("placementFlags") == "14"

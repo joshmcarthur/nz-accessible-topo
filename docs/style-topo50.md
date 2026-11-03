@@ -16,7 +16,7 @@ The script reads `tools/style-topo50.json`. The script writes `OUT.qgs`.
 
 The script changes map layers only. Layout text stays Nimbus Sans LINZ. Layout text keeps its italic.
 
-The script does not change `charplace`. Along-line labels keep `StretchWordSpacingToFit`.
+An along-line label keeps its stretch `charplace` when it is one line and its baseline is longer than the estimated text width. Other stretch labels use default spacing, so the larger type is not squeezed. A one-line name on a curved baseline stays on the curved rule.
 
 The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
 
