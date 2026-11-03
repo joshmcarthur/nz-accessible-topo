@@ -920,3 +920,24 @@ Transparency lowers ink mass without a new brown. Index at 0.85 still meets both
 ### Consequences
 
 C6 must not treat intermediate vs paper as a 3:1 gate once pairs include that alpha. Josh accepted index 0.85 and intermediate 0.5 on the BX24 composite (log 0054). Do not keep lowering alpha on this sheet. A steeper Alpine sheet still answers OQ-09. Do not darken the hexes.
+
+## Index contour is 0.35 mm
+
+**Status:** Accepted
+**Date:** 2026-11
+
+### Context
+
+Josh accepted contour alphas 0.85 / 0.5 on BX24. The 0.45 mm index then looked too thick. Intermediate 0.2 mm casing was OK. Colour contrast does not depend on millimetres. 0.28 mm vs 0.2 mm was only 1.4x and failed the Port Hills step (log 0038).
+
+### Decision
+
+contours.index.width_mm is 0.35. Intermediate casing stays 0.2 mm. Fill stays 0.12 mm. Alphas stay 0.85 / 0.5.
+
+### Rationale
+
+0.35 vs 0.2 is 1.75x. That is below the 2.25x step at 0.45 mm and above the failed 1.4x step. Vector index stops scale from the 0.45 mm calibration.
+
+### Consequences
+
+Do not return to 0.28 mm while the casing is 0.2 mm. If 0.35 mm is still too heavy, try 0.32 mm next. If the 100 m line is now too light, go back toward 0.40 mm.
