@@ -941,3 +941,25 @@ contours.index.width_mm is 0.35. Intermediate casing stays 0.2 mm. Fill stays 0.
 ### Consequences
 
 Josh accepted 0.35 mm index on BX24 (log 0055), provided contrast still holds. Index vs paper remains 4.60:1 grey and 3.28:1 red. Do not return to 0.28 mm while the casing is 0.2 mm. Do not keep thinning the index on this sheet.
+
+## Closed foot track is a 45° slash in each gap
+
+**Status:** Accepted
+**Date:** 2026-11
+
+### Context
+
+The closed foot track was 0.45 mm and nearly solid, with bars at 90°. That line hid contours and read as a railway. Printed Topo50 only changes the gap length. R-11 needs the closed state in shape.
+
+### Decision
+
+The closed line uses the open foot-track weight and dash (0.15 mm, dash 1 mm, gap 0.5 mm). One bar, 1 mm long, sits in each gap at 45° to the line. Log 0056.
+
+### Rationale
+
+90° and 75° read as sleepers. 60° was not a clear cross-out. A bar every 4 mm left most of the line looking open. The 45° slash in every gap crosses the track out without a heavier stroke.
+
+### Consequences
+
+Do not return to the 0.45 mm closed line. The web sprite is still a perpendicular bar. A second apply must write the angle and the gap position onto an existing marker.
+
