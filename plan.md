@@ -103,3 +103,11 @@ Road fill is owned `#EC7000`. Highway stays `#E31A1C`. Contour-number FontMarker
 Contour stroke alpha (accepted 2026-11-03). Index 0.85. Intermediate 0.5. Index width is 0.35 mm (log 0055). Intermediate casing stays 0.2 mm. Hexes unchanged. Contour numbers stay opaque. Index vs paper still 3:1 grey and red. Intermediate vs paper is not a 3:1 gate. Josh accepted this paint on the BX24 composite (log 0054). A steeper Alpine sheet still answers OQ-09.
 
 Closed foot track (accepted 2026-11-03, log 0056). Same weight and dash as an open foot track. One 1 mm bar at 45° sits in each gap. The web sprite is still a perpendicular bar.
+
+## 4 km BX24 samples
+
+Draw one stock face and one accessible face at 300 dpi, then crop. Do not draw each cell. A fresh draw per cell moves the labels.
+
+Extent is 1564000–1588000 E, 5154000–5190000 N. Cell is 4000 m. Grid is 6 by 9. Keep cells where column plus row is even. That includes the south-west cell. That is 27 cells and 54 PNGs. Each cell is 945 px. Each face is 5670 by 8505 px.
+
+`tools/render_square.py --extent` draws the face. `tools/crop_grid.py` crops both faces. Output is `render/bx24-4km/`. That directory is gitignored. Do not commit the PNGs.
