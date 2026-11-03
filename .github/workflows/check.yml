@@ -5,41 +5,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
-      - run: pip install -r requirements.txt
+      - run: uv sync --frozen
       - name: Tool sanity tests
-        run: python3 tools/test_tools.py
+        run: uv run python tools/test_tools.py
       - name: Sprites are reproducible
-        run: python3 tools/make_sprites.py && git diff --exit-code styles/sprites/
+        run: uv run python tools/make_sprites.py && git diff --exit-code styles/sprites/
       - name: Styles are reproducible and meet the gates (C1–C6)
-        run: python3 tools/check.py
+        run: uv run python tools/check.py
       - name: Styles are valid MapLibre styles
         run: |
           npm i --no-save @maplibre/maplibre-gl-style-spec@26.5.0
           for f in styles/accessible-*.json; do npx gl-style-validate "$f"; done
       - name: Audit report (informational)
-        run: python3 tools/palette_audit.py styles/accessible-v0.json --pairs tools/pairs-accessible-v0.json
+        run: uv run python tools/palette_audit.py styles/accessible-v0.json --pairs tools/pairs-accessible-v0.json
 
   site:
     runs-on: ubuntu-latest
     needs: check
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
-      - run: pip install -r requirements.txt playwright && python -m playwright install --with-deps chromium
+      - run: uv sync --frozen --group site
+      - run: uv run playwright install --with-deps chromium
       - name: Site data is current (graph lint, tokens, comparison images)
         run: |
-          python3 tools/extract_graph.py
-          python3 tools/export_tokens.py
+          uv run python tools/extract_graph.py
+          uv run python tools/export_tokens.py
           git diff --exit-code site/src/data/graph.json site/src/styles/tokens.css site/src/data/tokens.json
-          python3 tools/build_site_assets.py
+          uv run python tools/build_site_assets.py
       - run: npm ci && npm run build
         working-directory: site
       - name: Site meets its own standards (axe WCAG 2.2 AA, no italics)
-        run: python3 tools/check_site.py
+        run: uv run python tools/check_site.py
