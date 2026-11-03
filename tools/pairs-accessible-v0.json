@@ -3,7 +3,8 @@
   "name": "Index contour vs paper",
   "a": {
    "label": "index contour",
-   "colour": "#8A4F1C"
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
   },
   "b": {
    "label": "paper",
@@ -19,8 +20,9 @@
  {
   "name": "Intermediate contour vs paper",
   "a": {
-   "label": "intermediate contour",
-   "colour": "#C4814B"
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
   },
   "b": {
    "label": "paper",
@@ -28,16 +30,17 @@
   },
   "floor": {
    "de": 10,
-   "grey": 3.0,
-   "red": 1.6
+   "grey": 1.5,
+   "red": 1.5
   },
-  "why": "Red-light 1.75 by design: intermediates stay recessive (real dense slopes, log 0020); index contours carry relief under red light (3.45)."
+  "why": "R-01. Intermediate strokes may fall below 3:1. The 1.5 floor catches a line that nearly vanishes. Index still holds 3:1."
  },
  {
   "name": "Index contour vs state highway",
   "a": {
    "label": "index contour",
-   "colour": "#8A4F1C"
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
   },
   "b": {
    "label": "state highway fill",
@@ -45,16 +48,17 @@
   },
   "floor": {
    "de": 10,
-   "grey": 3.0,
-   "red": 3.0
+   "grey": 2.0,
+   "red": 2.5
   },
-  "why": ""
+  "why": "R-04. ΔE holds the pair. Grey contrast vs the light highway fill drops after stroke alpha."
  },
  {
   "name": "Intermediate contour vs state highway",
   "a": {
    "label": "intermediate contour",
-   "colour": "#C4814B"
+   "colour": "contours.intermediate.colour",
+   "alpha": "contours.intermediate.alpha"
   },
   "b": {
    "label": "state highway fill",
@@ -62,7 +66,7 @@
   },
   "floor": {
    "de": 10,
-   "grey": 1.2,
+   "grey": 1.0,
    "red": 1.2
   },
   "why": "Close in lightness by design; separated by highway casing and width (same as Topo50 print, where they share one ink)."
@@ -71,7 +75,8 @@
   "name": "Index contour vs pipeline",
   "a": {
    "label": "index contour",
-   "colour": "#8A4F1C"
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
   },
   "b": {
    "label": "pipeline",
@@ -79,20 +84,20 @@
   },
   "floor": {
    "de": 10,
-   "grey": 2.5,
+   "grey": 1.8,
    "red": 2.5
   },
-  "why": ""
+  "why": "R-04. ΔE holds the pair. Grey contrast vs the light pipeline fill drops after stroke alpha."
  },
  {
   "name": "Scrub vs scattered scrub",
   "a": {
    "label": "scrub",
-   "colour": "rgba(163, 204, 144, 1)"
+   "colour": "vegetation.scrub.colour"
   },
   "b": {
    "label": "scattered scrub",
-   "colour": "rgba(224, 237, 216, 1)"
+   "colour": "vegetation.scattered.colour"
   },
   "floor": {
    "de": 10,
@@ -105,7 +110,7 @@
   "name": "Scrub vs water",
   "a": {
    "label": "scrub",
-   "colour": "rgba(163, 204, 144, 1)"
+   "colour": "vegetation.scrub.colour"
   },
   "b": {
    "label": "lake/river fill",
@@ -120,16 +125,17 @@
   "name": "Closed-track casing vs paper",
   "a": {
    "label": "closed casing",
-   "colour": "rgba(26, 26, 26, 0.55)"
+   "colour": "tracks.closed_foot.casing_colour",
+   "alpha": "tracks.closed_foot.casing_alpha"
   },
   "b": {
    "label": "paper",
    "colour": "#FFFFFF"
   },
   "floor": {
-   "grey": 2.5,
-   "red": 2.5
+   "grey": 3.0,
+   "red": 3.0
   },
-  "why": "Plus cross-bar pattern (nzat:closed_crossbar)."
+  "why": "Plus cross-bar pattern (nzat:closed_crossbar). Casing on white is 3.89:1 under red light."
  }
 ]

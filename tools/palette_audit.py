@@ -18,17 +18,20 @@ validated with users; see docs/method.md):
    luminance contrast ratio (for greyscale / red light).
 
 Usage:
-    python3 tools/palette_audit.py STYLE.json [--pairs tools/pairs.json] [--md OUT.md]
+    python3 tools/palette_audit.py STYLE.json [--pairs tools/pairs.json] [--config tools/style-topo50.json] [--md OUT.md]
 
 Only numpy is required.
 """
 import argparse
 import json
 import math
+import os
 import re
 import sys
 
 import numpy as np
+
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "style-topo50.json")
 
 # ---------------------------------------------------------------- colour maths
 
@@ -163,6 +166,65 @@ def load_style(path):
     return s.get("style", s)  # basemaps-config wraps the style in {"style": ...}
 
 
+def is_style_path(value):
+    """Return True when value is a dotted path into the shared style file."""
+    if not isinstance(value, str):
+        return False
+    lowered = value.lower()
+    if lowered.startswith("#") or lowered.startswith("rgb"):
+        return False
+    return "." in value
+
+
+def lookup_style_path(rules, path):
+    """Return the value at a dotted path. Raise KeyError if a part is missing."""
+    cur = rules
+    for part in path.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            raise KeyError(path)
+        cur = cur[part]
+    return cur
+
+
+def format_rgba(rgb, alpha):
+    """Return an rgba() string. Alpha comes from the style file."""
+    r, g, b = (int(round(v)) for v in rgb[:3])
+    return f"rgba({r}, {g}, {b}, {alpha:g})"
+
+
+def resolve_colour_spec(side, rules):
+    """Return a colour string. A dotted path is read from the shared config."""
+    colour = side["colour"]
+    if is_style_path(colour):
+        colour = lookup_style_path(rules, colour)
+        if not isinstance(colour, str):
+            raise TypeError(side["colour"])
+    alpha = side.get("alpha")
+    if alpha is None:
+        return colour
+    if is_style_path(alpha):
+        alpha = lookup_style_path(rules, alpha)
+    parsed = parse_colour(colour)
+    if parsed is None:
+        raise ValueError(colour)
+    return format_rgba(parsed, alpha)
+
+
+def resolve_pairs(pairs, rules):
+    """Return pairs whose colours are literal. Paths are read from rules."""
+    out = []
+    for pair in pairs:
+        resolved = dict(pair)
+        resolved["a"] = dict(pair["a"])
+        resolved["b"] = dict(pair["b"])
+        resolved["a"]["colour"] = resolve_colour_spec(pair["a"], rules)
+        resolved["b"]["colour"] = resolve_colour_spec(pair["b"], rules)
+        resolved["a"].pop("alpha", None)
+        resolved["b"].pop("alpha", None)
+        out.append(resolved)
+    return out
+
+
 def first_colour(paint, keys):
     for k in keys:
         v = paint.get(k)
@@ -227,6 +289,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("style")
     ap.add_argument("--pairs", default=None)
+    ap.add_argument("--config", default=CONFIG_PATH, help="shared style file for pair colour paths")
     ap.add_argument("--bg", default="#ffffff", help="background colour for compositing")
     ap.add_argument("--md", default=None)
     args = ap.parse_args()
@@ -250,6 +313,7 @@ def main():
 
     if args.pairs:
         pairs = json.load(open(args.pairs))
+        pairs = resolve_pairs(pairs, json.load(open(args.config)))
         res = pair_audit(pairs, bg)
         w("## Must-distinguish pairs\n")
         w("ΔE = CIEDE2000 (❌ <5, ⚠️ 5–10, ✅ >10). Grey/Red = luminance contrast ratio "

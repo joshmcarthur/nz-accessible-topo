@@ -14,7 +14,7 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-LINZ-BASEMAPS-USAGE | C | LINZ Basemaps, *How to Use our Vector Tiles*. https://basemaps.linz.govt.nz/docs/user-guide/working-with-vector-tiles/usage/ |
 | S-LINZ-RASTER-STYLE | C | `linz/basemaps-config` `config/style/topo-raster-gridded.json`: Topo50 raster tiles (WebP, grid baked in) + client hillshade at 315°. https://github.com/linz/basemaps-config |
 | S-LINZ-TOPO-QGIS | C | `linz/topographic-qgis` @ c0edcfc (MIT): the Topo50 QGIS project, 43 layer QMLs, spot-colour palette, Nimbus Sans LINZ fonts (AGPL-3.0 with exemption). https://github.com/linz/topographic-qgis |
-| S-LINZ-TOPO-SYSTEM | C | `linz/topographic-system` (MIT): containerised QGIS map production (`packages/map`), carto_text sample. https://github.com/linz/topographic-system |
+| S-LINZ-TOPO-SYSTEM | C | `linz/topographic-system` @ 3b6ec60 (2026-10-15, MIT): containerised QGIS map production (`packages/map` `prepare` / `export`). The map package release v0.9.0 reads private S3 only. https://github.com/linz/topographic-system |
 | S-LINZ-BASEMAPS-CONFIG | C | `linz/basemaps-config` (MIT), `config/style/topographic-v2.json`. https://github.com/linz/basemaps-config |
 
 ## Colour science & simulation

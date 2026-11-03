@@ -1,73 +1,155 @@
 [
  {
   "name": "Index vs intermediate contour",
-  "a": {"label": "index contour", "colour": "#8A4F1C"},
-  "b": {"label": "intermediate contour", "colour": "#C4814B"},
+  "a": {"label": "index contour", "colour": "contours.index.colour", "alpha": "contours.index.alpha"},
+  "b": {"label": "intermediate contour", "colour": "contours.intermediate.colour", "alpha": "contours.intermediate.alpha"},
   "why": "R-04. Same hue, different weight and lightness."
  },
  {
   "name": "Index contour vs print highway",
-  "a": {"label": "index contour", "colour": "#8A4F1C"},
-  "b": {"label": "print highway", "colour": "#EA6300"},
-  "why": "R-04. Print highway ink is #EA6300."
+  "a": {"label": "index contour", "colour": "contours.index.colour", "alpha": "contours.index.alpha"},
+  "b": {"label": "print highway", "colour": "reference_inks.print_legend_highway"},
+  "why": "R-04. Print highway ink is #EA6300. Map5View does not paint this ink."
  },
  {
   "name": "Intermediate contour vs print highway",
-  "a": {"label": "intermediate contour", "colour": "#C4814B"},
-  "b": {"label": "print highway", "colour": "#EA6300"},
-  "why": "R-04. Intermediate was lightened in log 0020."
+  "a": {"label": "intermediate contour", "colour": "contours.intermediate.colour", "alpha": "contours.intermediate.alpha"},
+  "b": {"label": "print highway", "colour": "reference_inks.print_legend_highway"},
+  "why": "R-04. Intermediate was lightened in log 0020. Map5View does not paint this ink."
  },
  {
   "name": "Index contour vs project road",
-  "a": {"label": "index contour", "colour": "#8A4F1C"},
-  "b": {"label": "project road", "colour": "#D5B43C"},
-  "why": "This QGIS project paints roads gold, not print orange."
+  "a": {"label": "index contour", "colour": "contours.index.colour", "alpha": "contours.index.alpha"},
+  "b": {"label": "project road fill", "colour": "reference_inks.project_road"},
+  "why": "R-04. Map5View paints two-lane and sealed roads as PMS151 #FF7F00. Gold #D5B43C is a bivouac marker, not the road fill."
  },
  {
   "name": "Intermediate contour vs project road",
-  "a": {"label": "intermediate contour", "colour": "#C4814B"},
-  "b": {"label": "project road", "colour": "#D5B43C"},
-  "why": "Same project road ink."
+  "a": {"label": "intermediate contour", "colour": "contours.intermediate.colour", "alpha": "contours.intermediate.alpha"},
+  "b": {"label": "project road fill", "colour": "reference_inks.project_road"},
+  "why": "R-04. Same painted road fill."
+ },
+ {
+  "name": "Index contour vs project highway",
+  "a": {"label": "index contour", "colour": "contours.index.colour", "alpha": "contours.index.alpha"},
+  "b": {"label": "project highway fill", "colour": "reference_inks.project_highway"},
+  "why": "R-04. Map5View paints highway fills as #E31A1C."
+ },
+ {
+  "name": "Intermediate contour vs project highway",
+  "a": {"label": "intermediate contour", "colour": "contours.intermediate.colour", "alpha": "contours.intermediate.alpha"},
+  "b": {"label": "project highway fill", "colour": "reference_inks.project_highway"},
+  "why": "R-04. Same painted highway fill."
  },
  {
   "name": "Index contour vs paper",
-  "a": {"label": "index contour", "colour": "#8A4F1C"},
+  "a": {"label": "index contour", "colour": "contours.index.colour", "alpha": "contours.index.alpha"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-04. Contours at least 3:1 on paper."
+  "why": "R-04. Index contours at least 3:1 on paper after stroke alpha."
  },
  {
   "name": "Intermediate contour vs paper",
-  "a": {"label": "intermediate contour casing", "colour": "#8A4F1C"},
+  "a": {"label": "intermediate contour casing", "colour": "contours.intermediate.casing_colour", "alpha": "contours.intermediate.alpha"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-01. The 0.2 mm index-ink casing carries the line on paper and under red light. Fill stays #C4814B."
+  "why": "R-01. Intermediate strokes may fall below 3:1. Casing still marks the line. Fill stays #B08872."
+ },
+ {
+  "name": "Contour number vs paper",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-17 P7. FontMarker type contour_number uses the index ink, not road orange."
+ },
+ {
+  "name": "Contour number vs project road",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "project road fill", "colour": "reference_inks.project_road"},
+  "why": "R-04 and R-17. Numbers belong to relief. Roads stay orange."
+ },
+ {
+  "name": "Contour number vs project highway",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "project highway fill", "colour": "reference_inks.project_highway"},
+  "why": "R-04. Same index ink as the contour line."
+ },
+ {
+  "name": "Contour number vs index contour",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "index contour", "colour": "contours.index.colour"},
+  "why": "R-01. Same ink. Shape tells the number from the line."
+ },
+ {
+  "name": "Contour number vs intermediate contour",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "intermediate contour", "colour": "contours.intermediate.colour"},
+  "why": "R-04. Number uses index ink."
+ },
+ {
+  "name": "Contour number vs contour label",
+  "a": {"label": "contour number marker", "colour": "contours.index.colour"},
+  "b": {"label": "contour elevation label", "colour": "#915800"},
+  "why": "R-07 darkened the line label from orange. Marker now uses index ink."
+ },
+ {
+  "name": "Project road vs project highway",
+  "a": {"label": "project road fill", "colour": "reference_inks.project_road"},
+  "b": {"label": "project highway fill", "colour": "reference_inks.project_highway"},
+  "why": "R-01. Road is darker orange. Highway stays red. Both have a dark casing."
+ },
+ {
+  "name": "Project road vs paper",
+  "a": {"label": "project road fill", "colour": "reference_inks.project_road"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-17 P7 and R-01. Fill is #EC7000 at 3:1 grey. Roads also have a #232323 casing for red light."
+ },
+ {
+  "name": "Project highway vs paper",
+  "a": {"label": "project highway fill", "colour": "reference_inks.project_highway"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-17 P7 and R-01. Fill is #E31A1C. Highways also have a #232323 casing."
+ },
+ {
+  "name": "Project road casing vs paper",
+  "a": {"label": "project road casing", "colour": "reference_inks.project_road_casing"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Dark casing is the non-hue cue for roads and highways."
  },
  {
   "name": "Native forest vs scrub",
-  "a": {"label": "native forest fill", "colour": "#E1EAC3"},
-  "b": {"label": "scrub fill", "colour": "#A3CC90"},
+  "a": {"label": "native forest fill", "colour": "vegetation.native.colour"},
+  "b": {"label": "scrub fill", "colour": "vegetation.scrub.colour"},
   "why": "R-10 and R-17. Larger lightness step than the print pair."
  },
  {
+  "name": "Scrub vs water",
+  "a": {"label": "scrub fill", "colour": "vegetation.scrub.colour"},
+  "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
+  "why": "Print P pair. Map5View paints water as #D1E7F5. Shoreline is process_blue."
+ },
+ {
   "name": "Hot spring vs cold spring",
-  "a": {"label": "hot spring cross", "colour": "#141414"},
-  "b": {"label": "cold spring circle", "colour": "#005C8F"},
-  "why": "R-17. Glyphs differ. Ink is dark, not red-orange."
+  "a": {"label": "hot spring cross", "colour": "springs.hot.colour"},
+  "b": {"label": "cold spring circle", "colour": "springs.cold.colour"},
+  "why": "R-17. Glyphs differ. Ink is dark, not red-orange. water_point is not in Map5View."
  },
  {
   "name": "Hot spring vs paper",
-  "a": {"label": "hot spring cross", "colour": "#141414"},
+  "a": {"label": "hot spring cross", "colour": "springs.hot.colour"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
   "why": "R-11. Safety mark must survive red light."
  },
  {
   "name": "Closed-track cross-bar vs paper",
-  "a": {"label": "closed-track cross-bar", "colour": "#000000"},
+  "a": {"label": "closed-track cross-bar", "colour": "tracks.closed_foot.crossbar_colour"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
   "why": "R-11. Shape carries closed status. Raster paints this ink."
  },
  {
   "name": "Closed-track casing vs paper",
-  "a": {"label": "closed-track casing", "colour": "rgba(26, 26, 26, 0.55)"},
+  "a": {
+   "label": "closed-track casing",
+   "colour": "tracks.closed_foot.casing_colour",
+   "alpha": "tracks.closed_foot.casing_alpha"
+  },
   "b": {"label": "paper", "colour": "#FFFFFF"},
   "why": "R-11. Vector casing. Raster does not paint this ink."
  },
@@ -75,6 +157,6 @@
   "name": "Historic label vs paper",
   "a": {"label": "historic site label", "colour": "rgb(145, 0, 0)"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-11. Hue kept. Red-light floor 3:1."
+  "why": "R-11. Hue kept. Red-light floor 3:1. Ink is a darkened result, not a configured colour."
  }
 ]

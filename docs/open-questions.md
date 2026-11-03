@@ -10,7 +10,7 @@
 | OQ-06 | Do dyslexia letter-spacing and italic findings transfer to short map labels in clutter? | R-08 and R-05 assume so | A/B test |
 | OQ-07 | Does NNW + multidirectional shading work on both Alpine and Canterbury-flat terrain? | Studies used non-NZ terrain | Generate from LINZ 8 m DEM / LiDAR; test |
 | OQ-08 | What actually disappears under common headtorches' red modes? | Only anecdote + model so far | Print swatches; photograph under 3–4 headtorches |
-| OQ-09 | Do darker contours swamp tracks and labels on steep sheets? | v0 measured contrast, not clutter | Render Arthur's Pass / Fiordland samples |
+| OQ-09 | Do darker contours swamp tracks and labels on steep sheets? | v0 measured contrast, not clutter | **Partly answered (log 0054):** Josh accepted index 0.85 / intermediate 0.5 on BX24. A steeper Alpine sheet is still later |
 | OQ-10 | Is Ō/ō missing from Atkinson Hyperlegible Next already reported upstream? | Determines whether R-06 can adopt it | **Partly answered (log 0012):** still missing at upstream HEAD; no report found; draft issue in `docs/upstream/`. Maintainer to check tracker and file |
 | OQ-11 | Which licence for this project's styles and docs? | Must be compatible with LINZ MIT style + CC BY 4.0 data attribution | Maintainer decision |
 | OQ-12 | Does the Shortbread vector schema carry the attributes we need (e.g. contour `definition`, track status)? | R-04 and R-11 depend on attributes | **Partly answered (log 0013):** closed tracks, scattered scrub, index contours available; contour `definition` unknown — inspect MBTiles export |

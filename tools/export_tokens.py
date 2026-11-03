@@ -44,15 +44,15 @@ def main():
     style = json.load(open(os.path.join(ROOT, "styles", "accessible-v0.json")))
     by = {l["id"]: l for l in style["layers"]}
     water_label = pa.parse_colour(by["All-Lake-Names"]["paint"]["text-color"])
-    contour = pa.parse_colour(b.P["contour_index"])
+    contour = pa.parse_colour(b.contour_colour("index"))
     T = {
         "paper": "#FFFFFF",
         "ink": "#000000",                                  # Topo50 black ink
-        "contour": b.P["contour_index"],                   # index contour
-        "contour-light": b.P["contour_intermediate"],      # intermediate contour (decorative only)
+        "contour": b.contour_colour("index"),              # index contour
+        "contour-light": b.contour_colour("intermediate"), # intermediate contour (decorative only)
         "water": hexify(water_label),                      # water-label blue: links
         "water-fill": "#B8DCF2",                           # LINZ lake fill
-        "scrub": hexify(pa.parse_colour(b.P["scrub"])),
+        "scrub": b.RULES["vegetation"]["scrub"]["colour"],
         "grid": "#008BCA",                                 # Topo50 grid / water ink, used faintly
         # Evidence-grade ramp for the Sankey: one hue (contour brown), lightness only,
         # every step ≥3:1 on paper (WCAG 1.4.11) and ≥1.4:1 from its neighbour.

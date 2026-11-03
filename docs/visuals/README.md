@@ -22,6 +22,9 @@ googlefonts/atkinson-hyperlegible-next.
 | `04-labels-closeup.png` | Labels at 2× pixels: italics and contrast |
 | `05-macrons-and-confusables.png` | Open Sans vs Atkinson Next vs patched build (rendered **with** HarfBuzz shaping) |
 | `07-real-topo50-simulations.png` | **Real** Topo50 render (Kawarau River, from LINZ `topographic-system`) under all six conditions |
+| `08-bx24-stock.png` / `.pdf` | Stock Topo50 sheet BX24 (Christchurch) from LINZ's `map` container at 150 dpi. The PNG is a 2000 px review of the 4500×6300 export (log 0025) |
+| `09-bx24-accessible.png` / `.pdf` | Same sheet after the layer overrides (log 0026). The page still includes the legend and the marginalia. Along-line water names render as black question marks |
+| `10-bx24-compare.png` | Stock and accessible BX24 map faces side by side. Map only. 150 dpi. 24 km by 36 km. This is not the `tiff-50` page |
 | `real/` (to be generated) | Live-tile comparisons at 7 real locations — `tools/screenshots/compare.mjs` |
 | `06-shaping-vs-no-shaping.png` | Why Atkinson's missing Ō/ō matters on the web but not in shaped renderers |
 

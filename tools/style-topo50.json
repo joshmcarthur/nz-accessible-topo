@@ -32,16 +32,20 @@
     "red_light_min": 3.0
   },
   "contours": {
-    "index": {"colour": "#8A4F1C", "width_mm": 0.45},
+    "index": {"colour": "#7A5542", "width_mm": 0.35, "alpha": 0.85},
     "intermediate": {
-      "colour": "#C4814B",
+      "colour": "#B08872",
       "width_mm": 0.12,
-      "casing_colour": "#8A4F1C",
-      "casing_width_mm": 0.2
+      "casing_colour": "#7A5542",
+      "casing_width_mm": 0.2,
+      "alpha": 0.5
     }
   },
   "reference_inks": {
-    "project_road": "#D5B43C",
+    "project_road": "#EC7000",
+    "project_highway": "#E31A1C",
+    "project_road_casing": "#232323",
+    "water_fill": "#D1E7F5",
     "print_legend_highway": "#EA6300"
   },
   "vegetation": {
@@ -64,17 +68,17 @@
       "painted": false
     },
     "closed_foot": {
-      "width_mm": 0.45,
+      "width_mm": 0.15,
       "open_width_mm": 0.15,
-      "closed_dash": "6;0.4",
+      "closed_dash": "1;0.5",
       "open_dash": "1;0.5",
       "casing_colour": "#1A1A1A",
       "casing_alpha": 0.55,
       "crossbar_colour": "#000000",
       "crossbar_interval_mm": 4,
-      "crossbar_size_mm": 2.4,
+      "crossbar_size_mm": 1,
       "crossbar_outline_width_mm": 0.2,
-      "crossbar_angle_deg": 90
+      "crossbar_angle_deg": 60
     }
   },
   "springs": {

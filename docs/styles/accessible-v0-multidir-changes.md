@@ -1,6 +1,6 @@
 # Change log: accessible-v0-multidir (generated)
 
-Every change `tools/build_style.py` made to `upstream/linz-topographic-v2.json`, grouped by recommendation.
+Owned paint `tools/build_style.py` wrote from `tools/style-topo50.json` onto the Shortbread catalog, grouped by recommendation.
 Total changes: 200.
 
 ## R-01 (1)
@@ -13,11 +13,11 @@ Total changes: 200.
 
 ## R-04 (5)
 
-- `Contours-Index` — colour → #8A4F1C (opaque), width ↑
+- `Contours-Index` — colour → #7A5542 alpha 0.85, width ↑
 - `Contours-Index-Halo` — hidden — darker index line no longer needs a 10% offset shadow
-- `Contours-All` — colour → #C4814B (opaque)
-- `Contours-Designated` — colour → #C4814B (opaque)
-- `Contours-Natural` — colour → #C4814B (opaque)
+- `Contours-All` — colour → #B08872 alpha 0.5
+- `Contours-Designated` — colour → #B08872 alpha 0.5
+- `Contours-Natural` — colour → #B08872 alpha 0.5
 
 ## R-05 (39)
 

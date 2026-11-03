@@ -10,18 +10,20 @@ Changes are on the map layers the research names:
 - labels: stretch-to-fit curved modes keep the stock spread only on a one-line name whose baseline is longer than the name, so the larger type is not squeezed
 - labels: flat one-line carto_text names sit on a short horizontal line around the stock label, so QGIS can slide or flip a name that collides
 - labels: a flat carto_text name listed in carto_fit.json beside the project is drawn at its fitted point and line count
-- contour: index vs intermediate ink and width, plus an index-ink casing on intermediates (R-04, R-01)
+- contour: index vs intermediate ink, width, stroke alpha, plus an index-ink casing on intermediates (R-04, R-01)
 - track_line map: closed tracks get a heavier line and cross-bars (R-11)
 - track_line map: track access is a reserved unpainted casing_colour channel (R-12)
 - water_point: hot and cold springs get different glyphs (R-17)
 - vegetation map: native forest and scrub use a larger lightness step (R-10, R-17)
 - vegetation map: draws below contour so the darker fills do not hide relief (R-04)
+- road fills: PMS151 two-lane and sealed fills become reference_inks.project_road (R-01)
+- nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink (R-17 P7)
 - hillshade: optional overlay at 337.5°. Turns on when dem.tif sits beside the project (R-03)
 
 Usage: python3 tools/override_topo50_project.py IN.qgs OUT.qgs
 
 Colour, type size, font family, and symbol rules come from
-tools/style-topo50.json. This script does not paint reference_inks.
+tools/style-topo50.json.
 """
 
 import copy
@@ -62,6 +64,15 @@ def _hex_rgb(colour):
 def _rgb_call(colour):
     red, green, blue = _hex_rgb(colour)
     return f"color_rgb({red},{green},{blue})"
+
+
+def _alpha_byte(alpha):
+    return int(round(float(alpha) * 255))
+
+
+def _rgba_call(colour, alpha):
+    red, green, blue = _hex_rgb(colour)
+    return f"color_rgba({red},{green},{blue},{_alpha_byte(alpha)})"
 
 
 def _rgba(colour, alpha):
@@ -155,6 +166,42 @@ def _set_option(layer_el, name, value):
             child.set("value", value)
             return
     raise RuntimeError(f"missing option {name}")
+
+
+PMS151_RGB = (255, 127, 0)
+
+
+def _rgb_tuple(text):
+    parsed = parse_qgis_colour(text)
+    if parsed is None:
+        return None
+    return tuple(int(round(channel)) for channel in parsed[:3])
+
+
+def _rule_symbol(layer, token):
+    renderer = layer.find("renderer-v2")
+    symbol_name = None
+    for rule in renderer.iter("rule"):
+        filt = rule.get("filter") or ""
+        if token in filt:
+            symbol_name = rule.get("symbol")
+            break
+    if symbol_name is None:
+        raise RuntimeError(f"no rule {token!r} on {layer.findtext('layername')}")
+    for symbol in renderer.findall("symbols/symbol"):
+        if symbol.get("name") == symbol_name:
+            return symbol
+    raise RuntimeError(f"no symbol {symbol_name}")
+
+
+def is_owned_road_layer(name):
+    """Two-lane and sealed road fills. Skip highway and background casings."""
+    lower = name.lower()
+    if "road_line" not in lower:
+        return False
+    if "highway" in lower or "background" in lower:
+        return False
+    return True
 
 
 def _category_symbol(layer, value):
@@ -640,17 +687,17 @@ def patch_contour(layer, style=None):
         "enabled",
         '"elevation" IS NOT NULL AND round("elevation") % 100 <> 0',
     )
-    put_expr(casing_props, "outlineColor", _rgb_call(intermediate["casing_colour"]))
+    put_expr(casing_props, "outlineColor", _rgba_call(intermediate["casing_colour"], intermediate["alpha"]))
     put_expr(casing_props, "outlineWidth", str(intermediate["casing_width_mm"]))
-    _set_option(casing, "line_color", _rgba(intermediate["casing_colour"], 255))
+    _set_option(casing, "line_color", _rgba(intermediate["casing_colour"], _alpha_byte(intermediate["alpha"])))
     _set_option(casing, "line_width", str(intermediate["casing_width_mm"]))
     fill_props = _properties_map(fill.find("data_defined_properties"))
     put_expr(
         fill_props,
         "outlineColor",
         "CASE WHEN \"elevation\" IS NOT NULL AND round(\"elevation\") % 100 = 0"
-        f" THEN {_rgb_call(index['colour'])}"
-        f" ELSE {_rgb_call(intermediate['colour'])} END",
+        f" THEN {_rgba_call(index['colour'], index['alpha'])}"
+        f" ELSE {_rgba_call(intermediate['colour'], intermediate['alpha'])} END",
     )
     put_expr(
         fill_props,
@@ -658,6 +705,29 @@ def patch_contour(layer, style=None):
         'CASE WHEN "elevation" IS NOT NULL AND round("elevation") % 100 = 0'
         f" THEN {index['width_mm']} ELSE {intermediate['width_mm']} END",
     )
+
+
+def patch_road_fills(layer, style=None):
+    """Replace painted PMS151 road fills with the owned road ink."""
+    style = style or STYLE
+    ink = _rgba(style["reference_inks"]["project_road"], 255)
+    for line in layer.findall(".//layer[@class='SimpleLine']"):
+        option = line.find("Option/Option[@name='line_color']")
+        if option is None:
+            continue
+        if _rgb_tuple(option.get("value") or "") != PMS151_RGB:
+            continue
+        _set_option(line, "line_color", ink)
+
+
+def patch_contour_numbers(layer, style=None):
+    """Paint contour_number FontMarkers with the index contour ink."""
+    style = style or STYLE
+    symbol = _rule_symbol(layer, "contour_number")
+    marker = symbol.find("layer[@class='FontMarker']")
+    if marker is None:
+        raise RuntimeError("contour_number has no FontMarker")
+    _set_option(marker, "color", _rgba(style["contours"]["index"]["colour"], 255))
 
 
 def _mask_contour_casing(root):
@@ -774,6 +844,34 @@ def _closed_crossbar(style=None):
     return layer
 
 
+def _closed_marker(symbol):
+    for marker in symbol.findall("layer[@class='MarkerLine']"):
+        dd = marker.find("data_defined_properties")
+        if dd is None:
+            continue
+        props = dd.find("Option/Option[@name='properties']")
+        if props is not None and _expr(props, "enabled") and "closed" in _expr(props, "enabled"):
+            return marker
+    return None
+
+
+def _sync_closed_crossbar(marker, style):
+    track = style["tracks"]["closed_foot"]
+    ink = _rgba(track["crossbar_colour"], 255)
+    _set_option(marker, "interval", str(track["crossbar_interval_mm"]))
+    simple = marker.find("symbol/layer[@class='SimpleMarker']")
+    if simple is None:
+        raise RuntimeError("closed cross-bar has no marker")
+    for name, value in (
+        ("angle", str(track["crossbar_angle_deg"])),
+        ("color", ink),
+        ("outline_color", ink),
+        ("outline_width", str(track["crossbar_outline_width_mm"])),
+        ("size", str(track["crossbar_size_mm"])),
+    ):
+        _set_option(simple, name, value)
+
+
 def patch_tracks(layer, style=None):
     style = style or STYLE
     if style["tracks"]["access"]["painted"]:
@@ -801,16 +899,11 @@ def patch_tracks(layer, style=None):
         "customDash",
         f"if(\"status\" = 'closed', '{track['closed_dash']}', '{track['open_dash']}')",
     )
-    already = False
-    for marker in symbol.findall("layer[@class='MarkerLine']"):
-        dd = marker.find("data_defined_properties")
-        if dd is None:
-            continue
-        props = dd.find("Option/Option[@name='properties']")
-        if props is not None and _expr(props, "enabled") and "closed" in _expr(props, "enabled"):
-            already = True
-    if not already:
+    existing = _closed_marker(symbol)
+    if existing is None:
         symbol.append(_closed_crossbar(style))
+    else:
+        _sync_closed_crossbar(existing, style)
 
 
 def _scrub_hatch(style=None):
@@ -1100,6 +1193,10 @@ def apply(root, project_dir=None):
         if name == "contour":
             patch_contour(layer)
             seen.add(name)
+        elif is_owned_road_layer(name):
+            patch_road_fills(layer)
+        elif name == "nztopo50_carto_symbol":
+            patch_contour_numbers(layer)
         elif name == "track_line map":
             patch_tracks(layer)
             seen.add(name)

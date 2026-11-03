@@ -76,7 +76,7 @@ The vector build reads `tracks.closed_foot.casing_colour` and `tracks.closed_foo
 
 `tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is 0.55.
 
-The QGIS apply step does not paint that casing. Closed foot tracks keep the heavier line and the cross-bars.
+The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. Cross-bars at `tracks.closed_foot.crossbar_angle_deg` mark it closed. That angle is 60. A second apply writes the angle onto the marker that is already in the project.
 
 `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false.
 
@@ -92,13 +92,15 @@ The QGIS apply step writes those lights onto the project elevation shader. The s
 
 The vector hillshade layer stays visible while `painted` is true. Set `painted` to false to hide that layer.
 
-The vector build reads `contours.index.width_mm`, `contours.intermediate.casing_colour`, and `contours.intermediate.casing_width_mm` from this file.
+The vector build reads `contours.index.width_mm`, `contours.intermediate.casing_colour`, `contours.intermediate.casing_width_mm`, and the contour `alpha` values from this file.
 
-`contours.index.width_mm` is 0.45. `contours.intermediate.casing_colour` is `#8A4F1C`. `contours.intermediate.casing_width_mm` is 0.2.
+`contours.index.colour` is `#7A5542`. `contours.index.alpha` is 0.85. `contours.intermediate.colour` is `#B08872`. `contours.intermediate.alpha` is 0.5. `contours.index.width_mm` is 0.35. `contours.intermediate.casing_colour` is `#7A5542`. `contours.intermediate.casing_width_mm` is 0.2.
 
-The QGIS apply step paints that casing under an intermediate contour. The index contour stays one heavier line.
+The QGIS apply step paints that casing under an intermediate contour. It paints those alphas with `color_rgba`. The index contour stays one heavier line. Contour-number FontMarkers stay opaque.
 
-The vector build still keeps other colours in `tools/build_style.py`.
+The pair audit reads this file. Pair colours that live here are dotted paths in `tools/pairs-accessible-v0.json` and `tools/pairs-topo50-accessible.json`. Paper and LINZ inks that this file does not own stay as hex.
+
+The vector style is this file on Shortbread tiles. `tools/build_style.py` writes owned paint from this file onto the catalog in `upstream/linz-topographic-v2.json`. Layers this file does not name keep LINZ paint. The builder holds no second colour palette.
 
 The vector style keeps Open Sans until macron glyph PBFs exist.
 
@@ -118,9 +120,17 @@ python3 tools/build_style.py
 
 Do not put a sheet code in the file.
 
-`reference_inks.project_road` is `#D5B43C`. The apply step does not paint that ink. Judge a contour against that ink.
+`reference_inks.project_road` is `#EC7000`. The QGIS apply step paints two-lane and sealed PMS151 fills in that ink. Highway fills stay `#E31A1C`. Gold `#D5B43C` is the bivouac marker, not the road fill.
 
-`reference_inks.print_legend_highway` is `#EA6300`. The apply step does not paint that ink.
+Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`.
+
+`reference_inks.project_highway` is `#E31A1C`. Map5View paints highway fills in that ink. The apply step does not paint that ink.
+
+`reference_inks.project_road_casing` is `#232323`. Road and highway background layers paint that casing. The apply step does not paint that ink.
+
+`reference_inks.water_fill` is `#D1E7F5`. Map5View paints water fills in that ink. The apply step does not paint that ink.
+
+`reference_inks.print_legend_highway` is `#EA6300`. Map5View does not paint that ink.
 
 `fonts.vector_family` is Open Sans. The QGIS apply step does not use that family.
 

@@ -2,14 +2,14 @@
 :root {
   --paper: #FFFFFF;
   --ink: #000000;
-  --contour: #8A4F1C;
-  --contour-light: #C4814B;
+  --contour: #7A5542;
+  --contour-light: #B08872;
   --water: #006EAB;
   --water-fill: #B8DCF2;
   --scrub: #A3CC90;
   --grid: #008BCA;
-  --grade-a: #5B2800;
-  --grade-b: #854B18;
-  --grade-c: #A76834;
-  --grade-d: #C6834E;
+  --grade-a: #4F2F1D;
+  --grade-b: #75513E;
+  --grade-c: #956E5A;
+  --grade-d: #B38975;
 }

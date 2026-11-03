@@ -37,6 +37,7 @@ CHANGE_NOUN = {
     "R-03": "hillshade light direction", "R-04": "contour colours and widths", "R-05": "italic fonts replaced",
     "R-07": "label colours darkened", "R-08": "letter-spacing added", "R-09": "text sizes floored",
     "R-10": "vegetation fills and stipple", "R-11": "track, hazard and red-label changes",
+    "R-12": "reserved unpainted track-access channel",
 }
 
 

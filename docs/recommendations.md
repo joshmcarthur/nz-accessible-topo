@@ -6,11 +6,15 @@ on grade C/D evidence or on transferring evidence from a different task.
 
 Status: draft v0 (2026-11-01). Nothing here has been user-tested yet.
 
-**Implementation status (log 0014):** R-03, R-04, R-05, R-07, R-08, R-09,
-R-10, R-11 are implemented in `styles/accessible-v0*.json` and gated in CI
-(R-14, R-15 done). R-06 met by keeping Open Sans/Roboto. R-01 enforced via
-per-pair floors in `tools/pairs-accessible-v0.json`. Not started: R-12, R-13
-(print + high-contrast variants), R-16 (user testing).
+**Implementation status (log 0053):** R-05, R-06, R-07, R-09, R-10, R-11,
+R-12, R-14, R-17 (springs, forest, contour numbers) are met for the classes
+the style owns. R-01 is met for owned classes that use casing, glyph, or 3:1
+grey. Index contours still meet 3:1 grey and red vs paper at alpha 0.85.
+Intermediate strokes at 0.5 may fall below 3:1, especially under red light.
+R-04 is met against painted road `#EC7000` and highway `#E31A1C`. R-03
+and R-13 stay open. R-08 stays provisional. R-15 raster owns the road fill;
+vector layers the style file does not name still keep LINZ road paint. R-16
+is not started. Pair colours resolve from `tools/style-topo50.json` (R-14).
 
 **Note on R-07 values:** the build darkens each failing label colour along
 CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label
@@ -31,8 +35,10 @@ pipeline in `topographic-system`. Forking the QMLs and re-rendering yields
 **both** accessible raster tiles and print (R-13) from one source.
 **Met when:** an accessible QML set renders at least one Topo50 sheet through
 LINZ's `map` container, and the R-01/R-05/R-07/R-11/R-17 gates pass on it.
-**Fonts:** Nimbus Sans LINZ is AGPL-3.0 (with a font exemption); check what
-redistributing a modified font set would require before changing fonts.
+**Fonts:** the stock sheet keeps unmodified Nimbus Sans LINZ (AGPL-3.0; the
+exemption covers embedding those files in that PDF). The accessible sheet
+swaps labels to Atkinson Hyperlegible Next, upright, with Ō/ō added by the
+OFL patch (log 0024, R-06). This project does not modify the Nimbus files.
 
 ## Principles
 
@@ -68,16 +74,17 @@ multidirectional/sky layer; evaluated on both Alpine and lowland sheets.
 
 ### R-04 — Contours that stay visible: strong index lines, recessive intermediates
 **Rests on:** F-18, F-20, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
-**Starting values:** index `#8A4F1C`, intermediate `#C4814B` (revised in log
-0020 from `#A8703C`: real Topo50 slopes show 20 m intermediates are dense
-enough that they must stay recessive — the lightest same-hue brown meeting
-3.2:1, thinner lines; index contours carry relief under red light), no opacity.
+**Starting values:** index `#7A5542` at alpha 0.85, intermediate `#B08872`
+at alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the
+hexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes
+(OQ-09).
 Web widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).
 Print widths: set by rendering tests on steep sheets (OQ-09).
 **Also:** draw `definition = indefinite` contours dashed, so reduced
 accuracy in forest/snow is visible.
-**Met when:** contours ≥3:1 vs paper; ΔE ≥10 vs highways and pipelines
-under all simulated dichromacies (palette v0 achieves this).
+**Met when:** index contours ≥3:1 vs paper (grey and red); ΔE ≥10 vs
+highways and pipelines under all simulated dichromacies. Intermediate
+strokes may fall below 3:1.
 
 ---
 
@@ -102,6 +109,9 @@ two composites (`docs/upstream/`). Interim route: our renamed OFL patch
 (`tools/patch_atkinson_omacron.py`). It's designed to separate I/l/1 and O/0
 (`docs/visuals/05`), which matters for grid references and trig IDs. Print
 via a shaping renderer (QGIS) may work with the official font already (F-28).
+**QGIS fork (log 0024):** the accessible sheet uses that interim patch now
+(upright statics). The stock sheet keeps Nimbus Sans LINZ. The web vector
+style stays on Open Sans until glyph PBFs exist.
 **Met when:** `tools/font_check.py` reports full macron coverage for every
 face in the style (hard gate, F-12).
 
@@ -149,6 +159,8 @@ get a distinct glyph with dark-ink labels.
 **Why:** the most-requested change from the tramping community needs data
 we don't have; leave a casing/colour channel unused so it can be added
 without redesign.
+**Met when:** `tools/style-topo50.json` records a track-access casing/colour
+channel that the QGIS apply step and the vector build do not paint.
 
 ---
 
@@ -176,12 +188,17 @@ Full colour (web + print), **greyscale-safe print** (F-23), and a
 ### R-14 — Run the audit in CI on every style change
 **Rests on:** F-04, S-OUR-AUDIT-WEB · **Best evidence:** D
 `palette_audit.py` and `font_check.py` against the style; fail on new
-❌ rows. Makes regressions visible and keeps the evidence chain alive.
+❌ rows. Pair colours that live in `tools/style-topo50.json` are resolved
+from that file. Makes regressions visible and keeps the evidence chain alive.
 
-### R-15 — Start from LINZ's MIT-licensed `topographic-v2` style
+### R-15 — Publish the raster style as a MapLibre style on Shortbread tiles
 **Rests on:** S-LINZ-BASEMAPS-CONFIG, S-LINZ-BASEMAPS-STYLING · **Best evidence:** C
-Fork rather than rewrite: it already maps the Shortbread schema, and staying
-close to upstream lets improvements flow back to LINZ.
+The vector style is the raster style in `tools/style-topo50.json`.
+`tools/build_style.py` writes owned paint onto the layer catalog in
+`upstream/linz-topographic-v2.json`. Layers the style file does not name keep
+LINZ paint. The vector face stays Open Sans until macron glyph PBFs exist.
+**Met when:** the built MapLibre style is generated from that catalog and
+that style file, and `P` in `tools/build_style.py` holds no colour hex.
 
 ### R-16 — Validate with real users before calling anything "accessible"
 **Rests on:** F-04, F-06, F-14 · **Best evidence:** A (that model results need validation is a method point)

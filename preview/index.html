@@ -53,8 +53,9 @@
   <filter id="red"><feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 1 0"/></filter>
 </svg>
 
-<script src="https://unpkg.com/maplibre-gl@6.2.0/dist/maplibre-gl.js"></script>
-<script>
+<!-- MapLibre 6 ships ESM only; dist/maplibre-gl.js 404s and leaves maplibregl undefined. -->
+<script type="module">
+import { Map } from "https://unpkg.com/maplibre-gl@6.2.0/dist/maplibre-gl.mjs";
 const LINZ = "https://basemaps.linz.govt.nz";
 const keyEl = document.getElementById("key");
 const qs = new URLSearchParams(location.search);  // ?key=&variant=&sim= (used by tools/screenshots)
@@ -105,7 +106,7 @@ async function load() {
   const view = maps[0] ? { center: maps[0].getCenter(), zoom: maps[0].getZoom() }
                        : { center: [171.56, -42.94], zoom: 13 }; // Arthur's Pass
   maps.forEach(m => m.remove());
-  maps = [["left", up], ["right", ac]].map(([id, st]) => new maplibregl.Map({
+  maps = [["left", up], ["right", ac]].map(([id, st]) => new Map({
     container: id, style: absolutise(st, key), transformRequest: transformRequest(key),
     hash: id === "left", ...view,
   }));

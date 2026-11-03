@@ -59,7 +59,7 @@
   {
    "id": "S-LINZ-TOPO-SYSTEM",
    "grade": "C",
-   "title": "`linz/topographic-system` (MIT): containerised QGIS map production (`packages/map`), carto_text sample.",
+   "title": "`linz/topographic-system` @ 3b6ec60 (2026-10-15, MIT): containerised QGIS map production (`packages/map` `prepare` / `export`). The map package release v0.9.0 reads private S3 only.",
    "url": "https://github.com/linz/topographic-system",
    "used": true
   },
@@ -376,7 +376,7 @@
    "grade": "D",
    "title": "Simulations over LINZ's real Topo50 render (log 0019)",
    "url": null,
-   "used": true
+   "used": false
   }
  ],
  "findings": [
@@ -753,7 +753,7 @@
    ],
    "sources": [],
    "grade": "B",
-   "implemented": false,
+   "implemented": true,
    "html": "<p><strong>Rests on:</strong> F-01, F-02, F-03, F-21, F-22, F-23 · <strong>Best evidence:</strong> A/B\n<strong>Why:</strong> CVD affects ~8% of men; ageing adds blue–yellow losses; dim light\nand red headtorches remove hue information for everyone. Lightness and shape\nsurvive all of these.\n<strong>Met when:</strong> every pair in the must-distinguish list either reaches ≥3:1\nluminance contrast in the greyscale model <strong>or</strong> differs in pattern/shape,\nand the same holds in the red-light model.</p>"
   },
   {
@@ -798,12 +798,11 @@
    ],
    "sources": [
     "S-OUR-AUDIT-WEB",
-    "S-OUR-PALETTE-V0",
-    "S-OUR-REAL-RENDER"
+    "S-OUR-PALETTE-V0"
    ],
    "grade": "C",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-18, F-20, W3, W5, W6, palette v0 · <strong>Best evidence:</strong> C (WCAG) + D (audit)\n<strong>Starting values:</strong> index <code>#8A4F1C</code>, intermediate <code>#C4814B</code> (revised in log\n0020 from <code>#A8703C</code>: real Topo50 slopes show 20 m intermediates are dense\nenough that they must stay recessive — the lightest same-hue brown meeting\n3.2:1, thinner lines; index contours carry relief under red light), no opacity.\nWeb widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).\nPrint widths: set by rendering tests on steep sheets (OQ-09).\n<strong>Also:</strong> draw <code>definition = indefinite</code> contours dashed, so reduced\naccuracy in forest/snow is visible.\n<strong>Met when:</strong> contours ≥3:1 vs paper; ΔE ≥10 vs highways and pipelines\nunder all simulated dichromacies (palette v0 achieves this).</p>\n<hr />"
+   "html": "<p><strong>Rests on:</strong> F-18, F-20, W3, W5, W6, palette v0 · <strong>Best evidence:</strong> C (WCAG) + D (audit)\n<strong>Starting values:</strong> index <code>#7A5542</code> at alpha 0.85, intermediate <code>#B08872</code>\nat alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the\nhexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes\n(OQ-09).\nWeb widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).\nPrint widths: set by rendering tests on steep sheets (OQ-09).\n<strong>Also:</strong> draw <code>definition = indefinite</code> contours dashed, so reduced\naccuracy in forest/snow is visible.\n<strong>Met when:</strong> index contours ≥3:1 vs paper (grey and red); ΔE ≥10 vs\nhighways and pipelines under all simulated dichromacies. Intermediate\nstrokes may fall below 3:1.</p>\n<hr />"
   },
   {
    "id": "R-05",
@@ -837,7 +836,7 @@
    ],
    "grade": "B",
    "implemented": false,
-   "html": "<p><strong>Rests on:</strong> F-06, F-10, F-11, F-12 · <strong>Best evidence:</strong> A (dyslexia fonts don't help); measured (coverage)\n<strong>Now:</strong> keep <strong>Open Sans</strong> (or <strong>Noto Sans</strong>, near-identical metrics,\nbroader coverage). Both have all ten macron vowels and x-height ≈0.535 em.\n<strong>Later:</strong> adopt <strong>Atkinson Hyperlegible Next</strong> once Ō/ō exist in a build we\ncan make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding\ntwo composites (<code>docs/upstream/</code>). Interim route: our renamed OFL patch\n(<code>tools/patch_atkinson_omacron.py</code>). It's designed to separate I/l/1 and O/0\n(<code>docs/visuals/05</code>), which matters for grid references and trig IDs. Print\nvia a shaping renderer (QGIS) may work with the official font already (F-28).\n<strong>Met when:</strong> <code>tools/font_check.py</code> reports full macron coverage for every\nface in the style (hard gate, F-12).</p>"
+   "html": "<p><strong>Rests on:</strong> F-06, F-10, F-11, F-12 · <strong>Best evidence:</strong> A (dyslexia fonts don't help); measured (coverage)\n<strong>Now:</strong> keep <strong>Open Sans</strong> (or <strong>Noto Sans</strong>, near-identical metrics,\nbroader coverage). Both have all ten macron vowels and x-height ≈0.535 em.\n<strong>Later:</strong> adopt <strong>Atkinson Hyperlegible Next</strong> once Ō/ō exist in a build we\ncan make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding\ntwo composites (<code>docs/upstream/</code>). Interim route: our renamed OFL patch\n(<code>tools/patch_atkinson_omacron.py</code>). It's designed to separate I/l/1 and O/0\n(<code>docs/visuals/05</code>), which matters for grid references and trig IDs. Print\nvia a shaping renderer (QGIS) may work with the official font already (F-28).\n<strong>QGIS fork (log 0024):</strong> the accessible sheet uses that interim patch now\n(upright statics). The stock sheet keeps Nimbus Sans LINZ. The web vector\nstyle stays on Open Sans until glyph PBFs exist.\n<strong>Met when:</strong> <code>tools/font_check.py</code> reports full macron coverage for every\nface in the style (hard gate, F-12).</p>"
   },
   {
    "id": "R-07",
@@ -919,8 +918,8 @@
    ],
    "sources": [],
    "grade": "D",
-   "implemented": false,
-   "html": "<p><strong>Rests on:</strong> F-24, F-25 · <strong>Provisional</strong>\n<strong>Why:</strong> the most-requested change from the tramping community needs data\nwe don't have; leave a casing/colour channel unused so it can be added\nwithout redesign.</p>\n<hr />"
+   "implemented": true,
+   "html": "<p><strong>Rests on:</strong> F-24, F-25 · <strong>Provisional</strong>\n<strong>Why:</strong> the most-requested change from the tramping community needs data\nwe don't have; leave a casing/colour channel unused so it can be added\nwithout redesign.\n<strong>Met when:</strong> <code>tools/style-topo50.json</code> records a track-access casing/colour\nchannel that the QGIS apply step and the vector build do not paint.</p>\n<hr />"
   },
   {
    "id": "R-13",
@@ -949,11 +948,11 @@
    ],
    "grade": "B",
    "implemented": false,
-   "html": "<p><strong>Rests on:</strong> F-04, S-OUR-AUDIT-WEB · <strong>Best evidence:</strong> D\n<code>palette_audit.py</code> and <code>font_check.py</code> against the style; fail on new\n❌ rows. Makes regressions visible and keeps the evidence chain alive.</p>"
+   "html": "<p><strong>Rests on:</strong> F-04, S-OUR-AUDIT-WEB · <strong>Best evidence:</strong> D\n<code>palette_audit.py</code> and <code>font_check.py</code> against the style; fail on new\n❌ rows. Pair colours that live in <code>tools/style-topo50.json</code> are resolved\nfrom that file. Makes regressions visible and keeps the evidence chain alive.</p>"
   },
   {
    "id": "R-15",
-   "title": "Start from LINZ's MIT-licensed `topographic-v2` style",
+   "title": "Publish the raster style as a MapLibre style on Shortbread tiles",
    "provisional": false,
    "findings": [],
    "sources": [
@@ -962,7 +961,7 @@
    ],
    "grade": "C",
    "implemented": false,
-   "html": "<p><strong>Rests on:</strong> S-LINZ-BASEMAPS-CONFIG, S-LINZ-BASEMAPS-STYLING · <strong>Best evidence:</strong> C\nFork rather than rewrite: it already maps the Shortbread schema, and staying\nclose to upstream lets improvements flow back to LINZ.</p>"
+   "html": "<p><strong>Rests on:</strong> S-LINZ-BASEMAPS-CONFIG, S-LINZ-BASEMAPS-STYLING · <strong>Best evidence:</strong> C\nThe vector style is the raster style in <code>tools/style-topo50.json</code>.\n<code>tools/build_style.py</code> writes owned paint onto the layer catalog in\n<code>upstream/linz-topographic-v2.json</code>. Layers the style file does not name keep\nLINZ paint. The vector face stays Open Sans until macron glyph PBFs exist.\n<strong>Met when:</strong> the built MapLibre style is generated from that catalog and\nthat style file, and <code>P</code> in <code>tools/build_style.py</code> holds no colour hex.</p>"
   },
   {
    "id": "R-16",
@@ -990,7 +989,7 @@
     "S-OUR-AUDIT-PRINT"
    ],
    "grade": "C",
-   "implemented": false,
+   "implemented": true,
    "html": "<p><strong>Rests on:</strong> P1–P9 (<code>current-state/topo50-print.md</code>), F-21, F-23 · <strong>Best evidence:</strong> measured (D) + C\n- Give <strong>hot and cold springs different glyphs</strong>, not just different inks\n  (P3: 1.13:1 in greyscale). Topo50 already does this well for hot spring vs\n  fumarole (× vs ⊗) — extend the same idea.\n- Separate <strong>native forest from scrub</strong> by a larger lightness step or a\n  texture (P5: ΔE 4.8, 1.1:1 greyscale). This changes route choice.\n- Keep <strong>scattered scrub as a pattern</strong> (P6) — print got this right; the web\n  style should match (R-10 does).\n- Apply R-05 to <strong>contour labels and spot heights</strong>, which are italic in\n  print (P8).\n- Don't use the red-orange ink alone for anything that must be read under a\n  red headtorch (P7).</p>"
   },
   {
@@ -1007,10 +1006,16 @@
    ],
    "grade": "C",
    "implemented": false,
-   "html": "<p><strong>Rests on:</strong> F-30, S-LINZ-RASTER-STYLE, S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM · <strong>Best evidence:</strong> C\n<strong>Why:</strong> the intended starting point, <code>topo-raster-gridded</code>, is pre-rendered\nTopo50 imagery. A MapLibre style can only adjust it globally (brightness,\ncontrast, saturation, hue) and its client hillshade; it cannot recolour\ncontours, change fonts or remove italics. The cartography lives in LINZ's\nMIT-licensed <code>topographic-qgis</code> project, rendered by the containerised\npipeline in <code>topographic-system</code>. Forking the QMLs and re-rendering yields\n<strong>both</strong> accessible raster tiles and print (R-13) from one source.\n<strong>Met when:</strong> an accessible QML set renders at least one Topo50 sheet through\nLINZ's <code>map</code> container, and the R-01/R-05/R-07/R-11/R-17 gates pass on it.\n<strong>Fonts:</strong> Nimbus Sans LINZ is AGPL-3.0 (with a font exemption); check what\nredistributing a modified font set would require before changing fonts.</p>"
+   "html": "<p><strong>Rests on:</strong> F-30, S-LINZ-RASTER-STYLE, S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM · <strong>Best evidence:</strong> C\n<strong>Why:</strong> the intended starting point, <code>topo-raster-gridded</code>, is pre-rendered\nTopo50 imagery. A MapLibre style can only adjust it globally (brightness,\ncontrast, saturation, hue) and its client hillshade; it cannot recolour\ncontours, change fonts or remove italics. The cartography lives in LINZ's\nMIT-licensed <code>topographic-qgis</code> project, rendered by the containerised\npipeline in <code>topographic-system</code>. Forking the QMLs and re-rendering yields\n<strong>both</strong> accessible raster tiles and print (R-13) from one source.\n<strong>Met when:</strong> an accessible QML set renders at least one Topo50 sheet through\nLINZ's <code>map</code> container, and the R-01/R-05/R-07/R-11/R-17 gates pass on it.\n<strong>Fonts:</strong> the stock sheet keeps unmodified Nimbus Sans LINZ (AGPL-3.0; the\nexemption covers embedding those files in that PDF). The accessible sheet\nswaps labels to Atkinson Hyperlegible Next, upright, with Ō/ō added by the\nOFL patch (log 0024, R-06). This project does not modify the Nimbus files.</p>"
   }
  ],
  "changes": [
+  {
+   "id": "C-R-01",
+   "rec": "R-01",
+   "count": 1,
+   "title": "1 × style edits"
+  },
   {
    "id": "C-R-03",
    "rec": "R-03",
@@ -1032,8 +1037,8 @@
   {
    "id": "C-R-07",
    "rec": "R-07",
-   "count": 35,
-   "title": "35 × label colours darkened"
+   "count": 34,
+   "title": "34 × label colours darkened"
   },
   {
    "id": "C-R-08",
@@ -1044,8 +1049,8 @@
   {
    "id": "C-R-09",
    "rec": "R-09",
-   "count": 18,
-   "title": "18 × text sizes floored"
+   "count": 25,
+   "title": "25 × text sizes floored"
   },
   {
    "id": "C-R-10",
@@ -1058,11 +1063,24 @@
    "rec": "R-11",
    "count": 8,
    "title": "8 × track, hazard and red-label changes"
+  },
+  {
+   "id": "C-R-12",
+   "rec": "R-12",
+   "count": 1,
+   "title": "1 × reserved unpainted track-access channel"
+  },
+  {
+   "id": "C-R-17",
+   "rec": "R-17",
+   "count": 3,
+   "title": "3 × style edits"
   }
  ],
  "unusedSources": [
   "S-LINZ-BASEMAPS-USAGE",
   "S-LINZ-DD",
-  "S-MAPLIBRE-SPEC"
+  "S-MAPLIBRE-SPEC",
+  "S-OUR-REAL-RENDER"
  ]
 }

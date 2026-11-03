@@ -10,7 +10,8 @@ Fails (exit 1) if any of these regress:
   C4  hillshade primary light is not 337.5° (R-03)
   C5  a font family outside the macron-verified list is used (R-06, F-12)
   C6  any must-distinguish pair in tools/pairs-accessible-v0.json drops
-      below its declared floor (R-01)
+      below its declared floor (R-01). Pair colours resolve from
+      tools/style-topo50.json (R-14).
 """
 import json
 import os
@@ -69,7 +70,9 @@ for md in (False, True):
                 fail("C4", f"{variant}:{l['id']} primary light {primary}")
 
 pairs_path = os.path.join(ROOT, "tools", "pairs-accessible-v0.json")
-for r, p in zip(pa.pair_audit(json.load(open(pairs_path)), (255, 255, 255)), json.load(open(pairs_path))):
+config_path = os.path.join(ROOT, "tools", "style-topo50.json")
+pairs = pa.resolve_pairs(json.load(open(pairs_path)), json.load(open(config_path)))
+for r, p in zip(pa.pair_audit(pairs, (255, 255, 255)), pairs):
     floor = p.get("floor", {})
     worst_de = min(r[k] for k in ("normal", "protanopia", "deuteranopia", "tritanopia"))
     if worst_de < floor.get("de", 0):

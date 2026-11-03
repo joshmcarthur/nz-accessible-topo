@@ -197,13 +197,13 @@ def test_overrides_skip_the_print_layout():
     lines = contour.findall(".//symbol[@name='0']/layer[@class='SimpleLine']")
     assert len(lines) == 2
     casing_color = lines[0].find("data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']")
-    assert "138,79,28" in casing_color.get("value")
-    assert "196,129,75" not in casing_color.get("value")
+    assert "122,85,66" in casing_color.get("value")
+    assert "176,136,114" not in casing_color.get("value")
     enabled = lines[0].find("data_defined_properties//Option[@name='enabled']/Option[@name='expression']")
     assert "% 100 <> 0" in enabled.get("value")
     fill_color = lines[1].find("data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']")
-    assert "138,79,28" in fill_color.get("value")
-    assert "196,129,75" in fill_color.get("value")
+    assert "122,85,66" in fill_color.get("value")
+    assert "176,136,114" in fill_color.get("value")
     water = root.find("projectlayers/maplayer[layername='water_point']/renderer-v2")
     assert water.get("attr") == "type"
     scrub = root.find("projectlayers/maplayer[layername='vegetation map']//symbol[@name='3']")
@@ -341,12 +341,17 @@ def test_style_file_has_no_sheet_code():
     assert style["fonts"]["raster_family"] == "NZAT Legible Test"
     assert style["fonts"]["vector_family"] == "Open Sans"
     assert style["fonts"]["stock_family"] == "Nimbus Sans LINZ"
-    assert style["contours"]["index"]["colour"] == "#8A4F1C"
-    assert style["contours"]["index"]["width_mm"] == 0.45
-    assert style["contours"]["intermediate"]["colour"] == "#C4814B"
-    assert style["contours"]["intermediate"]["casing_colour"] == "#8A4F1C"
+    assert style["contours"]["index"]["colour"] == "#7A5542"
+    assert style["contours"]["index"]["width_mm"] == 0.35
+    assert style["contours"]["index"]["alpha"] == 0.85
+    assert style["contours"]["intermediate"]["colour"] == "#B08872"
+    assert style["contours"]["intermediate"]["casing_colour"] == "#7A5542"
     assert style["contours"]["intermediate"]["casing_width_mm"] == 0.2
-    assert style["reference_inks"]["project_road"] == "#D5B43C"
+    assert style["contours"]["intermediate"]["alpha"] == 0.5
+    assert style["reference_inks"]["project_road"] == "#EC7000"
+    assert style["reference_inks"]["project_highway"] == "#E31A1C"
+    assert style["reference_inks"]["project_road_casing"] == "#232323"
+    assert style["reference_inks"]["water_fill"] == "#D1E7F5"
     assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
     assert ov.FAMILY == style["fonts"]["raster_family"]
     assert ov.size_floor("contour", "1") == str(int(style["labels"]["size_floor_pt"]))
@@ -363,6 +368,87 @@ def test_style_file_has_no_sheet_code():
     assert style["label_contrast"]["red_light_min"] == 3.0
 
 
+def test_pair_audit_reads_the_style_file():
+    # Catches a pair colour that stays hardcoded after the style file changes, or a casing that drops its alpha.
+    rules = json.loads(json.dumps(bs.RULES))
+    pairs_path = os.path.join(os.path.dirname(__file__), "pairs-accessible-v0.json")
+    raw = json.load(open(pairs_path))
+    index_raw = next(pair for pair in raw if pair["name"] == "Index contour vs paper")
+    assert index_raw["a"]["colour"] == "contours.index.colour"
+    assert index_raw["a"]["alpha"] == "contours.index.alpha"
+    mid_raw = next(pair for pair in raw if pair["name"] == "Intermediate contour vs paper")
+    assert mid_raw["a"]["alpha"] == "contours.intermediate.alpha"
+    assert mid_raw["floor"]["grey"] < 3
+    assert mid_raw["floor"]["red"] < 3
+    highway_raw = next(pair for pair in raw if pair["name"] == "Index contour vs state highway")
+    assert highway_raw["b"]["colour"].startswith("rgba(")
+    casing_raw = next(pair for pair in raw if pair["name"] == "Closed-track casing vs paper")
+    assert casing_raw["a"]["colour"] == "tracks.closed_foot.casing_colour"
+    assert casing_raw["a"]["alpha"] == "tracks.closed_foot.casing_alpha"
+
+    resolved = pa.resolve_pairs(raw, rules)
+    index = next(pair for pair in resolved if pair["name"] == "Index contour vs paper")
+    parsed_index = pa.parse_colour(index["a"]["colour"])
+    assert parsed_index[:3] == pa.parse_colour(rules["contours"]["index"]["colour"])[:3]
+    assert parsed_index[3] == 0.85
+
+    casing = next(pair for pair in resolved if pair["name"] == "Closed-track casing vs paper")
+    got = pa.parse_colour(casing["a"]["colour"])
+    expect = pa.parse_colour(rules["tracks"]["closed_foot"]["casing_colour"])
+    assert got[:3] == expect[:3]
+    assert got[3] == rules["tracks"]["closed_foot"]["casing_alpha"]
+
+    topo_path = os.path.join(os.path.dirname(__file__), "pairs-topo50-accessible.json")
+    topo = json.load(open(topo_path))
+    index_topo = next(pair for pair in topo if pair["name"] == "Index contour vs paper")
+    assert index_topo["a"]["alpha"] == "contours.index.alpha"
+    mid_topo = next(pair for pair in topo if pair["name"] == "Intermediate contour vs paper")
+    assert mid_topo["a"]["alpha"] == "contours.intermediate.alpha"
+    road_raw = next(pair for pair in topo if pair["name"] == "Intermediate contour vs project road")
+    assert road_raw["b"]["colour"] == "reference_inks.project_road"
+    highway_raw = next(pair for pair in topo if pair["name"] == "Intermediate contour vs project highway")
+    assert highway_raw["b"]["colour"] == "reference_inks.project_highway"
+    number_raw = next(pair for pair in topo if pair["name"] == "Contour number vs project road")
+    assert number_raw["a"]["colour"] == "contours.index.colour"
+    road_highway_raw = next(pair for pair in topo if pair["name"] == "Project road vs project highway")
+    assert road_highway_raw["a"]["colour"] == "reference_inks.project_road"
+    water_raw = next(pair for pair in topo if pair["name"] == "Scrub vs water")
+    assert water_raw["b"]["colour"] == "reference_inks.water_fill"
+    historic_raw = next(pair for pair in topo if pair["name"] == "Historic label vs paper")
+    assert historic_raw["a"]["colour"] == "rgb(145, 0, 0)"
+
+    rules["contours"]["index"]["colour"] = "#000000"
+    changed = pa.resolve_pairs(raw, rules)
+    index2 = next(pair for pair in changed if pair["name"] == "Index contour vs paper")
+    assert pa.parse_colour(index2["a"]["colour"])[:3] == (0, 0, 0)
+
+
+def test_painted_contour_pairs_meet_r04():
+    # Catches contour inks that fail ΔE ≥10 against painted road and highway fills.
+    topo_path = os.path.join(os.path.dirname(__file__), "pairs-topo50-accessible.json")
+    rules = json.loads(json.dumps(bs.RULES))
+    names = (
+        "Index contour vs project road",
+        "Intermediate contour vs project road",
+        "Index contour vs project highway",
+        "Intermediate contour vs project highway",
+        "Index contour vs paper",
+        "Contour number vs project road",
+        "Project road vs project highway",
+        "Project road vs paper",
+    )
+    raw = [pair for pair in json.load(open(topo_path)) if pair["name"] in names]
+    assert {pair["name"] for pair in raw} == set(names)
+    resolved = pa.resolve_pairs(raw, rules)
+    for result in pa.pair_audit(resolved, (255, 255, 255)):
+        worst = min(result[key] for key in ("normal", "protanopia", "deuteranopia", "tritanopia"))
+        assert worst >= 10, result["name"]
+        if result["name"] in ("Index contour vs paper", "Project road vs paper"):
+            assert result["grey_cr"] >= 3, result["name"]
+        if result["name"] == "Index contour vs paper":
+            assert result["red_cr"] >= 3
+
+
 def test_vector_size_floor_reads_the_style_file():
     # Catches a place name left under 11 px, or a web floor that ignores the style file.
     labels = bs.RULES["labels"]
@@ -376,6 +462,18 @@ def test_vector_size_floor_reads_the_style_file():
     assert bs.is_place_name("Place-Symbol-Peak-12", "") is False
     assert bs.letter_spacing_em() == 0.05
     assert "letter_spacing_em" not in bs.P
+
+
+def test_vector_build_reads_the_style_file():
+    # Catches a contour hex left in P, or a build that no longer starts from the Shortbread catalog.
+    assert bs.UPSTREAM.endswith("upstream/linz-topographic-v2.json")
+    assert os.path.isfile(bs.UPSTREAM)
+    assert "contour_index" not in bs.P
+    assert "contour_intermediate" not in bs.P
+    assert bs.contour_colour("index") == bs.RULES["contours"]["index"]["colour"]
+    assert bs.contour_colour("intermediate") == bs.RULES["contours"]["intermediate"]["colour"]
+    assert bs.contour_opacity("index") == 0.85
+    assert bs.contour_opacity("intermediate") == 0.5
 
 
 def test_place_ranks_differ_by_at_least_20_percent():
@@ -516,7 +614,7 @@ def test_track_access_channel_is_reserved():
 
 
 def test_closed_tracks_read_the_style_file():
-    # Catches a vector closed-track casing that ignores the JSON, or a raster warm_red left below 3:1 under red light.
+    # Catches a vector closed-track casing that ignores the JSON, a second apply that leaves the 90° bar, or a raster warm_red left below 3:1 under red light.
     track = bs.RULES["tracks"]["closed_foot"]
     assert track["casing_colour"] == "#1A1A1A"
     assert track["casing_alpha"] == 0.55
@@ -581,19 +679,32 @@ def test_closed_tracks_read_the_style_file():
         """
     )
     ov.patch_tracks(track_layer)
-    assert track_layer.find(".//layer[@class='MarkerLine']") is not None
+    angle = track_layer.find(".//layer[@class='SimpleMarker']/Option/Option[@name='angle']")
+    size = track_layer.find(".//layer[@class='SimpleMarker']/Option/Option[@name='size']")
+    assert angle.get("value") == str(ov.STYLE["tracks"]["closed_foot"]["crossbar_angle_deg"])
+    assert size.get("value") == str(ov.STYLE["tracks"]["closed_foot"]["crossbar_size_mm"])
+    width = track_layer.find(".//Option[@name='outlineWidth']/Option[@name='expression']").get("value")
+    assert "0.15" in width
+    assert "0.45" not in width
+    again = json.loads(json.dumps(ov.STYLE))
+    again["tracks"]["closed_foot"]["crossbar_angle_deg"] = 45
+    ov.patch_tracks(track_layer, again)
+    assert angle.get("value") == "45"
 
 
 def test_contour_casing_read_the_style_file():
     # Catches an intermediate contour with no index-ink casing, or a vector casing that ignores the JSON.
     mid = bs.RULES["contours"]["intermediate"]
-    assert mid["casing_colour"] == "#8A4F1C"
+    assert mid["casing_colour"] == "#7A5542"
     assert mid["casing_width_mm"] == 0.2
-    assert bs.RULES["contours"]["index"]["width_mm"] == 0.45
-    assert bs.contour_colour("index") == "#8A4F1C"
-    assert bs.contour_colour("intermediate") == "#C4814B"
-    assert bs.intermediate_casing_colour() == "#8A4F1C"
+    assert bs.RULES["contours"]["index"]["width_mm"] == 0.35
+    assert bs.contour_colour("index") == "#7A5542"
+    assert bs.contour_colour("intermediate") == "#B08872"
+    assert bs.contour_opacity("index") == 0.85
+    assert bs.contour_opacity("intermediate") == 0.5
+    assert bs.intermediate_casing_colour() == "#7A5542"
     assert bs.intermediate_casing_width()["stops"] == [[12, 1.0], [16, 1.5]]
+    assert bs.index_line_width()["stops"] == [[10, 1.01], [12, 1.48], [15, 2.26]]
     layer = ET.fromstring(
         """
         <maplayer>
@@ -623,8 +734,72 @@ def test_contour_casing_read_the_style_file():
     width = lines[0].find("data_defined_properties//Option[@name='outlineWidth']/Option[@name='expression']")
     assert width.get("value") == "0.2"
     fill_width = lines[1].find("data_defined_properties//Option[@name='outlineWidth']/Option[@name='expression']")
-    assert "0.45" in fill_width.get("value")
+    assert "0.35" in fill_width.get("value")
     assert "0.12" in fill_width.get("value")
+    casing_color = lines[0].find("data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']")
+    fill_color = lines[1].find("data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']")
+    assert casing_color.get("value") == "color_rgba(122,85,66,128)"
+    assert "color_rgba(122,85,66,217)" in fill_color.get("value")
+    assert "color_rgba(176,136,114,128)" in fill_color.get("value")
+    assert lines[0].find("Option/Option[@name='line_color']").get("value") == "122,85,66,128"
+
+
+def test_road_fills_and_contour_numbers_read_the_style_file():
+    # Catches a PMS151 road fill left unpainted, or a contour number left in road orange.
+    assert ov.is_owned_road_layer("road_line 2 lane map") is True
+    assert ov.is_owned_road_layer("road_line 1 lane sealed map") is True
+    assert ov.is_owned_road_layer("road_line 2 lane highway map") is False
+    assert ov.is_owned_road_layer("road_line 2 lane background map") is False
+    road = ET.fromstring(
+        """
+        <maplayer>
+          <layername>road_line 2 lane map</layername>
+          <renderer-v2 type="singleSymbol"><symbols>
+            <symbol name="0" type="line">
+              <layer class="SimpleLine">
+                <Option type="Map">
+                  <Option name="line_color" type="QString" value="255,127,0,255"/>
+                </Option>
+              </layer>
+              <layer class="SimpleLine">
+                <Option type="Map">
+                  <Option name="line_color" type="QString" value="35,35,35,255"/>
+                </Option>
+              </layer>
+            </symbol>
+          </symbols></renderer-v2>
+        </maplayer>
+        """
+    )
+    ov.patch_road_fills(road)
+    colours = [opt.get("value") for opt in road.findall(".//Option[@name='line_color']")]
+    assert colours[0].startswith("236,112,0")
+    assert colours[1].startswith("35,35,35")
+    carto = ET.fromstring(
+        """
+        <maplayer>
+          <layername>nztopo50_carto_symbol</layername>
+          <renderer-v2 type="RuleRenderer">
+            <rules>
+              <rule filter="&quot;type&quot; = 'contour_number'" symbol="3"/>
+            </rules>
+            <symbols>
+              <symbol name="3" type="marker">
+                <layer class="FontMarker">
+                  <Option type="Map">
+                    <Option name="chr" type="QString" value="A"/>
+                    <Option name="color" type="QString" value="255,127,0,255"/>
+                  </Option>
+                </layer>
+              </symbol>
+            </symbols>
+          </renderer-v2>
+        </maplayer>
+        """
+    )
+    ov.patch_contour_numbers(carto)
+    color = carto.find(".//Option[@name='color']").get("value")
+    assert color.startswith("122,85,66")
 
 
 def test_springs_and_native_read_the_style_file():

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-build_style.py — derive the accessible style from LINZ's topographic-v2.
+build_style.py — write the vector form of tools/style-topo50.json.
 
-Every change is a named transform tagged with the recommendation (R-xx) it
-implements, and is recorded in a change log so a reviewer can see exactly
-what moved and why. Re-run after updating upstream/ to rebase on LINZ.
+The Shortbread catalog is upstream/linz-topographic-v2.json: sources, glyphs,
+layer ids, filters, and paint for layers the style file does not own.
+Owned paint comes from the style file. Re-run after updating upstream/ to
+rebase the catalog on LINZ.
 
 Usage:
     python3 tools/build_style.py                      # writes styles/*.json + docs/styles/*-changes.md
@@ -26,14 +27,13 @@ STYLE_PATH = os.path.join(ROOT, "tools", "style-topo50.json")
 WHITE = (255, 255, 255)
 
 # ------------------------------------------------------------------ parameters
-# Values come from docs/recommendations.md and docs/palette-experiments/proposed-v0.md.
+# Colour lives in tools/style-topo50.json. P holds vector zoom stops and the
+# italic-to-upright font map. Those are not a palette.
 P = {
-    "contour_index": "#8A4F1C",                           # R-04
-    "contour_intermediate": "#C4814B",                    # R-04 rev. (log 0020): lightest same-hue brown ≥3.2:1
-    "contour_index_width": {"stops": [[10, 1.3], [12, 1.9], [15, 2.9]]},  # 0.45/0.28 × original stops
+    "contour_index_width": {"stops": [[10, 1.3], [12, 1.9], [15, 2.9]]},  # calibrated at 0.45 mm; scaled by index.width_mm
     "contour_intermediate_width": {"stops": [[12, 0.6], [16, 0.9]]},  # thinner: dense slopes read as texture
     # Glyph stacks served by the LINZ glyph endpoint that are already used by
-    # the upstream style — we only map onto stacks known to exist.
+    # the catalog — we only map onto stacks known to exist.
     "deitalicise": {                                      # R-05 (F-05)
         "Open Sans Italic": "Open Sans Regular",
         "Open Sans Bold Italic": "Open Sans Bold",
@@ -182,6 +182,18 @@ def contour_colour(kind, rules=None):
     return (rules or RULES)["contours"][kind]["colour"]
 
 
+def contour_opacity(kind, rules=None):
+    """Return contour stroke alpha. The number lives in tools/style-topo50.json."""
+    return (rules or RULES)["contours"][kind]["alpha"]
+
+
+def index_line_width(rules=None):
+    """Return vector index width stops. Scale the 0.45 mm calibration by the print width."""
+    width = (rules or RULES)["contours"]["index"]["width_mm"]
+    factor = width / 0.45
+    return {"stops": [[z, round(w * factor, 2)] for z, w in P["contour_index_width"]["stops"]]}
+
+
 def intermediate_casing_colour(rules=None):
     """Return the intermediate contour casing. Colour lives in tools/style-topo50.json."""
     return (rules or RULES)["contours"]["intermediate"]["casing_colour"]
@@ -287,21 +299,25 @@ class Builder:
     def contours(self):
         idx = self.layer("Contours-Index")
         idx_colour = contour_colour("index")
+        idx_alpha = contour_opacity("index")
         idx["paint"]["line-color"] = idx_colour
-        idx["paint"]["line-opacity"] = {"stops": [[10, 0.6], [11, 1]]}
-        idx["paint"]["line-width"] = P["contour_index_width"]
-        self.note("R-04", "Contours-Index", f"colour → {idx_colour} (opaque), width ↑")
+        idx["paint"]["line-opacity"] = {"stops": [[10, round(0.6 * idx_alpha, 2)], [11, idx_alpha]]}
+        idx["paint"]["line-width"] = index_line_width()
+        self.note("R-04", "Contours-Index", f"colour → {idx_colour} alpha {idx_alpha}, width ↑")
         halo = self.layer("Contours-Index-Halo")
         halo.setdefault("layout", {})["visibility"] = "none"
         self.note("R-04", "Contours-Index-Halo", "hidden — darker index line no longer needs a 10% offset shadow")
         mid_colour = contour_colour("intermediate")
+        mid_alpha = contour_opacity("intermediate")
         for lid in ("Contours-All", "Contours-Designated", "Contours-Natural"):
             l = self.layer(lid)
             l["paint"]["line-color"] = mid_colour
             if lid == "Contours-All":
                 l["paint"]["line-width"] = P["contour_intermediate_width"]
-                l["paint"]["line-opacity"] = {"stops": [[13, 0.6], [14, 1]]}
-            self.note("R-04", lid, f"colour → {mid_colour} (opaque)")
+                l["paint"]["line-opacity"] = {"stops": [[13, round(0.6 * mid_alpha, 2)], [14, mid_alpha]]}
+            else:
+                l["paint"]["line-opacity"] = mid_alpha
+            self.note("R-04", lid, f"colour → {mid_colour} alpha {mid_alpha}")
         all_layer = self.layer("Contours-All")
         casing = {
             "id": "NZAT-Contours-All-Casing",
@@ -485,6 +501,7 @@ class Builder:
         self.note("infra", "(style)", f"sprite → multi-sprite: LINZ default + `{SPRITE_ID}` (patterns for R-10/R-11)")
         self.style["name"] = f"NZ Accessible Topo {variant}"
         self.style.setdefault("metadata", {})["nzat:derived-from"] = (
+            "Vector form of tools/style-topo50.json on the Shortbread catalog "
             "linz/basemaps-config config/style/topographic-v2.json (MIT, Crown copyright LINZ). "
             "Data: LINZ CC BY 4.0. See upstream/README.md.")
         self.style["id"] = f"nzat_{variant.replace('-', '_')}"
@@ -511,7 +528,7 @@ def write_changes(variant, b, path):
     for rid, lid, what in b.log:
         by.setdefault(rid, []).append((lid, what))
     out = [f"# Change log: accessible-{variant} (generated)", "",
-           "Every change `tools/build_style.py` made to `upstream/linz-topographic-v2.json`, grouped by recommendation.",
+           "Owned paint `tools/build_style.py` wrote from `tools/style-topo50.json` onto the Shortbread catalog, grouped by recommendation.",
            f"Total changes: {len(b.log)}.", ""]
     for rid in sorted(by):
         out.append(f"## {rid} ({len(by[rid])})\n")

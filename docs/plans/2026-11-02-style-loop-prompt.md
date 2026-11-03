@@ -44,7 +44,7 @@ R-06. The accessible raster face is NZAT Legible Test, the patched Atkinson Hype
 
 R-05. Map labels in the accessible project are upright. The italic count on those styles is 0. Layout text stays Nimbus, including its italic. Do not spend a step removing italics again.
 
-R-04. Keep index `#8A4F1C` and intermediate `#C4814B`. Judge a contour against the road ink the style paints. In this QGIS project that ink is `#D5B43C`, including the highway layers. Intermediate versus that gold is 3.19:1 on white. The worst dichromacy ΔE is 12.3. The written gate is ≥3:1 and ΔE ≥10. `#EA6300` is the print-legend orange. This project has no layer in that ink and no pipeline layer. Do not change the intermediate to clear `#EA6300`. Do not return to `#A8703C`. That older brown also fails against `#EA6300` (protan ΔE 7.2).
+R-04. Keep index `#7A5542` and intermediate `#B08872`. Casing is the index ink. Road fill is `#EC7000`. Highway fill is `#E31A1C`. Gold `#D5B43C` is the bivouac marker. Do not lighten the road fill. Do not return to PMS151 `#FF7F00` or to `#8A4F1C` / `#C4814B`. Contour-number FontMarkers use the index ink. `#EA6300` is the print-legend orange. This project has no layer in that ink and no pipeline layer.
 
 ## Along-line question marks
 
@@ -116,7 +116,7 @@ Check the end-state list. If one item is missing, do only that item, then stop. 
 - The stock exporter writes the whole tiff-50 page and loads only .otf files. A square render is a separate script. Load .ttf with QFontDatabase. Set HOME=/tmp so fontconfig can write a cache.
 - Datasources in the project are relative ./name.parquet. Cache files are hash-prefixed. Put the project copy and relative symlinks in one directory. Do not symlink the .qgs itself, or QGIS will look for data beside the real file.
 - If the estuary square still shows black question marks after the .ttf is loaded, change StretchWordSpacingToFit and render that square again. Do not reopen R-05 or R-06 because of those marks.
-- Do not change `#C4814B` to clear `#EA6300`. Judge R-04 against `#D5B43C`.
+- Do not lighten `#EC7000` road fill or `#E31A1C` highway fill. Contour numbers use index `#7A5542`. Contours stay `#7A5542` / `#B08872`.
 - If a choice is not in this prompt, the recommendations, or the lore decisions, stop. Write the choice in the status file. Do not guess.
 - One recommendation per step. Do not refactor surrounding code.
 - Extend tools/test_tools.py when you change a pure function. State in the status file what the test catches. If python3 tools/test_tools.py exits 139, run it again outside the sandbox.

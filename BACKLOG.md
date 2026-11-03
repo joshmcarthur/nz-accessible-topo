@@ -1,6 +1,6 @@
 # Backlog
 
-Status as of 2026-11-02, after log 0044 (R-03 optional hillshade overlay).
+Status as of 2026-11-03, after log 0055 (thinner index contours).
 Log 0025 is the stock sheet. Log 0024 records the font decision: the
 accessible sheet uses Atkinson Hyperlegible Next with Ō/ō; the stock sheet
 keeps Nimbus. The estuary name draws upright (log 0029).
@@ -10,11 +10,15 @@ R-09 is met. Suburb and Locality are 11 px. Town is 14 px. City is 17 px (log 00
 R-07 is met. Label ink is at least 4.8:1 against the drawn buffer. The text-contrast table has no fail rows except the two highway shields (log 0033).
 R-10 is met. Scrub is `#A3CC90` plus a hatch. Scattered is `#E0EDD8` plus a pattern (log 0034).
 R-11 is met. Closed tracks have cross-bars. Historic labels keep hue and meet 3:1 under red light (log 0035).
-R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps the hatch (log 0036).
-R-01 is met. Intermediate contours have a 0.2 mm `#8A4F1C` casing. Index is 0.45 mm. Casing versus paper is 3.45:1 under red light (logs 0037, 0038).
+R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps the hatch. Contour-number FontMarkers use the index ink (logs 0036, 0051).
+R-01 is met. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
 R-08 stays provisional. Vector labels use 0.05 em from the style file. Raster along-line labels keep normal spacing. No A/B test (log 0039).
 R-12 is met. `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Access is not drawn (log 0042).
 R-03 stays open. Hillshade is an overlay at 337.5°. Raster shade waits for `dem.tif` beside the project. Vector reads the same numbers (log 0044).
+R-14 is met. Pair colours that live in `tools/style-topo50.json` are dotted paths. C6 resolves them before it measures (log 0045).
+R-13 stays open. Greyscale-safe print and high-contrast web inks are not named. Do not invent palettes (log 0046).
+R-15 is met. The vector style is the raster style on Shortbread tiles. `P` holds no colour hex (log 0047).
+R-04 is met on the painted Map5View inks. Index is `#7A5542` at 0.85. Intermediate is `#B08872` at 0.5. Road fill is `#EC7000`. Highways stay `#E31A1C`. Contour numbers stay opaque in the index ink. Pipeline is not on Map5View (logs 0050, 0051, 0053, 0054).
 The starting point remains LINZ's `topo-raster-gridded`, i.e.
 Topo50 itself (log 0023, R-18). IDs are stable;
 reference them from commits and research-log entries. The board needs mermaid

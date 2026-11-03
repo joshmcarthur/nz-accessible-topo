@@ -11,9 +11,13 @@ Audits a MapLibre GL style JSON for:
 
 ```
 python3 tools/palette_audit.py path/to/style.json \
-    --pairs tools/pairs-linz-topographic-v2.json \
+    --pairs tools/pairs-accessible-v0.json \
     --md docs/current-state/audit-linz-topographic-v2.md
 ```
+
+Pair colours that live in `tools/style-topo50.json` are dotted paths.
+`palette_audit.py` resolves those paths before it measures. Literal hex stays
+for paper and for LINZ inks the style file does not own.
 
 The maths is checked against reference values (CIEDE2000 Sharma et al. test
 pairs; black/white = 21:1). The *perceptual thresholds* used to flag results

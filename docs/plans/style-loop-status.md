@@ -1,10 +1,10 @@
-- date: 2026-11-02
+- date: 2026-11-03
 - step: B
-- recommendation: R-03
-- result: open
-- reason: Hillshade is an overlay. `hillshade.azimuth_deg` is 337.5. `hillshade.painted` is true. `hillshade.raster_file` is `dem.tif`. The QGIS shader stays off until that GeoTIFF sits beside the project. The vector build reads the same numbers. `hillshade_direction` is gone from `P`. Met when needs shade on an Alpine sheet and a lowland sheet. No DEM was dropped, so R-03 stays open.
-- files changed: `tools/style-topo50.json`, `tools/build_style.py`, `tools/override_topo50_project.py`, `tools/render_square.py`, `tools/test_tools.py`, `styles/accessible-v0.json`, `styles/accessible-v0-multidir.json`, `docs/styles/accessible-v0-changes.md`, `docs/styles/accessible-v0-multidir-changes.md`, `docs/style-topo50.md`, `site/src/data/compare-assets.json`, `docs/visuals/squares/`, `docs/research-log/0044-optional-hillshade.md`, `docs/research-log/README.md`, `docs/plans/style-loop-status.md`, `BACKLOG.md`
-- next step: B, R-14
+- recommendation: R-01 / R-17 P7
+- result: met
+- reason: Road fill is owned `#EC7000` (3.05:1 grey vs paper). Highway stays `#E31A1C`. Contour-number FontMarkers use index `#7A5542`. Pair list includes contour-number vs paper, road, highway, index, intermediate, and the contour label, plus road vs highway. Red-light road fill is still 1.18; the `#232323` casing carries the line. Vector still keeps LINZ road paint.
+- files changed: `tools/style-topo50.json`, `tools/override_topo50_project.py`, `tools/pairs-topo50-accessible.json`, `tools/test_tools.py`, `docs/style-topo50.md`, `docs/recommendations.md`, `BACKLOG.md`, `docs/research-log/0051-darker-orange-roads.md`, `docs/research-log/README.md`, `docs/plans/2026-11-02-style-loop-prompt.md`, `docs/plans/style-loop-status.md`, `site/src/data/graph.json`, the four accessible squares in `docs/visuals/squares`
+- next step: C
 - loop finished: no
-- thermo-nuclear verdict: Approve — already the judo. Add `hillshade` to the existing style file. Patch the elevation-shading-renderer that is already in the project. Do not add a DEM. Do not bake shade.
-- test: `test_hillshade_is_an_optional_overlay` catches azimuth other than 337.5, a missing painted flag, a raster file other than `dem.tif`, or `hillshade_direction` left in `P`. `test_hillshade_stays_off_without_a_dem` and `test_hillshade_turns_on_when_dem_is_present` catch the shader left on without a file, or a present file that does not turn it on. `python3 tools/test_tools.py` passed outside the sandbox. `python3 tools/check.py` passed.
+- thermo-nuclear verdict: Approve — already the judo. Own the road hex. Paint PMS151 fills and the contour_number FontMarker in the apply step. Extend the existing pair file. Do not add an audit tool.
+- test: `test_road_fills_and_contour_numbers_read_the_style_file` catches a PMS151 road fill left unpainted, or a contour number left in road orange. `test_painted_contour_pairs_meet_r04` catches road fill under 3:1 grey or ΔE <10 against contours. `python3 tools/test_tools.py` passed. `python3 tools/check.py` passed.
