@@ -940,4 +940,4 @@ contours.index.width_mm is 0.35. Intermediate casing stays 0.2 mm. Fill stays 0.
 
 ### Consequences
 
-Do not return to 0.28 mm while the casing is 0.2 mm. If 0.35 mm is still too heavy, try 0.32 mm next. If the 100 m line is now too light, go back toward 0.40 mm.
+Josh accepted 0.35 mm index on BX24 (log 0055), provided contrast still holds. Index vs paper remains 4.60:1 grey and 3.28:1 red. Do not return to 0.28 mm while the casing is 0.2 mm. Do not keep thinning the index on this sheet.
