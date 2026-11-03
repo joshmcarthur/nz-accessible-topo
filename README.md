@@ -51,10 +51,11 @@ New here or picking this up locally? Start with [HANDOFF.md](HANDOFF.md) and [BA
 ## Quick start
 
 ```sh
-pip install -r requirements.txt
-python3 tools/build_style.py   # regenerate styles/ from upstream/
-python3 tools/check.py         # accessibility gates
-python3 -m http.server 8000    # then open http://localhost:8000/preview/
+uv sync
+uv run python tools/build_style.py   # regenerate styles/ from upstream/
+uv run python tools/check.py         # accessibility gates
+uv run pytest                        # package tests
+python3 -m http.server 8000          # then open http://localhost:8000/preview/
 ```
 
 ## Tools

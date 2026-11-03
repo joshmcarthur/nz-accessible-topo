@@ -7,7 +7,7 @@ map's theme — tokens are exported from the style build, not chosen separately.
 ## Run it
 
 ```sh
-pip install -r ../requirements.txt
+uv sync --group site   # from the repo root
 npm ci
 npm run data      # graph.json, tokens.css, comparison images (from ../docs, ../styles)
 npm run dev       # or: npm run build && npm run check

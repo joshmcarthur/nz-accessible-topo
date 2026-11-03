@@ -1,5 +1,10 @@
 # Tools
 
+Python lives in `src/nzat/`. Files in this directory are thin wrappers, so
+`python3 tools/build_style.py` still works. After `uv sync`, run tools with
+`uv run python tools/...`. Tests live under `tests/`: `uv run pytest`. Lint:
+`uv run ruff check`.
+
 ## palette_audit.py
 
 Audits a MapLibre GL style JSON for:

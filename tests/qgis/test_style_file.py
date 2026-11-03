@@ -1,0 +1,50 @@
+from nzat.qgis.defaults import FAMILY, STYLE, STYLE_PATH
+from nzat.qgis.size_floor import size_floor
+
+
+def test_style_file_has_no_sheet_code():
+    # Catches a sheet code in the style file, or a settled ink the apply step no longer reads.
+    with open(STYLE_PATH, encoding="utf-8") as handle:
+        raw = handle.read()
+    for token in (
+        "BX24",
+        "1577000",
+        "5178000",
+        "5172000",
+        "1569000",
+        "5165000",
+        "1584000",
+        "5173000",
+    ):
+        assert token not in raw, token
+    style = STYLE
+    assert style["fonts"]["raster_family"] == "NZAT Legible Test"
+    assert style["fonts"]["vector_family"] == "Open Sans"
+    assert style["fonts"]["stock_family"] == "Nimbus Sans LINZ"
+    assert style["contours"]["index"]["colour"] == "#7A5542"
+    assert style["contours"]["index"]["width_mm"] == 0.35
+    assert style["contours"]["index"]["alpha"] == 0.85
+    assert style["contours"]["intermediate"]["colour"] == "#B08872"
+    assert style["contours"]["intermediate"]["casing_colour"] == "#7A5542"
+    assert style["contours"]["intermediate"]["casing_width_mm"] == 0.2
+    assert style["contours"]["intermediate"]["alpha"] == 0.5
+    assert style["reference_inks"]["project_road"] == "#EC7000"
+    assert style["reference_inks"]["project_highway"] == "#E31A1C"
+    assert style["reference_inks"]["project_road_casing"] == "#232323"
+    assert style["reference_inks"]["water_fill"] == "#D1E7F5"
+    assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
+    assert FAMILY == style["fonts"]["raster_family"]
+    assert size_floor("contour", "1") == str(int(style["labels"]["size_floor_pt"]))
+    assert size_floor("relief_point map", "1") == str(
+        int(style["labels"]["spot_height_floor_pt"])
+    )
+    assert style["labels"]["web_floor_px"] == 10
+    assert style["labels"]["place_name_floor_px"] == 11
+    assert style["labels"]["letter_spacing_em"] == 0.05
+    assert style["vegetation"]["scrub"]["colour"] == "#A3CC90"
+    assert style["vegetation"]["scattered"]["colour"] == "#E0EDD8"
+    assert style["tracks"]["closed_foot"]["casing_colour"] == "#1A1A1A"
+    assert style["tracks"]["access"]["reserved_channel"] == "casing_colour"
+    assert style["tracks"]["access"]["painted"] is False
+    assert style["draw_order"] == [{"name": "vegetation map", "below": "contour"}]
+    assert style["label_contrast"]["red_light_min"] == 3.0

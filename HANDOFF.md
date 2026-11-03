@@ -19,9 +19,9 @@ git log --oneline | head        # newest: backlog + handoff
 ## Set up (macOS)
 
 ```sh
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt playwright
-python -m playwright install chromium
+uv sync --group site
+source .venv/bin/activate
+uv run playwright install chromium
 (cd site && npm ci)
 npm i --no-save @maplibre/maplibre-gl-style-spec@26.5.0   # style validator
 ```
@@ -37,7 +37,8 @@ ofl/opensans ofl/notosans ofl/atkinsonhyperlegiblenext ofl/roboto`.
 |---|---|
 | Rebuild styles from LINZ upstream | `python3 tools/build_style.py` |
 | Style gates (C1–C6) | `python3 tools/check.py` |
-| Tool sanity tests | `python3 tools/test_tools.py` |
+| Package tests | `uv run pytest` |
+| Lint | `uv run ruff check` |
 | Site data (graph lint, tokens, comparison images) | `cd site && npm run data` |
 | Site dev server | `cd site && npm run dev` |
 | Site gates (axe WCAG 2.2, no italics, links) | `cd site && npm run build && npm run check` |

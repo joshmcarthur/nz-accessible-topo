@@ -11,10 +11,12 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - run: uv sync --frozen
-      - name: Moved package tests
+      - name: Lint
+        run: |
+          uv run ruff check
+          uv run ruff format --check
+      - name: Tests
         run: uv run pytest
-      - name: Tool sanity tests
-        run: uv run python tools/test_tools.py
       - name: Sprites are reproducible
         run: uv run python tools/make_sprites.py && git diff --exit-code styles/sprites/
       - name: Styles are reproducible and meet the gates (C1–C6)
