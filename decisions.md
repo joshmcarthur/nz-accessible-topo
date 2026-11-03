@@ -903,15 +903,15 @@ The apply step now paints a reference ink. Vector layers the style file does not
 
 Olive-taupe hexes kept L* so dense slopes would not darken (OQ-09). The 0.2 mm index-ink casing on every 20 m line still reads as a solid dark mesh on BX24. Josh asked for a quieter middle ground. Index contours must still meet contrast. Intermediate contours may fail some conditions, including red light.
 
-Opaque index  vs paper is 6.55:1 grey and 4.29:1 red. Alpha composites that ink toward paper.
+Opaque index #7A5542 vs paper is 6.55:1 grey and 4.29:1 red. Alpha composites that ink toward paper.
 
 ### Decision
 
- is 0.85.  is 0.65. Hexes stay  / . Contour-number FontMarkers stay opaque.
+contours.index.alpha is 0.85. contours.intermediate.alpha is 0.65. Hexes stay #7A5542 / #B08872. Contour-number FontMarkers stay opaque.
 
 Index vs paper stays a 3:1 grey and red gate after composite (4.60 / 3.28). Intermediate vs paper is measured, not a 3:1 fail gate.
 
-The QGIS apply step paints those alphas with . The vector build sets  from the same numbers. Do not drop the intermediate casing in this step. Do not invent R-13 palettes.
+The QGIS apply step paints those alphas with color_rgba. The vector build sets line-opacity from the same numbers. Do not drop the intermediate casing in this step. Do not invent R-13 palettes.
 
 ### Rationale
 
