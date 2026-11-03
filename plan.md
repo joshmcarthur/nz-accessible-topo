@@ -99,3 +99,6 @@ Painted-ink inventory (log 0048). Map5View road fill is PMS151 `#FF7F00`, not go
 R-04 owns the contour inks. Index is `#7A5542`. Intermediate is `#B08872`. Casing is the index ink.
 
 Road fill is owned `#EC7000`. Highway stays `#E31A1C`. Contour-number FontMarkers use the index ink. Pair list covers those painted classes. Log 0051. Next is Step C after that paint is on the squares.
+
+Contour stroke alpha (approved 2026-11-03). Index 0.85. Intermediate 0.65. Hexes unchanged. Contour numbers stay opaque. Index vs paper still 3:1 grey and red. Intermediate vs paper is not a 3:1 gate. Proof is the Port Hills square (OQ-09). Do not redraw the BX24 composite until that square is accepted.
+
