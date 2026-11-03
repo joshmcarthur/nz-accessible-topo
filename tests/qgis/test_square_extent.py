@@ -1,4 +1,4 @@
-from nzat.qgis.render_square_main import DPI, PX
+from nzat.qgis.render_jobs import DPI, PX
 from nzat.qgis.square_extent import METRES, square_extent
 
 

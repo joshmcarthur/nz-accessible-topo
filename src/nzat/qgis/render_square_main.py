@@ -9,11 +9,8 @@ from nzat.qgis.hillshade_rules import hillshade_rules
 from nzat.qgis.hillshade_should_paint import hillshade_should_paint
 from nzat.qgis.map_layers import SHEET_PRESET, map_layers
 from nzat.qgis.qgis_prefix import qgis_prefix
-from nzat.qgis.square_extent import square_extent
+from nzat.qgis.render_jobs import render_jobs
 from nzat.qgis.with_dem_layer import with_dem_layer
-
-DPI = 600
-PX = 472
 
 
 def _free_gb(path):
@@ -32,7 +29,9 @@ def main():
     os.environ.setdefault("HOME", "/tmp")
     os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-    parser = argparse.ArgumentParser(description="Render 1 km map squares at 600 dpi.")
+    parser = argparse.ArgumentParser(
+        description="Render 1 km map squares at 600 dpi, or one rectangle at a given size."
+    )
     parser.add_argument("--project", required=True, help="Path to the .qgs file")
     parser.add_argument(
         "--font",
@@ -41,8 +40,17 @@ def main():
         help="A font file or a directory of .otf and .ttf files",
     )
     parser.add_argument(
-        "--square", action="append", required=True, help="EAST,NORTH,OUTPUT.png"
+        "--square", action="append", default=[], help="EAST,NORTH,OUTPUT.png"
     )
+    parser.add_argument("--extent", help="xmin,ymin,xmax,ymax")
+    parser.add_argument("--dpi", type=int, help="Output dpi with --extent")
+    parser.add_argument(
+        "--width", type=int, help="Output width in pixels with --extent"
+    )
+    parser.add_argument(
+        "--height", type=int, help="Output height in pixels with --extent"
+    )
+    parser.add_argument("--output", help="OUTPUT.png with --extent")
     args = parser.parse_args()
 
     for path in ("/System/Volumes/Data", "/working", "/"):
@@ -72,7 +80,18 @@ def main():
     from qgis.PyQt.QtCore import QSize  # noqa: E402
     from qgis.PyQt.QtGui import QColor, QFontDatabase  # noqa: E402
 
-    squares = [_parse_square(item) for item in args.square]
+    try:
+        jobs = render_jobs(
+            [_parse_square(item) for item in args.square],
+            extent=args.extent,
+            output=args.output,
+            width=args.width,
+            height=args.height,
+            dpi=args.dpi,
+        )
+    except ValueError as error:
+        print(error, file=sys.stderr)
+        return 1
     fonts = font_files(args.font)
 
     prefix = qgis_prefix(os.environ.get("QGIS_PREFIX_PATH"))
@@ -139,14 +158,14 @@ def main():
         if flag is None and hasattr(QgsMapSettings, "Flag"):
             flag = QgsMapSettings.Flag.DrawLabeling
 
-        for east, north, output in squares:
+        for xmin, ymin, xmax, ymax, width, height, dpi, output in jobs:
             os.makedirs(os.path.dirname(os.path.abspath(output)), exist_ok=True)
             settings = QgsMapSettings()
             settings.setLayers(layers)
             settings.setDestinationCrs(QgsCoordinateReferenceSystem.fromEpsgId(2193))
-            settings.setExtent(QgsRectangle(*square_extent(east, north)))
-            settings.setOutputSize(QSize(PX, PX))
-            settings.setOutputDpi(DPI)
+            settings.setExtent(QgsRectangle(xmin, ymin, xmax, ymax))
+            settings.setOutputSize(QSize(width, height))
+            settings.setOutputDpi(dpi)
             settings.setBackgroundColor(QColor(255, 255, 255))
             settings.setTransformContext(project.transformContext())
             settings.setExpressionContext(color_context)

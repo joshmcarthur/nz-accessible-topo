@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw 1 km map squares at 600 dpi.
+"""Draw 1 km map squares at 600 dpi, or one rectangle with --extent.
 
 Run this inside the map container. The host Python does not have QGIS.
 1000 m on the ground is 20 mm on the 1:50,000 sheet. 20 mm at 600 dpi is 472 px.
@@ -15,7 +15,8 @@ import _bootstrap  # noqa: F401
 from nzat.qgis.font_files import font_files
 from nzat.qgis.map_layers import SHEET_PRESET, map_layers
 from nzat.qgis.qgis_prefix import CONTAINER_PREFIX, qgis_prefix
-from nzat.qgis.render_square_main import DPI, PX, main
+from nzat.qgis.render_jobs import DPI, PX
+from nzat.qgis.render_square_main import main
 from nzat.qgis.sheet_layer_ids import sheet_layer_ids
 from nzat.qgis.square_extent import METRES, square_extent
 from nzat.qgis.with_dem_layer import with_dem_layer
