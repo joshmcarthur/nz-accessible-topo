@@ -1,27 +1,21 @@
 name: pages
 
 on:
+  workflow_run:
+    workflows: [check]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  guard:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Require main
-        if: github.ref != 'refs/heads/main'
-        run: |
-          echo "Pages deploy runs from main."
-          exit 1
-
-  checks:
-    needs: guard
-    permissions:
-      contents: read
-    uses: ./.github/workflows/check.yml
-
   deploy:
-    needs: checks
     runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'workflow_run'
+        && github.event.workflow_run.conclusion == 'success'
+        && github.event.workflow_run.event == 'push')
+      || (github.event_name == 'workflow_dispatch'
+        && github.ref == 'refs/heads/main')
     permissions:
       contents: read
       pages: write
@@ -34,6 +28,8 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v6
