@@ -754,7 +754,7 @@
    "sources": [],
    "grade": "B",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-01, F-02, F-03, F-21, F-22, F-23 · <strong>Best evidence:</strong> A/B\n<strong>Why:</strong> CVD affects ~8% of men; ageing adds blue–yellow losses; dim light\nand red headtorches remove hue information for everyone. Lightness and shape\nsurvive all of these.\n<strong>Met when:</strong> every pair in the must-distinguish list either reaches ≥3:1\nluminance contrast in the greyscale model <strong>or</strong> differs in pattern/shape,\nand the same holds in the red-light model.</p>"
+   "html": "<p><strong>Rests on:</strong> F-01, F-02, F-03, F-21, F-22, F-23 · <strong>Best evidence:</strong> A/B\n<strong>Why:</strong> CVD affects ~8% of men; ageing adds blue–yellow losses; dim light\nand red headtorches remove hue information for everyone. Lightness and shape\nsurvive all of these.\n<strong>Met when:</strong> every pair in the must-distinguish list either reaches ≥3:1\nluminance contrast in the greyscale model <strong>or</strong> differs in pattern/shape,\nand the same holds in the red-light model. A line, glyph or label that sits\non a fill is measured against that fill as well as against paper (for\nexample index contour on scrub, stream on scrub).</p>"
   },
   {
    "id": "R-02",
@@ -875,7 +875,7 @@
    "sources": [],
    "grade": "C",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-09 · <strong>Best evidence:</strong> C\n<strong>Values:</strong> print ≥7 pt default, 6 pt absolute floor (spot heights only);\nweb ≥10 px (≥11 px for place names); adjacent hierarchy levels differ by\n≥20%.</p>\n<hr />"
+   "html": "<p><strong>Rests on:</strong> F-09 · <strong>Best evidence:</strong> C\n<strong>Values:</strong> print ≥7 pt default, 6 pt absolute floor (spot heights only);\nweb ≥10 px (≥11 px for place names); adjacent hierarchy levels differ by\n≥20%. Spot heights are their own rank, below locality names.\n<strong>Met when:</strong> every label is at or above its floor; spot heights, locality\nnames and place names each differ from the next rank by ≥20%; and on the\nfull grid no label's glyphs touch another label's glyphs, and each name sits\nnearer its own feature than any other feature of the same kind.</p>\n<hr />"
   },
   {
    "id": "R-10",
@@ -906,7 +906,7 @@
    ],
    "grade": "D",
    "implemented": true,
-   "html": "<p><strong>Print evidence (log 0019, P2):</strong> in printed Topo50, a closed track differs\nfrom a foot track <em>only</em> by gap length (dash 24/gap 12 vs 23/24). This\napplies to print as much as web.\n<strong>Rests on:</strong> F-21, W7, palette v0 · <strong>Best evidence:</strong> D (mechanism certain)\n<strong>Change:</strong> closed tracks get a dark casing with cross-bars; historic sites\nget a distinct glyph with dark-ink labels.\n<strong>Met when:</strong> red-light model ≥3:1 vs paper for all safety-relevant marks.</p>"
+   "html": "<p><strong>Print evidence (log 0019, P2):</strong> in printed Topo50, a closed track differs\nfrom a foot track <em>only</em> by gap length (dash 24/gap 12 vs 23/24). This\napplies to print as much as web.\n<strong>Rests on:</strong> F-21, W7, palette v0 · <strong>Best evidence:</strong> D (mechanism certain)\n<strong>Change:</strong> closed tracks get a dark casing with cross-bars; historic sites\nget a distinct glyph with dark-ink labels.\n<strong>Met when:</strong> red-light model ≥3:1 vs paper for all safety-relevant marks,\nand no new or changed symbol can be read as another legend symbol (railway,\nembankment, cutting, cliff, fence, boundary) where tracks run close together\non the full grid.</p>"
   },
   {
    "id": "R-12",

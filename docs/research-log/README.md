@@ -60,3 +60,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0055 — Thinner index contours](0055-thinner-index-contours.md)
 - [0056 — Angled closed-track bars](0056-angled-closed-track.md)
 - [0057 — A full-grid stock review gates "met"](0057-regression-review-gate.md)
+- [0058 — Wider "Met when" tests for R-01, R-09 and R-11](0058-wider-met-when.md)

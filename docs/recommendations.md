@@ -16,6 +16,12 @@ and R-13 stay open. R-08 stays provisional. R-15 raster owns the road fill;
 vector layers the style file does not name still keep LINZ road paint. R-16
 is not started. Pair colours resolve from `tools/style-topo50.json` (R-14).
 
+**Reopened (log 0058):** R-01, R-09 and R-11 are open again. Their "Met
+when" now also tests lines and labels against the fills under them, symbol
+confusion with other legend symbols, and label placement. The 4 km BX24
+grid fails each of these (log 0057). A recommendation is met only after the
+full-grid stock review in `docs/method.md`.
+
 **Note on R-07 values:** the build darkens each failing label colour along
 CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label
 blue is `rgba(0,110,171)` rather than the hand-picked `#005C8F` in palette v0.
@@ -49,7 +55,9 @@ and red headtorches remove hue information for everyone. Lightness and shape
 survive all of these.
 **Met when:** every pair in the must-distinguish list either reaches ≥3:1
 luminance contrast in the greyscale model **or** differs in pattern/shape,
-and the same holds in the red-light model.
+and the same holds in the red-light model. A line, glyph or label that sits
+on a fill is measured against that fill as well as against paper (for
+example index contour on scrub, stream on scrub).
 
 ### R-02 — Keep the familiar colour grammar; change values within it
 **Rests on:** S-LINZ-GUIDE (C), F-24 · **Provisional**
@@ -133,7 +141,11 @@ retained; `text-max-width` so hyphenated Māori names break at hyphens.
 **Rests on:** F-09 · **Best evidence:** C
 **Values:** print ≥7 pt default, 6 pt absolute floor (spot heights only);
 web ≥10 px (≥11 px for place names); adjacent hierarchy levels differ by
-≥20%.
+≥20%. Spot heights are their own rank, below locality names.
+**Met when:** every label is at or above its floor; spot heights, locality
+names and place names each differ from the next rank by ≥20%; and on the
+full grid no label's glyphs touch another label's glyphs, and each name sits
+nearer its own feature than any other feature of the same kind.
 
 ---
 
@@ -152,7 +164,10 @@ applies to print as much as web.
 **Rests on:** F-21, W7, palette v0 · **Best evidence:** D (mechanism certain)
 **Change:** closed tracks get a dark casing with cross-bars; historic sites
 get a distinct glyph with dark-ink labels.
-**Met when:** red-light model ≥3:1 vs paper for all safety-relevant marks.
+**Met when:** red-light model ≥3:1 vs paper for all safety-relevant marks,
+and no new or changed symbol can be read as another legend symbol (railway,
+embankment, cutting, cliff, fence, boundary) where tracks run close together
+on the full grid.
 
 ### R-12 — Reserve a symbol channel for track access status
 **Rests on:** F-24, F-25 · **Provisional**
