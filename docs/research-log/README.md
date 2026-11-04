@@ -62,3 +62,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0057 — A full-grid stock review gates "met"](0057-regression-review-gate.md)
 - [0058 — Wider "Met when" tests for R-01, R-09 and R-11](0058-wider-met-when.md)
 - [0059 — Italic marks natural features in Topo50](0059-italic-marks-natural-features.md)
+- [0060 — Full painted-ink inventory on Map5View](0060-full-painted-ink-inventory.md)
