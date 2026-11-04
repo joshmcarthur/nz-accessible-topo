@@ -684,7 +684,7 @@
     "S-USGS-SPECS"
    ],
    "grade": "C",
-   "html": "<p>Long-standing guidance labels water features in blue italic; area features\nin spaced capitals. The LINZ web style follows this (36 of 68 label layers\nitalic, all water labels italic).\n<strong>Sources:</strong> S-AXIS-LABELING (C), S-USGS-SPECS (C), audit (D).\n<strong>Tension with F-05:</strong> the convention and the dyslexia evidence point in\nopposite directions. Colour + case/weight can carry the \"this is water\"\nsignal without italics.</p>"
+   "html": "<p>Long-standing guidance labels water features in blue italic; area features\nin spaced capitals. The LINZ web style follows this (36 of 68 label layers\nitalic, all water labels italic).\n<strong>Sources:</strong> S-AXIS-LABELING (C), S-USGS-SPECS (C), audit (D).\n<strong>Tension with F-05:</strong> the convention and the dyslexia evidence point in\nopposite directions. Colour + case/weight can carry the \"this is water\"\nsignal without italics.\n<strong>Topo50 (log 0059):</strong> on BX24, italic marks natural features, not only\nwater. All 66 water labels, 230 of 231 spot heights and 69 other names\n(peaks, passes, heads, points, rocks, islands, valleys, saddles, forest\nareas) are italic. Names with a landform word that are settlements,\nlocalities, huts or roads are upright (Gebbies Valley, Heathcote Valley,\nMount Pleasant). Removing italic removes the natural-versus-cultural cue,\nso another cue must carry it.</p>"
   },
   {
    "id": "F-09",
@@ -724,7 +724,7 @@
     "S-OUR-QGIS-ANALYSIS"
    ],
    "grade": "C",
-   "html": "<p>In the carto_text sample shipped with LINZ's production pipeline, <strong>300 of 445\nlabels (67%) are italic</strong>, 288 of them <em>Narrow</em> (condensed) italic; 394 are\nset at 5.5–6.5 pt. Fonts are Nimbus Sans LINZ (a Helvetica-metric URW font,\nrenamed by LINZ) standing in for the legacy \"ATTriumMou\" faces; all ten macron\nvowels are present. Condensed + italic + small is the combination the\ndyslexia research (F-05, F-07) and crowding mechanism point against.\n<strong>Sources:</strong> S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM (C); S-OUR-QGIS-ANALYSIS (D).\n<strong>Caveat:</strong> a test-area sample, not nationwide. Labels are data-defined, so\nthe fix is an override in the QML (style expression), not a data edit.</p>"
+   "html": "<p>In the carto_text sample shipped with LINZ's production pipeline, <strong>300 of 445\nlabels (67%) are italic</strong>, 288 of them <em>Narrow</em> (condensed) italic; 394 are\nset at 5.5–6.5 pt. Fonts are Nimbus Sans LINZ (a Helvetica-metric URW font,\nrenamed by LINZ) standing in for the legacy \"ATTriumMou\" faces; all ten macron\nvowels are present. Condensed + italic + small is the combination the\ndyslexia research (F-05, F-07) and crowding mechanism point against.\n<strong>Sources:</strong> S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM (C); S-OUR-QGIS-ANALYSIS (D).\n<strong>Caveat:</strong> a test-area sample, not nationwide. Labels are data-defined, so\nthe fix is an override in the QML (style expression), not a data edit.\n<strong>Meaning (log 0059):</strong> the italic rows are not random. They mark the\nnatural-feature class (F-08). The data has no feature-class column, so the\n<code>style</code> value is the only class signal a label override can read.</p>"
   },
   {
    "id": "F-11",
@@ -816,7 +816,7 @@
    "sources": [],
    "grade": "B",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-05, F-08, F-30 · <strong>Best evidence:</strong> B\n<strong>Change from today:</strong> 33 of 63 web label layers are italic, including all\nwater names.\n<strong>Why:</strong> Italic styles measurably slowed dyslexic readers; the italic-water\nconvention is a tradition, not a legibility finding. Carry \"this is water\"\nwith colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.\n<strong>Met when:</strong> zero italic faces in the style.</p>"
+   "html": "<p><strong>Rests on:</strong> F-05, F-08, F-30 · <strong>Best evidence:</strong> B\n<strong>Change from today:</strong> 33 of 63 web label layers are italic, including all\nwater names.\n<strong>Why:</strong> Italic styles measurably slowed dyslexic readers; the italic-water\nconvention is a tradition, not a legibility finding. Carry \"this is water\"\nwith colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.\nIn Topo50, italic also marks natural features (F-08, log 0059). That class\nneeds its own non-italic cue too.\n<strong>Met when:</strong> zero italic faces in the style, including text drawn as\nsymbols (contour-number FontMarkers); and natural-feature names differ from\ncultural names by a non-italic cue (colour, weight or case) on the full grid.</p>"
   },
   {
    "id": "R-06",

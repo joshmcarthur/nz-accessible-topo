@@ -39,6 +39,13 @@ italic, all water labels italic).
 **Tension with F-05:** the convention and the dyslexia evidence point in
 opposite directions. Colour + case/weight can carry the "this is water"
 signal without italics.
+**Topo50 (log 0059):** on BX24, italic marks natural features, not only
+water. All 66 water labels, 230 of 231 spot heights and 69 other names
+(peaks, passes, heads, points, rocks, islands, valleys, saddles, forest
+areas) are italic. Names with a landform word that are settlements,
+localities, huts or roads are upright (Gebbies Valley, Heathcote Valley,
+Mount Pleasant). Removing italic removes the natural-versus-cultural cue,
+so another cue must carry it.
 
 ## F-09 — Minimum label sizes and size steps
 Practitioner guidance converges on ~6 pt as an absolute print minimum
@@ -74,6 +81,9 @@ dyslexia research (F-05, F-07) and crowding mechanism point against.
 **Sources:** S-LINZ-TOPO-QGIS, S-LINZ-TOPO-SYSTEM (C); S-OUR-QGIS-ANALYSIS (D).
 **Caveat:** a test-area sample, not nationwide. Labels are data-defined, so
 the fix is an override in the QML (style expression), not a data edit.
+**Meaning (log 0059):** the italic rows are not random. They mark the
+natural-feature class (F-08). The data has no feature-class column, so the
+`style` value is the only class signal a label override can read.
 
 ## F-11 — Open Sans (LINZ's current face) is already a reasonable choice
 Open Sans has full macron coverage and a large x-height (0.535 em vs 0.496

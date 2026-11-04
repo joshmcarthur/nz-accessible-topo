@@ -21,6 +21,8 @@ when" now also tests lines and labels against the fills under them, symbol
 confusion with other legend symbols, and label placement. The 4 km BX24
 grid fails each of these (log 0057). A recommendation is met only after the
 full-grid stock review in `docs/method.md`.
+R-05 is also open again (log 0059): contour-number FontMarkers are still
+italic, and natural-feature names have lost their class cue.
 
 **Note on R-07 values:** the build darkens each failing label colour along
 CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label
@@ -105,7 +107,11 @@ water names.
 **Why:** Italic styles measurably slowed dyslexic readers; the italic-water
 convention is a tradition, not a legibility finding. Carry "this is water"
 with colour (≥4.5:1, R-07) and, if needed, a weight or tracking difference.
-**Met when:** zero italic faces in the style.
+In Topo50, italic also marks natural features (F-08, log 0059). That class
+needs its own non-italic cue too.
+**Met when:** zero italic faces in the style, including text drawn as
+symbols (contour-number FontMarkers); and natural-feature names differ from
+cultural names by a non-italic cue (colour, weight or case) on the full grid.
 
 ### R-06 — Use a roman, humanist sans with a large x-height and complete macron coverage; do not use "dyslexia fonts"
 **Rests on:** F-06, F-10, F-11, F-12 · **Best evidence:** A (dyslexia fonts don't help); measured (coverage)
