@@ -115,15 +115,205 @@
  },
  {
   "name": "Native forest vs scrub",
-  "a": {"label": "native forest fill", "colour": "vegetation.native.colour"},
-  "b": {"label": "scrub fill", "colour": "vegetation.scrub.colour"},
+  "a": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "b": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
   "why": "R-10 and R-17. Larger lightness step than the print pair."
  },
  {
   "name": "Scrub vs water",
-  "a": {"label": "scrub fill", "colour": "vegetation.scrub.colour"},
+  "a": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
   "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
   "why": "Print P pair. Map5View paints water as #D1E7F5. Shoreline is process_blue."
+ },
+ {
+  "name": "Index contour vs scrub",
+  "a": {
+   "label": "index contour",
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
+  },
+  "b": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Index contour vs native forest",
+  "a": {
+   "label": "index contour",
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
+  },
+  "b": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Index contour vs water",
+  "a": {
+   "label": "index contour",
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
+  },
+  "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Index contour vs urban",
+  "a": {
+   "label": "index contour",
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
+  },
+  "b": {"label": "urban fill", "colour": "reference_inks.urban_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Intermediate contour vs scrub",
+  "a": {
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
+  },
+  "b": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Intermediate contour vs native forest",
+  "a": {
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
+  },
+  "b": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Intermediate contour vs water",
+  "a": {
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
+  },
+  "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Intermediate contour vs urban",
+  "a": {
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
+  },
+  "b": {"label": "urban fill", "colour": "reference_inks.urban_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Stream vs scrub",
+  "a": {"label": "stream", "colour": "reference_inks.stream"},
+  "b": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
+  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+ },
+ {
+  "name": "Stream vs native forest",
+  "a": {"label": "stream", "colour": "reference_inks.stream"},
+  "b": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+ },
+ {
+  "name": "Stream vs water",
+  "a": {"label": "stream", "colour": "reference_inks.stream"},
+  "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
+  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+ },
+ {
+  "name": "Stream vs urban",
+  "a": {"label": "stream", "colour": "reference_inks.stream"},
+  "b": {"label": "urban fill", "colour": "reference_inks.urban_fill"},
+  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+ },
+ {
+  "name": "Track vs scrub",
+  "a": {"label": "track", "colour": "tracks.closed_foot.crossbar_colour"},
+  "b": {
+   "label": "scrub fill",
+   "colour": "vegetation.scrub.colour",
+   "alpha": "vegetation.scrub.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Track vs native forest",
+  "a": {"label": "track", "colour": "tracks.closed_foot.crossbar_colour"},
+  "b": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Track vs water",
+  "a": {"label": "track", "colour": "tracks.closed_foot.crossbar_colour"},
+  "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Track vs urban",
+  "a": {"label": "track", "colour": "tracks.closed_foot.crossbar_colour"},
+  "b": {"label": "urban fill", "colour": "reference_inks.urban_fill"},
+  "why": "R-01. A line on a fill is measured against that fill (log 0058)."
+ },
+ {
+  "name": "Stream vs paper",
+  "a": {"label": "stream", "colour": "reference_inks.stream"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Map5View paints streams #009EFF, not the legend ink (log 0060)."
+ },
+ {
+  "name": "Shelterbelt vs paper",
+  "a": {"label": "shelterbelt", "colour": "reference_inks.shelterbelt"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Shelterbelt and green dots paint #94FF3B (log 0060)."
+ },
+ {
+  "name": "Grid vs paper",
+  "a": {"label": "grid", "colour": "reference_inks.grid"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Grid lines paint #29A0D3. That is not the stream ink (log 0060)."
  },
  {
   "name": "Hot spring vs cold spring",

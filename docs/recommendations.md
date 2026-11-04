@@ -23,6 +23,8 @@ grid fails each of these (log 0057). A recommendation is met only after the
 full-grid stock review in `docs/method.md`.
 R-05 is also open again (log 0059): contour-number FontMarkers are still
 italic, and natural-feature names have lost their class cue.
+The pair file now includes line-on-fill pairs and the log 0060 stream,
+shelterbelt, and grid classes (log 0061). R-01 stays open.
 
 **Note on R-07 values:** the build darkens each failing label colour along
 CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label

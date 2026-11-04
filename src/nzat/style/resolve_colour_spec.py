@@ -16,6 +16,9 @@ def resolve_colour_spec(side, rules):
         return colour
     if is_style_path(alpha):
         alpha = lookup_style_path(rules, alpha)
+    alpha = float(alpha)
+    if alpha > 1:
+        alpha = alpha / 255.0
     parsed = parse_colour(colour)
     if parsed is None:
         raise ValueError(colour)

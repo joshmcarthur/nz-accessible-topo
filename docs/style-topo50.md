@@ -132,6 +132,14 @@ Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour
 
 `reference_inks.print_legend_highway` is `#EA6300`. Map5View does not paint that ink.
 
+`reference_inks.stream` is `#009EFF`. Map5View paints streams, drains, coastline, and water outlines in that ink. The apply step does not paint that ink.
+
+`reference_inks.shelterbelt` is `#94FF3B`. Map5View paints shelterbelts and green vegetation dots in that ink. The apply step does not paint that ink.
+
+`reference_inks.grid` is `#29A0D3`. Map5View paints grid lines in that ink. The apply step does not paint that ink.
+
+`reference_inks.urban_fill` is `#BCBAB6`. Map5View paints residential fill in that ink. The apply step does not paint that ink.
+
 `fonts.vector_family` is Open Sans. The QGIS apply step does not use that family.
 
 `fonts.stock_family` is Nimbus Sans LINZ. The QGIS apply step does not use that family on map labels.

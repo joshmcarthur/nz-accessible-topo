@@ -46,7 +46,11 @@
     "project_highway": "#E31A1C",
     "project_road_casing": "#232323",
     "water_fill": "#D1E7F5",
-    "print_legend_highway": "#EA6300"
+    "print_legend_highway": "#EA6300",
+    "stream": "#009EFF",
+    "shelterbelt": "#94FF3B",
+    "grid": "#29A0D3",
+    "urban_fill": "#BCBAB6"
   },
   "vegetation": {
     "native": {"colour": "#E1EAC3", "alpha": 180},

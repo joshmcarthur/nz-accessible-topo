@@ -3,7 +3,31 @@ import json
 from nzat.colour.parse_colour import parse_colour
 from nzat.paths import PAIRS_PATH, ROOT
 from nzat.style.load_rules import load_rules
+from nzat.style.pair_audit import pair_audit
+from nzat.style.resolve_colour_spec import resolve_colour_spec
 from nzat.style.resolve_pairs import resolve_pairs
+
+LINE_ON_FILL_NAMES = (
+    "Index contour vs scrub",
+    "Index contour vs native forest",
+    "Index contour vs water",
+    "Index contour vs urban",
+    "Intermediate contour vs scrub",
+    "Intermediate contour vs native forest",
+    "Intermediate contour vs water",
+    "Intermediate contour vs urban",
+    "Stream vs scrub",
+    "Stream vs native forest",
+    "Stream vs water",
+    "Stream vs urban",
+    "Track vs scrub",
+    "Track vs native forest",
+    "Track vs water",
+    "Track vs urban",
+    "Stream vs paper",
+    "Shelterbelt vs paper",
+    "Grid vs paper",
+)
 
 
 def test_pair_audit_reads_the_style_file():
@@ -80,3 +104,40 @@ def test_pair_audit_reads_the_style_file():
     changed = resolve_pairs(raw, rules)
     index2 = next(pair for pair in changed if pair["name"] == "Index contour vs paper")
     assert parse_colour(index2["a"]["colour"])[:3] == (0, 0, 0)
+
+
+def test_qgis_byte_pair_alpha_resolves_to_unit_range():
+    # Catches a vegetation fill alpha left as a QGIS 0-255 byte in pair compositing.
+    colour = resolve_colour_spec(
+        {"colour": "vegetation.scrub.colour", "alpha": "vegetation.scrub.alpha"},
+        {"vegetation": {"scrub": {"colour": "#A3CC90", "alpha": 200}}},
+    )
+    parsed = parse_colour(colour)
+    assert parsed[3] != 200
+    assert abs(parsed[3] - 200 / 255) < 1e-6
+
+
+def test_topo_line_on_fill_pairs_use_style_paths():
+    # Catches a line-on-fill pair left as hex, or Stream vs paper using the grid ink.
+    topo_path = ROOT / "tools" / "pairs-topo50-accessible.json"
+    topo = json.load(open(topo_path))
+    by_name = {pair["name"]: pair for pair in topo}
+    missing = [name for name in LINE_ON_FILL_NAMES if name not in by_name]
+    assert missing == []
+    stream_raw = by_name["Stream vs paper"]
+    assert stream_raw["a"]["colour"] == "reference_inks.stream"
+    native_raw = next(pair for pair in topo if pair["name"] == "Native forest vs scrub")
+    assert native_raw["a"]["alpha"] == "vegetation.native.alpha"
+    assert native_raw["b"]["alpha"] == "vegetation.scrub.alpha"
+    water_raw = next(pair for pair in topo if pair["name"] == "Scrub vs water")
+    assert water_raw["a"]["alpha"] == "vegetation.scrub.alpha"
+    for name in LINE_ON_FILL_NAMES:
+        pair = by_name[name]
+        for side in ("a", "b"):
+            colour = pair[side]["colour"]
+            if colour != "#FFFFFF":
+                assert colour.startswith("reference_inks.") or "." in colour
+                assert not colour.startswith("#"), (name, side, colour)
+    rules = load_rules()
+    result = next(iter(pair_audit(resolve_pairs([stream_raw], rules), (255, 255, 255))))
+    assert result["grey_cr"] < 3

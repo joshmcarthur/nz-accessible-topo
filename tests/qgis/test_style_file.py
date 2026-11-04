@@ -33,6 +33,10 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["project_road_casing"] == "#232323"
     assert style["reference_inks"]["water_fill"] == "#D1E7F5"
     assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
+    assert style["reference_inks"]["stream"] == "#009EFF"
+    assert style["reference_inks"]["shelterbelt"] == "#94FF3B"
+    assert style["reference_inks"]["grid"] == "#29A0D3"
+    assert style["reference_inks"]["urban_fill"] == "#BCBAB6"
     assert FAMILY == style["fonts"]["raster_family"]
     assert size_floor("contour", "1") == str(int(style["labels"]["size_floor_pt"]))
     assert size_floor("relief_point map", "1") == str(

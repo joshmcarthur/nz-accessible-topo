@@ -1,6 +1,7 @@
 # Backlog
 
-Status as of 2026-11-04, after log 0060 (4 km grid review, logs 0057–0060).
+Status as of 2026-11-04, after log 0061 (line-on-fill pairs).
+The pair file holds line-on-fill pairs and the log 0060 stream, shelterbelt, and grid classes. R-01 stays open.
 A recommendation is met only after the full-grid stock review in `docs/method.md` (log 0057).
 Log 0025 is the stock sheet. Log 0024 records the font decision: the
 accessible sheet uses Atkinson Hyperlegible Next with Ō/ō; the stock sheet
@@ -12,7 +13,7 @@ R-07 is met. Label ink is at least 4.8:1 against the drawn buffer. The text-cont
 R-10 is met. Scrub is `#A3CC90` plus a hatch. Scattered is `#E0EDD8` plus a pattern (log 0034).
 R-11 is open again (log 0058). Where closed tracks are dense, the bars read as a railway, an embankment or a cliff (log 0057). Closed tracks have cross-bars. Historic labels keep hue and meet 3:1 under red light (log 0035).
 R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps the hatch. Contour-number FontMarkers use the index ink (logs 0036, 0051).
-R-01 is open again (log 0058). Index contour on scrub is 2.93:1. Streams `#009EFF` are 2.86:1 and shelterbelts `#94FF3B` are 1.26:1 on paper (log 0060). Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
+R-01 is open again (log 0058). Index contour on scrub is 2.91:1 from the pair file (2.93:1 on painted pixels). Streams `#009EFF` are 2.86:1 and shelterbelts `#94FF3B` are 1.26:1 on paper (logs 0060, 0061). Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
 R-05 is open again (log 0059). Contour-number FontMarkers are still italic. Natural-feature names have no cue now that italic is gone.
 R-08 stays provisional. Vector labels use 0.05 em from the style file. Raster along-line labels keep normal spacing. No A/B test (log 0039).
 R-12 is met. `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Access is not drawn (log 0042).
@@ -43,6 +44,7 @@ kanban
     d5[Font decision: accessible sheet uses Atkinson Next with Ō/ō]@{ ticket: B-28 }
     d6[Stock BX24 sheet from the LINZ map container]@{ ticket: B-22 }
     d7[Topo50 data path for BX24 documented]@{ ticket: B-23 }
+    d8[Pair file: line-on-fill pairs and inventory classes]@{ ticket: B-40 }
   ready[Ready]
     b01[Decide history slim then push to GitHub]@{ ticket: B-01, priority: 'Very High' }
     b02[First CI run on GitHub]@{ ticket: B-02, priority: 'Very High' }
@@ -57,7 +59,6 @@ kanban
     b29[Audit rendered sheets: inks, pairs, simulations]@{ ticket: B-29, priority: 'High' }
     b04[Captures of stock vs accessible Topo50 for site]@{ ticket: B-04, priority: 'High' }
   review[Next - grid review fixes]
-    b40[Pair file: line-on-fill pairs and inventory classes]@{ ticket: B-40, priority: 'Very High' }
     b41[Site page: ink contrast matrix]@{ ticket: B-41, priority: 'High' }
     b42[Loop prompt runs the full-grid review]@{ ticket: B-42, priority: 'High' }
     b30[Closed tracks do not read as railway or cliff]@{ ticket: B-30, priority: 'Very High' }
@@ -122,7 +123,7 @@ product. Its research and decisions carry over to the QGIS fork.
 | B-18 | Very Low | Replication shown in chain grades | Trace page updated | — | — |
 | B-20 | Very High | User testing plan + recruitment | Plan doc | B-24, B-25 | R-16 |
 | B-21 | Very High | Run sessions; log results | Grade-B findings from our own study | B-20 | R-16 |
-| B-40 | Very High | Add line-on-fill pairs (index and intermediate contour, stream, track on scrub, native, water, urban) and the log 0060 classes (stream `#009EFF`, shelterbelt `#94FF3B`, grid) to `tools/pairs-topo50-accessible.json`. Keep the ink list in one data file the site can read | Audit reports every pair; new fails named | — | R-01, R-14, logs 0058, 0060 |
+| B-40 | Very High | Add line-on-fill pairs (index and intermediate contour, stream, track on scrub, native, water, urban) and the log 0060 classes (stream `#009EFF`, shelterbelt `#94FF3B`, grid) to `tools/pairs-topo50-accessible.json`. Keep the ink list in one data file the site can read | Audit reports every pair; new fails named | — | R-01, R-14, logs 0058, 0060, 0061 |
 | B-41 | High | Site page: ink contrast matrix. Every painted ink against every other (contour vs stream, contour vs scrub, stream vs scrub, …). Each cell shows contrast in normal, grey and red light and the worst dichromacy ΔE, with a line-on-fill swatch. Use the `palette_audit.py` models; no new vision model | Page on the site; passes S1–S3 | B-40 | R-01, R-14, log 0060 |
 | B-42 | High | Loop prompt Step B renders the 4 km grid and runs the stock review before it marks a recommendation met | Prompt updated | — | log 0057 |
 | B-30 | Very High | Closed-track symbol that does not read as a railway, embankment or cliff where tracks are dense. Ideas: fewer bars, an ×, mask bars under labels. **Conflict:** the accepted decision says a bar every 4 mm looked open (log 0056). Choose with Josh | Grid review passes G1; R-11 "Met when" | — | R-11, G1, log 0057 |
