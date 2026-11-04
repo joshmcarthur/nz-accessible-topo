@@ -16,9 +16,9 @@ and R-13 stay open. R-08 stays provisional. R-15 raster owns the road fill;
 vector layers the style file does not name still keep LINZ road paint. R-16
 is not started. Pair colours resolve from `tools/style-topo50.json` (R-14).
 
-**Reopened (log 0058):** R-01, R-09 and R-11 stay open. Their "Met
-when" also tests lines and labels against the fills under them, symbol
-confusion with other legend symbols, and label placement.
+**Reopened (log 0058):** R-01 and R-09 stay open. R-11 is met (log 0066).
+Their "Met when" also tests lines and labels against the fills under them,
+symbol confusion with other legend symbols, and label placement.
 A recommendation is met only after the full-grid stock review in `docs/method.md`.
 R-05 is also open again (log 0059). Contour-number FontMarkers are now
 Regular in the apply step, and natural-feature names use Bold (log 0063).

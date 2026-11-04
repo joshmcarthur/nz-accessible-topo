@@ -68,3 +68,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0063 — One topographic style pass](0063-one-topographic-style-pass.md)
 - [0064 — Smaller, sparser closed-track ×](0064-sparser-closed-track.md)
 - [0065 — Closed-track × every 3 mm](0065-closed-track-3mm.md)
+- [0066 — G1 passed; R-11 met](0066-g1-passed.md)
