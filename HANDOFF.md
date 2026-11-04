@@ -51,7 +51,8 @@ ofl/opensans ofl/notosans ofl/atkinsonhyperlegiblenext ofl/roboto`.
   question, what we did, what we found, what changed, confidence & gaps.
   Corrections are logged, not silently edited.
 - **Generated files are never hand-edited**: `styles/*.json`,
-  `docs/styles/*-changes.md`, `site/src/data/graph.json`, `tokens.css`. CI
+  `docs/styles/*-changes.md`, `site/src/data/graph.json`, `tokens.css`,
+  `site/src/data/ink-matrix.json`. CI
   fails if they drift.
 - **Every finding cites a source; every recommendation rests on something**:
   `extract_graph.py` enforces this.

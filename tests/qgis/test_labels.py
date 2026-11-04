@@ -145,6 +145,21 @@ def test_label_contrast_darkens_water_and_draws_the_buffer():
         >= 4.8
     )
     assert contour_ink[:3] != (255, 180, 29)
+    spot = ET.fromstring(
+        """
+        <maplayer>
+          <layername>relief_point map</layername>
+          <labeling><settings>
+            <text-style textColor="0,0,0,255" fontSize="6">
+              <text-buffer bufferDraw="0" bufferOpacity="1" bufferColor="255,255,255,255" bufferSize="0.5"/>
+            </text-style>
+          </settings></labeling>
+        </maplayer>
+        """
+    )
+    patch_label_contrast(spot)
+    spot_buf = spot.find(".//text-buffer")
+    assert spot_buf.get("bufferColor").startswith("188,186,182")
 
 
 def test_multiline_baseline_splits_at_a_fold():

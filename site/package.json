@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "data": "cd .. && python3 tools/extract_graph.py && python3 tools/export_tokens.py && python3 tools/build_site_assets.py",
+    "data": "cd .. && python3 tools/extract_graph.py && python3 tools/export_tokens.py && python3 tools/export_ink_matrix.py && python3 tools/build_site_assets.py",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

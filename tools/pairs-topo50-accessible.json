@@ -241,7 +241,7 @@
    "colour": "vegetation.scrub.colour",
    "alpha": "vegetation.scrub.alpha"
   },
-  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+  "why": "R-01. Stream on a fill (log 0060)."
  },
  {
   "name": "Stream vs native forest",
@@ -251,19 +251,19 @@
    "colour": "vegetation.native.colour",
    "alpha": "vegetation.native.alpha"
   },
-  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+  "why": "R-01. Stream on a fill (log 0060)."
  },
  {
   "name": "Stream vs water",
   "a": {"label": "stream", "colour": "reference_inks.stream"},
   "b": {"label": "water fill", "colour": "reference_inks.water_fill"},
-  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+  "why": "R-01. Stream on a fill (log 0060)."
  },
  {
   "name": "Stream vs urban",
   "a": {"label": "stream", "colour": "reference_inks.stream"},
   "b": {"label": "urban fill", "colour": "reference_inks.urban_fill"},
-  "why": "R-01. Stream #009EFF on a fill (log 0060)."
+  "why": "R-01. Stream on a fill (log 0060)."
  },
  {
   "name": "Track vs scrub",
@@ -301,19 +301,71 @@
   "name": "Stream vs paper",
   "a": {"label": "stream", "colour": "reference_inks.stream"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-01. Map5View paints streams #009EFF, not the legend ink (log 0060)."
+  "why": "R-01. Map5View paints streams in reference_inks.stream, not the legend ink (log 0060)."
  },
  {
   "name": "Shelterbelt vs paper",
   "a": {"label": "shelterbelt", "colour": "reference_inks.shelterbelt"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-01. Shelterbelt and green dots paint #94FF3B (log 0060)."
+  "why": "R-01. Shelterbelt and green dots use reference_inks.shelterbelt (log 0060)."
  },
  {
   "name": "Grid vs paper",
   "a": {"label": "grid", "colour": "reference_inks.grid"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
   "why": "R-01. Grid lines paint #29A0D3. That is not the stream ink (log 0060)."
+ },
+ {
+  "name": "Index contour vs stream",
+  "a": {
+   "label": "index contour",
+   "colour": "contours.index.colour",
+   "alpha": "contours.index.alpha"
+  },
+  "b": {"label": "stream", "colour": "reference_inks.stream"},
+  "why": "R-01. Contour versus stream on steep slopes (G6, log 0057). Shape still differs in weight."
+ },
+ {
+  "name": "Intermediate contour vs stream",
+  "a": {
+   "label": "intermediate contour casing",
+   "colour": "contours.intermediate.casing_colour",
+   "alpha": "contours.intermediate.alpha"
+  },
+  "b": {"label": "stream", "colour": "reference_inks.stream"},
+  "why": "R-01. Intermediate casing versus stream (G6, log 0057)."
+ },
+ {
+  "name": "Shelterbelt vs native forest",
+  "a": {"label": "shelterbelt", "colour": "reference_inks.shelterbelt"},
+  "b": {
+   "label": "native forest fill",
+   "colour": "vegetation.native.colour",
+   "alpha": "vegetation.native.alpha"
+  },
+  "why": "R-01. Shelterbelt on native fill is 1.08:1 in log 0060."
+ },
+ {
+  "name": "Island outline vs paper",
+  "a": {"label": "island outline", "colour": "reference_inks.island_outline"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Island outline #0083BB on Map5View (log 0060)."
+ },
+ {
+  "name": "Exotic forest vs paper",
+  "a": {
+   "label": "exotic forest fill",
+   "colour": "vegetation.exotic.colour",
+   "alpha": "vegetation.exotic.alpha"
+  },
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Exotic fill #A4D65E at 0.2 on Map5View (log 0060)."
+ },
+ {
+  "name": "Vegetation outline vs paper",
+  "a": {"label": "vegetation outline", "colour": "reference_inks.vegetation_outline"},
+  "b": {"label": "paper", "colour": "#FFFFFF"},
+  "why": "R-01. Vegetation outline #A7C05E on Map5View (log 0060)."
  },
  {
   "name": "Hot spring vs cold spring",

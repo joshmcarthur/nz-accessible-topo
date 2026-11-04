@@ -44,7 +44,8 @@ jobs:
         run: |
           uv run python tools/extract_graph.py
           uv run python tools/export_tokens.py
-          git diff --exit-code site/src/data/graph.json site/src/styles/tokens.css site/src/data/tokens.json
+          uv run python tools/export_ink_matrix.py
+          git diff --exit-code site/src/data/graph.json site/src/styles/tokens.css site/src/data/tokens.json site/src/data/ink-matrix.json
           uv run python tools/build_site_assets.py
       - run: npm ci && npm run build
         working-directory: site

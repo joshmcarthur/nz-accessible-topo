@@ -64,3 +64,7 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0059 — Italic marks natural features in Topo50](0059-italic-marks-natural-features.md)
 - [0060 — Full painted-ink inventory on Map5View](0060-full-painted-ink-inventory.md)
 - [0061 — Line-on-fill pairs and log 0060 classes](0061-line-on-fill-pairs.md)
+- [0062 — Site ink contrast matrix](0062-ink-contrast-page.md)
+- [0063 — One topographic style pass](0063-one-topographic-style-pass.md)
+- [0064 — Smaller, sparser closed-track ×](0064-sparser-closed-track.md)
+- [0065 — Closed-track × every 3 mm](0065-closed-track-3mm.md)

@@ -9,11 +9,15 @@ from nzat.qgis.upright_style_name import upright_style_name
 
 
 def _style_expr(style=None):
-    name = (style or STYLE)["fonts"]["raster_upright_style"]
+    style = style or STYLE
+    regular = style["fonts"]["raster_upright_style"]
+    natural = style["fonts"]["raster_natural_style"]
     return (
         "CASE WHEN lower(coalesce(\"style\", '')) LIKE '%italic%'"
         " OR lower(coalesce(\"style\", '')) LIKE '%narrow%'"
-        f" OR coalesce(\"style\", '') = '' THEN '{name}' ELSE \"style\" END"
+        f" THEN '{natural}'"
+        f" WHEN coalesce(\"style\", '') = '' THEN '{regular}'"
+        ' ELSE "style" END'
     )
 
 

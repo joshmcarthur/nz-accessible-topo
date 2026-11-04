@@ -19,6 +19,7 @@ npm run dev       # or: npm run build && npm run check
 |---|---|---|
 | Sankey, evidence trail, finding and recommendation pages | `docs/sources.md`, `docs/findings/*.md`, `docs/recommendations.md`, `docs/styles/*-changes.md` | `tools/extract_graph.py` → `src/data/graph.json` |
 | Colours | `tools/build_style.py` parameters | `tools/export_tokens.py` → `src/styles/tokens.css` |
+| Ink contrast matrix | `tools/pairs-topo50-accessible.json` + `tools/style-topo50.json` | `tools/export_ink_matrix.py` → `src/data/ink-matrix.json` |
 | Comparison images | `src/data/comparisons.json` + `conditions.json` | `tools/build_site_assets.py` → `public/compare/` (not committed) |
 | Research log | `docs/research-log/*.md` | Astro content collection (read directly) |
 

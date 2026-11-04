@@ -17,7 +17,7 @@ RULES = load_rules()
 
 
 def test_closed_tracks_read_the_style_file():
-    # Catches a vector closed-track casing that ignores the JSON, a second apply that leaves the 90° bar, a bar left every 4 mm, or a raster warm_red left below 3:1 under red light.
+    # Catches a vector closed-track casing that ignores the JSON, a 1 mm × left in every gap, or a raster warm_red left below 3:1 under red light.
     track = RULES["tracks"]["closed_foot"]
     assert track["casing_colour"] == "#1A1A1A"
     assert track["casing_alpha"] == 0.55
@@ -93,17 +93,25 @@ def test_closed_tracks_read_the_style_file():
     size = track_layer.find(
         ".//layer[@class='SimpleMarker']/Option/Option[@name='size']"
     )
+    marker = track_layer.find(
+        ".//layer[@class='SimpleMarker']/Option/Option[@name='name']"
+    )
     assert angle.get("value") == str(
         STYLE["tracks"]["closed_foot"]["crossbar_angle_deg"]
     )
     assert size.get("value") == str(STYLE["tracks"]["closed_foot"]["crossbar_size_mm"])
+    assert marker.get("value") == STYLE["tracks"]["closed_foot"]["marker"]
+    assert marker.get("value") == "cross2"
     interval = track_layer.find(
         ".//layer[@class='MarkerLine']/Option/Option[@name='interval']"
     )
     along = track_layer.find(
         ".//layer[@class='MarkerLine']/Option/Option[@name='offset_along_line']"
     )
-    assert interval.get("value") == "1.5"
+    assert interval.get("value") == str(
+        STYLE["tracks"]["closed_foot"]["marker_interval_mm"]
+    )
+    assert interval.get("value") == "3"
     assert along.get("value") == "1.25"
     width = track_layer.find(
         ".//Option[@name='outlineWidth']/Option[@name='expression']"

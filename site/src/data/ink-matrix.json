@@ -1,0 +1,1032 @@
+{
+ "source_pairs": "tools/pairs-topo50-accessible.json",
+ "source_config": "tools/style-topo50.json",
+ "bg": "#FFFFFF",
+ "floors": {
+  "grey_cr": 3.0,
+  "red_cr": 3.0,
+  "delta_e": 10.0
+ },
+ "pairs": [
+  {
+   "name": "Index vs intermediate contour",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "intermediate contour",
+    "colour": "rgba(176, 136, 114, 0.5)"
+   },
+   "why": "R-04. Same hue, different weight and lightness.",
+   "normal": 26.2,
+   "protanopia": 26.8,
+   "deuteranopia": 25.3,
+   "tritanopia": 26.3,
+   "worst_cvd": 25.3,
+   "grey_cr": 2.73,
+   "red_cr": 2.29,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs print highway",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "print highway",
+    "colour": "#EA6300"
+   },
+   "why": "R-04. Print highway ink is #EA6300. Map5View does not paint this ink.",
+   "normal": 22.2,
+   "protanopia": 17.9,
+   "deuteranopia": 21.6,
+   "tritanopia": 20.3,
+   "worst_cvd": 17.9,
+   "grey_cr": 1.38,
+   "red_cr": 2.72,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs print highway",
+   "a": {
+    "label": "intermediate contour",
+    "colour": "rgba(176, 136, 114, 0.5)"
+   },
+   "b": {
+    "label": "print highway",
+    "colour": "#EA6300"
+   },
+   "why": "R-04. Intermediate was lightened in log 0020. Map5View does not paint this ink.",
+   "normal": 29.3,
+   "protanopia": 31.0,
+   "deuteranopia": 25.5,
+   "tritanopia": 28.6,
+   "worst_cvd": 25.5,
+   "grey_cr": 1.98,
+   "red_cr": 1.19,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs project road",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "project road fill",
+    "colour": "#EC7000"
+   },
+   "why": "R-04. Map5View paints two-lane and sealed roads as PMS151 #FF7F00. Gold #D5B43C is a bivouac marker, not the road fill.",
+   "normal": 23.0,
+   "protanopia": 19.4,
+   "deuteranopia": 23.0,
+   "tritanopia": 20.2,
+   "worst_cvd": 19.4,
+   "grey_cr": 1.51,
+   "red_cr": 2.77,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs project road",
+   "a": {
+    "label": "intermediate contour",
+    "colour": "rgba(176, 136, 114, 0.5)"
+   },
+   "b": {
+    "label": "project road fill",
+    "colour": "#EC7000"
+   },
+   "why": "R-04. Same painted road fill.",
+   "normal": 27.8,
+   "protanopia": 29.1,
+   "deuteranopia": 24.8,
+   "tritanopia": 26.4,
+   "worst_cvd": 24.8,
+   "grey_cr": 1.81,
+   "red_cr": 1.21,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs project highway",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "project highway fill",
+    "colour": "#E31A1C"
+   },
+   "why": "R-04. Map5View paints highway fills as #E31A1C.",
+   "normal": 22.5,
+   "protanopia": 15.3,
+   "deuteranopia": 16.7,
+   "tritanopia": 22.7,
+   "worst_cvd": 15.3,
+   "grey_cr": 1.03,
+   "red_cr": 2.55,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs project highway",
+   "a": {
+    "label": "intermediate contour",
+    "colour": "rgba(176, 136, 114, 0.5)"
+   },
+   "b": {
+    "label": "project highway fill",
+    "colour": "#E31A1C"
+   },
+   "why": "R-04. Same painted highway fill.",
+   "normal": 36.8,
+   "protanopia": 40.9,
+   "deuteranopia": 29.0,
+   "tritanopia": 34.0,
+   "worst_cvd": 29.0,
+   "grey_cr": 2.81,
+   "red_cr": 1.12,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs paper",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-04. Index contours at least 3:1 on paper after stroke alpha.",
+   "normal": 39.7,
+   "protanopia": 39.8,
+   "deuteranopia": 38.0,
+   "tritanopia": 41.0,
+   "worst_cvd": 38.0,
+   "grey_cr": 4.6,
+   "red_cr": 3.28,
+   "fails_r01": false
+  },
+  {
+   "name": "Intermediate contour vs paper",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Intermediate strokes may fall below 3:1. Casing still marks the line. Fill stays #B08872.",
+   "normal": 20.9,
+   "protanopia": 20.4,
+   "deuteranopia": 19.9,
+   "tritanopia": 22.2,
+   "worst_cvd": 19.9,
+   "grey_cr": 2.23,
+   "red_cr": 1.89,
+   "fails_r01": true
+  },
+  {
+   "name": "Contour number vs paper",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-17 P7. FontMarker type contour_number uses the index ink, not road orange.",
+   "normal": 49.5,
+   "protanopia": 50.2,
+   "deuteranopia": 47.4,
+   "tritanopia": 50.7,
+   "worst_cvd": 47.4,
+   "grey_cr": 6.55,
+   "red_cr": 4.29,
+   "fails_r01": false
+  },
+  {
+   "name": "Contour number vs project road",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "project road fill",
+    "colour": "#EC7000"
+   },
+   "why": "R-04 and R-17. Numbers belong to relief. Roads stay orange.",
+   "normal": 28.2,
+   "protanopia": 23.2,
+   "deuteranopia": 29.1,
+   "tritanopia": 25.7,
+   "worst_cvd": 23.2,
+   "grey_cr": 2.15,
+   "red_cr": 3.63,
+   "fails_r01": true
+  },
+  {
+   "name": "Contour number vs project highway",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "project highway fill",
+    "colour": "#E31A1C"
+   },
+   "why": "R-04. Same index ink as the contour line.",
+   "normal": 22.5,
+   "protanopia": 10.3,
+   "deuteranopia": 19.4,
+   "tritanopia": 24.3,
+   "worst_cvd": 10.3,
+   "grey_cr": 1.38,
+   "red_cr": 3.34,
+   "fails_r01": true
+  },
+  {
+   "name": "Contour number vs index contour",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "index contour",
+    "colour": "#7A5542"
+   },
+   "why": "R-01. Same ink. Shape tells the number from the line.",
+   "normal": 0.0,
+   "protanopia": 0.0,
+   "deuteranopia": 0.0,
+   "tritanopia": 0.0,
+   "worst_cvd": 0.0,
+   "grey_cr": 1.0,
+   "red_cr": 1.0,
+   "fails_r01": true
+  },
+  {
+   "name": "Contour number vs intermediate contour",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "intermediate contour",
+    "colour": "#B08872"
+   },
+   "why": "R-04. Number uses index ink.",
+   "normal": 20.3,
+   "protanopia": 20.1,
+   "deuteranopia": 20.2,
+   "tritanopia": 20.3,
+   "worst_cvd": 20.1,
+   "grey_cr": 2.06,
+   "red_cr": 1.98,
+   "fails_r01": true
+  },
+  {
+   "name": "Contour number vs contour label",
+   "a": {
+    "label": "contour number marker",
+    "colour": "#7A5542"
+   },
+   "b": {
+    "label": "contour elevation label",
+    "colour": "#915800"
+   },
+   "why": "R-07 darkened the line label from orange. Marker now uses index ink.",
+   "normal": 14.7,
+   "protanopia": 13.4,
+   "deuteranopia": 13.1,
+   "tritanopia": 7.1,
+   "worst_cvd": 7.1,
+   "grey_cr": 1.12,
+   "red_cr": 1.36,
+   "fails_r01": true
+  },
+  {
+   "name": "Project road vs project highway",
+   "a": {
+    "label": "project road fill",
+    "colour": "#EC7000"
+   },
+   "b": {
+    "label": "project highway fill",
+    "colour": "#E31A1C"
+   },
+   "why": "R-01. Road is darker orange. Highway stays red. Both have a dark casing.",
+   "normal": 20.9,
+   "protanopia": 17.8,
+   "deuteranopia": 10.1,
+   "tritanopia": 11.6,
+   "worst_cvd": 10.1,
+   "grey_cr": 1.55,
+   "red_cr": 1.09,
+   "fails_r01": true
+  },
+  {
+   "name": "Project road vs paper",
+   "a": {
+    "label": "project road fill",
+    "colour": "#EC7000"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-17 P7 and R-01. Fill is #EC7000 at 3:1 grey. Roads also have a #232323 casing for red light.",
+   "normal": 39.3,
+   "protanopia": 41.3,
+   "deuteranopia": 35.8,
+   "tritanopia": 39.1,
+   "worst_cvd": 35.8,
+   "grey_cr": 3.05,
+   "red_cr": 1.18,
+   "fails_r01": true
+  },
+  {
+   "name": "Project highway vs paper",
+   "a": {
+    "label": "project highway fill",
+    "colour": "#E31A1C"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-17 P7 and R-01. Fill is #E31A1C. Highways also have a #232323 casing.",
+   "normal": 48.2,
+   "protanopia": 53.3,
+   "deuteranopia": 41.3,
+   "tritanopia": 45.9,
+   "worst_cvd": 41.3,
+   "grey_cr": 4.74,
+   "red_cr": 1.28,
+   "fails_r01": true
+  },
+  {
+   "name": "Project road casing vs paper",
+   "a": {
+    "label": "project road casing",
+    "colour": "#232323"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Dark casing is the non-hue cue for roads and highways.",
+   "normal": 79.4,
+   "protanopia": 79.4,
+   "deuteranopia": 79.4,
+   "tritanopia": 79.4,
+   "worst_cvd": 79.4,
+   "grey_cr": 15.72,
+   "red_cr": 15.72,
+   "fails_r01": false
+  },
+  {
+   "name": "Native forest vs scrub",
+   "a": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "b": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "why": "R-10 and R-17. Larger lightness step than the print pair.",
+   "normal": 8.7,
+   "protanopia": 8.3,
+   "deuteranopia": 8.0,
+   "tritanopia": 3.2,
+   "worst_cvd": 3.2,
+   "grey_cr": 1.11,
+   "red_cr": 1.11,
+   "fails_r01": true
+  },
+  {
+   "name": "Scrub vs water",
+   "a": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "b": {
+    "label": "water fill",
+    "colour": "#D1E7F5"
+   },
+   "why": "Print P pair. Map5View paints water as #D1E7F5. Shoreline is process_blue.",
+   "normal": 11.1,
+   "protanopia": 10.7,
+   "deuteranopia": 11.7,
+   "tritanopia": 11.5,
+   "worst_cvd": 10.7,
+   "grey_cr": 1.21,
+   "red_cr": 1.41,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs scrub",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 39.7,
+   "protanopia": 38.2,
+   "deuteranopia": 36.2,
+   "tritanopia": 41.3,
+   "worst_cvd": 36.2,
+   "grey_cr": 4.35,
+   "red_cr": 3.02,
+   "fails_r01": false
+  },
+  {
+   "name": "Index contour vs native forest",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 39.4,
+   "protanopia": 35.3,
+   "deuteranopia": 32.9,
+   "tritanopia": 38.8,
+   "worst_cvd": 32.9,
+   "grey_cr": 3.93,
+   "red_cr": 2.72,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs water",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "water fill",
+    "colour": "#D1E7F5"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 40.4,
+   "protanopia": 38.1,
+   "deuteranopia": 37.0,
+   "tritanopia": 46.4,
+   "worst_cvd": 37.0,
+   "grey_cr": 3.61,
+   "red_cr": 2.15,
+   "fails_r01": true
+  },
+  {
+   "name": "Index contour vs urban",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "urban fill",
+    "colour": "#BCBAB6"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 25.8,
+   "protanopia": 25.0,
+   "deuteranopia": 23.3,
+   "tritanopia": 27.2,
+   "worst_cvd": 23.3,
+   "grey_cr": 2.37,
+   "red_cr": 1.73,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs scrub",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 20.8,
+   "protanopia": 18.7,
+   "deuteranopia": 18.0,
+   "tritanopia": 22.7,
+   "worst_cvd": 18.0,
+   "grey_cr": 2.11,
+   "red_cr": 1.74,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs native forest",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 22.1,
+   "protanopia": 16.8,
+   "deuteranopia": 15.3,
+   "tritanopia": 20.1,
+   "worst_cvd": 15.3,
+   "grey_cr": 1.91,
+   "red_cr": 1.57,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs water",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "water fill",
+    "colour": "#D1E7F5"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 23.1,
+   "protanopia": 19.7,
+   "deuteranopia": 20.3,
+   "tritanopia": 32.3,
+   "worst_cvd": 19.7,
+   "grey_cr": 1.75,
+   "red_cr": 1.24,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs urban",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "urban fill",
+    "colour": "#BCBAB6"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 8.2,
+   "protanopia": 5.3,
+   "deuteranopia": 5.6,
+   "tritanopia": 10.1,
+   "worst_cvd": 5.3,
+   "grey_cr": 1.15,
+   "red_cr": 1.01,
+   "fails_r01": true
+  },
+  {
+   "name": "Stream vs scrub",
+   "a": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "b": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "why": "R-01. Stream on a fill (log 0060).",
+   "normal": 51.2,
+   "protanopia": 47.8,
+   "deuteranopia": 53.0,
+   "tritanopia": 43.0,
+   "worst_cvd": 43.0,
+   "grey_cr": 5.58,
+   "red_cr": 19.37,
+   "fails_r01": false
+  },
+  {
+   "name": "Stream vs native forest",
+   "a": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "b": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "why": "R-01. Stream on a fill (log 0060).",
+   "normal": 56.6,
+   "protanopia": 52.3,
+   "deuteranopia": 57.2,
+   "tritanopia": 41.8,
+   "worst_cvd": 41.8,
+   "grey_cr": 5.04,
+   "red_cr": 17.43,
+   "fails_r01": false
+  },
+  {
+   "name": "Stream vs water",
+   "a": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "b": {
+    "label": "water fill",
+    "colour": "#D1E7F5"
+   },
+   "why": "R-01. Stream on a fill (log 0060).",
+   "normal": 41.0,
+   "protanopia": 39.7,
+   "deuteranopia": 44.3,
+   "tritanopia": 36.0,
+   "worst_cvd": 36.0,
+   "grey_cr": 4.63,
+   "red_cr": 13.75,
+   "fails_r01": false
+  },
+  {
+   "name": "Stream vs urban",
+   "a": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "b": {
+    "label": "urban fill",
+    "colour": "#BCBAB6"
+   },
+   "why": "R-01. Stream on a fill (log 0060).",
+   "normal": 40.2,
+   "protanopia": 37.0,
+   "deuteranopia": 42.6,
+   "tritanopia": 36.6,
+   "worst_cvd": 36.6,
+   "grey_cr": 3.05,
+   "red_cr": 11.06,
+   "fails_r01": false
+  },
+  {
+   "name": "Track vs scrub",
+   "a": {
+    "label": "track",
+    "colour": "#000000"
+   },
+   "b": {
+    "label": "scrub fill",
+    "colour": "rgba(163, 204, 144, 0.101961)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 97.4,
+   "protanopia": 97.5,
+   "deuteranopia": 97.3,
+   "tritanopia": 97.3,
+   "worst_cvd": 97.3,
+   "grey_cr": 19.86,
+   "red_cr": 19.37,
+   "fails_r01": false
+  },
+  {
+   "name": "Track vs native forest",
+   "a": {
+    "label": "track",
+    "colour": "#000000"
+   },
+   "b": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 92.1,
+   "protanopia": 91.8,
+   "deuteranopia": 91.8,
+   "tritanopia": 91.1,
+   "worst_cvd": 91.1,
+   "grey_cr": 17.93,
+   "red_cr": 17.43,
+   "fails_r01": false
+  },
+  {
+   "name": "Track vs water",
+   "a": {
+    "label": "track",
+    "colour": "#000000"
+   },
+   "b": {
+    "label": "water fill",
+    "colour": "#D1E7F5"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 86.4,
+   "protanopia": 87.7,
+   "deuteranopia": 85.5,
+   "tritanopia": 87.0,
+   "worst_cvd": 85.5,
+   "grey_cr": 16.46,
+   "red_cr": 13.75,
+   "fails_r01": false
+  },
+  {
+   "name": "Track vs urban",
+   "a": {
+    "label": "track",
+    "colour": "#000000"
+   },
+   "b": {
+    "label": "urban fill",
+    "colour": "#BCBAB6"
+   },
+   "why": "R-01. A line on a fill is measured against that fill (log 0058).",
+   "normal": 64.5,
+   "protanopia": 64.4,
+   "deuteranopia": 64.6,
+   "tritanopia": 64.5,
+   "worst_cvd": 64.4,
+   "grey_cr": 10.84,
+   "red_cr": 11.06,
+   "fails_r01": false
+  },
+  {
+   "name": "Stream vs paper",
+   "a": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Map5View paints streams in reference_inks.stream, not the legend ink (log 0060).",
+   "normal": 50.3,
+   "protanopia": 46.9,
+   "deuteranopia": 52.5,
+   "tritanopia": 44.8,
+   "worst_cvd": 44.8,
+   "grey_cr": 5.9,
+   "red_cr": 21.0,
+   "fails_r01": false
+  },
+  {
+   "name": "Shelterbelt vs paper",
+   "a": {
+    "label": "shelterbelt",
+    "colour": "#1D9D00"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Shelterbelt and green dots use reference_inks.shelterbelt (log 0060).",
+   "normal": 42.1,
+   "protanopia": 38.9,
+   "deuteranopia": 40.1,
+   "tritanopia": 39.0,
+   "worst_cvd": 38.9,
+   "grey_cr": 3.57,
+   "red_cr": 16.86,
+   "fails_r01": false
+  },
+  {
+   "name": "Grid vs paper",
+   "a": {
+    "label": "grid",
+    "colour": "#269FD2"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Grid lines paint #29A0D3. That is not the stream ink (log 0060).",
+   "normal": 33.9,
+   "protanopia": 30.0,
+   "deuteranopia": 35.2,
+   "tritanopia": 33.7,
+   "worst_cvd": 30.0,
+   "grey_cr": 3.01,
+   "red_cr": 15.13,
+   "fails_r01": false
+  },
+  {
+   "name": "Index contour vs stream",
+   "a": {
+    "label": "index contour",
+    "colour": "rgba(122, 85, 66, 0.85)"
+   },
+   "b": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "why": "R-01. Contour versus stream on steep slopes (G6, log 0057). Shape still differs in weight.",
+   "normal": 35.2,
+   "protanopia": 35.9,
+   "deuteranopia": 41.0,
+   "tritanopia": 48.2,
+   "worst_cvd": 35.9,
+   "grey_cr": 1.28,
+   "red_cr": 6.41,
+   "fails_r01": true
+  },
+  {
+   "name": "Intermediate contour vs stream",
+   "a": {
+    "label": "intermediate contour casing",
+    "colour": "rgba(122, 85, 66, 0.5)"
+   },
+   "b": {
+    "label": "stream",
+    "colour": "#0064BD"
+   },
+   "why": "R-01. Intermediate casing versus stream (G6, log 0057).",
+   "normal": 40.3,
+   "protanopia": 37.9,
+   "deuteranopia": 44.9,
+   "tritanopia": 48.3,
+   "worst_cvd": 37.9,
+   "grey_cr": 2.65,
+   "red_cr": 11.12,
+   "fails_r01": true
+  },
+  {
+   "name": "Shelterbelt vs native forest",
+   "a": {
+    "label": "shelterbelt",
+    "colour": "#1D9D00"
+   },
+   "b": {
+    "label": "native forest fill",
+    "colour": "rgba(225, 234, 195, 0.705882)"
+   },
+   "why": "R-01. Shelterbelt on native fill is 1.08:1 in log 0060.",
+   "normal": 35.0,
+   "protanopia": 31.2,
+   "deuteranopia": 32.9,
+   "tritanopia": 35.7,
+   "worst_cvd": 31.2,
+   "grey_cr": 3.05,
+   "red_cr": 13.99,
+   "fails_r01": false
+  },
+  {
+   "name": "Island outline vs paper",
+   "a": {
+    "label": "island outline",
+    "colour": "#0083BB"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Island outline #0083BB on Map5View (log 0060).",
+   "normal": 40.9,
+   "protanopia": 37.5,
+   "deuteranopia": 42.9,
+   "tritanopia": 39.2,
+   "worst_cvd": 37.5,
+   "grey_cr": 4.23,
+   "red_cr": 21.0,
+   "fails_r01": false
+  },
+  {
+   "name": "Exotic forest vs paper",
+   "a": {
+    "label": "exotic forest fill",
+    "colour": "rgba(164, 214, 94, 0.2)"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Exotic fill #A4D65E at 0.2 on Map5View (log 0060).",
+   "normal": 11.6,
+   "protanopia": 9.5,
+   "deuteranopia": 8.6,
+   "tritanopia": 4.7,
+   "worst_cvd": 4.7,
+   "grey_cr": 1.11,
+   "red_cr": 1.17,
+   "fails_r01": true
+  },
+  {
+   "name": "Vegetation outline vs paper",
+   "a": {
+    "label": "vegetation outline",
+    "colour": "#A7C05E"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-01. Vegetation outline #A7C05E on Map5View (log 0060).",
+   "normal": 29.5,
+   "protanopia": 29.1,
+   "deuteranopia": 27.9,
+   "tritanopia": 19.1,
+   "worst_cvd": 19.1,
+   "grey_cr": 2.03,
+   "red_cr": 2.41,
+   "fails_r01": true
+  },
+  {
+   "name": "Hot spring vs cold spring",
+   "a": {
+    "label": "hot spring cross",
+    "colour": "#141414"
+   },
+   "b": {
+    "label": "cold spring circle",
+    "colour": "#005C8F"
+   },
+   "why": "R-17. Glyphs differ. Ink is dark, not red-orange. water_point is not in Map5View.",
+   "normal": 29.3,
+   "protanopia": 30.5,
+   "deuteranopia": 28.9,
+   "tritanopia": 31.0,
+   "worst_cvd": 28.9,
+   "grey_cr": 2.57,
+   "red_cr": 1.14,
+   "fails_r01": true
+  },
+  {
+   "name": "Hot spring vs paper",
+   "a": {
+    "label": "hot spring cross",
+    "colour": "#141414"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-11. Safety mark must survive red light.",
+   "normal": 91.2,
+   "protanopia": 91.2,
+   "deuteranopia": 91.2,
+   "tritanopia": 91.2,
+   "worst_cvd": 91.2,
+   "grey_cr": 18.42,
+   "red_cr": 18.42,
+   "fails_r01": false
+  },
+  {
+   "name": "Closed-track cross-bar vs paper",
+   "a": {
+    "label": "closed-track cross-bar",
+    "colour": "#000000"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-11. Shape carries closed status. Raster paints this ink.",
+   "normal": 100.0,
+   "protanopia": 100.0,
+   "deuteranopia": 100.0,
+   "tritanopia": 100.0,
+   "worst_cvd": 100.0,
+   "grey_cr": 21.0,
+   "red_cr": 21.0,
+   "fails_r01": false
+  },
+  {
+   "name": "Closed-track casing vs paper",
+   "a": {
+    "label": "closed-track casing",
+    "colour": "rgba(26, 26, 26, 0.55)"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-11. Vector casing. Raster does not paint this ink.",
+   "normal": 32.9,
+   "protanopia": 32.9,
+   "deuteranopia": 32.9,
+   "tritanopia": 32.9,
+   "worst_cvd": 32.9,
+   "grey_cr": 3.89,
+   "red_cr": 3.89,
+   "fails_r01": false
+  },
+  {
+   "name": "Historic label vs paper",
+   "a": {
+    "label": "historic site label",
+    "colour": "rgb(145, 0, 0)"
+   },
+   "b": {
+    "label": "paper",
+    "colour": "#FFFFFF"
+   },
+   "why": "R-11. Hue kept. Red-light floor 3:1. Ink is a darkened result, not a configured colour.",
+   "normal": 64.2,
+   "protanopia": 71.3,
+   "deuteranopia": 57.5,
+   "tritanopia": 60.7,
+   "worst_cvd": 57.5,
+   "grey_cr": 9.53,
+   "red_cr": 3.15,
+   "fails_r01": false
+  }
+ ]
+}

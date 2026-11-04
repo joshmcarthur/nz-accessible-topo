@@ -2,6 +2,7 @@
   "fonts": {
     "raster_family": "NZAT Legible Test",
     "raster_upright_style": "Regular",
+    "raster_natural_style": "Bold",
     "stock_family": "Nimbus Sans LINZ",
     "vector_family": "Open Sans"
   },
@@ -47,14 +48,21 @@
     "project_road_casing": "#232323",
     "water_fill": "#D1E7F5",
     "print_legend_highway": "#EA6300",
-    "stream": "#009EFF",
-    "shelterbelt": "#94FF3B",
-    "grid": "#29A0D3",
-    "urban_fill": "#BCBAB6"
+    "stream": "#0064BD",
+    "shelterbelt": "#1D9D00",
+    "grid": "#269FD2",
+    "urban_fill": "#BCBAB6",
+    "island_outline": "#0083BB",
+    "vegetation_outline": "#A7C05E"
   },
   "vegetation": {
-    "native": {"colour": "#E1EAC3", "alpha": 180},
-    "scrub": {"colour": "#A3CC90", "alpha": 200},
+    "native": {
+      "colour": "#E1EAC3",
+      "alpha": 180,
+      "marker": {"colour": "#3F6B32"}
+    },
+    "exotic": {"colour": "#A4D65E", "alpha": 0.2},
+    "scrub": {"colour": "#A3CC90", "alpha": 26},
     "scattered": {"colour": "#E0EDD8"},
     "scrub_hatch": {
       "colour": "#3F6B32",
@@ -79,9 +87,11 @@
       "casing_colour": "#1A1A1A",
       "casing_alpha": 0.55,
       "crossbar_colour": "#000000",
-      "crossbar_size_mm": 1,
-      "crossbar_outline_width_mm": 0.2,
-      "crossbar_angle_deg": 45
+      "crossbar_size_mm": 0.5,
+      "crossbar_outline_width_mm": 0.1,
+      "crossbar_angle_deg": 0,
+      "marker": "cross2",
+      "marker_interval_mm": 3
     }
   },
   "springs": {

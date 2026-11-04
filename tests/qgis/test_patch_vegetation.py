@@ -28,9 +28,24 @@ def test_vegetation_reads_the_style_file():
               <category value="scrub" symbol="3"/>
             </categories>
             <symbols>
-              <symbol name="1" type="fill"><layer class="SimpleFill"><Option type="Map">
-                <Option name="color" type="QString" value="164,214,94,102"/>
-              </Option></layer></symbol>
+                  <symbol name="1" type="fill">
+                    <layer class="SimpleFill"><Option type="Map">
+                      <Option name="color" type="QString" value="164,214,94,102"/>
+                    </Option></layer>
+                    <layer class="PointPatternFill">
+                      <Option type="Map">
+                        <Option name="distance_x" type="QString" value="5"/>
+                      </Option>
+                      <symbol type="marker">
+                        <layer class="SimpleMarker">
+                          <Option type="Map">
+                            <Option name="color" type="QString" value="0,128,0,255"/>
+                            <Option name="size" type="QString" value="1.5"/>
+                          </Option>
+                        </layer>
+                      </symbol>
+                    </layer>
+                  </symbol>
               <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
                 <Option name="distance_x" type="QString" value="5"/>
               </Option></layer></symbol>
@@ -46,7 +61,11 @@ def test_vegetation_reads_the_style_file():
     scrub = layer.find(".//symbol[@name='3']")
     fill = scrub.find("layer[@class='SimpleFill']/Option/Option[@name='color']")
     assert fill.get("value").startswith("163,204,144")
+    assert fill.get("value").endswith(",26")
     assert scrub.find("layer[@class='LinePatternFill']") is not None
+    native = layer.find(".//symbol[@name='1']")
+    tree = native.find("layer[@class='PointPatternFill']//Option[@name='color']")
+    assert tree.get("value").startswith("63,107,50")
     scattered = layer.find(".//symbol[@name='2']")
     assert scattered.find("layer[@class='PointPatternFill']") is not None
     assert scattered.find("layer[@class='SimpleFill']") is None

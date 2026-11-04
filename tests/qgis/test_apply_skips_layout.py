@@ -125,6 +125,18 @@ def test_overrides_skip_the_print_layout():
                 </symbols>
               </renderer-v2>
             </maplayer>
+            <maplayer>
+              <layername>water_line map</layername>
+              <renderer-v2 type="singleSymbol"><symbols>
+                <symbol name="0" type="line">
+                  <layer class="SimpleLine">
+                    <Option type="Map">
+                      <Option name="line_color" type="QString" value="0,158,255,255"/>
+                    </Option>
+                  </layer>
+                </symbol>
+              </symbols></renderer-v2>
+            </maplayer>
           </projectlayers>
           <Layouts>
             <Layout>
@@ -149,9 +161,11 @@ def test_overrides_skip_the_print_layout():
         props.find("Option[@name='Family']/Option[@name='expression']").get("value")
         == f"'{FAMILY}'"
     )
-    assert "italic" in props.find(
-        "Option[@name='FontStyle']/Option[@name='expression']"
-    ).get("value")
+    font_style = props.find("Option[@name='FontStyle']/Option[@name='expression']").get(
+        "value"
+    )
+    assert "italic" in font_style
+    assert "Bold" in font_style
     assert props.find("Option[@name='Family']/Option[@name='field']") is None
     curved = props.find("Option[@name='CurvedLabelMode']/Option[@name='expression']")
     assert "StretchWordSpacingToFit" in curved.get("value")
@@ -191,6 +205,14 @@ def test_overrides_skip_the_print_layout():
         "projectlayers/maplayer[layername='track_line map']//symbol[@name='1']"
     )
     assert track.find("layer[@class='MarkerLine']") is not None
+    closed = track.find(
+        "layer[@class='MarkerLine']/symbol/layer[@class='SimpleMarker']/Option/Option[@name='name']"
+    )
+    assert closed.get("value") == "cross2"
+    stream = root.find(
+        "projectlayers/maplayer[layername='water_line map']//Option[@name='line_color']"
+    )
+    assert stream.get("value").startswith("0,100,189")
     painted = ET.tostring(root, encoding="unicode")
     assert "213,180,60" not in painted
     assert "234,99,0" not in painted
@@ -289,6 +311,18 @@ def test_vegetation_map_draws_below_contour():
                   </symbol>
                 </symbols>
               </renderer-v2>
+            </maplayer>
+            <maplayer>
+              <layername>water_line map</layername>
+              <renderer-v2 type="singleSymbol"><symbols>
+                <symbol name="0" type="line">
+                  <layer class="SimpleLine">
+                    <Option type="Map">
+                      <Option name="line_color" type="QString" value="0,158,255,255"/>
+                    </Option>
+                  </layer>
+                </symbol>
+              </symbols></renderer-v2>
             </maplayer>
           </projectlayers>
         </qgis>

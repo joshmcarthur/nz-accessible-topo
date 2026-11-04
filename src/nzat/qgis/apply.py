@@ -5,6 +5,7 @@ from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_draw_order import patch_draw_order
 from nzat.qgis.patch_hillshade import patch_hillshade
 from nzat.qgis.patch_labels import patch_labels
+from nzat.qgis.patch_owned_lines import patch_owned_lines
 from nzat.qgis.patch_road_fills import patch_road_fills
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_tracks import patch_tracks
@@ -63,7 +64,16 @@ def apply(root, project_dir=None):
         elif name == "water_point":
             patch_springs(layer)
             seen.add(name)
-    missing = {"contour", "track_line map", "vegetation map", "water_point"} - seen
+        elif name == "water_line map":
+            seen.add(name)
+        patch_owned_lines(layer)
+    missing = {
+        "contour",
+        "track_line map",
+        "vegetation map",
+        "water_point",
+        "water_line map",
+    } - seen
     if missing:
         raise RuntimeError(f"missing layers: {', '.join(sorted(missing))}")
     _mask_contour_casing(root)

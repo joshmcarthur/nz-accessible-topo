@@ -27,6 +27,9 @@ LINE_ON_FILL_NAMES = (
     "Stream vs paper",
     "Shelterbelt vs paper",
     "Grid vs paper",
+    "Index contour vs stream",
+    "Intermediate contour vs stream",
+    "Shelterbelt vs native forest",
 )
 
 
@@ -140,4 +143,15 @@ def test_topo_line_on_fill_pairs_use_style_paths():
                 assert not colour.startswith("#"), (name, side, colour)
     rules = load_rules()
     result = next(iter(pair_audit(resolve_pairs([stream_raw], rules), (255, 255, 255))))
-    assert result["grey_cr"] < 3
+    assert result["grey_cr"] >= 3
+    assert result["red_cr"] >= 3
+    scrub_raw = by_name["Index contour vs scrub"]
+    scrub = next(iter(pair_audit(resolve_pairs([scrub_raw], rules), (255, 255, 255))))
+    assert scrub["grey_cr"] >= 3
+    assert scrub["red_cr"] >= 3
+    for name in ("Shelterbelt vs paper", "Grid vs paper"):
+        row = next(
+            iter(pair_audit(resolve_pairs([by_name[name]], rules), (255, 255, 255)))
+        )
+        assert row["grey_cr"] >= 3
+        assert row["red_cr"] >= 3

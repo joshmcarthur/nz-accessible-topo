@@ -16,15 +16,16 @@ and R-13 stay open. R-08 stays provisional. R-15 raster owns the road fill;
 vector layers the style file does not name still keep LINZ road paint. R-16
 is not started. Pair colours resolve from `tools/style-topo50.json` (R-14).
 
-**Reopened (log 0058):** R-01, R-09 and R-11 are open again. Their "Met
-when" now also tests lines and labels against the fills under them, symbol
-confusion with other legend symbols, and label placement. The 4 km BX24
-grid fails each of these (log 0057). A recommendation is met only after the
-full-grid stock review in `docs/method.md`.
-R-05 is also open again (log 0059): contour-number FontMarkers are still
-italic, and natural-feature names have lost their class cue.
-The pair file now includes line-on-fill pairs and the log 0060 stream,
-shelterbelt, and grid classes (log 0061). R-01 stays open.
+**Reopened (log 0058):** R-01, R-09 and R-11 stay open. Their "Met
+when" also tests lines and labels against the fills under them, symbol
+confusion with other legend symbols, and label placement.
+A recommendation is met only after the full-grid stock review in `docs/method.md`.
+R-05 is also open again (log 0059). Contour-number FontMarkers are now
+Regular in the apply step, and natural-feature names use Bold (log 0063).
+Those cues still need the full-grid review.
+The site `/inks/` page lists every pair in the pair file (log 0062). Stream,
+shelterbelt, grid, and index-on-scrub pairs now pass the 3:1 floors (log 0063).
+R-01 stays open until G5, G6, and the remaining pair floors pass the grid review.
 
 **Note on R-07 values:** the build darkens each failing label colour along
 CIELAB L\* (hue kept) to 4.8:1 (4.5 + margin), so the shipped water-label

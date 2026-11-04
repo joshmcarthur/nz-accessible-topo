@@ -1,0 +1,104 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { linkify } from "../lib/linkify";
+import { url } from "../lib/graph";
+import matrix from "../data/ink-matrix.json";
+
+const logs = (await getCollection("log")).map((entry) => entry.id);
+const floors = matrix.floors;
+const rows = [...matrix.pairs].sort((left, right) => {
+  if (left.fails_r01 !== right.fails_r01) return left.fails_r01 ? -1 : 1;
+  return left.grey_cr - right.grey_cr;
+});
+const fails = rows.filter((row) => row.fails_r01).length;
+---
+<Base title="Ink contrast" current="inks/">
+  <h1>Ink contrast</h1>
+  <p class="lede">Every pair in the Topo50 pair file, measured with the same models as the palette audit. A line-on-fill swatch sits beside Grey CR, Red CR, Normal ΔE, and the worst dichromacy ΔE.</p>
+  <p>Grey or Red below {floors.grey_cr}:1 fails R-01 unless shape already carries the class. Intermediate contours keep a casing. {fails} of {rows.length} pairs fail those floors today. Paint has not closed R-01.</p>
+  <p class="note">Numbers come from <code>tools/pairs-topo50-accessible.json</code> and <code>tools/style-topo50.json</code>. The audit composites each side onto paper, then compares the two results. Named leftover inks sit in the pair file. Intermediate-on-fill rows can still fail those floors.</p>
+
+  <div class="table-wrap wide">
+    <table>
+      <caption>Topo50 accessible pair audit. Fail rows are first.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Pair</th>
+          <th scope="col">Swatch</th>
+          <th scope="col">Grey CR</th>
+          <th scope="col">Red CR</th>
+          <th scope="col">Normal ΔE</th>
+          <th scope="col">Worst CVD ΔE</th>
+          <th scope="col">R-01 floors</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>
+            <th scope="row">
+              {row.name}
+              <p class="why" set:html={linkify(row.why, logs)} />
+            </th>
+            <td>
+              <span class="swatch" aria-hidden="true" style={`--line:${row.a.colour};--fill:${row.b.colour}`}></span>
+              <span class="sr">{row.a.label} on {row.b.label}</span>
+            </td>
+            <td>{row.grey_cr.toFixed(2)}</td>
+            <td>{row.red_cr.toFixed(2)}</td>
+            <td>{row.normal.toFixed(1)}</td>
+            <td>{row.worst_cvd.toFixed(1)}</td>
+            <td>
+              <span class:list={["verdict", row.fails_r01 ? "fail" : "pass"]}>
+                {row.fails_r01 ? "Fail" : "Pass"}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p><a href={url("recommendations/R-01/")}>R-01 on the evidence trail</a>.</p>
+</Base>
+<style>
+  caption { text-align: left; font-weight: 700; margin-bottom: .75rem; }
+  .why { font-weight: 400; margin: .35rem 0 0; max-width: 42ch; }
+  .swatch {
+    display: block;
+    width: 4.5rem;
+    height: 1.6rem;
+    border: 1px solid var(--ink);
+    background: var(--fill);
+    position: relative;
+  }
+  .swatch::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    background: var(--line);
+  }
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .verdict { font-weight: 700; }
+  .verdict.fail::before, .verdict.pass::before {
+    content: "";
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    margin-right: .4rem;
+    border: 2px solid var(--ink);
+    vertical-align: -0.1rem;
+  }
+  .verdict.fail::before { background: var(--ink); }
+  .verdict.pass::before { background: var(--paper); }
+  td { font-variant-numeric: tabular-nums; }
+</style>

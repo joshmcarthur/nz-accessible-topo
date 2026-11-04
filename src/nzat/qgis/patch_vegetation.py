@@ -111,7 +111,34 @@ def patch_vegetation(layer, style=None):
     scrub_fill = scrub.find("layer[@class='SimpleFill']")
     set_option(native_fill, "color", rgba(native_ink["colour"], native_ink["alpha"]))
     set_option(scrub_fill, "color", rgba(scrub_ink["colour"], scrub_ink["alpha"]))
+    _paint_native_marker(native, style)
     # Colour alone does not separate these fills in greyscale (R-10).
     # Scattered scrub keeps its dot pattern. Scrub gets a line hatch.
     if scrub.find("layer[@class='LinePatternFill']") is None:
         scrub.insert(0, _scrub_hatch(style))
+
+
+MARKER_CLASSES = (
+    "PointPatternFill",
+    "CentroidFill",
+    "SimpleMarker",
+    "FontMarker",
+    "SvgMarker",
+)
+
+
+def _paint_native_marker(native, style):
+    marker = style["vegetation"]["native"].get("marker")
+    if not marker:
+        return
+    ink = rgba(marker["colour"], 255)
+    for layer in native.findall(".//layer"):
+        if layer.get("class") not in MARKER_CLASSES:
+            continue
+        option = layer.find("Option")
+        if option is None:
+            continue
+        for name in ("color", "outline_color"):
+            child = option.find(f"Option[@name='{name}']")
+            if child is not None:
+                child.set("value", ink)

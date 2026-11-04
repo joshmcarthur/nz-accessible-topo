@@ -89,7 +89,7 @@ def _closed_crossbar(style=None):
         ("color", ink),
         ("horizontal_anchor_point", "1"),
         ("joinstyle", "bevel"),
-        ("name", "line"),
+        ("name", track["marker"]),
         ("offset", "0,0"),
         ("offset_unit", "MM"),
         ("outline_color", ink),
@@ -145,6 +145,7 @@ def _sync_closed_crossbar(marker, style):
     for name, value in (
         ("angle", str(track["crossbar_angle_deg"])),
         ("color", ink),
+        ("name", track["marker"]),
         ("outline_color", ink),
         ("outline_width", str(track["crossbar_outline_width_mm"])),
         ("size", str(track["crossbar_size_mm"])),

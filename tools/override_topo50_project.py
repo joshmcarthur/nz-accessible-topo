@@ -15,9 +15,12 @@ Changes are on the map layers the research names:
 - track_line map: track access is a reserved unpainted casing_colour channel (R-12)
 - water_point: hot and cold springs get different glyphs (R-17)
 - vegetation map: native forest and scrub use a larger lightness step (R-10, R-17)
+- vegetation map: native tree markers use vegetation.native.marker (R-10)
 - vegetation map: draws below contour so the darker fills do not hide relief (R-04)
+- water_line map, shelterbelt, grid: stock RGB becomes the owned reference inks (R-01)
+- track_line map: closed-track gap marks are an × (R-11)
 - road fills: PMS151 two-lane and sealed fills become reference_inks.project_road (R-01)
-- nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink (R-17 P7)
+- nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink, upright (R-17 P7, R-05)
 - hillshade: optional overlay at 337.5°. Turns on when dem.tif sits beside the project (R-03)
 
 Usage: python3 tools/override_topo50_project.py IN.qgs OUT.qgs

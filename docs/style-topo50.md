@@ -18,7 +18,9 @@ The script changes map layers only. Layout text stays Nimbus Sans LINZ. Layout t
 
 An along-line label keeps its stretch `charplace` when it is one line and its baseline is longer than the estimated text width. Other stretch labels use default spacing, so the larger type is not squeezed. A one-line name on a curved baseline stays on the curved rule.
 
-The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
+The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour, except on a layer whose name contains `relief_point`. That halo uses `reference_inks.urban_fill`. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
+
+A carto_text `style` value that looks like italic or narrow becomes `fonts.raster_natural_style`. That style is Bold. An empty style becomes Regular. Named styles stay upright.
 
 A square render draws the `Map5View` layers. That is the layer set on the `tiff-50` map. The render does not draw a layer that theme hides.
 
@@ -58,11 +60,11 @@ The QGIS apply step darkens a label ink that is below that red-light floor. It k
 
 The vector build reads `vegetation.native`, `vegetation.scrub`, and `vegetation.scattered` from this file.
 
-`vegetation.native.colour` is `#E1EAC3`. `vegetation.scrub.colour` is `#A3CC90`. `vegetation.scattered.colour` is `#E0EDD8`.
+`vegetation.native.colour` is `#E1EAC3`. `vegetation.native.marker.colour` is `#3F6B32`. `vegetation.scrub.colour` is `#A3CC90`. `vegetation.scrub.alpha` is 26. `vegetation.scattered.colour` is `#E0EDD8`.
 
-The QGIS apply step paints the scrub fill and a line hatch. It keeps the stock scattered-scrub dots. It does not add a fill under those dots.
+The QGIS apply step paints the scrub fill and a line hatch. The hatch carries the class. It paints a native tree marker when that marker layer is already in the project. It keeps the stock scattered-scrub dots. It does not add a fill under those dots.
 
-The QGIS apply step moves `vegetation map` so it sits immediately under `contour`. Custom-order stays off. Vegetation alpha stays 180 native and 200 scrub. `vegetation_line map` stays above contours. The vector style already paints contours after vegetation fills.
+The QGIS apply step moves `vegetation map` so it sits immediately under `contour`. Custom-order stays off. Vegetation alpha stays 180 native and 26 scrub. `vegetation_line map` stays above contours. The vector style already paints contours after vegetation fills.
 
 The vector build paints those three fills. It adds a stipple on scattered scrub.
 
@@ -76,7 +78,7 @@ The vector build reads `tracks.closed_foot.casing_colour` and `tracks.closed_foo
 
 `tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is 0.55.
 
-The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. One cross-bar sits in each gap. The bar angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 45. A second apply writes the angle and the gap position onto the marker that is already in the project.
+The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. The marker name is `tracks.closed_foot.marker`. That name is `cross2`. Size is `tracks.closed_foot.crossbar_size_mm`. That size is 0.5 mm. Interval is `tracks.closed_foot.marker_interval_mm`. That interval is 3 mm, every second dash gap. The first mark sits in a gap. The angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 0. A second apply writes the marker, the size, the interval, and the gap position onto the marker that is already in the project.
 
 `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false.
 
@@ -122,7 +124,7 @@ Do not put a sheet code in the file.
 
 `reference_inks.project_road` is `#EC7000`. The QGIS apply step paints two-lane and sealed PMS151 fills in that ink. Highway fills stay `#E31A1C`. Gold `#D5B43C` is the bivouac marker, not the road fill.
 
-Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`.
+Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are Regular, not italic. Size is at least 6 pt.
 
 `reference_inks.project_highway` is `#E31A1C`. Map5View paints highway fills in that ink. The apply step does not paint that ink.
 
@@ -132,13 +134,19 @@ Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour
 
 `reference_inks.print_legend_highway` is `#EA6300`. Map5View does not paint that ink.
 
-`reference_inks.stream` is `#009EFF`. Map5View paints streams, drains, coastline, and water outlines in that ink. The apply step does not paint that ink.
+`reference_inks.stream` is `#0064BD`. That hex keeps the process-blue hue and lowers L* until Grey and Red CR reach 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, and water outlines as `#009EFF`. The apply step rewrites that RGB.
 
-`reference_inks.shelterbelt` is `#94FF3B`. Map5View paints shelterbelts and green vegetation dots in that ink. The apply step does not paint that ink.
+`reference_inks.shelterbelt` is `#1D9D00`. Map5View paints shelterbelts and green vegetation dots as `#94FF3B`. The apply step rewrites that RGB.
 
-`reference_inks.grid` is `#29A0D3`. Map5View paints grid lines in that ink. The apply step does not paint that ink.
+`reference_inks.grid` is `#269FD2`. Map5View paints grid lines as `#29A0D3`. The apply step rewrites that RGB.
 
 `reference_inks.urban_fill` is `#BCBAB6`. Map5View paints residential fill in that ink. The apply step does not paint that ink.
+
+`reference_inks.island_outline` is `#0083BB`. Map5View paints island outlines in that ink. The apply step does not paint that ink.
+
+`reference_inks.vegetation_outline` is `#A7C05E`. Map5View paints vegetation outlines in that ink. The apply step does not paint that ink.
+
+`vegetation.exotic.colour` is `#A4D65E`. `vegetation.exotic.alpha` is `0.2`. Map5View paints exotic forest in that fill. The apply step does not paint that fill.
 
 `fonts.vector_family` is Open Sans. The QGIS apply step does not use that family.
 

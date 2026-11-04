@@ -52,6 +52,10 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
                   <Option type="Map">
                     <Option name="chr" type="QString" value="A"/>
                     <Option name="color" type="QString" value="255,127,0,255"/>
+                    <Option name="fontStyle" type="QString" value="Italic"/>
+                    <Option name="fontItalic" type="QString" value="1"/>
+                    <Option name="size" type="QString" value="4"/>
+                    <Option name="size_unit" type="QString" value="Point"/>
                   </Option>
                 </layer>
               </symbol>
@@ -63,3 +67,7 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
     patch_contour_numbers(carto)
     color = carto.find(".//Option[@name='color']").get("value")
     assert color.startswith("122,85,66")
+    assert carto.find(".//Option[@name='fontStyle']").get("value") == "Regular"
+    assert carto.find(".//Option[@name='fontItalic']").get("value") == "0"
+    assert carto.find(".//layer[@class='FontMarker']").get("fontItalic") == "0"
+    assert float(carto.find(".//Option[@name='size']").get("value")) >= 6

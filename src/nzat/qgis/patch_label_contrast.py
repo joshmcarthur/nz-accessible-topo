@@ -9,6 +9,7 @@ from nzat.qgis.label_behind import label_behind
 from nzat.qgis.parse_qgis_colour import parse_qgis_colour
 from nzat.qgis.put_expr import put_expr
 from nzat.qgis.rgb_key import rgb_key
+from nzat.qgis.rgba import rgba
 from nzat.qgis.settings_props import settings_props
 
 
@@ -41,12 +42,19 @@ def patch_label_contrast(layer, style=None, palette=None):
     red_min = style["label_contrast"]["red_light_min"]
     max_mm = style["label_contrast"]["halo_max_mm"]
     named = palette or []
+    layer_name = layer.findtext("layername") or ""
+    spot = style["labels"]["spot_height_layer_contains"]
+    urban = style["reference_inks"]["urban_fill"]
     for settings in layer.findall(".//settings"):
         text_style = settings.find("text-style")
         if text_style is None:
             continue
         buffer_el = text_style.find("text-buffer")
         draw_configured_buffer(buffer_el, max_mm)
+        if spot in layer_name and buffer_el is not None:
+            parsed = parse_qgis_colour(buffer_el.get("bufferColor"))
+            if parsed is not None:
+                buffer_el.set("bufferColor", rgba(urban, 255))
         behind = label_behind(buffer_el)
         props = settings_props(settings)
         expression = expr(props, "Color") if props is not None else None
