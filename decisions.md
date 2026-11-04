@@ -963,3 +963,24 @@ The closed line uses the open foot-track weight and dash (0.15 mm, dash 1 mm, ga
 
 Do not return to the 0.45 mm closed line. The web sprite is still a perpendicular bar. A second apply must write the angle and the gap position onto an existing marker.
 
+
+## A full-grid stock review gates "met"
+
+**Status:** Accepted
+**Date:** 2026-11
+
+### Context
+
+Every "Met when" is a fixed threshold. The loop judged each recommendation on one 1 km square chosen for it. The 4 km BX24 grid then showed label pile-ups, a lost natural-feature cue, dark scrub under contours, and closed-track bars that read as a railway. Each passed its own gate.
+
+### Decision
+
+A recommendation is met only when its threshold holds and a stock-versus-accessible review of the full 4 km grid (`render/bx24-4km`) finds no regression that the change causes. Recorded in `docs/method.md` (log 0057).
+
+### Rationale
+
+Thresholds check one pair at a time. Regressions come from interaction with dense data and neighbouring classes, which only the grid shows. The grid is cheap: one face draw per style, then crops.
+
+### Consequences
+
+Status can go back from met to open after a grid review. The review is a judgement (grade D) until user testing (R-16).

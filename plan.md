@@ -111,3 +111,18 @@ Draw one stock face and one accessible face at 300 dpi, then crop. Do not draw e
 Extent is 1564000–1588000 E, 5154000–5190000 N. Cell is 4000 m. Grid is 6 by 9. Keep cells where column plus row is even. That includes the south-west cell. That is 27 cells and 54 PNGs. Each cell is 945 px. Each face is 5670 by 8505 px.
 
 `tools/render_square.py --extent` draws the face. `tools/crop_grid.py` crops both faces. Output is `render/bx24-4km/`. That directory is gitignored. Do not commit the PNGs.
+
+## Review gaps from the 4 km grid (approved 2026-11-04)
+
+A stock-versus-accessible review of the 27 cells found regressions (G1–G6), classes that still fail (F1–F5), and ideas (I1–I11). The research docs did not catch them for seven reasons: no stock-regression gate, four one-purpose squares, pairs only against paper, an ink inventory scoped to the must-distinguish list (streams measured on the legend ink), italic read only as the water cue, symbol tests on contrast only, and label tests on contrast and size only.
+
+Six commits, one per item. Stop at each boundary for Josh's go-ahead.
+
+1. `docs/method.md`: a full-grid stock review gates "met". Log 0057.
+2. `docs/recommendations.md`: R-01 line-on-fill pairs, R-11 legend-symbol confusion, R-09 spot-height rank and placement. R-01, R-09, R-11 reopen. Log 0058. Run `extract_graph.py`.
+3. F-08 / F-30: italic also marks natural features in Topo50. Check carto_text rows first; if the data does not hold, record a question instead. R-05 needs a non-italic class cue. Log 0059.
+4. Full painted-ink inventory with `parse_qgis_colour`, checked on grid pixels. Streams 2.97:1 painted vs 3.79:1 legend. Lime `#94FF3B` 1.26:1. No pair-file change. Log 0060.
+5. Loop prompt: the R-05 settled count covers FontMarker text. Include Josh's removal of the `render_sheet.sh` line.
+6. `BACKLOG.md`: cards for G, F, I, and an ink contrast matrix site page (every painted ink against every other, normal/grey/red and worst dichromacy ΔE, from the commit 4 inventory).
+
+Note for item 6: I3 (fewer closed-track bars) conflicts with the accepted decision that a bar every 4 mm looked open. Raise it, do not pick.
