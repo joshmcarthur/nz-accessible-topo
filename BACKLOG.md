@@ -1,17 +1,19 @@
 # Backlog
 
-Status as of 2026-11-03, after log 0055 (thinner index contours).
+Status as of 2026-11-04, after log 0060 (4 km grid review, logs 0057–0060).
+A recommendation is met only after the full-grid stock review in `docs/method.md` (log 0057).
 Log 0025 is the stock sheet. Log 0024 records the font decision: the
 accessible sheet uses Atkinson Hyperlegible Next with Ō/ō; the stock sheet
 keeps Nimbus. The estuary name draws upright (log 0029).
 The square uses the sheet map layers. The pink lines were a hidden layer (log 0029).
 Square draws use QGIS 4.2.3 at `/Applications/QGIS-final-4_2_3.app` (log 0031). The sheet export stays on the map image. QGIS 3.36.3 cannot open the project (log 0030).
-R-09 is met. Suburb and Locality are 11 px. Town is 14 px. City is 17 px (log 0032).
+R-09 is open again (log 0058). Floors hold. Spot heights need their own rank. Names collide or sit away from their feature on the grid. Suburb and Locality are 11 px. Town is 14 px. City is 17 px (log 0032).
 R-07 is met. Label ink is at least 4.8:1 against the drawn buffer. The text-contrast table has no fail rows except the two highway shields (log 0033).
 R-10 is met. Scrub is `#A3CC90` plus a hatch. Scattered is `#E0EDD8` plus a pattern (log 0034).
-R-11 is met. Closed tracks have cross-bars. Historic labels keep hue and meet 3:1 under red light (log 0035).
+R-11 is open again (log 0058). Where closed tracks are dense, the bars read as a railway, an embankment or a cliff (log 0057). Closed tracks have cross-bars. Historic labels keep hue and meet 3:1 under red light (log 0035).
 R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps the hatch. Contour-number FontMarkers use the index ink (logs 0036, 0051).
-R-01 is met. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
+R-01 is open again (log 0058). Index contour on scrub is 2.93:1. Streams `#009EFF` are 2.86:1 and shelterbelts `#94FF3B` are 1.26:1 on paper (log 0060). Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
+R-05 is open again (log 0059). Contour-number FontMarkers are still italic. Natural-feature names have no cue now that italic is gone.
 R-08 stays provisional. Vector labels use 0.05 em from the style file. Raster along-line labels keep normal spacing. No A/B test (log 0039).
 R-12 is met. `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Access is not drawn (log 0042).
 R-03 stays open. Hillshade is an overlay at 337.5°. Raster shade waits for `dem.tif` beside the project. Vector reads the same numbers (log 0044).
@@ -54,6 +56,21 @@ kanban
     b24[Symbology: contours, closed tracks, springs, forest vs scrub]@{ ticket: B-24, priority: 'Very High' }
     b29[Audit rendered sheets: inks, pairs, simulations]@{ ticket: B-29, priority: 'High' }
     b04[Captures of stock vs accessible Topo50 for site]@{ ticket: B-04, priority: 'High' }
+  review[Next - grid review fixes]
+    b40[Pair file: line-on-fill pairs and inventory classes]@{ ticket: B-40, priority: 'Very High' }
+    b41[Site page: ink contrast matrix]@{ ticket: B-41, priority: 'High' }
+    b42[Loop prompt runs the full-grid review]@{ ticket: B-42, priority: 'High' }
+    b30[Closed tracks do not read as railway or cliff]@{ ticket: B-30, priority: 'Very High' }
+    b35[Streams at least 3:1 on paper and fills]@{ ticket: B-35, priority: 'Very High' }
+    b34[Scrub keeps contours at 3:1]@{ ticket: B-34, priority: 'High' }
+    b36[Shelterbelts and green dots visible]@{ ticket: B-36, priority: 'High' }
+    b31[Label fit counts symbols and keeps names near features]@{ ticket: B-31, priority: 'High' }
+    b32[Natural-feature names get a non-italic cue]@{ ticket: B-32, priority: 'High' }
+    b37[Contour numbers upright with a line gap]@{ ticket: B-37, priority: 'High' }
+    b33[Spot-height rank and urban halo]@{ ticket: B-33, priority: 'Low' }
+    b43[Draw BX24 hillshade and review on the grid]@{ ticket: B-43, priority: 'Low' }
+    b38[Forest tree glyph visible]@{ ticket: B-38, priority: 'Low' }
+    b39[Dual names stay one block]@{ ticket: B-39, priority: 'Low' }
   later[Later]
     b27[Render accessible raster tiles for a region and serve]@{ ticket: B-27, priority: 'High' }
     b14[Greyscale and high-contrast variants]@{ ticket: B-14, priority: 'Low' }
@@ -105,4 +122,18 @@ product. Its research and decisions carry over to the QGIS fork.
 | B-18 | Very Low | Replication shown in chain grades | Trace page updated | — | — |
 | B-20 | Very High | User testing plan + recruitment | Plan doc | B-24, B-25 | R-16 |
 | B-21 | Very High | Run sessions; log results | Grade-B findings from our own study | B-20 | R-16 |
+| B-40 | Very High | Add line-on-fill pairs (index and intermediate contour, stream, track on scrub, native, water, urban) and the log 0060 classes (stream `#009EFF`, shelterbelt `#94FF3B`, grid) to `tools/pairs-topo50-accessible.json`. Keep the ink list in one data file the site can read | Audit reports every pair; new fails named | — | R-01, R-14, logs 0058, 0060 |
+| B-41 | High | Site page: ink contrast matrix. Every painted ink against every other (contour vs stream, contour vs scrub, stream vs scrub, …). Each cell shows contrast in normal, grey and red light and the worst dichromacy ΔE, with a line-on-fill swatch. Use the `palette_audit.py` models; no new vision model | Page on the site; passes S1–S3 | B-40 | R-01, R-14, log 0060 |
+| B-42 | High | Loop prompt Step B renders the 4 km grid and runs the stock review before it marks a recommendation met | Prompt updated | — | log 0057 |
+| B-30 | Very High | Closed-track symbol that does not read as a railway, embankment or cliff where tracks are dense. Ideas: fewer bars, an ×, mask bars under labels. **Conflict:** the accepted decision says a bar every 4 mm looked open (log 0056). Choose with Josh | Grid review passes G1; R-11 "Met when" | — | R-11, G1, log 0057 |
+| B-35 | Very High | Streams ≥3:1 on paper and on scrub/native fills. Darker blue or wider line. Check against the contour mesh on steep slopes | Pairs pass; grid review passes G6 | B-40 | R-01, G6, logs 0057, 0060 |
+| B-34 | High | Rebalance scrub (lighter fill or lower alpha, hatch carries the class) so the index contour is ≥3:1 on scrub | Pair passes; grid review passes G5 | B-40 | R-01, R-10, G5, log 0057 |
+| B-36 | High | Shelterbelt line and green dots ≥3:1, or a dark edge | Pair passes | B-40 | R-01, log 0060 |
+| B-31 | High | Fit tool counts point symbols, spot heights and track bars, and penalises distance from the anchor | Grid review passes G2; R-09 placement test | — | R-09, G2, logs 0052, 0057 |
+| B-32 | High | Natural-feature names get a non-italic cue (index brown, weight or case), read from the carto_text `style` value | Grid review passes G3; R-05 | — | R-05, F-08, G3, logs 0057, 0059 |
+| B-37 | High | Contour numbers upright Atkinson ≥6 pt; QGIS selective mask breaks the contour under the number | Italic count 0 incl. FontMarkers; R-05, R-17 P8 | — | R-05, R-17, log 0059 |
+| B-33 | Low | Spot heights at the 6 pt rank; label halo on urban fill matches `#BCBAB6` (black on it is 10.8:1) | Grid review passes G4; R-09 rank step | — | R-09, R-07, G4, log 0057 |
+| B-43 | Low | Drop a DEM as `dem.tif` beside the BX24 project; draw the 337.5° shade; review Port Hills on the grid | Grid review | — | R-03 |
+| B-38 | Low | Forest tree glyph visible on its pale fill | Grid review | — | R-10, R-17 |
+| B-39 | Low | Dual names (`Whakaraupō / Lyttelton Harbour`, `Port Levy (Potiriwi)`) stay one block; no orphan `/` | Grid review | — | F-13 |
 | B-05–B-09, B-19 | Very Low | Secondary web-vector track (see board) | — | — | logs 0013–0020 |
