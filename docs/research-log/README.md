@@ -59,3 +59,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0054 — Quieter intermediate contours](0054-quieter-intermediate-contours.md)
 - [0055 — Thinner index contours](0055-thinner-index-contours.md)
 - [0056 — Angled closed-track bars](0056-angled-closed-track.md)
+- [0057 — A full-grid stock review gates "met"](0057-regression-review-gate.md)

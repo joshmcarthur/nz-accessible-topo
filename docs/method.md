@@ -14,6 +14,25 @@ Every recommendation must cite at least one finding; every finding must cite at
 least one source. If a recommendation rests only on grade C/D evidence it is
 labelled **provisional**.
 
+## When a recommendation is met
+
+A recommendation is met only when both of these are true:
+
+1. Its "Met when" threshold holds on the painted inks (pair audit, gates).
+2. A stock-versus-accessible review of the full 4 km grid finds no regression that the change causes.
+
+The grid is one stock face and one accessible face at 300 dpi, drawn with
+`tools/render_square.py --extent`, then cut into 27 cells by
+`tools/crop_grid.py` (output in `render/bx24-4km/`, not committed). Compare
+each cell pair. A regression is anything the stock cell shows more clearly:
+a name that collides or moves away from its feature, a class cue that is
+lost, a line that is harder to find on the fill under it, or a symbol that
+now looks like a different legend symbol.
+
+A threshold checks one pair at a time. Regressions come from dense data and
+from neighbouring classes, which a single test square does not show. The
+review is our own judgement, so it is grade D until user testing (R-16).
+
 ## Evidence grades
 
 | Grade | Meaning | Example |
