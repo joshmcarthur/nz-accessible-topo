@@ -20,7 +20,9 @@ An along-line label keeps its stretch `charplace` when it is one line and its ba
 
 The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour, except on a layer whose name contains `relief_point`. That halo uses `reference_inks.urban_fill`. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
 
-A carto_text `style` value that looks like italic or narrow becomes `fonts.raster_natural_style`. That style is Bold. An empty style becomes Regular. Named styles stay upright.
+A carto_text `style` value that contains italic becomes `fonts.raster_natural_style`. That style is Bold. The shipped face has one Regular file, so Bold draws as Regular until a Bold file exists. A narrow or empty style becomes Regular. Named styles stay upright.
+
+Topo50 sets natural-feature names and spot heights in black italic. Those labels take `labels.natural_colour`. That colour is `#7A5542`, the index ink. It is 6.55:1 on paper and 4.29:1 in red light. Water names stay blue. Settlement names stay black.
 
 A square render draws the `Map5View` layers. That is the layer set on the `tiff-50` map. The render does not draw a layer that theme hides.
 

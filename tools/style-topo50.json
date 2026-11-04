@@ -10,6 +10,7 @@
     "size_floor_pt": 7,
     "spot_height_floor_pt": 6,
     "spot_height_layer_contains": "relief_point",
+    "natural_colour": "#7A5542",
     "web_floor_px": 10,
     "place_name_floor_px": 11,
     "letter_spacing_em": 0.05,

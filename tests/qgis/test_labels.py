@@ -251,3 +251,44 @@ def test_carto_fit_places_listed_names():
     assert text.startswith("CASE WHEN ") and CARTO_FLAT_TEXT in text
     assert expr(props, "AutoWrapLength").startswith("CASE WHEN ")
     assert "O''Brien" in carto_fit_value({"O'Brien": {"x": 1}}, "x")
+
+
+def test_natural_names_take_the_natural_ink_and_narrow_stays_regular():
+    # Catches Narrow settlement names sent to the natural style, or italic
+    # natural names left black (the face has no Bold file, log 0072).
+    layer = ET.fromstring(
+        """
+        <maplayer>
+          <layername>nztopo50_carto_text</layername>
+          <labeling type="simple"><settings>
+            <text-style textColor="0,0,0,255" fontSize="7" namedStyle="Italic">
+              <text-buffer bufferDraw="1" bufferOpacity="1" bufferColor="255,255,255,255" bufferSize="0.4"/>
+            </text-style>
+            <dd_properties><Option type="Map">
+              <Option name="properties" type="Map">
+                <Option name="FontStyle" type="Map">
+                  <Option name="active" type="bool" value="true"/>
+                  <Option name="expression" type="QString" value="&quot;style&quot;"/>
+                  <Option name="type" type="int" value="3"/>
+                </Option>
+                <Option name="Color" type="Map">
+                  <Option name="active" type="bool" value="true"/>
+                  <Option name="expression" type="QString" value="project_color_object( &quot;colour&quot; )"/>
+                  <Option name="type" type="int" value="3"/>
+                </Option>
+              </Option>
+            </Option></dd_properties>
+          </settings></labeling>
+        </maplayer>
+        """
+    )
+    patch_labels(layer, "nztopo50_carto_text", palette=[("black", "0,0,0,255")])
+    props = layer.find(".//dd_properties/Option/Option[@name='properties']")
+    style = expr(props, "FontStyle")
+    assert "LIKE '%narrow%' THEN 'Regular'" in style
+    assert "OR lower" not in style
+    colour = expr(props, "Color")
+    assert colour.startswith(
+        "CASE WHEN \"colour\" = 'black' AND lower(coalesce(\"style\", '')) LIKE '%italic%'"
+        " THEN color_rgb(122,85,66)"
+    )
