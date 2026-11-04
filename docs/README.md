@@ -23,6 +23,7 @@
 - [Te reo Māori place names](findings/te-reo-maori-names.md) — F-12–F-13
 - [Relief shading and contours](findings/relief-and-contours.md) — F-14–F-18
 - [Standards](findings/standards.md) — F-19–F-20
+- [Line and symbol size](findings/size-and-weight.md) — F-31
 - [Field conditions](findings/field-conditions.md) — F-21–F-23
 - [Tracks and access](findings/tracks-and-access.md) — F-24–F-25
 - [Atkinson licence and macrons](findings/atkinson-licence.md) — F-26–F-29

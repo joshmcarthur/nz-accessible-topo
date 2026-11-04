@@ -10,6 +10,7 @@ from nzat.qgis.patch_road_fills import patch_road_fills
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_tracks import patch_tracks
 from nzat.qgis.patch_vegetation import patch_vegetation
+from nzat.qgis.patch_water_line import patch_water_line
 from nzat.qgis.project_palette import project_palette
 
 
@@ -65,6 +66,7 @@ def apply(root, project_dir=None):
             patch_springs(layer)
             seen.add(name)
         elif name == "water_line map":
+            patch_water_line(layer)
             seen.add(name)
         patch_owned_lines(layer)
     missing = {

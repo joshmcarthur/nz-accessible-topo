@@ -47,9 +47,9 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 |---|---|---|
 | S-AXIS-LABELING | C | Axis Maps, *Labeling and text hierarchy in cartography*. https://www.axismaps.com/guide/labeling |
 | S-COLORADO-TYPO | C | *Making Maps* (Colorado pressbooks), ch. Typography. https://colorado.pressbooks.pub/makingmaps/chapter/typography/ |
-| S-ESRI-MINSIZE | C | Esri, *Guidelines for minimum size for text and symbols on maps*. |
-| S-MN-MAPGUIDE | C | Minnesota IT Services, *Accessibility – Map Design Guide*. |
-| S-USGS-SPECS | C | USGS, US Topo / OnDemand Topo cartographic specifications. https://www.usgs.gov/ngp-standards-and-specifications |
+| S-ESRI-MINSIZE | C | Esri, *Guidelines for minimum size for text and symbols on maps* (Buckley, 2008). https://www.esri.com/arcgis-blog/products/product/mapping/guidelines-for-minimum-size-for-text-and-symbols-on-maps |
+| S-MN-MAPGUIDE | C | Minnesota IT Services, *Accessibility – Map Design Guide*. https://mn.gov/mnit/assets/Accessibility%20-%20map-design-guide%20%28updated%29_tcm38-565153.pdf |
+| S-USGS-SPECS | C | USGS, US Topo cartographic specifications (hydrography StreamRiver 0.80–1.00 pt; elevation index 0.504 pt, intermediate 0.216 pt). https://www.usgs.gov/ngp-standards-and-specifications/us-topo-cartographic-specifications-hydrography https://www.usgs.gov/ngp-standards-and-specifications/us-topo-cartographic-specifications-elevation |
 
 ## Place names
 

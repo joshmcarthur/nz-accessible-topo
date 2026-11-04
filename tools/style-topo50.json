@@ -64,11 +64,12 @@
     "exotic": {"colour": "#A4D65E", "alpha": 0.2},
     "scrub": {"colour": "#A3CC90", "alpha": 26},
     "scattered": {"colour": "#E0EDD8"},
-    "scrub_hatch": {
-      "colour": "#3F6B32",
-      "angle_deg": 45,
-      "distance_mm": 3,
-      "line_width_mm": 0.15
+    "scrub_dots": {
+      "colour": "#6A9A50",
+      "marker": "third_arc",
+      "size_mm": 1.4,
+      "stroke_mm": 0.18,
+      "distance_mm": 3
     }
   },
   "draw_order": [
@@ -97,6 +98,10 @@
   "springs": {
     "hot": {"glyph": "cross2", "colour": "#141414"},
     "cold": {"glyph": "circle", "colour": "#005C8F"}
+  },
+  "water": {
+    "stream_width_mm": 0.25,
+    "drain_width_mm": 0.15
   },
   "hillshade": {
     "painted": true,

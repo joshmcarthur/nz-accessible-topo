@@ -62,7 +62,7 @@ The vector build reads `vegetation.native`, `vegetation.scrub`, and `vegetation.
 
 `vegetation.native.colour` is `#E1EAC3`. `vegetation.native.marker.colour` is `#3F6B32`. `vegetation.scrub.colour` is `#A3CC90`. `vegetation.scrub.alpha` is 26. `vegetation.scattered.colour` is `#E0EDD8`.
 
-The QGIS apply step paints the scrub fill and a line hatch. The hatch carries the class. It paints a native tree marker when that marker layer is already in the project. It keeps the stock scattered-scrub dots. It does not add a fill under those dots.
+The QGIS apply step paints the scrub fill and a plant-mark grid. The marks carry the class. The marker name is `vegetation.scrub_dots.marker`. That name is `third_arc`, the same mark as scattered scrub. Size is `vegetation.scrub_dots.size_mm`. That size is 1.4 mm. Distance is `vegetation.scrub_dots.distance_mm`. That distance is 3 mm. Colour is `vegetation.scrub_dots.colour`. That colour is `#6A9A50`, a mid green. The stroke is `vegetation.scrub_dots.stroke_mm`, 0.18 mm. A stock hairline arc in `#B2DF8A` did not show on the pale fill (log 0071). A mark draws whole when its centre is inside the polygon. Scattered scrub stays on its stock `third_arc` pattern at 5 mm with no fill. A second apply removes a leftover line hatch and writes the marker, size, colour, and spacing onto the pattern that is already in the project. It paints a native tree marker when that marker layer is already in the project. It does not add a fill under the scattered dots.
 
 The QGIS apply step moves `vegetation map` so it sits immediately under `contour`. Custom-order stays off. Vegetation alpha stays 180 native and 26 scrub. `vegetation_line map` stays above contours. The vector style already paints contours after vegetation fills.
 
@@ -134,7 +134,9 @@ Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour
 
 `reference_inks.print_legend_highway` is `#EA6300`. Map5View does not paint that ink.
 
-`reference_inks.stream` is `#0064BD`. That hex keeps the process-blue hue and lowers L* until Grey and Red CR reach 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, and water outlines as `#009EFF`. The apply step rewrites that RGB.
+`water.stream_width_mm` is 0.25. `water.drain_width_mm` is 0.15. The apply step sets a data-defined width on `water_line map`: drains take the drain width, rivers and canals take the stream width. Coastline, water outlines, shelterbelt, and grid keep stock widths. Only their ink changes.
+
+`reference_inks.stream` is `#0064BD`. That hex keeps the process-blue hue and lowers L* until Grey and Red CR reach 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
 
 `reference_inks.shelterbelt` is `#1D9D00`. Map5View paints shelterbelts and green vegetation dots as `#94FF3B`. The apply step rewrites that RGB.
 

@@ -132,7 +132,11 @@ def test_overrides_skip_the_print_layout():
                   <layer class="SimpleLine">
                     <Option type="Map">
                       <Option name="line_color" type="QString" value="0,158,255,255"/>
+                      <Option name="line_width" type="QString" value="0.1"/>
                     </Option>
+                    <data_defined_properties><Option type="Map">
+                      <Option name="properties"/>
+                    </Option></data_defined_properties>
                   </layer>
                 </symbol>
               </symbols></renderer-v2>
@@ -195,7 +199,16 @@ def test_overrides_skip_the_print_layout():
     )
     fill = scrub.find("layer[@class='SimpleFill']/Option/Option[@name='color']")
     assert fill.get("value").startswith("163,204,144")
-    assert scrub.find("layer[@class='LinePatternFill']") is not None
+    assert scrub.find("layer[@class='LinePatternFill']") is None
+    assert scrub.find("layer[@class='PointPatternFill']") is not None
+    # Catches drains drawn at river width, which made the plain a blue mesh.
+    stream_width = root.find(
+        "projectlayers/maplayer[layername='water_line map']"
+        "//Option[@name='outlineWidth']/Option[@name='expression']"
+    )
+    assert stream_width.get("value") == (
+        "CASE WHEN \"type\" = 'drain' THEN 0.15 ELSE 0.25 END"
+    )
     scattered = root.find(
         "projectlayers/maplayer[layername='vegetation map']//symbol[@name='2']"
     )
@@ -319,6 +332,7 @@ def test_vegetation_map_draws_below_contour():
                   <layer class="SimpleLine">
                     <Option type="Map">
                       <Option name="line_color" type="QString" value="0,158,255,255"/>
+                      <Option name="line_width" type="QString" value="0.1"/>
                     </Option>
                   </layer>
                 </symbol>

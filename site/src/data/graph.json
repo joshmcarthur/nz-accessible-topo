@@ -185,22 +185,22 @@
   {
    "id": "S-ESRI-MINSIZE",
    "grade": "C",
-   "title": "Esri, *Guidelines for minimum size for text and symbols on maps*.",
-   "url": null,
+   "title": "Esri, *Guidelines for minimum size for text and symbols on maps* (Buckley, 2008).",
+   "url": "https://www.esri.com/arcgis-blog/products/product/mapping/guidelines-for-minimum-size-for-text-and-symbols-on-maps",
    "used": true
   },
   {
    "id": "S-MN-MAPGUIDE",
    "grade": "C",
    "title": "Minnesota IT Services, *Accessibility – Map Design Guide*.",
-   "url": null,
+   "url": "https://mn.gov/mnit/assets/Accessibility%20-%20map-design-guide%20%28updated%29_tcm38-565153.pdf",
    "used": true
   },
   {
    "id": "S-USGS-SPECS",
    "grade": "C",
-   "title": "USGS, US Topo / OnDemand Topo cartographic specifications.",
-   "url": "https://www.usgs.gov/ngp-standards-and-specifications",
+   "title": "USGS, US Topo cartographic specifications (hydrography StreamRiver 0.80–1.00 pt; elevation index 0.504 pt, intermediate 0.216 pt).",
+   "url": "https://www.usgs.gov/ngp-standards-and-specifications/us-topo-cartographic-specifications-hydrography",
    "used": true
   },
   {
@@ -570,6 +570,19 @@
    "html": "<p>LINZ's web contours are 0.4–0.6 px at 75% opacity, 2.66:1 against white\n(W3). WCAG 1.4.11 expects 3:1 for graphics needed to understand content\n(see <code>standards.md</code>). Contour accuracy is ±~10 m and worse in forest/snow\n(S-LINZ-DD-CONTOUR) — a reason to keep <em>indefinite</em> contours visually\ndistinct (LINZ data carries a <code>definition = indefinite</code> attribute).\n<strong>Sources:</strong> audit (D), S-W3C-1411 (C), S-LINZ-DD-CONTOUR (C).</p>"
   },
   {
+   "id": "F-31",
+   "title": "Print lines and symbols have practitioner size floors, not a WCAG millimetre",
+   "topic": "line and symbol size",
+   "file": "findings/size-and-weight.md",
+   "sources": [
+    "S-ESRI-MINSIZE",
+    "S-MN-MAPGUIDE",
+    "S-USGS-SPECS"
+   ],
+   "grade": "C",
+   "html": "<p>WCAG 1.4.11 (F-20) sets contrast for graphics. It does not set a stroke\nwidth. Print size floors come from cartographic practice.</p>\n<p><strong>Conversion:</strong> 1 pt = 1/72 in ≈ <strong>0.35 mm</strong>.</p>\n<p><strong>Esri (print, 2008).</strong> Type on a printed map should not be smaller than\n5 pt. Symbol minimum sizes are about two thirds of the recommended text\nsize. For the 6 pt print floor in F-09, that is about <strong>4 pt ≈ 1.4 mm</strong>.\nThe same note uses a 2-minute visual angle as a conservative \"can be seen\"\nthreshold. At a 300 mm reading distance that angle is about <strong>0.17 mm</strong>.\nThe blog has no millimetre table for line width. It is about seeing a mark,\nnot about reading a thin line in a contour mesh.\n<strong>Sources:</strong> S-ESRI-MINSIZE (C).</p>\n<p><strong>Minnesota map-design guide.</strong> Labels: 6 pt minimum, 8 pt preferred\n(already F-09). Same-colour line weights should differ by at least 1 pt.\nThe worked example is <strong>3 pt / 2 pt / 1 pt</strong> (about 1.06 / 0.71 / 0.35 mm).\nA 0.5 pt step is allowed only if the thinner line is about 20% lighter.\nKeep line styles to six or fewer. Scale point symbols in 2× size steps.\nThe guide does not prove a laboratory minimum. It treats <strong>1 pt (0.35 mm)</strong>\nas the thin end of a same-colour line family.\n<strong>Sources:</strong> S-MN-MAPGUIDE (C).</p>\n<p><strong>USGS US Topo (1:24,000), not 1:50,000.</strong> These are product specs for\nstandard-vision maps, not a low-vision floor. StreamRiver perennial and\nintermittent strokes are <strong>0.80–1.00 pt (0.28–0.35 mm)</strong>. Index contours\nare <strong>0.504 pt (0.18 mm)</strong>. Intermediate contours are <strong>0.216 pt (0.08 mm)</strong>.\nPaper millimetres do not double when scale halves. Use the millimetre\nfigures as a same-paper check, not as a scale-up.\n<strong>Sources:</strong> S-USGS-SPECS (C).</p>\n<p><strong>This sheet today (BX24, millimetres on paper).</strong></p>\n<table>\n<thead>\n<tr>\n<th>Mark</th>\n<th>Width or size</th>\n<th>In points</th>\n<th>Against the floors</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Stock stream</td>\n<td>0.10 mm</td>\n<td>0.28 pt</td>\n<td>Below USGS stream stroke and MN 1 pt</td>\n</tr>\n<tr>\n<td>Accessible river and canal (log 0071)</td>\n<td>0.25 mm</td>\n<td>0.71 pt</td>\n<td>Above the 0.17 mm visual angle. Under the USGS stream stroke</td>\n</tr>\n<tr>\n<td>Accessible drain (log 0071)</td>\n<td>0.15 mm</td>\n<td>0.43 pt</td>\n<td>One MN 1 pt step thinner would be 0 mm, so the step is smaller</td>\n</tr>\n<tr>\n<td>Index contour</td>\n<td>0.35 mm</td>\n<td>1.0 pt</td>\n<td>Matches MN 1 pt</td>\n</tr>\n<tr>\n<td>Intermediate contour fill</td>\n<td>0.12 mm</td>\n<td>0.34 pt</td>\n<td>USGS-thin; stays recessive (OQ-09)</td>\n</tr>\n<tr>\n<td>Scrub plant <code>third_arc</code></td>\n<td>1.4 mm</td>\n<td>4.0 pt</td>\n<td>Matches Esri 2/3 of 6 pt</td>\n</tr>\n<tr>\n<td>Closed-track ×</td>\n<td>0.5 mm</td>\n<td>1.4 pt</td>\n<td>Line-on-line mark, not an area symbol. G1 locked</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Implication:</strong> A single line floor does not work on this sheet (log 0071).\nOne 0.35 mm width on every blue line made drains, pond rims and coastline\nlook like rivers. MN treats 1 pt as the thin end of a family, so each class\nneeds its own step. Rivers are 0.25 mm and drains 0.15 mm. Polygon outlines,\ncoastline, shelterbelt, and grid keep stock widths in the darker inks. Scrub\nmarks use the ~1.4 mm symbol size. Do not copy USGS contour millimetres as a\nlow-vision floor.</p>\n<p><strong>Grade:</strong> C (practitioner guidance).</p>"
+  },
+  {
    "id": "F-19",
    "title": "NZ government web must meet WCAG 2.2 AA, with a maps exception",
    "topic": "accessibility standards",
@@ -794,7 +807,8 @@
    "provisional": false,
    "findings": [
     "F-18",
-    "F-20"
+    "F-20",
+    "F-31"
    ],
    "sources": [
     "S-OUR-AUDIT-WEB",
@@ -802,7 +816,7 @@
    ],
    "grade": "C",
    "implemented": true,
-   "html": "<p><strong>Rests on:</strong> F-18, F-20, W3, W5, W6, palette v0 · <strong>Best evidence:</strong> C (WCAG) + D (audit)\n<strong>Starting values:</strong> index <code>#7A5542</code> at alpha 0.85, intermediate <code>#B08872</code>\nat alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the\nhexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes\n(OQ-09).\nWeb widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).\nPrint widths: set by rendering tests on steep sheets (OQ-09).\n<strong>Also:</strong> draw <code>definition = indefinite</code> contours dashed, so reduced\naccuracy in forest/snow is visible.\n<strong>Met when:</strong> index contours ≥3:1 vs paper (grey and red); ΔE ≥10 vs\nhighways and pipelines under all simulated dichromacies. Intermediate\nstrokes may fall below 3:1.</p>\n<hr />"
+   "html": "<p><strong>Rests on:</strong> F-18, F-20, F-31, W3, W5, W6, palette v0 · <strong>Best evidence:</strong> C (WCAG) + D (audit)\n<strong>Starting values:</strong> index <code>#7A5542</code> at alpha 0.85, intermediate <code>#B08872</code>\nat alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the\nhexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes\n(OQ-09).\nWeb widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).\nPrint widths: index 0.35 mm matches the F-31 1 pt figure. Intermediate fill\nstays 0.12 mm with a 0.2 mm casing (OQ-09). Rivers are 0.25 mm and drains\n0.15 mm, so water stays under the index line (log 0071). Confirm on a steep\nsheet.\n<strong>Also:</strong> draw <code>definition = indefinite</code> contours dashed, so reduced\naccuracy in forest/snow is visible.\n<strong>Met when:</strong> index contours ≥3:1 vs paper (grey and red); ΔE ≥10 vs\nhighways and pipelines under all simulated dichromacies. Intermediate\nstrokes may fall below 3:1.</p>\n<hr />"
   },
   {
    "id": "R-05",

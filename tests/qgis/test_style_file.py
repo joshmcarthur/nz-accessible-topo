@@ -34,6 +34,13 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["water_fill"] == "#D1E7F5"
     assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
     assert style["reference_inks"]["stream"] == "#0064BD"
+    assert style["water"]["stream_width_mm"] == 0.25
+    assert style["water"]["drain_width_mm"] < style["water"]["stream_width_mm"]
+    assert style["vegetation"]["scrub_dots"]["marker"] == "third_arc"
+    assert style["vegetation"]["scrub_dots"]["distance_mm"] == 3
+    assert style["vegetation"]["scrub_dots"]["size_mm"] == 1.4
+    assert style["vegetation"]["scrub_dots"]["colour"] == "#6A9A50"
+    assert style["vegetation"]["scrub_dots"]["stroke_mm"] > 0
     assert style["reference_inks"]["shelterbelt"] == "#1D9D00"
     assert style["reference_inks"]["grid"] == "#269FD2"
     assert style["reference_inks"]["urban_fill"] == "#BCBAB6"

@@ -18,6 +18,7 @@ Changes are on the map layers the research names:
 - vegetation map: native tree markers use vegetation.native.marker (R-10)
 - vegetation map: draws below contour so the darker fills do not hide relief (R-04)
 - water_line map, shelterbelt, grid: stock RGB becomes the owned reference inks (R-01)
+- water_line map: rivers and canals draw at water.stream_width_mm, drains at water.drain_width_mm (F-31)
 - track_line map: closed-track gap marks are an × (R-11)
 - road fills: PMS151 two-lane and sealed fills become reference_inks.project_road (R-01)
 - nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink, upright (R-17 P7, R-05)

@@ -69,3 +69,8 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0064 — Smaller, sparser closed-track ×](0064-sparser-closed-track.md)
 - [0065 — Closed-track × every 3 mm](0065-closed-track-3mm.md)
 - [0066 — G1 passed; R-11 met](0066-g1-passed.md)
+- [0067 — Wider streams and scrub dots](0067-wider-streams-scrub-dots.md)
+- [0068 — Scrub plant marks](0068-scrub-plant-marks.md)
+- [0069 — Print size floors](0069-print-size-floors.md)
+- [0070 — Print size floors applied](0070-print-size-floors-applied.md)
+- [0071 — Width steps, not one line floor](0071-width-steps-not-one-floor.md)

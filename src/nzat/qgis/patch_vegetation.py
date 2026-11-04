@@ -7,15 +7,26 @@ from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 
 
-def _scrub_hatch(style=None):
-    """Diagonal lines. Scattered scrub already uses a dot pattern."""
+def _empty_dd(parent):
+    dd = ET.SubElement(parent, "data_defined_properties")
+    root = ET.SubElement(dd, "Option", {"type": "Map"})
+    ET.SubElement(root, "Option", {"name": "name", "type": "QString", "value": ""})
+    ET.SubElement(root, "Option", {"name": "properties"})
+    ET.SubElement(
+        root, "Option", {"name": "type", "type": "QString", "value": "collection"}
+    )
+
+
+def _scrub_dots(style=None):
+    """A denser plant grid than scattered scrub. Scattered already uses third_arc at 5 mm."""
     style = style or STYLE
-    hatch = style["vegetation"]["scrub_hatch"]
-    ink = rgba(hatch["colour"], 255)
+    dots = style["vegetation"]["scrub_dots"]
+    ink = rgba(dots["colour"], 255)
+    dist = str(dots["distance_mm"])
     layer = ET.Element(
         "layer",
         {
-            "class": "LinePatternFill",
+            "class": "PointPatternFill",
             "enabled": "1",
             "id": "{" + str(uuid.uuid4()) + "}",
             "locked": "0",
@@ -24,25 +35,24 @@ def _scrub_hatch(style=None):
     )
     options = ET.SubElement(layer, "Option", {"type": "Map"})
     for name, value, kind in (
-        ("angle", str(hatch["angle_deg"]), "QString"),
-        ("clip_mode", "during_render", "QString"),
-        ("color", ink, "QString"),
+        ("angle", "0", "double"),
+        ("clip_mode", "centroid_within", "QString"),
         ("coordinate_reference", "feature", "QString"),
-        ("distance", str(hatch["distance_mm"]), "QString"),
-        ("distance_unit", "MM", "QString"),
-        ("line_width", str(hatch["line_width_mm"]), "QString"),
-        ("line_width_unit", "MM", "QString"),
-        ("offset", "0", "QString"),
-        ("offset_unit", "MM", "QString"),
+        ("displacement_x", "0", "QString"),
+        ("displacement_x_unit", "MM", "QString"),
+        ("displacement_y", "0", "QString"),
+        ("displacement_y_unit", "MM", "QString"),
+        ("distance_x", dist, "QString"),
+        ("distance_x_unit", "MM", "QString"),
+        ("distance_y", dist, "QString"),
+        ("distance_y_unit", "MM", "QString"),
+        ("offset_x", "0", "QString"),
+        ("offset_x_unit", "MM", "QString"),
+        ("offset_y", "0", "QString"),
+        ("offset_y_unit", "MM", "QString"),
     ):
         ET.SubElement(options, "Option", {"name": name, "type": kind, "value": value})
-    dd = ET.SubElement(layer, "data_defined_properties")
-    root = ET.SubElement(dd, "Option", {"type": "Map"})
-    ET.SubElement(root, "Option", {"name": "name", "type": "QString", "value": ""})
-    ET.SubElement(root, "Option", {"name": "properties"})
-    ET.SubElement(
-        root, "Option", {"name": "type", "type": "QString", "value": "collection"}
-    )
+    _empty_dd(layer)
     symbol = ET.SubElement(
         layer,
         "symbol",
@@ -53,52 +63,62 @@ def _scrub_hatch(style=None):
             "frame_rate": "10",
             "is_animated": "0",
             "name": "@scrub",
-            "type": "line",
+            "type": "marker",
         },
     )
-    symbol_dd = ET.SubElement(symbol, "data_defined_properties")
-    symbol_opt = ET.SubElement(symbol_dd, "Option", {"type": "Map"})
-    ET.SubElement(
-        symbol_opt, "Option", {"name": "name", "type": "QString", "value": ""}
-    )
-    ET.SubElement(symbol_opt, "Option", {"name": "properties"})
-    ET.SubElement(
-        symbol_opt, "Option", {"name": "type", "type": "QString", "value": "collection"}
-    )
-    line = ET.SubElement(
+    _empty_dd(symbol)
+    marker = ET.SubElement(
         symbol,
         "layer",
         {
-            "class": "SimpleLine",
+            "class": "SimpleMarker",
             "enabled": "1",
             "id": "{" + str(uuid.uuid4()) + "}",
             "locked": "0",
             "pass": "0",
         },
     )
-    line_opt = ET.SubElement(line, "Option", {"type": "Map"})
+    marker_opt = ET.SubElement(marker, "Option", {"type": "Map"})
     for name, value in (
-        ("capstyle", "square"),
+        ("angle", "0"),
+        ("cap_style", "square"),
+        ("color", ink),
+        ("horizontal_anchor_point", "1"),
         ("joinstyle", "bevel"),
-        ("line_color", ink),
-        ("line_style", "solid"),
-        ("line_width", str(hatch["line_width_mm"])),
-        ("line_width_unit", "MM"),
-        ("offset", "0"),
+        ("name", dots["marker"]),
+        ("offset", "0,0"),
         ("offset_unit", "MM"),
-        ("use_custom_dash", "0"),
+        ("outline_color", ink),
+        ("outline_style", "solid"),
+        ("outline_width", str(dots["stroke_mm"])),
+        ("outline_width_unit", "MM"),
+        ("scale_method", "diameter"),
+        ("size", str(dots["size_mm"])),
+        ("size_unit", "MM"),
+        ("vertical_anchor_point", "1"),
     ):
         ET.SubElement(
-            line_opt, "Option", {"name": name, "type": "QString", "value": value}
+            marker_opt, "Option", {"name": name, "type": "QString", "value": value}
         )
-    line_dd = ET.SubElement(line, "data_defined_properties")
-    line_root = ET.SubElement(line_dd, "Option", {"type": "Map"})
-    ET.SubElement(line_root, "Option", {"name": "name", "type": "QString", "value": ""})
-    ET.SubElement(line_root, "Option", {"name": "properties"})
-    ET.SubElement(
-        line_root, "Option", {"name": "type", "type": "QString", "value": "collection"}
-    )
+    _empty_dd(marker)
     return layer
+
+
+def _sync_scrub_dots(pattern, style):
+    dots = style["vegetation"]["scrub_dots"]
+    dist = str(dots["distance_mm"])
+    ink = rgba(dots["colour"], 255)
+    set_option(pattern, "distance_x", dist)
+    set_option(pattern, "distance_y", dist)
+    set_option(pattern, "clip_mode", "centroid_within")
+    simple = pattern.find("symbol/layer[@class='SimpleMarker']")
+    if simple is None:
+        raise RuntimeError("scrub dots have no marker")
+    set_option(simple, "name", dots["marker"])
+    set_option(simple, "size", str(dots["size_mm"]))
+    set_option(simple, "color", ink)
+    set_option(simple, "outline_color", ink)
+    set_option(simple, "outline_width", str(dots["stroke_mm"]))
 
 
 def patch_vegetation(layer, style=None):
@@ -113,9 +133,14 @@ def patch_vegetation(layer, style=None):
     set_option(scrub_fill, "color", rgba(scrub_ink["colour"], scrub_ink["alpha"]))
     _paint_native_marker(native, style)
     # Colour alone does not separate these fills in greyscale (R-10).
-    # Scattered scrub keeps its dot pattern. Scrub gets a line hatch.
-    if scrub.find("layer[@class='LinePatternFill']") is None:
-        scrub.insert(0, _scrub_hatch(style))
+    # Scattered scrub keeps its stock dots. Scrub gets a denser plant grid.
+    for hatch in list(scrub.findall("layer[@class='LinePatternFill']")):
+        scrub.remove(hatch)
+    existing = scrub.find("layer[@class='PointPatternFill']")
+    if existing is None:
+        scrub.insert(0, _scrub_dots(style))
+    else:
+        _sync_scrub_dots(existing, style)
 
 
 MARKER_CLASSES = (

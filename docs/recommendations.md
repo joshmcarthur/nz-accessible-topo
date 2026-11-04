@@ -86,13 +86,16 @@ NW. In the southern hemisphere this is also where the real sun is.
 multidirectional/sky layer; evaluated on both Alpine and lowland sheets.
 
 ### R-04 — Contours that stay visible: strong index lines, recessive intermediates
-**Rests on:** F-18, F-20, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
+**Rests on:** F-18, F-20, F-31, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
 **Starting values:** index `#7A5542` at alpha 0.85, intermediate `#B08872`
 at alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the
 hexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes
 (OQ-09).
 Web widths: intermediate ≥1 px, index ≥1.5 px at z13+ (provisional).
-Print widths: set by rendering tests on steep sheets (OQ-09).
+Print widths: index 0.35 mm matches the F-31 1 pt figure. Intermediate fill
+stays 0.12 mm with a 0.2 mm casing (OQ-09). Rivers are 0.25 mm and drains
+0.15 mm, so water stays under the index line (log 0071). Confirm on a steep
+sheet.
 **Also:** draw `definition = indefinite` contours dashed, so reduced
 accuracy in forest/snow is visible.
 **Met when:** index contours ≥3:1 vs paper (grey and red); ΔE ≥10 vs
