@@ -23,7 +23,9 @@ A recommendation is met only when both of these are true:
 
 The grid is one stock face and one accessible face at 300 dpi, drawn with
 `tools/render_square.py --extent`, then cut into 27 cells by
-`tools/crop_grid.py` (output in `render/bx24-4km/`, not committed). Compare
+`tools/crop_grid.py` (output in `render/bx24-4km/`, not committed).
+`tools/count_label_collisions.py` counts label pairs that overlap on the
+face and that stock does not have (G2, log 0073). Compare
 each cell pair. A regression is anything the stock cell shows more clearly:
 a name that collides or moves away from its feature, a class cue that is
 lost, a line that is harder to find on the fill under it, or a symbol that

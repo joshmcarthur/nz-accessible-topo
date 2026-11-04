@@ -20,8 +20,8 @@ from nzat.qgis.steps_mm import steps_mm
 
 METRES_PER_PX = 2.0
 PX_PER_MM = SHEET_SCALE / 1000 / METRES_PER_PX
-REACH_X_MM = 1.5
-REACH_Y_MM = 0.5
+REACH_X_MM = 3.0
+REACH_Y_MM = 1.5
 PASSES = 3
 FACE_DPI = 150
 

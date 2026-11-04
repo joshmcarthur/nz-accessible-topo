@@ -75,3 +75,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0070 — Print size floors applied](0070-print-size-floors-applied.md)
 - [0071 — Width steps, not one line floor](0071-width-steps-not-one-floor.md)
 - [0072 — Natural names in index brown](0072-natural-names-index-brown.md)
+- [0073 — Label collisions measured; wider fit reach](0073-label-collisions-measured.md)
