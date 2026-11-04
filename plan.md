@@ -126,3 +126,5 @@ Six commits, one per item. Stop at each boundary for Josh's go-ahead.
 6. `BACKLOG.md`: cards for G, F, I, and an ink contrast matrix site page (every painted ink against every other, normal/grey/red and worst dichromacy ΔE, from the commit 4 inventory).
 
 Note for item 6: I3 (fewer closed-track bars) conflicts with the accepted decision that a bar every 4 mm looked open. Raise it, do not pick.
+
+Review-gap doc fixes are done (2026-11-04): method gate 0d87245, wider Met-when 59943d2, italic cue 65aaf8f, ink inventory 9901068, loop prompt 674e5f9, backlog cards B-30–B-43 (see `BACKLOG.md`). The backlog uses one card per problem, not one per G/F/I item. Correction from the inventory: streams paint `#009EFF` (2.86:1); `#29A0D3` is the grid. Next work is the "grid review fixes" column, starting with B-40 (pairs) and B-30 (closed-track choice, which conflicts with the log 0056 decision).
