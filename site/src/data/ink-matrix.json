@@ -592,19 +592,19 @@
    "name": "Stream vs scrub",
    "a": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "b": {
     "label": "scrub fill",
     "colour": "rgba(163, 204, 144, 0.101961)"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 51.2,
-   "protanopia": 47.8,
-   "deuteranopia": 53.0,
-   "tritanopia": 43.0,
-   "worst_cvd": 43.0,
-   "grey_cr": 5.58,
+   "normal": 59.6,
+   "protanopia": 56.2,
+   "deuteranopia": 61.1,
+   "tritanopia": 52.0,
+   "worst_cvd": 52.0,
+   "grey_cr": 7.96,
    "red_cr": 19.37,
    "fails_r01": false
   },
@@ -612,19 +612,19 @@
    "name": "Stream vs native forest",
    "a": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "b": {
     "label": "native forest fill",
     "colour": "rgba(225, 234, 195, 0.705882)"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 56.6,
-   "protanopia": 52.3,
-   "deuteranopia": 57.2,
-   "tritanopia": 41.8,
-   "worst_cvd": 41.8,
-   "grey_cr": 5.04,
+   "normal": 63.7,
+   "protanopia": 59.5,
+   "deuteranopia": 64.4,
+   "tritanopia": 50.6,
+   "worst_cvd": 50.6,
+   "grey_cr": 7.19,
    "red_cr": 17.43,
    "fails_r01": false
   },
@@ -632,19 +632,19 @@
    "name": "Stream vs water",
    "a": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "b": {
     "label": "water fill",
     "colour": "#D1E7F5"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 41.0,
-   "protanopia": 39.7,
-   "deuteranopia": 44.3,
-   "tritanopia": 36.0,
-   "worst_cvd": 36.0,
-   "grey_cr": 4.63,
+   "normal": 51.1,
+   "protanopia": 49.2,
+   "deuteranopia": 53.4,
+   "tritanopia": 46.0,
+   "worst_cvd": 46.0,
+   "grey_cr": 6.6,
    "red_cr": 13.75,
    "fails_r01": false
   },
@@ -652,19 +652,19 @@
    "name": "Stream vs urban",
    "a": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "b": {
     "label": "urban fill",
     "colour": "#BCBAB6"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 40.2,
-   "protanopia": 37.0,
-   "deuteranopia": 42.6,
-   "tritanopia": 36.6,
-   "worst_cvd": 36.6,
-   "grey_cr": 3.05,
+   "normal": 48.6,
+   "protanopia": 44.9,
+   "deuteranopia": 50.7,
+   "tritanopia": 43.4,
+   "worst_cvd": 43.4,
+   "grey_cr": 4.35,
    "red_cr": 11.06,
    "fails_r01": false
   },
@@ -752,19 +752,19 @@
    "name": "Stream vs paper",
    "a": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "b": {
     "label": "paper",
     "colour": "#FFFFFF"
    },
    "why": "R-01. Map5View paints streams in reference_inks.stream, not the legend ink (log 0060).",
-   "normal": 50.3,
-   "protanopia": 46.9,
-   "deuteranopia": 52.5,
-   "tritanopia": 44.8,
-   "worst_cvd": 44.8,
-   "grey_cr": 5.9,
+   "normal": 59.1,
+   "protanopia": 55.6,
+   "deuteranopia": 60.9,
+   "tritanopia": 53.5,
+   "worst_cvd": 53.5,
+   "grey_cr": 8.42,
    "red_cr": 21.0,
    "fails_r01": false
   },
@@ -816,15 +816,15 @@
    },
    "b": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "why": "R-01. Contour versus stream on steep slopes (G6, log 0057). Shape still differs in weight.",
-   "normal": 35.2,
-   "protanopia": 35.9,
-   "deuteranopia": 41.0,
-   "tritanopia": 48.2,
-   "worst_cvd": 35.9,
-   "grey_cr": 1.28,
+   "normal": 36.2,
+   "protanopia": 36.1,
+   "deuteranopia": 42.1,
+   "tritanopia": 46.6,
+   "worst_cvd": 36.1,
+   "grey_cr": 1.83,
    "red_cr": 6.41,
    "fails_r01": true
   },
@@ -836,17 +836,17 @@
    },
    "b": {
     "label": "stream",
-    "colour": "#0064BD"
+    "colour": "#004C99"
    },
    "why": "R-01. Intermediate casing versus stream (G6, log 0057).",
-   "normal": 40.3,
-   "protanopia": 37.9,
-   "deuteranopia": 44.9,
-   "tritanopia": 48.3,
-   "worst_cvd": 37.9,
-   "grey_cr": 2.65,
+   "normal": 47.6,
+   "protanopia": 44.7,
+   "deuteranopia": 51.7,
+   "tritanopia": 51.7,
+   "worst_cvd": 44.7,
+   "grey_cr": 3.77,
    "red_cr": 11.12,
-   "fails_r01": true
+   "fails_r01": false
   },
   {
    "name": "Shelterbelt vs native forest",

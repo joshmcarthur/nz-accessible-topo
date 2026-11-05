@@ -360,8 +360,8 @@
   {
    "id": "S-OUR-PATCH",
    "grade": "D",
-   "title": "`tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018)",
-   "url": null,
+   "title": "`build.py` in [atkinson-hyperlegible-next-macrons]( (commit `61a9ebf`; first written here as `tools/patch_atkinson_omacron.py`) — macron placement rule verified against existing glyphs (log 0018)",
+   "url": "https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons",
    "used": true
   },
   {
@@ -424,7 +424,7 @@
     "S-OUR-PATCH"
    ],
    "grade": "D",
-   "html": "<p>Ā and Ū are composites of the base letter + <code>uni0304</code>, centred on the base's\nbounding box; that rule reproduces their offsets exactly (135, 167). Applying\nit to O and o gives offsets 179 and 96 (the symmetric <code>o</code> agrees under both\ncentring rules). <code>tools/patch_atkinson_omacron.py</code> does this for static\nTTFs and renames the result \"NZAT Legible Test\".\n<strong>Sources:</strong> S-OUR-PATCH (D, measured).\n<strong>Known gaps:</strong> upright statics only; kerning classes not extended; not\nreviewed by the type designers.</p>"
+   "html": "<p>Ā and Ū are composites of the base letter + <code>uni0304</code>, centred on the base's\nbounding box; that rule reproduces their offsets exactly (135, 167). Applying\nit to O and o gives offsets 179 and 96 (the symmetric <code>o</code> agrees under both\ncentring rules). <code>tools/patch_atkinson_omacron.py</code> did this for static\nTTFs and renamed the result \"NZAT Legible Test\". The patch now lives in\n<a href=\"https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons\">atkinson-hyperlegible-next-macrons</a>,\nwhich publishes the family as \"Atkinson Hyperlegible Next Macron\".\n<strong>Sources:</strong> S-OUR-PATCH (D, measured).\n<strong>Known gaps:</strong> upright statics only; kerning classes not extended; not\nreviewed by the type designers.</p>"
   },
   {
    "id": "F-01",
@@ -850,7 +850,7 @@
    ],
    "grade": "B",
    "implemented": false,
-   "html": "<p><strong>Rests on:</strong> F-06, F-10, F-11, F-12 · <strong>Best evidence:</strong> A (dyslexia fonts don't help); measured (coverage)\n<strong>Now:</strong> keep <strong>Open Sans</strong> (or <strong>Noto Sans</strong>, near-identical metrics,\nbroader coverage). Both have all ten macron vowels and x-height ≈0.535 em.\n<strong>Later:</strong> adopt <strong>Atkinson Hyperlegible Next</strong> once Ō/ō exist in a build we\ncan make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding\ntwo composites (<code>docs/upstream/</code>). Interim route: our renamed OFL patch\n(<code>tools/patch_atkinson_omacron.py</code>). It's designed to separate I/l/1 and O/0\n(<code>docs/visuals/05</code>), which matters for grid references and trig IDs. Print\nvia a shaping renderer (QGIS) may work with the official font already (F-28).\n<strong>QGIS fork (log 0024):</strong> the accessible sheet uses that interim patch now\n(upright statics). The stock sheet keeps Nimbus Sans LINZ. The web vector\nstyle stays on Open Sans until glyph PBFs exist.\n<strong>Met when:</strong> <code>tools/font_check.py</code> reports full macron coverage for every\nface in the style (hard gate, F-12).</p>"
+   "html": "<p><strong>Rests on:</strong> F-06, F-10, F-11, F-12 · <strong>Best evidence:</strong> A (dyslexia fonts don't help); measured (coverage)\n<strong>Now:</strong> keep <strong>Open Sans</strong> (or <strong>Noto Sans</strong>, near-identical metrics,\nbroader coverage). Both have all ten macron vowels and x-height ≈0.535 em.\n<strong>Later:</strong> adopt <strong>Atkinson Hyperlegible Next</strong> once Ō/ō exist in a build we\ncan make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding\ntwo composites (<code>docs/upstream/</code>). Interim route: our renamed OFL patch\n(<a href=\"https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons\">Atkinson Hyperlegible Next Macron</a>). It's designed to separate I/l/1 and O/0\n(<code>docs/visuals/05</code>), which matters for grid references and trig IDs. Print\nvia a shaping renderer (QGIS) may work with the official font already (F-28).\n<strong>QGIS fork (log 0024):</strong> the accessible sheet uses that interim patch now\n(upright statics). The stock sheet keeps Nimbus Sans LINZ. The web vector\nstyle stays on Open Sans until glyph PBFs exist.\n<strong>Met when:</strong> <code>tools/font_check.py</code> reports full macron coverage for every\nface in the style (hard gate, F-12).</p>"
   },
   {
    "id": "R-07",
