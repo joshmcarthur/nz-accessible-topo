@@ -90,3 +90,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0085 — Flat names drop stock alignment padding](0085-flat-names-drop-padding.md)
 - [0086 — Straight letter-spaced names join the fit](0086-straight-letter-spaced-names-fit.md)
 - [0087 — The label fit keeps a gap between names](0087-carto-fit-gap-band.md)
+- [0088 — The label fit pins every flat name](0088-carto-fit-pins-all.md)

@@ -28,3 +28,13 @@ def test_carto_fit_keeps_a_gap_beside_a_neighbour():
     abut = ("abut", ink, ink, 20, 5, 0.4)
     spaced = ("spaced", ink, ink, 40, 5, 0.5)
     assert best_candidate([abut, spaced], near_ink, near_ink.copy())[0] == "spaced"
+
+
+def test_carto_fit_keeps_a_gap_below_a_neighbour():
+    # Catches a band so short above and below that a name half a millimetre under another still reads as touching.
+    near_ink = np.zeros((40, 40), bool)
+    near_ink[5:10, 0:20] = True
+    ink = np.ones((5, 10), bool)
+    close = ("close", ink, ink, 0, 23, 0)
+    apart = ("apart", ink, ink, 0, 26, 1.0)
+    assert best_candidate([close, apart], near_ink, near_ink.copy())[0] == "apart"

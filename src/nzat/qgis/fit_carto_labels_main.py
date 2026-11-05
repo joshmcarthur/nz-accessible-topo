@@ -292,15 +292,15 @@ def main():
                 (lines, x, y), *_ = best_candidate(candidates, near_ink, near_halo)
                 info["lines"], info["at"] = lines, (x, y)
 
+        # Every flat name is pinned where the fit model put it, so QGIS cannot place a still name again.
         fit = {}
-        for label in colliding:
-            info = movers[label]
+        for label, info in movers.items():
+            fit[info["id"]] = {
+                "x": round(info["at"][0], 1),
+                "y": round(info["at"][1], 1),
+                "lines": info["lines"],
+            }
             if info["lines"] != 2 or info["at"] != info["stock"]:
-                fit[info["id"]] = {
-                    "x": round(info["at"][0], 1),
-                    "y": round(info["at"][1], 1),
-                    "lines": info["lines"],
-                }
                 print(
                     f"fit {label.labelText!r}: lines {info['lines']} at {fit[info['id']]['x']}, {fit[info['id']]['y']}"
                 )
