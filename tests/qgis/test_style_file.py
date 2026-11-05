@@ -18,7 +18,7 @@ def test_style_file_has_no_sheet_code():
     ):
         assert token not in raw, token
     style = STYLE
-    assert style["fonts"]["raster_family"] == "NZAT Legible Test"
+    assert style["fonts"]["raster_family"] == "Atkinson Hyperlegible Next Macron"
     assert style["fonts"]["vector_family"] == "Open Sans"
     assert style["fonts"]["stock_family"] == "Nimbus Sans LINZ"
     assert style["contours"]["index"]["colour"] == "#7A5542"

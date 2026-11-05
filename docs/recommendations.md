@@ -126,7 +126,7 @@ broader coverage). Both have all ten macron vowels and x-height ≈0.535 em.
 **Later:** adopt **Atkinson Hyperlegible Next** once Ō/ō exist in a build we
 can make glyph PBFs from (F-26 – F-29). Preferred route: upstream PR adding
 two composites (`docs/upstream/`). Interim route: our renamed OFL patch
-(`tools/patch_atkinson_omacron.py`). It's designed to separate I/l/1 and O/0
+([Atkinson Hyperlegible Next Macron](https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons)). It's designed to separate I/l/1 and O/0
 (`docs/visuals/05`), which matters for grid references and trig IDs. Print
 via a shaping renderer (QGIS) may work with the official font already (F-28).
 **QGIS fork (log 0024):** the accessible sheet uses that interim patch now

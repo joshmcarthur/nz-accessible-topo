@@ -44,8 +44,10 @@ exist (patched font, or upstream fix) *and* glyph PBFs built from that font.
 Ā and Ū are composites of the base letter + `uni0304`, centred on the base's
 bounding box; that rule reproduces their offsets exactly (135, 167). Applying
 it to O and o gives offsets 179 and 96 (the symmetric `o` agrees under both
-centring rules). `tools/patch_atkinson_omacron.py` does this for static
-TTFs and renames the result "NZAT Legible Test".
+centring rules). `tools/patch_atkinson_omacron.py` did this for static
+TTFs and renamed the result "NZAT Legible Test". The patch now lives in
+[atkinson-hyperlegible-next-macrons](https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons),
+which publishes the family as "Atkinson Hyperlegible Next Macron".
 **Sources:** S-OUR-PATCH (D, measured).
 **Known gaps:** upright statics only; kerning classes not extended; not
 reviewed by the type designers.

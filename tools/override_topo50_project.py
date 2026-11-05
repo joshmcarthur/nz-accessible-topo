@@ -4,7 +4,7 @@
 The print layout (legend, sheet index, scale, title) is left alone.
 Changes are on the map layers the research names:
 
-- labels: upright NZAT Legible Test, size floor (R-05, R-06, R-09)
+- labels: upright Atkinson Hyperlegible Next Macron, size floor (R-05, R-06, R-09)
 - labels: draw the buffer already on the text style, cap it at halo_max_mm, and darken ink below the contrast floor and the red-light floor (R-07, R-11)
 - labels: a multiline carto_text name is split onto the forward passes of a folded baseline
 - labels: stretch-to-fit curved modes keep the stock spread only on a one-line name whose baseline is longer than the name, so the larger type is not squeezed

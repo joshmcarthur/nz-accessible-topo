@@ -112,6 +112,6 @@ web audit, P1–P9 → print audit, etc.).
 | S-OUR-FONTCHECK | D | `tools/font_check.py` glyph coverage and x-height (log 0006) |
 | S-OUR-SHAPING-TEST | D | Shaped vs unshaped rendering of Atkinson Next (log 0018) |
 | S-OUR-PALETTE-V0 | D | Palette experiment v0 (log 0009) |
-| S-OUR-PATCH | D | `tools/patch_atkinson_omacron.py` — macron placement rule verified against existing glyphs (log 0018) |
+| S-OUR-PATCH | D | `build.py` in [atkinson-hyperlegible-next-macrons](https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons) (commit `61a9ebf`; first written here as `tools/patch_atkinson_omacron.py`) — macron placement rule verified against existing glyphs (log 0018) |
 | S-OUR-QGIS-ANALYSIS | D | `tools/analyse_qgis_project.py` over topographic-qgis + carto_text sample (log 0023) |
 | S-OUR-REAL-RENDER | D | Simulations over LINZ's real Topo50 render (log 0019) |

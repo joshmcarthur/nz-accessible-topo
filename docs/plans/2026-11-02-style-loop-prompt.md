@@ -40,7 +40,7 @@ Then do the first incomplete step below.
 
 Do not reopen these. Do not pick new values for them.
 
-R-06. The accessible raster face is NZAT Legible Test, the patched Atkinson Hyperlegible Next. font_check on that TTF reports all ten macron vowels and the combining macron. The stock sheet keeps unmodified Nimbus Sans LINZ. The vector style keeps Open Sans until macron glyph PBFs exist. Pegasus Bay and the estuary name do not contain Ō or ō. A missing macron is not the cause of the question marks. Do not spend a step swapping the vector face.
+R-06. The accessible raster face is Atkinson Hyperlegible Next Macron, the patched Atkinson Hyperlegible Next from https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons (release v2.001-1). font_check on that TTF reports all ten macron vowels and the combining macron. The stock sheet keeps unmodified Nimbus Sans LINZ. The vector style keeps Open Sans until macron glyph PBFs exist. Pegasus Bay and the estuary name do not contain Ō or ō. A missing macron is not the cause of the question marks. Do not spend a step swapping the vector face.
 
 R-05. Map labels in the accessible project are upright. The italic count on those styles is 0. Layout text stays Nimbus, including its italic. Do not spend a step removing italics from label styles again. Two parts of R-05 are not settled (log 0059). Text drawn as a symbol counts too: the contour-number FontMarkers are still italic. Natural-feature names need a non-italic cue, because italic was that cue in Topo50.
 
@@ -131,8 +131,8 @@ Check the end-state list. If one item is missing, do only that item, then stop. 
 - STAC item: https://d1jzh93b1t1cv.cloudfront.net/qgis/nztopo50/commit_prefix=c/commit=c0edcfc8c8b4321359cd9dbc2f66cd8d0e539a78/nztopo50.json
 - Cache: ~/Projects/github.com/linz/topo50-bx24/.cache/
 - Accessible project from the last attempt: ~/Projects/github.com/linz/topo50-bx24/accessible/nztopo50.qgs
-- Patched font: ~/Projects/github.com/linz/topo50-bx24/accessible/fonts/NZATLegibleTest-Regular.ttf
-- Family name: NZAT Legible Test
+- Patched font: ~/Projects/github.com/linz/topo50-bx24/accessible/fonts/AtkinsonHyperlegibleNextMacron-Regular.ttf
+- Family name: Atkinson Hyperlegible Next Macron
 - Vector style today: styles/accessible-v0.json, built by tools/build_style.py from upstream/linz-topographic-v2.json
 - Site comparisons: site/src/data/comparisons.json
 - Conditions: site/src/data/conditions.json

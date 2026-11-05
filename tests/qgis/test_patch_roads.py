@@ -72,7 +72,7 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
     assert carto.findtext("featureBlendMode") == "0"
     halo, digit = carto.findall(".//layer[@class='FontMarker']")
     # Catches the face left as Nimbus Narrow Italic: FontMarker reads font and font_style (log 0082).
-    assert digit.find("Option/Option[@name='font']").get("value") == "NZAT Legible Test"
+    assert digit.find("Option/Option[@name='font']").get("value") == "Atkinson Hyperlegible Next Macron"
     assert digit.find("Option/Option[@name='font_style']").get("value") == "Regular"
     assert digit.find("Option/Option[@name='color']").get("value").startswith("122,85,66")
     assert digit.find("Option/Option[@name='fontItalic']").get("value") == "0"

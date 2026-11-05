@@ -24,7 +24,12 @@ The script draws the buffer that is already on a map text style. It caps that bu
 
 A carto_text `style` value that contains italic becomes `fonts.raster_natural_style`. That style is Regular: colour carries the natural cue. A style that contains bold becomes Bold (the stock Narrow Bold town names). A narrow or empty style becomes Regular. Named styles stay upright.
 
-The render loads every `.ttf` in the font folder. The folder holds `NZATLegibleTest-Regular.ttf` and `NZATLegibleTest-Bold.ttf`. Both are patched with `tools/patch_atkinson_omacron.py` from the OFL release at `7925f50` (log 0080).
+The render loads every `.ttf` in the font folder. The folder holds `AtkinsonHyperlegibleNextMacron-Regular.ttf` and `AtkinsonHyperlegibleNextMacron-Bold.ttf`. They come from release `v2.001-1` of [atkinson-hyperlegible-next-macrons](https://github.com/joshmcarthur/atkinson-hyperlegible-next-macrons). That repo adds Ō/ō to the OFL release at `7925f50` (log 0080). Get them and check them with these commands:
+
+```bash
+gh release download v2.001-1 -R joshmcarthur/atkinson-hyperlegible-next-macrons -D accessible/fonts -p AtkinsonHyperlegibleNextMacron-Regular.ttf -p AtkinsonHyperlegibleNextMacron-Bold.ttf -p fonts.sha256
+(cd accessible/fonts && shasum -a 256 --ignore-missing -c fonts.sha256)
+```
 
 Topo50 sets natural-feature names and spot heights in black italic. Natural-feature names take `labels.natural_colour`. Spot heights (a number, with an optional m) stay black, so they do not look like contour numbers (log 0081). On carto_text they also keep `labels.spot_height_floor_pt` (6 pt), one step under the 7 pt name floor (log 0084). That colour is `#7A5542`, the index ink. It is 6.55:1 on paper and 4.29:1 in red light. Water names stay blue. Settlement names stay black.
 
@@ -38,7 +43,7 @@ Set these before the process starts. `PYTHONHOME` is `Contents/Frameworks`. `PYT
 
 A draw with no `PROJ_DATA` writes a white square. Do not set `HOME` to `/tmp` on the Mac. The sheet export stays on the `map` image. Do not draw squares with QGIS 3.36.3.
 
-Map labels in `OUT.qgs` use the family `NZAT Legible Test`.
+Map labels in `OUT.qgs` use the family `Atkinson Hyperlegible Next Macron`.
 
 The stock sheet does not use this file. The stock sheet keeps Nimbus Sans LINZ.
 
@@ -130,7 +135,7 @@ Do not put a sheet code in the file.
 
 `reference_inks.project_road` is `#EC7000`. The QGIS apply step paints two-lane and sealed PMS151 fills in that ink. Highway fills stay `#E31A1C`. Gold `#D5B43C` is the bivouac marker, not the road fill.
 
-Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are `NZAT Legible Test` Regular, not italic (the FontMarker options are `font` and `font_style`). Size is at least 6 pt. A paper-coloured copy of each digit draws first with a `contours.number_halo.width_mm` stroke (0.3 mm), so the digit has a halo. The layer blends normally, not DestinationOver, so the digit draws over its halo.
+Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are `Atkinson Hyperlegible Next Macron` Regular, not italic (the FontMarker options are `font` and `font_style`). Size is at least 6 pt. A paper-coloured copy of each digit draws first with a `contours.number_halo.width_mm` stroke (0.3 mm), so the digit has a halo. The layer blends normally, not DestinationOver, so the digit draws over its halo.
 
 `reference_inks.project_highway` is `#E31A1C`. Map5View paints highway fills in that ink. The apply step does not paint that ink.
 
