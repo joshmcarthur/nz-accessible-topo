@@ -1,6 +1,6 @@
 # Backlog
 
-Status as of 2026-11-05, after log 0094.
+Status as of 2026-11-06, after log 0095. Start with "Next work" below.
 Label placement (G2, B-31) is parked. The order now is: style and symbology, full LINZ sheets, a legend of our styles, then vector parity. Log 0090 lists the remaining raster style items.
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
@@ -33,6 +33,106 @@ The starting point remains LINZ's `topo-raster-gridded`, i.e.
 Topo50 itself (log 0023, R-18). IDs are stable;
 reference them from commits and research-log entries. The board needs mermaid
 with `kanban` support (11.4+); validated with mermaid 12.2.0.
+
+## Next work (from 2026-11-06)
+
+Research stopped at log 0095. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+
+### How to run a pass (local Mac)
+
+The 2026-11-05 session ran these steps from temporary scratchpad scripts. These are the commands, so they do not depend on those scripts.
+
+- **QGIS env** (needed by every `render_*`, `fit_*`, `tag_*` tool):
+  ```sh
+  APP=/Applications/QGIS-final-4_2_3.app/Contents
+  export PYTHONHOME=$APP/Frameworks PYTHONPATH=$APP/Resources/python3.12/site-packages \
+    DYLD_LIBRARY_PATH=$APP/MacOS:$APP/Frameworks PROJ_DATA=$APP/Resources/qgis/proj \
+    PROJ_LIB=$APP/Resources/qgis/proj GDAL_DATA=$APP/Resources/qgis/gdal \
+    QT_QPA_PLATFORM=offscreen QGIS_PREFIX_PATH=$APP/MacOS
+  QPY=$APP/MacOS/python3.12
+  ```
+  Unset `PYTHONHOME PYTHONPATH DYLD_LIBRARY_PATH` before running host `python3` or `uv`.
+- **Paths:** `W=~/Projects/github.com/linz/topo50-bx24/squares`. Stock project `$W/stock/nztopo50.qgs`. Accessible project `$W/accessible/nztopo50.qgs`. Fonts `~/Projects/github.com/linz/topo50-bx24/accessible/fonts` (Atkinson Hyperlegible Next Macron Regular + Bold). Stock fonts `$W/fonts-stock`.
+- **Apply:** `python3 tools/override_topo50_project.py $W/stock/nztopo50.qgs $W/accessible/nztopo50.qgs`. Before apply, `urban_text.json` and `carto_fit.json` must sit beside the target `.qgs` (see `tools/README.md`).
+- **BX24 4 km review grid** (27 cells, 945 px = 4 km): `$QPY tools/render_square.py --project $W/accessible/nztopo50.qgs --font <fonts> --extent 1564000,5154000,1588000,5190000 --width 5670 --height 8505 --dpi 300 --output render/bx24-4km/face-accessible.png`, then `python3 tools/crop_grid.py --stock render/bx24-4km/face-stock.png --accessible render/bx24-4km/face-accessible.png --out render/bx24-4km`. The stock face does not change; reuse it. Review stock and accessible cells side by side (`docs/method.md`).
+- **Legend:** after apply, `$QPY tools/render_legend.py --project $W/accessible/nztopo50.qgs --stock-legend topo-legend-1.tif --font <fonts>` (stock image: `~/Projects/github.com/linz/topographic-system/e2e/assets/topo-legend-1.tif`). Swatches stay at true sheet size (Josh, B-46).
+- **Symbol table page:** `uv run python tools/export_symbol_table.py`. Commit `site/src/data/symbols.json` and `site/public/symbols/*.png`. CI does not run it (inputs are outside the repo).
+- **Label fit and collision count** (only for label changes): `$QPY tools/fit_carto_labels.py --project … --font … --extent …`, re-apply, then `$QPY tools/count_label_collisions.py --project … --font … --extent … --output acc.json --compare stock.json`.
+- **Never** use `overlay_intersects()` or other layer lookups in label or symbol expressions. They deadlock `render_square.py` and `render_sheets.py` (logs 0090, 0091). Precompute instead (pattern: `tools/tag_urban_text.py`).
+- QGIS 4.2.3 treats a NULL `enabled`/filter result as true. Wrap attribute tests in `coalesce()` (log 0092).
+- FontMarker options are `font` / `font_style`, not `fontFamily` / `fontStyle` (log 0082).
+- **Gates before every commit (same as CI):** `uv run ruff check`, `uv run ruff format --check`, `uv run pytest -q`, `python3 tools/check.py`; when the style file or docs change, also `uv run python tools/extract_graph.py`, `tools/export_tokens.py`, `tools/export_ink_matrix.py`, and commit changed `site/src/data/*`. If `tools/build_style.py` reads a changed value, run it and commit `styles/` and `docs/styles/`. Site: `cd site && npm run build`, then `uv run --group site python tools/check_site.py` (images need alt text). `tools/make_sprites.py` changes two PNGs on macOS only; do not commit those.
+
+### N-1 — Navigation line floor 0.35 mm (roads, tracks, streams)
+
+- **Decision (Josh, 2026-11-06):** "primary navigation elements should have that floor, but not everything on the map … tracks, roads and streams".
+- **Change:** add `sizes.navigation_line_mm: 0.35` to `tools/style-topo50.json`; read it in apply.
+  - Roads: every `road_line …` fill under 0.35 mm on the sheet rises to 0.35 mm (one-lane sealed/metalled are 0.25–0.26 mm; check narrow and unmetalled double line too). Casings must still show outside the fill. Inks stay settled (`#EC7000`, `#E31A1C`).
+  - Tracks (`tracks` in the style file, `src/nzat/qgis/patch_tracks.py`): foot, vehicle and closed lines 0.2 → 0.35 mm. Lengthen dashes if needed so they still read as dashes. Scale the closed × (now 0.7 mm, 0.15 mm stroke) so it stays clearly bigger than the line. Poled-route dots (0.45 mm) already exceed the floor.
+  - Streams: `water.stream_width_mm` 0.25 → 0.35 (`src/nzat/qgis/patch_water_line.py`). Drains stay 0.15 mm (not primary navigation; log 0071). Coastline and lake outlines unchanged.
+  - All other lines keep the 0.15 mm floor from the symbol table.
+- **Check:** BX24 grid against stock on urban `1564000-5178000`, steep `1580000-5154000`, rural `1564000-5162000`, and the G1 dense-track cells `1576000-5182000`, `1580000-5170000`, `1572000-5170000`, `1584000-5158000`, `1576000-5166000` (closed × must not read as railway, embankment or cliff). Streams and index contours are then both 0.35 mm: check they still separate in greyscale (`uv run python tools/simulate_image.py`); stream `#004C99` vs index is 1.83:1 grey and Josh counted width as the second cue (log 0093), so this may need a new cue — report it, do not decide it.
+- **Done when:** values come from the style file, tests catch a sub-floor road/track/stream, the grid review shows no new regression, the legend and `/symbols/` are regenerated, CI is green.
+
+### N-2 — Vegetation proposals 3, 4, 5
+
+- **Decisions (Josh):** "3 - yes, let's try it. 4 - yes, 5 - yes".
+- **Trees (3):** replace the 0.05 mm `vegetation_point` dot with the LINZ tree mark in shelterbelt `#1D9D00` at 1.4 mm (row on `/symbols/`). This is a trial: check crowding on dense-tree cells and report honestly; keep it if it reads, else log the problem and propose a size.
+- **Scattered scrub (4):** `#6A9A50` `third_arc` arcs at 1.4 mm, 0.18 mm stroke (same as `vegetation.scrub_dots`) on the stock 5 mm grid, no fill. Code: `src/nzat/qgis/patch_vegetation.py`.
+- **Vegetation outline (5):** `#A7C05E` → `#859E3E` (3.02:1) on all vegetation polygons. It is `reference_inks.vegetation_outline`; the pair file reads it.
+- **Done when:** as N-1.
+
+### N-3 — Point and line symbol proposals 1, 2, 6, 7
+
+- **Locked gate (1, "yes"):** black gate bar with a filled 0.6 mm black square at its middle. Today the bar is `#FF4500` (1.0:1 in red light). A second bar would read as a cattlestop. Layer: `structure_point map`.
+- **Fumarole (2):** "use a different shape" — it must not be a × (hot spring is a black ×, `springs.hot`). Propose a dark shape that does not match any other legend symbol (check `/symbols/`), show it to Josh before applying. Geothermal bore keeps its own glyph, darkened.
+- **Buried gas pipeline (6, "yes"):** `#EA6300` → `#951600` (passes red light) with a long dash.
+- **Bivouac (7):** "use a camp/tent triangle symbol". Today it borrows the LINZ cave glyph and has a 0.09 mm stroke. Draw a tent/camp triangle at ≥1.4 mm with ≥0.15 mm stroke, distinct from the trig triangle (filled) and the mast (open, tall).
+- **Done when:** each symbol is in the style file or an owned SVG under the repo, tests cover it, the legend row and `/symbols/` row show it, CI is green.
+
+### N-4 — Remaining "proposed" rows on `/symbols/` (no decision needed)
+
+The table (log 0095) lists them with measurements. Main groups:
+- SVG strokes under 0.15 mm at sheet size: church 0.04, shipwreck 0.06, bivouac 0.09, tower 0.09, redoubt and mast 0.10, beacon 0.11 mm. Fixed-colour SVGs ignore the QGIS colour, so fix the stroke in an owned copy of the SVG.
+- Mark sizes under ~1.4 mm: hut 0.8 mm, church 1.0 mm tall.
+- Look-alikes: double railway draws like single; depression contours have no ticks and still use stock orange `#FF7F00` (2.5:1, red light 1.0:1) — use the index/intermediate inks with ticks; supplementary contours are not dashed; saddle draws as a spot-height dot; moraine, scree and shingle share one texture; non-coniferous exotic forest gets conifer marks.
+- Thin lines: fence 0.05 mm and two-lane bridge casings 0.1 mm → 0.15 mm floor.
+- **Done when:** each row moves to "done" on `/symbols/`.
+
+### N-5 — Hidden layers (proposal 8)
+
+- **Decision (Josh):** "yes if the base map has it on". Interpreted as: show a layer if the **printed LINZ Topo50** sheet shows it. This reading is not yet confirmed by Josh — confirm before turning layers on.
+- Map5View hides `water_point` (springs), `structure_line` (power lines, pipelines), `structure`, `tunnel_line`, `landcover_point`, `landuse`, `marine`, and every `relief_line map` rule is switched off. Evidence: the print legend audit (log 0019), `docs/visuals/07-real-topo50-simulations.png`, and the LINZ export `~/Projects/github.com/linz/topo50-bx24/output/nztopo50/BX24.png` (same Map5View theme, so it is not evidence for print). No downloads without asking Josh.
+- The 54 "blocked" rows on `/symbols/` depend on this. Turning a layer on moves its rows to "proposed".
+
+### N-6 — Legend: redraw the 14 stock-look row groups from the map
+
+- **Decision (Josh):** "Redraw from map" (method B in log 0092: sample features with real attributes, copy of the full layer style, render at 1:50,000 and 600 dpi into the swatch box).
+- Do this **after** N-1 to N-5, so the legend shows finished styles. Rows: tunnel/bridge/ford/gate/footbridge; railways and crossings; residential/buildings picture (build a small sample scene); point symbols; pipelines, power, telephone, cableway, mine, gas pipeline; depression contours; elevation in metres (comes out upright, black, 6 pt); relief symbols; moraine/scree box (sample scene); water-features picture (sample scene); dam/waterfall/canal/stream disappearing; springs/fumarole/bore (blocked until N-5); trees/orchard/mangroves. Swatch list: `src/nzat/qgis/legend_swatches.py`.
+- Legend label text stays stock (layout text is Nimbus) unless Josh gives new wording.
+
+### N-7 — Re-render all 445 sheets
+
+- The rasters in `~/Projects/github.com/linz/topo50-bx24/sheets/accessible-150/` were applied from `89a4c83` (log 0093, with urban flag). They predate log 0094 (bolder tracks, dotted poled routes) and everything after.
+- Steps: re-apply `$W/accessible-sheets/nztopo50.qgs`, run `$QPY tools/tag_urban_text.py --project $W/accessible-sheets/nztopo50.qgs` first, move the old `.tif` files aside, then run `~/Projects/github.com/linz/topo50-bx24/sheets/accessible-150/run.sh` (resumable, about 1.5–2.5 h, 5–7 GB). Old runs in `sheets/accessible-150-stale*` can be deleted.
+- Do this last, after N-1 to N-6.
+
+### N-8 — Vector parity (`tools/build_style.py`)
+
+Bring raster decisions into the MapLibre style; the style file is the single source:
+- scrub alpha (unblocks the greener scrub fill reverted in log 0076, B-34);
+- natural-name ink `labels.natural_colour`, Bold town names, spot heights black 6 pt;
+- stream/drain widths and `#004C99`, navigation line floor (N-1);
+- track dashes, larger closed ×, poled-route dots (log 0094);
+- highway shield numbers (log 0090), contour-number halo (log 0082), urban-fill halo (log 0093);
+- new symbols from N-2 to N-4.
+Vector keeps Open Sans until macron glyph PBFs exist (R-06).
+
+### Parked
+
+- **G2 / B-31 label collisions.** 15 of 22 commits on 2026-11-05 were label placement. Josh parked it. If resumed: add an ink-based collision count beside the box count first (log 0089 showed box counts over-count stacked names; a half-built `ink_contacts.py` was discarded).
+- **B-43 relief shading** needs a `dem.tif` (download — ask Josh).
+- **Fumarole shape** waits for Josh to see a proposal (N-3).
 
 ## Board
 
@@ -147,5 +247,5 @@ product. Its research and decisions carry over to the QGIS fork.
 | B-45 | Medium | Black names on urban fill get an urban-fill halo, not a white hole (G4). A render-time `overlay_intersects` on `residential_area map` hangs the parallel render job (log 0090). **Done (log 0093):** Josh chose a precomputed flag. `tools/tag_urban_text.py` writes `urban_text.json` (3456 ids for the country). The apply step reads it into a static `"id" IN (...)` halo colour. Black names in the list take `#BCBAB6`. Brown and blue names keep the paper halo. The BX24 render does not hang (55 s). The sheet project still needs the tag step | Grid review passes G4 | — | R-07, G4, logs 0090, 0093 |
 | B-46 | High | Sheet legend shows the accessible swatches. The legend is a picture with the labels as pixels. **Done:** 18 rows draw from the applied layers over the stock image (log 0092). 14 row groups still show stock looks; log 0092 lists them. Swatches stay at true sheet size (Josh, 2026-11-05). The track rows now show foot dashes, closed ×, and poled-route dots (log 0094). Josh to decide any new legend text | Every swatch row matches the map | — | log 0092 |
 | B-47 | High | Symbol definition table: every stock legend symbol with its LINZ crop, our symbol, measured inks and sizes against R-01, R-11, R-17 and F-31, and a proposal that keeps the LINZ shape. **Done:** `/symbols/` lists 126 symbols. 38 done, 34 proposed, 54 blocked (log 0095) | Page on the site; passes S1–S3 | B-46 | R-01, R-11, R-17, F-31, log 0095 |
-| B-48 | High | Apply the approved symbol proposals from `/symbols/`. Josh reviews first: locked-gate cue, fumarole size, tree size, scattered scrub, vegetation outline `#859E3E`, gas pipeline `#951600`, bivouac glyph, and which hidden layers the sheet shows | Every proposed row done on the grid | B-47 | R-01, R-11, R-17, F-31, log 0095 |
+| B-48 | High | Apply the approved symbol proposals from `/symbols/` (split into N-1 to N-5 under "Next work"). Josh reviews first: locked-gate cue, fumarole size, tree size, scattered scrub, vegetation outline `#859E3E`, gas pipeline `#951600`, bivouac glyph, and which hidden layers the sheet shows | Every proposed row done on the grid | B-47 | R-01, R-11, R-17, F-31, log 0095 |
 | B-05–B-09, B-19 | Very Low | Secondary web-vector track (see board) | — | — | logs 0013–0020 |
