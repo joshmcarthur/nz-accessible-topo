@@ -11,6 +11,10 @@ from nzat.qgis.require_field import require_field
 from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 
+# QGIS reads a NULL "enabled" value as on, so a bare "status" = 'closed'
+# drew the cross on every open foot track (status is NULL there, log 0092).
+CLOSED_ENABLED = "coalesce(\"status\", '') = 'closed'"
+
 
 def _closed_crossbar(style=None):
     style = style or STYLE
@@ -48,7 +52,7 @@ def _closed_crossbar(style=None):
     ET.SubElement(
         root, "Option", {"name": "type", "type": "QString", "value": "collection"}
     )
-    put_expr(props, "enabled", "\"status\" = 'closed'")
+    put_expr(props, "enabled", CLOSED_ENABLED)
     symbol = ET.SubElement(
         layer,
         "symbol",
@@ -137,6 +141,8 @@ def _sync_closed_crossbar(marker, style):
     track = style["tracks"]["closed_foot"]
     ink = rgba(track["crossbar_colour"], 255)
     interval, along = closed_bar_placement(track)
+    props = marker.find("data_defined_properties/Option/Option[@name='properties']")
+    put_expr(props, "enabled", CLOSED_ENABLED)
     set_option(marker, "interval", interval)
     set_option(marker, "offset_along_line", along)
     simple = marker.find("symbol/layer[@class='SimpleMarker']")

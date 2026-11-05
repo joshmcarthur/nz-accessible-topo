@@ -122,3 +122,8 @@ def test_closed_tracks_read_the_style_file():
     again["tracks"]["closed_foot"]["crossbar_angle_deg"] = 45
     patch_tracks(track_layer, again)
     assert angle.get("value") == "45"
+    # Catches the cross drawn on open foot tracks: QGIS reads NULL as enabled.
+    enabled = track_layer.find(
+        ".//layer[@class='MarkerLine']//Option[@name='enabled']/Option[@name='expression']"
+    ).get("value")
+    assert enabled == "coalesce(\"status\", '') = 'closed'"
