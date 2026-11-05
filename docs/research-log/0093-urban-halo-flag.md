@@ -54,9 +54,9 @@ BX24 grid. Compared three urban cells with the previous render and stock.
   foot-track fix (commit `7325b52`), so some diffs are track crosses, not
   halos.
 
-![Stock, before, after on two urban cells](../visuals/13-urban-halo-before-after.png)
-
-Each row is stock, the previous accessible render, then this render.
+- Before and after crops: `docs/visuals/13-urban-halo-before-after.png`.
+  Cells `1564000-5178000` (top) and `1572000-5178000` (bottom). Each row is
+  stock, the previous accessible render, then this render, at 3× zoom.
 
 ### Decisions
 
