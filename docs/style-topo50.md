@@ -142,7 +142,7 @@ Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour
 
 `water.stream_width_mm` is 0.25. `water.drain_width_mm` is 0.15. The apply step sets a data-defined width on `water_line map`: drains take the drain width, rivers and canals take the stream width. Coastline, water outlines, shelterbelt, and grid keep stock widths. Only their ink changes.
 
-`reference_inks.stream` is `#0064BD`. That hex keeps the process-blue hue and lowers L* until Grey and Red CR reach 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
+`reference_inks.stream` is `#004C99`. That hex keeps the process-blue hue. It is dark enough that a stream and an index contour differ in greyscale (1.83:1, log 0083), and it passes 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
 
 `reference_inks.shelterbelt` is `#1D9D00`. Map5View paints shelterbelts and green vegetation dots as `#94FF3B`. The apply step rewrites that RGB.
 

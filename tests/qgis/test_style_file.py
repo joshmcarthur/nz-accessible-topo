@@ -33,7 +33,7 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["project_road_casing"] == "#232323"
     assert style["reference_inks"]["water_fill"] == "#D1E7F5"
     assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
-    assert style["reference_inks"]["stream"] == "#0064BD"
+    assert style["reference_inks"]["stream"] == "#004C99"
     assert style["water"]["stream_width_mm"] == 0.25
     assert style["water"]["drain_width_mm"] < style["water"]["stream_width_mm"]
     assert style["vegetation"]["scrub_dots"]["marker"] == "third_arc"

@@ -85,3 +85,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0080 — Patched Atkinson Bold for town names](0080-patched-bold-town-names.md)
 - [0081 — Spot heights stay black](0081-spot-heights-stay-black.md)
 - [0082 — Contour numbers get a halo and their real face](0082-contour-number-halo.md)
+- [0083 — Streams separate from index contours in greyscale](0083-darker-streams-greyscale.md)
