@@ -2,6 +2,7 @@ import copy
 import uuid
 import xml.etree.ElementTree as ET
 
+from nzat.qgis.carto_abbreviation_expression import carto_abbreviation_expression
 from nzat.qgis.carto_fit_text_expression import carto_fit_text_expression
 from nzat.qgis.carto_fit_value import carto_fit_value
 from nzat.qgis.carto_flat_line_expression import carto_flat_line_expression
@@ -83,6 +84,10 @@ def patch_carto_point_labels(layer, style=None, fit=None):
             put_expr(props, "PositionY", carto_fit_value(fit, "y"))
             put_expr(props, "Hali", "'Center'")
             put_expr(props, "Vali", "'Bottom'")
+    baseline_text = settings.find("text-style")
+    if baseline_text is not None:
+        baseline_text.set("fieldName", carto_abbreviation_expression(style))
+        baseline_text.set("isExpression", "1")
     labeling.remove(settings)
     labeling.set("type", "rule-based")
     rules = ET.SubElement(labeling, "rules", {"key": "{" + str(uuid.uuid4()) + "}"})

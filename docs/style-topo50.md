@@ -18,6 +18,8 @@ The script changes map layers only. Layout text stays Nimbus Sans LINZ. Layout t
 
 An along-line label keeps its stretch `charplace` when it is one line and its baseline is longer than the estimated text width. Other stretch labels use default spacing, so the larger type is not squeezed. A one-line name on a curved baseline stays on the curved rule. A flat name (placement 1 on a straight baseline, or a multi-line placement 34 name) can move a short way. `tools/fit_carto_labels.py` writes those moves. A name with its own line break keeps it and does not wrap again.
 
+An along-line name whose estimated width is longer than its baseline abbreviates its road suffix. `labels.road_abbreviations` lists the words: ROAD is RD, STREET is ST, AVENUE is AVE, DRIVE is DR, TERRACE is TCE, CRESCENT is CRES, PLACE is PL. Topo50 already uses these forms where a name is tight. A name that fits keeps its full text.
+
 The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour, except on a layer whose name contains `relief_point`. That halo uses `reference_inks.urban_fill`. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
 
 A carto_text `style` value that contains italic becomes `fonts.raster_natural_style`. That style is Bold. The shipped face has one Regular file, so Bold draws as Regular until a Bold file exists. A narrow or empty style becomes Regular. Named styles stay upright.

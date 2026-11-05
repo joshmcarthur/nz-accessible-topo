@@ -7,6 +7,7 @@ from nzat.colour.contrast_ratio import contrast_ratio
 from nzat.colour.darken import darken_for_text
 from nzat.colour.rel_luminance import rel_luminance
 from nzat.qgis.capped_buffer_mm import capped_buffer_mm
+from nzat.qgis.carto_abbreviation_expression import carto_abbreviation_expression
 from nzat.qgis.carto_fit_text_expression import carto_fit_text_expression
 from nzat.qgis.carto_fit_value import carto_fit_value
 from nzat.qgis.carto_flat_line_expression import carto_flat_line_expression
@@ -215,7 +216,14 @@ def test_multiline_baseline_splits_at_a_fold():
     assert point_text.get("isExpression") == "1"
     assert "' /\\n'" in CARTO_FLAT_TEXT
     assert point.get("multipartBehavior") == "LabelLargestPartOnly"
-    assert line_rule.find("settings/text-style").get("isExpression") is None
+    # Catches a road name that overruns its baseline left unabbreviated (log 0075),
+    # or a short name abbreviated when it fits.
+    line_text = line_rule.find("settings/text-style")
+    assert line_text.get("fieldName") == carto_abbreviation_expression()
+    assert line_text.get("isExpression") == "1"
+    assert "regexp_replace(" in line_text.get("fieldName")
+    assert "' ROAD$', ' RD'" in line_text.get("fieldName")
+    assert line_text.get("fieldName").endswith('ELSE "text_string" END')
     # Catches a wrap that also breaks dual names, a lone leading "Te", or the line height left at 1.
     wrap = point_rule.find(
         ".//Option[@name='AutoWrapLength']/Option[@name='expression']"
