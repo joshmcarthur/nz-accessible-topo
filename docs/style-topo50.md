@@ -64,11 +64,11 @@ The QGIS apply step darkens a label ink that is below that red-light floor. It k
 
 The vector build reads `vegetation.native`, `vegetation.scrub`, and `vegetation.scattered` from this file.
 
-`vegetation.native.colour` is `#E1EAC3`. `vegetation.native.marker.colour` is `#3F6B32`. `vegetation.scrub.colour` is `#D6FFAA`. `vegetation.scrub.alpha` is 55. On paper that is `#F4FFEC`, a pale green (log 0076). `vegetation.scattered.colour` is `#E0EDD8`.
+`vegetation.native.colour` is `#E1EAC3`. `vegetation.native.marker.colour` is `#3F6B32`. `vegetation.scrub.colour` is `#A3CC90`. `vegetation.scrub.alpha` is 26. `vegetation.scattered.colour` is `#E0EDD8`.
 
 The QGIS apply step paints the scrub fill and a plant-mark grid. The marks carry the class. The marker name is `vegetation.scrub_dots.marker`. That name is `third_arc`, the same mark as scattered scrub. Size is `vegetation.scrub_dots.size_mm`. That size is 1.4 mm. Distance is `vegetation.scrub_dots.distance_mm`. That distance is 3 mm. Colour is `vegetation.scrub_dots.colour`. That colour is `#6A9A50`, a mid green. The stroke is `vegetation.scrub_dots.stroke_mm`, 0.18 mm. A stock hairline arc in `#B2DF8A` did not show on the pale fill (log 0071). A mark draws whole when its centre is inside the polygon. Scattered scrub stays on its stock `third_arc` pattern at 5 mm with no fill. A second apply removes a leftover line hatch and writes the marker, size, colour, and spacing onto the pattern that is already in the project. It paints a native tree marker when that marker layer is already in the project. It does not add a fill under the scattered dots.
 
-The QGIS apply step moves `vegetation map` so it sits immediately under `contour`. Custom-order stays off. Vegetation alpha stays 180 native and 55 scrub. `vegetation_line map` stays above contours. The vector style already paints contours after vegetation fills.
+The QGIS apply step moves `vegetation map` so it sits immediately under `contour`. Custom-order stays off. Vegetation alpha stays 180 native and 26 scrub. `vegetation_line map` stays above contours. The vector style already paints contours after vegetation fills.
 
 The vector build paints those three fills. It adds a stipple on scattered scrub.
 

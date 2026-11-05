@@ -72,7 +72,7 @@
       "marker": {"colour": "#3F6B32"}
     },
     "exotic": {"colour": "#A4D65E", "alpha": 0.2},
-    "scrub": {"colour": "#D6FFAA", "alpha": 55},
+    "scrub": {"colour": "#A3CC90", "alpha": 26},
     "scattered": {"colour": "#E0EDD8"},
     "scrub_dots": {
       "colour": "#6A9A50",

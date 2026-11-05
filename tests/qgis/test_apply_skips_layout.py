@@ -198,7 +198,7 @@ def test_overrides_skip_the_print_layout():
         "projectlayers/maplayer[layername='vegetation map']//symbol[@name='3']"
     )
     fill = scrub.find("layer[@class='SimpleFill']/Option/Option[@name='color']")
-    assert fill.get("value").startswith("214,255,170")
+    assert fill.get("value").startswith("163,204,144")
     assert scrub.find("layer[@class='LinePatternFill']") is None
     assert scrub.find("layer[@class='PointPatternFill']") is not None
     # Catches drains drawn at river width, which made the plain a blue mesh.
