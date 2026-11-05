@@ -12,7 +12,9 @@ from nzat.qgis.upright_style_name import upright_style_name
 # settlement or area name, so it stays Regular.
 NATURAL_TEST = "lower(coalesce(\"style\", '')) LIKE '%italic%'"
 # Spot heights stay black, so they do not read as index-brown contour numbers (log 0081).
-SPOT_HEIGHT_TEST = "regexp_match(trim(coalesce(\"text_string\", '')), '^[0-9]+(\\\\.[0-9]+)?m?$')"
+SPOT_HEIGHT_TEST = (
+    "regexp_match(trim(coalesce(\"text_string\", '')), '^[0-9]+(\\\\.[0-9]+)?m?$')"
+)
 
 
 def _style_expr(style=None):

@@ -76,15 +76,22 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
     assert carto.findtext("featureBlendMode") == "0"
     halo, digit = carto.findall(".//layer[@class='FontMarker']")
     # Catches the face left as Nimbus Narrow Italic: FontMarker reads font and font_style (log 0082).
-    assert digit.find("Option/Option[@name='font']").get("value") == "Atkinson Hyperlegible Next Macron"
+    assert (
+        digit.find("Option/Option[@name='font']").get("value")
+        == "Atkinson Hyperlegible Next Macron"
+    )
     assert digit.find("Option/Option[@name='font_style']").get("value") == "Regular"
-    assert digit.find("Option/Option[@name='color']").get("value").startswith("122,85,66")
+    assert (
+        digit.find("Option/Option[@name='color']").get("value").startswith("122,85,66")
+    )
     assert digit.find("Option/Option[@name='fontItalic']").get("value") == "0"
     assert digit.get("fontItalic") == "0"
     assert float(digit.find("Option/Option[@name='size']").get("value")) >= 6
     # Catches a missing halo, a halo drawn over the digit, or a second halo on re-apply.
     assert halo.get("nzat") == "halo"
-    assert halo.find("Option/Option[@name='color']").get("value").startswith("255,255,255")
+    assert (
+        halo.find("Option/Option[@name='color']").get("value").startswith("255,255,255")
+    )
     assert float(halo.find("Option/Option[@name='outline_width']").get("value")) > 0
 
 
@@ -135,9 +142,17 @@ def test_highway_numbers_draw_in_a_shield_in_the_raster_face():
     shield, digit = numbers.findall(".//symbol/layer")
     assert shield.get("class") == "SvgMarker" and shield.get("nzat") == "shield"
     assert shield.get("id") != "{a}"
-    assert digit.find("Option/Option[@name='font']").get("value") == "Atkinson Hyperlegible Next Macron"
+    assert (
+        digit.find("Option/Option[@name='font']").get("value")
+        == "Atkinson Hyperlegible Next Macron"
+    )
     assert digit.find("Option/Option[@name='font_style']").get("value") == "Regular"
-    ink = tuple(int(v) for v in digit.find("Option/Option[@name='color']").get("value").split(",")[:3])
+    ink = tuple(
+        int(v)
+        for v in digit.find("Option/Option[@name='color']").get("value").split(",")[:3]
+    )
     white = (255, 255, 255)
     assert contrast_ratio(rel_luminance(ink), rel_luminance(white)) >= 4.8
-    assert contrast_ratio(red_light_reflectance(ink), red_light_reflectance(white)) >= 3.0
+    assert (
+        contrast_ratio(red_light_reflectance(ink), red_light_reflectance(white)) >= 3.0
+    )

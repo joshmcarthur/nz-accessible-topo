@@ -34,7 +34,7 @@ MULTILINE_CENTRE = "1"
 # Stock pads some names with spaces and blank lines to align them on a
 # curved baseline. Flat names drop that padding (log 0085).
 CARTO_CLEAN_TEXT = (
-    "regexp_replace(regexp_replace(regexp_replace(\"text_string\","
+    'regexp_replace(regexp_replace(regexp_replace("text_string",'
     " '^\\\\s+', ''), '\\\\n[ ]+', '\\n'), '[ ]{2,}', ' ')"
 )
 CARTO_FLAT_TEXT = (

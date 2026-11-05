@@ -12,7 +12,4 @@ def carto_abbreviation_expression(style=None):
     for word, short in style["labels"]["road_abbreviations"].items():
         text = f"regexp_replace({text}, ' {word}$', ' {short}')"
     width = carto_text_width_expression('length("text_string")', style)
-    return (
-        f"CASE WHEN length($geometry) < {width} THEN {text}"
-        ' ELSE "text_string" END'
-    )
+    return f'CASE WHEN length($geometry) < {width} THEN {text} ELSE "text_string" END'

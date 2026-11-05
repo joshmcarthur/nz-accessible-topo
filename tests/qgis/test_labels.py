@@ -314,7 +314,7 @@ def test_natural_names_take_the_natural_ink_and_narrow_stays_regular():
     assert "LIKE '%narrow%' THEN 'Regular'" in style
     assert "OR lower" not in style
     # Catches spot heights lifted to the 7 pt name floor (G4, log 0084).
-    assert "THEN max(6, coalesce(\"size\", 6)) ELSE max(7," in (expr(props, "Size") or "")
+    assert 'THEN max(6, coalesce("size", 6)) ELSE max(7,' in (expr(props, "Size") or "")
     colour = expr(props, "Color")
     assert colour.startswith(
         "CASE WHEN \"colour\" = 'black' AND lower(coalesce(\"style\", '')) LIKE '%italic%'"
