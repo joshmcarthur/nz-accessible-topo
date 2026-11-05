@@ -14,6 +14,7 @@ from nzat.qgis.defaults import (
     SHEET_SCALE,
 )
 from nzat.qgis.font_files import font_files
+from nzat.qgis.is_spot_height import is_spot_height
 from nzat.qgis.map_layers import map_layers
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.steps_mm import steps_mm
@@ -187,6 +188,9 @@ def main():
             feature_context = QgsExpressionContext(context)
             feature_context.setFeature(feature)
             if not flat_filter.evaluate(feature_context):
+                continue
+            # A moved height can sit by the wrong dot. Names move around it instead.
+            if is_spot_height(feature["text_string"]):
                 continue
             wrap = props.valueAsInt(P.AutoWrapLength, feature_context, 0)[0]
             fmt = text_format(feature_context)
