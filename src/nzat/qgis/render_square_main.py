@@ -2,15 +2,11 @@ import argparse
 import os
 import sys
 
-from nzat.qgis.defaults import DEM_LAYER_NAME
-from nzat.qgis.dem_path import dem_path
 from nzat.qgis.font_files import font_files
-from nzat.qgis.hillshade_rules import hillshade_rules
-from nzat.qgis.hillshade_should_paint import hillshade_should_paint
-from nzat.qgis.map_layers import SHEET_PRESET, map_layers
+from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
+from nzat.qgis.render_image import render_image
 from nzat.qgis.render_jobs import render_jobs
-from nzat.qgis.with_dem_layer import with_dem_layer
 
 
 def _free_gb(path):
@@ -66,19 +62,7 @@ def main():
             return 1
 
     # QGIS is installed in the map container only. A top-level import fails on the host.
-    from qgis.core import (  # noqa: E402
-        QgsApplication,
-        QgsCoordinateReferenceSystem,
-        QgsExpression,
-        QgsExpressionContext,
-        QgsExpressionContextUtils,
-        QgsMapRendererParallelJob,
-        QgsMapSettings,
-        QgsProject,
-        QgsRectangle,
-    )
-    from qgis.PyQt.QtCore import QSize  # noqa: E402
-    from qgis.PyQt.QtGui import QColor, QFontDatabase  # noqa: E402
+    from qgis.core import QgsApplication  # noqa: E402
 
     try:
         jobs = render_jobs(
@@ -100,91 +84,15 @@ def main():
     qgs = QgsApplication([], False)
     qgs.initQgis()
     try:
-        for path in fonts:
-            font_id = QFontDatabase.addApplicationFont(path)
-            if font_id < 0:
-                print(f"font not loaded: {path}", file=sys.stderr)
-                return 1
-            print(f"font loaded: {path}")
-
-        project = QgsProject.instance()
-        if not project.read(args.project):
-            print(f"failed to read {args.project}", file=sys.stderr)
-            return 1
-
         try:
-            layers = map_layers(project)
+            session = open_map(args.project, fonts)
         except RuntimeError as error:
             print(error, file=sys.stderr)
             return 1
-        if not layers:
-            print(f"theme {SHEET_PRESET} has no valid map layers", file=sys.stderr)
-            return 1
-        project_dir = os.path.dirname(os.path.abspath(args.project))
-        dem_layer = None
-        rules = hillshade_rules()
-        if hillshade_should_paint(project_dir):
-            from qgis.core import QgsElevationUtils, QgsRasterLayer  # noqa: E402
-
-            for layer in project.mapLayers().values():
-                if layer.name() == DEM_LAYER_NAME and layer.isValid():
-                    dem_layer = layer
-                    break
-            if dem_layer is None:
-                raster = dem_path(project_dir)
-                dem_layer = QgsRasterLayer(raster, DEM_LAYER_NAME)
-                if not dem_layer.isValid():
-                    print(f"dem not loaded: {raster}", file=sys.stderr)
-                    dem_layer = None
-                else:
-                    QgsElevationUtils.enableElevationForLayer(dem_layer)
-                    print(f"dem loaded: {raster}")
-        else:
-            print(f"hillshade off: no {rules['raster_file']}")
-        layers = with_dem_layer(layers, dem_layer)
-        print(f"layers {len(layers)} theme {SHEET_PRESET}")
-        for layer in layers:
-            print(f"layer {layer.name()}")
-
-        color_context = QgsExpressionContext()
-        color_context.appendScope(QgsExpressionContextUtils.globalScope())
-        color_context.appendScope(QgsExpressionContextUtils.projectScope(project))
-        color_expr = QgsExpression("project_color_object('process_blue')")
-        print(
-            f"process_blue {color_expr.evaluate(color_context)} {color_expr.evalErrorString()}"
-        )
-
-        flag = getattr(QgsMapSettings, "DrawLabeling", None)
-        if flag is None and hasattr(QgsMapSettings, "Flag"):
-            flag = QgsMapSettings.Flag.DrawLabeling
 
         for xmin, ymin, xmax, ymax, width, height, dpi, output in jobs:
             os.makedirs(os.path.dirname(os.path.abspath(output)), exist_ok=True)
-            settings = QgsMapSettings()
-            settings.setLayers(layers)
-            settings.setDestinationCrs(QgsCoordinateReferenceSystem.fromEpsgId(2193))
-            settings.setExtent(QgsRectangle(xmin, ymin, xmax, ymax))
-            settings.setOutputSize(QSize(width, height))
-            settings.setOutputDpi(dpi)
-            settings.setBackgroundColor(QColor(255, 255, 255))
-            settings.setTransformContext(project.transformContext())
-            settings.setExpressionContext(color_context)
-            renderer = project.elevationShadingRenderer()
-            if hillshade_should_paint(project_dir):
-                renderer.setActive(True)
-                renderer.setActiveHillshading(True)
-                renderer.setLightAzimuth(rules["azimuth_deg"])
-                renderer.setLightAltitude(rules["altitude_deg"])
-                renderer.setHillshadingMultidirectional(rules["multidirectional"])
-                renderer.setHillshadingZFactor(rules["z_factor"])
-            settings.setElevationShadingRenderer(renderer)
-            if flag is not None:
-                settings.setFlag(flag, True)
-
-            job = QgsMapRendererParallelJob(settings)
-            job.start()
-            job.waitForFinished()
-            image = job.renderedImage()
+            image = render_image(session, xmin, ymin, xmax, ymax, width, height, dpi)
             if image.isNull() or not image.save(output):
                 print(f"failed to write {output}", file=sys.stderr)
                 return 1
