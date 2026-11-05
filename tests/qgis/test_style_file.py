@@ -48,7 +48,7 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["vegetation_outline"] == "#A7C05E"
     assert style["vegetation"]["exotic"]["colour"] == "#A4D65E"
     assert style["vegetation"]["exotic"]["alpha"] == 0.2
-    assert style["fonts"]["raster_natural_style"] == "Bold"
+    assert style["fonts"]["raster_natural_style"] == "Regular"
     assert FAMILY == style["fonts"]["raster_family"]
     assert size_floor("contour", "1") == str(int(style["labels"]["size_floor_pt"]))
     assert size_floor("relief_point map", "1") == str(

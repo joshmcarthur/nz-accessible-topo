@@ -19,6 +19,7 @@ def _style_expr(style=None):
     natural = style["fonts"]["raster_natural_style"]
     return (
         f"CASE WHEN {NATURAL_TEST} THEN '{natural}'"
+        f" WHEN lower(coalesce(\"style\", '')) LIKE '%bold%' THEN 'Bold'"
         f" WHEN lower(coalesce(\"style\", '')) LIKE '%narrow%' THEN '{regular}'"
         f" WHEN coalesce(\"style\", '') = '' THEN '{regular}'"
         ' ELSE "style" END'
