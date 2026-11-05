@@ -63,6 +63,10 @@ luminance contrast in the greyscale model **or** differs in pattern/shape,
 and the same holds in the red-light model. A line, glyph or label that sits
 on a fill is measured against that fill as well as against paper (for
 example index contour on scrub, stream on scrub).
+**Decision (Josh, 2026-11-05, log 0093):** a width step counts as a shape
+difference. Stream vs index contour is 1.83:1 grey. The stream is 0.25 mm
+and the index contour is 0.35 mm. Hue (blue vs brown) and red light (6.41:1)
+add to that width step. That pair is closed.
 
 ### R-02 — Keep the familiar colour grammar; change values within it
 **Rests on:** S-LINZ-GUIDE (C), F-24 · **Provisional**
@@ -158,6 +162,11 @@ web ≥10 px (≥11 px for place names); adjacent hierarchy levels differ by
 names and place names each differ from the next rank by ≥20%; and on the
 full grid no label's glyphs touch another label's glyphs, and each name sits
 nearer its own feature than any other feature of the same kind.
+**Exception (Josh, 2026-11-05, log 0093):** spot heights are 6 pt and
+names are 7 pt, a 17% step. Josh accepts that step. Colour, digits and
+position separate a spot height from a name. A height is black digits
+beside its dot. A name is letters, and a natural name is brown. The sizes
+do not change.
 
 ---
 

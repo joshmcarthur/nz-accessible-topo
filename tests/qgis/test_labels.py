@@ -20,11 +20,13 @@ from nzat.qgis.defaults import (
     CARTO_POINT_FILTER,
     SHEET_SCALE,
     STYLE,
+    URBAN_TEXT_FILE,
 )
 from nzat.qgis.expr import expr
 from nzat.qgis.format_buffer_mm import format_buffer_mm
 from nzat.qgis.label_behind import label_behind
 from nzat.qgis.load_carto_fit import load_carto_fit
+from nzat.qgis.load_urban_text import load_urban_text
 from nzat.qgis.parse_qgis_colour import parse_qgis_colour
 from nzat.qgis.patch_label_contrast import patch_label_contrast
 from nzat.qgis.patch_labels import patch_labels
@@ -323,3 +325,43 @@ def test_natural_names_take_the_natural_ink_and_narrow_stays_regular():
     # Catches spot heights painted in the contour-number ink (log 0081).
     assert "THEN color_rgb(122,85,66)" in colour
     assert "'^[0-9]+" in colour
+
+
+def test_black_names_in_urban_fill_take_an_urban_halo():
+    # Catches a white halo hole on the urban fill (G4), a coloured name given the
+    # grey halo, or a layer lookup in the label expression, which hangs the render (log 0090).
+    with tempfile.TemporaryDirectory() as folder:
+        assert load_urban_text(folder) == []
+        with open(
+            os.path.join(folder, URBAN_TEXT_FILE), "w", encoding="utf-8"
+        ) as handle:
+            json.dump(["row-1", "O'Hara"], handle)
+        urban = load_urban_text(folder)
+    root = ET.fromstring(CARTO_TEXT_LAYER_XML)
+    for text_style in root.iter("text-style"):
+        ET.SubElement(
+            text_style,
+            "text-buffer",
+            {"bufferDraw": "1", "bufferColor": "250,250,250,255", "bufferSize": "0.4"},
+        )
+    patch_labels(root, "nztopo50_carto_text", urban=urban)
+    halos = [
+        expr(props, "BufferColor")
+        for props in root.findall(".//dd_properties/Option/Option[@name='properties']")
+    ]
+    assert len(halos) == 2
+    for halo in halos:
+        assert "\"id\" IN ('O''Hara', 'row-1')" in halo
+        assert "\"colour\" = 'black'" in halo
+        assert "THEN color_rgb(188,186,182) ELSE color_rgb(250,250,250) END" in halo
+        assert "overlay_" not in halo and "get_feature" not in halo
+    urban_rgb = tuple(
+        int(STYLE["reference_inks"]["urban_fill"][i : i + 2], 16) for i in (1, 3, 5)
+    )
+    assert (
+        contrast_ratio(rel_luminance((0, 0, 0)), rel_luminance(urban_rgb))
+        >= STYLE["label_contrast"]["min_ratio"]
+    )
+    plain = ET.fromstring(CARTO_TEXT_LAYER_XML)
+    patch_labels(plain, "nztopo50_carto_text")
+    assert plain.find(".//Option[@name='BufferColor']") is None

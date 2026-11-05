@@ -1,10 +1,13 @@
 from nzat.qgis.curved_label_mode_expression import curved_label_mode_expression
 from nzat.qgis.defaults import CARTO_TEXT_LAYER, STYLE
 from nzat.qgis.expr import expr
+from nzat.qgis.parse_qgis_colour import parse_qgis_colour
 from nzat.qgis.patch_carto_point_labels import patch_carto_point_labels
 from nzat.qgis.patch_label_contrast import patch_label_contrast
 from nzat.qgis.patch_wrap_baseline import patch_wrap_baseline
 from nzat.qgis.put_expr import put_expr
+from nzat.qgis.rgba import rgb_call
+from nzat.qgis.settings_props import settings_props
 from nzat.qgis.size_floor import size_floor
 from nzat.qgis.upright_style_name import upright_style_name
 
@@ -30,7 +33,7 @@ def _style_expr(style=None):
     )
 
 
-def patch_labels(layer, layer_name, style=None, palette=None, fit=None):
+def patch_labels(layer, layer_name, style=None, palette=None, fit=None, urban=None):
     style = style or STYLE
     family = style["fonts"]["raster_family"]
     labels = style["labels"]
@@ -83,6 +86,8 @@ def patch_labels(layer, layer_name, style=None, palette=None, fit=None):
     patch_label_contrast(layer, style, palette)
     if layer_name == CARTO_TEXT_LAYER:
         _paint_natural_names(layer, style)
+        if urban:
+            _paint_urban_halos(layer, style, urban)
     return count
 
 
@@ -105,4 +110,32 @@ def _paint_natural_names(layer, style):
             f"CASE WHEN \"colour\" = 'black' AND {NATURAL_TEST}"
             f" AND NOT {SPOT_HEIGHT_TEST} THEN {natural}"
             f" ELSE {current} END",
+        )
+
+
+def _paint_urban_halos(layer, style, urban):
+    """Black names inside the urban fill take an urban-fill halo, not a white hole (G4, log 0093).
+
+    The ids come from urban_text.json. A layer lookup in a label expression hangs the render (log 0090).
+    Coloured names keep the paper halo: brown and blue are under 3.4:1 on the urban fill.
+    """
+    ids = ", ".join(
+        "'" + str(ident).replace("'", "''") + "'" for ident in sorted(urban)
+    )
+    fill = rgb_call(style["reference_inks"]["urban_fill"])
+    for settings in layer.findall(".//settings"):
+        buffer_el = settings.find("text-style/text-buffer")
+        props = settings_props(settings)
+        if buffer_el is None or buffer_el.get("bufferDraw") != "1" or props is None:
+            continue
+        parsed = parse_qgis_colour(buffer_el.get("bufferColor"))
+        if parsed is None:
+            continue
+        paper = "color_rgb({},{},{})".format(*parsed[:3])
+        put_expr(
+            props,
+            "BufferColor",
+            f'CASE WHEN "id" IN ({ids}) AND "colour" = \'black\''
+            f" AND NOT ({NATURAL_TEST} AND NOT {SPOT_HEIGHT_TEST})"
+            f" THEN {fill} ELSE {paper} END",
         )

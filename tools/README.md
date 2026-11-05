@@ -36,6 +36,22 @@ Known limitations:
 - Simulation is for *dichromacy* (severity 1.0). Anomalous trichromats see
   more than this; it is a worst case.
 
+## tag_urban_text.py
+
+Tags `carto_text` names inside the urban fill (`residential_area map`). It
+writes `urban_text.json` beside the project: a sorted list of row ids. The
+apply step gives a black name in that list an urban-fill halo. A layer lookup
+in a label expression hangs the render (log 0090), so this runs once, before
+the apply step.
+
+```
+python tools/tag_urban_text.py --project accessible/nztopo50.qgs
+python3 tools/override_topo50_project.py stock/nztopo50.qgs accessible/nztopo50.qgs
+```
+
+Run it with the QGIS Python. With no `--extent` it tags every row in the
+country: 3456 ids, 135 KB, about 10 s (log 0093).
+
 ## fit_carto_labels.py
 
 Fits flat `carto_text` names whose labels collide. QGIS tests label boxes as

@@ -10,6 +10,7 @@ Changes are on the map layers the research names:
 - labels: stretch-to-fit curved modes keep the stock spread only on a one-line name whose baseline is longer than the name, so the larger type is not squeezed
 - labels: flat one-line carto_text names sit on a short horizontal line around the stock label, so QGIS can slide or flip a name that collides
 - labels: a flat carto_text name listed in carto_fit.json beside the project is drawn at its fitted point and line count
+- labels: a black carto_text name listed in urban_text.json beside the project takes an urban-fill halo (R-07, G4)
 - contour: index vs intermediate ink, width, stroke alpha, plus an index-ink casing on intermediates (R-04, R-01)
 - track_line map: closed tracks get a heavier line and cross-bars (R-11)
 - track_line map: track access is a reserved unpainted casing_colour channel (R-12)

@@ -1,5 +1,6 @@
 from nzat.qgis.is_owned_road_layer import is_owned_road_layer
 from nzat.qgis.load_carto_fit import load_carto_fit
+from nzat.qgis.load_urban_text import load_urban_text
 from nzat.qgis.patch_contour import patch_contour
 from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_draw_order import patch_draw_order
@@ -48,9 +49,10 @@ def apply(root, project_dir=None):
     seen = set()
     palette = project_palette(root)
     fit = load_carto_fit(project_dir)
+    urban = load_urban_text(project_dir)
     for layer in layers.findall("maplayer"):
         name = layer.findtext("layername") or ""
-        labels += patch_labels(layer, name, palette=palette, fit=fit)
+        labels += patch_labels(layer, name, palette=palette, fit=fit, urban=urban)
         if name == "contour":
             patch_contour(layer)
             seen.add(name)

@@ -95,3 +95,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0090 — Remaining style work, and state highway numbers](0090-style-inventory-highway-numbers.md)
 - [0091 — Accessible rasters for every Topo50 sheet](0091-sheet-rasters.md)
 - [0092 — The sheet legend shows the accessible swatches](0092-legend-swatches.md)
+- [0093 — Urban halos from a precomputed flag, and two R-01/R-09 decisions](0093-urban-halo-flag.md)
