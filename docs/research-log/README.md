@@ -97,3 +97,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0092 — The sheet legend shows the accessible swatches](0092-legend-swatches.md)
 - [0093 — Urban halos from a precomputed flag, and two R-01/R-09 decisions](0093-urban-halo-flag.md)
 - [0094 — Bolder foot tracks, a larger closed ×, and dotted poled routes](0094-bolder-tracks-poled-routes.md)
+- [0095 — A definition table for every legend symbol](0095-symbol-definition-table.md)

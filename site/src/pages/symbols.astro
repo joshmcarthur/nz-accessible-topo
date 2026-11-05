@@ -1,0 +1,114 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../lib/graph";
+import table from "../data/symbols.json";
+
+const floors = table.floors;
+const counts = table.counts;
+const total = counts.done + counts.proposed + counts.blocked;
+const slug = (name: string) => name.toLowerCase().replace(/[^a-z]+/g, "-");
+const fmt = (ink: any) =>
+  `${ink.name} ${ink.hex}${ink.on ? ` on ${ink.on}` : ""}: ${ink.grey.toFixed(2)}:1 grey, ${ink.red.toFixed(2)}:1 red light`;
+---
+<Base title="Symbols" current="symbols/">
+  <h1>Symbol definitions</h1>
+  <p class="lede">Every symbol in the stock Topo50 legend, beside the symbol the accessible sheet draws today and the change we propose. Each proposal keeps the LINZ shape.</p>
+  <p>{total} symbols. {counts.done} are done. {counts.proposed} have a proposal for review. {counts.blocked} are blocked: the sheet does not draw them, so the proposal waits for the layer or the data.</p>
+  <p>The floors are {floors.contrast}:1 contrast on paper and on the fill under the mark (R-01, F-20), {floors.red}:1 under red light (R-01, R-11), lines and strokes at least {floors.line_mm} mm and marks at least {floors.mark_mm} mm (F-31), and no meaning by colour alone (R-17). Only the ink that draws the shape must meet the contrast floors. A fill or a hue that a casing backs up is shown, not gated.</p>
+  <p class="note">Data: <code>src/nzat/site/symbol_rows.py</code>, built by <code>tools/export_symbol_table.py</code>. LINZ crops come from the stock legend image. Our crops come from the accessible legend, which redraws only some rows. Left out: rules that never draw a real class ({table.excluded.join("; ")}).</p>
+  <nav aria-label="Sections">
+    <ul class="sections">
+      {table.sections.filter((s) => s.rows.length).map((s) => (
+        <li><a href={`#${slug(s.name)}`}>{s.name}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+  {table.sections.filter((s) => s.rows.length).map((section) => (
+    <section>
+      <h2 id={slug(section.name)}>{section.name}</h2>
+      <div class="table-wrap wide" tabindex="0" role="region" aria-label={`${section.name} symbol table`}>
+        <table>
+          <caption>{section.name}: LINZ symbol, our symbol today, measurements and proposal.</caption>
+          <thead>
+            <tr>
+              <th scope="col">LINZ symbol</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Ours today</th>
+              <th scope="col">Measured</th>
+              <th scope="col">Proposal</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {section.rows.map((row: any) => (
+              <tr id={row.key}>
+                <td>
+                  {row.linz_image
+                    ? <img src={url(row.linz_image)} alt={`Stock LINZ legend swatch: ${row.label}`} width="190" loading="lazy" />
+                    : <span>Not in the stock legend</span>}
+                </td>
+                <th scope="row">
+                  {row.label}
+                  <p class="small">{row.layer}</p>
+                </th>
+                <td>
+                  {row.current_image
+                    ? <img src={url(row.current_image)} alt={`Accessible legend swatch: ${row.label}`} width="190" loading="lazy" />
+                    : <span>{row.drawn === "no" ? "Not drawn on the sheet" : "Not yet redrawn in the legend"}</span>}
+                </td>
+                <td>
+                  <p>{row.measured.text}</p>
+                  <p class="small">Source: {row.measured.source}.</p>
+                  <ul class="checks">
+                    {row.measured.inks.map((ink: any) => <li>{fmt(ink)}{ink.role !== "carrier" ? ` (${ink.role}, not gated)` : ""}</li>)}
+                    {row.measured.checks.filter((c: any) => c.label !== "Contrast 3:1" && c.label !== "Red light 3:1").map((c: any) => (
+                      <li><span class:list={["verdict", c.pass ? "pass" : "fail"]}>{c.pass ? "Pass" : "Fail"}</span> {c.label} ({c.rule}): {c.detail}</li>
+                    ))}
+                    {row.measured.checks.filter((c: any) => (c.label === "Contrast 3:1" || c.label === "Red light 3:1") && !c.pass).map((c: any) => (
+                      <li><span class="verdict fail">Fail</span> {c.label} ({c.rule}): {c.detail}</li>
+                    ))}
+                  </ul>
+                  <p><span class:list={["verdict", row.measured.pass ? "pass" : "fail"]}>{row.measured.pass ? "Meets the floors" : "Fails a floor"}</span></p>
+                </td>
+                <td>
+                  {row.proposal
+                    ? <>
+                        <p>{row.proposal.text}</p>
+                        <p><span class:list={["verdict", row.proposal.pass ? "pass" : "fail"]}>{row.proposal.pass ? "Meets the floors" : "Fails a floor"}</span></p>
+                      </>
+                    : <span>No change</span>}
+                  {row.note && <p class="small">{row.note}</p>}
+                </td>
+                <td><span class:list={["status", row.status]}>{row.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+  <p><a href={url("inks/")}>Ink contrast pairs</a>. <a href={url("recommendations/R-01/")}>R-01 on the evidence trail</a>.</p>
+</Base>
+<style>
+  caption { text-align: left; font-weight: 700; margin-bottom: .75rem; }
+  .sections { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; padding: 0; list-style: none; }
+  img { display: block; max-width: 190px; height: auto; border: 1px solid var(--ink); background: #fff; }
+  .small { font-weight: 400; font-size: .9rem; margin: .35rem 0 0; max-width: 32ch; }
+  td p { margin: 0 0 .4rem; max-width: 36ch; }
+  .checks { margin: .25rem 0 .5rem; padding-left: 1rem; font-size: .9rem; max-width: 40ch; }
+  .verdict { font-weight: 700; }
+  .verdict.fail::before, .verdict.pass::before {
+    content: "";
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    margin-right: .4rem;
+    border: 2px solid var(--ink);
+    vertical-align: -0.1rem;
+  }
+  .verdict.fail::before { background: var(--ink); }
+  .verdict.pass::before { background: var(--paper); }
+  .status { font-weight: 700; text-transform: capitalize; }
+  td { vertical-align: top; }
+</style>

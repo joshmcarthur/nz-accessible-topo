@@ -46,6 +46,7 @@ New here or picking this up locally? Start with [HANDOFF.md](HANDOFF.md) and [BA
   macron-safe fonts, CVD/greyscale/red-light pair floors) + MapLibre validation.
 - **Preview:** `preview/` — side-by-side with CVD / greyscale / red-light simulation.
 - **Site:** `site/` — Astro site with the evidence Sankey and vision comparisons (see `site/README.md`).
+- **Symbols:** `/symbols/` on the site lists every stock legend symbol, our symbol, its checks and a proposal (`tools/export_symbol_table.py`, log 0095).
 - Not yet: print output, user testing, live-tile visual check.
 
 ## Quick start
