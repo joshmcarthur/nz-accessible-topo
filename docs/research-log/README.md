@@ -78,3 +78,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0073 — Label collisions measured; wider fit reach](0073-label-collisions-measured.md)
 - [0074 — Multi-line names join the fit](0074-multi-line-names-fit.md)
 - [0075 — Road suffixes abbreviate when a name overruns](0075-road-suffix-abbreviation.md)
+- [0076 — A greener scrub fill breaks the vector pair (reverted)](0076-greener-scrub-reverted.md)
