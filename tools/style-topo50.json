@@ -50,7 +50,8 @@
       "casing_colour": "#7A5542",
       "casing_width_mm": 0.2,
       "alpha": 0.5
-    }
+    },
+    "number_halo": {"colour": "#FFFFFF", "width_mm": 0.3}
   },
   "reference_inks": {
     "project_road": "#EC7000",

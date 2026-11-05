@@ -1,3 +1,5 @@
+import copy
+import uuid
 import xml.etree.ElementTree as ET
 
 from nzat.qgis.defaults import STYLE
@@ -5,6 +7,8 @@ from nzat.qgis.rgba import rgba
 
 POINT_MM = 25.4 / 72
 SIZE_FLOOR_PT = 6.0
+# QPainter::CompositionMode_SourceOver.
+SOURCE_OVER = "0"
 
 
 def _rule_symbol(layer, token):
@@ -57,12 +61,44 @@ def patch_contour_numbers(layer, style=None):
     """Paint contour_number FontMarkers with the index contour ink, upright."""
     style = style or STYLE
     symbol = _rule_symbol(layer, "contour_number")
-    marker = symbol.find("layer[@class='FontMarker']")
+    marker = next(
+        (
+            layer
+            for layer in symbol.findall("layer[@class='FontMarker']")
+            if layer.get("nzat") != "halo"
+        ),
+        None,
+    )
     if marker is None:
         raise RuntimeError("contour_number has no FontMarker")
     _put(marker, "color", rgba(style["contours"]["index"]["colour"], 255))
-    _put(marker, "fontStyle", style["fonts"]["raster_upright_style"])
-    _put(marker, "fontFamily", style["fonts"]["raster_family"])
+    # FontMarker reads "font" and "font_style" (log 0082).
+    _put(marker, "font_style", style["fonts"]["raster_upright_style"])
+    _put(marker, "font", style["fonts"]["raster_family"])
     _put(marker, "fontItalic", "0")
     marker.set("fontItalic", "0")
     _lift_size(marker)
+    _halo(symbol, marker, style)
+    # Stock draws this layer DestinationOver, which puts each digit behind its
+    # halo. Normal blending draws the halo first, then the digit (log 0082).
+    blend = layer.find("featureBlendMode")
+    if blend is not None:
+        blend.text = SOURCE_OVER
+
+
+def _halo(symbol, marker, style):
+    """A paper-coloured copy of the digit, drawn first, with a stroke as the halo."""
+    for old in symbol.findall("layer[@class='FontMarker']"):
+        if old.get("nzat") == "halo":
+            symbol.remove(old)
+    halo = copy.deepcopy(marker)
+    halo.set("nzat", "halo")
+    if halo.get("id"):
+        halo.set("id", "{" + str(uuid.uuid4()) + "}")
+    paper = rgba(style["contours"]["number_halo"]["colour"], 255)
+    _put(halo, "color", paper)
+    _put(halo, "outline_color", paper)
+    _put(halo, "outline_width", str(style["contours"]["number_halo"]["width_mm"]))
+    _put(halo, "outline_width_unit", "MM")
+    _put(halo, "joinstyle", "round")
+    symbol.insert(list(symbol).index(marker), halo)

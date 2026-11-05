@@ -130,7 +130,7 @@ Do not put a sheet code in the file.
 
 `reference_inks.project_road` is `#EC7000`. The QGIS apply step paints two-lane and sealed PMS151 fills in that ink. Highway fills stay `#E31A1C`. Gold `#D5B43C` is the bivouac marker, not the road fill.
 
-Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are Regular, not italic. Size is at least 6 pt.
+Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are `NZAT Legible Test` Regular, not italic (the FontMarker options are `font` and `font_style`). Size is at least 6 pt. A paper-coloured copy of each digit draws first with a `contours.number_halo.width_mm` stroke (0.3 mm), so the digit has a halo. The layer blends normally, not DestinationOver, so the digit draws over its halo.
 
 `reference_inks.project_highway` is `#E31A1C`. Map5View paints highway fills in that ink. The apply step does not paint that ink.
 

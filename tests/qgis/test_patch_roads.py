@@ -42,6 +42,7 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
         """
         <maplayer>
           <layername>nztopo50_carto_symbol</layername>
+          <featureBlendMode>1</featureBlendMode>
           <renderer-v2 type="RuleRenderer">
             <rules>
               <rule filter="&quot;type&quot; = 'contour_number'" symbol="3"/>
@@ -52,7 +53,8 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
                   <Option type="Map">
                     <Option name="chr" type="QString" value="A"/>
                     <Option name="color" type="QString" value="255,127,0,255"/>
-                    <Option name="fontStyle" type="QString" value="Italic"/>
+                    <Option name="font" type="QString" value="Nimbus Sans LINZ"/>
+                    <Option name="font_style" type="QString" value="Narrow Italic"/>
                     <Option name="fontItalic" type="QString" value="1"/>
                     <Option name="size" type="QString" value="4"/>
                     <Option name="size_unit" type="QString" value="Point"/>
@@ -65,9 +67,18 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
         """
     )
     patch_contour_numbers(carto)
-    color = carto.find(".//Option[@name='color']").get("value")
-    assert color.startswith("122,85,66")
-    assert carto.find(".//Option[@name='fontStyle']").get("value") == "Regular"
-    assert carto.find(".//Option[@name='fontItalic']").get("value") == "0"
-    assert carto.find(".//layer[@class='FontMarker']").get("fontItalic") == "0"
-    assert float(carto.find(".//Option[@name='size']").get("value")) >= 6
+    patch_contour_numbers(carto)
+    # Catches a DestinationOver layer, which hid each digit behind its halo (log 0082).
+    assert carto.findtext("featureBlendMode") == "0"
+    halo, digit = carto.findall(".//layer[@class='FontMarker']")
+    # Catches the face left as Nimbus Narrow Italic: FontMarker reads font and font_style (log 0082).
+    assert digit.find("Option/Option[@name='font']").get("value") == "NZAT Legible Test"
+    assert digit.find("Option/Option[@name='font_style']").get("value") == "Regular"
+    assert digit.find("Option/Option[@name='color']").get("value").startswith("122,85,66")
+    assert digit.find("Option/Option[@name='fontItalic']").get("value") == "0"
+    assert digit.get("fontItalic") == "0"
+    assert float(digit.find("Option/Option[@name='size']").get("value")) >= 6
+    # Catches a missing halo, a halo drawn over the digit, or a second halo on re-apply.
+    assert halo.get("nzat") == "halo"
+    assert halo.find("Option/Option[@name='color']").get("value").startswith("255,255,255")
+    assert float(halo.find("Option/Option[@name='outline_width']").get("value")) > 0
