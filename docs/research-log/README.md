@@ -80,3 +80,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0075 — Road suffixes abbreviate when a name overruns](0075-road-suffix-abbreviation.md)
 - [0076 — A greener scrub fill breaks the vector pair (reverted)](0076-greener-scrub-reverted.md)
 - [0077 — Spot heights stay by their dots](0077-spot-heights-pinned.md)
+- [0078 — LINZ's own stock export drops multi-line names](0078-stock-drops-multi-line-names.md)
