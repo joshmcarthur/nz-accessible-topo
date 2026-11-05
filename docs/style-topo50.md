@@ -101,7 +101,9 @@ The vector build reads `tracks.closed_foot.casing_colour` and `tracks.closed_foo
 
 `tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is 0.55.
 
-The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. The marker name is `tracks.closed_foot.marker`. That name is `cross2`. Size is `tracks.closed_foot.crossbar_size_mm`. That size is 0.5 mm. Interval is `tracks.closed_foot.marker_interval_mm`. That interval is 3 mm, every second dash gap. The first mark sits in a gap. The angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 0. A second apply writes the marker, the size, the interval, and the gap position onto the marker that is already in the project.
+The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. The weight is `tracks.closed_foot.width_mm` and `tracks.closed_foot.open_width_mm`. That weight is 0.2 mm. The marker name is `tracks.closed_foot.marker`. That name is `cross2`. Size is `tracks.closed_foot.crossbar_size_mm`. That size is 0.7 mm. Stroke is `tracks.closed_foot.crossbar_outline_width_mm`. That stroke is 0.15 mm. Interval is `tracks.closed_foot.marker_interval_mm`. That interval is 3 mm, every second dash gap. The first mark sits in a gap. The angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 0. A second apply writes the marker, the size, the interval, and the gap position onto the marker that is already in the project.
+
+A poled route (`track_type` `route`) and a track connector (`track_type` `connector`) draw as round dots, as in the printed LINZ legend. The dashed line is off for them. Dot size is `tracks.dotted.route_dot_mm` (0.45 mm) and `tracks.dotted.connector_dot_mm` (0.3 mm). The dot interval is `tracks.dotted.interval_mm` (1 mm). Each filter uses `coalesce()`, so a NULL `track_type` keeps the dash. A closed poled route keeps the × over its dots (log 0094).
 
 `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false.
 

@@ -64,7 +64,7 @@ def test_overrides_skip_the_print_layout():
             </maplayer>
             <maplayer>
               <layername>track_line map</layername>
-              <fieldConfiguration><field name="status"/></fieldConfiguration>
+              <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
               <renderer-v2 type="categorizedSymbol">
                 <categories><category value="foot" symbol="1"/></categories>
                 <symbols>
@@ -219,7 +219,7 @@ def test_overrides_skip_the_print_layout():
     )
     assert track.find("layer[@class='MarkerLine']") is not None
     closed = track.find(
-        "layer[@class='MarkerLine']/symbol/layer[@class='SimpleMarker']/Option/Option[@name='name']"
+        "layer[@class='MarkerLine']/symbol[@name='@closed']/layer[@class='SimpleMarker']/Option/Option[@name='name']"
     )
     assert closed.get("value") == "cross2"
     stream = root.find(
@@ -264,7 +264,7 @@ def test_vegetation_map_draws_below_contour():
             </maplayer>
             <maplayer>
               <layername>track_line map</layername>
-              <fieldConfiguration><field name="status"/></fieldConfiguration>
+              <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
               <renderer-v2 type="categorizedSymbol">
                 <categories><category value="foot" symbol="1"/></categories>
                 <symbols>

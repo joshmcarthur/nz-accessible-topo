@@ -62,7 +62,7 @@ def test_style_file_has_no_sheet_code():
     assert style["vegetation"]["scrub"]["alpha"] == 26
     assert style["tracks"]["closed_foot"]["marker"] == "cross2"
     assert style["tracks"]["closed_foot"]["crossbar_angle_deg"] == 0
-    assert style["tracks"]["closed_foot"]["crossbar_size_mm"] == 0.5
+    assert style["tracks"]["closed_foot"]["crossbar_size_mm"] == 0.7
     assert style["tracks"]["closed_foot"]["marker_interval_mm"] == 3
     assert style["vegetation"]["scattered"]["colour"] == "#E0EDD8"
     assert style["tracks"]["closed_foot"]["casing_colour"] == "#1A1A1A"
