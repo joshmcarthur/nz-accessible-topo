@@ -58,8 +58,8 @@ def test_style_file_has_no_sheet_code():
     assert style["labels"]["place_name_floor_px"] == 11
     assert style["labels"]["letter_spacing_em"] == 0.05
     assert style["vegetation"]["native"]["marker"]["colour"] == "#3F6B32"
-    assert style["vegetation"]["scrub"]["colour"] == "#A3CC90"
-    assert style["vegetation"]["scrub"]["alpha"] == 26
+    assert style["vegetation"]["scrub"]["colour"] == "#D6FFAA"
+    assert style["vegetation"]["scrub"]["alpha"] == 55
     assert style["tracks"]["closed_foot"]["marker"] == "cross2"
     assert style["tracks"]["closed_foot"]["crossbar_angle_deg"] == 0
     assert style["tracks"]["closed_foot"]["crossbar_size_mm"] == 0.5

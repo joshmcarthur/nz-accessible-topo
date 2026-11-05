@@ -11,9 +11,9 @@ RULES = load_rules()
 def test_vegetation_reads_the_style_file():
     # Catches a vector scrub fill that ignores the JSON, or a 45° hatch left on raster scrub.
     veg = RULES["vegetation"]
-    assert vegetation_fill("scrub", RULES) == "rgba(163, 204, 144, 1)"
+    assert vegetation_fill("scrub", RULES) == "rgba(214, 255, 170, 1)"
     assert vegetation_fill("scattered", RULES) == "rgba(224, 237, 216, 1)"
-    assert veg["scrub"]["colour"] == "#A3CC90"
+    assert veg["scrub"]["colour"] == "#D6FFAA"
     assert veg["scattered"]["colour"] == "#E0EDD8"
     assert "scrub" not in P
     assert "scattered_scrub" not in P
@@ -64,8 +64,8 @@ def test_vegetation_reads_the_style_file():
     patch_vegetation(layer)
     scrub = layer.find(".//symbol[@name='3']")
     fill = scrub.find("layer[@class='SimpleFill']/Option/Option[@name='color']")
-    assert fill.get("value").startswith("163,204,144")
-    assert fill.get("value").endswith(",26")
+    assert fill.get("value").startswith("214,255,170")
+    assert fill.get("value").endswith(",55")
     assert scrub.find("layer[@class='LinePatternFill']") is None
     dots = scrub.find("layer[@class='PointPatternFill']")
     assert dots is not None
