@@ -51,6 +51,14 @@ def patch_labels(layer, layer_name, style=None, palette=None, fit=None):
             )
         count += 1
     size_expr = f'max({floor}, coalesce("size", {floor}))'
+    if layer_name == CARTO_TEXT_LAYER:
+        # Spot heights are carto_text here. They keep the 6 pt rank below names (G4, log 0084).
+        spot_floor = int(labels["spot_height_floor_pt"])
+        size_expr = (
+            f"CASE WHEN {SPOT_HEIGHT_TEST}"
+            f' THEN max({spot_floor}, coalesce("size", {spot_floor}))'
+            f" ELSE {size_expr} END"
+        )
     for dd in layer.findall(".//dd_properties"):
         option = dd.find("Option")
         if option is None:
