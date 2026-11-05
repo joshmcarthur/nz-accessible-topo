@@ -14,9 +14,8 @@ WHITE = (255, 255, 255)
 PMS151_RGB = (255, 127, 0)
 CARTO_FIT_FILE = "carto_fit.json"
 CARTO_POINT_FILTER = (
-    '"text_placement" = 1 AND "text_orientation" = 0'
-    " AND strpos(coalesce(\"text_string\", ''), '\\n') = 0"
-    " AND num_points($geometry) <= 2"
+    '"text_orientation" = 0 AND ("text_placement" = 34'
+    ' OR ("text_placement" = 1 AND num_points($geometry) <= 2))'
 )
 CURVED_ONLY_PROPERTIES = (
     "LinePlacementFlags",

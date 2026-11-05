@@ -199,6 +199,8 @@ def test_multiline_baseline_splits_at_a_fold():
     assert point_rule.get("filter") == CARTO_POINT_FILTER
     # Catches a curved area name, such as Banks Peninsula, pulled off its long baseline.
     assert "num_points($geometry) <= 2" in CARTO_POINT_FILTER
+    # Catches multi-line names (placement 34) left out of the fit (log 0074).
+    assert '"text_placement" = 34' in CARTO_POINT_FILTER
     point = point_rule.find("settings/placement")
     assert point.get("placement") == "2"
     assert point.get("placementFlags") == "14"
@@ -220,6 +222,8 @@ def test_multiline_baseline_splits_at_a_fold():
     )
     assert wrap.get("value") == carto_flat_wrap_expression()
     assert "strpos(\"text_string\", ' / ') = 0" in wrap.get("value")
+    # Catches a name with its own line break wrapped again ("Te" alone, a lone "/").
+    assert "strpos(\"text_string\", '\\n') = 0" in wrap.get("value")
     assert "'Te\u00a0'" in CARTO_FLAT_TEXT
     assert point_text.get("multilineHeight") == str(
         STYLE["labels"]["carto_point"]["line_height"]

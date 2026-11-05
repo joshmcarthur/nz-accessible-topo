@@ -16,7 +16,7 @@ The script reads `tools/style-topo50.json`. The script writes `OUT.qgs`.
 
 The script changes map layers only. Layout text stays Nimbus Sans LINZ. Layout text keeps its italic.
 
-An along-line label keeps its stretch `charplace` when it is one line and its baseline is longer than the estimated text width. Other stretch labels use default spacing, so the larger type is not squeezed. A one-line name on a curved baseline stays on the curved rule.
+An along-line label keeps its stretch `charplace` when it is one line and its baseline is longer than the estimated text width. Other stretch labels use default spacing, so the larger type is not squeezed. A one-line name on a curved baseline stays on the curved rule. A flat name (placement 1 on a straight baseline, or a multi-line placement 34 name) can move a short way. `tools/fit_carto_labels.py` writes those moves. A name with its own line break keeps it and does not wrap again.
 
 The script draws the buffer that is already on a map text style. It caps that buffer at `label_contrast.halo_max_mm`. It keeps that buffer colour, except on a layer whose name contains `relief_point`. That halo uses `reference_inks.urban_fill`. It sets the buffer alpha to 1. It darkens a label ink that is below `label_contrast.min_ratio` against that buffer.
 
