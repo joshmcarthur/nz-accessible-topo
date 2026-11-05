@@ -302,5 +302,8 @@ def test_natural_names_take_the_natural_ink_and_narrow_stays_regular():
     colour = expr(props, "Color")
     assert colour.startswith(
         "CASE WHEN \"colour\" = 'black' AND lower(coalesce(\"style\", '')) LIKE '%italic%'"
-        " THEN color_rgb(122,85,66)"
+        " AND NOT regexp_match("
     )
+    # Catches spot heights painted in the contour-number ink (log 0081).
+    assert "THEN color_rgb(122,85,66)" in colour
+    assert "'^[0-9]+" in colour

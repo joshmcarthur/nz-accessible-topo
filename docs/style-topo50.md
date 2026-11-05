@@ -26,7 +26,7 @@ A carto_text `style` value that contains italic becomes `fonts.raster_natural_st
 
 The render loads every `.ttf` in the font folder. The folder holds `NZATLegibleTest-Regular.ttf` and `NZATLegibleTest-Bold.ttf`. Both are patched with `tools/patch_atkinson_omacron.py` from the OFL release at `7925f50` (log 0080).
 
-Topo50 sets natural-feature names and spot heights in black italic. Those labels take `labels.natural_colour`. That colour is `#7A5542`, the index ink. It is 6.55:1 on paper and 4.29:1 in red light. Water names stay blue. Settlement names stay black.
+Topo50 sets natural-feature names and spot heights in black italic. Natural-feature names take `labels.natural_colour`. Spot heights (a number, with an optional m) stay black, so they do not look like contour numbers (log 0081). That colour is `#7A5542`, the index ink. It is 6.55:1 on paper and 4.29:1 in red light. Water names stay blue. Settlement names stay black.
 
 A square render draws the `Map5View` layers. That is the layer set on the `tiff-50` map. The render does not draw a layer that theme hides.
 

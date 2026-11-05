@@ -83,3 +83,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0078 — LINZ's own stock export drops multi-line names](0078-stock-drops-multi-line-names.md)
 - [0079 — Town names lose their bold weight](0079-town-names-lose-bold.md)
 - [0080 — Patched Atkinson Bold for town names](0080-patched-bold-town-names.md)
+- [0081 — Spot heights stay black](0081-spot-heights-stay-black.md)
