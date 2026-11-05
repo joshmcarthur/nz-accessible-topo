@@ -91,3 +91,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0086 — Straight letter-spaced names join the fit](0086-straight-letter-spaced-names-fit.md)
 - [0087 — The label fit keeps a gap between names](0087-carto-fit-gap-band.md)
 - [0088 — The label fit pins every flat name](0088-carto-fit-pins-all.md)
+- [0089 — The label fit masks match the render](0089-carto-fit-mask-matches-render.md)
