@@ -44,12 +44,15 @@ How long does it take, and how much disk does it use?
   because each side rounds to a whole pixel.
 - The styling holds on the coast and in the Alps. The sea, the urban fill,
   ice, braided rivers and the grid draw as on BX24. We saw no new defect.
-- Projected run: about 25–30 s a sheet on average, so 3–4 hours for 445
-  sheets. About 15 MB a sheet, so about 6–7 GB. The disk had 107 GB free.
-- The uncommitted urban-halo work in the tree (an `overlay_intersects()`
-  buffer colour) hangs the render. The label thread waits for the main
-  thread. The main thread waits in `waitForFinished()`. So this run uses
-  the project applied from `6eda74b`, not the working tree.
+- The first 89 sheets of the full run (AS to BE, much of it sea) took
+  8.0 s and 9.2 MB a sheet. The slowest was BE32 Kawhia at 23.4 s.
+- Projected run: the alpine south is slower, so about 12–20 s a sheet,
+  1.5–2.5 hours for 445 sheets, and 5–7 GB. The disk had 106 GB free.
+- Uncommitted urban-halo work in the tree at the time (an
+  `overlay_intersects()` buffer colour) hung the render. The label thread
+  waits for the main thread. The main thread waits in
+  `waitForFinished()`. So this run uses the project applied from
+  `6eda74b`, not the working tree.
 
 ## What changed
 
@@ -68,10 +71,13 @@ How long does it take, and how much disk does it use?
 ## Confidence & gaps
 
 Grade B for the size and the georeference. Grade C for the time and disk
-total: it comes from four sheets.
+total: it comes from the north of the country only.
 
 - There is no `carto_fit.json` for any sheet but BX24. Flat names on the
   other sheets render where QGIS places them, not pinned (logs 0086–0088).
+- The run uses the style at `6eda74b`. It does not have the white state
+  highway shields from log 0090. Re-apply the project, delete the `.tif`
+  files and run again to pick them up.
 - No hillshade. There is no `dem.tif` beside the project.
 - Each sheet is drawn alone. A name near a sheet edge can be dropped or
   placed differently on the two neighbours. A tile set (B-27) needs a
