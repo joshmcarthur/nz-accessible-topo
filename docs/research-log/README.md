@@ -87,3 +87,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0082 — Contour numbers get a halo and their real face](0082-contour-number-halo.md)
 - [0083 — Streams separate from index contours in greyscale](0083-darker-streams-greyscale.md)
 - [0084 — Spot heights keep their 6 pt rank](0084-spot-heights-6pt.md)
+- [0085 — Flat names drop stock alignment padding](0085-flat-names-drop-padding.md)

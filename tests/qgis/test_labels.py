@@ -233,6 +233,9 @@ def test_multiline_baseline_splits_at_a_fold():
     # Catches a name with its own line break wrapped again ("Te" alone, a lone "/").
     assert "strpos(\"text_string\", '\\n') = 0" in wrap.get("value")
     assert "'Te\u00a0'" in CARTO_FLAT_TEXT
+    # Catches stock alignment padding kept on flat names (log 0085).
+    assert "'^\\\\s+'" in CARTO_FLAT_TEXT
+    assert "'[ ]{2,}', ' '" in CARTO_FLAT_TEXT
     assert point_text.get("multilineHeight") == str(
         STYLE["labels"]["carto_point"]["line_height"]
     )

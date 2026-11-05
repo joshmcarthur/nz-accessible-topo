@@ -195,7 +195,7 @@ def main():
             wrap = props.valueAsInt(P.AutoWrapLength, feature_context, 0)[0]
             fmt = text_format(feature_context)
             forms = {2: QgsPalLabeling.splitToLines(label.labelText, "", wrap, True)}
-            one_line = feature["text_string"]
+            one_line = " ".join((feature["text_string"] or "").split())
             if forms[2] != [one_line]:
                 forms[1] = [one_line]
             rect = label.labelRect

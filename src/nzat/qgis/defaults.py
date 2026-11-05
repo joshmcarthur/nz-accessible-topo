@@ -25,6 +25,12 @@ CURVED_ONLY_PROPERTIES = (
 )
 ABOVE_BELOW_MAP_ORIENTED = 2 | 4 | 8
 MULTILINE_CENTRE = "1"
+# Stock pads some names with spaces and blank lines to align them on a
+# curved baseline. Flat names drop that padding (log 0085).
+CARTO_CLEAN_TEXT = (
+    "regexp_replace(regexp_replace(regexp_replace(\"text_string\","
+    " '^\\\\s+', ''), '\\\\n[ ]+', '\\n'), '[ ]{2,}', ' ')"
+)
 CARTO_FLAT_TEXT = (
-    "regexp_replace(replace(\"text_string\", ' / ', ' /\\n'), '^Te ', 'Te\u00a0')"
+    f"regexp_replace(replace({CARTO_CLEAN_TEXT}, ' / ', ' /\\n'), '^Te ', 'Te\u00a0')"
 )
