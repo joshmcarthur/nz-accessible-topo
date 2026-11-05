@@ -18,3 +18,13 @@ def test_carto_fit_prefers_less_ink_overlap():
     assert (
         best_candidate([on_top, clear, far, outside], near_ink, near_halo)[0] == "clear"
     )
+
+
+def test_carto_fit_keeps_a_gap_beside_a_neighbour():
+    # Catches a score that lets a name abut its neighbour so the two read as one phrase.
+    near_ink = np.zeros((20, 60), bool)
+    near_ink[5:10, 0:20] = True
+    ink = np.ones((5, 10), bool)
+    abut = ("abut", ink, ink, 20, 5, 0.4)
+    spaced = ("spaced", ink, ink, 40, 5, 0.5)
+    assert best_candidate([abut, spaced], near_ink, near_ink.copy())[0] == "spaced"
