@@ -137,6 +137,8 @@ Do not put a sheet code in the file.
 
 Contour-number FontMarkers on `nztopo50_carto_symbol` use `contours.index.colour`. They are `Atkinson Hyperlegible Next Macron` Regular, not italic (the FontMarker options are `font` and `font_style`). Size is at least 6 pt. A paper-coloured copy of each digit draws first with a `contours.number_halo.width_mm` stroke (0.3 mm), so the digit has a halo. The layer blends normally, not DestinationOver, so the digit draws over its halo.
 
+State highway numbers on `nztopo50_carto_symbol_label` read the same source as `nztopo50_carto_symbol`. The stock source is a path in a LINZ staff Downloads folder, so stock draws no number. The number uses `fonts.raster_family` and `fonts.raster_upright_style`, at least 6 pt. Its ink is `reference_inks.project_highway` darkened until it meets `label_contrast.min_ratio` and `label_contrast.red_light_min` against the shield fill (`#940000` on white). A copy of the `highway_shield` SVG draws under each number, so the white shield sits above the road. The stock shield on `nztopo50_carto_symbol` still draws below the roads.
+
 `reference_inks.project_highway` is `#E31A1C`. Map5View paints highway fills in that ink. The apply step does not paint that ink.
 
 `reference_inks.project_road_casing` is `#232323`. Road and highway background layers paint that casing. The apply step does not paint that ink.

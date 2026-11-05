@@ -1,8 +1,12 @@
 import xml.etree.ElementTree as ET
 
+from nzat.colour.contrast_ratio import contrast_ratio
+from nzat.colour.red_light import red_light_reflectance
+from nzat.colour.rel_luminance import rel_luminance
 from nzat.qgis.is_owned_road_layer import is_owned_road_layer
 from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_road_fills import patch_road_fills
+from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 
 
 def test_road_fills_and_contour_numbers_read_the_style_file():
@@ -82,3 +86,58 @@ def test_road_fills_and_contour_numbers_read_the_style_file():
     assert halo.get("nzat") == "halo"
     assert halo.find("Option/Option[@name='color']").get("value").startswith("255,255,255")
     assert float(halo.find("Option/Option[@name='outline_width']").get("value")) > 0
+
+
+SHIELD_PROJECT = """
+<qgis><projectlayers>
+  <maplayer>
+    <layername>nztopo50_carto_symbol</layername>
+    <datasource>./nztopo50_carto_symbol.parquet|layername=nztopo50_carto_symbol</datasource>
+    <renderer-v2 type="RuleRenderer">
+      <rules><rule filter="&quot;type&quot; = 'highway_shield'" symbol="0"/></rules>
+      <symbols><symbol name="0" type="marker">
+        <layer class="SvgMarker" id="{a}"><Option type="Map">
+          <Option name="color" type="QString" value="255,255,255,255"/>
+          <Option name="name" type="QString" value="./symbol/nztopo50_highway_shield.svg"/>
+        </Option></layer>
+      </symbol></symbols>
+    </renderer-v2>
+  </maplayer>
+  <maplayer>
+    <layername>nztopo50_carto_symbol_label</layername>
+    <datasource>../../../../../Users/KBaker/Downloads/nztopo50_carto_symbol.parquet|layername=nztopo50_carto_symbol</datasource>
+    <renderer-v2 type="RuleRenderer">
+      <rules><rule filter=" &quot;type&quot;  =  'highway_shield' " symbol="0"/></rules>
+      <symbols><symbol name="0" type="marker">
+        <layer class="FontMarker"><Option type="Map">
+          <Option name="color" type="QString" value="255,0,0,255"/>
+          <Option name="font" type="QString" value="Nimbus Sans LINZ"/>
+          <Option name="font_style" type="QString" value="Narrow"/>
+          <Option name="size" type="QString" value="2.2"/>
+          <Option name="size_unit" type="QString" value="MM"/>
+        </Option></layer>
+      </symbol></symbols>
+    </renderer-v2>
+  </maplayer>
+</projectlayers></qgis>
+"""
+
+
+def test_highway_numbers_draw_in_a_shield_in_the_raster_face():
+    # Catches the stock number layer left on a LINZ staff Downloads path (no
+    # number draws), a number left in Nimbus or pure red, or a number with no
+    # shield under it, so it sits on the red highway line (log 0090).
+    root = ET.fromstring(SHIELD_PROJECT)
+    patch_shield_numbers(root)
+    patch_shield_numbers(root)
+    symbols, numbers = root.findall("projectlayers/maplayer")
+    assert numbers.findtext("datasource") == symbols.findtext("datasource")
+    shield, digit = numbers.findall(".//symbol/layer")
+    assert shield.get("class") == "SvgMarker" and shield.get("nzat") == "shield"
+    assert shield.get("id") != "{a}"
+    assert digit.find("Option/Option[@name='font']").get("value") == "Atkinson Hyperlegible Next Macron"
+    assert digit.find("Option/Option[@name='font_style']").get("value") == "Regular"
+    ink = tuple(int(v) for v in digit.find("Option/Option[@name='color']").get("value").split(",")[:3])
+    white = (255, 255, 255)
+    assert contrast_ratio(rel_luminance(ink), rel_luminance(white)) >= 4.8
+    assert contrast_ratio(red_light_reflectance(ink), red_light_reflectance(white)) >= 3.0
