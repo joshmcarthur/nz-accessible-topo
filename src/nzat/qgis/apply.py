@@ -5,6 +5,7 @@ from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_draw_order import patch_draw_order
 from nzat.qgis.patch_hillshade import patch_hillshade
 from nzat.qgis.patch_labels import patch_labels
+from nzat.qgis.patch_legend_picture import patch_legend_picture
 from nzat.qgis.patch_owned_lines import patch_owned_lines
 from nzat.qgis.patch_road_fills import patch_road_fills
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
@@ -83,4 +84,5 @@ def apply(root, project_dir=None):
     patch_shield_numbers(root)
     patch_draw_order(root)
     patch_hillshade(root, project_dir)
+    patch_legend_picture(root)
     return labels
