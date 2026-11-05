@@ -1,8 +1,8 @@
-from nzat.qgis.defaults import SHEET_SCALE, STYLE
-
-
 def carto_text_width_expression(chars, style=None):
     """Estimated width in metres of a carto_text line of chars characters at the sheet scale."""
+    # defaults builds CARTO_POINT_FILTER with this function, so import it late.
+    from nzat.qgis.defaults import SHEET_SCALE, STYLE
+
     style = style or STYLE
     floor = style["labels"]["size_floor_pt"]
     metres_per_pt = 0.3528 / 1000 * SHEET_SCALE

@@ -1,4 +1,5 @@
 from nzat.paths import STYLE_PATH as STYLE_PATH_OBJ
+from nzat.qgis.carto_text_width_expression import carto_text_width_expression
 from nzat.style.load_rules import load_rules
 
 STYLE_PATH = str(STYLE_PATH_OBJ)
@@ -13,9 +14,14 @@ SHEET_SCALE = 50000
 WHITE = (255, 255, 255)
 PMS151_RGB = (255, 127, 0)
 CARTO_FIT_FILE = "carto_fit.json"
+# Stock stores some straight names as one segment per letter. Such a name is
+# flat too when the larger type is wider than its baseline (log 0086).
 CARTO_POINT_FILTER = (
     '"text_orientation" = 0 AND ("text_placement" = 34'
-    ' OR ("text_placement" = 1 AND num_points($geometry) <= 2))'
+    ' OR ("text_placement" = 1 AND (num_points($geometry) <= 2'
+    " OR (bounds_height($geometry) < 1 AND length($geometry) <= "
+    + carto_text_width_expression('length("text_string")', STYLE)
+    + "))))"
 )
 CURVED_ONLY_PROPERTIES = (
     "LinePlacementFlags",
