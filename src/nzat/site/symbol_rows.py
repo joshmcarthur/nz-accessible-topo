@@ -37,7 +37,6 @@ WATER_FILL = "#D1E7F5"
 INDEX = "#7A5542"
 SHELTERBELT = "#008A00"
 SCRUB_MARK = "#6A9A50"
-VEG_OUTLINE = "#A7C05E"
 # nzat.colour.darken.darken_for_text on the stock hue, to 3:1 on paper.
 VEG_OUTLINE_DARK = "#859E3E"
 # The same with red_min=3: the stock red-orange #EA6300 for a hazard line.
@@ -122,29 +121,12 @@ def _keep_black_glyph(text, mark=1.4, stroke=0.15):
     )
 
 
-def _thicker_svg(name, mark, colour="#231F20"):
-    return spec(
-        f"Keep the LINZ {name}. Redraw the SVG strokes at 0.15 mm.",
-        (ink(colour, "SVG black"),),
-        mark_mm=mark,
-        stroke_mm=0.15,
-    )
-
-
 _BRIDGE_FIX = spec(
     "Keep the LINZ bracket. Casing lines 0.2 mm, end ticks 1.4 mm, in the casing ink.",
     (CASE,),
     line_mm=0.2,
     mark_mm=1.4,
 )
-_BRIDGE_NOW = spec(
-    "Two 0.15 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, "
-    "but a QGIS line marker draws its stroke only, so no red draws.",
-    (CASE,),
-    line_mm=0.15,
-    mark_mm=1.0,
-)
-_VEG_OUTLINE_NOW = ink(VEG_OUTLINE, "outline")
 _VEG_OUTLINE_NEW = ink(VEG_OUTLINE_DARK, "outline")
 _OUTLINE_EX = {"line_mm": OUTLINE_EXEMPT}
 _CONTOUR_INKS = (ink(INDEX, "index"), ink("#B08872", "intermediate", "accent"))
@@ -345,8 +327,7 @@ SYMBOLS = (
         "Bridge: two lane",
         (1655, 1388, 1850, 1478),
         "bridge_line copy copy (vehicle-2)",
-        "proposed",
-        _BRIDGE_NOW,
+        "done",
         _BRIDGE_FIX,
     ),
     sym(
@@ -453,14 +434,12 @@ SYMBOLS = (
         "Double or multiple track",
         (1655, 1962, 2035, 2054),
         "railway_line map (track_type multiple)",
-        "proposed",
-        _black_line("Black 0.25 mm, as single track.", 0.25, APPLIED),
+        "done",
         spec(
-            "Keep the LINZ bar: black 0.6 mm with white dashes inside.",
+            "Black 0.6 mm with white dashes inside. Filter coalesce(track_type) = multiple.",
             (BLACK,),
             line_mm=0.6,
         ),
-        merged_with="single track",
     ),
     sym(
         "rail_single",
@@ -535,10 +514,9 @@ SYMBOLS = (
         "Road over railway",
         (1655, 2434, 2035, 2526),
         "bridge_line copy copy (vehicle-2)",
-        "proposed",
-        _BRIDGE_NOW,
+        "done",
         _BRIDGE_FIX,
-        note="Same change as Bridge: two lane.",
+        note="Same paint as Bridge: two lane.",
     ),
     sym(
         "railway_over_road",
@@ -623,9 +601,14 @@ SYMBOLS = (
         "Stockyard",
         (1880, 3190, 2035, 3282),
         "structure_point map (stockyard)",
-        "proposed",
-        _black_glyph("Black grid square 1.6 mm, strokes 0.12 mm.", 1.6, 0.12, SVG),
-        _thicker_svg("grid square", 1.6, "#000000"),
+        "done",
+        spec(
+            "Black grid square 1.6 mm, strokes 0.15 mm. Owned SVG.",
+            (BLACK,),
+            source=SVG,
+            mark_mm=1.6,
+            stroke_mm=0.15,
+        ),
     ),
     sym(
         "glasshouse",
@@ -633,10 +616,12 @@ SYMBOLS = (
         "Glasshouse or greenhouse",
         (1655, 3284, 2035, 3376),
         "building map",
-        "proposed",
-        spec("Solid black fill.", (BLACK,)),
-        _keep_black_line("Black 0.2 mm outline, no fill."),
-        merged_with="a large building (every building polygon is solid black)",
+        "done",
+        spec(
+            "Black 0.2 mm outline, no fill. Filter coalesce(subtype) = greenhouse.",
+            (BLACK,),
+            line_mm=0.2,
+        ),
     ),
     sym(
         "church",
@@ -644,16 +629,14 @@ SYMBOLS = (
         "Church",
         (1655, 3379, 1735, 3471),
         "building_point map (church)",
-        "proposed",
+        "done",
         spec(
-            "Black square with a cross, 1.0 mm tall. Strokes 0.15 mm. Owned SVG. "
-            "The red fill is set, but the line marker and the fixed-colour SVG draw black.",
+            "Black square with a cross, 1.4 mm tall, stroke 0.15 mm. Owned SVG.",
             (BLACK,),
             source=SVG,
-            mark_mm=1.03,
+            mark_mm=1.4,
             stroke_mm=0.15,
         ),
-        _keep_black_glyph("Square and cross, black, 1.4 mm tall, stroke 0.15 mm."),
     ),
     sym(
         "cemetery",
@@ -802,21 +785,15 @@ SYMBOLS = (
         "Tank",
         (1890, 3755, 2035, 3847),
         "structure_point map (tank, water)",
-        "proposed",
+        "done",
         spec(
-            "Circle 1.0 mm, stroke 0.15 mm, #231F20.",
+            "Circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG. The parent tank rule stays 3 mm.",
             (DARK,),
             source=SVG,
-            mark_mm=1.0,
-            stroke_mm=0.15,
-        ),
-        spec(
-            "Keep the LINZ circle at 1.4 mm, stroke 0.15 mm.",
-            (DARK,),
             mark_mm=1.4,
             stroke_mm=0.15,
         ),
-        note="The parent tank rule also draws a 3 mm tank SVG. Check on the grid.",
+        note="The parent tank rule still draws a 3 mm tank SVG.",
     ),
     sym(
         "mast",
@@ -885,15 +862,14 @@ SYMBOLS = (
         "Lighthouse",
         (1790, 3946, 1890, 4038),
         "structure_point map (lighthouse)",
-        "proposed",
+        "done",
         spec(
-            "Tower 2.2 mm tall, stroke 0.14 mm, #231F20.",
+            "Tower 2.2 mm tall, stroke 0.15 mm, #231F20. Owned SVG.",
             (DARK,),
             source=SVG,
             mark_mm=2.16,
-            stroke_mm=0.14,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("lighthouse", 2.16),
     ),
     sym(
         "marine_beacon",
@@ -1093,14 +1069,13 @@ SYMBOLS = (
         "Supplementary contour",
         (1655, 5466, 2035, 5520),
         "contour (designation supplementary)",
-        "proposed",
-        spec("Solid intermediate contour.", _CONTOUR_INKS, line_mm=0.2),
+        "done",
         spec(
-            "Keep the inks and casing. Dash it as LINZ does, 3 mm / 1 mm.",
+            "Index and intermediate inks with casing. Dash 3 mm / 1 mm when "
+            "coalesce(designation) = supplementary.",
             _CONTOUR_INKS,
             line_mm=0.2,
         ),
-        merged_with="an intermediate contour (no dash)",
         redrawn=True,
     ),
     sym(
@@ -1109,15 +1084,15 @@ SYMBOLS = (
         "Depression contours",
         (1655, 5515, 2035, 5615),
         "contour (formation depression)",
-        "proposed",
-        spec("Ordinary contour inks, no ticks.", _CONTOUR_INKS, line_mm=0.2),
+        "done",
         spec(
-            "Keep the contour inks. Add the LINZ downhill ticks, 0.6 mm, in index brown. "
-            "The ticks carry the meaning, not the stock orange.",
+            "Contour inks with index-brown downhill ticks 0.6 mm when "
+            "coalesce(formation) = depression. Not stock orange.",
             _CONTOUR_INKS,
             line_mm=0.2,
+            mark_mm=0.6,
+            exempt={"mark_mm": "a mark on a line, not an area symbol (G1, log 0066)"},
         ),
-        merged_with="an ordinary contour (no ticks)",
         note="Stock print uses orange #FF7F00 here: 2.5:1 grey, 1.0:1 red light.",
     ),
     sym(
@@ -1146,15 +1121,14 @@ SYMBOLS = (
         "Small depression or shaft",
         (1890, 5625, 2035, 5712),
         "structure_point map (shaft)",
-        "proposed",
+        "done",
         spec(
-            "Half-filled circle 1.2 mm, stroke 0.13 mm, #231F20. The set #BEB297 does not draw.",
+            "Half-filled circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG.",
             (DARK,),
             source=SVG,
-            mark_mm=1.2,
-            stroke_mm=0.13,
+            mark_mm=1.4,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("half-filled circle", 1.4),
         note="Sinkholes are relief_point and draw as a 0.3 mm spot-height dot.",
     ),
     sym(
@@ -1274,15 +1248,15 @@ SYMBOLS = (
         "Saddle",
         (1655, 6306, 1840, 6398),
         "relief_point map (saddle)",
-        "proposed",
+        "done",
         spec(
-            "Black dot 0.3 mm, as a spot height.",
+            "Two black arcs 1.4 mm tall, stroke 0.2 mm. Owned SVG. Filter "
+            "coalesce(type) = saddle. Spot heights stay 0.3 mm dots.",
             (BLACK,),
-            mark_mm=0.3,
-            exempt={"mark_mm": "the dot marks a point"},
+            source=SVG,
+            mark_mm=1.4,
+            stroke_mm=0.2,
         ),
-        _keep_black_glyph("Two black arcs 1.4 mm, stroke 0.2 mm.", stroke=0.2),
-        merged_with="a spot-height dot",
     ),
     sym(
         "cave",
@@ -1302,14 +1276,13 @@ SYMBOLS = (
         "Moraine",
         (1655, 6492, 2035, 6584),
         "landcover map (moraine)",
-        "proposed",
-        spec("Black shingle texture.", (BLACK,), stroke_mm=0.05),
+        "done",
         spec(
-            "Keep the LINZ moraine stipple, crosses and rings, black, stroke 0.15 mm.",
+            "Black crosses and rings, stroke 0.15 mm. Owned SVG.",
             (BLACK,),
+            source=SVG,
             stroke_mm=0.15,
         ),
-        merged_with="shingle (moraine, scree and shingle all draw shingle.svg)",
     ),
     sym(
         "moraine_wall",
@@ -1317,13 +1290,8 @@ SYMBOLS = (
         "Moraine wall",
         (1655, 6586, 2035, 6678),
         "landcover map (moraine_wall)",
-        "proposed",
-        spec(
-            "Magenta #F000EC dotted rows, 0.5 mm.",
-            (ink("#F000EC", "dots"),),
-            line_mm=0.5,
-        ),
-        spec("Keep the LINZ dotted rows, in black, 0.5 mm.", (BLACK,), line_mm=0.5),
+        "done",
+        spec("Black dotted rows, 0.5 mm.", (BLACK,), line_mm=0.5),
     ),
     sym(
         "scree",
@@ -1331,12 +1299,13 @@ SYMBOLS = (
         "Scree",
         (1655, 6681, 2035, 6773),
         "landcover map (scree)",
-        "proposed",
-        spec("Black shingle texture.", (BLACK,), stroke_mm=0.05),
+        "done",
         spec(
-            "Keep the LINZ fine stipple, black, dots 0.2 mm.", (BLACK,), stroke_mm=0.2
+            "Black fine stipple, stroke 0.15 mm. Owned SVG.",
+            (BLACK,),
+            source=SVG,
+            stroke_mm=0.15,
         ),
-        merged_with="shingle (moraine, scree and shingle all draw shingle.svg)",
     ),
     # Water features
     sym(
@@ -1394,14 +1363,13 @@ SYMBOLS = (
         "Shingle",
         (1655, 7347, 2035, 7439),
         "landcover map (shingle)",
-        "proposed",
+        "done",
         spec(
-            "Black shingle texture, strokes 0.05 mm.",
+            "Black shingle texture, strokes 0.15 mm. Owned SVG.",
             (BLACK,),
             source=SVG,
-            stroke_mm=0.05,
+            stroke_mm=0.15,
         ),
-        spec("Keep the LINZ texture. Strokes 0.15 mm.", (BLACK,), stroke_mm=0.15),
     ),
     sym(
         "swamp",
@@ -1409,16 +1377,11 @@ SYMBOLS = (
         "Swamp",
         (1655, 7442, 2035, 7534),
         "landcover map (swamp)",
-        "proposed",
+        "done",
         spec(
-            "Stream-blue tufts, strokes 0.11 mm, and a 0.1 mm dotted outline.",
+            "Stream-blue tufts, strokes 0.15 mm, and a 0.1 mm dotted outline. Owned SVG.",
             (ink(STREAM, "tufts"),),
             source=SVG,
-            stroke_mm=0.11,
-        ),
-        spec(
-            "Keep the LINZ tufts and outline in stream #004C99. Strokes 0.15 mm.",
-            (ink(STREAM, "tufts"),),
             stroke_mm=0.15,
         ),
     ),
@@ -1503,10 +1466,9 @@ SYMBOLS = (
         "Floodgate",
         (1780, 7920, 1900, 8015),
         "structure_point map (floodgate)",
-        "proposed",
-        spec("Black bar 1.0 mm, stroke 0.2 mm.", (BLACK,), mark_mm=1.0, stroke_mm=0.2),
+        "done",
         spec(
-            "Keep the LINZ bar and the FG label. Bar 1.4 mm, as a gate.",
+            "Black bar 1.4 mm, stroke 0.2 mm, with the FG label.",
             (BLACK,),
             mark_mm=1.4,
             stroke_mm=0.2,
@@ -1691,6 +1653,7 @@ SYMBOLS = (
             mark_mm=1.4,
         ),
         merged_with="an ordinary stream (no arrow head)",
+        note="water_line.type has river, drain, canal, not a sink or disappearing class. Do not fake arrows on every river.",
     ),
     # Vegetation features
     sym(
@@ -1699,15 +1662,9 @@ SYMBOLS = (
         "Native forest",
         (1655, 8736, 2035, 8831),
         "vegetation map (native)",
-        "proposed",
+        "done",
         spec(
-            "Fill #E1EAC3 at alpha 180, outline #A7C05E 0.1 mm.",
-            (ink("#E1EAC3", "fill", "fill"), _VEG_OUTLINE_NOW),
-            line_mm=0.1,
-            exempt=_OUTLINE_EX,
-        ),
-        spec(
-            "Keep the fill. Darken the outline hue to #859E3E, 0.1 mm.",
+            "Fill #E1EAC3 at alpha 180, outline #859E3E 0.1 mm.",
             (ink("#E1EAC3", "fill", "fill"), _VEG_OUTLINE_NEW),
             line_mm=0.1,
             exempt=_OUTLINE_EX,
@@ -1721,18 +1678,12 @@ SYMBOLS = (
         "Exotic coniferous forest",
         (1655, 8831, 2035, 8926),
         "vegetation map (exotic)",
-        "proposed",
+        "done",
         spec(
-            "Tree marks 3 mm grid in #9DCE69, outline #A7C05E. The set #E748A2 does not "
-            "draw: exotic_con.svg has a fixed #9DCE69.",
-            (ink("#9DCE69", "marks"), _VEG_OUTLINE_NOW),
-            source=SVG,
-            line_mm=0.1,
-            exempt=_OUTLINE_EX,
-        ),
-        spec(
-            "Keep the LINZ conifer marks, in the scrub-mark ink #6A9A50. Outline #859E3E.",
+            "LINZ conifer marks in #6A9A50, outline #859E3E. Owned SVG. "
+            "subtype coniferous.",
             (ink(SCRUB_MARK, "marks"), _VEG_OUTLINE_NEW),
+            source=SVG,
             line_mm=0.1,
             exempt=_OUTLINE_EX,
         ),
@@ -1744,21 +1695,15 @@ SYMBOLS = (
         "Exotic non-coniferous forest",
         (1655, 8926, 2035, 9021),
         "vegetation map (exotic)",
-        "proposed",
+        "done",
         spec(
-            "Conifer marks in #9DCE69, outline #A7C05E.",
-            (ink("#9DCE69", "marks"), _VEG_OUTLINE_NOW),
+            "LINZ broadleaf marks in #6A9A50, outline #859E3E. Owned SVG. "
+            "Filter coalesce(subtype) = non-coniferous.",
+            (ink(SCRUB_MARK, "marks"), _VEG_OUTLINE_NEW),
             source=SVG,
             line_mm=0.1,
             exempt=_OUTLINE_EX,
         ),
-        spec(
-            "Draw the LINZ broadleaf mark (exotic_non_coniferous.svg) in #6A9A50. Outline #859E3E.",
-            (ink(SCRUB_MARK, "marks"), _VEG_OUTLINE_NEW),
-            line_mm=0.1,
-            exempt=_OUTLINE_EX,
-        ),
-        merged_with="exotic coniferous forest (log 0092)",
         redrawn=True,
     ),
     sym(
@@ -1800,7 +1745,9 @@ SYMBOLS = (
         "vegetation_line map (shelter_belt)",
         "done",
         spec(
-            f"Shelterbelt {SHELTERBELT}, 0.25 mm.", (ink(SHELTERBELT, "line"),), line_mm=0.25
+            f"Shelterbelt {SHELTERBELT}, 0.25 mm.",
+            (ink(SHELTERBELT, "line"),),
+            line_mm=0.25,
         ),
         redrawn=True,
     ),
@@ -1832,7 +1779,9 @@ SYMBOLS = (
         "vegetation has no orchard type in the data",
         "blocked",
         spec("Rows of pale green dots.", (ink(LEGEND_GREEN, "dots"),), source=LEGEND),
-        spec(f"Keep the LINZ rows of dots in {SHELTERBELT}.", (ink(SHELTERBELT, "dots"),)),
+        spec(
+            f"Keep the LINZ rows of dots in {SHELTERBELT}.", (ink(SHELTERBELT, "dots"),)
+        ),
         drawn="no",
     ),
     sym(
@@ -1877,9 +1826,8 @@ SYMBOLS = (
         "Hut",
         None,
         "building_point map (hut)",
-        "proposed",
-        spec("Black hut 0.8 mm.", (BLACK,), source=SVG, mark_mm=0.8),
-        spec("Keep the LINZ hut glyph, black, 1.4 mm.", (BLACK,), mark_mm=1.4),
+        "done",
+        spec("Black LINZ hut glyph, 1.4 mm.", (BLACK,), source=SVG, mark_mm=1.4),
     ),
 )
 
