@@ -34,7 +34,9 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["water_fill"] == "#D1E7F5"
     assert style["reference_inks"]["print_legend_highway"] == "#EA6300"
     assert style["reference_inks"]["stream"] == "#004C99"
-    assert style["water"]["stream_width_mm"] == 0.25
+    assert style["sizes"]["navigation_line_mm"] == 0.35
+    assert style["sizes"]["line_floor_mm"] == 0.15
+    assert style["water"]["stream_width_mm"] == 0.35
     assert style["water"]["drain_width_mm"] < style["water"]["stream_width_mm"]
     assert style["vegetation"]["scrub_dots"]["marker"] == "third_arc"
     assert style["vegetation"]["scrub_dots"]["distance_mm"] == 3
@@ -62,7 +64,7 @@ def test_style_file_has_no_sheet_code():
     assert style["vegetation"]["scrub"]["alpha"] == 26
     assert style["tracks"]["closed_foot"]["marker"] == "cross2"
     assert style["tracks"]["closed_foot"]["crossbar_angle_deg"] == 0
-    assert style["tracks"]["closed_foot"]["crossbar_size_mm"] == 0.7
+    assert style["tracks"]["closed_foot"]["crossbar_size_mm"] == 1.25
     assert style["tracks"]["closed_foot"]["marker_interval_mm"] == 3
     assert style["vegetation"]["scattered"]["colour"] == "#E0EDD8"
     assert style["tracks"]["closed_foot"]["casing_colour"] == "#1A1A1A"

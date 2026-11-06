@@ -9,6 +9,7 @@ from nzat.qgis.patch_labels import patch_labels
 from nzat.qgis.patch_legend_picture import patch_legend_picture
 from nzat.qgis.patch_owned_lines import patch_owned_lines
 from nzat.qgis.patch_road_fills import patch_road_fills
+from nzat.qgis.patch_road_widths import patch_road_widths
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_tracks import patch_tracks
@@ -58,6 +59,7 @@ def apply(root, project_dir=None):
             seen.add(name)
         elif is_owned_road_layer(name):
             patch_road_fills(layer)
+            patch_road_widths(layer)
         elif name == "nztopo50_carto_symbol":
             patch_contour_numbers(layer)
         elif name == "track_line map":

@@ -22,6 +22,7 @@ Changes are on the map layers the research names:
 - water_line map: rivers and canals draw at water.stream_width_mm, drains at water.drain_width_mm (F-31)
 - track_line map: closed-track gap marks are an × (R-11)
 - road fills: PMS151 two-lane and sealed fills become reference_inks.project_road (R-01)
+- road fills: painted road fills and unmetalled centre lines rise to sizes.navigation_line_mm (F-31)
 - nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink, upright (R-17 P7, R-05)
 - nztopo50_carto_symbol_label: state highway numbers read the symbol source and draw in a white shield above the road, in a darkened highway ink (R-07, R-06)
 - hillshade: optional overlay at 337.5°. Turns on when dem.tif sits beside the project (R-03)

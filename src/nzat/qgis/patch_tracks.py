@@ -208,6 +208,15 @@ def _sync_closed_crossbar(marker, style):
         set_option(simple, name, value)
 
 
+def _patch_vehicle_line(symbol, style):
+    vehicle = style["tracks"]["vehicle"]
+    line = symbol.find("layer[@class='SimpleLine']")
+    if line is None:
+        raise RuntimeError("vehicle track has no line")
+    set_option(line, "line_width", str(vehicle["width_mm"]))
+    set_option(line, "customdash", vehicle["dash"])
+
+
 def patch_tracks(layer, style=None):
     style = style or STYLE
     if style["tracks"]["access"]["painted"]:
@@ -215,6 +224,7 @@ def patch_tracks(layer, style=None):
     track = style["tracks"]["closed_foot"]
     require_field(layer, "status")
     require_field(layer, "track_type")
+    _patch_vehicle_line(category_symbol(layer, "vehicle"), style)
     symbol = category_symbol(layer, "foot")
     line = None
     for candidate in symbol.findall("layer[@class='SimpleLine']"):

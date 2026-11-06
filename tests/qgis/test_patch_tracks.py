@@ -62,30 +62,7 @@ def test_closed_tracks_read_the_style_file():
     assert "WHEN \"colour\" = 'black'" not in expr
     expected = rgb_key(dark)
     assert f"color_rgb({expected[0]},{expected[1]},{expected[2]})" in expr
-    track_layer = ET.fromstring(
-        """
-        <maplayer>
-          <layername>track_line map</layername>
-          <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
-          <renderer-v2 type="categorizedSymbol">
-            <categories><category value="foot" symbol="1"/></categories>
-            <symbols>
-              <symbol name="1" type="line">
-                <layer class="SimpleLine">
-                  <Option type="Map">
-                    <Option name="use_custom_dash" type="QString" value="1"/>
-                    <Option name="line_width" type="QString" value="0.15"/>
-                  </Option>
-                  <data_defined_properties><Option type="Map">
-                    <Option name="properties"/>
-                  </Option></data_defined_properties>
-                </layer>
-              </symbol>
-            </symbols>
-          </renderer-v2>
-        </maplayer>
-        """
-    )
+    track_layer = ET.fromstring(_track_layer_xml(VEHICLE_CATEGORY, VEHICLE_SYMBOL))
     patch_tracks(track_layer)
     angle = track_layer.find(
         ".//symbol[@name='@closed']/layer[@class='SimpleMarker']/Option/Option[@name='angle']"
@@ -112,11 +89,11 @@ def test_closed_tracks_read_the_style_file():
         STYLE["tracks"]["closed_foot"]["marker_interval_mm"]
     )
     assert interval.get("value") == "3"
-    assert along.get("value") == "1.25"
+    assert along.get("value") == "2.1875"
     width = track_layer.find(
         ".//Option[@name='outlineWidth']/Option[@name='expression']"
     ).get("value")
-    assert "0.2" in width
+    assert "0.35" in width
     assert "0.45" not in width
     again = json.loads(json.dumps(STYLE))
     again["tracks"]["closed_foot"]["crossbar_angle_deg"] = 45
@@ -129,30 +106,51 @@ def test_closed_tracks_read_the_style_file():
     assert enabled == "coalesce(\"status\", '') = 'closed'"
 
 
-def _foot_layer():
-    return ET.fromstring(
-        """
+VEHICLE_CATEGORY = """
+<category value="vehicle" symbol="2"/>
+"""
+
+VEHICLE_SYMBOL = """
+<symbol name="2" type="line">
+  <layer class="SimpleLine">
+    <Option type="Map">
+      <Option name="use_custom_dash" type="QString" value="1"/>
+      <Option name="customdash" type="QString" value="2.5;0.5"/>
+      <Option name="line_width" type="QString" value="0.15"/>
+    </Option>
+  </layer>
+</symbol>
+"""
+
+
+def _track_layer_xml(extra_categories="", extra_symbols=""):
+    return f"""
         <maplayer>
           <layername>track_line map</layername>
           <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
           <renderer-v2 type="categorizedSymbol">
-            <categories><category value="foot" symbol="1"/></categories>
+            <categories><category value="foot" symbol="1"/>{extra_categories}</categories>
             <symbols>
               <symbol name="1" type="line">
                 <layer class="SimpleLine">
                   <Option type="Map">
                     <Option name="use_custom_dash" type="QString" value="1"/>
+                    <Option name="line_width" type="QString" value="0.15"/>
                   </Option>
                   <data_defined_properties><Option type="Map">
                     <Option name="properties"/>
                   </Option></data_defined_properties>
                 </layer>
               </symbol>
+              {extra_symbols}
             </symbols>
           </renderer-v2>
         </maplayer>
         """
-    )
+
+
+def _foot_layer():
+    return ET.fromstring(_track_layer_xml(VEHICLE_CATEGORY, VEHICLE_SYMBOL))
 
 
 def _enabled(layer):
@@ -182,6 +180,16 @@ def _drawn(symbol, status, track_type):
             marker = layer.find("symbol")
             drawn.append(marker.get("name") if marker is not None else "dashes")
     return drawn
+
+
+def test_vehicle_track_reads_the_navigation_floor():
+    layer = _foot_layer()
+    patch_tracks(layer)
+    vehicle = layer.find(".//symbol[@name='2']/layer[@class='SimpleLine']")
+    assert vehicle.find("Option/Option[@name='line_width']").get("value") == "0.35"
+    assert (
+        vehicle.find("Option/Option[@name='customdash']").get("value") == "4.375;0.875"
+    )
 
 
 def test_poled_routes_draw_dots():
@@ -226,5 +234,6 @@ def test_track_weights_read_the_style_file():
     assert option("@closed", "outline_width") == "0.17"
     dots = layer.find(".//layer[@class='MarkerLine']/Option/Option[@name='interval']")
     assert dots.get("value") == "1.2"
-    assert STYLE["tracks"]["closed_foot"]["open_width_mm"] == 0.2
-    assert STYLE["tracks"]["closed_foot"]["crossbar_size_mm"] == 0.7
+    assert STYLE["tracks"]["closed_foot"]["open_width_mm"] == 0.35
+    assert STYLE["tracks"]["closed_foot"]["crossbar_size_mm"] == 1.25
+    assert STYLE["tracks"]["vehicle"]["width_mm"] == 0.35

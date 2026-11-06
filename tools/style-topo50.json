@@ -83,6 +83,10 @@
       "distance_mm": 3
     }
   },
+  "sizes": {
+    "navigation_line_mm": 0.35,
+    "line_floor_mm": 0.15
+  },
   "draw_order": [
     {"name": "vegetation map", "below": "contour"}
   ],
@@ -92,18 +96,22 @@
       "painted": false
     },
     "closed_foot": {
-      "width_mm": 0.2,
-      "open_width_mm": 0.2,
-      "closed_dash": "1;0.5",
-      "open_dash": "1;0.5",
+      "width_mm": 0.35,
+      "open_width_mm": 0.35,
+      "closed_dash": "1.75;0.875",
+      "open_dash": "1.75;0.875",
       "casing_colour": "#1A1A1A",
       "casing_alpha": 0.55,
       "crossbar_colour": "#000000",
-      "crossbar_size_mm": 0.7,
+      "crossbar_size_mm": 1.25,
       "crossbar_outline_width_mm": 0.15,
       "crossbar_angle_deg": 0,
       "marker": "cross2",
       "marker_interval_mm": 3
+    },
+    "vehicle": {
+      "width_mm": 0.35,
+      "dash": "4.375;0.875"
     },
     "dotted": {
       "colour": "#000000",
@@ -117,7 +125,7 @@
     "cold": {"glyph": "circle", "colour": "#005C8F"}
   },
   "water": {
-    "stream_width_mm": 0.25,
+    "stream_width_mm": 0.35,
     "drain_width_mm": 0.15
   },
   "hillshade": {
