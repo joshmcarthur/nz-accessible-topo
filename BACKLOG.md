@@ -1,7 +1,7 @@
 # Backlog
 
-Status as of 2026-11-06, after log 0103. Start with "Next work" below.
-Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#00276D` (log 0102). Map themes are `Map5View-paper` and `Map5View-all` (log 0103). The order now is: visual sign-off of that paint, legend rows from the map (N-6), full LINZ sheets (N-7), then vector parity (N-8).
+Status as of 2026-11-06, after log 0104. Start with "Next work" below.
+Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#00276D` (log 0102). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. The order now is: Josh visual sign-off, then full LINZ sheets (N-7), then vector parity (N-8).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
 Black names on the urban fill take an urban-fill halo from a precomputed `urban_text.json` (B-45, log 0093). The sheet project has no `urban_text.json` yet, so sheet halos stay paper.
@@ -36,11 +36,11 @@ with `kanban` support (11.4+); validated with mermaid 12.2.0.
 
 ## Next work (from 2026-11-06)
 
-Research is at log 0103. N-1 to N-4 (except fumarole and stream-disappearing) are in the apply step. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+Research is at log 0104. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
 
-### Visual sign-off for N-1 to N-4 (before split commits)
+### Visual sign-off for N-1 to N-6
 
-Re-apply, redraw the accessible legend, export the symbol table, render the BX24 face, crop the grid. Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#00276D` must still read as water, not a black track, on steep `1580000-5154000`. Closed × must still pass G1.
+Grid, legend, and `/symbols/` are redrawn (log 0104). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#00276D` must still read as water, not a black track, on steep `1580000-5154000`. Closed × must still pass G1. Some N-6 swatches are empty or wrong at sheet size (gates, several relief lines, fumarole).
 
 ### N-1 to N-4 — applied (do not reopen)
 
@@ -49,8 +49,9 @@ N-1 navigation floor 0.35 mm (log 0097). N-2 vegetation (logs 0098–0100). N-3 
 ### N-5 — Hidden layers: Map5View-paper and Map5View-all
 
 - **Decision (Josh, 2026-11-06):** named variants, one `-paper`, one `-all`.
-- **Change (in apply, log 0103):** copy `Map5View` to `Map5View-paper` (print visibility) and `Map5View-all` (`map.all_layers` on, relief rules on). Default render stays `Map5View`. Use `--theme Map5View-all` for a full-symbol proof.
+- **Change (in apply, logs 0103–0104):** copy `Map5View` to `Map5View-paper` (print visibility) and `Map5View-all` (`map.all_layers` on, relief rules on). Default render stays `Map5View`. Use `--theme Map5View-all` for a full-symbol proof.
 - **Done when:** apply writes both themes; a `--theme Map5View-all` square shows springs, power lines, and relief ticks; blocked `/symbols/` rows that those layers own move to proposed or done.
+- **Now:** apply writes both themes. Rhodes Spring draws on `-all`. Power pylons have no class on this BX24 project. Rows with a class on `-all` are done or proposed (log 0104).
 
 ### How to run a pass (local Mac)
 
@@ -81,7 +82,7 @@ The 2026-11-05 session ran these steps from temporary scratchpad scripts. These 
 ### N-6 — Legend: redraw the 14 stock-look row groups from the map
 
 - **Decision (Josh):** "Redraw from map" (method B in log 0092: sample features with real attributes, copy of the full layer style, render at 1:50,000 and 600 dpi into the swatch box).
-- Do this **after** N-1 to N-5, so the legend shows finished styles. Rows: tunnel/bridge/ford/gate/footbridge; railways and crossings; residential/buildings picture (build a small sample scene); point symbols; pipelines, power, telephone, cableway, mine, gas pipeline; depression contours; elevation in metres (comes out upright, black, 6 pt); relief symbols; moraine/scree box (sample scene); water-features picture (sample scene); dam/waterfall/canal/stream disappearing; springs/fumarole/bore (blocked until N-5); trees/orchard/mangroves. Swatch list: `src/nzat/qgis/legend_swatches.py`.
+- **Now (log 0104):** drawable rows have swatches. Blocked no-class rows stay stock (ford, orchard, mangroves, pipelines, power, telephone, gas, bore, stream disappearing). Fumarole/waterfall/marine farm stay proposed. Pass `--theme Map5View-all` when you redraw the legend.
 - Legend label text stays stock (layout text is Nimbus) unless Josh gives new wording.
 
 ### N-7 — Re-render all 445 sheets

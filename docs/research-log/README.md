@@ -106,3 +106,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0101 — Remaining N-4 symbol paint](0101-n4-remaining-symbols.md)
 - [0102 — Darker stream versus index contour](0102-darker-stream-index.md)
 - [0103 — Map5View-paper and Map5View-all](0103-map-theme-variants.md)
+- [0104 — N-5 themes applied, N-6 legend rows, BX24 grid redrawn](0104-n5-n6-legend-and-grid.md)

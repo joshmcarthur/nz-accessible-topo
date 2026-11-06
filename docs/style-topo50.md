@@ -21,7 +21,7 @@ The script changes one layout item. The legend picture points at `./topo-legend-
 Draw that file after the apply step, with the QGIS python:
 
 ```
-python tools/render_legend.py --project OUT.qgs --stock-legend topo-legend-1.tif --font accessible/fonts
+python tools/render_legend.py --project OUT.qgs --stock-legend topo-legend-1.tif --font accessible/fonts --theme Map5View-all
 ```
 
 The stock image is `e2e/assets/topo-legend-1.tif` in `linz/topographic-system`. The tool keeps the stock labels. It clears each box in `src/nzat/qgis/legend_swatches.py` and draws the applied map layers there, at 1:50,000 and 600 dpi. It writes the PNG beside `OUT.qgs`. Until that file exists, the page draws a red cross for the legend. Swatches draw at true sheet size (1:50,000), not enlarged to the stock print legend, so a legend line matches the map line.
@@ -179,7 +179,7 @@ State highway numbers on `nztopo50_carto_symbol_label` read the same source as `
 
 Fixed-colour LINZ SVGs ignore the QGIS colour, so church, shipwreck, tower, redoubt, mast, beacon, lighthouse, shaft, stockyard, and the water tank use owned copies whose strokes are 0.15 mm at the marker size in this file. Church also raises the QGIS cross bar to `structures.church.bar_stroke_mm` (0.15 mm). The church mark is 1.4 mm tall (`structures.church.size_mm` is the QGIS width). Hut uses `structures.hut.size_mm` (1.4 mm). Floodgate uses `structures.floodgate.bar_size_mm` (1.4 mm). A greenhouse polygon (`coalesce("subtype", '') = 'greenhouse'`) is an outline, `structures.glasshouse.outline_mm` (0.2 mm), with no fill.
 
-`structures.buried_gas_pipeline` is `#951600` at 0.25 mm with a 2 mm / 0.5 mm dash. The apply step paints that on `structure_line` or `structure_line map` when a gas rule or category exists. Map5View hides `structure_line`, so the sheet still does not draw it (N-5).
+`structures.buried_gas_pipeline` is `#951600` at 0.25 mm with a 2 mm / 0.5 mm dash. The apply step paints that on `structure_line` or `structure_line map` when a gas rule or category exists. `Map5View-all` shows `structure_line`. This BX24 project has no gas class, so the sheet still does not draw it.
 
 `reference_inks.grid` is `#269FD2`. Map5View paints grid lines as `#29A0D3`. The apply step rewrites that RGB.
 

@@ -25,6 +25,12 @@ def _table(source):
     return os.path.basename(source.split("|")[0]).removesuffix(".parquet")
 
 
+def known_swatch_attrs(field_names, attrs):
+    """Keep only attributes the memory layer has. Extra keys (feature_type) are ignored."""
+    names = set(field_names)
+    return {key: value for key, value in attrs.items() if key in names}
+
+
 def _swatch_layers(
     map_layers, features, metres_per_px, labels=True, marker_size_mm=None
 ):
@@ -55,7 +61,9 @@ def _swatch_layers(
         added = []
         for _table_name, attrs, wkt in rows:
             feature = QgsFeature(copy.fields())
-            for name, value in attrs.items():
+            for name, value in known_swatch_attrs(
+                [field.name() for field in copy.fields()], attrs
+            ).items():
                 feature[name] = value
             geometry = QgsGeometry.fromWkt(legend_wkt(wkt, metres_per_px))
             if QgsWkbTypes.isMultiType(layer.wkbType()):

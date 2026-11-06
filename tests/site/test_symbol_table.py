@@ -47,6 +47,13 @@ def test_every_row_status_matches_its_checks():
             assert symbol["drawn"] == "no", symbol["key"]
 
 
+def test_blocked_rows_are_not_redrawn():
+    # Catches a blocked stock row marked as if the accessible legend redraws it.
+    for symbol in SYMBOLS:
+        if symbol["status"] == "blocked":
+            assert not symbol["redrawn"], symbol["key"]
+
+
 def test_redrawn_rows_sit_inside_the_legend_swatch_boxes():
     # Catches an "ours today" crop taken from a row the accessible legend does not redraw.
     swatch_boxes = [s["box"] for s in SWATCHES]
