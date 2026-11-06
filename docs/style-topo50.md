@@ -167,7 +167,7 @@ State highway numbers on `nztopo50_carto_symbol_label` read the same source as `
 
 `water.stream_width_mm` is 0.35. `water.drain_width_mm` is 0.15. The apply step sets a data-defined width on `water_line map`: drains take the drain width, rivers and canals take the stream width. Coastline, water outlines, shelterbelt, and grid keep stock widths. Only their ink changes.
 
-`reference_inks.stream` is `#00276D`. That hex keeps the process-blue hue. After the navigation floor made stream and index both 0.35 mm, Josh asked for a darker stream (log 0102). Grey contrast versus the painted index (alpha 0.85 on paper) is 3.01:1. Versus opaque index it is 2.12:1; a 3:1 floor on the opaque hex would go near black (`#000046`). Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
+`reference_inks.stream` is `#004C99`. Log 0102 darkened it to `#00276D` so grey contrast versus the painted index reached 3:1. Josh rejected that hex: it reads as a black track where a stream runs beside a track (log 0105). The pair versus painted index is 1.83:1 grey and 6.41:1 red (log 0083). Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
 
 `map.theme_paper` is `Map5View-paper`. `map.theme_all` is `Map5View-all`. Apply copies `Map5View` to both names. `-paper` keeps Map5View visibility. `-all` turns on `map.all_layers` and enables `relief_line map` rules. Square and sheet renders default to `Map5View`. Pass `--theme Map5View-all` for the full layer set.
 

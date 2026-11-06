@@ -344,7 +344,7 @@ def test_overrides_skip_the_print_layout():
     stream = root.find(
         "projectlayers/maplayer[layername='water_line map']//Option[@name='line_color']"
     )
-    assert stream.get("value").startswith("0,39,109")
+    assert stream.get("value").startswith("0,76,153")
     painted = ET.tostring(root, encoding="unicode")
     assert "213,180,60" not in painted
     assert "234,99,0" not in painted

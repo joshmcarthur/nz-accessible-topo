@@ -34,7 +34,7 @@ NO_CLASS_LINE = "structure_line is on Map5View-all. This project has no class."
 CASING = "#232323"
 ROAD = "#EC7000"
 HIGHWAY = "#E31A1C"
-STREAM = "#00276D"
+STREAM = "#004C99"
 WATER_FILL = "#D1E7F5"
 INDEX = "#7A5542"
 SHELTERBELT = "#008A00"
@@ -345,7 +345,7 @@ SYMBOLS = (
             source=LEGEND,
         ),
         spec(
-            "Keep the LINZ stream line across the road, in stream #00276D. It runs "
+            "Keep the LINZ stream line across the road, in stream #004C99. It runs "
             "past the casing onto paper. On the road fill it is only 2.8:1.",
             (ROAD_FILL, ink(STREAM, "ford mark")),
         ),
@@ -1369,7 +1369,7 @@ SYMBOLS = (
             line_mm=0.21,
         ),
         spec(
-            "Keep the LINZ dashed outline in stream #00276D, 0.2 mm.",
+            "Keep the LINZ dashed outline in stream #004C99, 0.2 mm.",
             (ink(STREAM, "outline", on=WATER_FILL),),
             line_mm=0.2,
         ),
@@ -1382,7 +1382,7 @@ SYMBOLS = (
         (1655, 7153, 2035, 7245),
         "landcover map (mud)",
         "done",
-        spec("Sand texture in stream #00276D.", (ink(STREAM, "texture"),)),
+        spec("Sand texture in stream #004C99.", (ink(STREAM, "texture"),)),
         redrawn=True,
     ),
     sym(
@@ -1472,7 +1472,7 @@ SYMBOLS = (
             line_mm=0.21,
         ),
         spec(
-            "Keep the LINZ rows of dashes in stream #00276D, 0.25 mm.",
+            "Keep the LINZ rows of dashes in stream #004C99, 0.25 mm.",
             (ink(STREAM, "dashes", on=WATER_FILL),),
             line_mm=0.25,
         ),
@@ -1542,7 +1542,7 @@ SYMBOLS = (
             mark_mm=1.0,
         ),
         spec(
-            "Keep the LINZ double tick in stream #00276D, 1.4 mm.",
+            "Keep the LINZ double tick in stream #004C99, 1.4 mm.",
             (ink(STREAM, "tick"),),
             mark_mm=1.4,
         ),
@@ -1644,7 +1644,7 @@ SYMBOLS = (
         (1655, 8318, 1847, 8376),
         "water_line map (river)",
         "done",
-        spec("Stream #00276D, 0.25 mm.", (ink(STREAM, "line"),), line_mm=0.25),
+        spec("Stream #004C99, 0.25 mm.", (ink(STREAM, "line"),), line_mm=0.25),
         redrawn=True,
         note="Settled: logs 0071, 0083.",
     ),
@@ -1655,7 +1655,7 @@ SYMBOLS = (
         (1847, 8318, 2035, 8376),
         "water_line map (drain)",
         "done",
-        spec("Stream #00276D, 0.15 mm.", (ink(STREAM, "line"),), line_mm=0.15),
+        spec("Stream #004C99, 0.15 mm.", (ink(STREAM, "line"),), line_mm=0.15),
         redrawn=True,
     ),
     sym(
@@ -1680,7 +1680,7 @@ SYMBOLS = (
         (1842, 8399, 2035, 8491),
         "water_line map (canal)",
         "done",
-        spec("Stream #00276D, 0.25 mm.", (ink(STREAM, "line"),), line_mm=0.25),
+        spec("Stream #004C99, 0.25 mm.", (ink(STREAM, "line"),), line_mm=0.25),
         redrawn=True,
     ),
     sym(
@@ -1691,10 +1691,10 @@ SYMBOLS = (
         "water_line map (river)",
         "proposed",
         spec(
-            "Stream #00276D, 0.25 mm, no arrow.", (ink(STREAM, "line"),), line_mm=0.25
+            "Stream #004C99, 0.25 mm, no arrow.", (ink(STREAM, "line"),), line_mm=0.25
         ),
         spec(
-            "Keep the LINZ arrow head at the sink, 1.4 mm, in stream #00276D.",
+            "Keep the LINZ arrow head at the sink, 1.4 mm, in stream #004C99.",
             (ink(STREAM, "line"),),
             line_mm=0.25,
             mark_mm=1.4,

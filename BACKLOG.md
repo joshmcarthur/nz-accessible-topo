@@ -1,12 +1,12 @@
 # Backlog
 
-Status as of 2026-11-06, after log 0104. Start with "Next work" below.
-Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#00276D` (log 0102). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. The order now is: Josh visual sign-off, then full LINZ sheets (N-7), then vector parity (N-8).
+Status as of 2026-11-06, after log 0105. Start with "Next work" below.
+Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#004C99` (log 0105; `#00276D` rejected beside tracks). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. The order now is: Josh visual sign-off, then full LINZ sheets (N-7), then vector parity (N-8).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
 Black names on the urban fill take an urban-fill halo from a precomputed `urban_text.json` (B-45, log 0093). The sheet project has no `urban_text.json` yet, so sheet halos stay paper.
 Josh accepts the 17% spot-height rank step as an R-09 exception, and counts the stream vs index width step as the R-01 shape cue (log 0093).
-Stream is `#00276D` (log 0102). Rivers and canals are 0.35 mm. Drains are 0.15 mm (log 0071). Scrub is alpha 26 plus `#6A9A50` `third_arc` plant marks at 0.18 mm (logs 0068, 0071). A greener scrub fill waits for vector alpha (log 0076). Shelterbelt is `#008A00` (log 0099). Grid is `#269FD2`.
+Stream is `#004C99` (log 0105). Rivers and canals are 0.35 mm. Drains are 0.15 mm (log 0071). Scrub is alpha 26 plus `#6A9A50` `third_arc` plant marks at 0.18 mm (logs 0068, 0071). A greener scrub fill waits for vector alpha (log 0076). Shelterbelt is `#008A00` (log 0099). Grid is `#269FD2`.
 Natural names are Regular in index brown `#7A5542` (logs 0072, 0080). Stock Bold town names draw in patched Atkinson Bold (log 0080). Spot heights are black, 6 pt, and pinned (logs 0077, 0081, 0084). Contour-number FontMarkers are Regular with a 0.3 mm white halo (log 0082). State highway numbers draw in a white shield above the road (log 0090).
 Closed tracks use `cross2` 0.7 mm every 3 mm. Foot tracks are 0.2 mm. Poled routes and connectors draw as dots (log 0094). G1 passed. R-11 is met (log 0066). R-01 stays open.
 A recommendation is met only after the full-grid stock review in `docs/method.md` (log 0057).
@@ -20,7 +20,7 @@ R-07 is met. Label ink is at least 4.8:1 against the drawn buffer. The text-cont
 R-10 is met. Scrub is `#A3CC90` at alpha 26 plus `third_arc` plant marks (log 0068). Scattered is `#E0EDD8` plus a pattern (log 0034).
 R-11 is met (log 0066). Closed tracks use `cross2` 0.7 mm every 3 mm (log 0094). That mark does not read as a railway, an embankment or a cliff on the G1 cells. Historic labels keep hue and meet 3:1 under red light (log 0035).
 R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps its plant marks. Contour-number FontMarkers use the index ink (logs 0036, 0051).
-R-01 is open again (log 0058). Index contour on scrub is 4.35:1 grey and 3.02:1 red after scrub alpha 26 (log 0063). Streams `#00276D` are 13.87:1 grey on paper (log 0102) and shelterbelts `#008A00` are ~4.5:1 on paper (log 0099). Grid `#269FD2` is 3.01:1. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Index versus urban still fails. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
+R-01 is open again (log 0058). Index contour on scrub is 4.35:1 grey and 3.02:1 red after scrub alpha 26 (log 0063). Streams `#004C99` are 8.42:1 grey on paper (log 0083) and shelterbelts `#008A00` are ~4.5:1 on paper (log 0099). Grid `#269FD2` is 3.01:1. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Index versus urban still fails. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
 R-05 is open again (log 0059). Contour-number FontMarkers are Regular in the apply step. Natural-feature names use index brown, Regular (logs 0072, 0080). Both still need the grid review.
 R-08 stays provisional. Vector labels use 0.05 em from the style file. Raster along-line labels keep normal spacing. No A/B test (log 0039).
 R-12 is met. `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Access is not drawn (log 0042).
@@ -36,11 +36,11 @@ with `kanban` support (11.4+); validated with mermaid 12.2.0.
 
 ## Next work (from 2026-11-06)
 
-Research is at log 0104. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+Research is at log 0105. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Stream is `#004C99`. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
 
 ### Visual sign-off for N-1 to N-6
 
-Grid, legend, and `/symbols/` are redrawn (log 0104). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#00276D` must still read as water, not a black track, on steep `1580000-5154000`. Closed × must still pass G1. Some N-6 swatches are empty or wrong at sheet size (gates, several relief lines, fumarole).
+Grid, legend, and `/symbols/` are redrawn (logs 0104, 0105). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#004C99` must read as water beside a black track. Closed × must still pass G1. Some N-6 swatches are empty or wrong at sheet size (gates, several relief lines, fumarole).
 
 ### N-1 to N-4 — applied (do not reopen)
 
@@ -96,7 +96,7 @@ The 2026-11-05 session ran these steps from temporary scratchpad scripts. These 
 Bring raster decisions into the MapLibre style; the style file is the single source:
 - scrub alpha (unblocks the greener scrub fill reverted in log 0076, B-34);
 - natural-name ink `labels.natural_colour`, Bold town names, spot heights black 6 pt;
-- stream/drain widths and `#00276D`, navigation line floor (N-1);
+- stream/drain widths and `#004C99`, navigation line floor (N-1);
 - track dashes, larger closed ×, poled-route dots (log 0094);
 - highway shield numbers (log 0090), contour-number halo (log 0082), urban-fill halo (log 0093);
 - new symbols from N-2 to N-4.

@@ -93,7 +93,7 @@
     },
     "swamp": {
       "marker": "./symbol/nztopo50_swamp.svg",
-      "colour": "#00276D",
+      "colour": "#004C99",
       "stroke_mm": 0.15
     },
     "moraine_wall": {"colour": "#000000", "width_mm": 0.5}
@@ -104,7 +104,7 @@
     "project_road_casing": "#232323",
     "water_fill": "#D1E7F5",
     "print_legend_highway": "#EA6300",
-    "stream": "#00276D",
+    "stream": "#004C99",
     "shelterbelt": "#008A00",
     "grid": "#269FD2",
     "urban_fill": "#BCBAB6",
