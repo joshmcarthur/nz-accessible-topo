@@ -37,7 +37,7 @@ def test_owned_lines_rewrite_stock_rgb():
         opt.get("value") for opt in layer.findall(".//Option[@name='line_color']")
     ]
     assert colours[0].startswith("0,76,153")
-    assert colours[1].startswith("29,157,0")
+    assert colours[1].startswith("0,138,0")
     marker = layer.find(".//Option[@name='color']").get("value")
     outline = layer.find(".//Option[@name='outline_color']").get("value")
     assert marker.startswith("38,159,210")

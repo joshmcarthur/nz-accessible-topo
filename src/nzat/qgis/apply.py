@@ -18,6 +18,7 @@ from nzat.qgis.patch_structures import (
     patch_structure_line,
     patch_structure_point,
 )
+from nzat.qgis.patch_thin_lines import patch_thin_lines
 from nzat.qgis.patch_tracks import patch_tracks
 from nzat.qgis.patch_vegetation import patch_vegetation
 from nzat.qgis.patch_water_line import patch_water_line
@@ -88,6 +89,7 @@ def apply(root, project_dir=None):
         elif name == "building_point map":
             patch_building_point(layer)
         patch_owned_lines(layer)
+        patch_thin_lines(layer)
     missing = {
         "contour",
         "track_line map",

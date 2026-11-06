@@ -28,6 +28,7 @@ Changes are on the map layers the research names:
 - road fills: painted road fills and unmetalled centre lines rise to sizes.navigation_line_mm (F-31)
 - structure_point map: owned SVG copies for beacon, mast, redoubt, tower, and shipwreck, strokes 0.15 mm (F-31)
 - building_point map: church SVG stroke and cross bar 0.15 mm (F-31)
+- fence_line map and two-lane bridge casings: widths below sizes.line_floor_mm rise to 0.15 mm (F-31)
 - nztopo50_carto_symbol: contour_number FontMarkers use the index contour ink, upright (R-17 P7, R-05)
 - nztopo50_carto_symbol_label: state highway numbers read the symbol source and draw in a white shield above the road, in a darkened highway ink (R-07, R-06)
 - hillshade: optional overlay at 337.5°. Turns on when dem.tif sits beside the project (R-03)
