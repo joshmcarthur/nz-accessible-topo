@@ -129,6 +129,56 @@
     "hot": {"glyph": "cross2", "colour": "#141414"},
     "cold": {"glyph": "circle", "colour": "#005C8F"}
   },
+  "structures": {
+    "locked_gate": {
+      "bar_colour": "#000000",
+      "bar_size_mm": 1.4,
+      "bar_stroke_mm": 0.2,
+      "lock_size_mm": 0.6
+    },
+    "bivouac": {
+      "marker": "./symbol/nztopo50_bivouac.svg",
+      "colour": "#000000",
+      "size_mm": 1.4,
+      "stroke_mm": 0.15
+    },
+    "church": {
+      "marker": "./symbol/nztopo50_church.svg",
+      "size_mm": 0.5,
+      "stroke_mm": 0.15,
+      "bar_stroke_mm": 0.15
+    },
+    "shipwreck": {
+      "marker": "./symbol/nztopo50_wreck_ship.svg",
+      "size_mm": 3.0,
+      "stroke_mm": 0.15
+    },
+    "tower": {
+      "marker": "./symbol/nztopo50_tower.svg",
+      "size_mm": 1.6,
+      "stroke_mm": 0.15
+    },
+    "redoubt": {
+      "marker": "./symbol/nztopo50_redoubt.svg",
+      "size_mm": 2.5,
+      "stroke_mm": 0.15
+    },
+    "mast": {
+      "marker": "./symbol/nztopo50_mast.svg",
+      "size_mm": 1.76226,
+      "stroke_mm": 0.15
+    },
+    "beacon": {
+      "marker": "./symbol/nztopo50_marine_beacon.svg",
+      "size_mm": 2.0,
+      "stroke_mm": 0.15
+    },
+    "buried_gas_pipeline": {
+      "colour": "#951600",
+      "width_mm": 0.25,
+      "dash": "2;0.5"
+    }
+  },
   "water": {
     "stream_width_mm": 0.35,
     "drain_width_mm": 0.15

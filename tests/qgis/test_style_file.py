@@ -72,6 +72,24 @@ def test_style_file_has_no_sheet_code():
     assert style["tracks"]["closed_foot"]["marker_interval_mm"] == 3
     assert style["vegetation"]["scattered"]["colour"] == "#E0EDD8"
     assert style["tracks"]["closed_foot"]["casing_colour"] == "#1A1A1A"
+    assert style["structures"]["locked_gate"]["bar_colour"] == "#000000"
+    assert style["structures"]["locked_gate"]["lock_size_mm"] == 0.6
+    assert style["structures"]["bivouac"]["marker"] == "./symbol/nztopo50_bivouac.svg"
+    assert style["structures"]["bivouac"]["size_mm"] == 1.4
+    assert style["structures"]["bivouac"]["stroke_mm"] == 0.15
+    assert style["structures"]["church"]["marker"] == "./symbol/nztopo50_church.svg"
+    assert style["structures"]["church"]["bar_stroke_mm"] == 0.15
+    assert (
+        style["structures"]["shipwreck"]["marker"] == "./symbol/nztopo50_wreck_ship.svg"
+    )
+    assert style["structures"]["tower"]["stroke_mm"] == 0.15
+    assert style["structures"]["redoubt"]["size_mm"] == 2.5
+    assert style["structures"]["mast"]["marker"] == "./symbol/nztopo50_mast.svg"
+    assert (
+        style["structures"]["beacon"]["marker"] == "./symbol/nztopo50_marine_beacon.svg"
+    )
+    assert style["structures"]["buried_gas_pipeline"]["colour"] == "#951600"
+    assert style["structures"]["buried_gas_pipeline"]["dash"] == "2;0.5"
     assert style["tracks"]["access"]["reserved_channel"] == "casing_colour"
     assert style["tracks"]["access"]["painted"] is False
     assert style["draw_order"] == [{"name": "vegetation map", "below": "contour"}]

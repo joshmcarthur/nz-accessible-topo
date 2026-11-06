@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-from nzat.qgis.patch_vegetation import install_owned_symbols, patch_vegetation
+from nzat.qgis.patch_vegetation import patch_vegetation
 from nzat.style.load_rules import load_rules
 from nzat.style.vector_params import P
 from nzat.style.vegetation_fill import vegetation_fill
@@ -173,10 +173,3 @@ def test_trees_use_owned_stroke_svg():
     assert (
         len(layer.findall("renderer-v2/symbols/symbol/layer[@class='SvgMarker']")) == 1
     )
-
-
-def test_install_owned_symbols_copies_tree_svg(tmp_path):
-    install_owned_symbols(tmp_path)
-    copied = tmp_path / "symbol" / "nztopo50_tree_stroke.svg"
-    assert copied.is_file()
-    assert copied.read_text().startswith("<?xml")

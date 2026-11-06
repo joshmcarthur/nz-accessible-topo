@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5.07 6.07">
+  <!-- LINZ beacon. At 2 mm, stroke 0.381 is 0.15 mm. -->
+  <line
+    x1=".6"
+    y1="5.92"
+    x2="4.93"
+    y2="5.92"
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="0.381"
+  />
+  <polyline
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="0.381"
+    points="1.2 5.92 2.74 1.42 4.29 5.92"
+  />
+  <path
+    fill="none"
+    stroke="#231F20"
+    stroke-miterlimit="22.93"
+    stroke-width="0.381"
+    d="M2.74.14c.34,0,.61.29.61.64s-.28.64-.61.64-.61-.29-.61-.64.28-.64.61-.64Z"
+  />
+</svg>

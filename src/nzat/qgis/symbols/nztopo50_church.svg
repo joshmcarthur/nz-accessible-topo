@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1.58 3.27">
+  <!-- LINZ church. At 0.5 mm, stroke 0.474 is 0.15 mm. -->
+  <rect x=".08" y="1.86" width="1.42" height="1.42" fill="#000000"/>
+  <polyline
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="0.474"
+    points=".8 1.86 .79 1.86 .79 .06"
+  />
+  <line
+    x1="1.53"
+    y1=".86"
+    x2=".06"
+    y2=".86"
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="0.474"
+  />
+</svg>

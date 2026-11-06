@@ -12,8 +12,14 @@ from nzat.qgis.patch_road_fills import patch_road_fills
 from nzat.qgis.patch_road_widths import patch_road_widths
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 from nzat.qgis.patch_springs import patch_springs
+from nzat.qgis.patch_structures import (
+    install_owned_symbols,
+    patch_building_point,
+    patch_structure_line,
+    patch_structure_point,
+)
 from nzat.qgis.patch_tracks import patch_tracks
-from nzat.qgis.patch_vegetation import install_owned_symbols, patch_vegetation
+from nzat.qgis.patch_vegetation import patch_vegetation
 from nzat.qgis.patch_water_line import patch_water_line
 from nzat.qgis.project_palette import project_palette
 
@@ -74,6 +80,13 @@ def apply(root, project_dir=None):
         elif name == "water_line map":
             patch_water_line(layer)
             seen.add(name)
+        elif name == "structure_point map":
+            patch_structure_point(layer)
+            seen.add(name)
+        elif name in ("structure_line", "structure_line map"):
+            patch_structure_line(layer)
+        elif name == "building_point map":
+            patch_building_point(layer)
         patch_owned_lines(layer)
     missing = {
         "contour",
@@ -82,6 +95,7 @@ def apply(root, project_dir=None):
         "vegetation_point map",
         "water_point",
         "water_line map",
+        "structure_point map",
     } - seen
     if missing:
         raise RuntimeError(f"missing layers: {', '.join(sorted(missing))}")

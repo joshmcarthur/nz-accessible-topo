@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
+  <!-- Open A-frame tent, wider than tall. At 1.4 mm, stroke 1.5 is 0.15 mm.
+       Distinct from the filled trig triangle and the tall open mast. -->
+  <polyline
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.5"
+    points="2,8.5 7,2 12,8.5 2,8.5"
+  />
+  <line
+    x1="7"
+    y1="2"
+    x2="7"
+    y2="8.5"
+    fill="none"
+    stroke="#000000"
+    stroke-linecap="round"
+    stroke-width="1.5"
+  />
+</svg>

@@ -174,15 +174,62 @@ def test_overrides_skip_the_print_layout():
                       <Option name="line_color" type="QString" value="0,158,255,255"/>
                       <Option name="line_width" type="QString" value="0.1"/>
                     </Option>
-                    <data_defined_properties><Option type="Map">
-                      <Option name="properties"/>
-                    </Option></data_defined_properties>
-                  </layer>
-                </symbol>
-              </symbols></renderer-v2>
-            </maplayer>
-          </projectlayers>
-          <Layouts>
+                        <data_defined_properties><Option type="Map">
+                          <Option name="properties"/>
+                        </Option></data_defined_properties>
+                      </layer>
+                    </symbol>
+                  </symbols></renderer-v2>
+                </maplayer>
+                <maplayer>
+                  <layername>structure_point map</layername>
+                  <renderer-v2 type="RuleRenderer">
+                    <rules>
+                      <rule filter=" &quot;type&quot;  =  'bivouac' " label="bivouac" symbol="0"/>
+                      <rule filter=" &quot;type&quot;  =  'gate' " label="gate" symbol="6">
+                        <rule filter="ELSE" symbol="7"/>
+                        <rule filter=" &quot;restrictions&quot; = 'locked'" symbol="8"/>
+                      </rule>
+                    </rules>
+                    <symbols>
+                      <symbol name="0" type="marker">
+                        <layer class="SvgMarker"><Option type="Map">
+                          <Option name="name" type="QString" value="./symbol/nztopo50_cave.svg"/>
+                          <Option name="size" type="QString" value="1.6"/>
+                        </Option></layer>
+                      </symbol>
+                      <symbol name="8" type="marker">
+                        <layer class="SimpleMarker"><Option type="Map">
+                          <Option name="name" type="QString" value="line"/>
+                          <Option name="outline_color" type="QString" value="255,69,0,255"/>
+                          <Option name="size" type="QString" value="1.4"/>
+                          <Option name="outline_width" type="QString" value="0.2"/>
+                          <Option name="color" type="QString" value="0,0,255,255"/>
+                        </Option></layer>
+                      </symbol>
+                    </symbols>
+                  </renderer-v2>
+                </maplayer>
+                <maplayer>
+                  <layername>structure_line</layername>
+                  <renderer-v2 type="categorizedSymbol">
+                    <categories>
+                      <category label="buried gas pipeline" symbol="1" value="gas"/>
+                    </categories>
+                    <symbols>
+                      <symbol name="1" type="line">
+                        <layer class="SimpleLine"><Option type="Map">
+                          <Option name="line_color" type="QString" value="234,99,0,255"/>
+                          <Option name="line_width" type="QString" value="0.21"/>
+                          <Option name="customdash" type="QString" value="5;2"/>
+                          <Option name="use_custom_dash" type="QString" value="0"/>
+                        </Option></layer>
+                      </symbol>
+                    </symbols>
+                  </renderer-v2>
+                </maplayer>
+              </projectlayers>
+              <Layouts>
             <Layout>
               <text-style fontFamily="Nimbus Sans LINZ" fontItalic="1" fontSize="5" namedStyle="Italic"/>
             </Layout>
@@ -267,6 +314,33 @@ def test_overrides_skip_the_print_layout():
         "layer[@class='MarkerLine']/symbol[@name='@closed']/layer[@class='SimpleMarker']/Option/Option[@name='name']"
     )
     assert closed.get("value") == "cross2"
+    gate_bar = root.find(
+        "projectlayers/maplayer[layername='structure_point map']"
+        "//symbol[@name='8']/layer[@class='SimpleMarker']/Option/Option[@name='outline_color']"
+    )
+    gate_lock = [
+        marker.find("Option/Option[@name='name']").get("value")
+        for marker in root.findall(
+            "projectlayers/maplayer[layername='structure_point map']"
+            "//symbol[@name='8']/layer[@class='SimpleMarker']"
+        )
+    ]
+    bivouac = root.find(
+        "projectlayers/maplayer[layername='structure_point map']"
+        "//symbol[@name='0']/layer[@class='SvgMarker']/Option/Option[@name='name']"
+    )
+    gas = root.find(
+        "projectlayers/maplayer[layername='structure_line']//Option[@name='line_color']"
+    )
+    gas_dash = root.find(
+        "projectlayers/maplayer[layername='structure_line']"
+        "//Option[@name='use_custom_dash']"
+    )
+    assert gate_bar.get("value").startswith("0,0,0")
+    assert gate_lock == ["line", "square"]
+    assert bivouac.get("value") == "./symbol/nztopo50_bivouac.svg"
+    assert gas.get("value").startswith("149,22,0")
+    assert gas_dash.get("value") == "1"
     stream = root.find(
         "projectlayers/maplayer[layername='water_line map']//Option[@name='line_color']"
     )
@@ -422,6 +496,32 @@ def test_vegetation_map_draws_below_contour():
                   </layer>
                 </symbol>
               </symbols></renderer-v2>
+            </maplayer>
+            <maplayer>
+              <layername>structure_point map</layername>
+              <renderer-v2 type="RuleRenderer">
+                <rules>
+                  <rule filter=" &quot;type&quot;  =  'bivouac' " label="bivouac" symbol="0"/>
+                  <rule filter=" &quot;restrictions&quot; = 'locked'" symbol="8"/>
+                </rules>
+                <symbols>
+                  <symbol name="0" type="marker">
+                    <layer class="SvgMarker"><Option type="Map">
+                      <Option name="name" type="QString" value="./symbol/nztopo50_cave.svg"/>
+                      <Option name="size" type="QString" value="1.6"/>
+                    </Option></layer>
+                  </symbol>
+                  <symbol name="8" type="marker">
+                    <layer class="SimpleMarker"><Option type="Map">
+                      <Option name="name" type="QString" value="line"/>
+                      <Option name="outline_color" type="QString" value="255,69,0,255"/>
+                      <Option name="size" type="QString" value="1.4"/>
+                      <Option name="outline_width" type="QString" value="0.2"/>
+                      <Option name="color" type="QString" value="0,0,255,255"/>
+                    </Option></layer>
+                  </symbol>
+                </symbols>
+              </renderer-v2>
             </maplayer>
           </projectlayers>
         </qgis>
