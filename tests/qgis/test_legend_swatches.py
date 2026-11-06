@@ -6,6 +6,7 @@ from nzat.qgis.legend_metres_per_px import legend_metres_per_px
 from nzat.qgis.legend_swatches import LEGEND_DPI, LEGEND_SIZE, SWATCHES
 from nzat.qgis.legend_wkt import legend_wkt
 from nzat.qgis.patch_legend_picture import patch_legend_picture
+from nzat.site.symbol_rows import SYMBOLS
 
 
 def test_swatches_draw_at_sheet_size():
@@ -32,6 +33,16 @@ def test_swatch_features_sit_in_their_boxes():
             for x, y in zip(numbers[::2], numbers[1::2], strict=True):
                 assert x0 <= x <= x1, swatch["key"]
                 assert y0 <= y <= y1, swatch["key"]
+
+
+def test_swatch_boxes_match_symbol_rows():
+    # Catches a swatch box that drifted from symbol_rows (some rows share one swatch).
+    by_key = {symbol["key"]: symbol for symbol in SYMBOLS if symbol["box"]}
+    for swatch in SWATCHES:
+        symbol = by_key.get(swatch["key"])
+        if symbol is None:
+            continue
+        assert swatch["box"] == symbol["box"], swatch["key"]
 
 
 def test_layout_legend_picture_points_at_the_accessible_legend():

@@ -5,6 +5,7 @@ import sys
 from nzat.qgis.font_files import font_files
 from nzat.qgis.legend_box_extent import legend_box_extent
 from nzat.qgis.legend_metres_per_px import legend_metres_per_px
+from nzat.qgis.legend_swatch_marker import set_svg_marker_size_mm
 from nzat.qgis.legend_swatches import (
     ACCESSIBLE_LEGEND_FILE,
     LEGEND_DPI,
@@ -15,13 +16,15 @@ from nzat.qgis.legend_wkt import legend_wkt
 from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.render_image import render_image
+from nzat.style.load_rules import load_rules
+from nzat.style.lookup_style_path import lookup_style_path
 
 
 def _table(source):
     return os.path.basename(source.split("|")[0]).removesuffix(".parquet")
 
 
-def _swatch_layers(map_layers, features, metres_per_px, labels=True):
+def _swatch_layers(map_layers, features, metres_per_px, labels=True, marker_size_mm=None):
     """Copy each map layer that reads a swatch table onto a memory layer.
 
     The copy keeps the layer filter and the whole layer style, so
@@ -68,6 +71,8 @@ def _swatch_layers(map_layers, features, metres_per_px, labels=True):
         ok, error = copy.importNamedStyle(style)
         if not ok:
             raise RuntimeError(f"style not set on {layer.name()}: {error}")
+        if marker_size_mm is not None:
+            set_svg_marker_size_mm(copy, marker_size_mm)
         if not labels:
             copy.setLabelsEnabled(False)
         layers.append(copy)
@@ -130,14 +135,20 @@ def main():
             return 1
         session = {**session, "hillshade": False}
         metres_per_px = legend_metres_per_px(LEGEND_DPI)
+        style_rules = load_rules()
         painter = QPainter(legend)
         try:
             for swatch in SWATCHES:
+                marker_size_mm = None
+                size_path = swatch.get("legend_marker_size_mm")
+                if size_path:
+                    marker_size_mm = float(lookup_style_path(style_rules, size_path))
                 layers = _swatch_layers(
                     session["layers"],
                     swatch["features"],
                     metres_per_px,
                     labels=swatch.get("labels", True),
+                    marker_size_mm=marker_size_mm,
                 )
                 xmin, ymin, xmax, ymax, w, h = legend_box_extent(
                     swatch["box"], metres_per_px

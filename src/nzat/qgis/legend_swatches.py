@@ -173,4 +173,12 @@ SWATCHES = (
         "box": (1655, 9228, 2035, 9284),
         "features": (("vegetation_line", {"type": "shelter_belt"}, _line(9256)),),
     },
+    {
+        "key": "trees",
+        "box": (1655, 9315, 2035, 9390),
+        "features": (
+            ("vegetation_point", {"type": "tree"}, "POINT (1845 9352.5)"),
+        ),
+        "legend_marker_size_mm": "vegetation.trees.legend_size_mm",
+    },
 )
