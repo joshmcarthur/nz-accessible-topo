@@ -173,3 +173,93 @@ def test_trees_use_owned_stroke_svg():
     assert (
         len(layer.findall("renderer-v2/symbols/symbol/layer[@class='SvgMarker']")) == 1
     )
+
+
+def test_exotic_marks_use_scrub_ink_and_split_on_subtype():
+    # Catches fixed #9DCE69 conifers on both exotic classes, or a split with no subtype field.
+    layer = ET.fromstring(
+        """
+        <maplayer>
+          <layername>vegetation map</layername>
+          <fieldConfiguration>
+            <field name="type"/>
+            <field name="subtype"/>
+          </fieldConfiguration>
+          <renderer-v2 type="categorizedSymbol">
+            <categories>
+              <category value="native" symbol="1"/>
+              <category value="scattered_scrub" symbol="2"/>
+              <category value="scrub" symbol="3"/>
+              <category value="exotic" symbol="0"/>
+            </categories>
+            <symbols>
+              <symbol name="0" type="fill">
+                <layer class="SimpleFill"><Option type="Map">
+                  <Option name="color" type="QString" value="164,214,94,51"/>
+                  <Option name="outline_color" type="QString" value="167,192,94,255"/>
+                </Option></layer>
+                <layer class="SVGFill">
+                  <Option type="Map">
+                    <Option name="svgFile" type="QString" value="./symbol/nztopo50_exotic_con.svg"/>
+                    <Option name="width" type="QString" value="3"/>
+                    <Option name="color" type="QString" value="231,72,162,255"/>
+                    <Option name="outline_color" type="QString" value="35,35,35,255"/>
+                    <Option name="outline_width" type="QString" value="0.26"/>
+                  </Option>
+                  <data_defined_properties><Option type="Map">
+                    <Option name="properties"/>
+                  </Option></data_defined_properties>
+                </layer>
+              </symbol>
+              <symbol name="1" type="fill"><layer class="SimpleFill"><Option type="Map">
+                <Option name="color" type="QString" value="164,214,94,102"/>
+                <Option name="outline_color" type="QString" value="167,192,94,255"/>
+              </Option></layer></symbol>
+              <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
+                <Option name="distance_x" type="QString" value="5"/>
+                <Option name="distance_y" type="QString" value="5"/>
+                <Option name="clip_mode" type="QString" value="completely_within"/>
+              </Option>
+              <symbol type="marker">
+                <layer class="SimpleMarker">
+                  <Option type="Map">
+                    <Option name="name" type="QString" value="third_arc"/>
+                    <Option name="size" type="QString" value="1.2"/>
+                    <Option name="color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_width" type="QString" value="0"/>
+                  </Option>
+                </layer>
+              </symbol>
+              </layer></symbol>
+              <symbol name="3" type="fill"><layer class="SimpleFill"><Option type="Map">
+                <Option name="color" type="QString" value="164,214,94,51"/>
+                <Option name="outline_color" type="QString" value="167,192,94,255"/>
+              </Option></layer></symbol>
+            </symbols>
+          </renderer-v2>
+        </maplayer>
+        """
+    )
+    patch_vegetation(layer)
+    spec = RULES["vegetation"]["exotic"]
+    fill = layer.find(".//symbol[@name='0']/layer[@class='SVGFill']")
+    svg = fill.find("Option/Option[@name='svgFile']")
+    colour = fill.find("Option/Option[@name='color']")
+    expr = fill.find(
+        "data_defined_properties//Option[@name='name']/Option[@name='expression']"
+    )
+    if expr is None:
+        expr = fill.find(
+            "data_defined_properties//Option[@name='svgFile']/Option[@name='expression']"
+        )
+    assert colour.get("value").startswith("106,154,80")
+    assert spec["coniferous_marker"] in svg.get("value")
+    assert expr is not None
+    assert "non-coniferous" in expr.get("value")
+    assert spec["non_coniferous_marker"] in expr.get("value")
+    assert "coalesce" in expr.get("value")
+    native_fill = layer.find(
+        ".//symbol[@name='1']/layer[@class='SimpleFill']/Option/Option[@name='color']"
+    )
+    assert native_fill.get("value").startswith("225,234,195")

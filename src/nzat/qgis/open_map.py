@@ -8,7 +8,7 @@ from nzat.qgis.map_layers import SHEET_PRESET, map_layers
 from nzat.qgis.with_dem_layer import with_dem_layer
 
 
-def open_map(project_path, fonts):
+def open_map(project_path, fonts, preset=SHEET_PRESET):
     """Load fonts and the project once. Return what render_image needs.
 
     Call this after QgsApplication.initQgis(). Raise RuntimeError on a failure.
@@ -32,9 +32,9 @@ def open_map(project_path, fonts):
     if not project.read(project_path):
         raise RuntimeError(f"failed to read {project_path}")
 
-    layers = map_layers(project)
+    layers = map_layers(project, preset)
     if not layers:
-        raise RuntimeError(f"theme {SHEET_PRESET} has no valid map layers")
+        raise RuntimeError(f"theme {preset} has no valid map layers")
     project_dir = os.path.dirname(os.path.abspath(project_path))
     dem_layer = None
     rules = hillshade_rules()
@@ -58,7 +58,7 @@ def open_map(project_path, fonts):
     else:
         print(f"hillshade off: no {rules['raster_file']}")
     layers = with_dem_layer(layers, dem_layer)
-    print(f"layers {len(layers)} theme {SHEET_PRESET}")
+    print(f"layers {len(layers)} theme {preset}")
     for layer in layers:
         print(f"layer {layer.name()}")
 

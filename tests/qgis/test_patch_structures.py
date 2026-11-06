@@ -8,6 +8,7 @@ from nzat.qgis.patch_structures import (
     OWNED_POINT_SVGS,
     SYMBOLS_DIR,
     install_owned_symbols,
+    patch_building,
     patch_building_point,
     patch_structure_line,
     patch_structure_point,
@@ -25,6 +26,12 @@ POINT_XML = """
       <rule filter=" &quot;type&quot;  =  'redoubt' " label="redoubt" symbol="13"/>
       <rule filter=" &quot;type&quot;  =  'tower' " label="tower" symbol="20"/>
       <rule filter="  &quot;wreck_of&quot; =  'ship' " label="ship" symbol="28"/>
+      <rule filter=" &quot;type&quot; =  'lighthouse' " label="lighthouse" symbol="10"/>
+      <rule filter=" &quot;type&quot;  =  'shaft' " label="shaft" symbol="14"/>
+      <rule filter=" &quot;type&quot;  =  'stockyard' " label="stockyard" symbol="16"/>
+      <rule filter=" &quot;type&quot; =  'tank' " label="tank" symbol="17"/>
+      <rule filter="  &quot;stored_item&quot; =   'water' " label="water" symbol="19"/>
+      <rule filter=" &quot;type&quot;  =  'floodgate' " label="floodgate" symbol="5"/>
       <rule filter=" &quot;type&quot;  =  'gate' " label="gate" symbol="6">
         <rule filter="ELSE" symbol="7"/>
         <rule filter=" &quot;restrictions&quot; = 'locked'" symbol="8"/>
@@ -82,6 +89,57 @@ POINT_XML = """
           </Option>
         </layer>
       </symbol>
+      <symbol name="10" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_lighthouse.svg"/>
+            <Option name="size" type="QString" value="1.8"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="14" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_shaft.svg"/>
+            <Option name="size" type="QString" value="1.2"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="16" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_stockyard.svg"/>
+            <Option name="size" type="QString" value="1.6"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="17" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_tank_water.svg"/>
+            <Option name="size" type="QString" value="3"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="19" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_tank_water.svg"/>
+            <Option name="size" type="QString" value="1"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="5" type="marker">
+        <layer class="SimpleMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="line"/>
+            <Option name="size" type="QString" value="1"/>
+            <Option name="outline_width" type="QString" value="0.2"/>
+            <Option name="outline_color" type="QString" value="0,0,0,255"/>
+            <Option name="color" type="QString" value="0,0,255,255"/>
+          </Option>
+        </layer>
+      </symbol>
       <symbol name="8" type="marker">
         <layer class="SimpleMarker">
           <Option type="Map">
@@ -112,9 +170,18 @@ BUILDING_XML = """
   <layername>building_point map</layername>
   <renderer-v2 type="RuleRenderer">
     <rules>
+      <rule filter=" &quot;subtype&quot;  =  'hut' " label="hut" symbol="1"/>
       <rule filter=" &quot;subtype&quot;  =  'church' " label="church" symbol="2"/>
     </rules>
     <symbols>
+      <symbol name="1" type="marker">
+        <layer class="SvgMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="./symbol/nztopo50_hut.svg"/>
+            <Option name="size" type="QString" value="0.8"/>
+          </Option>
+        </layer>
+      </symbol>
       <symbol name="2" type="marker">
         <layer class="SimpleMarker">
           <Option type="Map">
@@ -318,6 +385,10 @@ def test_owned_point_svgs_keep_the_linz_shape_at_the_stroke_floor():
         "redoubt": "13",
         "tower": "20",
         "shipwreck": "28",
+        "lighthouse": "10",
+        "shaft": "14",
+        "stockyard": "16",
+        "tank_water": "19",
     }
     assert {key for key, _needles in OWNED_POINT_SVGS} == set(names)
     for key, symbol_name in names.items():
@@ -338,7 +409,7 @@ def test_owned_point_svgs_keep_the_linz_shape_at_the_stroke_floor():
 
 
 def test_church_uses_the_owned_svg_and_a_thicker_bar():
-    # Catches the 0.08 mm QGIS bar or the 0.04 mm LINZ church stroke left in place.
+    # Catches the 0.08 mm QGIS bar, a 1.0 mm-tall church, or the 0.04 mm LINZ church stroke.
     layer = ET.fromstring(BUILDING_XML)
     patch_building_point(layer)
     spec = STYLE["structures"]["church"]
@@ -350,7 +421,89 @@ def test_church_uses_the_owned_svg_and_a_thicker_bar():
     assert size.get("value") == str(spec["size_mm"])
     assert bar.get("value") == str(spec["bar_stroke_mm"])
     assert spec["bar_stroke_mm"] >= 0.15
+    root = ET.fromstring(svg.read_text(encoding="utf-8"))
+    view = [float(part) for part in root.get("viewBox").split()]
+    assert abs(view[3] / view[2] * spec["size_mm"] - 1.4) < 0.02
     assert _sheet_stroke_mm(svg, spec["size_mm"]) >= spec["stroke_mm"] - 1e-9
+
+
+def test_hut_uses_the_linz_glyph_at_the_mark_floor():
+    # Catches a hut left at 0.8 mm.
+    layer = ET.fromstring(BUILDING_XML)
+    patch_building_point(layer)
+    spec = STYLE["structures"]["hut"]
+    name = _option(layer, "1", "SvgMarker", "name")
+    size = _option(layer, "1", "SvgMarker", "size")
+    assert name.get("value") == spec["marker"]
+    assert size.get("value") == str(spec["size_mm"])
+    assert spec["size_mm"] >= 1.4
+
+
+def test_parent_tank_stays_large():
+    # Catches the 3 mm parent tank rule shrunk with the water-tank marker.
+    layer = ET.fromstring(POINT_XML)
+    patch_structure_point(layer)
+    size = _option(layer, "17", "SvgMarker", "size")
+    assert size.get("value") == "3"
+
+
+def test_floodgate_bar_matches_a_gate():
+    # Catches a floodgate bar left at 1.0 mm.
+    layer = ET.fromstring(POINT_XML)
+    patch_structure_point(layer)
+    spec = STYLE["structures"]["floodgate"]
+    size = _option(layer, "5", "SimpleMarker", "size", "line")
+    stroke = _option(layer, "5", "SimpleMarker", "outline_width", "line")
+    assert size.get("value") == str(spec["bar_size_mm"])
+    assert stroke.get("value") == str(spec["bar_stroke_mm"])
+    assert spec["bar_size_mm"] >= 1.4
+
+
+BUILDING_MAP_XML = """
+<maplayer>
+  <layername>building map</layername>
+  <fieldConfiguration><field name="subtype"/></fieldConfiguration>
+  <renderer-v2 type="singleSymbol"><symbols>
+    <symbol name="0" type="fill">
+      <layer class="SimpleFill">
+        <Option type="Map">
+          <Option name="color" type="QString" value="0,0,0,255"/>
+          <Option name="outline_color" type="QString" value="255,255,255,0"/>
+          <Option name="outline_style" type="QString" value="solid"/>
+          <Option name="outline_width" type="QString" value="0"/>
+          <Option name="style" type="QString" value="solid"/>
+        </Option>
+        <data_defined_properties><Option type="Map">
+          <Option name="properties"/>
+        </Option></data_defined_properties>
+      </layer>
+    </symbol>
+  </symbols></renderer-v2>
+</maplayer>
+"""
+
+
+def test_glasshouse_is_an_outline_not_a_solid_fill():
+    # Catches a greenhouse polygon left solid black like every other building.
+    layer = ET.fromstring(BUILDING_MAP_XML)
+    patch_building(layer)
+    renderer = layer.find("renderer-v2")
+    assert renderer.get("type") == "RuleRenderer"
+    filters = [rule.get("filter") or "" for rule in renderer.findall("rules/rule")]
+    assert any("greenhouse" in blob and "coalesce" in blob for blob in filters)
+    fill = layer.find(".//symbol[@name='1']/layer[@class='SimpleFill']")
+    assert fill.find("Option/Option[@name='style']").get("value") == "no"
+    assert fill.find("Option/Option[@name='outline_width']").get("value") == "0.2"
+    assert (
+        fill.find("Option/Option[@name='outline_color']")
+        .get("value")
+        .startswith("0,0,0")
+    )
+    other = layer.find(".//symbol[@name='0']/layer[@class='SimpleFill']")
+    assert other.find("Option/Option[@name='style']").get("value") == "solid"
+    assert other.find("Option/Option[@name='color']").get("value").startswith("0,0,0")
+    patch_building(layer)
+    assert len(layer.findall("renderer-v2/rules/rule")) == 2
 
 
 def test_building_point_without_church_is_unchanged():

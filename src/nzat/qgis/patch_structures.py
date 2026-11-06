@@ -8,6 +8,7 @@ from nzat.qgis.category_symbol import category_symbol
 from nzat.qgis.defaults import STYLE
 from nzat.qgis.patch_contour_numbers import _put, _rule_symbol
 from nzat.qgis.properties_map import properties_map
+from nzat.qgis.require_field import require_field
 from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 
@@ -22,6 +23,10 @@ OWNED_POINT_SVGS = (
     ("redoubt", ("redoubt",)),
     ("tower", ("tower",)),
     ("shipwreck", ("wreck_of", "ship")),
+    ("lighthouse", ("lighthouse",)),
+    ("shaft", ("shaft",)),
+    ("stockyard", ("stockyard",)),
+    ("tank_water", ("stored_item", "water")),
 )
 
 
@@ -199,14 +204,16 @@ def _patch_bivouac(layer, style):
 
 def patch_building_point(layer, style=None):
     style = style or STYLE
-    symbol = _find_rule_symbol(layer, "church")
-    if symbol is None:
-        return
-    spec = style["structures"]["church"]
-    _set_svg_marker(symbol, spec)
-    for marker in symbol.findall("layer[@class='SimpleMarker']"):
-        if _marker_name(marker) == "line":
-            set_option(marker, "outline_width", str(spec["bar_stroke_mm"]))
+    church = _find_rule_symbol(layer, "church")
+    if church is not None:
+        spec = style["structures"]["church"]
+        _set_svg_marker(church, spec)
+        for marker in church.findall("layer[@class='SimpleMarker']"):
+            if _marker_name(marker) == "line":
+                set_option(marker, "outline_width", str(spec["bar_stroke_mm"]))
+    hut = _find_rule_symbol(layer, "hut")
+    if hut is not None:
+        _set_svg_marker(hut, style["structures"]["hut"])
 
 
 def _gas_symbol(layer):
@@ -243,11 +250,101 @@ def _patch_gas_pipeline(layer, style):
     _put(line, "use_custom_dash", "1")
 
 
+def _patch_floodgate(layer, style):
+    symbol = _find_rule_symbol(layer, "floodgate")
+    if symbol is None:
+        return
+    spec = style["structures"]["floodgate"]
+    bar = None
+    for marker in symbol.findall("layer[@class='SimpleMarker']"):
+        if _marker_name(marker) == "line":
+            bar = marker
+            break
+    if bar is None:
+        raise RuntimeError("floodgate has no bar")
+    set_option(bar, "size", str(spec["bar_size_mm"]))
+    set_option(bar, "outline_width", str(spec["bar_stroke_mm"]))
+
+
+def _greenhouse_fill():
+    layer = ET.Element(
+        "layer",
+        {
+            "class": "SimpleFill",
+            "enabled": "1",
+            "id": "{" + str(uuid.uuid4()) + "}",
+            "locked": "0",
+            "pass": "0",
+        },
+    )
+    options = ET.SubElement(layer, "Option", {"type": "Map"})
+    for option_name, value in (
+        ("color", rgba("#000000", 0)),
+        ("offset", "0,0"),
+        ("outline_color", rgba("#000000", 255)),
+        ("outline_style", "solid"),
+        ("outline_width", "0.2"),
+        ("style", "no"),
+    ):
+        ET.SubElement(
+            options, "Option", {"name": option_name, "type": "QString", "value": value}
+        )
+    _empty_dd(layer)
+    return layer
+
+
+def patch_building(layer, style=None):
+    style = style or STYLE
+    require_field(layer, "subtype")
+    spec = style["structures"]["glasshouse"]
+    renderer = layer.find("renderer-v2")
+    if renderer is None:
+        return
+    greenhouse_filter = "coalesce(\"subtype\", '') = 'greenhouse'"
+    if renderer.get("type") != "RuleRenderer":
+        renderer.set("type", "RuleRenderer")
+        symbols = renderer.find("symbols")
+        base = symbols.find("symbol")
+        base.set("name", "0")
+        extra = copy.deepcopy(base)
+        extra.set("name", "1")
+        for child in list(extra):
+            if child.tag == "layer":
+                extra.remove(child)
+        extra.append(_greenhouse_fill())
+        symbols.append(extra)
+        rules = ET.Element("rules")
+        ET.SubElement(
+            rules,
+            "rule",
+            {
+                "filter": greenhouse_filter,
+                "label": "greenhouse",
+                "symbol": "1",
+            },
+        )
+        ET.SubElement(
+            rules, "rule", {"filter": "ELSE", "label": "building", "symbol": "0"}
+        )
+        renderer.insert(0, rules)
+        return
+    symbol = _find_rule_symbol(layer, "greenhouse")
+    if symbol is None:
+        return
+    fill = symbol.find("layer[@class='SimpleFill']")
+    if fill is None:
+        return
+    set_option(fill, "style", "no")
+    set_option(fill, "outline_width", str(spec["outline_mm"]))
+    set_option(fill, "outline_color", rgba("#000000", 255))
+
+
 def patch_structure_point(layer, style=None):
     style = style or STYLE
     _patch_locked_gate(layer, style)
     _patch_bivouac(layer, style)
     _patch_owned_point_svgs(layer, style)
+    _patch_floodgate(layer, style)
 
 
 def patch_structure_line(layer, style=None):

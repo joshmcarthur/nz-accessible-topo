@@ -4,6 +4,7 @@ import sys
 import time
 
 from nzat.qgis.font_files import font_files
+from nzat.qgis.map_layers import SHEET_PRESET
 from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.render_image import render_image
@@ -100,6 +101,11 @@ def main():
     parser.add_argument(
         "--sheet", action="append", default=[], help="Only this sheet code"
     )
+    parser.add_argument(
+        "--theme",
+        default=SHEET_PRESET,
+        help="QGIS map theme. Map5View-paper and Map5View-all exist after apply.",
+    )
     args = parser.parse_args()
 
     from qgis.core import QgsApplication  # noqa: E402
@@ -118,7 +124,7 @@ def main():
             sheets = _read_sheets(args.index)
             if args.sheet:
                 sheets = [sheet for sheet in sheets if sheet[0] in args.sheet]
-            session = open_map(args.project, fonts)
+            session = open_map(args.project, fonts, args.theme)
         except RuntimeError as error:
             print(error, file=sys.stderr)
             return 1

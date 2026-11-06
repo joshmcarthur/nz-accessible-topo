@@ -51,7 +51,52 @@
       "casing_width_mm": 0.2,
       "alpha": 0.5
     },
+    "supplementary": {"dash": "3;1"},
+    "depression": {
+      "tick_mm": 0.6,
+      "stroke_mm": 0.15,
+      "interval_mm": 2
+    },
     "number_halo": {"colour": "#FFFFFF", "width_mm": 0.3}
+  },
+  "railway": {
+    "single_width_mm": 0.25,
+    "multiple_width_mm": 0.6,
+    "dash_width_mm": 0.25,
+    "dash": "1.5;1.5"
+  },
+  "bridges": {
+    "two_lane": {"casing_width_mm": 0.2, "tick_mm": 1.4}
+  },
+  "relief": {
+    "saddle": {
+      "marker": "./symbol/nztopo50_saddle.svg",
+      "size_mm": 1.726,
+      "stroke_mm": 0.2
+    }
+  },
+  "landcover": {
+    "moraine": {
+      "marker": "./symbol/nztopo50_moraine.svg",
+      "colour": "#000000",
+      "stroke_mm": 0.15
+    },
+    "scree": {
+      "marker": "./symbol/nztopo50_scree.svg",
+      "colour": "#000000",
+      "stroke_mm": 0.15
+    },
+    "shingle": {
+      "marker": "./symbol/nztopo50_shingle.svg",
+      "colour": "#000000",
+      "stroke_mm": 0.15
+    },
+    "swamp": {
+      "marker": "./symbol/nztopo50_swamp.svg",
+      "colour": "#00276D",
+      "stroke_mm": 0.15
+    },
+    "moraine_wall": {"colour": "#000000", "width_mm": 0.5}
   },
   "reference_inks": {
     "project_road": "#EC7000",
@@ -59,7 +104,7 @@
     "project_road_casing": "#232323",
     "water_fill": "#D1E7F5",
     "print_legend_highway": "#EA6300",
-    "stream": "#004C99",
+    "stream": "#00276D",
     "shelterbelt": "#008A00",
     "grid": "#269FD2",
     "urban_fill": "#BCBAB6",
@@ -72,7 +117,13 @@
       "alpha": 180,
       "marker": {"colour": "#3F6B32"}
     },
-    "exotic": {"colour": "#A4D65E", "alpha": 0.2},
+    "exotic": {
+      "colour": "#A4D65E",
+      "alpha": 0.2,
+      "mark_colour": "#6A9A50",
+      "coniferous_marker": "./symbol/nztopo50_exotic_con.svg",
+      "non_coniferous_marker": "./symbol/nztopo50_exotic_non_coniferous.svg"
+    },
     "scrub": {"colour": "#A3CC90", "alpha": 26},
     "scattered": {"colour": "#E0EDD8", "distance_mm": 5},
     "trees": {
@@ -144,9 +195,40 @@
     },
     "church": {
       "marker": "./symbol/nztopo50_church.svg",
-      "size_mm": 0.5,
+      "size_mm": 0.676,
       "stroke_mm": 0.15,
       "bar_stroke_mm": 0.15
+    },
+    "hut": {
+      "marker": "./symbol/nztopo50_hut.svg",
+      "size_mm": 1.4
+    },
+    "floodgate": {
+      "bar_size_mm": 1.4,
+      "bar_stroke_mm": 0.2
+    },
+    "glasshouse": {
+      "outline_mm": 0.2
+    },
+    "lighthouse": {
+      "marker": "./symbol/nztopo50_lighthouse.svg",
+      "size_mm": 1.8,
+      "stroke_mm": 0.15
+    },
+    "shaft": {
+      "marker": "./symbol/nztopo50_shaft.svg",
+      "size_mm": 1.4,
+      "stroke_mm": 0.15
+    },
+    "stockyard": {
+      "marker": "./symbol/nztopo50_stockyard.svg",
+      "size_mm": 1.6,
+      "stroke_mm": 0.15
+    },
+    "tank_water": {
+      "marker": "./symbol/nztopo50_tank_water.svg",
+      "size_mm": 1.4,
+      "stroke_mm": 0.15
     },
     "shipwreck": {
       "marker": "./symbol/nztopo50_wreck_ship.svg",
@@ -191,5 +273,20 @@
     "multidirectional": true,
     "z_factor": 1,
     "fill_azimuths_deg": [292.5, 22.5]
+  },
+  "map": {
+    "theme_source": "Map5View",
+    "theme_paper": "Map5View-paper",
+    "theme_all": "Map5View-all",
+    "all_layers": [
+      "water_point",
+      "structure_line",
+      "structure",
+      "tunnel_line",
+      "landcover_point",
+      "landuse",
+      "marine",
+      "structure_point"
+    ]
   }
 }

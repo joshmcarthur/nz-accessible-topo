@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4.82 4.82">
+  <!-- LINZ stockyard. At 1.6 mm, stroke 0.453 is 0.15 mm. -->
+  <path d="M.28,4.54,4.54,4.54H.28V.28h4.25v4.25Z" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="0.736"/>
+  <line x1=".28" y1="2.41" x2="4.54" y2="2.41" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="0.453"/>
+  <line x1="2.4" y1=".28" x2="2.4" y2="4.54" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="0.453"/>
+</svg>

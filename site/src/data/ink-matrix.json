@@ -592,19 +592,19 @@
    "name": "Stream vs scrub",
    "a": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "b": {
     "label": "scrub fill",
     "colour": "rgba(163, 204, 144, 0.101961)"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 59.6,
-   "protanopia": 56.2,
-   "deuteranopia": 61.1,
-   "tritanopia": 52.0,
-   "worst_cvd": 52.0,
-   "grey_cr": 7.96,
+   "normal": 76.9,
+   "protanopia": 72.1,
+   "deuteranopia": 76.6,
+   "tritanopia": 68.6,
+   "worst_cvd": 68.6,
+   "grey_cr": 13.14,
    "red_cr": 19.37,
    "fails_r01": false
   },
@@ -612,19 +612,19 @@
    "name": "Stream vs native forest",
    "a": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "b": {
     "label": "native forest fill",
     "colour": "rgba(225, 234, 195, 0.705882)"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 63.7,
-   "protanopia": 59.5,
-   "deuteranopia": 64.4,
-   "tritanopia": 50.6,
-   "worst_cvd": 50.6,
-   "grey_cr": 7.19,
+   "normal": 79.6,
+   "protanopia": 74.5,
+   "deuteranopia": 79.1,
+   "tritanopia": 67.3,
+   "worst_cvd": 67.3,
+   "grey_cr": 11.87,
    "red_cr": 17.43,
    "fails_r01": false
   },
@@ -632,19 +632,19 @@
    "name": "Stream vs water",
    "a": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "b": {
     "label": "water fill",
     "colour": "#D1E7F5"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 51.1,
-   "protanopia": 49.2,
-   "deuteranopia": 53.4,
-   "tritanopia": 46.0,
-   "worst_cvd": 46.0,
-   "grey_cr": 6.6,
+   "normal": 70.2,
+   "protanopia": 66.3,
+   "deuteranopia": 70.2,
+   "tritanopia": 64.5,
+   "worst_cvd": 64.5,
+   "grey_cr": 10.89,
    "red_cr": 13.75,
    "fails_r01": false
   },
@@ -652,19 +652,19 @@
    "name": "Stream vs urban",
    "a": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "b": {
     "label": "urban fill",
     "colour": "#BCBAB6"
    },
    "why": "R-01. Stream on a fill (log 0060).",
-   "normal": 48.6,
-   "protanopia": 44.9,
-   "deuteranopia": 50.7,
-   "tritanopia": 43.4,
-   "worst_cvd": 43.4,
-   "grey_cr": 4.35,
+   "normal": 61.7,
+   "protanopia": 59.0,
+   "deuteranopia": 61.8,
+   "tritanopia": 56.5,
+   "worst_cvd": 56.5,
+   "grey_cr": 7.17,
    "red_cr": 11.06,
    "fails_r01": false
   },
@@ -752,19 +752,19 @@
    "name": "Stream vs paper",
    "a": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "b": {
     "label": "paper",
     "colour": "#FFFFFF"
    },
    "why": "R-01. Map5View paints streams in reference_inks.stream, not the legend ink (log 0060).",
-   "normal": 59.1,
-   "protanopia": 55.6,
-   "deuteranopia": 60.9,
-   "tritanopia": 53.5,
-   "worst_cvd": 53.5,
-   "grey_cr": 8.42,
+   "normal": 76.6,
+   "protanopia": 71.7,
+   "deuteranopia": 76.4,
+   "tritanopia": 69.7,
+   "worst_cvd": 69.7,
+   "grey_cr": 13.9,
    "red_cr": 21.0,
    "fails_r01": false
   },
@@ -816,17 +816,17 @@
    },
    "b": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "why": "R-01. Contour versus stream on steep slopes (G6, log 0057). Shape still differs in weight.",
-   "normal": 36.2,
-   "protanopia": 36.1,
-   "deuteranopia": 42.1,
-   "tritanopia": 46.6,
-   "worst_cvd": 36.1,
-   "grey_cr": 1.83,
+   "normal": 40.7,
+   "protanopia": 40.2,
+   "deuteranopia": 46.0,
+   "tritanopia": 44.6,
+   "worst_cvd": 40.2,
+   "grey_cr": 3.02,
    "red_cr": 6.41,
-   "fails_r01": true
+   "fails_r01": false
   },
   {
    "name": "Intermediate contour vs stream",
@@ -836,15 +836,15 @@
    },
    "b": {
     "label": "stream",
-    "colour": "#004C99"
+    "colour": "#00276D"
    },
    "why": "R-01. Intermediate casing versus stream (G6, log 0057).",
-   "normal": 47.6,
-   "protanopia": 44.7,
-   "deuteranopia": 51.7,
-   "tritanopia": 51.7,
-   "worst_cvd": 44.7,
-   "grey_cr": 3.77,
+   "normal": 57.1,
+   "protanopia": 55.0,
+   "deuteranopia": 59.7,
+   "tritanopia": 57.3,
+   "worst_cvd": 55.0,
+   "grey_cr": 6.23,
    "red_cr": 11.12,
    "fails_r01": false
   },

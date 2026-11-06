@@ -98,17 +98,20 @@ def test_fence_rises_to_the_line_floor():
 
 
 def test_two_lane_bridge_casings_rise_to_the_line_floor():
-    # Catches 0.1 mm two-lane casings, or a one-lane casing that was pulled down.
+    # Catches 0.1 mm two-lane casings, 1.0 mm end ticks, or a one-lane casing pulled down.
     layer = ET.fromstring(BRIDGE_XML)
     patch_thin_lines(layer)
-    floor = str(STYLE["sizes"]["line_floor_mm"])
-    assert _widths(layer, "0") == [floor, floor]
+    spec = STYLE["bridges"]["two_lane"]
+    casing = str(spec["casing_width_mm"])
+    assert _widths(layer, "0") == [casing, casing]
     assert _widths(layer, "1") == ["0.51", "0.2"]
     tick = layer.find(
         ".//symbol[@name='0']/layer[@class='MarkerLine']"
         "/symbol/layer[@class='SimpleMarker']/Option/Option[@name='size']"
     )
-    assert tick.get("value") == "1"
+    assert tick.get("value") == str(spec["tick_mm"])
+    assert spec["casing_width_mm"] >= 0.2
+    assert spec["tick_mm"] >= 1.4
 
 
 def test_other_layers_are_unchanged():

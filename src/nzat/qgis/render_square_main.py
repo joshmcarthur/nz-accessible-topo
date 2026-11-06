@@ -3,6 +3,7 @@ import os
 import sys
 
 from nzat.qgis.font_files import font_files
+from nzat.qgis.map_layers import SHEET_PRESET
 from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.render_image import render_image
@@ -47,6 +48,11 @@ def main():
         "--height", type=int, help="Output height in pixels with --extent"
     )
     parser.add_argument("--output", help="OUTPUT.png with --extent")
+    parser.add_argument(
+        "--theme",
+        default=SHEET_PRESET,
+        help="QGIS map theme. Map5View-paper and Map5View-all exist after apply.",
+    )
     args = parser.parse_args()
 
     for path in ("/System/Volumes/Data", "/working", "/"):
@@ -85,7 +91,7 @@ def main():
     qgs.initQgis()
     try:
         try:
-            session = open_map(args.project, fonts)
+            session = open_map(args.project, fonts, args.theme)
         except RuntimeError as error:
             print(error, file=sys.stderr)
             return 1

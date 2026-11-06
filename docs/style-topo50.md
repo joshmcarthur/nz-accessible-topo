@@ -101,7 +101,7 @@ The vector build reads `tracks.closed_foot.casing_colour` and `tracks.closed_foo
 
 `tracks.closed_foot.casing_colour` is `#1A1A1A`. `tracks.closed_foot.casing_alpha` is 0.55.
 
-`sizes.navigation_line_mm` is 0.35. Primary navigation lines use that floor: road fills, unmetalled centre lines, foot and vehicle tracks, and streams. `sizes.line_floor_mm` is 0.15. The apply step raises a fence on `fence_line map` and the two-lane casings on `bridge_line copy copy` to that floor. Drains already use 0.15 mm. Other lines keep stock widths unless this file names them.
+`sizes.navigation_line_mm` is 0.35. Primary navigation lines use that floor: road fills, unmetalled centre lines, foot and vehicle tracks, and streams. `sizes.line_floor_mm` is 0.15. The apply step raises a fence on `fence_line map` to that floor. Two-lane bridge casings on `bridge_line copy copy` use `bridges.two_lane.casing_width_mm` (0.2 mm) and end ticks `bridges.two_lane.tick_mm` (1.4 mm). Drains already use 0.15 mm. Other lines keep stock widths unless this file names them.
 
 The QGIS apply step does not paint that casing. A closed foot track uses the same line weight and the same dash as an open foot track. The weight is `tracks.closed_foot.width_mm` and `tracks.closed_foot.open_width_mm`. That weight is 0.35 mm. The dash is `1.75;0.875` mm. The marker name is `tracks.closed_foot.marker`. That name is `cross2`. Size is `tracks.closed_foot.crossbar_size_mm`. That size is 1.25 mm. Stroke is `tracks.closed_foot.crossbar_outline_width_mm`. That stroke is 0.15 mm. Interval is `tracks.closed_foot.marker_interval_mm`. That interval is 3 mm, every second dash gap. The first mark sits in a gap. The angle is `tracks.closed_foot.crossbar_angle_deg`. That angle is 0. A second apply writes the marker, the size, the interval, and the gap position onto the marker that is already in the project.
 
@@ -127,7 +127,7 @@ The vector build reads `contours.index.width_mm`, `contours.intermediate.casing_
 
 `contours.index.colour` is `#7A5542`. `contours.index.alpha` is 0.85. `contours.intermediate.colour` is `#B08872`. `contours.intermediate.alpha` is 0.5. `contours.index.width_mm` is 0.35. `contours.intermediate.casing_colour` is `#7A5542`. `contours.intermediate.casing_width_mm` is 0.2.
 
-The QGIS apply step paints that casing under an intermediate contour. It paints those alphas with `color_rgba`. The index contour stays one heavier line. Contour-number FontMarkers stay opaque.
+The QGIS apply step paints that casing under an intermediate contour. It paints those alphas with `color_rgba`. The index contour stays one heavier line. Contour-number FontMarkers stay opaque. A supplementary contour (`coalesce("designation", '') = 'supplementary'`) uses `contours.supplementary.dash` (`3;1` mm). A depression contour (`coalesce("formation", '') = 'depression'`) keeps those inks and adds index-ink ticks `contours.depression.tick_mm` (0.6 mm).
 
 The pair audit reads this file. Pair colours that live here are dotted paths in `tools/pairs-accessible-v0.json` and `tools/pairs-topo50-accessible.json`. Paper and LINZ inks that this file does not own stay as hex.
 
@@ -167,7 +167,9 @@ State highway numbers on `nztopo50_carto_symbol_label` read the same source as `
 
 `water.stream_width_mm` is 0.35. `water.drain_width_mm` is 0.15. The apply step sets a data-defined width on `water_line map`: drains take the drain width, rivers and canals take the stream width. Coastline, water outlines, shelterbelt, and grid keep stock widths. Only their ink changes.
 
-`reference_inks.stream` is `#004C99`. That hex keeps the process-blue hue. It is dark enough that a stream and an index contour differ in greyscale (1.83:1, log 0083), and it passes 3:1 on paper, scrub, native, water, and urban. Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
+`reference_inks.stream` is `#00276D`. That hex keeps the process-blue hue. After the navigation floor made stream and index both 0.35 mm, Josh asked for a darker stream (log 0102). Grey contrast versus the painted index (alpha 0.85 on paper) is 3.01:1. Versus opaque index it is 2.12:1; a 3:1 floor on the opaque hex would go near black (`#000046`). Map5View paints streams, drains, coastline, ice contours, landcover water outlines, and water outlines as `#009EFF`. The apply step rewrites that RGB on every map layer.
+
+`map.theme_paper` is `Map5View-paper`. `map.theme_all` is `Map5View-all`. Apply copies `Map5View` to both names. `-paper` keeps Map5View visibility. `-all` turns on `map.all_layers` and enables `relief_line map` rules. Square and sheet renders default to `Map5View`. Pass `--theme Map5View-all` for the full layer set.
 
 `reference_inks.shelterbelt` is `#008A00` (darkened from `#1D9D00` for ~4.5:1 on paper, log 0099). Map5View paints shelterbelts and green vegetation dots as `#94FF3B`. The apply step rewrites that RGB. `vegetation_point map` draws the owned tree glyph `vegetation.trees.marker` (`nztopo50_tree_stroke.svg`, crown and trunk strokes informed by [Mapbox Maki](https://github.com/mapbox/maki) `park` icon, CC0) at `vegetation.trees.size_mm` (0.2 mm on the map). The legend swatch uses `vegetation.trees.legend_size_mm` (1.4 mm, F-31). Ink is the shelterbelt colour. Dense canopy points stay below the mark floor (log 0070). Apply copies owned SVGs from `src/nzat/qgis/symbols/` into the project `symbol/` folder.
 
@@ -175,7 +177,7 @@ State highway numbers on `nztopo50_carto_symbol_label` read the same source as `
 
 `structures.bivouac` replaces the cave SVG on `structure_point map` with an owned tent triangle `structures.bivouac.marker`, 1.4 mm, stroke 0.15 mm. The tent is open, wider than tall, with a ridge. It is not the filled trig triangle and not the tall open mast. Apply copies every owned SVG in `src/nzat/qgis/symbols/` into `symbol/` beside the project.
 
-Fixed-colour LINZ SVGs ignore the QGIS colour, so church, shipwreck, tower, redoubt, mast, and beacon use owned copies whose strokes are 0.15 mm at the stock marker size. Church also raises the QGIS cross bar to `structures.church.bar_stroke_mm` (0.15 mm). The church mark stays 1.0 mm tall.
+Fixed-colour LINZ SVGs ignore the QGIS colour, so church, shipwreck, tower, redoubt, mast, beacon, lighthouse, shaft, stockyard, and the water tank use owned copies whose strokes are 0.15 mm at the marker size in this file. Church also raises the QGIS cross bar to `structures.church.bar_stroke_mm` (0.15 mm). The church mark is 1.4 mm tall (`structures.church.size_mm` is the QGIS width). Hut uses `structures.hut.size_mm` (1.4 mm). Floodgate uses `structures.floodgate.bar_size_mm` (1.4 mm). A greenhouse polygon (`coalesce("subtype", '') = 'greenhouse'`) is an outline, `structures.glasshouse.outline_mm` (0.2 mm), with no fill.
 
 `structures.buried_gas_pipeline` is `#951600` at 0.25 mm with a 2 mm / 0.5 mm dash. The apply step paints that on `structure_line` or `structure_line map` when a gas rule or category exists. Map5View hides `structure_line`, so the sheet still does not draw it (N-5).
 
@@ -187,7 +189,7 @@ Fixed-colour LINZ SVGs ignore the QGIS colour, so church, shipwreck, tower, redo
 
 `reference_inks.vegetation_outline` is `#859E3E`. That hex is 3.02:1 on paper. Map5View paints vegetation outlines as `#A7C05E`. The apply step paints the owned ink on vegetation polygon fills. The pair file reads this key.
 
-`vegetation.exotic.colour` is `#A4D65E`. `vegetation.exotic.alpha` is `0.2`. Map5View paints exotic forest in that fill. The apply step does not paint that fill.
+`vegetation.exotic.colour` is `#A4D65E`. `vegetation.exotic.alpha` is `0.2`. Map5View paints exotic forest in that fill. The apply step does not paint that fill. It paints exotic marks in `vegetation.exotic.mark_colour` (`#6A9A50`). Coniferous uses `vegetation.exotic.coniferous_marker`. Non-coniferous uses `vegetation.exotic.non_coniferous_marker` when `coalesce("subtype", '') = 'non-coniferous'`.
 
 `fonts.vector_family` is Open Sans. The QGIS apply step does not use that family.
 

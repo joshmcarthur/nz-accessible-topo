@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 
 from nzat.qgis.category_symbol import category_symbol
 from nzat.qgis.defaults import STYLE
+from nzat.qgis.properties_map import properties_map
+from nzat.qgis.put_expr import put_expr
 from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 
@@ -229,6 +231,46 @@ def patch_vegetation(layer, style=None):
         "completely_within",
     )
     _paint_outlines(layer, style)
+    _paint_exotic(layer, style)
+
+
+def _paint_exotic(layer, style):
+    renderer = layer.find("renderer-v2")
+    if renderer is None:
+        return
+    has_exotic = any(
+        category.get("value") == "exotic"
+        for category in renderer.findall("categories/category")
+    )
+    if not has_exotic:
+        return
+    exotic = category_symbol(layer, "exotic")
+    fill = exotic.find("layer[@class='SVGFill']")
+    if fill is None:
+        return
+    spec = style["vegetation"]["exotic"]
+    ink = rgba(spec["mark_colour"], 255)
+    set_option(fill, "color", ink)
+    set_option(fill, "svgFile", spec["coniferous_marker"])
+    names = [field.get("name") for field in layer.findall("fieldConfiguration/field")]
+    if "subtype" not in names:
+        return
+    dd = fill.find("data_defined_properties")
+    if dd is None:
+        dd = ET.SubElement(fill, "data_defined_properties")
+        root = ET.SubElement(dd, "Option", {"type": "Map"})
+        ET.SubElement(root, "Option", {"name": "name", "type": "QString", "value": ""})
+        ET.SubElement(root, "Option", {"name": "properties"})
+        ET.SubElement(
+            root, "Option", {"name": "type", "type": "QString", "value": "collection"}
+        )
+    props = properties_map(dd)
+    expression = (
+        "if(coalesce(\"subtype\", '') = 'non-coniferous', "
+        f"'{spec['non_coniferous_marker']}', '{spec['coniferous_marker']}')"
+    )
+    put_expr(props, "svgFile", expression)
+    put_expr(props, "name", expression)
 
 
 def _paint_native_marker(native, style):

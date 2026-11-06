@@ -1,12 +1,12 @@
 # Backlog
 
-Status as of 2026-11-06, after log 0099. Start with "Next work" below.
-Label placement (G2, B-31) is parked. The order now is: style and symbology, full LINZ sheets, a legend of our styles, then vector parity. Log 0090 lists the remaining raster style items.
+Status as of 2026-11-06, after log 0103. Start with "Next work" below.
+Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#00276D` (log 0102). Map themes are `Map5View-paper` and `Map5View-all` (log 0103). The order now is: visual sign-off of that paint, legend rows from the map (N-6), full LINZ sheets (N-7), then vector parity (N-8).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
 Black names on the urban fill take an urban-fill halo from a precomputed `urban_text.json` (B-45, log 0093). The sheet project has no `urban_text.json` yet, so sheet halos stay paper.
 Josh accepts the 17% spot-height rank step as an R-09 exception, and counts the stream vs index width step as the R-01 shape cue (log 0093).
-Stream is `#004C99` (log 0083). Rivers and canals are 0.25 mm. Drains are 0.15 mm (log 0071). Scrub is alpha 26 plus `#6A9A50` `third_arc` plant marks at 0.18 mm (logs 0068, 0071). A greener scrub fill waits for vector alpha (log 0076). Shelterbelt is `#008A00` (log 0099). Grid is `#269FD2`.
+Stream is `#00276D` (log 0102). Rivers and canals are 0.35 mm. Drains are 0.15 mm (log 0071). Scrub is alpha 26 plus `#6A9A50` `third_arc` plant marks at 0.18 mm (logs 0068, 0071). A greener scrub fill waits for vector alpha (log 0076). Shelterbelt is `#008A00` (log 0099). Grid is `#269FD2`.
 Natural names are Regular in index brown `#7A5542` (logs 0072, 0080). Stock Bold town names draw in patched Atkinson Bold (log 0080). Spot heights are black, 6 pt, and pinned (logs 0077, 0081, 0084). Contour-number FontMarkers are Regular with a 0.3 mm white halo (log 0082). State highway numbers draw in a white shield above the road (log 0090).
 Closed tracks use `cross2` 0.7 mm every 3 mm. Foot tracks are 0.2 mm. Poled routes and connectors draw as dots (log 0094). G1 passed. R-11 is met (log 0066). R-01 stays open.
 A recommendation is met only after the full-grid stock review in `docs/method.md` (log 0057).
@@ -20,7 +20,7 @@ R-07 is met. Label ink is at least 4.8:1 against the drawn buffer. The text-cont
 R-10 is met. Scrub is `#A3CC90` at alpha 26 plus `third_arc` plant marks (log 0068). Scattered is `#E0EDD8` plus a pattern (log 0034).
 R-11 is met (log 0066). Closed tracks use `cross2` 0.7 mm every 3 mm (log 0094). That mark does not read as a railway, an embankment or a cliff on the G1 cells. Historic labels keep hue and meet 3:1 under red light (log 0035).
 R-17 is met. Hot is a black ×. Cold is a `#005C8F` circle. Native is `#E1EAC3`. Scrub keeps its plant marks. Contour-number FontMarkers use the index ink (logs 0036, 0051).
-R-01 is open again (log 0058). Index contour on scrub is 4.35:1 grey and 3.02:1 red after scrub alpha 26 (log 0063). Streams `#004C99` are 8.42:1 grey (log 0083) and shelterbelts `#008A00` are ~4.5:1 on paper (log 0099). Grid `#269FD2` is 3.01:1. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Index versus urban still fails. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
+R-01 is open again (log 0058). Index contour on scrub is 4.35:1 grey and 3.02:1 red after scrub alpha 26 (log 0063). Streams `#00276D` are 13.87:1 grey on paper (log 0102) and shelterbelts `#008A00` are ~4.5:1 on paper (log 0099). Grid `#269FD2` is 3.01:1. Intermediate contours have a 0.2 mm `#7A5542` casing at alpha 0.5. Index is 0.35 mm at alpha 0.85. Index versus paper is 4.60:1 grey and 3.28:1 red. Intermediate casing versus paper is 2.23:1 grey and 1.89:1 red. Index versus urban still fails. Road fill `#EC7000` is 3.06:1 grey. The dark road casing still carries the road under red light (logs 0037, 0038, 0050, 0051, 0053, 0054).
 R-05 is open again (log 0059). Contour-number FontMarkers are Regular in the apply step. Natural-feature names use index brown, Regular (logs 0072, 0080). Both still need the grid review.
 R-08 stays provisional. Vector labels use 0.05 em from the style file. Raster along-line labels keep normal spacing. No A/B test (log 0039).
 R-12 is met. `tracks.access.reserved_channel` is `casing_colour`. `tracks.access.painted` is false. Access is not drawn (log 0042).
@@ -36,7 +36,21 @@ with `kanban` support (11.4+); validated with mermaid 12.2.0.
 
 ## Next work (from 2026-11-06)
 
-Research stopped at log 0095. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+Research is at log 0103. N-1 to N-4 (except fumarole and stream-disappearing) are in the apply step. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+
+### Visual sign-off for N-1 to N-4 (before split commits)
+
+Re-apply, redraw the accessible legend, export the symbol table, render the BX24 face, crop the grid. Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#00276D` must still read as water, not a black track, on steep `1580000-5154000`. Closed × must still pass G1.
+
+### N-1 to N-4 — applied (do not reopen)
+
+N-1 navigation floor 0.35 mm (log 0097). N-2 vegetation (logs 0098–0100). N-3 locked gate, gas pipeline, bivouac (fumarole still waits on log 0096). N-4 remainder (log 0101). Stream-disappearing stays proposed: `water_line.type` has no sink class.
+
+### N-5 — Hidden layers: Map5View-paper and Map5View-all
+
+- **Decision (Josh, 2026-11-06):** named variants, one `-paper`, one `-all`.
+- **Change (in apply, log 0103):** copy `Map5View` to `Map5View-paper` (print visibility) and `Map5View-all` (`map.all_layers` on, relief rules on). Default render stays `Map5View`. Use `--theme Map5View-all` for a full-symbol proof.
+- **Done when:** apply writes both themes; a `--theme Map5View-all` square shows springs, power lines, and relief ticks; blocked `/symbols/` rows that those layers own move to proposed or done.
 
 ### How to run a pass (local Mac)
 
@@ -64,48 +78,6 @@ The 2026-11-05 session ran these steps from temporary scratchpad scripts. These 
 - **Gates before every commit (same as CI):** `uv run ruff check`, `uv run ruff format --check`, `uv run pytest -q`, `python3 tools/check.py`; when the style file or docs change, also `uv run python tools/extract_graph.py`, `tools/export_tokens.py`, `tools/export_ink_matrix.py`, and commit changed `site/src/data/*`. If `tools/build_style.py` reads a changed value, run it and commit `styles/` and `docs/styles/`. Site: `cd site && npm run build`, then `uv run --group site python tools/check_site.py` (images need alt text). `tools/make_sprites.py` changes two PNGs on macOS only; do not commit those.
 - **Visual sign-off before you split commits:** re-apply, redraw the accessible legend, export the symbol table, render the BX24 face, and crop the grid (same commands as Legend and BX24 grid above). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/` before commit boundaries.
 
-### N-1 — Navigation line floor 0.35 mm (roads, tracks, streams)
-
-- **Decision (Josh, 2026-11-06):** "primary navigation elements should have that floor, but not everything on the map … tracks, roads and streams".
-- **Change:** add `sizes.navigation_line_mm: 0.35` to `tools/style-topo50.json`; read it in apply.
-  - Roads: every `road_line …` fill under 0.35 mm on the sheet rises to 0.35 mm (one-lane sealed/metalled are 0.25–0.26 mm; check narrow and unmetalled double line too). Casings must still show outside the fill. Inks stay settled (`#EC7000`, `#E31A1C`).
-  - Tracks (`tracks` in the style file, `src/nzat/qgis/patch_tracks.py`): foot, vehicle and closed lines 0.2 → 0.35 mm. Lengthen dashes if needed so they still read as dashes. Scale the closed × (now 0.7 mm, 0.15 mm stroke) so it stays clearly bigger than the line. Poled-route dots (0.45 mm) already exceed the floor.
-  - Streams: `water.stream_width_mm` 0.25 → 0.35 (`src/nzat/qgis/patch_water_line.py`). Drains stay 0.15 mm (not primary navigation; log 0071). Coastline and lake outlines unchanged.
-  - All other lines keep the 0.15 mm floor from the symbol table.
-- **Check:** BX24 grid against stock on urban `1564000-5178000`, steep `1580000-5154000`, rural `1564000-5162000`, and the G1 dense-track cells `1576000-5182000`, `1580000-5170000`, `1572000-5170000`, `1584000-5158000`, `1576000-5166000` (closed × must not read as railway, embankment or cliff). Streams and index contours are then both 0.35 mm: check they still separate in greyscale (`uv run python tools/simulate_image.py`); stream `#004C99` vs index is 1.83:1 grey and Josh counted width as the second cue (log 0093), so this may need a new cue — report it, do not decide it.
-- **Done when:** values come from the style file, tests catch a sub-floor road/track/stream, the grid review shows no new regression, the legend and `/symbols/` are regenerated, CI is green.
-
-### N-2 — Vegetation proposals 3, 4, 5
-
-- **Decisions (Josh):** "3 - yes, let's try it. 4 - yes, 5 - yes".
-- **Trees (3):** Owned tree glyph in shelterbelt `#008A00` at **0.2 mm** on the map, **1.4 mm** legend (`legend_size_mm`). Logs 0070, 0098, 0099.
-- **Scattered scrub (4):** `#6A9A50` `third_arc` arcs at 1.4 mm, 0.18 mm stroke (same as `vegetation.scrub_dots`) on the stock 5 mm grid, no fill. Code: `src/nzat/qgis/patch_vegetation.py`.
-- **Vegetation outline (5):** `#A7C05E` → `#859E3E` (3.02:1) on all vegetation polygons. It is `reference_inks.vegetation_outline`; the pair file reads it.
-- **Done when:** as N-1.
-
-### N-3 — Point and line symbol proposals 1, 2, 6, 7
-
-- **Locked gate (1, "yes"):** black gate bar with a filled 0.6 mm black square at its middle. Today the bar is `#FF4500` (1.0:1 in red light). A second bar would read as a cattlestop. Layer: `structure_point map`.
-- **Fumarole (2):** "use a different shape" — it must not be a × (hot spring is a black ×, `springs.hot`). Propose a dark shape that does not match any other legend symbol (check `/symbols/`), show it to Josh before applying. Geothermal bore keeps its own glyph, darkened. **Proposal:** log 0096 (steam ticks over a vent). Not applied.
-- **Buried gas pipeline (6, "yes"):** `#EA6300` → `#951600` (passes red light) with a long dash.
-- **Bivouac (7):** "use a camp/tent triangle symbol". Today it borrows the LINZ cave glyph and has a 0.09 mm stroke. Draw a tent/camp triangle at ≥1.4 mm with ≥0.15 mm stroke, distinct from the trig triangle (filled) and the mast (open, tall).
-- **Done when:** each symbol is in the style file or an owned SVG under the repo, tests cover it, the legend row and `/symbols/` row show it, CI is green.
-
-### N-4 — Remaining "proposed" rows on `/symbols/` (no decision needed)
-
-The table (log 0095) lists them with measurements. Main groups:
-- SVG strokes under 0.15 mm at sheet size: church 0.04, shipwreck 0.06, bivouac 0.09, tower 0.09, redoubt and mast 0.10, beacon 0.11 mm. Fixed-colour SVGs ignore the QGIS colour, so fix the stroke in an owned copy of the SVG.
-- Mark sizes under ~1.4 mm: hut 0.8 mm, church 1.0 mm tall.
-- Look-alikes: double railway draws like single; depression contours have no ticks and still use stock orange `#FF7F00` (2.5:1, red light 1.0:1) — use the index/intermediate inks with ticks; supplementary contours are not dashed; saddle draws as a spot-height dot; moraine, scree and shingle share one texture; non-coniferous exotic forest gets conifer marks.
-- Thin lines: fence 0.05 mm and two-lane bridge casings 0.1 mm → 0.15 mm floor.
-- **Done when:** each row moves to "done" on `/symbols/`.
-
-### N-5 — Hidden layers (proposal 8)
-
-- **Decision (Josh):** "yes if the base map has it on". Interpreted as: show a layer if the **printed LINZ Topo50** sheet shows it. This reading is not yet confirmed by Josh — confirm before turning layers on.
-- Map5View hides `water_point` (springs), `structure_line` (power lines, pipelines), `structure`, `tunnel_line`, `landcover_point`, `landuse`, `marine`, and every `relief_line map` rule is switched off. Evidence: the print legend audit (log 0019), `docs/visuals/07-real-topo50-simulations.png`, and the LINZ export `~/Projects/github.com/linz/topo50-bx24/output/nztopo50/BX24.png` (same Map5View theme, so it is not evidence for print). No downloads without asking Josh.
-- The 54 "blocked" rows on `/symbols/` depend on this. Turning a layer on moves its rows to "proposed".
-
 ### N-6 — Legend: redraw the 14 stock-look row groups from the map
 
 - **Decision (Josh):** "Redraw from map" (method B in log 0092: sample features with real attributes, copy of the full layer style, render at 1:50,000 and 600 dpi into the swatch box).
@@ -123,7 +95,7 @@ The table (log 0095) lists them with measurements. Main groups:
 Bring raster decisions into the MapLibre style; the style file is the single source:
 - scrub alpha (unblocks the greener scrub fill reverted in log 0076, B-34);
 - natural-name ink `labels.natural_colour`, Bold town names, spot heights black 6 pt;
-- stream/drain widths and `#004C99`, navigation line floor (N-1);
+- stream/drain widths and `#00276D`, navigation line floor (N-1);
 - track dashes, larger closed ×, poled-route dots (log 0094);
 - highway shield numbers (log 0090), contour-number halo (log 0082), urban-fill halo (log 0093);
 - new symbols from N-2 to N-4.

@@ -103,3 +103,6 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0098 — Tree points stay map-sized, not legend-sized](0098-tree-point-size.md)
 - [0099 — Darker shelterbelt and tree ink](0099-shelterbelt-ink-darken.md)
 - [0100 — Trees legend swatch at legend_size_mm](0100-trees-legend-swatch.md)
+- [0101 — Remaining N-4 symbol paint](0101-n4-remaining-symbols.md)
+- [0102 — Darker stream versus index contour](0102-darker-stream-index.md)
+- [0103 — Map5View-paper and Map5View-all](0103-map-theme-variants.md)

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.35 28.35">
+  <!-- LINZ moraine: crosses and rings. At 10 mm, stroke 0.426 is 0.15 mm. -->
+  <rect width="28.35" height="28.35" fill="none"/>
+  <path d="M1.30,2.20h1.80M2.20,1.30v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="3.30" cy="6.60" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="2.20" cy="11.00" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M2.40,15.40h1.80M3.30,14.50v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="2.20" cy="19.80" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="3.30" cy="24.20" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="6.60" cy="3.30" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="7.70" cy="7.70" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M5.70,12.10h1.80M6.60,11.20v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="7.70" cy="16.50" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="6.60" cy="20.90" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M6.80,25.30h1.80M7.70,24.40v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="11.00" cy="2.20" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M11.20,6.60h1.80M12.10,5.70v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="11.00" cy="11.00" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="12.10" cy="15.40" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M10.10,19.80h1.80M11.00,18.90v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="12.10" cy="24.20" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M14.50,3.30h1.80M15.40,2.40v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="16.50" cy="7.70" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="15.40" cy="12.10" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M15.60,16.50h1.80M16.50,15.60v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="15.40" cy="20.90" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="16.50" cy="25.30" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="19.80" cy="2.20" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="20.90" cy="6.60" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M18.90,11.00h1.80M19.80,10.10v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="20.90" cy="15.40" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="19.80" cy="19.80" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M20.00,24.20h1.80M20.90,23.30v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="24.20" cy="3.30" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M24.40,7.70h1.80M25.30,6.80v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="24.20" cy="12.10" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <circle cx="25.30" cy="16.50" r="0.35" fill="none" stroke="#000000" stroke-width="0.426"/>
+  <path d="M23.30,20.90h1.80M24.20,20.00v1.80" fill="none" stroke="#000000" stroke-linecap="round" stroke-width="0.426"/>
+  <circle cx="25.30" cy="25.30" r="0.55" fill="none" stroke="#000000" stroke-width="0.426"/>
+</svg>

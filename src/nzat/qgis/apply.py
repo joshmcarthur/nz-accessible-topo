@@ -6,14 +6,19 @@ from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_draw_order import patch_draw_order
 from nzat.qgis.patch_hillshade import patch_hillshade
 from nzat.qgis.patch_labels import patch_labels
+from nzat.qgis.patch_landcover import patch_landcover
 from nzat.qgis.patch_legend_picture import patch_legend_picture
+from nzat.qgis.patch_map_themes import patch_map_themes
 from nzat.qgis.patch_owned_lines import patch_owned_lines
+from nzat.qgis.patch_railway import patch_railway
+from nzat.qgis.patch_relief_point import patch_relief_point
 from nzat.qgis.patch_road_fills import patch_road_fills
 from nzat.qgis.patch_road_widths import patch_road_widths
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_structures import (
     install_owned_symbols,
+    patch_building,
     patch_building_point,
     patch_structure_line,
     patch_structure_point,
@@ -88,6 +93,14 @@ def apply(root, project_dir=None):
             patch_structure_line(layer)
         elif name == "building_point map":
             patch_building_point(layer)
+        elif name == "building map":
+            patch_building(layer)
+        elif name == "railway_line map":
+            patch_railway(layer)
+        elif name == "landcover map":
+            patch_landcover(layer)
+        elif name == "relief_point map":
+            patch_relief_point(layer)
         patch_owned_lines(layer)
         patch_thin_lines(layer)
     missing = {
@@ -106,6 +119,7 @@ def apply(root, project_dir=None):
     patch_draw_order(root)
     patch_hillshade(root, project_dir)
     patch_legend_picture(root)
+    patch_map_themes(root)
     if project_dir:
         install_owned_symbols(project_dir)
     return labels

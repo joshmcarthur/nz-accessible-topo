@@ -33,7 +33,7 @@ def _find_rule_symbol(layer, *needles):
 
 
 def patch_thin_lines(layer, style=None):
-    """Raise fence and two-lane bridge casings to the line floor."""
+    """Raise fence casings to the line floor and two-lane bridge brackets to the style."""
     style = style or STYLE
     name = layer.findtext("layername") or ""
     floor = float(style["sizes"]["line_floor_mm"])
@@ -47,4 +47,12 @@ def patch_thin_lines(layer, style=None):
     symbol = _find_rule_symbol(layer, "vehicle-2")
     if symbol is None:
         return
-    _raise_simple_lines(symbol, floor)
+    spec = style["bridges"]["two_lane"]
+    casing = str(spec["casing_width_mm"])
+    for line in symbol.findall("layer[@class='SimpleLine']"):
+        set_option(line, "line_width", casing)
+    tick = spec["tick_mm"]
+    for marker in symbol.findall(
+        "layer[@class='MarkerLine']/symbol/layer[@class='SimpleMarker']"
+    ):
+        set_option(marker, "size", str(tick))

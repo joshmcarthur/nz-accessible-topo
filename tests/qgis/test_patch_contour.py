@@ -72,3 +72,87 @@ def test_contour_casing_read_the_style_file():
         lines[0].find("Option/Option[@name='line_color']").get("value")
         == "122,85,66,128"
     )
+    assert layer.find(".//layer[@class='MarkerLine']") is None
+    assert (
+        lines[1].find(
+            "data_defined_properties//Option[@name='customDash']/Option[@name='expression']"
+        )
+        is None
+    )
+
+
+CONTOUR_CLASS_XML = """
+        <maplayer>
+          <layername>contour</layername>
+          <fieldConfiguration>
+            <field name="elevation"/>
+            <field name="designation"/>
+            <field name="formation"/>
+          </fieldConfiguration>
+          <renderer-v2 type="singleSymbol"><symbols>
+            <symbol name="0" type="line">
+              <layer class="SimpleLine">
+                <Option type="Map">
+                  <Option name="line_color" type="QString" value="255,127,0,255"/>
+                  <Option name="line_width" type="QString" value="0.12"/>
+                  <Option name="customdash" type="QString" value="5;2"/>
+                  <Option name="use_custom_dash" type="QString" value="0"/>
+                </Option>
+                <data_defined_properties><Option type="Map">
+                  <Option name="properties"/>
+                </Option></data_defined_properties>
+              </layer>
+            </symbol>
+          </symbols></renderer-v2>
+        </maplayer>
+        """
+
+
+def test_supplementary_contours_dash_and_depressions_gain_ticks():
+    # Catches a solid supplementary contour, orange depression ticks, or lost elevation colour.
+    layer = ET.fromstring(CONTOUR_CLASS_XML)
+    patch_contour(layer)
+    lines = layer.findall(".//layer[@class='SimpleLine']")
+    assert len(lines) == 2
+    fill_width = lines[1].find(
+        "data_defined_properties//Option[@name='outlineWidth']/Option[@name='expression']"
+    )
+    fill_color = lines[1].find(
+        "data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']"
+    )
+    assert "0.35" in fill_width.get("value")
+    assert "elevation" in fill_width.get("value")
+    assert "color_rgba(122,85,66,217)" in fill_color.get("value")
+    dash = lines[1].find(
+        "data_defined_properties//Option[@name='customDash']/Option[@name='expression']"
+    )
+    use_dash = lines[1].find(
+        "data_defined_properties//Option[@name='useCustomDash']/Option[@name='expression']"
+    )
+    assert "3;1" in dash.get("value")
+    assert "coalesce" in dash.get("value")
+    assert "supplementary" in dash.get("value")
+    assert "coalesce" in use_dash.get("value")
+    casing_dash = lines[0].find(
+        "data_defined_properties//Option[@name='customDash']/Option[@name='expression']"
+    )
+    assert "3;1" in casing_dash.get("value")
+    ticks = layer.findall(".//layer[@class='MarkerLine']")
+    assert len(ticks) == 1
+    enabled = ticks[0].find(
+        "data_defined_properties//Option[@name='enabled']/Option[@name='expression']"
+    )
+    assert "coalesce" in enabled.get("value")
+    assert "depression" in enabled.get("value")
+    size = ticks[0].find(
+        "symbol/layer[@class='SimpleMarker']/Option/Option[@name='size']"
+    )
+    colour = ticks[0].find(
+        "symbol/layer[@class='SimpleMarker']/Option/Option[@name='outline_color']"
+    )
+    assert size.get("value") == "0.6"
+    assert colour.get("value").startswith("122,85,66")
+    painted = ET.tostring(layer, encoding="unicode")
+    assert "255,127,0" not in painted or "FF7F00" not in painted.upper()
+    patch_contour(layer)
+    assert len(layer.findall(".//layer[@class='MarkerLine']")) == 1

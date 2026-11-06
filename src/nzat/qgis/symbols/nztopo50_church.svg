@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1.58 3.27">
-  <!-- LINZ church. At 0.5 mm, stroke 0.474 is 0.15 mm. -->
+  <!-- LINZ church. At 0.676 mm, stroke 0.351 is 0.15 mm; height 1.4 mm. -->
   <rect x=".08" y="1.86" width="1.42" height="1.42" fill="#000000"/>
   <polyline
     fill="none"
     stroke="#000000"
     stroke-linecap="round"
     stroke-linejoin="round"
-    stroke-width="0.474"
+    stroke-width="0.351"
     points=".8 1.86 .79 1.86 .79 .06"
   />
   <line
@@ -19,6 +19,6 @@
     stroke="#000000"
     stroke-linecap="round"
     stroke-linejoin="round"
-    stroke-width="0.474"
+    stroke-width="0.351"
   />
 </svg>

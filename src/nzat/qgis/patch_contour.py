@@ -1,12 +1,17 @@
 import copy
 import uuid
 
+from nzat.qgis.closed_bar_placement import _mm
 from nzat.qgis.defaults import STYLE
+from nzat.qgis.patch_tracks import _marker_line, _marker_with
 from nzat.qgis.properties_map import properties_map
 from nzat.qgis.put_expr import put_expr
 from nzat.qgis.require_field import require_field
 from nzat.qgis.rgba import alpha_byte, rgba, rgba_call
 from nzat.qgis.set_option import set_option
+
+SUPPLEMENTARY = "coalesce(\"designation\", '') = 'supplementary'"
+DEPRESSION = "coalesce(\"formation\", '') = 'depression'"
 
 
 def patch_contour(layer, style=None):
@@ -60,3 +65,43 @@ def patch_contour(layer, style=None):
         'CASE WHEN "elevation" IS NOT NULL AND round("elevation") % 100 = 0'
         f" THEN {index['width_mm']} ELSE {intermediate['width_mm']} END",
     )
+    names = [field.get("name") for field in layer.findall("fieldConfiguration/field")]
+    if "designation" in names:
+        dash = style["contours"]["supplementary"]["dash"]
+        dash_expr = f"if({SUPPLEMENTARY}, '{dash}', '5;2')"
+        put_expr(casing_props, "customDash", dash_expr)
+        put_expr(fill_props, "customDash", dash_expr)
+        put_expr(casing_props, "useCustomDash", SUPPLEMENTARY)
+        put_expr(fill_props, "useCustomDash", SUPPLEMENTARY)
+    if "formation" in names:
+        ticks = style["contours"]["depression"]
+        ink = rgba(index["colour"], 255)
+        existing = _marker_with(symbol, "depression")
+        if existing is not None:
+            symbol.remove(existing)
+        symbol.append(
+            _marker_line(
+                "@depression",
+                DEPRESSION,
+                _mm(ticks["interval_mm"]),
+                "0",
+                (
+                    ("angle", "0"),
+                    ("cap_style", "square"),
+                    ("color", ink),
+                    ("horizontal_anchor_point", "1"),
+                    ("joinstyle", "bevel"),
+                    ("name", "line"),
+                    ("offset", "0,0"),
+                    ("offset_unit", "MM"),
+                    ("outline_color", ink),
+                    ("outline_style", "solid"),
+                    ("outline_width", str(ticks["stroke_mm"])),
+                    ("outline_width_unit", "MM"),
+                    ("scale_method", "diameter"),
+                    ("size", str(ticks["tick_mm"])),
+                    ("size_unit", "MM"),
+                    ("vertical_anchor_point", "1"),
+                ),
+            )
+        )
