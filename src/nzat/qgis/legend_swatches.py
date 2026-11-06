@@ -176,9 +176,7 @@ SWATCHES = (
     {
         "key": "trees",
         "box": (1655, 9315, 2035, 9390),
-        "features": (
-            ("vegetation_point", {"type": "tree"}, "POINT (1845 9352.5)"),
-        ),
+        "features": (("vegetation_point", {"type": "tree"}, "POINT (1845 9352.5)"),),
         "legend_marker_size_mm": "vegetation.trees.legend_size_mm",
     },
 )

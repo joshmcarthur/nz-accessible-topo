@@ -13,6 +13,7 @@ from nzat.qgis.legend_swatches import (
     SWATCHES,
 )
 from nzat.qgis.legend_wkt import legend_wkt
+from nzat.qgis.map_layers import SHEET_PRESET
 from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.render_image import render_image
@@ -24,7 +25,9 @@ def _table(source):
     return os.path.basename(source.split("|")[0]).removesuffix(".parquet")
 
 
-def _swatch_layers(map_layers, features, metres_per_px, labels=True, marker_size_mm=None):
+def _swatch_layers(
+    map_layers, features, metres_per_px, labels=True, marker_size_mm=None
+):
     """Copy each map layer that reads a swatch table onto a memory layer.
 
     The copy keeps the layer filter and the whole layer style, so
@@ -98,6 +101,11 @@ def main():
         "--output",
         help=f"Output PNG. The default is {ACCESSIBLE_LEGEND_FILE} beside the project",
     )
+    parser.add_argument(
+        "--theme",
+        default=SHEET_PRESET,
+        help="QGIS map theme. Map5View-all draws hidden layers into swatches.",
+    )
     args = parser.parse_args()
     output = args.output or os.path.join(
         os.path.dirname(os.path.abspath(args.project)), ACCESSIBLE_LEGEND_FILE
@@ -129,7 +137,7 @@ def main():
             pixels.data, width, height, width * 3, QImage.Format.Format_RGB888
         ).copy()
         try:
-            session = open_map(args.project, font_files(args.font))
+            session = open_map(args.project, font_files(args.font), args.theme)
         except RuntimeError as error:
             print(error, file=sys.stderr)
             return 1
