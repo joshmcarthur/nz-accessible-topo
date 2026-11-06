@@ -67,12 +67,14 @@ def test_saddle_is_two_arcs_and_spot_heights_stay_dots():
     assert len(layer.findall(".//symbol[@name='0']/layer[@class='SimpleMarker']")) == 1
 
 
-def test_saddle_filter_uses_feature_type_when_type_is_absent():
-    # Catches a stock .qgs that only lists feature_type, with the parquet column named type.
+def test_saddle_filter_reads_parquet_type_or_feature_type():
+    # Catches a filter on feature_type alone, which misses the parquet type column.
     xml = RELIEF_XML.replace('<field name="type"/>', '<field name="feature_type"/>')
     layer = ET.fromstring(xml)
     patch_relief_point(layer)
     filters = [rule.get("filter") or "" for rule in layer.findall(".//rule")]
     saddle = [blob for blob in filters if "saddle" in blob][0]
-    assert "feature_type" in saddle
-    assert '"type"' not in saddle
+    assert "attribute($currentfeature, 'type')" in saddle
+    assert "attribute($currentfeature, 'feature_type')" in saddle
+    color = _option(layer, "1", "SvgMarker", "color")
+    assert color.get("value") == "0,0,0,0"

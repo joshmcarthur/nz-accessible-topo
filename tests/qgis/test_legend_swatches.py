@@ -1,12 +1,21 @@
 import re
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
+from PIL import Image
+
+from nzat.paths import ROOT
 from nzat.qgis.legend_box_extent import legend_box_extent
 from nzat.qgis.legend_metres_per_px import legend_metres_per_px
 from nzat.qgis.legend_swatches import LEGEND_DPI, LEGEND_SIZE, SWATCHES
 from nzat.qgis.legend_wkt import legend_wkt
 from nzat.qgis.patch_legend_picture import patch_legend_picture
-from nzat.qgis.render_legend_main import known_swatch_attrs
+from nzat.qgis.render_legend_main import (
+    enable_inactive_swatch_rules,
+    extra_swatch_field_names,
+    known_swatch_attrs,
+    prefer_map_layer,
+)
 from nzat.site.symbol_rows import SYMBOLS
 
 # Stock legend boxes share a few pixels between rows. That is not a wiped symbol.
@@ -34,6 +43,40 @@ def test_unknown_swatch_attrs_are_skipped():
     assert known_swatch_attrs(
         {"type", "status"}, {"type": "gate", "feature_type": "gate"}
     ) == {"type": "gate"}
+
+
+def test_swatch_does_not_invent_feature_type():
+    # Catches adding feature_type so categorized unique mint paints instead of the type/NULL map look.
+    rows = (
+        (
+            "structure_line",
+            {"type": "weir", "feature_type": "weir"},
+            "LINESTRING (0 0, 1 0)",
+        ),
+        (
+            "relief_line",
+            {"type": "embankment", "subtype": "stopbank"},
+            "LINESTRING (0 0, 1 0)",
+        ),
+    )
+    assert extra_swatch_field_names({"type"}, rows) == ["subtype"]
+
+
+def test_swatch_prefers_the_map_layer():
+    # Catches Map5View-all drawing the categorized structure_point lime disc over the map gate.
+    names = ("structure_point map", "structure_point")
+    assert prefer_map_layer("structure_point map", "structure_point", names)
+    assert not prefer_map_layer("structure_point", "structure_point", names)
+    assert prefer_map_layer("landcover_point", "landcover_point", ("landcover_point",))
+
+
+def test_inactive_rules_only_on_stock_off_layers():
+    # Catches enable-all turning landuse/structure_line ELSE rules to QGIS mint.
+    assert enable_inactive_swatch_rules("relief_line")
+    assert enable_inactive_swatch_rules("bridge_line")
+    assert not enable_inactive_swatch_rules("structure_line")
+    assert not enable_inactive_swatch_rules("landuse")
+    assert not enable_inactive_swatch_rules("structure_point")
 
 
 def test_swatches_draw_at_sheet_size():
@@ -144,3 +187,48 @@ def test_layout_legend_picture_points_at_the_accessible_legend():
         "./linz_logo_main_2022.png",
         "./topo-legend-1.tif",
     ]
+
+
+def _crop_ink(path: Path):
+    image = Image.open(path).convert("RGB")
+    raw = image.tobytes()
+    ink = 0
+    lime = 0
+    mint = 0
+    for index in range(0, len(raw), 3):
+        red, green, blue = raw[index], raw[index + 1], raw[index + 2]
+        if red >= 250 and green >= 250 and blue >= 250:
+            continue
+        ink += 1
+        if abs(red - 141) < 25 and abs(green - 208) < 25 and abs(blue - 17) < 25:
+            lime += 1
+        if green >= 180 and green > red + 20 and green > blue + 10:
+            mint += 1
+    total = image.size[0] * image.size[1]
+    if not ink:
+        return 0.0, 0.0, 0.0
+    return ink / total, lime / ink, mint / ink
+
+
+def test_ours_crops_are_not_empty_or_lime():
+    # Catches a wiped relief box, or the QGIS lime disc left on a stroke-only marker.
+    # Also catches enable-all painting high-G mint/default on weir, breakwater, cemetery.
+    empty = []
+    lime = []
+    mint = []
+    for symbol in SYMBOLS:
+        if symbol["status"] != "done" or not symbol.get("redrawn"):
+            continue
+        path = ROOT / "site" / "public" / "symbols" / f"{symbol['key']}-ours.png"
+        if not path.is_file():
+            continue
+        ink_frac, lime_frac, mint_frac = _crop_ink(path)
+        if ink_frac < 0.002:
+            empty.append(symbol["key"])
+        if lime_frac > 0.05:
+            lime.append(symbol["key"])
+        if mint_frac > 0.5:
+            mint.append(symbol["key"])
+    assert empty == []
+    assert lime == []
+    assert mint == []

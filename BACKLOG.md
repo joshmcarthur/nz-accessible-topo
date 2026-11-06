@@ -1,6 +1,6 @@
 # Backlog
 
-Status as of 2026-11-06, after log 0105. Start with "Next work" below.
+Status as of 2026-11-06, after log 0106. Start with "Next work" below.
 Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#004C99` (log 0105; `#00276D` rejected beside tracks). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. The order now is: Josh visual sign-off, then full LINZ sheets (N-7), then vector parity (N-8).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
@@ -36,11 +36,11 @@ with `kanban` support (11.4+); validated with mermaid 12.2.0.
 
 ## Next work (from 2026-11-06)
 
-Research is at log 0105. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Stream is `#004C99`. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+Research is at log 0106. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Stream is `#004C99`. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
 
 ### Visual sign-off for N-1 to N-6
 
-Grid, legend, and `/symbols/` are redrawn (logs 0104, 0105). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#004C99` must read as water beside a black track. Closed × must still pass G1. Some N-6 swatches are empty or wrong at sheet size (gates, several relief lines, fumarole).
+Grid, legend, and `/symbols/` are redrawn (logs 0104–0106). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#004C99` must read as water beside a black track. Closed × must still pass G1. Lime discs and empty relief boxes are fixed (log 0106). Cemetery is still a cyan slab. Weir and breakwater are process-blue NULL bars. Fumarole stays proposed.
 
 ### N-1 to N-4 — applied (do not reopen)
 
@@ -76,13 +76,16 @@ The 2026-11-05 session ran these steps from temporary scratchpad scripts. These 
 - **Never** use `overlay_intersects()` or other layer lookups in label or symbol expressions. They deadlock `render_square.py` and `render_sheets.py` (logs 0090, 0091). Precompute instead (pattern: `tools/tag_urban_text.py`).
 - QGIS 4.2.3 treats a NULL `enabled`/filter result as true. Wrap attribute tests in `coalesce()` (log 0092).
 - FontMarker options are `font` / `font_style`, not `fontFamily` / `fontStyle` (log 0082).
+- Stroke-only SvgMarker fill must be `0,0,0,0` or QGIS paints the default lime disc (log 0106).
+- Do not add a `feature_type` field on a legend memory layer. Parquet uses `type`; a fake `feature_type` matches unique mint categories the sheet never paints (log 0106).
+- Enable inactive renderer rules only on `relief_line` and `bridge_line` swatches (stock `checkstate=0`). Leave other layers on the theme's rule state (log 0106).
 - **Gates before every commit (same as CI):** `uv run ruff check`, `uv run ruff format --check`, `uv run pytest -q`, `python3 tools/check.py`; when the style file or docs change, also `uv run python tools/extract_graph.py`, `tools/export_tokens.py`, `tools/export_ink_matrix.py`, and commit changed `site/src/data/*`. If `tools/build_style.py` reads a changed value, run it and commit `styles/` and `docs/styles/`. Site: `cd site && npm run build`, then `uv run --group site python tools/check_site.py` (images need alt text). `tools/make_sprites.py` changes two PNGs on macOS only; do not commit those.
 - **Visual sign-off before you split commits:** re-apply, redraw the accessible legend, export the symbol table, render the BX24 face, and crop the grid (same commands as Legend and BX24 grid above). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/` before commit boundaries.
 
 ### N-6 — Legend: redraw the 14 stock-look row groups from the map
 
 - **Decision (Josh):** "Redraw from map" (method B in log 0092: sample features with real attributes, copy of the full layer style, render at 1:50,000 and 600 dpi into the swatch box).
-- **Now (log 0104):** drawable rows have swatches. Blocked no-class rows stay stock (ford, orchard, mangroves, pipelines, power, telephone, gas, bore, stream disappearing). Fumarole/waterfall/marine farm stay proposed. Pass `--theme Map5View-all` when you redraw the legend.
+- **Now (log 0106):** drawable rows have swatches. Gates are a black bar on the road. Relief ticks and saddle arcs draw. Lime discs are gone. Blocked no-class rows stay stock (ford, orchard, mangroves, pipelines, power, telephone, gas, bore, stream disappearing). Fumarole/waterfall/marine farm stay proposed. Cemetery is still the NULL cyan fill. Weir and breakwater hit the NULL process-blue category. Pass `--theme Map5View-all` when you redraw the legend.
 - Legend label text stays stock (layout text is Nimbus) unless Josh gives new wording.
 
 ### N-7 — Re-render all 445 sheets

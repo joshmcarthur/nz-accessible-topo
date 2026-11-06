@@ -1,9 +1,10 @@
 from nzat.qgis.category_symbol import category_symbol
 from nzat.qgis.defaults import STYLE
+from nzat.qgis.patch_contour_numbers import _put
 from nzat.qgis.properties_map import properties_map
 from nzat.qgis.put_expr import put_expr
 from nzat.qgis.require_field import require_field
-from nzat.qgis.rgba import rgb_call
+from nzat.qgis.rgba import rgb_call, rgba
 
 
 def patch_springs(layer, style=None):
@@ -30,3 +31,18 @@ def patch_springs(layer, style=None):
         f" {rgb_call(hot['colour'])},"
         f" {rgb_call(cold['colour'])})",
     )
+    _patch_waterfall(layer)
+
+
+def _patch_waterfall(layer):
+    try:
+        symbol = category_symbol(layer, "waterfall")
+    except RuntimeError:
+        return
+    marker = symbol.find("layer[@class='SimpleMarker']")
+    if marker is None:
+        return
+    _put(marker, "color", "0,0,0,0")
+    _put(marker, "outline_color", rgba("#000000", 255))
+    _put(marker, "outline_style", "solid")
+    _put(marker, "outline_width", "0.2")

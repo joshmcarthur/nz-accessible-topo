@@ -42,6 +42,7 @@ def test_springs_and_native_read_the_style_file():
         """
     )
     patch_springs(layer)
+    assert layer.find("renderer-v2").get("attr") == "type"
     marker = layer.find(
         ".//layer[@class='SimpleMarker']/data_defined_properties/Option/Option[@name='properties']"
     )

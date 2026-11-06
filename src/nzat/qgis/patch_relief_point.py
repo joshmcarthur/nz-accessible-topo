@@ -6,19 +6,6 @@ from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 
 
-def _field_names(layer):
-    return [field.get("name") for field in layer.findall("fieldConfiguration/field")]
-
-
-def _type_field(layer):
-    names = _field_names(layer)
-    if "type" in names:
-        return "type"
-    if "feature_type" in names:
-        return "feature_type"
-    raise RuntimeError("relief_point map has no type field")
-
-
 def _empty_dd(parent):
     dd = ET.SubElement(parent, "data_defined_properties")
     root = ET.SubElement(dd, "Option", {"type": "Map"})
@@ -26,6 +13,13 @@ def _empty_dd(parent):
     ET.SubElement(root, "Option", {"name": "properties"})
     ET.SubElement(
         root, "Option", {"name": "type", "type": "QString", "value": "collection"}
+    )
+
+
+def _saddle_filter():
+    return (
+        "coalesce(attribute($currentfeature, 'type'), "
+        "attribute($currentfeature, 'feature_type'), '') = 'saddle'"
     )
 
 
@@ -44,7 +38,7 @@ def _saddle_marker(spec):
     options = ET.SubElement(layer, "Option", {"type": "Map"})
     for option_name, value in (
         ("angle", "0"),
-        ("color", ink),
+        ("color", "0,0,0,0"),
         ("fixedAspectRatio", "0"),
         ("horizontal_anchor_point", "1"),
         ("name", spec["marker"]),
@@ -102,9 +96,8 @@ def _convert_single(renderer, spec, saddle_filter):
 
 def patch_relief_point(layer, style=None):
     style = style or STYLE
-    field = _type_field(layer)
     spec = style["relief"]["saddle"]
-    saddle_filter = f"coalesce(\"{field}\", '') = 'saddle'"
+    saddle_filter = _saddle_filter()
     renderer = layer.find("renderer-v2")
     if renderer is None:
         raise RuntimeError("relief_point map has no renderer")

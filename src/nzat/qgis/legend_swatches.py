@@ -170,6 +170,11 @@ SWATCHES = (
     _row(
         "gate",
         (1655, 1576, 1780, 1668),
+        (
+            "road_line",
+            {"type": "road", "lane_count": 2, "surface": "sealed"},
+            _box_line((1655, 1576, 1780, 1668)),
+        ),
         _typed(
             "structure_point",
             "gate",
@@ -180,11 +185,17 @@ SWATCHES = (
     _row(
         "locked_gate",
         (1780, 1576, 1900, 1668),
+        (
+            "road_line",
+            {"type": "road", "lane_count": 2, "surface": "sealed"},
+            _box_line((1780, 1576, 1900, 1668)),
+        ),
         _typed(
             "structure_point",
             "gate",
             _box_pt((1780, 1576, 1900, 1668)),
             restrictions="locked",
+            subtype="locked",
             orientation=0,
         ),
     ),
@@ -461,6 +472,7 @@ SWATCHES = (
             "embankment",
             _box_line((1655, 6119, 1850, 6211)),
             relief_use="stopbank",
+            subtype="stopbank",
         ),
     ),
     _row(
@@ -476,6 +488,7 @@ SWATCHES = (
             "embankment",
             _box_line((1655, 6213, 2035, 6305)),
             relief_use="causeway",
+            subtype="causeway",
         ),
     ),
     _row(
@@ -560,6 +573,7 @@ SWATCHES = (
     _row(
         "floodgate",
         (1780, 7920, 1900, 8015),
+        ("water_line", {"type": "drain"}, _box_line((1780, 7920, 1900, 8015))),
         _typed(
             "structure_point",
             "floodgate",

@@ -132,6 +132,31 @@ POINT_XML = """
       <symbol name="5" type="marker">
         <layer class="SimpleMarker">
           <Option type="Map">
+            <Option name="name" type="QString" value="circle"/>
+            <Option name="size" type="QString" value="4"/>
+            <Option name="color" type="QString" value="141,208,17,255"/>
+          </Option>
+        </layer>
+        <layer class="SimpleMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="line"/>
+            <Option name="size" type="QString" value="1"/>
+            <Option name="outline_width" type="QString" value="0.2"/>
+            <Option name="outline_color" type="QString" value="0,0,0,255"/>
+            <Option name="color" type="QString" value="0,0,255,255"/>
+          </Option>
+        </layer>
+      </symbol>
+      <symbol name="7" type="marker">
+        <layer class="SimpleMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="circle"/>
+            <Option name="size" type="QString" value="4"/>
+            <Option name="color" type="QString" value="141,208,17,255"/>
+          </Option>
+        </layer>
+        <layer class="SimpleMarker">
+          <Option type="Map">
             <Option name="name" type="QString" value="line"/>
             <Option name="size" type="QString" value="1"/>
             <Option name="outline_width" type="QString" value="0.2"/>
@@ -141,6 +166,13 @@ POINT_XML = """
         </layer>
       </symbol>
       <symbol name="8" type="marker">
+        <layer class="SimpleMarker">
+          <Option type="Map">
+            <Option name="name" type="QString" value="circle"/>
+            <Option name="size" type="QString" value="4"/>
+            <Option name="color" type="QString" value="141,208,17,255"/>
+          </Option>
+        </layer>
         <layer class="SimpleMarker">
           <Option type="Map">
             <Option name="name" type="QString" value="line"/>
@@ -399,6 +431,10 @@ def test_owned_point_svgs_keep_the_linz_shape_at_the_stroke_floor():
         svg = SYMBOLS_DIR / svg_name
         assert marker.get("value") == spec["marker"]
         assert size.get("value") == str(spec["size_mm"])
+        fill = _option(layer, symbol_name, "SvgMarker", "color")
+        outline = _option(layer, symbol_name, "SvgMarker", "outline_color")
+        assert fill.get("value") == "0,0,0,0"
+        assert outline.get("value").startswith("0,0,0")
         assert spec["stroke_mm"] >= 0.15
         assert svg.is_file()
         assert _sheet_stroke_mm(svg, spec["size_mm"]) >= spec["stroke_mm"] - 1e-9
@@ -454,9 +490,27 @@ def test_floodgate_bar_matches_a_gate():
     spec = STYLE["structures"]["floodgate"]
     size = _option(layer, "5", "SimpleMarker", "size", "line")
     stroke = _option(layer, "5", "SimpleMarker", "outline_width", "line")
+    names = [
+        marker.find("Option/Option[@name='name']").get("value")
+        for marker in layer.findall(".//symbol[@name='5']/layer[@class='SimpleMarker']")
+    ]
     assert size.get("value") == str(spec["bar_size_mm"])
     assert stroke.get("value") == str(spec["bar_stroke_mm"])
     assert spec["bar_size_mm"] >= 1.4
+    assert names == ["line"]
+
+
+def test_unlocked_gate_drops_the_lime_circle():
+    # Catches the stock circle left under the gate bar.
+    layer = ET.fromstring(POINT_XML)
+    patch_structure_point(layer)
+    names = [
+        marker.find("Option/Option[@name='name']").get("value")
+        for marker in layer.findall(".//symbol[@name='7']/layer[@class='SimpleMarker']")
+    ]
+    size = _option(layer, "7", "SimpleMarker", "size", "line")
+    assert names == ["line"]
+    assert size.get("value") == "1.4"
 
 
 BUILDING_MAP_XML = """

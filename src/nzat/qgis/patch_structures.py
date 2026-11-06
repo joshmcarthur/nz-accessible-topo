@@ -15,6 +15,7 @@ from nzat.qgis.set_option import set_option
 SYMBOLS_DIR = Path(__file__).resolve().parent / "symbols"
 BIVOUAC_SVG = SYMBOLS_DIR / "nztopo50_bivouac.svg"
 MARKER_CLASSES = ("SvgMarker", "SimpleMarker")
+SVG_FILL_NONE = "0,0,0,0"
 # Structure-point rules whose LINZ SVG has a fixed-colour stroke under 0.15 mm.
 # Needles match the stock filter or label. Missing rules are left alone.
 OWNED_POINT_SVGS = (
@@ -96,7 +97,7 @@ def _copy_angle(src, dest):
     dest_props.append(copy.deepcopy(angle))
 
 
-def _svg_marker(spec, ink):
+def _svg_marker(spec, _ink):
     layer = ET.Element(
         "layer",
         {
@@ -110,13 +111,13 @@ def _svg_marker(spec, ink):
     options = ET.SubElement(layer, "Option", {"type": "Map"})
     for option_name, value in (
         ("angle", "0"),
-        ("color", ink),
+        ("color", SVG_FILL_NONE),
         ("fixedAspectRatio", "0"),
         ("horizontal_anchor_point", "1"),
         ("name", spec["marker"]),
         ("offset", "0,0"),
         ("offset_unit", "MM"),
-        ("outline_color", ink),
+        ("outline_color", rgba("#000000", 255)),
         ("outline_width", "0"),
         ("outline_width_unit", "MM"),
         ("scale_method", "diameter"),
@@ -136,13 +137,12 @@ def _patch_locked_gate(layer, style):
     symbol = _rule_symbol(layer, "locked")
     spec = style["structures"]["locked_gate"]
     ink = rgba(spec["bar_colour"], 255)
+    _keep_named_markers(symbol, {"line"})
     bar = None
-    for marker in list(symbol.findall("layer[@class='SimpleMarker']")):
-        name = _marker_name(marker)
-        if name == "square":
-            symbol.remove(marker)
-        elif name == "line":
+    for marker in symbol.findall("layer[@class='SimpleMarker']"):
+        if _marker_name(marker) == "line":
             bar = marker
+            break
     if bar is None:
         raise RuntimeError("locked gate has no bar")
     set_option(bar, "outline_color", ink)
@@ -176,12 +176,34 @@ def _find_rule_symbol(layer, *needles):
     return None
 
 
+def _drop_circle_markers(symbol):
+    for marker in list(symbol.findall("layer[@class='SimpleMarker']")):
+        if _marker_name(marker) in (None, "circle"):
+            symbol.remove(marker)
+
+
+def _keep_named_markers(symbol, keep):
+    for marker in list(symbol.findall("layer[@class='SimpleMarker']")):
+        if _marker_name(marker) not in keep:
+            symbol.remove(marker)
+
+
+def _clear_stroke_only_svg_fill(symbol):
+    marker = symbol.find("layer[@class='SvgMarker']")
+    if marker is None:
+        return
+    _put(marker, "color", SVG_FILL_NONE)
+    _put(marker, "outline_color", rgba("#000000", 255))
+    _drop_circle_markers(symbol)
+
+
 def _set_svg_marker(symbol, spec):
     marker = symbol.find("layer[@class='SvgMarker']")
     if marker is None:
         raise RuntimeError("symbol has no SvgMarker")
     set_option(marker, "name", spec["marker"])
     set_option(marker, "size", str(spec["size_mm"]))
+    _clear_stroke_only_svg_fill(symbol)
 
 
 def _patch_owned_point_svgs(layer, style):
@@ -250,11 +272,49 @@ def _patch_gas_pipeline(layer, style):
     _put(line, "use_custom_dash", "1")
 
 
+def _gate_else_symbol(layer):
+    renderer = layer.find("renderer-v2")
+    if renderer is None:
+        return None
+    for rule in renderer.iter("rule"):
+        blob = f"{rule.get('filter') or ''} {rule.get('label') or ''}".lower()
+        if "gate" not in blob or "flood" in blob:
+            continue
+        for child in rule.findall("rule"):
+            if (child.get("filter") or "").strip() != "ELSE":
+                continue
+            name = child.get("symbol")
+            for symbol in renderer.findall("symbols/symbol"):
+                if symbol.get("name") == name:
+                    return symbol
+    return None
+
+
+def _patch_unlocked_gate(layer, style):
+    symbol = _gate_else_symbol(layer)
+    if symbol is None:
+        return
+    spec = style["structures"]["floodgate"]
+    _keep_named_markers(symbol, {"line"})
+    bar = None
+    for marker in symbol.findall("layer[@class='SimpleMarker']"):
+        if _marker_name(marker) == "line":
+            bar = marker
+            break
+    if bar is None:
+        return
+    set_option(bar, "color", rgba("#000000", 255))
+    set_option(bar, "outline_color", rgba("#000000", 255))
+    set_option(bar, "size", str(spec["bar_size_mm"]))
+    set_option(bar, "outline_width", str(spec["bar_stroke_mm"]))
+
+
 def _patch_floodgate(layer, style):
     symbol = _find_rule_symbol(layer, "floodgate")
     if symbol is None:
         return
     spec = style["structures"]["floodgate"]
+    _keep_named_markers(symbol, {"line"})
     bar = None
     for marker in symbol.findall("layer[@class='SimpleMarker']"):
         if _marker_name(marker) == "line":
@@ -262,8 +322,29 @@ def _patch_floodgate(layer, style):
             break
     if bar is None:
         raise RuntimeError("floodgate has no bar")
+    set_option(bar, "color", rgba("#000000", 255))
+    set_option(bar, "outline_color", rgba("#000000", 255))
     set_option(bar, "size", str(spec["bar_size_mm"]))
     set_option(bar, "outline_width", str(spec["bar_stroke_mm"]))
+
+
+def _patch_windmill(layer):
+    renderer = layer.find("renderer-v2")
+    if renderer is None:
+        return
+    names = set()
+    for rule in renderer.iter("rule"):
+        blob = f"{rule.get('filter') or ''} {rule.get('label') or ''}".lower()
+        if "windmill" not in blob:
+            continue
+        if rule.get("symbol"):
+            names.add(rule.get("symbol"))
+        for child in rule.findall("rule"):
+            if child.get("symbol"):
+                names.add(child.get("symbol"))
+    for symbol in renderer.findall("symbols/symbol"):
+        if symbol.get("name") in names:
+            _clear_stroke_only_svg_fill(symbol)
 
 
 def _greenhouse_fill():
@@ -342,9 +423,11 @@ def patch_building(layer, style=None):
 def patch_structure_point(layer, style=None):
     style = style or STYLE
     _patch_locked_gate(layer, style)
+    _patch_unlocked_gate(layer, style)
     _patch_bivouac(layer, style)
     _patch_owned_point_svgs(layer, style)
     _patch_floodgate(layer, style)
+    _patch_windmill(layer)
 
 
 def patch_structure_line(layer, style=None):
