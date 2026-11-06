@@ -31,6 +31,7 @@ def test_vegetation_reads_the_style_file():
                   <symbol name="1" type="fill">
                     <layer class="SimpleFill"><Option type="Map">
                       <Option name="color" type="QString" value="164,214,94,102"/>
+                      <Option name="outline_color" type="QString" value="167,192,94,255"/>
                     </Option></layer>
                     <layer class="PointPatternFill">
                       <Option type="Map">
@@ -48,13 +49,28 @@ def test_vegetation_reads_the_style_file():
                   </symbol>
               <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
                 <Option name="distance_x" type="QString" value="5"/>
-              </Option></layer></symbol>
+                <Option name="distance_y" type="QString" value="5"/>
+                <Option name="clip_mode" type="QString" value="completely_within"/>
+              </Option>
+              <symbol type="marker">
+                <layer class="SimpleMarker">
+                  <Option type="Map">
+                    <Option name="name" type="QString" value="third_arc"/>
+                    <Option name="size" type="QString" value="1.2"/>
+                    <Option name="color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_width" type="QString" value="0"/>
+                  </Option>
+                </layer>
+              </symbol>
+              </layer></symbol>
               <symbol name="3" type="fill">
                 <layer class="LinePatternFill"><Option type="Map">
                   <Option name="angle" type="QString" value="45"/>
                 </Option></layer>
                 <layer class="SimpleFill"><Option type="Map">
                 <Option name="color" type="QString" value="164,214,94,51"/>
+                <Option name="outline_color" type="QString" value="167,192,94,255"/>
               </Option></layer></symbol>
             </symbols>
           </renderer-v2>
@@ -85,8 +101,37 @@ def test_vegetation_reads_the_style_file():
     tree = native.find("layer[@class='PointPatternFill']//Option[@name='color']")
     assert tree.get("value").startswith("63,107,50")
     scattered = layer.find(".//symbol[@name='2']")
-    assert scattered.find("layer[@class='PointPatternFill']") is not None
     assert scattered.find("layer[@class='SimpleFill']") is None
+    scattered_dots = scattered.find("layer[@class='PointPatternFill']")
+    assert scattered_dots.find("Option/Option[@name='distance_x']").get("value") == "5"
+    assert scattered_dots.find("Option/Option[@name='distance_y']").get("value") == "5"
+    assert (
+        scattered_dots.find("Option/Option[@name='clip_mode']").get("value")
+        == "completely_within"
+    )
+    scattered_mark = scattered_dots.find("symbol/layer[@class='SimpleMarker']")
+    assert (
+        scattered_mark.find("Option/Option[@name='name']").get("value") == "third_arc"
+    )
+    assert scattered_mark.find("Option/Option[@name='size']").get("value") == "1.4"
+    assert (
+        float(scattered_mark.find("Option/Option[@name='outline_width']").get("value"))
+        == 0.18
+    )
+    assert (
+        scattered_mark.find("Option/Option[@name='color']")
+        .get("value")
+        .startswith("106,154,80")
+    )
+    native_outline = native.find(
+        "layer[@class='SimpleFill']/Option/Option[@name='outline_color']"
+    )
+    assert native_outline.get("value").startswith("133,158,62")
+    scrub_outline = scrub.find(
+        "layer[@class='SimpleFill']/Option/Option[@name='outline_color']"
+    )
+    assert scrub_outline.get("value").startswith("133,158,62")
     patch_vegetation(layer)
     assert len(scrub.findall("layer[@class='PointPatternFill']")) == 1
     assert scrub.find("layer[@class='LinePatternFill']") is None
+    assert len(scattered.findall("layer[@class='PointPatternFill']")) == 1

@@ -47,7 +47,8 @@ def test_style_file_has_no_sheet_code():
     assert style["reference_inks"]["grid"] == "#269FD2"
     assert style["reference_inks"]["urban_fill"] == "#BCBAB6"
     assert style["reference_inks"]["island_outline"] == "#0083BB"
-    assert style["reference_inks"]["vegetation_outline"] == "#A7C05E"
+    assert style["reference_inks"]["vegetation_outline"] == "#859E3E"
+    assert style["vegetation"]["scattered"]["distance_mm"] == 5
     assert style["vegetation"]["exotic"]["colour"] == "#A4D65E"
     assert style["vegetation"]["exotic"]["alpha"] == 0.2
     assert style["fonts"]["raster_natural_style"] == "Regular"

@@ -64,7 +64,7 @@
     "grid": "#269FD2",
     "urban_fill": "#BCBAB6",
     "island_outline": "#0083BB",
-    "vegetation_outline": "#A7C05E"
+    "vegetation_outline": "#859E3E"
   },
   "vegetation": {
     "native": {
@@ -74,7 +74,7 @@
     },
     "exotic": {"colour": "#A4D65E", "alpha": 0.2},
     "scrub": {"colour": "#A3CC90", "alpha": 26},
-    "scattered": {"colour": "#E0EDD8"},
+    "scattered": {"colour": "#E0EDD8", "distance_mm": 5},
     "scrub_dots": {
       "colour": "#6A9A50",
       "marker": "third_arc",

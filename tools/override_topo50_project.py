@@ -17,6 +17,8 @@ Changes are on the map layers the research names:
 - water_point: hot and cold springs get different glyphs (R-17)
 - vegetation map: native forest and scrub use a larger lightness step (R-10, R-17)
 - vegetation map: native tree markers use vegetation.native.marker (R-10)
+- vegetation map: scattered scrub uses vegetation.scrub_dots on a 5 mm grid, with no fill
+- vegetation map: polygon outlines use reference_inks.vegetation_outline (R-01)
 - vegetation map: draws below contour so the darker fills do not hide relief (R-04)
 - water_line map, shelterbelt, grid: stock RGB becomes the owned reference inks (R-01)
 - water_line map: rivers and canals draw at water.stream_width_mm, drains at water.drain_width_mm (F-31)
