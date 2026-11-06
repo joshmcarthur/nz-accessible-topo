@@ -109,3 +109,4 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0104 — N-5 themes applied, N-6 legend rows, BX24 grid redrawn](0104-n5-n6-legend-and-grid.md)
 - [0105 — Stream ink back to `#004C99`](0105-stream-ink-restored.md)
 - [0106 — Legend swatches: no lime disc, relief ticks draw](0106-legend-swatch-lime-and-empty.md)
+- [0107 — N-1 to N-6 visual sign-off](0107-n1-n6-visual-signoff.md)

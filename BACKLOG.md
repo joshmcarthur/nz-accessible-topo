@@ -1,7 +1,7 @@
 # Backlog
 
-Status as of 2026-11-06, after log 0106. Start with "Next work" below.
-Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#004C99` (log 0105; `#00276D` rejected beside tracks). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. The order now is: Josh visual sign-off, then full LINZ sheets (N-7), then vector parity (N-8).
+Status as of 2026-11-06, after log 0107. Start with "Next work" below.
+Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#004C99` (log 0105; `#00276D` rejected beside tracks). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. Josh signed off the BX24 face (log 0107). Next is full LINZ sheets (N-7), then vector parity (N-8).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
 Black names on the urban fill take an urban-fill halo from a precomputed `urban_text.json` (B-45, log 0093). The sheet project has no `urban_text.json` yet, so sheet halos stay paper.
@@ -36,11 +36,11 @@ with `kanban` support (11.4+); validated with mermaid 12.2.0.
 
 ## Next work (from 2026-11-06)
 
-Research is at log 0106. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Stream is `#004C99`. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
+Research is at log 0107. N-1 to N-6 (except fumarole, stream-disappearing, and no-class rows) are in apply and the legend. Stream is `#004C99`. Work these items in order. Each item says what to change, where, how to check it, and when it is done. Josh's decisions are quoted. Do not reopen them.
 
-### Visual sign-off for N-1 to N-6
+### Visual sign-off for N-1 to N-6 — done (log 0107)
 
-Grid, legend, and `/symbols/` are redrawn (logs 0104–0106). Josh reviews `render/bx24-4km/*-accessible.png` and `/symbols/`. Stream `#004C99` must read as water beside a black track. Closed × must still pass G1. Lime discs and empty relief boxes are fixed (log 0106). Cemetery is still a cyan slab. Weir and breakwater are process-blue NULL bars. Fumarole stays proposed.
+Josh reviewed the rebuilt face and `/symbols/`. Quote: "things are looking good." Stream `#004C99` and the closed × stay. Sugarloaf keeps the trig plus the Mast name; do not add a second mast glyph there. Cemetery is still a cyan slab. Weir and breakwater are process-blue NULL bars. Fumarole stays proposed.
 
 ### N-1 to N-4 — applied (do not reopen)
 
