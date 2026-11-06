@@ -43,7 +43,7 @@ def test_style_file_has_no_sheet_code():
     assert style["vegetation"]["scrub_dots"]["size_mm"] == 1.4
     assert style["vegetation"]["scrub_dots"]["colour"] == "#6A9A50"
     assert style["vegetation"]["scrub_dots"]["stroke_mm"] > 0
-    assert style["reference_inks"]["shelterbelt"] == "#1D9D00"
+    assert style["reference_inks"]["shelterbelt"] == "#008A00"
     assert style["reference_inks"]["grid"] == "#269FD2"
     assert style["reference_inks"]["urban_fill"] == "#BCBAB6"
     assert style["reference_inks"]["island_outline"] == "#0083BB"
