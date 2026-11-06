@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 14">
+  <!-- Deciduous tree: trunk + rounded crown. Shape informed by Mapbox Maki park icon (CC0 1.0). -->
+  <line
+    x1="6"
+    y1="13"
+    x2="6"
+    y2="7.8"
+    stroke="param(outline) #008A00"
+    stroke-linecap="round"
+    stroke-width="1.1"
+  />
+  <path
+    d="M6 7.8 C4.1 7.8 2.6 5.4 3.6 3.2 C4.7 1.6 6 3.1 6 3.1 C6 3.1 7.3 1.6 8.4 3.2 C9.4 5.4 7.9 7.8 6 7.8 Z"
+    fill="none"
+    stroke="param(outline) #008A00"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.1"
+  />
+</svg>

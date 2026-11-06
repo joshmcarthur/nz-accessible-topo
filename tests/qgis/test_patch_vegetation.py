@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-from nzat.qgis.patch_vegetation import patch_vegetation
+from nzat.qgis.patch_vegetation import install_owned_symbols, patch_vegetation
 from nzat.style.load_rules import load_rules
 from nzat.style.vector_params import P
 from nzat.style.vegetation_fill import vegetation_fill
@@ -135,3 +135,48 @@ def test_vegetation_reads_the_style_file():
     assert len(scrub.findall("layer[@class='PointPatternFill']")) == 1
     assert scrub.find("layer[@class='LinePatternFill']") is None
     assert len(scattered.findall("layer[@class='PointPatternFill']")) == 1
+
+
+def test_trees_use_owned_stroke_svg():
+    layer = ET.fromstring(
+        """
+        <maplayer>
+          <layername>vegetation_point map</layername>
+          <renderer-v2 type="singleSymbol"><symbols>
+            <symbol name="0" type="marker">
+              <layer class="SimpleMarker">
+                <Option type="Map">
+                  <Option name="name" type="QString" value="circle"/>
+                  <Option name="size" type="QString" value="0.05"/>
+                  <Option name="color" type="QString" value="148,255,59,255"/>
+                  <Option name="outline_color" type="QString" value="35,35,35,0"/>
+                </Option>
+              </layer>
+            </symbol>
+          </symbols></renderer-v2>
+        </maplayer>
+        """
+    )
+    patch_vegetation(layer)
+    marker = layer.find("renderer-v2/symbols/symbol/layer[@class='SvgMarker']")
+    assert marker is not None
+    assert layer.find("renderer-v2/symbols/symbol/layer[@class='SimpleMarker']") is None
+    assert (
+        marker.find("Option/Option[@name='name']").get("value")
+        == "./symbol/nztopo50_tree_stroke.svg"
+    )
+    assert marker.find("Option/Option[@name='size']").get("value") == "0.2"
+    assert (
+        marker.find("Option/Option[@name='color']").get("value").startswith("0,138,0")
+    )
+    patch_vegetation(layer)
+    assert (
+        len(layer.findall("renderer-v2/symbols/symbol/layer[@class='SvgMarker']")) == 1
+    )
+
+
+def test_install_owned_symbols_copies_tree_svg(tmp_path):
+    install_owned_symbols(tmp_path)
+    copied = tmp_path / "symbol" / "nztopo50_tree_stroke.svg"
+    assert copied.is_file()
+    assert copied.read_text().startswith("<?xml")

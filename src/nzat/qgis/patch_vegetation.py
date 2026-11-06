@@ -1,5 +1,7 @@
+import shutil
 import uuid
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
 from nzat.qgis.category_symbol import category_symbol
 from nzat.qgis.defaults import STYLE
@@ -246,3 +248,13 @@ def _paint_native_marker(native, style):
             child = option.find(f"Option[@name='{name}']")
             if child is not None:
                 child.set("value", ink)
+
+
+SYMBOLS_DIR = Path(__file__).resolve().parent / "symbols"
+
+
+def install_owned_symbols(project_dir):
+    dest_dir = Path(project_dir) / "symbol"
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    for svg in SYMBOLS_DIR.glob("*.svg"):
+        shutil.copyfile(svg, dest_dir / svg.name)

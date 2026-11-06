@@ -13,7 +13,7 @@ from nzat.qgis.patch_road_widths import patch_road_widths
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_tracks import patch_tracks
-from nzat.qgis.patch_vegetation import patch_vegetation
+from nzat.qgis.patch_vegetation import install_owned_symbols, patch_vegetation
 from nzat.qgis.patch_water_line import patch_water_line
 from nzat.qgis.project_palette import project_palette
 
@@ -65,7 +65,7 @@ def apply(root, project_dir=None):
         elif name == "track_line map":
             patch_tracks(layer)
             seen.add(name)
-        elif name == "vegetation map":
+        elif name in ("vegetation map", "vegetation_point map"):
             patch_vegetation(layer)
             seen.add(name)
         elif name == "water_point":
@@ -79,6 +79,7 @@ def apply(root, project_dir=None):
         "contour",
         "track_line map",
         "vegetation map",
+        "vegetation_point map",
         "water_point",
         "water_line map",
     } - seen
@@ -89,4 +90,6 @@ def apply(root, project_dir=None):
     patch_draw_order(root)
     patch_hillshade(root, project_dir)
     patch_legend_picture(root)
+    if project_dir:
+        install_owned_symbols(project_dir)
     return labels

@@ -75,6 +75,11 @@
     "exotic": {"colour": "#A4D65E", "alpha": 0.2},
     "scrub": {"colour": "#A3CC90", "alpha": 26},
     "scattered": {"colour": "#E0EDD8", "distance_mm": 5},
+    "trees": {
+      "marker": "./symbol/nztopo50_tree_stroke.svg",
+      "size_mm": 0.2,
+      "legend_size_mm": 1.4
+    },
     "scrub_dots": {
       "colour": "#6A9A50",
       "marker": "third_arc",

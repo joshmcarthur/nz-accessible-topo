@@ -66,7 +66,7 @@ def test_overrides_skip_the_print_layout():
               <layername>track_line map</layername>
               <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
               <renderer-v2 type="categorizedSymbol">
-                <categories><category value="foot" symbol="1"/></categories>
+                <categories><category value="foot" symbol="1"/><category value="vehicle" symbol="2"/></categories>
                 <symbols>
                   <symbol name="1" type="line">
                     <layer class="SimpleLine">
@@ -77,6 +77,15 @@ def test_overrides_skip_the_print_layout():
                       <data_defined_properties><Option type="Map">
                         <Option name="properties"/>
                       </Option></data_defined_properties>
+                    </layer>
+                  </symbol>
+                  <symbol name="2" type="line">
+                    <layer class="SimpleLine">
+                      <Option type="Map">
+                        <Option name="use_custom_dash" type="QString" value="1"/>
+                        <Option name="customdash" type="QString" value="2.5;0.5"/>
+                        <Option name="line_width" type="QString" value="0.15"/>
+                      </Option>
                     </layer>
                   </symbol>
                 </symbols>
@@ -93,15 +102,46 @@ def test_overrides_skip_the_print_layout():
                 <symbols>
                   <symbol name="1" type="fill"><layer class="SimpleFill"><Option type="Map">
                     <Option name="color" type="QString" value="164,214,94,102"/>
+                    <Option name="outline_color" type="QString" value="167,192,94,255"/>
                   </Option></layer></symbol>
                   <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
                     <Option name="distance_x" type="QString" value="5"/>
-                  </Option></layer></symbol>
+                    <Option name="distance_y" type="QString" value="5"/>
+                    <Option name="clip_mode" type="QString" value="completely_within"/>
+                  </Option>
+                  <symbol type="marker">
+                    <layer class="SimpleMarker">
+                      <Option type="Map">
+                        <Option name="name" type="QString" value="third_arc"/>
+                        <Option name="size" type="QString" value="1.2"/>
+                        <Option name="color" type="QString" value="178,223,138,255"/>
+                        <Option name="outline_color" type="QString" value="178,223,138,255"/>
+                        <Option name="outline_width" type="QString" value="0"/>
+                      </Option>
+                    </layer>
+                  </symbol>
+                  </layer></symbol>
                   <symbol name="3" type="fill"><layer class="SimpleFill"><Option type="Map">
                     <Option name="color" type="QString" value="164,214,94,51"/>
+                    <Option name="outline_color" type="QString" value="167,192,94,255"/>
                   </Option></layer></symbol>
                 </symbols>
               </renderer-v2>
+            </maplayer>
+            <maplayer>
+              <layername>vegetation_point map</layername>
+              <renderer-v2 type="singleSymbol"><symbols>
+                <symbol name="0" type="marker">
+                  <layer class="SimpleMarker">
+                    <Option type="Map">
+                      <Option name="name" type="QString" value="circle"/>
+                      <Option name="size" type="QString" value="0.05"/>
+                      <Option name="color" type="QString" value="148,255,59,255"/>
+                      <Option name="outline_color" type="QString" value="35,35,35,0"/>
+                    </Option>
+                  </layer>
+                </symbol>
+              </symbols></renderer-v2>
             </maplayer>
             <maplayer>
               <layername>water_point</layername>
@@ -207,13 +247,18 @@ def test_overrides_skip_the_print_layout():
         "//Option[@name='outlineWidth']/Option[@name='expression']"
     )
     assert stream_width.get("value") == (
-        "CASE WHEN \"type\" = 'drain' THEN 0.15 ELSE 0.25 END"
+        "CASE WHEN \"type\" = 'drain' THEN 0.15 ELSE 0.35 END"
     )
     scattered = root.find(
         "projectlayers/maplayer[layername='vegetation map']//symbol[@name='2']"
     )
     assert scattered.find("layer[@class='PointPatternFill']") is not None
     assert scattered.find("layer[@class='SimpleFill']") is None
+    tree = root.find(
+        "projectlayers/maplayer[layername='vegetation_point map']"
+        "//layer[@class='SvgMarker']/Option/Option[@name='name']"
+    )
+    assert tree.get("value") == "./symbol/nztopo50_tree_stroke.svg"
     track = root.find(
         "projectlayers/maplayer[layername='track_line map']//symbol[@name='1']"
     )
@@ -266,7 +311,7 @@ def test_vegetation_map_draws_below_contour():
               <layername>track_line map</layername>
               <fieldConfiguration><field name="status"/><field name="track_type"/></fieldConfiguration>
               <renderer-v2 type="categorizedSymbol">
-                <categories><category value="foot" symbol="1"/></categories>
+                <categories><category value="foot" symbol="1"/><category value="vehicle" symbol="2"/></categories>
                 <symbols>
                   <symbol name="1" type="line">
                     <layer class="SimpleLine">
@@ -277,6 +322,15 @@ def test_vegetation_map_draws_below_contour():
                       <data_defined_properties><Option type="Map">
                         <Option name="properties"/>
                       </Option></data_defined_properties>
+                    </layer>
+                  </symbol>
+                  <symbol name="2" type="line">
+                    <layer class="SimpleLine">
+                      <Option type="Map">
+                        <Option name="use_custom_dash" type="QString" value="1"/>
+                        <Option name="customdash" type="QString" value="2.5;0.5"/>
+                        <Option name="line_width" type="QString" value="0.15"/>
+                      </Option>
                     </layer>
                   </symbol>
                 </symbols>
@@ -293,15 +347,46 @@ def test_vegetation_map_draws_below_contour():
                 <symbols>
                   <symbol name="1" type="fill"><layer class="SimpleFill"><Option type="Map">
                     <Option name="color" type="QString" value="164,214,94,102"/>
+                    <Option name="outline_color" type="QString" value="167,192,94,255"/>
                   </Option></layer></symbol>
                   <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
                     <Option name="distance_x" type="QString" value="5"/>
-                  </Option></layer></symbol>
+                    <Option name="distance_y" type="QString" value="5"/>
+                    <Option name="clip_mode" type="QString" value="completely_within"/>
+                  </Option>
+                  <symbol type="marker">
+                    <layer class="SimpleMarker">
+                      <Option type="Map">
+                        <Option name="name" type="QString" value="third_arc"/>
+                        <Option name="size" type="QString" value="1.2"/>
+                        <Option name="color" type="QString" value="178,223,138,255"/>
+                        <Option name="outline_color" type="QString" value="178,223,138,255"/>
+                        <Option name="outline_width" type="QString" value="0"/>
+                      </Option>
+                    </layer>
+                  </symbol>
+                  </layer></symbol>
                   <symbol name="3" type="fill"><layer class="SimpleFill"><Option type="Map">
                     <Option name="color" type="QString" value="164,214,94,51"/>
+                    <Option name="outline_color" type="QString" value="167,192,94,255"/>
                   </Option></layer></symbol>
                 </symbols>
               </renderer-v2>
+            </maplayer>
+            <maplayer>
+              <layername>vegetation_point map</layername>
+              <renderer-v2 type="singleSymbol"><symbols>
+                <symbol name="0" type="marker">
+                  <layer class="SimpleMarker">
+                    <Option type="Map">
+                      <Option name="name" type="QString" value="circle"/>
+                      <Option name="size" type="QString" value="0.05"/>
+                      <Option name="color" type="QString" value="148,255,59,255"/>
+                      <Option name="outline_color" type="QString" value="35,35,35,0"/>
+                    </Option>
+                  </layer>
+                </symbol>
+              </symbols></renderer-v2>
             </maplayer>
             <maplayer>
               <layername>water_point</layername>
