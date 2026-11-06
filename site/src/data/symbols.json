@@ -7,9 +7,9 @@
   "mark_mm": 1.4
  },
  "counts": {
-  "done": 71,
-  "proposed": 1,
-  "blocked": 54
+  "done": 91,
+  "proposed": 4,
+  "blocked": 31
  },
  "excluded": [
   "relief_line map ELSE rule (#F000EC)",
@@ -667,25 +667,16 @@
      "key": "tunnel",
      "section": "Roads and tracks",
      "label": "Tunnel",
-     "layer": "tunnel_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "tunnel_line (Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/tunnel-linz.png",
-     "current_image": null,
+     "current_image": "symbols/tunnel-ours.png",
      "measured": {
-      "text": "Stock road orange with black brackets and dashed casing.",
-      "source": "stock legend image",
+      "text": "Black 0.26 mm. tunnel_line is one symbol for road and rail tunnels.",
+      "source": "applied project",
       "inks": [
-       {
-        "hex": "#F19100",
-        "name": "road fill",
-        "role": "accent",
-        "on": null,
-        "grey": 2.39,
-        "red": 1.13,
-        "worst_cvd": 33.3
-       },
        {
         "hex": "#000000",
         "name": "black",
@@ -711,82 +702,29 @@
        },
        {
         "rule": "F-31",
-        "label": "Stroke width",
+        "label": "Line width",
         "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
+        "detail": "0.26 mm, floor 0.15 mm"
        }
       ],
       "pass": true
      },
-     "proposal": {
-      "text": "Keep the LINZ brackets and dashed casing. Road fill #EC7000, brackets and casing in the casing ink, 0.2 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#EC7000",
-        "name": "road fill",
-        "role": "accent",
-        "on": null,
-        "grey": 3.05,
-        "red": 1.18,
-        "worst_cvd": 35.8
-       },
-       {
-        "hex": "#232323",
-        "name": "casing",
-        "role": "carrier",
-        "on": null,
-        "grey": 15.72,
-        "red": 15.72,
-        "worst_cvd": 79.4
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "casing #232323 on paper: 15.72:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "casing #232323 on paper: 15.72:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     }
+     "proposal": null
     },
     {
      "key": "tunnel_under_road",
      "section": "Roads and tracks",
      "label": "Tunnel under road",
-     "layer": "tunnel_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "tunnel_line (Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/tunnel_under_road-linz.png",
-     "current_image": null,
+     "current_image": "symbols/tunnel_under_road-ours.png",
      "measured": {
-      "text": "Stock road orange with black brackets.",
-      "source": "stock legend image",
+      "text": "Black 0.26 mm. Same tunnel_line symbol as Tunnel.",
+      "source": "applied project",
       "inks": [
-       {
-        "hex": "#F19100",
-        "name": "road fill",
-        "role": "accent",
-        "on": null,
-        "grey": 2.39,
-        "red": 1.13,
-        "worst_cvd": 33.3
-       },
        {
         "hex": "#000000",
         "name": "black",
@@ -812,58 +750,14 @@
        },
        {
         "rule": "F-31",
-        "label": "Stroke width",
+        "label": "Line width",
         "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
+        "detail": "0.26 mm, floor 0.15 mm"
        }
       ],
       "pass": true
      },
-     "proposal": {
-      "text": "Keep the LINZ brackets. Road fill #EC7000, brackets in the casing ink, 0.2 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#EC7000",
-        "name": "road fill",
-        "role": "accent",
-        "on": null,
-        "grey": 3.05,
-        "red": 1.18,
-        "worst_cvd": 35.8
-       },
-       {
-        "hex": "#232323",
-        "name": "casing",
-        "role": "carrier",
-        "on": null,
-        "grey": 15.72,
-        "red": 15.72,
-        "worst_cvd": 79.4
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "casing #232323 on paper: 15.72:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "casing #232323 on paper: 15.72:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     }
+     "proposal": null
     },
     {
      "key": "bridge_two_lane",
@@ -874,7 +768,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/bridge_two_lane-linz.png",
-     "current_image": null,
+     "current_image": "symbols/bridge_two_lane-ours.png",
      "measured": {
       "text": "Keep the LINZ bracket. Casing lines 0.2 mm, end ticks 1.4 mm, in the casing ink.",
       "source": "applied project",
@@ -928,7 +822,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/bridge_one_lane-linz.png",
-     "current_image": null,
+     "current_image": "symbols/bridge_one_lane-ours.png",
      "measured": {
       "text": "White 0.51 mm deck with a 0.2 mm casing line.",
       "source": "applied project",
@@ -1017,7 +911,7 @@
       "pass": true
      },
      "proposal": {
-      "text": "Keep the LINZ stream line across the road, in stream #00276D. It runs past the casing onto paper. On the road fill it is only 2.8:1.",
+      "text": "Keep the LINZ stream line across the road, in stream #004C99. It runs past the casing onto paper. On the road fill it is only 2.8:1.",
       "source": "applied project",
       "inks": [
        {
@@ -1030,13 +924,13 @@
         "worst_cvd": 35.8
        },
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "ford mark",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -1044,13 +938,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "ford mark #00276D on paper: 13.90:1"
+        "detail": "ford mark #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "ford mark #00276D on paper: 21.00:1"
+        "detail": "ford mark #004C99 on paper: 21.00:1"
        }
       ],
       "pass": true
@@ -1065,7 +959,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/gate-linz.png",
-     "current_image": null,
+     "current_image": "symbols/gate-ours.png",
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm.",
       "source": "applied project",
@@ -1119,7 +1013,7 @@
      "status": "done",
      "note": "Josh: lock is a square, not a second bar (cattlestop).",
      "linz_image": "symbols/locked_gate-linz.png",
-     "current_image": null,
+     "current_image": "symbols/locked_gate-ours.png",
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm, with a filled black 0.6 mm square at its middle. Not a second bar.",
       "source": "applied project",
@@ -1358,55 +1252,13 @@
      "key": "cableway",
      "section": "Roads and tracks",
      "label": "Cableway",
-     "layer": "structure_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (cableway_people; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cableway-linz.png",
-     "current_image": null,
+     "current_image": "symbols/cableway-ours.png",
      "measured": {
-      "text": "Black bar with end dots.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.25 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black, 1.6 mm, stroke 0.2 mm.",
       "source": "applied project",
       "inks": [
@@ -1447,7 +1299,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "walkwire",
@@ -1558,7 +1411,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/rail_double-linz.png",
-     "current_image": null,
+     "current_image": "symbols/rail_double-ours.png",
      "measured": {
       "text": "Black 0.6 mm with white dashes inside. Filter coalesce(track_type) = multiple.",
       "source": "applied project",
@@ -1606,7 +1459,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/rail_single-linz.png",
-     "current_image": null,
+     "current_image": "symbols/rail_single-ours.png",
      "measured": {
       "text": "Black 0.25 mm.",
       "source": "applied project",
@@ -1851,50 +1704,14 @@
      "key": "rail_tunnel",
      "section": "Railways",
      "label": "Railway tunnel",
-     "layer": "tunnel_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "tunnel_line (Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/rail_tunnel-linz.png",
-     "current_image": null,
+     "current_image": "symbols/rail_tunnel-ours.png",
      "measured": {
-      "text": "Black dashes between brackets.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
-      "text": "Keep the LINZ shape. Black dashes and brackets, 0.2 mm.",
+      "text": "Black 0.26 mm. Same tunnel_line symbol as Tunnel.",
       "source": "applied project",
       "inks": [
        {
@@ -1924,11 +1741,12 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
+        "detail": "0.26 mm, floor 0.15 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "level_crossing",
@@ -1939,7 +1757,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/level_crossing-linz.png",
-     "current_image": null,
+     "current_image": "symbols/level_crossing-ours.png",
      "measured": {
       "text": "Road with casing over the black railway.",
       "source": "applied project",
@@ -1996,7 +1814,7 @@
      "status": "done",
      "note": "Same paint as Bridge: two lane.",
      "linz_image": "symbols/road_over_railway-linz.png",
-     "current_image": null,
+     "current_image": "symbols/road_over_railway-ours.png",
      "measured": {
       "text": "Keep the LINZ bracket. Casing lines 0.2 mm, end ticks 1.4 mm, in the casing ink.",
       "source": "applied project",
@@ -2227,7 +2045,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/residential_area-linz.png",
-     "current_image": null,
+     "current_image": "symbols/residential_area-ours.png",
      "measured": {
       "text": "Urban fill #BCBAB6. Buildings and labels carry it.",
       "source": "applied project",
@@ -2256,7 +2074,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/large_buildings-linz.png",
-     "current_image": null,
+     "current_image": "symbols/large_buildings-ours.png",
      "measured": {
       "text": "Solid black fill.",
       "source": "applied project",
@@ -2298,7 +2116,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/isolated_building-linz.png",
-     "current_image": null,
+     "current_image": "symbols/isolated_building-ours.png",
      "measured": {
       "text": "Black square 0.5 mm.",
       "source": "applied project",
@@ -2346,7 +2164,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/homestead-linz.png",
-     "current_image": null,
+     "current_image": "symbols/homestead-ours.png",
      "measured": {
       "text": "Black square 0.5 mm with its name.",
       "source": "applied project",
@@ -2394,7 +2212,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/stockyard-linz.png",
-     "current_image": null,
+     "current_image": "symbols/stockyard-ours.png",
      "measured": {
       "text": "Black grid square 1.6 mm, strokes 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -2448,7 +2266,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/glasshouse-linz.png",
-     "current_image": null,
+     "current_image": "symbols/glasshouse-ours.png",
      "measured": {
       "text": "Black 0.2 mm outline, no fill. Filter coalesce(subtype) = greenhouse.",
       "source": "applied project",
@@ -2496,7 +2314,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/church-linz.png",
-     "current_image": null,
+     "current_image": "symbols/church-ours.png",
      "measured": {
       "text": "Black square with a cross, 1.4 mm tall, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -2545,55 +2363,13 @@
      "key": "cemetery",
      "section": "Miscellaneous",
      "label": "Cemetery",
-     "layer": "landuse (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "landuse (cemetery; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cemetery-linz.png",
-     "current_image": null,
+     "current_image": "symbols/cemetery-ours.png",
      "measured": {
-      "text": "Black dashed outline with crosses.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": false,
-        "detail": "1.0 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Dashed outline 0.2 mm, crosses 1.4 mm, stroke 0.15 mm.",
       "source": "applied project",
       "inks": [
@@ -2634,7 +2410,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "grave",
@@ -2735,49 +2512,13 @@
      "key": "training_track",
      "section": "Miscellaneous",
      "label": "Training track",
-     "layer": "landuse (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "landuse (racetrack; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/training_track-linz.png",
-     "current_image": null,
+     "current_image": "symbols/training_track-ours.png",
      "measured": {
-      "text": "Black dashed oval.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.25 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black dashed oval 0.25 mm.",
       "source": "applied project",
       "inks": [
@@ -2812,7 +2553,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "golf_course",
@@ -2823,9 +2565,9 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/golf_course-linz.png",
-     "current_image": null,
+     "current_image": "symbols/golf_course-ours.png",
      "measured": {
-      "text": "Black flag 2 mm, stroke 0.17 mm. The set #A47158 does not draw: the SVG has fixed colours. The dashed boundary is on landuse, which Map5View hides.",
+      "text": "Black flag 2 mm, stroke 0.17 mm. The set #A47158 does not draw: the SVG has fixed colours. The dashed boundary is on landuse, which Map5View-all draws.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -3067,7 +2809,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/redoubt-linz.png",
-     "current_image": null,
+     "current_image": "symbols/redoubt-ours.png",
      "measured": {
       "text": "Crossed square 2.5 mm, stroke 0.15 mm, in #231F20. Owned SVG. The set #987DB7 does not draw: the SVG has fixed colours. So the sheet does not show history by colour.",
       "source": "applied project, SVG file",
@@ -3388,7 +3130,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/reservoir_uncovered-linz.png",
-     "current_image": null,
+     "current_image": "symbols/reservoir_uncovered-ours.png",
      "measured": {
       "text": "Water fill with a stream-blue 0.1 mm outline.",
       "source": "applied project",
@@ -3403,13 +3145,13 @@
         "worst_cvd": 8.7
        },
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "outline",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -3417,13 +3159,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 13.90:1"
+        "detail": "outline #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 21.00:1"
+        "detail": "outline #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -3445,7 +3187,7 @@
      "status": "done",
      "note": "The parent tank rule still draws a 3 mm tank SVG.",
      "linz_image": "symbols/tank-linz.png",
-     "current_image": null,
+     "current_image": "symbols/tank-ours.png",
      "measured": {
       "text": "Circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG. The parent tank rule stays 3 mm.",
       "source": "applied project, SVG file",
@@ -3499,7 +3241,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/mast-linz.png",
-     "current_image": null,
+     "current_image": "symbols/mast-ours.png",
      "measured": {
       "text": "Black open spire 2.1 mm tall, stroke 0.15 mm. Owned SVG. The set #FF9E17 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3553,7 +3295,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/tower-linz.png",
-     "current_image": null,
+     "current_image": "symbols/tower-ours.png",
      "measured": {
       "text": "Black filled tower 1.8 mm tall, outline strokes 0.15 mm. Owned SVG. The set #E5B636 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3607,7 +3349,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/wind_machine-linz.png",
-     "current_image": null,
+     "current_image": "symbols/wind_machine-ours.png",
      "measured": {
       "text": "Filled windmill 2.4 mm tall in #231F20. The set #987DB7 and #377DB7 do not draw.",
       "source": "applied project, SVG file",
@@ -3655,7 +3397,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/shipwreck-linz.png",
-     "current_image": null,
+     "current_image": "symbols/shipwreck-ours.png",
      "measured": {
       "text": "Black hull 3 mm wide, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -3709,7 +3451,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/lighthouse-linz.png",
-     "current_image": null,
+     "current_image": "symbols/lighthouse-ours.png",
      "measured": {
       "text": "Tower 2.2 mm tall, stroke 0.15 mm, #231F20. Owned SVG.",
       "source": "applied project, SVG file",
@@ -3763,7 +3505,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/marine_beacon-linz.png",
-     "current_image": null,
+     "current_image": "symbols/marine_beacon-ours.png",
      "measured": {
       "text": "Black beacon 2.4 mm tall, stroke 0.15 mm. Owned SVG. The set #BEB297 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3817,7 +3559,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/fence-linz.png",
-     "current_image": null,
+     "current_image": "symbols/fence-ours.png",
      "measured": {
       "text": "Near-black #0E0406, 0.15 mm.",
       "source": "applied project",
@@ -3860,10 +3602,10 @@
      "key": "pipeline_above",
      "section": "Miscellaneous",
      "label": "Pipeline above ground",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no pipeline class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/pipeline_above-linz.png",
      "current_image": null,
      "measured": {
@@ -3943,10 +3685,10 @@
      "key": "pipeline_underground",
      "section": "Miscellaneous",
      "label": "Pipeline underground",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no pipeline class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/pipeline_underground-linz.png",
      "current_image": null,
      "measured": {
@@ -4109,10 +3851,10 @@
      "key": "power_pylons",
      "section": "Miscellaneous",
      "label": "Power line on pylons",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no power class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/power_pylons-linz.png",
      "current_image": null,
      "measured": {
@@ -4192,10 +3934,10 @@
      "key": "power_poles",
      "section": "Miscellaneous",
      "label": "Power line on poles",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no power class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/power_poles-linz.png",
      "current_image": null,
      "measured": {
@@ -4275,10 +4017,10 @@
      "key": "telephone",
      "section": "Miscellaneous",
      "label": "Telephone line",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no telephone class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/telephone-linz.png",
      "current_image": null,
      "measured": {
@@ -4358,49 +4100,13 @@
      "key": "industrial_cableway",
      "section": "Miscellaneous",
      "label": "Industrial cableway",
-     "layer": "structure_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (cableway_industrial; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/industrial_cableway-linz.png",
-     "current_image": null,
+     "current_image": "symbols/industrial_cableway-ours.png",
      "measured": {
-      "text": "Thin black line with open squares and filled ends.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black 0.17 mm with open squares.",
       "source": "applied project",
       "inks": [
@@ -4435,7 +4141,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "mine_underground",
@@ -4535,7 +4242,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/mine_opencast-linz.png",
-     "current_image": null,
+     "current_image": "symbols/mine_opencast-ours.png",
      "measured": {
       "text": "Filled pick and shovel 1.8 mm in #231F20. The set #729B6F does not draw.",
       "source": "applied project, SVG file",
@@ -4578,10 +4285,10 @@
      "key": "buried_gas_pipeline",
      "section": "Miscellaneous",
      "label": "Buried gas pipeline",
-     "layer": "structure_line (hidden in Map5View)",
+     "layer": "structure_line (Map5View-all on; no gas class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "Style is applied when a gas rule exists. The sheet still hides the layer (N-5).",
+     "note": "Style is applied when a gas rule exists. This project has no gas class.",
      "linz_image": "symbols/buried_gas_pipeline-linz.png",
      "current_image": null,
      "measured": {
@@ -4621,7 +4328,7 @@
       "pass": false
      },
      "proposal": {
-      "text": "Defined in the style file: #951600, 0.25 mm, long dash 2 mm / 0.5 mm (structures.buried_gas_pipeline). Map5View must show structure_line.",
+      "text": "Defined in the style file: #951600, 0.25 mm, long dash 2 mm / 0.5 mm (structures.buried_gas_pipeline). structure_line has no gas class in this project.",
       "source": "applied project",
       "inks": [
        {
@@ -4782,13 +4489,13 @@
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "ice contour",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -4796,13 +4503,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "ice contour #00276D on paper: 13.90:1"
+        "detail": "ice contour #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "ice contour #00276D on paper: 21.00:1"
+        "detail": "ice contour #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -4881,7 +4588,7 @@
      "status": "done",
      "note": "Stock print uses orange #FF7F00 here: 2.5:1 grey, 1.0:1 red light.",
      "linz_image": "symbols/depression_contours-linz.png",
-     "current_image": null,
+     "current_image": "symbols/depression_contours-ours.png",
      "measured": {
       "text": "Contour inks with index-brown downhill ticks 0.6 mm when coalesce(formation) = depression. Not stock orange.",
       "source": "applied project",
@@ -5027,7 +4734,7 @@
      "status": "done",
      "note": "Sinkholes are relief_point and draw as a 0.3 mm spot-height dot.",
      "linz_image": "symbols/small_depression_shaft-linz.png",
-     "current_image": null,
+     "current_image": "symbols/small_depression_shaft-ours.png",
      "measured": {
       "text": "Half-filled circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG.",
       "source": "applied project, SVG file",
@@ -5081,7 +4788,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/trig-linz.png",
-     "current_image": null,
+     "current_image": "symbols/trig-ours.png",
      "measured": {
       "text": "Black triangle 1.9 mm.",
       "source": "applied project",
@@ -5129,7 +4836,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/trig_elevation-linz.png",
-     "current_image": null,
+     "current_image": "symbols/trig_elevation-ours.png",
      "measured": {
       "text": "Black triangle 1.9 mm with an upright height.",
       "source": "applied project",
@@ -5177,7 +4884,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/spot_height-linz.png",
-     "current_image": null,
+     "current_image": "symbols/spot_height-ours.png",
      "measured": {
       "text": "Black dot 0.3 mm with a black 6 pt height.",
       "source": "applied project",
@@ -5220,49 +4927,13 @@
      "key": "cliff",
      "section": "Relief features",
      "label": "Cliff",
-     "layer": "relief_line map (rule switched off)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "relief_line map (cliff_edge; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cliff-linz.png",
-     "current_image": null,
+     "current_image": "symbols/cliff-ours.png",
      "measured": {
-      "text": "Black edge with hanging teeth.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black edge 0.2 mm with teeth.",
       "source": "applied project",
       "inks": [
@@ -5297,7 +4968,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "terrace",
@@ -5386,49 +5058,13 @@
      "key": "slip",
      "section": "Relief features",
      "label": "Slip",
-     "layer": "relief_line map (rule switched off)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "relief_line map (slip_edge; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/slip-linz.png",
-     "current_image": null,
+     "current_image": "symbols/slip-ours.png",
      "measured": {
-      "text": "Black arc with teeth.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black arc 0.2 mm with teeth.",
       "source": "applied project",
       "inks": [
@@ -5463,61 +5099,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "rock_outcrops",
      "section": "Relief features",
      "label": "Rock outcrops",
-     "layer": "landcover_point (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "landcover_point (rock_outcrop; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/rock_outcrops-linz.png",
-     "current_image": null,
+     "current_image": "symbols/rock_outcrops-ours.png",
      "measured": {
-      "text": "Black outcrop glyphs in three sizes.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black, smallest 1.4 mm, stroke 0.2 mm.",
       "source": "applied project",
       "inks": [
@@ -5558,55 +5153,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "stopbank",
      "section": "Relief features",
      "label": "Stopbank",
-     "layer": "relief_line map (rule switched off)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "relief_line map (embankment, relief_use stopbank; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/stopbank-linz.png",
-     "current_image": null,
+     "current_image": "symbols/stopbank-ours.png",
      "measured": {
-      "text": "Row of black ticks.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black ticks, stroke 0.2 mm.",
       "source": "applied project",
       "inks": [
@@ -5641,55 +5201,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "cutting",
      "section": "Relief features",
      "label": "Cutting",
-     "layer": "relief_line map (rule switched off)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "relief_line map (cutting_edge; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cutting-linz.png",
-     "current_image": null,
+     "current_image": "symbols/cutting-ours.png",
      "measured": {
-      "text": "Two black edges with teeth.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black edges 0.2 mm with teeth.",
       "source": "applied project",
       "inks": [
@@ -5724,55 +5249,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "embankment",
      "section": "Relief features",
      "label": "Embankment or causeway",
-     "layer": "relief_line map (rule switched off)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "relief_line map (embankment, relief_use causeway or NULL; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/embankment-linz.png",
-     "current_image": null,
+     "current_image": "symbols/embankment-ours.png",
      "measured": {
-      "text": "Two black lines with ticks.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black lines 0.2 mm with ticks.",
       "source": "applied project",
       "inks": [
@@ -5807,7 +5297,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "saddle",
@@ -5818,7 +5309,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/saddle-linz.png",
-     "current_image": null,
+     "current_image": "symbols/saddle-ours.png",
      "measured": {
       "text": "Two black arcs 1.4 mm tall, stroke 0.2 mm. Owned SVG. Filter coalesce(type) = saddle. Spot heights stay 0.3 mm dots.",
       "source": "applied project, SVG file",
@@ -5967,7 +5458,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/moraine-linz.png",
-     "current_image": null,
+     "current_image": "symbols/moraine-ours.png",
      "measured": {
       "text": "Black crosses and rings, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -6015,7 +5506,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/moraine_wall-linz.png",
-     "current_image": null,
+     "current_image": "symbols/moraine_wall-ours.png",
      "measured": {
       "text": "Black dotted rows, 0.5 mm.",
       "source": "applied project",
@@ -6063,7 +5554,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/scree-linz.png",
-     "current_image": null,
+     "current_image": "symbols/scree-ours.png",
      "measured": {
       "text": "Black fine stipple, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -6261,17 +5752,17 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ dashed outline in stream #00276D, 0.2 mm.",
+      "text": "Keep the LINZ dashed outline in stream #004C99, 0.2 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "outline",
         "role": "carrier",
         "on": "#D1E7F5",
-        "grey": 10.89,
+        "grey": 6.6,
         "red": 13.75,
-        "worst_cvd": 64.5
+        "worst_cvd": 46.0
        }
       ],
       "checks": [
@@ -6279,25 +5770,25 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 13.90:1"
+        "detail": "outline #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 21.00:1"
+        "detail": "outline #004C99 on paper: 21.00:1"
        },
        {
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "outline #00276D on #D1E7F5: 10.89:1"
+        "detail": "outline #004C99 on #D1E7F5: 6.60:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "outline #00276D on #D1E7F5: 13.75:1"
+        "detail": "outline #004C99 on #D1E7F5: 13.75:1"
        },
        {
         "rule": "F-31",
@@ -6318,19 +5809,19 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/sand_mud-linz.png",
-     "current_image": null,
+     "current_image": "symbols/sand_mud-ours.png",
      "measured": {
-      "text": "Sand texture in stream #00276D.",
+      "text": "Sand texture in stream #004C99.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "texture",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -6338,13 +5829,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "texture #00276D on paper: 13.90:1"
+        "detail": "texture #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "texture #00276D on paper: 21.00:1"
+        "detail": "texture #004C99 on paper: 21.00:1"
        }
       ],
       "pass": true
@@ -6360,7 +5851,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/sand-linz.png",
-     "current_image": null,
+     "current_image": "symbols/sand-ours.png",
      "measured": {
       "text": "Black sand texture.",
       "source": "applied project",
@@ -6402,7 +5893,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/shingle-linz.png",
-     "current_image": null,
+     "current_image": "symbols/shingle-ours.png",
      "measured": {
       "text": "Black shingle texture, strokes 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -6450,19 +5941,19 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/swamp-linz.png",
-     "current_image": null,
+     "current_image": "symbols/swamp-ours.png",
      "measured": {
       "text": "Stream-blue tufts, strokes 0.15 mm, and a 0.1 mm dotted outline. Owned SVG.",
       "source": "applied project, SVG file",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "tufts",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -6470,13 +5961,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "tufts #00276D on paper: 13.90:1"
+        "detail": "tufts #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "tufts #00276D on paper: 21.00:1"
+        "detail": "tufts #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -6493,49 +5984,13 @@
      "key": "boat_ramp",
      "section": "Water features",
      "label": "Boat ramp",
-     "layer": "structure (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (boatramp; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/boat_ramp-linz.png",
-     "current_image": null,
+     "current_image": "symbols/boat_ramp-ours.png",
      "measured": {
-      "text": "Black double bar.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black double bar 0.2 mm.",
       "source": "applied project",
       "inks": [
@@ -6570,55 +6025,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "breakwater_wharf_jetty",
      "section": "Water features",
      "label": "Breakwater, wharf, jetty",
-     "layer": "structure (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (breakwater, wharf; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/breakwater_wharf_jetty-linz.png",
-     "current_image": null,
+     "current_image": "symbols/breakwater_wharf_jetty-ours.png",
      "measured": {
-      "text": "Heavy black bars.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.4 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black bars 0.4 mm.",
       "source": "applied project",
       "inks": [
@@ -6653,55 +6073,20 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "slipway",
      "section": "Water features",
      "label": "Slipway",
-     "layer": "structure (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (slipway; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/slipway-linz.png",
-     "current_image": null,
+     "current_image": "symbols/slipway-ours.png",
      "measured": {
-      "text": "Black line with cross ticks.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black 0.2 mm with ticks.",
       "source": "applied project",
       "inks": [
@@ -6736,18 +6121,19 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "marine_farm",
      "section": "Water features",
      "label": "Marine farm",
-     "layer": "marine (hidden in Map5View)",
+     "layer": "structure_line (marine_farm; Map5View-all draws it; default print theme still Map5View)",
      "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "status": "proposed",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/marine_farm-linz.png",
-     "current_image": null,
+     "current_image": "symbols/marine_farm-ours.png",
      "measured": {
       "text": "Rows of stock blue dashes.",
       "source": "stock legend image",
@@ -6797,17 +6183,17 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ rows of dashes in stream #00276D, 0.25 mm.",
+      "text": "Keep the LINZ rows of dashes in stream #004C99, 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "dashes",
         "role": "carrier",
         "on": "#D1E7F5",
-        "grey": 10.89,
+        "grey": 6.6,
         "red": 13.75,
-        "worst_cvd": 64.5
+        "worst_cvd": 46.0
        }
       ],
       "checks": [
@@ -6815,25 +6201,25 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "dashes #00276D on paper: 13.90:1"
+        "detail": "dashes #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "dashes #00276D on paper: 21.00:1"
+        "detail": "dashes #004C99 on paper: 21.00:1"
        },
        {
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "dashes #00276D on #D1E7F5: 10.89:1"
+        "detail": "dashes #004C99 on #D1E7F5: 6.60:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "dashes #00276D on #D1E7F5: 13.75:1"
+        "detail": "dashes #004C99 on #D1E7F5: 13.75:1"
        },
        {
         "rule": "F-31",
@@ -6932,49 +6318,13 @@
      "key": "dam",
      "section": "Water features",
      "label": "Dam",
-     "layer": "no dam class on a Map5View layer",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (dam; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/dam-linz.png",
-     "current_image": null,
+     "current_image": "symbols/dam-ours.png",
      "measured": {
-      "text": "Heavy black bar across the water.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.4 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black bar 0.4 mm.",
       "source": "applied project",
       "inks": [
@@ -7009,7 +6359,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "floodgate",
@@ -7020,7 +6371,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/floodgate-linz.png",
-     "current_image": null,
+     "current_image": "symbols/floodgate-ours.png",
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm, with the FG label.",
       "source": "applied project",
@@ -7069,55 +6420,13 @@
      "key": "weir",
      "section": "Water features",
      "label": "Weir",
-     "layer": "no weir class on a Map5View layer",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (weir; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/weir-linz.png",
-     "current_image": null,
+     "current_image": "symbols/weir-ours.png",
      "measured": {
-      "text": "Black bar across the stream.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.3 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
       "text": "Keep the LINZ shape. Black bar 1.4 mm, stroke 0.3 mm.",
       "source": "applied project",
       "inks": [
@@ -7158,18 +6467,19 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "waterfall",
      "section": "Water features",
      "label": "Waterfall",
-     "layer": "no waterfall class on a Map5View layer",
+     "layer": "water_point (waterfall; Map5View-all draws it; default print theme still Map5View)",
      "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "status": "proposed",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/waterfall-linz.png",
-     "current_image": null,
+     "current_image": "symbols/waterfall-ours.png",
      "measured": {
       "text": "Stock blue double tick.",
       "source": "stock legend image",
@@ -7207,17 +6517,17 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ double tick in stream #00276D, 1.4 mm.",
+      "text": "Keep the LINZ double tick in stream #004C99, 1.4 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "tick",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7225,13 +6535,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "tick #00276D on paper: 13.90:1"
+        "detail": "tick #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "tick #00276D on paper: 21.00:1"
+        "detail": "tick #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7252,19 +6562,19 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/rapids-linz.png",
-     "current_image": null,
+     "current_image": "symbols/rapids-ours.png",
      "measured": {
       "text": "Stream-blue fill with a 0.2 mm outline.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "fill",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7272,13 +6582,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "fill #00276D on paper: 13.90:1"
+        "detail": "fill #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "fill #00276D on paper: 21.00:1"
+        "detail": "fill #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7295,44 +6605,14 @@
      "key": "cold_spring",
      "section": "Water features",
      "label": "Cold spring",
-     "layer": "water_point (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "water_point (spring, cold; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cold_spring-linz.png",
-     "current_image": null,
+     "current_image": "symbols/cold_spring-ours.png",
      "measured": {
-      "text": "Stock blue ×.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#008BCA",
-        "name": "cross",
-        "role": "carrier",
-        "on": null,
-        "grey": 3.79,
-        "red": 21.0,
-        "worst_cvd": 35.6
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "cross #008BCA on paper: 3.79:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "cross #008BCA on paper: 21.00:1"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
-      "text": "Defined in the style file: a #005C8F circle (log 0036). Map5View must show water_point.",
+      "text": "A #005C8F circle (log 0036). Filter coalesce(type) = spring.",
       "source": "applied project",
       "inks": [
        {
@@ -7360,56 +6640,21 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "hot_spring",
      "section": "Water features",
      "label": "Hot spring",
-     "layer": "water_point (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "water_point (spring, hot; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/hot_spring-linz.png",
-     "current_image": null,
+     "current_image": "symbols/hot_spring-ours.png",
      "measured": {
-      "text": "Red-orange ×. Same × as the cold spring.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#EA6300",
-        "name": "cross",
-        "role": "carrier",
-        "on": null,
-        "grey": 3.34,
-        "red": 1.2,
-        "worst_cvd": 36.9
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "cross #EA6300 on paper: 3.34:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": false,
-        "detail": "cross #EA6300 on paper: 1.20:1"
-       },
-       {
-        "rule": "R-17",
-        "label": "Not colour alone",
-        "pass": false,
-        "detail": "Same shape as cold spring #008BCA. Grey 1.13:1, red 17.46:1, worst CVD ΔE 50.8"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Defined in the style file: a #141414 × (log 0036). Map5View must show water_point.",
+      "text": "A #141414 × (log 0036). Filter coalesce(type) = spring and temperature_indicator = hot.",
       "source": "applied project",
       "inks": [
        {
@@ -7437,18 +6682,19 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "fumarole",
      "section": "Water features",
      "label": "Fumarole",
-     "layer": "landcover_point (hidden in Map5View)",
+     "layer": "landcover_point (fumarole; Map5View-all draws it; default print theme still Map5View)",
      "drawn": "no",
-     "status": "blocked",
-     "note": "Josh to review the steam-vent shape in log 0096 before apply.",
+     "status": "proposed",
+     "note": "Josh to review the steam-vent shape in log 0096 before apply. Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/fumarole-linz.png",
-     "current_image": null,
+     "current_image": "symbols/fumarole-ours.png",
      "measured": {
       "text": "Large red-orange ×.",
       "source": "stock legend image",
@@ -7538,10 +6784,10 @@
      "key": "geothermal_bore",
      "section": "Water features",
      "label": "Geothermal bore",
-     "layer": "water_point (hidden in Map5View)",
+     "layer": "water_point (Map5View-all on; no bore class in this project)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "water_point is on Map5View-all. This project has no bore class.",
      "linz_image": "symbols/geothermal_bore-linz.png",
      "current_image": null,
      "measured": {
@@ -7640,17 +6886,17 @@
      "linz_image": "symbols/watercourse-linz.png",
      "current_image": "symbols/watercourse-ours.png",
      "measured": {
-      "text": "Stream #00276D, 0.25 mm.",
+      "text": "Stream #004C99, 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7658,13 +6904,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 13.90:1"
+        "detail": "line #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 21.00:1"
+        "detail": "line #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7688,17 +6934,17 @@
      "linz_image": "symbols/drain-linz.png",
      "current_image": "symbols/drain-ours.png",
      "measured": {
-      "text": "Stream #00276D, 0.15 mm.",
+      "text": "Stream #004C99, 0.15 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7706,13 +6952,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 13.90:1"
+        "detail": "line #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 21.00:1"
+        "detail": "line #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7734,7 +6980,7 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/canal_large-linz.png",
-     "current_image": null,
+     "current_image": "symbols/canal_large-ours.png",
      "measured": {
       "text": "Water fill with a stream-blue 0.1 mm outline.",
       "source": "applied project",
@@ -7749,13 +6995,13 @@
         "worst_cvd": 8.7
        },
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "outline",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7763,13 +7009,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 13.90:1"
+        "detail": "outline #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "outline #00276D on paper: 21.00:1"
+        "detail": "outline #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7791,19 +7037,19 @@
      "status": "done",
      "note": "",
      "linz_image": "symbols/canal_small-linz.png",
-     "current_image": null,
+     "current_image": "symbols/canal_small-ours.png",
      "measured": {
-      "text": "Stream #00276D, 0.25 mm.",
+      "text": "Stream #004C99, 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7811,13 +7057,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 13.90:1"
+        "detail": "line #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 21.00:1"
+        "detail": "line #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7841,17 +7087,17 @@
      "linz_image": "symbols/stream_disappearing-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Stream #00276D, 0.25 mm, no arrow.",
+      "text": "Stream #004C99, 0.25 mm, no arrow.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7859,13 +7105,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 13.90:1"
+        "detail": "line #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 21.00:1"
+        "detail": "line #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -7883,17 +7129,17 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ arrow head at the sink, 1.4 mm, in stream #00276D.",
+      "text": "Keep the LINZ arrow head at the sink, 1.4 mm, in stream #004C99.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#00276D",
+        "hex": "#004C99",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 13.9,
+        "grey": 8.42,
         "red": 21.0,
-        "worst_cvd": 69.7
+        "worst_cvd": 53.5
        }
       ],
       "checks": [
@@ -7901,13 +7147,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 13.90:1"
+        "detail": "line #004C99 on paper: 8.42:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #00276D on paper: 21.00:1"
+        "detail": "line #004C99 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
