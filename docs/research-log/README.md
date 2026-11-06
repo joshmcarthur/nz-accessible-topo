@@ -98,3 +98,8 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0093 — Urban halos from a precomputed flag, and two R-01/R-09 decisions](0093-urban-halo-flag.md)
 - [0094 — Bolder foot tracks, a larger closed ×, and dotted poled routes](0094-bolder-tracks-poled-routes.md)
 - [0095 — A definition table for every legend symbol](0095-symbol-definition-table.md)
+- [0096 — Fumarole shape proposal (not applied)](0096-fumarole-shape.md)
+- [0097 — Navigation line floor 0.35 mm](0097-navigation-line-floor.md)
+- [0098 — Tree points stay map-sized, not legend-sized](0098-tree-point-size.md)
+- [0099 — Darker shelterbelt and tree ink](0099-shelterbelt-ink-darken.md)
+- [0100 — Trees legend swatch at legend_size_mm](0100-trees-legend-swatch.md)

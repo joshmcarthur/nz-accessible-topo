@@ -35,7 +35,7 @@ HIGHWAY = "#E31A1C"
 STREAM = "#004C99"
 WATER_FILL = "#D1E7F5"
 INDEX = "#7A5542"
-SHELTERBELT = "#1D9D00"
+SHELTERBELT = "#008A00"
 SCRUB_MARK = "#6A9A50"
 VEG_OUTLINE = "#A7C05E"
 # nzat.colour.darken.darken_for_text on the stock hue, to 3:1 on paper.
@@ -138,10 +138,10 @@ _BRIDGE_FIX = spec(
     mark_mm=1.4,
 )
 _BRIDGE_NOW = spec(
-    "Two 0.1 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, "
+    "Two 0.15 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, "
     "but a QGIS line marker draws its stroke only, so no red draws.",
     (CASE,),
-    line_mm=0.1,
+    line_mm=0.15,
     mark_mm=1.0,
 )
 _VEG_OUTLINE_NOW = ink(VEG_OUTLINE, "outline")
@@ -392,22 +392,15 @@ SYMBOLS = (
         "Locked gate",
         (1780, 1576, 1900, 1668),
         "structure_point map (gate, restrictions locked)",
-        "proposed",
+        "done",
         spec(
-            "Bar 1.4 mm, stroke 0.2 mm, in #FF4500. Same bar as a gate.",
-            (ink("#FF4500", "bar"),),
-            mark_mm=1.4,
-            stroke_mm=0.2,
-            colour_only={"label": "gate", "hex": "#000000"},
-        ),
-        spec(
-            "Keep the LINZ bar, in black. Add a filled black 0.6 mm square at its "
-            "middle, so the lock is a shape, not a colour.",
+            "Black bar 1.4 mm, stroke 0.2 mm, with a filled black 0.6 mm square at "
+            "its middle. Not a second bar.",
             (BLACK,),
             mark_mm=1.4,
             stroke_mm=0.2,
         ),
-        note="Josh to decide the lock cue. A second bar would read as a cattlestop.",
+        note="Josh: lock is a square, not a second bar (cattlestop).",
     ),
     sym(
         "cattlestop",
@@ -653,12 +646,12 @@ SYMBOLS = (
         "building_point map (church)",
         "proposed",
         spec(
-            "Black square with a cross, 1.0 mm tall. Strokes 0.08 mm and 0.04 mm. "
+            "Black square with a cross, 1.0 mm tall. Strokes 0.15 mm. Owned SVG. "
             "The red fill is set, but the line marker and the fixed-colour SVG draw black.",
             (BLACK,),
             source=SVG,
             mark_mm=1.03,
-            stroke_mm=0.04,
+            stroke_mm=0.15,
         ),
         _keep_black_glyph("Square and cross, black, 1.4 mm tall, stroke 0.15 mm."),
     ),
@@ -739,16 +732,16 @@ SYMBOLS = (
         "Redoubt",
         (1765, 3662, 1850, 3754),
         "structure_point map (redoubt)",
-        "proposed",
+        "done",
         spec(
-            "Crossed square 2.5 mm, stroke 0.10 mm, in #231F20. The set #987DB7 does "
-            "not draw: the SVG has fixed colours. So the sheet does not show history by colour.",
+            "Crossed square 2.5 mm, stroke 0.15 mm, in #231F20. Owned SVG. The set "
+            "#987DB7 does not draw: the SVG has fixed colours. So the sheet does not "
+            "show history by colour.",
             (DARK,),
             source=SVG,
             mark_mm=2.5,
-            stroke_mm=0.1,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("crossed square", 2.5),
     ),
     sym(
         "monument",
@@ -831,16 +824,15 @@ SYMBOLS = (
         "Mast",
         (1655, 3850, 1770, 3942),
         "structure_point map (mast)",
-        "proposed",
+        "done",
         spec(
-            "Black open spire 2.1 mm tall, stroke 0.10 mm. The set #FF9E17 does not draw: "
-            "the SVG has fixed colours.",
+            "Black open spire 2.1 mm tall, stroke 0.15 mm. Owned SVG. The set #FF9E17 "
+            "does not draw: the SVG has fixed colours.",
             (BLACK,),
             source=SVG,
             mark_mm=2.13,
-            stroke_mm=0.1,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("open spire", 2.13, "#000000"),
     ),
     sym(
         "tower",
@@ -848,16 +840,15 @@ SYMBOLS = (
         "Tower",
         (1770, 3850, 1890, 3942),
         "structure_point map (tower)",
-        "proposed",
+        "done",
         spec(
-            "Black filled tower 1.8 mm tall, outline strokes 0.09 mm. The set #E5B636 "
-            "does not draw: the SVG has fixed colours.",
+            "Black filled tower 1.8 mm tall, outline strokes 0.15 mm. Owned SVG. The "
+            "set #E5B636 does not draw: the SVG has fixed colours.",
             (BLACK,),
             source=SVG,
             mark_mm=1.8,
-            stroke_mm=0.09,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("filled tower", 1.8, "#000000"),
     ),
     sym(
         "wind_machine",
@@ -879,15 +870,14 @@ SYMBOLS = (
         "Shipwreck",
         (1655, 3946, 1790, 4038),
         "structure_point map (wreck, ship)",
-        "proposed",
+        "done",
         spec(
-            "Black hull 3 mm wide, stroke 0.06 mm.",
+            "Black hull 3 mm wide, stroke 0.15 mm. Owned SVG.",
             (BLACK,),
             source=SVG,
             mark_mm=3.0,
-            stroke_mm=0.06,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("hull", 3.0, "#000000"),
     ),
     sym(
         "lighthouse",
@@ -911,16 +901,15 @@ SYMBOLS = (
         "Beacon",
         (1890, 3946, 2035, 4038),
         "structure_point map (beacon)",
-        "proposed",
+        "done",
         spec(
-            "Black beacon 2.4 mm tall, stroke 0.11 mm. The set #BEB297 does not draw: "
-            "the SVG has fixed colours.",
+            "Black beacon 2.4 mm tall, stroke 0.15 mm. Owned SVG. The set #BEB297 does "
+            "not draw: the SVG has fixed colours.",
             (BLACK,),
             source=SVG,
             mark_mm=2.39,
-            stroke_mm=0.11,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("beacon", 2.39, "#000000"),
     ),
     sym(
         "fence",
@@ -928,9 +917,8 @@ SYMBOLS = (
         "Fence (selection only)",
         (1655, 4040, 2035, 4132),
         "fence_line map",
-        "proposed",
-        spec("Near-black #0E0406, 0.05 mm.", (ink("#0E0406", "line"),), line_mm=0.05),
-        _keep_black_line("Black 0.15 mm, the thinnest step.", 0.15),
+        "done",
+        spec("Near-black #0E0406, 0.15 mm.", (ink("#0E0406", "line"),), line_mm=0.15),
     ),
     sym(
         "pipeline_above",
@@ -1045,12 +1033,13 @@ SYMBOLS = (
             "Red-orange line.", (ink(LEGEND_RED, "line"),), source=LEGEND, line_mm=0.21
         ),
         spec(
-            "Keep the LINZ solid line in the stock hue darkened to #951600, 0.25 mm. "
-            "Add a long dash, 2 mm / 0.5 mm, so it is not a fence or a power line by colour alone.",
+            "Defined in the style file: #951600, 0.25 mm, long dash 2 mm / 0.5 mm "
+            "(structures.buried_gas_pipeline). Map5View must show structure_line.",
             (ink(GAS_DARK, "line"),),
             line_mm=0.25,
         ),
         drawn="no",
+        note="Style is applied when a gas rule exists. The sheet still hides the layer (N-5).",
     ),
     # Relief features
     sym(
@@ -1305,7 +1294,7 @@ SYMBOLS = (
         _black_glyph("Black dome on a base line.", 1.6, 0.17),
         _keep_black_glyph("Black dome 1.6 mm, stroke 0.15 mm.", 1.6),
         drawn="no",
-        note="The sheet uses this cave SVG for bivouacs.",
+        note="Stock bivouacs borrowed this cave SVG. Bivouac now has its own tent mark.",
     ),
     sym(
         "moraine",
@@ -1615,13 +1604,14 @@ SYMBOLS = (
             stroke_mm=0.21,
         ),
         spec(
-            "Keep the LINZ large ×, in black, 2 mm, stroke 0.2 mm. Size tells it from the hot-spring ×.",
+            "Three short black steam ticks over a filled black vent, 1.6 mm, stroke "
+            "0.2 mm. Not a ×. Log 0096.",
             (BLACK,),
-            mark_mm=2.0,
+            mark_mm=1.6,
             stroke_mm=0.2,
         ),
         drawn="no",
-        note="Josh to decide: fumarole and hot spring then differ by size only.",
+        note="Josh to review the steam-vent shape in log 0096 before apply.",
     ),
     sym(
         "geothermal_bore",
@@ -1777,15 +1767,9 @@ SYMBOLS = (
         "Scrub",
         (1655, 9021, 2035, 9116),
         "vegetation map (scrub)",
-        "proposed",
+        "done",
         spec(
-            "Plant marks #6A9A50 1.4 mm, stroke 0.18 mm. Outline #A7C05E.",
-            (ink(SCRUB_MARK, "marks"), _VEG_OUTLINE_NOW),
-            mark_mm=1.4,
-            stroke_mm=0.18,
-        ),
-        spec(
-            "Keep the plant marks. Outline #859E3E.",
+            "Plant marks #6A9A50, 1.4 mm, stroke 0.18 mm. Outline #859E3E.",
             (ink(SCRUB_MARK, "marks"), _VEG_OUTLINE_NEW),
             mark_mm=1.4,
             stroke_mm=0.18,
@@ -1798,20 +1782,15 @@ SYMBOLS = (
         "Scattered scrub",
         (1655, 9116, 2035, 9216),
         "vegetation map (scattered_scrub)",
-        "proposed",
+        "done",
         spec(
-            "Arc marks #B2DF8A, 1.2 mm, on a 5 mm grid.",
-            (ink("#B2DF8A", "marks"),),
-            mark_mm=1.2,
-        ),
-        spec(
-            "Keep the LINZ arc marks on a 5 mm grid, no fill. Ink #6A9A50, 1.4 mm, stroke 0.18 mm.",
+            "Arc marks #6A9A50, 1.4 mm, stroke 0.18 mm, on a 5 mm grid, no fill.",
             (ink(SCRUB_MARK, "marks"),),
             mark_mm=1.4,
             stroke_mm=0.18,
         ),
         redrawn=True,
-        note="Josh to decide: scrub and scattered scrub then differ by mark spacing and fill.",
+        note="Josh (N-2): spacing and no fill separate scattered from scrub.",
     ),
     sym(
         "shelter_belt",
@@ -1821,7 +1800,7 @@ SYMBOLS = (
         "vegetation_line map (shelter_belt)",
         "done",
         spec(
-            "Shelterbelt #1D9D00, 0.25 mm.", (ink(SHELTERBELT, "line"),), line_mm=0.25
+            f"Shelterbelt {SHELTERBELT}, 0.25 mm.", (ink(SHELTERBELT, "line"),), line_mm=0.25
         ),
         redrawn=True,
     ),
@@ -1831,14 +1810,19 @@ SYMBOLS = (
         "Trees",
         (1655, 9315, 2035, 9390),
         "vegetation_point map (tree)",
-        "proposed",
-        spec("Circle 0.05 mm in #1D9D00.", (ink(SHELTERBELT, "dot"),), mark_mm=0.05),
+        "done",
         spec(
-            "Draw the LINZ tree mark (tree.svg) in #1D9D00, 1.4 mm.",
+            f"Owned tree glyph in {SHELTERBELT}, 1.4 mm in the legend swatch "
+            f"(legend_size_mm); map points 0.2 mm (log 0070).",
             (ink(SHELTERBELT, "mark"),),
             mark_mm=1.4,
+            stroke_mm=0.15,
+            exempt={
+                "mark_mm": "map vegetation_point uses size_mm 0.2 mm, not legend_size_mm"
+            },
         ),
-        note="Josh to decide the size. The data has many trees; 1.4 mm may crowd.",
+        redrawn=True,
+        note="Josh (N-2): glyph and #008A00 ink; legend swatch at F-31, map at stock density.",
     ),
     sym(
         "orchard",
@@ -1848,7 +1832,7 @@ SYMBOLS = (
         "vegetation has no orchard type in the data",
         "blocked",
         spec("Rows of pale green dots.", (ink(LEGEND_GREEN, "dots"),), source=LEGEND),
-        spec("Keep the LINZ rows of dots in #1D9D00.", (ink(SHELTERBELT, "dots"),)),
+        spec(f"Keep the LINZ rows of dots in {SHELTERBELT}.", (ink(SHELTERBELT, "dots"),)),
         drawn="no",
     ),
     sym(
@@ -1876,17 +1860,16 @@ SYMBOLS = (
         "Bivouac",
         None,
         "structure_point map (bivouac)",
-        "proposed",
+        "done",
         spec(
-            "The cave SVG, 1.6 mm, stroke 0.09 mm, in #231F20. The set #D5B43C does not "
-            "draw: the SVG has fixed colours.",
-            (DARK,),
+            "Open tent triangle 1.4 mm, stroke 0.15 mm, wider than tall, with a ridge. "
+            "Owned SVG. Distinct from the filled trig triangle and the tall open mast.",
+            (BLACK,),
             source=SVG,
-            mark_mm=1.6,
-            stroke_mm=0.09,
+            mark_mm=1.4,
+            stroke_mm=0.15,
         ),
-        _thicker_svg("dome", 1.6),
-        note="Josh to decide: a bivouac uses the LINZ cave glyph.",
+        note="Josh: tent/camp triangle. Replaces the cave SVG borrow.",
     ),
     sym(
         "hut",

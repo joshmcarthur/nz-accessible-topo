@@ -26,4 +26,5 @@ def test_matrix_covers_every_pair_and_flags_r01():
     assert "Island outline vs paper" in by_name
     assert "Exotic forest vs paper" in by_name
     assert "Vegetation outline vs paper" in by_name
+    assert not by_name["Vegetation outline vs paper"]["fails_r01"]
     assert "Shelterbelt vs native forest" in by_name

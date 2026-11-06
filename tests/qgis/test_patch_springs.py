@@ -72,12 +72,28 @@ def test_springs_and_native_read_the_style_file():
             <symbols>
               <symbol name="1" type="fill"><layer class="SimpleFill"><Option type="Map">
                 <Option name="color" type="QString" value="164,214,94,102"/>
+                <Option name="outline_color" type="QString" value="167,192,94,255"/>
               </Option></layer></symbol>
               <symbol name="2" type="fill"><layer class="PointPatternFill"><Option type="Map">
                 <Option name="distance_x" type="QString" value="5"/>
-              </Option></layer></symbol>
+                <Option name="distance_y" type="QString" value="5"/>
+                <Option name="clip_mode" type="QString" value="completely_within"/>
+              </Option>
+              <symbol type="marker">
+                <layer class="SimpleMarker">
+                  <Option type="Map">
+                    <Option name="name" type="QString" value="third_arc"/>
+                    <Option name="size" type="QString" value="1.2"/>
+                    <Option name="color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_color" type="QString" value="178,223,138,255"/>
+                    <Option name="outline_width" type="QString" value="0"/>
+                  </Option>
+                </layer>
+              </symbol>
+              </layer></symbol>
               <symbol name="3" type="fill"><layer class="SimpleFill"><Option type="Map">
                 <Option name="color" type="QString" value="164,214,94,51"/>
+                <Option name="outline_color" type="QString" value="167,192,94,255"/>
               </Option></layer></symbol>
             </symbols>
           </renderer-v2>

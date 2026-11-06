@@ -772,20 +772,20 @@
    "name": "Shelterbelt vs paper",
    "a": {
     "label": "shelterbelt",
-    "colour": "#1D9D00"
+    "colour": "#008A00"
    },
    "b": {
     "label": "paper",
     "colour": "#FFFFFF"
    },
    "why": "R-01. Shelterbelt and green dots use reference_inks.shelterbelt (log 0060).",
-   "normal": 42.1,
-   "protanopia": 38.9,
-   "deuteranopia": 40.1,
-   "tritanopia": 39.0,
-   "worst_cvd": 38.9,
-   "grey_cr": 3.57,
-   "red_cr": 16.86,
+   "normal": 46.3,
+   "protanopia": 42.9,
+   "deuteranopia": 44.6,
+   "tritanopia": 43.4,
+   "worst_cvd": 42.9,
+   "grey_cr": 4.53,
+   "red_cr": 21.0,
    "fails_r01": false
   },
   {
@@ -852,20 +852,20 @@
    "name": "Shelterbelt vs native forest",
    "a": {
     "label": "shelterbelt",
-    "colour": "#1D9D00"
+    "colour": "#008A00"
    },
    "b": {
     "label": "native forest fill",
     "colour": "rgba(225, 234, 195, 0.705882)"
    },
    "why": "R-01. Shelterbelt on native fill is 1.08:1 in log 0060.",
-   "normal": 35.0,
-   "protanopia": 31.2,
-   "deuteranopia": 32.9,
-   "tritanopia": 35.7,
-   "worst_cvd": 31.2,
-   "grey_cr": 3.05,
-   "red_cr": 13.99,
+   "normal": 39.5,
+   "protanopia": 35.6,
+   "deuteranopia": 37.9,
+   "tritanopia": 40.0,
+   "worst_cvd": 35.6,
+   "grey_cr": 3.87,
+   "red_cr": 17.43,
    "fails_r01": false
   },
   {
@@ -912,21 +912,21 @@
    "name": "Vegetation outline vs paper",
    "a": {
     "label": "vegetation outline",
-    "colour": "#A7C05E"
+    "colour": "#859E3E"
    },
    "b": {
     "label": "paper",
     "colour": "#FFFFFF"
    },
-   "why": "R-01. Vegetation outline #A7C05E on Map5View (log 0060).",
-   "normal": 29.5,
-   "protanopia": 29.1,
-   "deuteranopia": 27.9,
-   "tritanopia": 19.1,
-   "worst_cvd": 19.1,
-   "grey_cr": 2.03,
-   "red_cr": 2.41,
-   "fails_r01": true
+   "why": "R-01. Vegetation outline #859E3E (3.02:1). Pair reads reference_inks.vegetation_outline.",
+   "normal": 35.9,
+   "protanopia": 35.6,
+   "deuteranopia": 34.6,
+   "tritanopia": 28.3,
+   "worst_cvd": 28.3,
+   "grey_cr": 3.02,
+   "red_cr": 3.69,
+   "fails_r01": false
   },
   {
    "name": "Hot spring vs cold spring",

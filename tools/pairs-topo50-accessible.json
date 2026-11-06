@@ -365,7 +365,7 @@
   "name": "Vegetation outline vs paper",
   "a": {"label": "vegetation outline", "colour": "reference_inks.vegetation_outline"},
   "b": {"label": "paper", "colour": "#FFFFFF"},
-  "why": "R-01. Vegetation outline #A7C05E on Map5View (log 0060)."
+  "why": "R-01. Vegetation outline #859E3E (3.02:1). Pair reads reference_inks.vegetation_outline."
  },
  {
   "name": "Hot spring vs cold spring",

@@ -7,8 +7,8 @@
   "mark_mm": 1.4
  },
  "counts": {
-  "done": 38,
-  "proposed": 34,
+  "done": 49,
+  "proposed": 23,
   "blocked": 54
  },
  "excluded": [
@@ -876,7 +876,7 @@
      "linz_image": "symbols/bridge_two_lane-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Two 0.1 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, but a QGIS line marker draws its stroke only, so no red draws.",
+      "text": "Two 0.15 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, but a QGIS line marker draws its stroke only, so no red draws.",
       "source": "applied project",
       "inks": [
        {
@@ -905,8 +905,8 @@
        {
         "rule": "F-31",
         "label": "Line width",
-        "pass": false,
-        "detail": "0.1 mm, floor 0.15 mm"
+        "pass": true,
+        "detail": "0.15 mm, floor 0.15 mm"
        },
        {
         "rule": "F-31",
@@ -1157,60 +1157,12 @@
      "label": "Locked gate",
      "layer": "structure_point map (gate, restrictions locked)",
      "drawn": "yes",
-     "status": "proposed",
-     "note": "Josh to decide the lock cue. A second bar would read as a cattlestop.",
+     "status": "done",
+     "note": "Josh: lock is a square, not a second bar (cattlestop).",
      "linz_image": "symbols/locked_gate-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Bar 1.4 mm, stroke 0.2 mm, in #FF4500. Same bar as a gate.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#FF4500",
-        "name": "bar",
-        "role": "carrier",
-        "on": null,
-        "grey": 3.44,
-        "red": 1.0,
-        "worst_cvd": 36.7
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "bar #FF4500 on paper: 3.44:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": false,
-        "detail": "bar #FF4500 on paper: 1.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
-       },
-       {
-        "rule": "R-17",
-        "label": "Not colour alone",
-        "pass": false,
-        "detail": "Same shape as gate #000000. Grey 6.10:1, red 21.00:1, worst CVD ΔE 41.7"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ bar, in black. Add a filled black 0.6 mm square at its middle, so the lock is a shape, not a colour.",
+      "text": "Black bar 1.4 mm, stroke 0.2 mm, with a filled black 0.6 mm square at its middle. Not a second bar.",
       "source": "applied project",
       "inks": [
        {
@@ -1250,7 +1202,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "cattlestop",
@@ -2127,7 +2080,7 @@
      "linz_image": "symbols/road_over_railway-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Two 0.1 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, but a QGIS line marker draws its stroke only, so no red draws.",
+      "text": "Two 0.15 mm casing lines, 1.0 mm end ticks. The tick fill is #FF0000, but a QGIS line marker draws its stroke only, so no red draws.",
       "source": "applied project",
       "inks": [
        {
@@ -2156,8 +2109,8 @@
        {
         "rule": "F-31",
         "label": "Line width",
-        "pass": false,
-        "detail": "0.1 mm, floor 0.15 mm"
+        "pass": true,
+        "detail": "0.15 mm, floor 0.15 mm"
        },
        {
         "rule": "F-31",
@@ -2744,7 +2697,7 @@
      "linz_image": "symbols/church-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Black square with a cross, 1.0 mm tall. Strokes 0.08 mm and 0.04 mm. The red fill is set, but the line marker and the fixed-colour SVG draw black.",
+      "text": "Black square with a cross, 1.0 mm tall. Strokes 0.15 mm. Owned SVG. The red fill is set, but the line marker and the fixed-colour SVG draw black.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -2773,8 +2726,8 @@
        {
         "rule": "F-31",
         "label": "Stroke width",
-        "pass": false,
-        "detail": "0.04 mm, floor 0.15 mm"
+        "pass": true,
+        "detail": "0.15 mm, floor 0.15 mm"
        },
        {
         "rule": "F-31",
@@ -3351,55 +3304,13 @@
      "label": "Redoubt",
      "layer": "structure_point map (redoubt)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/redoubt-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Crossed square 2.5 mm, stroke 0.10 mm, in #231F20. The set #987DB7 does not draw: the SVG has fixed colours. So the sheet does not show history by colour.",
+      "text": "Crossed square 2.5 mm, stroke 0.15 mm, in #231F20. Owned SVG. The set #987DB7 does not draw: the SVG has fixed colours. So the sheet does not show history by colour.",
       "source": "applied project, SVG file",
-      "inks": [
-       {
-        "hex": "#231F20",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 16.3,
-        "red": 15.72,
-        "worst_cvd": 81.5
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #231F20 on paper: 16.30:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #231F20 on paper: 15.72:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": false,
-        "detail": "0.1 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "2.5 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ crossed square. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
       "inks": [
        {
         "hex": "#231F20",
@@ -3438,7 +3349,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "monument",
@@ -3865,12 +3777,12 @@
      "label": "Mast",
      "layer": "structure_point map (mast)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/mast-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Black open spire 2.1 mm tall, stroke 0.10 mm. The set #FF9E17 does not draw: the SVG has fixed colours.",
+      "text": "Black open spire 2.1 mm tall, stroke 0.15 mm. Owned SVG. The set #FF9E17 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -3899,48 +3811,6 @@
        {
         "rule": "F-31",
         "label": "Stroke width",
-        "pass": false,
-        "detail": "0.1 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "2.13 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ open spire. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
         "pass": true,
         "detail": "0.15 mm, floor 0.15 mm"
        },
@@ -3952,7 +3822,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "tower",
@@ -3960,12 +3831,12 @@
      "label": "Tower",
      "layer": "structure_point map (tower)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/tower-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Black filled tower 1.8 mm tall, outline strokes 0.09 mm. The set #E5B636 does not draw: the SVG has fixed colours.",
+      "text": "Black filled tower 1.8 mm tall, outline strokes 0.15 mm. Owned SVG. The set #E5B636 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -3994,48 +3865,6 @@
        {
         "rule": "F-31",
         "label": "Stroke width",
-        "pass": false,
-        "detail": "0.09 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.8 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ filled tower. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
         "pass": true,
         "detail": "0.15 mm, floor 0.15 mm"
        },
@@ -4047,7 +3876,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "wind_machine",
@@ -4103,12 +3933,12 @@
      "label": "Shipwreck",
      "layer": "structure_point map (wreck, ship)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/shipwreck-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Black hull 3 mm wide, stroke 0.06 mm.",
+      "text": "Black hull 3 mm wide, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -4137,48 +3967,6 @@
        {
         "rule": "F-31",
         "label": "Stroke width",
-        "pass": false,
-        "detail": "0.06 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "3.0 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ hull. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
         "pass": true,
         "detail": "0.15 mm, floor 0.15 mm"
        },
@@ -4190,7 +3978,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "lighthouse",
@@ -4293,12 +4082,12 @@
      "label": "Beacon",
      "layer": "structure_point map (beacon)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/marine_beacon-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Black beacon 2.4 mm tall, stroke 0.11 mm. The set #BEB297 does not draw: the SVG has fixed colours.",
+      "text": "Black beacon 2.4 mm tall, stroke 0.15 mm. Owned SVG. The set #BEB297 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -4327,48 +4116,6 @@
        {
         "rule": "F-31",
         "label": "Stroke width",
-        "pass": false,
-        "detail": "0.11 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "2.39 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ beacon. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
         "pass": true,
         "detail": "0.15 mm, floor 0.15 mm"
        },
@@ -4380,7 +4127,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "fence",
@@ -4388,12 +4136,12 @@
      "label": "Fence (selection only)",
      "layer": "fence_line map",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/fence-linz.png",
      "current_image": null,
      "measured": {
-      "text": "Near-black #0E0406, 0.05 mm.",
+      "text": "Near-black #0E0406, 0.15 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -4422,48 +4170,13 @@
        {
         "rule": "F-31",
         "label": "Line width",
-        "pass": false,
-        "detail": "0.05 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ shape. Black 0.15 mm, the thinnest step.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
         "pass": true,
         "detail": "0.15 mm, floor 0.15 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "pipeline_above",
@@ -5190,7 +4903,7 @@
      "layer": "structure_line (hidden in Map5View)",
      "drawn": "no",
      "status": "blocked",
-     "note": "",
+     "note": "Style is applied when a gas rule exists. The sheet still hides the layer (N-5).",
      "linz_image": "symbols/buried_gas_pipeline-linz.png",
      "current_image": null,
      "measured": {
@@ -5230,7 +4943,7 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ solid line in the stock hue darkened to #951600, 0.25 mm. Add a long dash, 2 mm / 0.5 mm, so it is not a fence or a power line by colour alone.",
+      "text": "Defined in the style file: #951600, 0.25 mm, long dash 2 mm / 0.5 mm (structures.buried_gas_pipeline). Map5View must show structure_line.",
       "source": "applied project",
       "inks": [
        {
@@ -6655,7 +6368,7 @@
      "layer": "no cave class on a Map5View layer",
      "drawn": "no",
      "status": "blocked",
-     "note": "The sheet uses this cave SVG for bivouacs.",
+     "note": "Stock bivouacs borrowed this cave SVG. Bivouac now has its own tent mark.",
      "linz_image": "symbols/cave-linz.png",
      "current_image": null,
      "measured": {
@@ -8459,7 +8172,7 @@
      "layer": "landcover_point (hidden in Map5View)",
      "drawn": "no",
      "status": "blocked",
-     "note": "Josh to decide: fumarole and hot spring then differ by size only.",
+     "note": "Josh to review the steam-vent shape in log 0096 before apply.",
      "linz_image": "symbols/fumarole-linz.png",
      "current_image": null,
      "measured": {
@@ -8505,7 +8218,7 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ large ×, in black, 2 mm, stroke 0.2 mm. Size tells it from the hot-spring ×.",
+      "text": "Three short black steam ticks over a filled black vent, 1.6 mm, stroke 0.2 mm. Not a ×. Log 0096.",
       "source": "applied project",
       "inks": [
        {
@@ -8541,7 +8254,7 @@
         "rule": "F-31",
         "label": "Mark size",
         "pass": true,
-        "detail": "2.0 mm, floor 1.4 mm"
+        "detail": "1.6 mm, floor 1.4 mm"
        }
       ],
       "pass": true
@@ -9306,75 +9019,12 @@
      "label": "Scrub",
      "layer": "vegetation map (scrub)",
      "drawn": "yes",
-     "status": "proposed",
+     "status": "done",
      "note": "",
      "linz_image": "symbols/scrub-linz.png",
      "current_image": "symbols/scrub-ours.png",
      "measured": {
-      "text": "Plant marks #6A9A50 1.4 mm, stroke 0.18 mm. Outline #A7C05E.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#6A9A50",
-        "name": "marks",
-        "role": "carrier",
-        "on": null,
-        "grey": 3.31,
-        "red": 5.41,
-        "worst_cvd": 33.5
-       },
-       {
-        "hex": "#A7C05E",
-        "name": "outline",
-        "role": "carrier",
-        "on": null,
-        "grey": 2.03,
-        "red": 2.41,
-        "worst_cvd": 19.1
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "marks #6A9A50 on paper: 3.31:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "marks #6A9A50 on paper: 5.41:1"
-       },
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": false,
-        "detail": "outline #A7C05E on paper: 2.03:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": false,
-        "detail": "outline #A7C05E on paper: 2.41:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.18 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the plant marks. Outline #859E3E.",
+      "text": "Plant marks #6A9A50, 1.4 mm, stroke 0.18 mm. Outline #859E3E.",
       "source": "applied project",
       "inks": [
        {
@@ -9435,7 +9085,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "scattered_scrub",
@@ -9443,48 +9094,12 @@
      "label": "Scattered scrub",
      "layer": "vegetation map (scattered_scrub)",
      "drawn": "yes",
-     "status": "proposed",
-     "note": "Josh to decide: scrub and scattered scrub then differ by mark spacing and fill.",
+     "status": "done",
+     "note": "Josh (N-2): spacing and no fill separate scattered from scrub.",
      "linz_image": "symbols/scattered_scrub-linz.png",
      "current_image": "symbols/scattered_scrub-ours.png",
      "measured": {
-      "text": "Arc marks #B2DF8A, 1.2 mm, on a 5 mm grid.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#B2DF8A",
-        "name": "marks",
-        "role": "carrier",
-        "on": null,
-        "grey": 1.52,
-        "red": 2.12,
-        "worst_cvd": 18.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": false,
-        "detail": "marks #B2DF8A on paper: 1.52:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": false,
-        "detail": "marks #B2DF8A on paper: 2.12:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": false,
-        "detail": "1.2 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ arc marks on a 5 mm grid, no fill. Ink #6A9A50, 1.4 mm, stroke 0.18 mm.",
+      "text": "Arc marks #6A9A50, 1.4 mm, stroke 0.18 mm, on a 5 mm grid, no fill.",
       "source": "applied project",
       "inks": [
        {
@@ -9524,7 +9139,8 @@
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "shelter_belt",
@@ -9537,17 +9153,17 @@
      "linz_image": "symbols/shelter_belt-linz.png",
      "current_image": "symbols/shelter_belt-ours.png",
      "measured": {
-      "text": "Shelterbelt #1D9D00, 0.25 mm.",
+      "text": "Shelterbelt #008A00, 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#1D9D00",
+        "hex": "#008A00",
         "name": "line",
         "role": "carrier",
         "on": null,
-        "grey": 3.57,
-        "red": 16.86,
-        "worst_cvd": 38.9
+        "grey": 4.53,
+        "red": 21.0,
+        "worst_cvd": 42.9
        }
       ],
       "checks": [
@@ -9555,13 +9171,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "line #1D9D00 on paper: 3.57:1"
+        "detail": "line #008A00 on paper: 4.53:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "line #1D9D00 on paper: 16.86:1"
+        "detail": "line #008A00 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -9580,58 +9196,22 @@
      "label": "Trees",
      "layer": "vegetation_point map (tree)",
      "drawn": "yes",
-     "status": "proposed",
-     "note": "Josh to decide the size. The data has many trees; 1.4 mm may crowd.",
+     "status": "done",
+     "note": "Josh (N-2): glyph and #008A00 ink; legend swatch at F-31, map at stock density.",
      "linz_image": "symbols/trees-linz.png",
-     "current_image": null,
+     "current_image": "symbols/trees-ours.png",
      "measured": {
-      "text": "Circle 0.05 mm in #1D9D00.",
+      "text": "Owned tree glyph in #008A00, 1.4 mm in the legend swatch (legend_size_mm); map points 0.2 mm (log 0070).",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#1D9D00",
-        "name": "dot",
-        "role": "carrier",
-        "on": null,
-        "grey": 3.57,
-        "red": 16.86,
-        "worst_cvd": 38.9
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "dot #1D9D00 on paper: 3.57:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "dot #1D9D00 on paper: 16.86:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": false,
-        "detail": "0.05 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Draw the LINZ tree mark (tree.svg) in #1D9D00, 1.4 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#1D9D00",
+        "hex": "#008A00",
         "name": "mark",
         "role": "carrier",
         "on": null,
-        "grey": 3.57,
-        "red": 16.86,
-        "worst_cvd": 38.9
+        "grey": 4.53,
+        "red": 21.0,
+        "worst_cvd": 42.9
        }
       ],
       "checks": [
@@ -9639,23 +9219,30 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "mark #1D9D00 on paper: 3.57:1"
+        "detail": "mark #008A00 on paper: 4.53:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "mark #1D9D00 on paper: 16.86:1"
+        "detail": "mark #008A00 on paper: 21.00:1"
+       },
+       {
+        "rule": "F-31",
+        "label": "Stroke width",
+        "pass": true,
+        "detail": "0.15 mm, floor 0.15 mm"
        },
        {
         "rule": "F-31",
         "label": "Mark size",
         "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
+        "detail": "1.4 mm. Exempt: map vegetation_point uses size_mm 0.2 mm, not legend_size_mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "orchard",
@@ -9698,17 +9285,17 @@
       "pass": false
      },
      "proposal": {
-      "text": "Keep the LINZ rows of dots in #1D9D00.",
+      "text": "Keep the LINZ rows of dots in #008A00.",
       "source": "applied project",
       "inks": [
        {
-        "hex": "#1D9D00",
+        "hex": "#008A00",
         "name": "dots",
         "role": "carrier",
         "on": null,
-        "grey": 3.57,
-        "red": 16.86,
-        "worst_cvd": 38.9
+        "grey": 4.53,
+        "red": 21.0,
+        "worst_cvd": 42.9
        }
       ],
       "checks": [
@@ -9716,13 +9303,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "dots #1D9D00 on paper: 3.57:1"
+        "detail": "dots #008A00 on paper: 4.53:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "dots #1D9D00 on paper: 16.86:1"
+        "detail": "dots #008A00 on paper: 21.00:1"
        }
       ],
       "pass": true
@@ -9831,22 +9418,22 @@
      "label": "Bivouac",
      "layer": "structure_point map (bivouac)",
      "drawn": "yes",
-     "status": "proposed",
-     "note": "Josh to decide: a bivouac uses the LINZ cave glyph.",
+     "status": "done",
+     "note": "Josh: tent/camp triangle. Replaces the cave SVG borrow.",
      "linz_image": null,
      "current_image": null,
      "measured": {
-      "text": "The cave SVG, 1.6 mm, stroke 0.09 mm, in #231F20. The set #D5B43C does not draw: the SVG has fixed colours.",
+      "text": "Open tent triangle 1.4 mm, stroke 0.15 mm, wider than tall, with a ridge. Owned SVG. Distinct from the filled trig triangle and the tall open mast.",
       "source": "applied project, SVG file",
       "inks": [
        {
-        "hex": "#231F20",
-        "name": "SVG black",
+        "hex": "#000000",
+        "name": "black",
         "role": "carrier",
         "on": null,
-        "grey": 16.3,
-        "red": 15.72,
-        "worst_cvd": 81.5
+        "grey": 21.0,
+        "red": 21.0,
+        "worst_cvd": 100.0
        }
       ],
       "checks": [
@@ -9854,55 +9441,13 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "SVG black #231F20 on paper: 16.30:1"
+        "detail": "black #000000 on paper: 21.00:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "SVG black #231F20 on paper: 15.72:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": false,
-        "detail": "0.09 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ dome. Redraw the SVG strokes at 0.15 mm.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#231F20",
-        "name": "SVG black",
-        "role": "carrier",
-        "on": null,
-        "grey": 16.3,
-        "red": 15.72,
-        "worst_cvd": 81.5
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "SVG black #231F20 on paper: 16.30:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "SVG black #231F20 on paper: 15.72:1"
+        "detail": "black #000000 on paper: 21.00:1"
        },
        {
         "rule": "F-31",
@@ -9914,11 +9459,12 @@
         "rule": "F-31",
         "label": "Mark size",
         "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
+        "detail": "1.4 mm, floor 1.4 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "hut",
