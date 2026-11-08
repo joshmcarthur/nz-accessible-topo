@@ -15,6 +15,7 @@ from nzat.qgis.carto_flat_wrap_expression import carto_flat_wrap_expression
 from nzat.qgis.carto_text_width_expression import carto_text_width_expression
 from nzat.qgis.curved_label_mode_expression import curved_label_mode_expression
 from nzat.qgis.defaults import (
+    CARTO_BIVOUAC_NAME,
     CARTO_FIT_FILE,
     CARTO_FLAT_TEXT,
     CARTO_POINT_FILTER,
@@ -28,6 +29,7 @@ from nzat.qgis.label_behind import label_behind
 from nzat.qgis.load_carto_fit import load_carto_fit
 from nzat.qgis.load_urban_text import load_urban_text
 from nzat.qgis.parse_qgis_colour import parse_qgis_colour
+from nzat.qgis.patch_carto_point_labels import carto_bivouac_distance_expression
 from nzat.qgis.patch_label_contrast import patch_label_contrast
 from nzat.qgis.patch_labels import patch_labels
 from nzat.qgis.rgb_key import rgb_key
@@ -215,6 +217,7 @@ def test_multiline_baseline_splits_at_a_fold():
     assert point.get("placementFlags") == "14"
     assert point.get("geometryGeneratorType") == "LineGeometry"
     assert point.get("geometryGenerator") == carto_flat_line_expression()
+    assert CARTO_BIVOUAC_NAME in point.get("geometryGenerator")
     allowance_m = STYLE["labels"]["carto_point"]["allowance_mm"] * SHEET_SCALE / 1000
     assert f"+ {allowance_m:g})" in point.get("geometryGenerator")
     assert point_rule.find(".//Option[@name='CurvedLabelMode']") is None
@@ -237,6 +240,9 @@ def test_multiline_baseline_splits_at_a_fold():
         ".//Option[@name='AutoWrapLength']/Option[@name='expression']"
     )
     assert wrap.get("value") == carto_flat_wrap_expression()
+    distance = point_rule.find(".//Option[@name='Distance']/Option[@name='expression']")
+    assert distance.get("value") == carto_bivouac_distance_expression()
+    assert "Bivouac" in distance.get("value")
     assert "strpos(\"text_string\", ' / ') = 0" in wrap.get("value")
     # Catches a name with its own line break wrapped again ("Te" alone, a lone "/").
     assert "strpos(\"text_string\", '\\n') = 0" in wrap.get("value")
@@ -264,8 +270,12 @@ def test_carto_fit_places_listed_names():
     patch_labels(root, "nztopo50_carto_text", fit=fit)
     point_rule = root.findall("./labeling/rules/rule")[1]
     props = point_rule.find("settings/dd_properties/Option/Option[@name='properties']")
+    offset_m = STYLE["labels"]["carto_point"]["offset_mm"] * SHEET_SCALE / 1000
     assert expr(props, "PositionX") == carto_fit_value(fit, "x")
-    assert expr(props, "PositionY") == carto_fit_value(fit, "y")
+    assert expr(props, "PositionY") == (
+        f"{carto_fit_value(fit, 'y')} + CASE WHEN {CARTO_BIVOUAC_NAME} THEN {offset_m:g} ELSE 0 END"
+    )
+    assert expr(props, "Distance") == carto_bivouac_distance_expression()
     assert "1569900.5" in expr(props, "PositionX")
     assert expr(props, "Hali") == "'Center'"
     assert expr(props, "Vali") == "'Bottom'"

@@ -43,3 +43,4 @@ CARTO_CLEAN_TEXT = (
 CARTO_FLAT_TEXT = (
     f"regexp_replace(replace({CARTO_CLEAN_TEXT}, ' / ', ' /\\n'), '^Te ', 'Te\u00a0')"
 )
+CARTO_BIVOUAC_NAME = "regexp_match(coalesce(\"text_string\", ''), 'Bivouac|Bivvy')"

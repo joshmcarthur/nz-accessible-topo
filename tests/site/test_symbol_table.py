@@ -1,5 +1,6 @@
+from nzat.qgis.cover_set import map_png_name
 from nzat.qgis.legend_swatches import LEGEND_SIZE, SWATCHES
-from nzat.site.export_symbol_table import build_table
+from nzat.site.export_symbol_table import IMAGE_DIR, build_table, clear_legend_crops
 from nzat.site.symbol_checks import evaluate, passes
 from nzat.site.symbol_rows import SECTIONS, STATUSES, SYMBOLS, ink, spec
 
@@ -65,6 +66,36 @@ def test_redrawn_rows_sit_inside_the_legend_swatch_boxes():
             bx0 <= x0 and x1 <= bx1 and by0 <= y0 and y1 <= by1
             for bx0, by0, bx1, by1 in swatch_boxes
         ), symbol["key"]
+
+
+def test_legend_crop_clear_keeps_map_pngs(tmp_path):
+    # Catches export_symbol_table wiping in-situ {key}-map.png crops.
+    linz = tmp_path / "gate-linz.png"
+    ours = tmp_path / "gate-ours.png"
+    situ = tmp_path / map_png_name("gate")
+    linz.write_bytes(b"a")
+    ours.write_bytes(b"b")
+    situ.write_bytes(b"c")
+    clear_legend_crops(tmp_path)
+    assert not linz.exists()
+    assert not ours.exists()
+    assert situ.exists()
+
+
+def test_table_links_a_map_crop_when_the_png_exists():
+    # Catches /symbols/ omitting an in-situ crop that is already on disk.
+    table = build_table()
+    rows = [row for section in table["sections"] for row in section["rows"]]
+    by_key = {row["key"]: row for row in rows}
+    situ = IMAGE_DIR / map_png_name("bivouac")
+    if situ.is_file():
+        assert by_key["bivouac"]["map_image"] == f"symbols/{map_png_name('bivouac')}"
+    else:
+        assert by_key["bivouac"]["map_image"] is None
+    assert by_key["cattlestop"]["map_image"] is None
+    assert by_key["cattlestop"]["map_note"] == "No national type"
+    assert by_key["helipad"]["map_image"] is None
+    assert "transport_point" in by_key["helipad"]["map_note"]
 
 
 def test_table_counts_every_symbol_once():

@@ -12,10 +12,10 @@ const fmt = (ink: any) =>
 ---
 <Base title="Symbols" current="symbols/">
   <h1>Symbol definitions</h1>
-  <p class="lede">Every symbol in the stock Topo50 legend, beside the symbol the accessible sheet draws today and the change we propose. Each proposal keeps the LINZ shape.</p>
+  <p class="lede">Every symbol in the stock Topo50 legend, beside the symbol the accessible sheet draws today, a 1 km crop from the map, and the change we propose. Each proposal keeps the LINZ shape.</p>
   <p>{total} symbols. {counts.done} are done. {counts.proposed} have a proposal for review. {counts.blocked} are blocked: the sheet does not draw them, so the proposal waits for the layer or the data.</p>
   <p>The floors are {floors.contrast}:1 contrast on paper and on the fill under the mark (R-01, F-20), {floors.red}:1 under red light (R-01, R-11), lines and strokes at least {floors.line_mm} mm and marks at least {floors.mark_mm} mm (F-31), and no meaning by colour alone (R-17). Only the ink that draws the shape must meet the contrast floors. A fill or a hue that a casing backs up is shown, not gated.</p>
-  <p class="note">Data: <code>src/nzat/site/symbol_rows.py</code>, built by <code>tools/export_symbol_table.py</code>. LINZ crops come from the stock legend image. Our crops come from the accessible legend, which redraws only some rows. Left out: rules that never draw a real class ({table.excluded.join("; ")}).</p>
+  <p class="note">Data: <code>src/nzat/site/symbol_rows.py</code>, built by <code>tools/export_symbol_table.py</code>. LINZ crops come from the stock legend image. Our crops come from the accessible legend, which redraws only some rows. Map crops are 1 km, 600 dpi, Map5View-all, centred on a parquet hit. Left out: rules that never draw a real class ({table.excluded.join("; ")}).</p>
   <nav aria-label="Sections">
     <ul class="sections">
       {table.sections.filter((s) => s.rows.length).map((s) => (
@@ -25,16 +25,17 @@ const fmt = (ink: any) =>
   </nav>
 
   {table.sections.filter((s) => s.rows.length).map((section) => (
-    <section>
+    <section class="wide">
       <h2 id={slug(section.name)}>{section.name}</h2>
-      <div class="table-wrap wide" tabindex="0" role="region" aria-label={`${section.name} symbol table`}>
+      <div class="table-wrap" tabindex="0" role="region" aria-label={`${section.name} symbol table`}>
         <table>
-          <caption>{section.name}: LINZ symbol, our symbol today, measurements and proposal.</caption>
+          <caption>{section.name}: LINZ symbol, our symbol today, on the sheet, measurements and proposal.</caption>
           <thead>
             <tr>
               <th scope="col">LINZ symbol</th>
               <th scope="col">Symbol</th>
               <th scope="col">Ours today</th>
+              <th scope="col">On the sheet</th>
               <th scope="col">Measured</th>
               <th scope="col">Proposal</th>
               <th scope="col">Status</th>
@@ -56,6 +57,11 @@ const fmt = (ink: any) =>
                   {row.current_image
                     ? <img src={url(row.current_image)} alt={`Accessible legend swatch: ${row.label}`} width="190" loading="lazy" />
                     : <span>{row.drawn === "no" ? "Not drawn on the sheet" : "Not yet redrawn in the legend"}</span>}
+                </td>
+                <td>
+                  {row.map_image
+                    ? <img class="map" src={url(row.map_image)} alt={`Accessible sheet, 1 km around ${row.label} on the map`} width="280" loading="lazy" />
+                    : <span>{row.map_note || "No map crop"}</span>}
                 </td>
                 <td>
                   <p>{row.measured.text}</p>
@@ -94,6 +100,7 @@ const fmt = (ink: any) =>
   caption { text-align: left; font-weight: 700; margin-bottom: .75rem; }
   .sections { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; padding: 0; list-style: none; }
   img { display: block; max-width: 190px; height: auto; border: 1px solid var(--ink); background: #fff; }
+  img.map { max-width: 280px; }
   .small { font-weight: 400; font-size: .9rem; margin: .35rem 0 0; max-width: 32ch; }
   td p { margin: 0 0 .4rem; max-width: 36ch; }
   .checks { margin: .25rem 0 .5rem; padding-left: 1rem; font-size: .9rem; max-width: 40ch; }
@@ -111,4 +118,5 @@ const fmt = (ink: any) =>
   .verdict.pass::before { background: var(--paper); }
   .status { font-weight: 700; text-transform: capitalize; }
   td { vertical-align: top; }
+  table { width: 100%; }
 </style>

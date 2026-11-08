@@ -15,6 +15,14 @@ def test_map_themes_paper_keeps_hidden_layers_and_all_shows_them():
               <layername>water_point</layername>
             </maplayer>
             <maplayer>
+              <id>structure_point_id</id>
+              <layername>structure_point</layername>
+            </maplayer>
+            <maplayer>
+              <id>structure_point_map_id</id>
+              <layername>structure_point map</layername>
+            </maplayer>
+            <maplayer>
               <id>contour_id</id>
               <layername>contour</layername>
             </maplayer>
@@ -51,5 +59,7 @@ def test_map_themes_paper_keeps_hidden_layers_and_all_shows_them():
     }
     assert "water_point_id" not in paper_ids
     assert all_ids["water_point_id"] == "1"
+    assert "structure_point_id" not in all_ids
+    assert "structure_point_map_id" not in all_ids
     assert paper.find("checked-legend-nodes[@id='relief_line_id']") is not None
     assert all_preset.find("checked-legend-nodes[@id='relief_line_id']") is None

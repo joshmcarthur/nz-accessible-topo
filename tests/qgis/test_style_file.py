@@ -77,7 +77,8 @@ def test_style_file_has_no_sheet_code():
     assert style["structures"]["locked_gate"]["bar_colour"] == "#000000"
     assert style["structures"]["locked_gate"]["lock_size_mm"] == 0.6
     assert style["structures"]["bivouac"]["marker"] == "./symbol/nztopo50_bivouac.svg"
-    assert style["structures"]["bivouac"]["size_mm"] == 1.4
+    assert style["labels"]["carto_point"]["offset_mm"] == 2.5
+    assert style["structures"]["bivouac"]["size_mm"] == 2.5
     assert style["structures"]["bivouac"]["stroke_mm"] == 0.15
     assert style["structures"]["church"]["marker"] == "./symbol/nztopo50_church.svg"
     assert style["structures"]["church"]["bar_stroke_mm"] == 0.15
@@ -94,5 +95,9 @@ def test_style_file_has_no_sheet_code():
     assert style["structures"]["buried_gas_pipeline"]["dash"] == "2;0.5"
     assert style["tracks"]["access"]["reserved_channel"] == "casing_colour"
     assert style["tracks"]["access"]["painted"] is False
-    assert style["draw_order"] == [{"name": "vegetation map", "below": "contour"}]
+    assert style["draw_order"][0] == {"name": "vegetation map", "below": "contour"}
+    assert style["draw_order"][1] == {
+        "name": "building_point map",
+        "below": "structure_point map",
+    }
     assert style["label_contrast"]["red_light_min"] == 3.0

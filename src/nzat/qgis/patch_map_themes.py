@@ -89,6 +89,8 @@ def patch_map_themes(root, style=None):
     all_preset = _put_preset(presets, all_name, source)
     ids = _layer_ids(root)
     for name in themes.get("all_layers", ALL_LAYER_NAMES):
+        if f"{name} map" in ids:
+            continue
         layer_id = ids.get(name)
         if layer_id:
             _ensure_visible(all_preset, layer_id)

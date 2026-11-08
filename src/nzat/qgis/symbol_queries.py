@@ -1,0 +1,205 @@
+"""One DuckDB WHERE clause per /symbols/ row, against national GeoParquet.
+
+parquet None means the national layers have no class for that legend row.
+"""
+
+from nzat.site.symbol_rows import SYMBOLS
+
+
+def _q(key, parquet, where, reason=""):
+    return {"key": key, "parquet": parquet, "where": where, "reason": reason}
+
+
+def _absent(key, reason):
+    return {"key": key, "parquet": None, "where": None, "reason": reason}
+
+
+QUERIES = (
+    _q("state_highway", "road_line", "t.highway_number IS NOT NULL"),
+    _q("four_lanes", "road_line", "t.lane_count >= 4"),
+    _q("two_lanes", "road_line", "t.lane_count = 2"),
+    _q("narrow_road", "road_line", "t.lane_count = 1 AND t.surface = 'sealed'"),
+    _q("vehicle_track", "track_line", "t.subtype = 'vehicle'"),
+    _q("foot_track", "track_line", "t.subtype = 'foot'"),
+    _q("closed_track", "track_line", "t.status = 'closed'"),
+    _q("poled_route", "track_line", "t.track_type = 'route'"),
+    _q("track_connector", "track_line", "t.track_type = 'connector'"),
+    _q("road_sealed", "road_line", "t.surface = 'sealed' AND t.lane_count = 2"),
+    _q("road_metalled", "road_line", "t.surface = 'metalled'"),
+    _q("road_unmetalled", "road_line", "t.surface = 'unmetalled'"),
+    _q("tunnel", "tunnel_line", "t.type = 'vehicle'"),
+    _q("tunnel_under_road", "tunnel_line", "t.type = 'vehicle'"),
+    _q("bridge_two_lane", "bridge_line", "t.type = 'vehicle'"),
+    _q("bridge_one_lane", "bridge_line", "t.type = 'vehicle'"),
+    _q("ford", "transport_point", "t.type = 'ford'"),
+    _q(
+        "gate",
+        "structure_point",
+        "t.type = 'gate' AND t.subtype IS DISTINCT FROM 'locked'",
+    ),
+    _q("locked_gate", "structure_point", "t.type = 'gate' AND t.subtype = 'locked'"),
+    _absent("cattlestop", "no cattlestop type in national parquet"),
+    _q("footbridge", "bridge_line", "t.type = 'foot_traffic'"),
+    _q("cableway", "structure_line", "t.type = 'cableway_people'"),
+    _q("walkwire", "structure_line", "t.type = 'walkwire'"),
+    _q("rail_double", "railway_line", "t.track_type = 'multiple'"),
+    _q("rail_single", "railway_line", "t.track_type = 'single'"),
+    _q(
+        "rail_station",
+        "railway_line",
+        "t.subtype = 'siding'",
+        "yard or siding only; no station type",
+    ),
+    _q("rail_bridge", "bridge_line", "t.type = 'train'"),
+    _q("rail_tunnel", "tunnel_line", "t.type = 'train'"),
+    _q("level_crossing", "railway_line", "t.type = 'railway'"),
+    _q("road_over_railway", "bridge_line", "t.type = 'vehicle'"),
+    _q("railway_over_road", "bridge_line", "t.type = 'train'"),
+    _q("tramway", "tunnel_line", "t.type = 'tram'"),
+    _q("residential_area", "residential_area", "TRUE"),
+    _q("large_buildings", "building", "TRUE"),
+    _q("isolated_building", "building_point", "t.subtype IS NULL"),
+    _q("homestead", "building_point", "t.subtype = 'homestead'"),
+    _q("stockyard", "structure_point", "t.type = 'stockyard'"),
+    _q("glasshouse", "building", "t.subtype = 'greenhouse'"),
+    _q("church", "building_point", "t.subtype = 'church'"),
+    _q("cemetery", "landuse", "t.type = 'cemetery'"),
+    _q("grave", "place_point", "t.type = 'grave'"),
+    _q("training_track", "landuse", "t.type IN ('racetrack', 'horse_track')"),
+    _q("golf_course", "nztopo50_carto_symbol", "t.type = 'golf_course'"),
+    _q("helipad", "transport_point", "t.type = 'helipad'"),
+    _q("historic_pa", "place_point", "t.type = 'pa'"),
+    _q("redoubt", "structure_point", "t.type = 'redoubt'"),
+    _q("monument", "place_point", "t.type = 'monument'"),
+    _absent("plaque_signpost", "no plaque or signpost type in national parquet"),
+    _q("reservoir_covered", "structure", "t.type = 'reservoir'"),
+    _q("reservoir_uncovered", "water", "t.subtype = 'reservoir'"),
+    _q("tank", "structure_point", "t.type = 'tank'"),
+    _q("mast", "structure_point", "t.type = 'mast'"),
+    _q("tower", "structure_point", "t.type = 'tower'"),
+    _q("wind_machine", "structure_point", "t.type = 'windmill'"),
+    _q("shipwreck", "structure_point", "t.type = 'wreck'"),
+    _q("lighthouse", "structure_point", "t.type = 'lighthouse'"),
+    _q("marine_beacon", "structure_point", "t.type = 'beacon'"),
+    _q("fence", "fence_line", "TRUE"),
+    _absent("pipeline_above", "no pipeline type in national parquet"),
+    _absent("pipeline_underground", "no pipeline type in national parquet"),
+    _q(
+        "water_race_disused",
+        "structure_line",
+        "t.type = 'water_race' AND t.status = 'disused'",
+    ),
+    _absent("power_pylons", "no power-line type in national parquet"),
+    _absent("power_poles", "no power-line type in national parquet"),
+    _absent("telephone", "no telephone type in national parquet"),
+    _q("industrial_cableway", "structure_line", "t.type = 'cableway_industrial'"),
+    _q("mine_underground", "landuse", "t.type = 'mine'"),
+    _q("mine_opencast", "nztopo50_carto_symbol", "t.type = 'mine_opencast'"),
+    _absent("buried_gas_pipeline", "no gas pipeline type in national parquet"),
+    _q("index_contour", "contour", "t.elevation % 100 = 0 AND t.designation IS NULL"),
+    _q(
+        "intermediate_contours",
+        "contour",
+        "t.elevation % 100 <> 0 AND t.designation IS NULL",
+    ),
+    _q("ice_contours", "nztopo50_ice_contour", "TRUE"),
+    _q("supplementary_contour", "contour", "t.designation = 'supplementary'"),
+    _q("depression_contours", "contour", "t.formation = 'depression'"),
+    _q(
+        "shallow_depression",
+        "relief_point",
+        "t.type = 'sinkhole'",
+        "closest class; no shallow_depression type",
+    ),
+    _q("small_depression_shaft", "structure_point", "t.type = 'shaft'"),
+    _q("trig", "trig_point", "TRUE"),
+    _q("trig_elevation", "trig_point", "TRUE"),
+    _q("spot_height", "relief_point", "t.type = 'height'"),
+    _q("cliff", "relief_line", "t.type = 'cliff_edge'"),
+    _absent("terrace", "no terrace type in national parquet"),
+    _q("slip", "relief_line", "t.type = 'slip_edge'"),
+    _q("rock_outcrops", "landcover_point", "t.type = 'rock_outcrop'"),
+    _q("stopbank", "relief_line", "t.type = 'embankment' AND t.subtype = 'stopbank'"),
+    _q("cutting", "relief_line", "t.type = 'cutting_edge'"),
+    _q(
+        "embankment",
+        "relief_line",
+        "t.type = 'embankment' AND t.subtype IS DISTINCT FROM 'stopbank'",
+    ),
+    _q("saddle", "relief_point", "t.type = 'saddle'"),
+    _q("cave", "place_point", "t.type = 'cave'"),
+    _q("moraine", "landcover", "t.type = 'moraine'"),
+    _q("moraine_wall", "landcover", "t.type = 'moraine_wall'"),
+    _q("scree", "landcover", "t.type = 'scree'"),
+    _q("coastal_rocks", "marine", "t.type = 'rock'"),
+    _q("shoal_reef", "marine", "t.type IN ('shoal', 'reef')"),
+    _q("sand_mud", "landcover", "t.type = 'mud'"),
+    _q("sand", "landcover", "t.type = 'sand'"),
+    _q("shingle", "landcover", "t.type = 'shingle'"),
+    _q("swamp", "landcover", "t.type = 'swamp'"),
+    _q("boat_ramp", "structure_line", "t.type = 'boatramp'"),
+    _q(
+        "breakwater_wharf_jetty",
+        "structure_line",
+        "t.type IN ('breakwater', 'wharf')",
+    ),
+    _q("slipway", "structure_line", "t.type = 'slipway'"),
+    _q("marine_farm", "structure_line", "t.type = 'marine_farm'"),
+    _absent("seawall", "no seawall type in national parquet"),
+    _q("dam", "structure_line", "t.type = 'dam'"),
+    _q("floodgate", "structure_point", "t.type = 'floodgate'"),
+    _q("weir", "structure_line", "t.type = 'weir'"),
+    _q("waterfall", "water_point", "t.type = 'waterfall'"),
+    _q("rapids", "relief_line", "t.type = 'rapid'"),
+    _q(
+        "cold_spring",
+        "water_point",
+        "t.type = 'spring' AND t.temperature_indicator = 'cold'",
+    ),
+    _q(
+        "hot_spring",
+        "water_point",
+        "t.type = 'spring' AND t.temperature_indicator = 'hot'",
+    ),
+    _q("fumarole", "landcover_point", "t.type = 'fumarole'"),
+    _absent("geothermal_bore", "no bore type in national parquet"),
+    _q("watercourse", "water_line", "t.type = 'river'"),
+    _q("drain", "water_line", "t.type = 'drain'"),
+    _q("canal_large", "water", "t.type = 'canal'"),
+    _q("canal_small", "water_line", "t.type = 'canal'"),
+    _q(
+        "stream_disappearing",
+        "water_point",
+        "t.type = 'soakhole'",
+        "soakhole is the sink class; water_line has no disappearing type",
+    ),
+    _q("native_forest", "vegetation", "t.type = 'native'"),
+    _q(
+        "exotic_coniferous",
+        "vegetation",
+        "t.type = 'exotic' AND t.subtype = 'coniferous'",
+    ),
+    _q(
+        "exotic_non_coniferous",
+        "vegetation",
+        "t.type = 'exotic' AND t.subtype = 'non-coniferous'",
+    ),
+    _q("scrub", "vegetation", "t.type = 'scrub'"),
+    _q("scattered_scrub", "vegetation", "t.type = 'scattered_scrub'"),
+    _q("shelter_belt", "vegetation_line", "TRUE"),
+    _q("trees", "vegetation_point", "TRUE"),
+    _q("orchard", "landuse", "t.type IN ('orchard', 'vineyard')"),
+    _q("mangroves", "marine", "t.type = 'mangrove'"),
+    _q("bivouac", "structure_point", "t.type = 'bivouac'"),
+    _q("hut", "building_point", "t.subtype = 'hut'"),
+)
+
+
+def queries_by_key():
+    return {row["key"]: row for row in QUERIES}
+
+
+def missing_symbol_keys():
+    have = {row["key"] for row in QUERIES}
+    want = {row["key"] for row in SYMBOLS}
+    return sorted(want - have), sorted(have - want)

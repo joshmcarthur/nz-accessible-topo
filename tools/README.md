@@ -68,3 +68,23 @@ python3 tools/override_topo50_project.py stock/nztopo50.qgs accessible/nztopo50.
 
 Run it with the QGIS Python. Other labels count as filled boxes. Point symbols
 are not counted. The glyph masks are about 2.5% smaller than the QGIS boxes.
+
+## find_symbol_sheets.py
+
+Find 4 km squares that hold legend classes BX24 does not. Uses DuckDB in the
+QGIS Python. Host Python does not have DuckDB.
+
+```
+$QPY tools/find_symbol_sheets.py --out /tmp/symbol-cover.json
+$QPY tools/find_symbol_sheets.py --render-dir render/legend-cover --theme Map5View-all
+```
+
+Log 0108 is the table. Do not invent types for rows the parquet lacks.
+
+1 km in-situ crops for `/symbols/` (600 dpi, Map5View-all, centred on the hit):
+
+```
+$QPY tools/find_symbol_sheets.py --in-situ-dir site/public/symbols --theme Map5View-all
+uv run python tools/export_symbol_table.py
+```
+

@@ -27,6 +27,7 @@
       "allowance_mm": 1,
       "advance_em": 0.6,
       "overrun_mm": 0.5,
+      "offset_mm": 2.5,
       "wrap_chars": 16,
       "line_height": 0.85
     },
@@ -144,7 +145,12 @@
     "line_floor_mm": 0.15
   },
   "draw_order": [
-    {"name": "vegetation map", "below": "contour"}
+    {"name": "vegetation map", "below": "contour"},
+    {"name": "building_point map", "below": "structure_point map"},
+    {"name": "water_point", "below": "building_point map"},
+    {"name": "landcover_point", "below": "water_point"},
+    {"name": "structure_line", "below": "landcover_point"},
+    {"name": "tunnel_line", "below": "track_line map"}
   ],
   "tracks": {
     "access": {
@@ -190,7 +196,7 @@
     "bivouac": {
       "marker": "./symbol/nztopo50_bivouac.svg",
       "colour": "#000000",
-      "size_mm": 1.4,
+      "size_mm": 2.5,
       "stroke_mm": 0.15
     },
     "church": {

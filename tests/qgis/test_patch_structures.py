@@ -336,7 +336,7 @@ def test_locked_gate_is_a_black_bar_with_a_square():
 
 
 def test_bivouac_uses_the_owned_tent_svg():
-    # Catches a bivouac left on the cave SVG, or a mark under 1.4 mm / 0.15 mm.
+    # Catches a bivouac left on the cave SVG, or a mark under 2.5 mm / 0.15 mm.
     layer = ET.fromstring(POINT_XML)
     patch_structure_point(layer)
     spec = STYLE["structures"]["bivouac"]
@@ -349,7 +349,7 @@ def test_bivouac_uses_the_owned_tent_svg():
     ]
     assert name.get("value") == spec["marker"]
     assert size.get("value") == str(spec["size_mm"])
-    assert spec["size_mm"] >= 1.4
+    assert spec["size_mm"] >= 2.5
     assert spec["stroke_mm"] >= 0.15
     assert caves == []
     assert BIVOUAC_SVG.is_file()
@@ -358,6 +358,8 @@ def test_bivouac_uses_the_owned_tent_svg():
     view = [float(part) for part in root.get("viewBox").split()]
     width, height = view[2], view[3]
     assert width > height
+    assert width <= 11.5
+    assert height <= 8
     stroke = max(
         float(node.get("stroke-width"))
         for node in root.iter()
@@ -365,6 +367,8 @@ def test_bivouac_uses_the_owned_tent_svg():
     )
     assert stroke / width * spec["size_mm"] >= spec["stroke_mm"] - 1e-9
     assert "nztopo50_cave" not in svg
+    fill = _option(layer, "0", "SvgMarker", "color")
+    assert fill.get("value") == "0,0,0,0"
 
 
 def test_buried_gas_pipeline_is_dark_and_dashed():

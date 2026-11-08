@@ -110,3 +110,5 @@ One entry per research commit, oldest first. `git log` mirrors this list.
 - [0105 — Stream ink back to `#004C99`](0105-stream-ink-restored.md)
 - [0106 — Legend swatches: no lime disc, relief ticks draw](0106-legend-swatch-lime-and-empty.md)
 - [0107 — N-1 to N-6 visual sign-off](0107-n1-n6-visual-signoff.md)
+- [0108 — Legend review set from national parquet](0108-legend-review-set.md)
+- [0109 — Bivouac tent at character height, no lime disc](0109-bivouac-size-and-lime.md)

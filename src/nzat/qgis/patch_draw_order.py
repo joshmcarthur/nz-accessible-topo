@@ -27,16 +27,10 @@ def patch_draw_order(root, style=None):
         below_name = rule["below"]
         moving_found = _tree_layer_parent(tree, moving_name)
         below_found = _tree_layer_parent(tree, below_name)
-        if moving_found is None:
-            raise RuntimeError(f"missing layer-tree node: {moving_name}")
-        if below_found is None:
-            raise RuntimeError(f"missing layer-tree node: {below_name}")
+        if moving_found is None or below_found is None:
+            continue
         parent, moving = moving_found
         below_parent, below = below_found
-        if parent is not below_parent:
-            raise RuntimeError(
-                f"{moving_name} and {below_name} are not in the same group"
-            )
         parent.remove(moving)
-        index = list(parent).index(below)
-        parent.insert(index + 1, moving)
+        index = list(below_parent).index(below)
+        below_parent.insert(index + 1, moving)

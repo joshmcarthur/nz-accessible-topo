@@ -11,7 +11,9 @@ from pathlib import Path
 from PIL import Image
 
 from nzat.paths import ROOT
+from nzat.qgis.cover_set import map_paint_note, map_png_name, paints_on_map_all
 from nzat.qgis.legend_swatches import ACCESSIBLE_LEGEND_FILE, LEGEND_SIZE
+from nzat.qgis.symbol_queries import queries_by_key
 from nzat.site.symbol_checks import (
     GRAPHIC_FLOOR,
     LINE_FLOOR_MM,
@@ -60,6 +62,9 @@ def _side(spec, merged_with=None):
 
 
 def symbol_row(symbol):
+    parquet = queries_by_key()[symbol["key"]]["parquet"]
+    map_name = map_png_name(symbol["key"])
+    show_map = paints_on_map_all(parquet) and (IMAGE_DIR / map_name).is_file()
     return {
         "key": symbol["key"],
         "section": symbol["section"],
@@ -72,6 +77,8 @@ def symbol_row(symbol):
         "current_image": (
             f"symbols/{symbol['key']}-ours.png" if symbol["redrawn"] else None
         ),
+        "map_image": f"symbols/{map_name}" if show_map else None,
+        "map_note": map_paint_note(parquet),
         "measured": _side(symbol["measured"], symbol["merged_with"]),
         "proposal": _side(symbol["proposal"]),
     }
@@ -99,14 +106,20 @@ def build_table():
     }
 
 
+def clear_legend_crops(image_dir):
+    """Drop legend-box crops. Keep in-situ `{key}-map.png` files."""
+    for pattern in ("*-linz.png", "*-ours.png"):
+        for old in Path(image_dir).glob(pattern):
+            old.unlink()
+
+
 def write_crops():
     stock = _read_stock(STOCK_LEGEND)
     ours = Image.open(ACCESSIBLE_LEGEND).convert("RGB")
     if stock.size != LEGEND_SIZE or ours.size != LEGEND_SIZE:
         raise SystemExit(f"legend images must be {LEGEND_SIZE}")
     IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-    for old in IMAGE_DIR.glob("*.png"):
-        old.unlink()
+    clear_legend_crops(IMAGE_DIR)
     for symbol in SYMBOLS:
         if not symbol["box"]:
             continue

@@ -1858,11 +1858,11 @@ SYMBOLS = (
         "structure_point map (bivouac)",
         "done",
         spec(
-            "Open tent triangle 1.4 mm, stroke 0.15 mm, wider than tall, with a ridge. "
+            "Open tent triangle 2.5 mm, stroke 0.15 mm, wider than tall, with a ridge. "
             "Owned SVG. Distinct from the filled trig triangle and the tall open mast.",
             (BLACK,),
             source=SVG,
-            mark_mm=1.4,
+            mark_mm=2.5,
             stroke_mm=0.15,
         ),
         note="Josh: tent/camp triangle. Replaces the cave SVG borrow.",

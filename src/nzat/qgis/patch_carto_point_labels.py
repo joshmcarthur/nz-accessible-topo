@@ -9,14 +9,22 @@ from nzat.qgis.carto_flat_line_expression import carto_flat_line_expression
 from nzat.qgis.carto_flat_wrap_expression import carto_flat_wrap_expression
 from nzat.qgis.defaults import (
     ABOVE_BELOW_MAP_ORIENTED,
+    CARTO_BIVOUAC_NAME,
     CARTO_FLAT_TEXT,
     CARTO_POINT_FILTER,
     CURVED_ONLY_PROPERTIES,
     MULTILINE_CENTRE,
+    SHEET_SCALE,
     STYLE,
 )
 from nzat.qgis.put_expr import put_expr
 from nzat.qgis.settings_props import settings_props
+
+
+def carto_bivouac_distance_expression(style=None):
+    style = style or STYLE
+    offset_mm = style["labels"]["carto_point"]["offset_mm"]
+    return f"CASE WHEN {CARTO_BIVOUAC_NAME} THEN {offset_mm:g} ELSE 0 END"
 
 
 def _rule(settings, filter_expression, description):
@@ -79,9 +87,15 @@ def patch_carto_point_labels(layer, style=None, fit=None):
                 f"CASE WHEN {carto_fit_value(fit, 'lines')} = 1 THEN 0 ELSE {wrap} END"
             )
         put_expr(props, "AutoWrapLength", wrap)
+        put_expr(props, "Distance", carto_bivouac_distance_expression(style))
         if fit:
+            offset_m = carto["offset_mm"] * SHEET_SCALE / 1000
             put_expr(props, "PositionX", carto_fit_value(fit, "x"))
-            put_expr(props, "PositionY", carto_fit_value(fit, "y"))
+            put_expr(
+                props,
+                "PositionY",
+                f"{carto_fit_value(fit, 'y')} + CASE WHEN {CARTO_BIVOUAC_NAME} THEN {offset_m:g} ELSE 0 END",
+            )
             put_expr(props, "Hali", "'Center'")
             put_expr(props, "Vali", "'Bottom'")
     baseline_text = settings.find("text-style")

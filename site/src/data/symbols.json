@@ -31,6 +31,8 @@
      "note": "Settled: highway #E31A1C (log 0090).",
      "linz_image": "symbols/state_highway-linz.png",
      "current_image": "symbols/state_highway-ours.png",
+     "map_image": "symbols/state_highway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Highway fill with dark casing, white shield, #940000 number.",
       "source": "applied project",
@@ -88,6 +90,8 @@
      "note": "Settled: road #EC7000 (log 0051).",
      "linz_image": "symbols/four_lanes-linz.png",
      "current_image": "symbols/four_lanes-ours.png",
+     "map_image": "symbols/four_lanes-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road fill 1.43 mm with casing 2.26 mm.",
       "source": "applied project",
@@ -145,6 +149,8 @@
      "note": "",
      "linz_image": "symbols/two_lanes-linz.png",
      "current_image": "symbols/two_lanes-ours.png",
+     "map_image": "symbols/two_lanes-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road fill 0.72 mm with casing 1.13 mm.",
       "source": "applied project",
@@ -202,6 +208,8 @@
      "note": "",
      "linz_image": "symbols/narrow_road-linz.png",
      "current_image": "symbols/narrow_road-ours.png",
+     "map_image": "symbols/narrow_road-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road fill 0.36 mm with casing 0.57 mm.",
       "source": "applied project",
@@ -259,6 +267,8 @@
      "note": "",
      "linz_image": "symbols/vehicle_track-linz.png",
      "current_image": "symbols/vehicle_track-ours.png",
+     "map_image": "symbols/vehicle_track-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.15 mm, dash 2.5 / 0.5 mm.",
       "source": "applied project",
@@ -307,6 +317,8 @@
      "note": "Log 0094.",
      "linz_image": "symbols/foot_track-linz.png",
      "current_image": "symbols/foot_track-ours.png",
+     "map_image": "symbols/foot_track-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.2 mm, dash 1 / 0.5 mm.",
       "source": "applied project",
@@ -355,6 +367,8 @@
      "note": "Logs 0066, 0094.",
      "linz_image": "symbols/closed_track-linz.png",
      "current_image": "symbols/closed_track-ours.png",
+     "map_image": "symbols/closed_track-map.png",
+     "map_note": null,
      "measured": {
       "text": "Foot track with a black cross2 0.7 mm every 3 mm, 0.15 mm stroke.",
       "source": "applied project",
@@ -415,6 +429,8 @@
      "note": "Log 0094.",
      "linz_image": "symbols/poled_route-linz.png",
      "current_image": "symbols/poled_route-ours.png",
+     "map_image": "symbols/poled_route-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black dots 0.45 mm at 1.0 mm pitch.",
       "source": "applied project",
@@ -463,6 +479,8 @@
      "note": "Log 0094.",
      "linz_image": "symbols/track_connector-linz.png",
      "current_image": "symbols/track_connector-ours.png",
+     "map_image": "symbols/track_connector-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black dots 0.3 mm at 1.0 mm pitch.",
       "source": "applied project",
@@ -511,6 +529,8 @@
      "note": "",
      "linz_image": "symbols/road_sealed-linz.png",
      "current_image": "symbols/road_sealed-ours.png",
+     "map_image": "symbols/road_sealed-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road fill with casing, as two lanes.",
       "source": "applied project",
@@ -568,6 +588,8 @@
      "note": "",
      "linz_image": "symbols/road_metalled-linz.png",
      "current_image": "symbols/road_metalled-ours.png",
+     "map_image": "symbols/road_metalled-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road fill with white dashes and casing.",
       "source": "applied project",
@@ -625,6 +647,8 @@
      "note": "",
      "linz_image": "symbols/road_unmetalled-linz.png",
      "current_image": "symbols/road_unmetalled-ours.png",
+     "map_image": "symbols/road_unmetalled-map.png",
+     "map_note": null,
      "measured": {
       "text": "White fill with casing: a double line.",
       "source": "applied project",
@@ -673,6 +697,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/tunnel-linz.png",
      "current_image": "symbols/tunnel-ours.png",
+     "map_image": "symbols/tunnel-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.26 mm. tunnel_line is one symbol for road and rail tunnels.",
       "source": "applied project",
@@ -721,6 +747,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/tunnel_under_road-linz.png",
      "current_image": "symbols/tunnel_under_road-ours.png",
+     "map_image": "symbols/tunnel_under_road-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.26 mm. Same tunnel_line symbol as Tunnel.",
       "source": "applied project",
@@ -769,6 +797,8 @@
      "note": "",
      "linz_image": "symbols/bridge_two_lane-linz.png",
      "current_image": "symbols/bridge_two_lane-ours.png",
+     "map_image": "symbols/bridge_two_lane-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ bracket. Casing lines 0.2 mm, end ticks 1.4 mm, in the casing ink.",
       "source": "applied project",
@@ -823,6 +853,8 @@
      "note": "",
      "linz_image": "symbols/bridge_one_lane-linz.png",
      "current_image": "symbols/bridge_one_lane-ours.png",
+     "map_image": "symbols/bridge_one_lane-map.png",
+     "map_note": null,
      "measured": {
       "text": "White 0.51 mm deck with a 0.2 mm casing line.",
       "source": "applied project",
@@ -871,6 +903,8 @@
      "note": "",
      "linz_image": "symbols/ford-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "transport_point is off on Map5View-all",
      "measured": {
       "text": "Stock road orange with a stock blue bar.",
       "source": "stock legend image",
@@ -960,6 +994,8 @@
      "note": "",
      "linz_image": "symbols/gate-linz.png",
      "current_image": "symbols/gate-ours.png",
+     "map_image": "symbols/gate-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm.",
       "source": "applied project",
@@ -1014,6 +1050,8 @@
      "note": "Josh: lock is a square, not a second bar (cattlestop).",
      "linz_image": "symbols/locked_gate-linz.png",
      "current_image": "symbols/locked_gate-ours.png",
+     "map_image": "symbols/locked_gate-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm, with a filled black 0.6 mm square at its middle. Not a second bar.",
       "source": "applied project",
@@ -1068,6 +1106,8 @@
      "note": "",
      "linz_image": "symbols/cattlestop-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Three black bars.",
       "source": "stock legend image",
@@ -1163,6 +1203,8 @@
      "note": "",
      "linz_image": "symbols/footbridge-linz.png",
      "current_image": null,
+     "map_image": "symbols/footbridge-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black bars with splayed ends.",
       "source": "stock legend image",
@@ -1258,6 +1300,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cableway-linz.png",
      "current_image": "symbols/cableway-ours.png",
+     "map_image": "symbols/cableway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black, 1.6 mm, stroke 0.2 mm.",
       "source": "applied project",
@@ -1312,6 +1356,8 @@
      "note": "",
      "linz_image": "symbols/walkwire-linz.png",
      "current_image": null,
+     "map_image": "symbols/walkwire-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black bars with splayed ends and the word Walkwire.",
       "source": "stock legend image",
@@ -1412,6 +1458,8 @@
      "note": "",
      "linz_image": "symbols/rail_double-linz.png",
      "current_image": "symbols/rail_double-ours.png",
+     "map_image": "symbols/rail_double-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.6 mm with white dashes inside. Filter coalesce(track_type) = multiple.",
       "source": "applied project",
@@ -1460,6 +1508,8 @@
      "note": "",
      "linz_image": "symbols/rail_single-linz.png",
      "current_image": "symbols/rail_single-ours.png",
+     "map_image": "symbols/rail_single-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.25 mm.",
       "source": "applied project",
@@ -1508,6 +1558,8 @@
      "note": "",
      "linz_image": "symbols/rail_station-linz.png",
      "current_image": null,
+     "map_image": "symbols/rail_station-map.png",
+     "map_note": null,
      "measured": {
       "text": "Red-orange circle with a black outline.",
       "source": "stock legend image",
@@ -1621,6 +1673,8 @@
      "note": "",
      "linz_image": "symbols/rail_bridge-linz.png",
      "current_image": null,
+     "map_image": "symbols/rail_bridge-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black brackets.",
       "source": "stock legend image",
@@ -1710,6 +1764,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/rail_tunnel-linz.png",
      "current_image": "symbols/rail_tunnel-ours.png",
+     "map_image": "symbols/rail_tunnel-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.26 mm. Same tunnel_line symbol as Tunnel.",
       "source": "applied project",
@@ -1758,6 +1814,8 @@
      "note": "",
      "linz_image": "symbols/level_crossing-linz.png",
      "current_image": "symbols/level_crossing-ours.png",
+     "map_image": "symbols/level_crossing-map.png",
+     "map_note": null,
      "measured": {
       "text": "Road with casing over the black railway.",
       "source": "applied project",
@@ -1815,6 +1873,8 @@
      "note": "Same paint as Bridge: two lane.",
      "linz_image": "symbols/road_over_railway-linz.png",
      "current_image": "symbols/road_over_railway-ours.png",
+     "map_image": "symbols/road_over_railway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ bracket. Casing lines 0.2 mm, end ticks 1.4 mm, in the casing ink.",
       "source": "applied project",
@@ -1869,6 +1929,8 @@
      "note": "",
      "linz_image": "symbols/railway_over_road-linz.png",
      "current_image": null,
+     "map_image": "symbols/railway_over_road-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black brackets on the railway.",
       "source": "stock legend image",
@@ -1958,6 +2020,8 @@
      "note": "",
      "linz_image": "symbols/tramway-linz.png",
      "current_image": null,
+     "map_image": "symbols/tramway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black line with cross ticks.",
       "source": "stock legend image",
@@ -2046,6 +2110,8 @@
      "note": "",
      "linz_image": "symbols/residential_area-linz.png",
      "current_image": "symbols/residential_area-ours.png",
+     "map_image": "symbols/residential_area-map.png",
+     "map_note": null,
      "measured": {
       "text": "Urban fill #BCBAB6. Buildings and labels carry it.",
       "source": "applied project",
@@ -2075,6 +2141,8 @@
      "note": "",
      "linz_image": "symbols/large_buildings-linz.png",
      "current_image": "symbols/large_buildings-ours.png",
+     "map_image": "symbols/large_buildings-map.png",
+     "map_note": null,
      "measured": {
       "text": "Solid black fill.",
       "source": "applied project",
@@ -2117,6 +2185,8 @@
      "note": "",
      "linz_image": "symbols/isolated_building-linz.png",
      "current_image": "symbols/isolated_building-ours.png",
+     "map_image": "symbols/isolated_building-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black square 0.5 mm.",
       "source": "applied project",
@@ -2165,6 +2235,8 @@
      "note": "",
      "linz_image": "symbols/homestead-linz.png",
      "current_image": "symbols/homestead-ours.png",
+     "map_image": "symbols/homestead-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black square 0.5 mm with its name.",
       "source": "applied project",
@@ -2213,6 +2285,8 @@
      "note": "",
      "linz_image": "symbols/stockyard-linz.png",
      "current_image": "symbols/stockyard-ours.png",
+     "map_image": "symbols/stockyard-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black grid square 1.6 mm, strokes 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -2267,6 +2341,8 @@
      "note": "",
      "linz_image": "symbols/glasshouse-linz.png",
      "current_image": "symbols/glasshouse-ours.png",
+     "map_image": "symbols/glasshouse-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black 0.2 mm outline, no fill. Filter coalesce(subtype) = greenhouse.",
       "source": "applied project",
@@ -2315,6 +2391,8 @@
      "note": "",
      "linz_image": "symbols/church-linz.png",
      "current_image": "symbols/church-ours.png",
+     "map_image": "symbols/church-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black square with a cross, 1.4 mm tall, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -2369,6 +2447,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cemetery-linz.png",
      "current_image": "symbols/cemetery-ours.png",
+     "map_image": "symbols/cemetery-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Dashed outline 0.2 mm, crosses 1.4 mm, stroke 0.15 mm.",
       "source": "applied project",
@@ -2423,6 +2503,8 @@
      "note": "",
      "linz_image": "symbols/grave-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "place_point is off on Map5View-all",
      "measured": {
       "text": "Black cross.",
       "source": "stock legend image",
@@ -2518,6 +2600,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/training_track-linz.png",
      "current_image": "symbols/training_track-ours.png",
+     "map_image": "symbols/training_track-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black dashed oval 0.25 mm.",
       "source": "applied project",
@@ -2566,6 +2650,8 @@
      "note": "",
      "linz_image": "symbols/golf_course-linz.png",
      "current_image": "symbols/golf_course-ours.png",
+     "map_image": "symbols/golf_course-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black flag 2 mm, stroke 0.17 mm. The set #A47158 does not draw: the SVG has fixed colours. The dashed boundary is on landuse, which Map5View-all draws.",
       "source": "applied project, SVG file",
@@ -2620,6 +2706,8 @@
      "note": "",
      "linz_image": "symbols/helipad-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "transport_point is off on Map5View-all",
      "measured": {
       "text": "Black H in a circle.",
       "source": "stock legend image",
@@ -2715,6 +2803,8 @@
      "note": "",
      "linz_image": "symbols/historic_pa-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "place_point is off on Map5View-all",
      "measured": {
       "text": "Black square with corner spurs.",
       "source": "stock legend image",
@@ -2810,6 +2900,8 @@
      "note": "",
      "linz_image": "symbols/redoubt-linz.png",
      "current_image": "symbols/redoubt-ours.png",
+     "map_image": "symbols/redoubt-map.png",
+     "map_note": null,
      "measured": {
       "text": "Crossed square 2.5 mm, stroke 0.15 mm, in #231F20. Owned SVG. The set #987DB7 does not draw: the SVG has fixed colours. So the sheet does not show history by colour.",
       "source": "applied project, SVG file",
@@ -2864,6 +2956,8 @@
      "note": "",
      "linz_image": "symbols/monument-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "place_point is off on Map5View-all",
      "measured": {
       "text": "Black filled spire.",
       "source": "stock legend image",
@@ -2953,6 +3047,8 @@
      "note": "",
      "linz_image": "symbols/plaque_signpost-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Red-orange star.",
       "source": "stock legend image",
@@ -3036,6 +3132,8 @@
      "note": "",
      "linz_image": "symbols/reservoir_covered-linz.png",
      "current_image": null,
+     "map_image": "symbols/reservoir_covered-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black circle outline.",
       "source": "stock legend image",
@@ -3131,6 +3229,8 @@
      "note": "",
      "linz_image": "symbols/reservoir_uncovered-linz.png",
      "current_image": "symbols/reservoir_uncovered-ours.png",
+     "map_image": "symbols/reservoir_uncovered-map.png",
+     "map_note": null,
      "measured": {
       "text": "Water fill with a stream-blue 0.1 mm outline.",
       "source": "applied project",
@@ -3188,6 +3288,8 @@
      "note": "The parent tank rule still draws a 3 mm tank SVG.",
      "linz_image": "symbols/tank-linz.png",
      "current_image": "symbols/tank-ours.png",
+     "map_image": "symbols/tank-map.png",
+     "map_note": null,
      "measured": {
       "text": "Circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG. The parent tank rule stays 3 mm.",
       "source": "applied project, SVG file",
@@ -3242,6 +3344,8 @@
      "note": "",
      "linz_image": "symbols/mast-linz.png",
      "current_image": "symbols/mast-ours.png",
+     "map_image": "symbols/mast-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black open spire 2.1 mm tall, stroke 0.15 mm. Owned SVG. The set #FF9E17 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3296,6 +3400,8 @@
      "note": "",
      "linz_image": "symbols/tower-linz.png",
      "current_image": "symbols/tower-ours.png",
+     "map_image": "symbols/tower-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black filled tower 1.8 mm tall, outline strokes 0.15 mm. Owned SVG. The set #E5B636 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3350,6 +3456,8 @@
      "note": "",
      "linz_image": "symbols/wind_machine-linz.png",
      "current_image": "symbols/wind_machine-ours.png",
+     "map_image": "symbols/wind_machine-map.png",
+     "map_note": null,
      "measured": {
       "text": "Filled windmill 2.4 mm tall in #231F20. The set #987DB7 and #377DB7 do not draw.",
       "source": "applied project, SVG file",
@@ -3398,6 +3506,8 @@
      "note": "",
      "linz_image": "symbols/shipwreck-linz.png",
      "current_image": "symbols/shipwreck-ours.png",
+     "map_image": "symbols/shipwreck-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black hull 3 mm wide, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -3452,6 +3562,8 @@
      "note": "",
      "linz_image": "symbols/lighthouse-linz.png",
      "current_image": "symbols/lighthouse-ours.png",
+     "map_image": "symbols/lighthouse-map.png",
+     "map_note": null,
      "measured": {
       "text": "Tower 2.2 mm tall, stroke 0.15 mm, #231F20. Owned SVG.",
       "source": "applied project, SVG file",
@@ -3506,6 +3618,8 @@
      "note": "",
      "linz_image": "symbols/marine_beacon-linz.png",
      "current_image": "symbols/marine_beacon-ours.png",
+     "map_image": "symbols/marine_beacon-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black beacon 2.4 mm tall, stroke 0.15 mm. Owned SVG. The set #BEB297 does not draw: the SVG has fixed colours.",
       "source": "applied project, SVG file",
@@ -3560,6 +3674,8 @@
      "note": "",
      "linz_image": "symbols/fence-linz.png",
      "current_image": "symbols/fence-ours.png",
+     "map_image": "symbols/fence-map.png",
+     "map_note": null,
      "measured": {
       "text": "Near-black #0E0406, 0.15 mm.",
       "source": "applied project",
@@ -3608,6 +3724,8 @@
      "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/pipeline_above-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Black line with arrow heads.",
       "source": "stock legend image",
@@ -3691,6 +3809,8 @@
      "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/pipeline_underground-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Black dashes with arrow heads.",
       "source": "stock legend image",
@@ -3774,6 +3894,8 @@
      "note": "",
      "linz_image": "symbols/water_race_disused-linz.png",
      "current_image": null,
+     "map_image": "symbols/water_race_disused-map.png",
+     "map_note": null,
      "measured": {
       "text": "Thin black line with arrow heads.",
       "source": "stock legend image",
@@ -3857,6 +3979,8 @@
      "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/power_pylons-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Thin black line with open squares.",
       "source": "stock legend image",
@@ -3940,6 +4064,8 @@
      "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/power_poles-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Thin black line with open circles.",
       "source": "stock legend image",
@@ -4023,6 +4149,8 @@
      "note": "structure_line is on Map5View-all. This project has no class.",
      "linz_image": "symbols/telephone-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Thin black dashes with dots.",
       "source": "stock legend image",
@@ -4106,6 +4234,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/industrial_cableway-linz.png",
      "current_image": "symbols/industrial_cableway-ours.png",
+     "map_image": "symbols/industrial_cableway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black 0.17 mm with open squares.",
       "source": "applied project",
@@ -4154,6 +4284,8 @@
      "note": "",
      "linz_image": "symbols/mine_underground-linz.png",
      "current_image": null,
+     "map_image": "symbols/mine_underground-map.png",
+     "map_note": null,
      "measured": {
       "text": "Half-filled black square.",
       "source": "stock legend image",
@@ -4243,6 +4375,8 @@
      "note": "",
      "linz_image": "symbols/mine_opencast-linz.png",
      "current_image": "symbols/mine_opencast-ours.png",
+     "map_image": "symbols/mine_opencast-map.png",
+     "map_note": null,
      "measured": {
       "text": "Filled pick and shovel 1.8 mm in #231F20. The set #729B6F does not draw.",
       "source": "applied project, SVG file",
@@ -4291,6 +4425,8 @@
      "note": "Style is applied when a gas rule exists. This project has no gas class.",
      "linz_image": "symbols/buried_gas_pipeline-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Red-orange line.",
       "source": "stock legend image",
@@ -4379,6 +4515,8 @@
      "note": "Settled: index #7A5542 (log 0050).",
      "linz_image": "symbols/index_contour-linz.png",
      "current_image": "symbols/index_contour-ours.png",
+     "map_image": "symbols/index_contour-map.png",
+     "map_note": null,
      "measured": {
       "text": "Index brown 0.35 mm at alpha 0.85, upright number with halo.",
       "source": "applied project",
@@ -4427,6 +4565,8 @@
      "note": "Settled: intermediate #B08872 (log 0054).",
      "linz_image": "symbols/intermediate_contours-linz.png",
      "current_image": "symbols/intermediate_contours-ours.png",
+     "map_image": "symbols/intermediate_contours-map.png",
+     "map_note": null,
      "measured": {
       "text": "Intermediate 0.12 mm on a 0.2 mm index-brown casing.",
       "source": "applied project",
@@ -4484,6 +4624,8 @@
      "note": "",
      "linz_image": "symbols/ice_contours-linz.png",
      "current_image": "symbols/ice_contours-ours.png",
+     "map_image": "symbols/ice_contours-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream blue 0.12 mm, 0.3 mm on the 100 m line.",
       "source": "applied project",
@@ -4532,6 +4674,8 @@
      "note": "",
      "linz_image": "symbols/supplementary_contour-linz.png",
      "current_image": "symbols/supplementary_contour-ours.png",
+     "map_image": "symbols/supplementary_contour-map.png",
+     "map_note": null,
      "measured": {
       "text": "Index and intermediate inks with casing. Dash 3 mm / 1 mm when coalesce(designation) = supplementary.",
       "source": "applied project",
@@ -4589,6 +4733,8 @@
      "note": "Stock print uses orange #FF7F00 here: 2.5:1 grey, 1.0:1 red light.",
      "linz_image": "symbols/depression_contours-linz.png",
      "current_image": "symbols/depression_contours-ours.png",
+     "map_image": "symbols/depression_contours-map.png",
+     "map_note": null,
      "measured": {
       "text": "Contour inks with index-brown downhill ticks 0.6 mm when coalesce(formation) = depression. Not stock orange.",
       "source": "applied project",
@@ -4652,6 +4798,8 @@
      "note": "",
      "linz_image": "symbols/shallow_depression-linz.png",
      "current_image": null,
+     "map_image": "symbols/shallow_depression-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stock orange dashed ring.",
       "source": "stock legend image",
@@ -4735,6 +4883,8 @@
      "note": "Sinkholes are relief_point and draw as a 0.3 mm spot-height dot.",
      "linz_image": "symbols/small_depression_shaft-linz.png",
      "current_image": "symbols/small_depression_shaft-ours.png",
+     "map_image": "symbols/small_depression_shaft-map.png",
+     "map_note": null,
      "measured": {
       "text": "Half-filled circle 1.4 mm, stroke 0.15 mm, #231F20. Owned SVG.",
       "source": "applied project, SVG file",
@@ -4789,6 +4939,8 @@
      "note": "",
      "linz_image": "symbols/trig-linz.png",
      "current_image": "symbols/trig-ours.png",
+     "map_image": "symbols/trig-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black triangle 1.9 mm.",
       "source": "applied project",
@@ -4837,6 +4989,8 @@
      "note": "",
      "linz_image": "symbols/trig_elevation-linz.png",
      "current_image": "symbols/trig_elevation-ours.png",
+     "map_image": "symbols/trig_elevation-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black triangle 1.9 mm with an upright height.",
       "source": "applied project",
@@ -4885,6 +5039,8 @@
      "note": "",
      "linz_image": "symbols/spot_height-linz.png",
      "current_image": "symbols/spot_height-ours.png",
+     "map_image": "symbols/spot_height-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black dot 0.3 mm with a black 6 pt height.",
       "source": "applied project",
@@ -4933,6 +5089,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cliff-linz.png",
      "current_image": "symbols/cliff-ours.png",
+     "map_image": "symbols/cliff-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black edge 0.2 mm with teeth.",
       "source": "applied project",
@@ -4981,6 +5139,8 @@
      "note": "",
      "linz_image": "symbols/terrace-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Black edge with ticks.",
       "source": "stock legend image",
@@ -5064,6 +5224,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/slip-linz.png",
      "current_image": "symbols/slip-ours.png",
+     "map_image": "symbols/slip-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black arc 0.2 mm with teeth.",
       "source": "applied project",
@@ -5112,6 +5274,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/rock_outcrops-linz.png",
      "current_image": "symbols/rock_outcrops-ours.png",
+     "map_image": "symbols/rock_outcrops-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black, smallest 1.4 mm, stroke 0.2 mm.",
       "source": "applied project",
@@ -5166,6 +5330,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/stopbank-linz.png",
      "current_image": "symbols/stopbank-ours.png",
+     "map_image": "symbols/stopbank-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black ticks, stroke 0.2 mm.",
       "source": "applied project",
@@ -5214,6 +5380,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cutting-linz.png",
      "current_image": "symbols/cutting-ours.png",
+     "map_image": "symbols/cutting-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black edges 0.2 mm with teeth.",
       "source": "applied project",
@@ -5262,6 +5430,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/embankment-linz.png",
      "current_image": "symbols/embankment-ours.png",
+     "map_image": "symbols/embankment-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black lines 0.2 mm with ticks.",
       "source": "applied project",
@@ -5310,6 +5480,8 @@
      "note": "",
      "linz_image": "symbols/saddle-linz.png",
      "current_image": "symbols/saddle-ours.png",
+     "map_image": "symbols/saddle-map.png",
+     "map_note": null,
      "measured": {
       "text": "Two black arcs 1.4 mm tall, stroke 0.2 mm. Owned SVG. Filter coalesce(type) = saddle. Spot heights stay 0.3 mm dots.",
       "source": "applied project, SVG file",
@@ -5364,6 +5536,8 @@
      "note": "Stock bivouacs borrowed this cave SVG. Bivouac now has its own tent mark.",
      "linz_image": "symbols/cave-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "place_point is off on Map5View-all",
      "measured": {
       "text": "Black dome on a base line.",
       "source": "stock legend image",
@@ -5459,6 +5633,8 @@
      "note": "",
      "linz_image": "symbols/moraine-linz.png",
      "current_image": "symbols/moraine-ours.png",
+     "map_image": "symbols/moraine-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black crosses and rings, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -5507,6 +5683,8 @@
      "note": "",
      "linz_image": "symbols/moraine_wall-linz.png",
      "current_image": "symbols/moraine_wall-ours.png",
+     "map_image": "symbols/moraine_wall-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black dotted rows, 0.5 mm.",
       "source": "applied project",
@@ -5555,6 +5733,8 @@
      "note": "",
      "linz_image": "symbols/scree-linz.png",
      "current_image": "symbols/scree-ours.png",
+     "map_image": "symbols/scree-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black fine stipple, stroke 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -5608,6 +5788,8 @@
      "note": "",
      "linz_image": "symbols/coastal_rocks-linz.png",
      "current_image": null,
+     "map_image": "symbols/coastal_rocks-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black rock glyphs on the shore.",
       "source": "stock legend image",
@@ -5703,6 +5885,8 @@
      "note": "",
      "linz_image": "symbols/shoal_reef-linz.png",
      "current_image": null,
+     "map_image": "symbols/shoal_reef-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stock blue dashed outline.",
       "source": "stock legend image",
@@ -5810,6 +5994,8 @@
      "note": "",
      "linz_image": "symbols/sand_mud-linz.png",
      "current_image": "symbols/sand_mud-ours.png",
+     "map_image": "symbols/sand_mud-map.png",
+     "map_note": null,
      "measured": {
       "text": "Sand texture in stream #004C99.",
       "source": "applied project",
@@ -5852,6 +6038,8 @@
      "note": "",
      "linz_image": "symbols/sand-linz.png",
      "current_image": "symbols/sand-ours.png",
+     "map_image": "symbols/sand-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black sand texture.",
       "source": "applied project",
@@ -5894,6 +6082,8 @@
      "note": "",
      "linz_image": "symbols/shingle-linz.png",
      "current_image": "symbols/shingle-ours.png",
+     "map_image": "symbols/shingle-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black shingle texture, strokes 0.15 mm. Owned SVG.",
       "source": "applied project, SVG file",
@@ -5942,6 +6132,8 @@
      "note": "",
      "linz_image": "symbols/swamp-linz.png",
      "current_image": "symbols/swamp-ours.png",
+     "map_image": "symbols/swamp-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream-blue tufts, strokes 0.15 mm, and a 0.1 mm dotted outline. Owned SVG.",
       "source": "applied project, SVG file",
@@ -5990,6 +6182,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/boat_ramp-linz.png",
      "current_image": "symbols/boat_ramp-ours.png",
+     "map_image": "symbols/boat_ramp-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black double bar 0.2 mm.",
       "source": "applied project",
@@ -6038,6 +6232,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/breakwater_wharf_jetty-linz.png",
      "current_image": "symbols/breakwater_wharf_jetty-ours.png",
+     "map_image": "symbols/breakwater_wharf_jetty-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black bars 0.4 mm.",
       "source": "applied project",
@@ -6086,6 +6282,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/slipway-linz.png",
      "current_image": "symbols/slipway-ours.png",
+     "map_image": "symbols/slipway-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black 0.2 mm with ticks.",
       "source": "applied project",
@@ -6134,6 +6332,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/marine_farm-linz.png",
      "current_image": "symbols/marine_farm-ours.png",
+     "map_image": "symbols/marine_farm-map.png",
+     "map_note": null,
      "measured": {
       "text": "Rows of stock blue dashes.",
       "source": "stock legend image",
@@ -6241,6 +6441,8 @@
      "note": "",
      "linz_image": "symbols/seawall-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Heavy black bar on the shore.",
       "source": "stock legend image",
@@ -6324,6 +6526,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/dam-linz.png",
      "current_image": "symbols/dam-ours.png",
+     "map_image": "symbols/dam-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black bar 0.4 mm.",
       "source": "applied project",
@@ -6372,6 +6576,8 @@
      "note": "",
      "linz_image": "symbols/floodgate-linz.png",
      "current_image": "symbols/floodgate-ours.png",
+     "map_image": "symbols/floodgate-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black bar 1.4 mm, stroke 0.2 mm, with the FG label.",
       "source": "applied project",
@@ -6426,6 +6632,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/weir-linz.png",
      "current_image": "symbols/weir-ours.png",
+     "map_image": "symbols/weir-map.png",
+     "map_note": null,
      "measured": {
       "text": "Keep the LINZ shape. Black bar 1.4 mm, stroke 0.3 mm.",
       "source": "applied project",
@@ -6480,6 +6688,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/waterfall-linz.png",
      "current_image": "symbols/waterfall-ours.png",
+     "map_image": "symbols/waterfall-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stock blue double tick.",
       "source": "stock legend image",
@@ -6563,6 +6773,8 @@
      "note": "",
      "linz_image": "symbols/rapids-linz.png",
      "current_image": "symbols/rapids-ours.png",
+     "map_image": "symbols/rapids-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream-blue fill with a 0.2 mm outline.",
       "source": "applied project",
@@ -6611,6 +6823,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/cold_spring-linz.png",
      "current_image": "symbols/cold_spring-ours.png",
+     "map_image": "symbols/cold_spring-map.png",
+     "map_note": null,
      "measured": {
       "text": "A #005C8F circle (log 0036). Filter coalesce(type) = spring.",
       "source": "applied project",
@@ -6653,6 +6867,8 @@
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/hot_spring-linz.png",
      "current_image": "symbols/hot_spring-ours.png",
+     "map_image": "symbols/hot_spring-map.png",
+     "map_note": null,
      "measured": {
       "text": "A #141414 × (log 0036). Filter coalesce(type) = spring and temperature_indicator = hot.",
       "source": "applied project",
@@ -6695,6 +6911,8 @@
      "note": "Josh to review the steam-vent shape in log 0096 before apply. Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/fumarole-linz.png",
      "current_image": "symbols/fumarole-ours.png",
+     "map_image": "symbols/fumarole-map.png",
+     "map_note": null,
      "measured": {
       "text": "Large red-orange ×.",
       "source": "stock legend image",
@@ -6790,6 +7008,8 @@
      "note": "water_point is on Map5View-all. This project has no bore class.",
      "linz_image": "symbols/geothermal_bore-linz.png",
      "current_image": null,
+     "map_image": null,
+     "map_note": "No national type",
      "measured": {
       "text": "Red-orange circled ×.",
       "source": "stock legend image",
@@ -6885,6 +7105,8 @@
      "note": "Settled: logs 0071, 0083.",
      "linz_image": "symbols/watercourse-linz.png",
      "current_image": "symbols/watercourse-ours.png",
+     "map_image": "symbols/watercourse-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream #004C99, 0.25 mm.",
       "source": "applied project",
@@ -6933,6 +7155,8 @@
      "note": "",
      "linz_image": "symbols/drain-linz.png",
      "current_image": "symbols/drain-ours.png",
+     "map_image": "symbols/drain-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream #004C99, 0.15 mm.",
       "source": "applied project",
@@ -6981,6 +7205,8 @@
      "note": "",
      "linz_image": "symbols/canal_large-linz.png",
      "current_image": "symbols/canal_large-ours.png",
+     "map_image": "symbols/canal_large-map.png",
+     "map_note": null,
      "measured": {
       "text": "Water fill with a stream-blue 0.1 mm outline.",
       "source": "applied project",
@@ -7038,6 +7264,8 @@
      "note": "",
      "linz_image": "symbols/canal_small-linz.png",
      "current_image": "symbols/canal_small-ours.png",
+     "map_image": "symbols/canal_small-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream #004C99, 0.25 mm.",
       "source": "applied project",
@@ -7086,6 +7314,8 @@
      "note": "water_line.type has river, drain, canal, not a sink or disappearing class. Do not fake arrows on every river.",
      "linz_image": "symbols/stream_disappearing-linz.png",
      "current_image": null,
+     "map_image": "symbols/stream_disappearing-map.png",
+     "map_note": null,
      "measured": {
       "text": "Stream #004C99, 0.25 mm, no arrow.",
       "source": "applied project",
@@ -7186,6 +7416,8 @@
      "note": "The outline change applies to every vegetation polygon.",
      "linz_image": "symbols/native_forest-linz.png",
      "current_image": "symbols/native_forest-ours.png",
+     "map_image": "symbols/native_forest-map.png",
+     "map_note": null,
      "measured": {
       "text": "Fill #E1EAC3 at alpha 180, outline #859E3E 0.1 mm.",
       "source": "applied project",
@@ -7243,6 +7475,8 @@
      "note": "",
      "linz_image": "symbols/exotic_coniferous-linz.png",
      "current_image": "symbols/exotic_coniferous-ours.png",
+     "map_image": "symbols/exotic_coniferous-map.png",
+     "map_note": null,
      "measured": {
       "text": "LINZ conifer marks in #6A9A50, outline #859E3E. Owned SVG. subtype coniferous.",
       "source": "applied project, SVG file",
@@ -7312,6 +7546,8 @@
      "note": "",
      "linz_image": "symbols/exotic_non_coniferous-linz.png",
      "current_image": "symbols/exotic_non_coniferous-ours.png",
+     "map_image": "symbols/exotic_non_coniferous-map.png",
+     "map_note": null,
      "measured": {
       "text": "LINZ broadleaf marks in #6A9A50, outline #859E3E. Owned SVG. Filter coalesce(subtype) = non-coniferous.",
       "source": "applied project, SVG file",
@@ -7381,6 +7617,8 @@
      "note": "",
      "linz_image": "symbols/scrub-linz.png",
      "current_image": "symbols/scrub-ours.png",
+     "map_image": "symbols/scrub-map.png",
+     "map_note": null,
      "measured": {
       "text": "Plant marks #6A9A50, 1.4 mm, stroke 0.18 mm. Outline #859E3E.",
       "source": "applied project",
@@ -7456,6 +7694,8 @@
      "note": "Josh (N-2): spacing and no fill separate scattered from scrub.",
      "linz_image": "symbols/scattered_scrub-linz.png",
      "current_image": "symbols/scattered_scrub-ours.png",
+     "map_image": "symbols/scattered_scrub-map.png",
+     "map_note": null,
      "measured": {
       "text": "Arc marks #6A9A50, 1.4 mm, stroke 0.18 mm, on a 5 mm grid, no fill.",
       "source": "applied project",
@@ -7510,6 +7750,8 @@
      "note": "",
      "linz_image": "symbols/shelter_belt-linz.png",
      "current_image": "symbols/shelter_belt-ours.png",
+     "map_image": "symbols/shelter_belt-map.png",
+     "map_note": null,
      "measured": {
       "text": "Shelterbelt #008A00, 0.25 mm.",
       "source": "applied project",
@@ -7558,6 +7800,8 @@
      "note": "Josh (N-2): glyph and #008A00 ink; legend swatch at F-31, map at stock density.",
      "linz_image": "symbols/trees-linz.png",
      "current_image": "symbols/trees-ours.png",
+     "map_image": "symbols/trees-map.png",
+     "map_note": null,
      "measured": {
       "text": "Owned tree glyph in #008A00, 1.4 mm in the legend swatch (legend_size_mm); map points 0.2 mm (log 0070).",
       "source": "applied project",
@@ -7612,6 +7856,8 @@
      "note": "",
      "linz_image": "symbols/orchard-linz.png",
      "current_image": null,
+     "map_image": "symbols/orchard-map.png",
+     "map_note": null,
      "measured": {
       "text": "Rows of pale green dots.",
       "source": "stock legend image",
@@ -7683,6 +7929,8 @@
      "note": "",
      "linz_image": "symbols/mangroves-linz.png",
      "current_image": null,
+     "map_image": "symbols/mangroves-map.png",
+     "map_note": null,
      "measured": {
       "text": "Pale green marks and dashed outline.",
       "source": "stock legend image",
@@ -7780,8 +8028,10 @@
      "note": "Josh: tent/camp triangle. Replaces the cave SVG borrow.",
      "linz_image": null,
      "current_image": null,
+     "map_image": "symbols/bivouac-map.png",
+     "map_note": null,
      "measured": {
-      "text": "Open tent triangle 1.4 mm, stroke 0.15 mm, wider than tall, with a ridge. Owned SVG. Distinct from the filled trig triangle and the tall open mast.",
+      "text": "Open tent triangle 2.5 mm, stroke 0.15 mm, wider than tall, with a ridge. Owned SVG. Distinct from the filled trig triangle and the tall open mast.",
       "source": "applied project, SVG file",
       "inks": [
        {
@@ -7817,7 +8067,7 @@
         "rule": "F-31",
         "label": "Mark size",
         "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
+        "detail": "2.5 mm, floor 1.4 mm"
        }
       ],
       "pass": true
@@ -7834,6 +8084,8 @@
      "note": "",
      "linz_image": null,
      "current_image": null,
+     "map_image": "symbols/hut-map.png",
+     "map_note": null,
      "measured": {
       "text": "Black LINZ hut glyph, 1.4 mm.",
       "source": "applied project, SVG file",

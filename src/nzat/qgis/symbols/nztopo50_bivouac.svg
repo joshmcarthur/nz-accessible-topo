@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
-  <!-- Open A-frame tent, wider than tall. At 1.4 mm, stroke 1.5 is 0.15 mm.
-       Distinct from the filled trig triangle and the tall open mast. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1.25 1.25 11.5 8">
+  <!-- Open A-frame tent, wider than tall. viewBox hugs the strokes.
+       At 1.4 mm, stroke 1.5 is 0.18 mm. Distinct from the filled trig
+       triangle and the tall open mast. -->
   <polyline
     fill="none"
     stroke="#000000"
