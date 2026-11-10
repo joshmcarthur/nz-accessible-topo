@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2.98 2.98">
-  <!-- LINZ water tank. At 1.4 mm, stroke 0.320 is 0.15 mm. -->
-  <circle cx="1.49" cy="1.49" r="1.42" fill="none" stroke="#231F20" stroke-miterlimit="10" stroke-width="0.320"/>
+  <!-- LINZ water tank. At 1.4 mm, stroke 0.533 is 0.25 mm. -->
+  <circle cx="1.49" cy="1.49" r="1.223" fill="none" stroke="#231F20" stroke-miterlimit="10" stroke-width="0.533"/>
 </svg>

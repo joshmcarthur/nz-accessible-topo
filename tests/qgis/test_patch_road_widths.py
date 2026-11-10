@@ -51,7 +51,8 @@ def test_road_fills_rise_to_the_navigation_floor():
         for layer in road.findall(".//layer[@class='SimpleLine']")
     ]
     assert widths[0] == "0.35"
-    assert widths[1] == "0.35"
+    # The white centre keeps the stock width, so the dark edges stay (log 0113).
+    assert widths[1] == "0.25"
     expr = road.find(".//Option[@name='outlineWidth']/Option[@name='expression']").get(
         "value"
     )

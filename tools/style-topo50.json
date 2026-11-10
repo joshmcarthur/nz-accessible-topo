@@ -70,6 +70,7 @@
     "two_lane": {"casing_width_mm": 0.2, "tick_mm": 1.4}
   },
   "relief": {
+    "embankment": {"line_mm": 0.15, "tick_stroke_mm": 0.2},
     "saddle": {
       "marker": "./symbol/nztopo50_saddle.svg",
       "size_mm": 1.726,
@@ -143,7 +144,9 @@
   "sizes": {
     "navigation_line_mm": 0.35,
     "one_lane_road_casing_mm": 0.6,
-    "line_floor_mm": 0.15
+    "line_floor_mm": 0.15,
+    "fence_line_mm": 0.2,
+    "ice_contour_mm": 0.2
   },
   "draw_order": [
     {"name": "vegetation map", "below": "contour"},
@@ -184,7 +187,7 @@
     }
   },
   "springs": {
-    "hot": {"glyph": "cross2", "colour": "#141414"},
+    "hot": {"glyph": "cross2", "colour": "#141414", "stroke_mm": 0.35},
     "cold": {"glyph": "circle", "colour": "#005C8F"}
   },
   "structures": {
@@ -235,7 +238,7 @@
     "tank_water": {
       "marker": "./symbol/nztopo50_tank_water.svg",
       "size_mm": 1.4,
-      "stroke_mm": 0.15
+      "stroke_mm": 0.25
     },
     "shipwreck": {
       "marker": "./symbol/nztopo50_wreck_ship.svg",

@@ -32,15 +32,48 @@ def _find_rule_symbol(layer, *needles):
     return None
 
 
+def _raise_embankments(layer, spec):
+    """Embankment and stopbank ticks are 0.1 mm in stock. Reduced acuity loses them."""
+    renderer = layer.find("renderer-v2")
+    if renderer is None:
+        return
+    names = {
+        rule.get("symbol")
+        for rule in renderer.iter("rule")
+        if "embankment" in (rule.get("label") or "").lower()
+    }
+    for symbol in renderer.findall("symbols/symbol"):
+        if symbol.get("name") not in names:
+            continue
+        _raise_simple_lines(symbol, float(spec["line_mm"]))
+        for marker in symbol.findall(
+            "layer[@class='MarkerLine']/symbol/layer[@class='SimpleMarker']"
+        ):
+            option = marker.find("Option/Option[@name='outline_width']")
+            if (
+                option is not None
+                and float(option.get("value")) < spec["tick_stroke_mm"]
+            ):
+                set_option(marker, "outline_width", str(spec["tick_stroke_mm"]))
+
+
 def patch_thin_lines(layer, style=None):
-    """Raise fence casings to the line floor and two-lane bridge brackets to the style."""
+    """Raise thin fence, embankment, ice contour and bridge strokes to the style."""
     style = style or STYLE
     name = layer.findtext("layername") or ""
-    floor = float(style["sizes"]["line_floor_mm"])
+    sizes = style["sizes"]
     if name == "fence_line map":
         symbol = layer.find("renderer-v2/symbols/symbol")
         if symbol is not None:
-            _raise_simple_lines(symbol, floor)
+            _raise_simple_lines(symbol, float(sizes["fence_line_mm"]))
+        return
+    if name == "nztopo50_ice_contour":
+        symbol = layer.find("renderer-v2/symbols/symbol")
+        if symbol is not None:
+            _raise_simple_lines(symbol, float(sizes["ice_contour_mm"]))
+        return
+    if name == "relief_line map":
+        _raise_embankments(layer, style["relief"]["embankment"])
         return
     if name != "bridge_line copy copy":
         return

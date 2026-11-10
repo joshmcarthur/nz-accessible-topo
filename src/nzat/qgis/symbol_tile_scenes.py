@@ -164,6 +164,8 @@ def scene_exception(key, scene, features, normal_visible):
         return "LINZ draws this class under the fill. The stock map does the same."
     if scene == "road" and is_point_swatch(features):
         return "A road does not cross a point mark."
+    if scene == "name" and is_point_swatch(features):
+        return "The name wins. Its halo keeps the name clear of the mark."
     return None
 
 

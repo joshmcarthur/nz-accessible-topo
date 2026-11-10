@@ -7,8 +7,6 @@ from nzat.qgis.rgba import rgba
 from nzat.qgis.set_option import set_option
 from nzat.style.navigation_line_mm import navigation_line_mm
 
-WHITE_RGB = (255, 255, 255)
-
 
 def _rgb_tuple(text):
     parsed = parse_qgis_colour(text)
@@ -58,7 +56,7 @@ def _bump_expression_width(line, floor):
 
 
 def patch_road_widths(layer, style=None):
-    """Raise painted road fills and unmetalled centre lines to the navigation floor."""
+    """Raise painted road fills to the navigation floor."""
     style = style or STYLE
     floor = navigation_line_mm(style)
     fills = _road_fill_rgbs(style)
@@ -67,7 +65,9 @@ def patch_road_widths(layer, style=None):
         if option is None:
             continue
         rgb = _rgb_tuple(option.get("value") or "")
-        if rgb in fills or (rgb == WHITE_RGB and (_line_width_mm(line) or 0) < floor):
+        # The white centre of an unmetalled road stays at the stock width. A
+        # wider centre thins the two dark edges that carry the road (log 0113).
+        if rgb in fills:
             _bump_expression_width(line, floor)
             _bump_static_width(line, floor)
 

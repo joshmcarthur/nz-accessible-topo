@@ -51,6 +51,11 @@ def test_springs_and_native_read_the_style_file():
     )
     assert "cross2" in name_expr
     assert "circle" in name_expr
+    # Catches the hot cross left as a stock hairline (log 0113).
+    width_expr = marker.find(
+        "Option[@name='outlineWidth']/Option[@name='expression']"
+    ).get("value")
+    assert "'hot', 0.35, 0)" in width_expr
     colour_expr = marker.find(
         "Option[@name='fillColor']/Option[@name='expression']"
     ).get("value")

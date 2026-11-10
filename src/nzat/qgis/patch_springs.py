@@ -31,6 +31,20 @@ def patch_springs(layer, style=None):
         f" {rgb_call(hot['colour'])},"
         f" {rgb_call(cold['colour'])})",
     )
+    # The cross is a stroke. Stock draws it as a hairline, which a reader
+    # with reduced acuity loses (F-32). The cold circle is a fill.
+    put_expr(
+        props,
+        "outlineWidth",
+        f"if(\"temperature_indicator\" = 'hot', {hot['stroke_mm']}, 0)",
+    )
+    put_expr(
+        props,
+        "outlineColor",
+        "if(\"temperature_indicator\" = 'hot',"
+        f" {rgb_call(hot['colour'])},"
+        f" {rgb_call(cold['colour'])})",
+    )
     _patch_waterfall(layer)
 
 

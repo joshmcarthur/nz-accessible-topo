@@ -2437,12 +2437,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -2484,12 +2482,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.369
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -2501,12 +2497,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.155
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -2518,12 +2512,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "urban",
@@ -2552,12 +2544,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.256
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "swamp",
@@ -2569,12 +2559,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.335
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "ice",
@@ -2586,12 +2574,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -2603,7 +2589,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.831
+      "acuity": 0.996
      },
      "exception": null,
      "fails": []
@@ -2618,12 +2604,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.161
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -2635,12 +2619,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.198
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
@@ -2652,29 +2634,25 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.246
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.981,
-      "deutan": 0.981,
-      "protan": 0.981,
-      "tritan": 0.981,
-      "grey": 0.972,
-      "red": 0.972,
-      "acuity": 0.487
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.947
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     }
    ]
   },
@@ -5999,7 +5977,7 @@
       "red": 0.992,
       "acuity": 0.909
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -6239,7 +6217,7 @@
       "red": 1.0,
       "acuity": 0.818
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -6479,7 +6457,7 @@
       "red": 0.965,
       "acuity": 0.954
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -6821,7 +6799,7 @@
       "red": 1.0,
       "acuity": 0.978
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -7285,7 +7263,7 @@
       "red": 0.96,
       "acuity": 0.908
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -7525,7 +7503,7 @@
       "red": 1.0,
       "acuity": 0.772
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -7760,7 +7738,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.674
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -7775,12 +7753,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.422
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "ice",
@@ -7852,7 +7828,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.983
+      "acuity": 1.0
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -7861,18 +7837,16 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.983,
-      "deutan": 0.983,
-      "protan": 0.983,
-      "tritan": 0.983,
-      "grey": 0.983,
-      "red": 0.983,
-      "acuity": 0.267
+      "normal": 0.949,
+      "deutan": 0.949,
+      "protan": 0.949,
+      "tritan": 0.949,
+      "grey": 0.949,
+      "red": 0.949,
+      "acuity": 0.812
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },
@@ -8111,7 +8085,7 @@
       "red": 1.0,
       "acuity": 0.992
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -8351,7 +8325,7 @@
       "red": 0.994,
       "acuity": 0.977
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -8591,7 +8565,7 @@
       "red": 0.98,
       "acuity": 0.786
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -8831,7 +8805,7 @@
       "red": 1.0,
       "acuity": 0.948
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -9071,7 +9045,7 @@
       "red": 0.835,
       "acuity": 0.629
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -9311,7 +9285,7 @@
       "red": 1.0,
       "acuity": 0.839
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -9444,7 +9418,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.996
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -9459,7 +9433,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.949
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -9534,12 +9508,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.288
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
@@ -9551,7 +9523,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.623
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -10033,7 +10005,7 @@
       "red": 0.901,
       "acuity": 0.775
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -10541,12 +10513,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.4
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -10558,7 +10528,7 @@
       "tritan": 1.0,
       "grey": 0.0,
       "red": 0.0,
-      "acuity": 0.4
+      "acuity": 0.0
      },
      "exception": null,
      "fails": [
@@ -10577,12 +10547,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.475
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scrub",
@@ -10594,12 +10562,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.486
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -10611,12 +10577,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.481
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -10658,7 +10622,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.765
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -10673,7 +10637,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.587
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -10688,12 +10652,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.4
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -10705,7 +10667,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.592
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -10720,12 +10682,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.481
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -10737,7 +10697,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.512
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -10746,13 +10706,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.981,
-      "deutan": 0.981,
-      "protan": 0.981,
-      "tritan": 0.981,
-      "grey": 0.976,
-      "red": 0.981,
-      "acuity": 0.529
+      "normal": 0.986,
+      "deutan": 0.986,
+      "protan": 0.986,
+      "tritan": 0.986,
+      "grey": 0.98,
+      "red": 0.986,
+      "acuity": 0.986
      },
      "exception": null,
      "fails": []
@@ -10767,12 +10727,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.4
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     }
    ]
   },
@@ -11494,7 +11452,7 @@
       "red": 0.965,
       "acuity": 0.75
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -11734,7 +11692,7 @@
       "red": 1.0,
       "acuity": 0.985
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -11974,7 +11932,7 @@
       "red": 1.0,
       "acuity": 0.985
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -12214,16 +12172,8 @@
       "red": 0.0,
       "acuity": 0.0
      },
-     "exception": null,
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red",
-      "acuity"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },
@@ -12942,7 +12892,7 @@
       "red": 0.542,
       "acuity": 0.882
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -12970,12 +12920,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -12987,12 +12935,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "exotic",
@@ -13004,12 +12950,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scrub",
@@ -13021,12 +12965,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.324
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -13038,12 +12980,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -13085,12 +13025,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "swamp",
@@ -13102,7 +13040,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.606
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -13117,12 +13055,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -13134,12 +13070,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.213
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
@@ -13151,12 +13085,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.079
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -13168,46 +13100,40 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.209
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.95,
-      "deutan": 0.95,
-      "protan": 0.95,
-      "tritan": 0.95,
-      "grey": 0.95,
-      "red": 0.95,
-      "acuity": 0.231
+      "normal": 0.952,
+      "deutan": 0.952,
+      "protan": 0.952,
+      "tritan": 0.952,
+      "grey": 0.952,
+      "red": 0.952,
+      "acuity": 0.952
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.87,
-      "deutan": 0.87,
-      "protan": 0.87,
-      "tritan": 0.87,
-      "grey": 0.864,
-      "red": 0.864,
-      "acuity": 0.425
+      "normal": 0.973,
+      "deutan": 0.973,
+      "protan": 0.973,
+      "tritan": 0.973,
+      "grey": 0.949,
+      "red": 0.949,
+      "acuity": 0.675
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     }
    ]
   },
@@ -13474,12 +13400,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -13491,12 +13415,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "exotic",
@@ -13508,12 +13430,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scrub",
@@ -13525,12 +13445,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.266
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -13542,12 +13460,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.044
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -13589,12 +13505,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.113
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "swamp",
@@ -13606,7 +13520,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.553
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -13621,12 +13535,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -13638,12 +13550,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.254
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
@@ -13655,12 +13565,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.084
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -13672,46 +13580,40 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.188
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.962,
-      "deutan": 0.962,
-      "protan": 0.962,
-      "tritan": 0.962,
-      "grey": 0.962,
-      "red": 0.962,
-      "acuity": 0.201
+      "normal": 0.964,
+      "deutan": 0.964,
+      "protan": 0.964,
+      "tritan": 0.964,
+      "grey": 0.964,
+      "red": 0.964,
+      "acuity": 0.964
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.922,
-      "deutan": 0.922,
-      "protan": 0.922,
-      "tritan": 0.922,
-      "grey": 0.888,
-      "red": 0.888,
-      "acuity": 0.301
+      "normal": 0.951,
+      "deutan": 0.951,
+      "protan": 0.951,
+      "tritan": 0.951,
+      "grey": 0.948,
+      "red": 0.948,
+      "acuity": 0.89
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     }
    ]
   },
@@ -13950,10 +13852,8 @@
       "red": 0.988,
       "acuity": 0.492
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },
@@ -16604,7 +16504,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -16938,15 +16838,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.897,
-      "deutan": 0.897,
-      "protan": 0.897,
-      "tritan": 0.897,
-      "grey": 0.891,
-      "red": 0.891,
-      "acuity": 0.833
+      "normal": 0.851,
+      "deutan": 0.851,
+      "protan": 0.851,
+      "tritan": 0.851,
+      "grey": 0.849,
+      "red": 0.849,
+      "acuity": 0.78
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -16974,12 +16874,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -16991,12 +16889,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "exotic",
@@ -17008,12 +16904,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scrub",
@@ -17025,12 +16919,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.408
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -17042,12 +16934,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -17059,12 +16949,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "urban",
@@ -17076,12 +16964,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "sand",
@@ -17093,12 +16979,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "swamp",
@@ -17110,12 +16994,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.418
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "ice",
@@ -17127,12 +17009,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.0
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -17144,12 +17024,10 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.245
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
@@ -17161,7 +17039,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.571
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -17176,7 +17054,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.745
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -17185,13 +17063,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.582,
-      "deutan": 0.582,
-      "protan": 0.582,
-      "tritan": 0.582,
-      "grey": 0.582,
-      "red": 0.582,
-      "acuity": 0.388
+      "normal": 0.62,
+      "deutan": 0.62,
+      "protan": 0.62,
+      "tritan": 0.62,
+      "grey": 0.62,
+      "red": 0.62,
+      "acuity": 0.62
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -17200,18 +17078,16 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.786,
-      "deutan": 0.786,
-      "protan": 0.786,
-      "tritan": 0.786,
-      "grey": 0.786,
-      "red": 0.786,
-      "acuity": 0.255
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },
@@ -17450,10 +17326,8 @@
       "red": 0.425,
       "acuity": 0.837
      },
-     "exception": null,
-     "fails": [
-      "red"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },
@@ -18616,7 +18490,7 @@
       "red": 0.734,
       "acuity": 0.669
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]

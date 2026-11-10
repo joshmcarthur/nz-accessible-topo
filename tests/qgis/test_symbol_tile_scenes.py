@@ -66,3 +66,10 @@ def test_road_across_a_point_mark_is_not_gated():
 def test_accepted_exception_covers_every_scene():
     contours = _swatch("intermediate_contours")["features"]
     assert "0054" in scene_exception("intermediate_contours", "paper", contours, 1.0)
+
+
+def test_name_on_a_point_mark_is_not_gated_but_a_name_on_a_line_is():
+    # Josh kept the 0.4 mm halo: the name wins over a point mark (log 0113).
+    assert scene_exception("trig", "name", _swatch("trig")["features"], 0.3)
+    track = _swatch("foot_track")["features"]
+    assert scene_exception("foot_track", "name", track, 0.3) is None
