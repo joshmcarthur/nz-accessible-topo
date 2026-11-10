@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import shutil
 from pathlib import Path
 
 from PIL import Image
@@ -14,11 +15,30 @@ from nzat.render.tile_visibility import (
     DELTA_E_FLOOR,
     visible_fractions,
 )
+from nzat.site.symbol_rows import SYMBOLS
 
 TILES_DIR = ROOT / "render" / "symbol-tiles"
 TABLE_PATH = ROOT / "site" / "src" / "data" / "symbol-tiles.json"
+IMAGE_DIR = ROOT / "site" / "public" / "symbol-tiles"
+# Legend rows that hold more than one symbol on the symbol table.
+GROUP_LABELS = {
+    "poled_route_connector": "Poled route and track connector",
+    "sealed": "Sealed road",
+    "metalled": "Metalled road",
+    "unmetalled": "Unmetalled road",
+    "watercourse_drain": "Watercourse and drain",
+    "vegetation": "Vegetation fills",
+}
 # Our own floor: under half of the ink left counts as a fail. Grade D.
 VISIBLE_FLOOR = 0.5
+
+
+def swatch_label(key, symbols=SYMBOLS):
+    """Return the symbol-table label for a swatch key."""
+    for symbol in symbols:
+        if symbol["key"] == key:
+            return symbol["label"]
+    return GROUP_LABELS[key]
 
 
 def score_rows(tiles_dir, manifest):
@@ -41,7 +61,7 @@ def score_rows(tiles_dir, manifest):
                 }
             )
         else:
-            rows.append({"key": key, "scenes": scored})
+            rows.append({"key": key, "label": swatch_label(key), "scenes": scored})
     return rows
 
 
@@ -65,6 +85,11 @@ def main():
     with open(TABLE_PATH, "w", encoding="utf-8") as handle:
         json.dump(table, handle, indent=1)
         handle.write("\n")
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+    for row in rows:
+        shutil.copyfile(
+            tiles_dir / f"{row['key']}.png", IMAGE_DIR / f"{row['key']}.png"
+        )
     fails = sum(1 for row in rows for scene in row["scenes"] if scene["fails"])
     total = sum(len(row["scenes"]) for row in rows)
     print(f"wrote {TABLE_PATH}: {len(rows)} symbols, {total} tiles, {fails} fail")

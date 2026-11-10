@@ -15,6 +15,7 @@
  "symbols": [
   {
    "key": "state_highway",
+   "label": "State highway",
    "scenes": [
     {
      "scene": "paper",
@@ -246,6 +247,7 @@
   },
   {
    "key": "four_lanes",
+   "label": "Four lanes or more",
    "scenes": [
     {
      "scene": "paper",
@@ -486,6 +488,7 @@
   },
   {
    "key": "two_lanes",
+   "label": "Two lanes (includes passing lanes)",
    "scenes": [
     {
      "scene": "paper",
@@ -726,6 +729,7 @@
   },
   {
    "key": "narrow_road",
+   "label": "Narrow road",
    "scenes": [
     {
      "scene": "paper",
@@ -966,6 +970,7 @@
   },
   {
    "key": "vehicle_track",
+   "label": "Vehicle track",
    "scenes": [
     {
      "scene": "paper",
@@ -1166,6 +1171,7 @@
   },
   {
    "key": "foot_track",
+   "label": "Foot track",
    "scenes": [
     {
      "scene": "paper",
@@ -1366,6 +1372,7 @@
   },
   {
    "key": "closed_track",
+   "label": "Closed track",
    "scenes": [
     {
      "scene": "paper",
@@ -1566,6 +1573,7 @@
   },
   {
    "key": "poled_route_connector",
+   "label": "Poled route and track connector",
    "scenes": [
     {
      "scene": "paper",
@@ -1766,6 +1774,7 @@
   },
   {
    "key": "sealed",
+   "label": "Sealed road",
    "scenes": [
     {
      "scene": "paper",
@@ -2006,6 +2015,7 @@
   },
   {
    "key": "metalled",
+   "label": "Metalled road",
    "scenes": [
     {
      "scene": "paper",
@@ -2242,6 +2252,7 @@
   },
   {
    "key": "unmetalled",
+   "label": "Unmetalled road",
    "scenes": [
     {
      "scene": "paper",
@@ -2445,6 +2456,7 @@
   },
   {
    "key": "tunnel",
+   "label": "Tunnel",
    "scenes": [
     {
      "scene": "paper",
@@ -2645,6 +2657,7 @@
   },
   {
    "key": "tunnel_under_road",
+   "label": "Tunnel under road",
    "scenes": [
     {
      "scene": "paper",
@@ -2852,6 +2865,7 @@
   },
   {
    "key": "bridge_two_lane",
+   "label": "Bridge: two lane",
    "scenes": [
     {
      "scene": "paper",
@@ -3052,6 +3066,7 @@
   },
   {
    "key": "bridge_one_lane",
+   "label": "Bridge: one lane",
    "scenes": [
     {
      "scene": "paper",
@@ -3259,6 +3274,7 @@
   },
   {
    "key": "gate",
+   "label": "Gate",
    "scenes": [
     {
      "scene": "paper",
@@ -3499,6 +3515,7 @@
   },
   {
    "key": "locked_gate",
+   "label": "Locked gate",
    "scenes": [
     {
      "scene": "paper",
@@ -3739,6 +3756,7 @@
   },
   {
    "key": "cableway",
+   "label": "Cableway",
    "scenes": [
     {
      "scene": "paper",
@@ -3946,6 +3964,7 @@
   },
   {
    "key": "rail_double",
+   "label": "Double or multiple track",
    "scenes": [
     {
      "scene": "paper",
@@ -4146,6 +4165,7 @@
   },
   {
    "key": "rail_single",
+   "label": "Single track",
    "scenes": [
     {
      "scene": "paper",
@@ -4346,6 +4366,7 @@
   },
   {
    "key": "rail_tunnel",
+   "label": "Railway tunnel",
    "scenes": [
     {
      "scene": "paper",
@@ -4546,6 +4567,7 @@
   },
   {
    "key": "level_crossing",
+   "label": "Level crossing",
    "scenes": [
     {
      "scene": "paper",
@@ -4786,6 +4808,7 @@
   },
   {
    "key": "road_over_railway",
+   "label": "Road over railway",
    "scenes": [
     {
      "scene": "paper",
@@ -4986,6 +5009,7 @@
   },
   {
    "key": "residential_area",
+   "label": "Residential area",
    "scenes": [
     {
      "scene": "paper",
@@ -5087,6 +5111,7 @@
   },
   {
    "key": "large_buildings",
+   "label": "Large buildings",
    "scenes": [
     {
      "scene": "paper",
@@ -5170,6 +5195,7 @@
   },
   {
    "key": "isolated_building",
+   "label": "Isolated building",
    "scenes": [
     {
      "scene": "paper",
@@ -5384,6 +5410,7 @@
   },
   {
    "key": "homestead",
+   "label": "Homestead",
    "scenes": [
     {
      "scene": "paper",
@@ -5598,6 +5625,7 @@
   },
   {
    "key": "stockyard",
+   "label": "Stockyard",
    "scenes": [
     {
      "scene": "paper",
@@ -5798,6 +5826,7 @@
   },
   {
    "key": "glasshouse",
+   "label": "Glasshouse or greenhouse",
    "scenes": [
     {
      "scene": "paper",
@@ -5881,6 +5910,7 @@
   },
   {
    "key": "church",
+   "label": "Church",
    "scenes": [
     {
      "scene": "paper",
@@ -6091,6 +6121,7 @@
   },
   {
    "key": "cemetery",
+   "label": "Cemetery",
    "scenes": [
     {
      "scene": "paper",
@@ -6192,6 +6223,7 @@
   },
   {
    "key": "training_track",
+   "label": "Training track",
    "scenes": [
     {
      "scene": "paper",
@@ -6293,6 +6325,7 @@
   },
   {
    "key": "golf_course",
+   "label": "Golf course",
    "scenes": [
     {
      "scene": "paper",
@@ -6507,6 +6540,7 @@
   },
   {
    "key": "redoubt",
+   "label": "Redoubt",
    "scenes": [
     {
      "scene": "paper",
@@ -6714,6 +6748,7 @@
   },
   {
    "key": "reservoir_uncovered",
+   "label": "Reservoir uncovered",
    "scenes": [
     {
      "scene": "paper",
@@ -6805,6 +6840,7 @@
   },
   {
    "key": "tank",
+   "label": "Tank",
    "scenes": [
     {
      "scene": "paper",
@@ -7012,6 +7048,7 @@
   },
   {
    "key": "mast",
+   "label": "Mast",
    "scenes": [
     {
      "scene": "paper",
@@ -7219,6 +7256,7 @@
   },
   {
    "key": "tower",
+   "label": "Tower",
    "scenes": [
     {
      "scene": "paper",
@@ -7426,6 +7464,7 @@
   },
   {
    "key": "wind_machine",
+   "label": "Wind machine or wind turbine",
    "scenes": [
     {
      "scene": "paper",
@@ -7633,6 +7672,7 @@
   },
   {
    "key": "shipwreck",
+   "label": "Shipwreck",
    "scenes": [
     {
      "scene": "paper",
@@ -7840,6 +7880,7 @@
   },
   {
    "key": "lighthouse",
+   "label": "Lighthouse",
    "scenes": [
     {
      "scene": "paper",
@@ -8047,6 +8088,7 @@
   },
   {
    "key": "marine_beacon",
+   "label": "Beacon",
    "scenes": [
     {
      "scene": "paper",
@@ -8254,6 +8296,7 @@
   },
   {
    "key": "fence",
+   "label": "Fence (selection only)",
    "scenes": [
     {
      "scene": "paper",
@@ -8468,6 +8511,7 @@
   },
   {
    "key": "industrial_cableway",
+   "label": "Industrial cableway",
    "scenes": [
     {
      "scene": "paper",
@@ -8675,6 +8719,7 @@
   },
   {
    "key": "mine_opencast",
+   "label": "Mine: opencast",
    "scenes": [
     {
      "scene": "paper",
@@ -8905,6 +8950,7 @@
   },
   {
    "key": "index_contour",
+   "label": "Index contour",
    "scenes": [
     {
      "scene": "paper",
@@ -9123,6 +9169,7 @@
   },
   {
    "key": "intermediate_contours",
+   "label": "Intermediate contours",
    "scenes": [
     {
      "scene": "paper",
@@ -9376,6 +9423,7 @@
   },
   {
    "key": "ice_contours",
+   "label": "Perennial snow and ice contours",
    "scenes": [
     {
      "scene": "paper",
@@ -9596,6 +9644,7 @@
   },
   {
    "key": "supplementary_contour",
+   "label": "Supplementary contour",
    "scenes": [
     {
      "scene": "paper",
@@ -9853,6 +9902,7 @@
   },
   {
    "key": "depression_contours",
+   "label": "Depression contours",
    "scenes": [
     {
      "scene": "paper",
@@ -10110,6 +10160,7 @@
   },
   {
    "key": "small_depression_shaft",
+   "label": "Small depression or shaft",
    "scenes": [
     {
      "scene": "paper",
@@ -10317,6 +10368,7 @@
   },
   {
    "key": "trig",
+   "label": "Beaconed trig station",
    "scenes": [
     {
      "scene": "paper",
@@ -10545,6 +10597,7 @@
   },
   {
    "key": "trig_elevation",
+   "label": "Elevation in metres: trig",
    "scenes": [
     {
      "scene": "paper",
@@ -10773,6 +10826,7 @@
   },
   {
    "key": "spot_height",
+   "label": "Elevation in metres: spot height",
    "scenes": [
     {
      "scene": "paper",
@@ -11001,6 +11055,7 @@
   },
   {
    "key": "cliff",
+   "label": "Cliff",
    "scenes": [
     {
      "scene": "paper",
@@ -11222,6 +11277,7 @@
   },
   {
    "key": "slip",
+   "label": "Slip",
    "scenes": [
     {
      "scene": "paper",
@@ -11443,6 +11499,7 @@
   },
   {
    "key": "rock_outcrops",
+   "label": "Rock outcrops",
    "scenes": [
     {
      "scene": "paper",
@@ -11681,6 +11738,7 @@
   },
   {
    "key": "stopbank",
+   "label": "Stopbank",
    "scenes": [
     {
      "scene": "paper",
@@ -11902,6 +11960,7 @@
   },
   {
    "key": "cutting",
+   "label": "Cutting",
    "scenes": [
     {
      "scene": "paper",
@@ -12123,6 +12182,7 @@
   },
   {
    "key": "embankment",
+   "label": "Embankment or causeway",
    "scenes": [
     {
      "scene": "paper",
@@ -12337,6 +12397,7 @@
   },
   {
    "key": "saddle",
+   "label": "Saddle",
    "scenes": [
     {
      "scene": "paper",
@@ -12565,6 +12626,7 @@
   },
   {
    "key": "moraine",
+   "label": "Moraine",
    "scenes": [
     {
      "scene": "paper",
@@ -12648,6 +12710,7 @@
   },
   {
    "key": "moraine_wall",
+   "label": "Moraine wall",
    "scenes": [
     {
      "scene": "paper",
@@ -12731,6 +12794,7 @@
   },
   {
    "key": "scree",
+   "label": "Scree",
    "scenes": [
     {
      "scene": "paper",
@@ -12814,6 +12878,7 @@
   },
   {
    "key": "sand_mud",
+   "label": "Sand and mud",
    "scenes": [
     {
      "scene": "paper",
@@ -12899,6 +12964,7 @@
   },
   {
    "key": "sand",
+   "label": "Sand",
    "scenes": [
     {
      "scene": "paper",
@@ -12982,6 +13048,7 @@
   },
   {
    "key": "shingle",
+   "label": "Shingle",
    "scenes": [
     {
      "scene": "paper",
@@ -13065,6 +13132,7 @@
   },
   {
    "key": "swamp",
+   "label": "Swamp",
    "scenes": [
     {
      "scene": "paper",
@@ -13153,6 +13221,7 @@
   },
   {
    "key": "boat_ramp",
+   "label": "Boat ramp",
    "scenes": [
     {
      "scene": "paper",
@@ -13360,6 +13429,7 @@
   },
   {
    "key": "breakwater_wharf_jetty",
+   "label": "Breakwater, wharf, jetty",
    "scenes": [
     {
      "scene": "paper",
@@ -13567,6 +13637,7 @@
   },
   {
    "key": "slipway",
+   "label": "Slipway",
    "scenes": [
     {
      "scene": "paper",
@@ -13774,6 +13845,7 @@
   },
   {
    "key": "marine_farm",
+   "label": "Marine farm",
    "scenes": [
     {
      "scene": "paper",
@@ -13981,6 +14053,7 @@
   },
   {
    "key": "dam",
+   "label": "Dam",
    "scenes": [
     {
      "scene": "paper",
@@ -14188,6 +14261,7 @@
   },
   {
    "key": "floodgate",
+   "label": "Floodgate",
    "scenes": [
     {
      "scene": "paper",
@@ -14412,6 +14486,7 @@
   },
   {
    "key": "weir",
+   "label": "Weir",
    "scenes": [
     {
      "scene": "paper",
@@ -14619,6 +14694,7 @@
   },
   {
    "key": "waterfall",
+   "label": "Waterfall",
    "scenes": [
     {
      "scene": "paper",
@@ -14819,6 +14895,7 @@
   },
   {
    "key": "rapids",
+   "label": "Rapids",
    "scenes": [
     {
      "scene": "paper",
@@ -14905,6 +14982,7 @@
   },
   {
    "key": "cold_spring",
+   "label": "Cold spring",
    "scenes": [
     {
      "scene": "paper",
@@ -15112,6 +15190,7 @@
   },
   {
    "key": "hot_spring",
+   "label": "Hot spring",
    "scenes": [
     {
      "scene": "paper",
@@ -15326,6 +15405,7 @@
   },
   {
    "key": "fumarole",
+   "label": "Fumarole",
    "scenes": [
     {
      "scene": "paper",
@@ -15564,6 +15644,7 @@
   },
   {
    "key": "watercourse_drain",
+   "label": "Watercourse and drain",
    "scenes": [
     {
      "scene": "paper",
@@ -15785,6 +15866,7 @@
   },
   {
    "key": "canal_large",
+   "label": "Canal: large",
    "scenes": [
     {
      "scene": "paper",
@@ -15874,6 +15956,7 @@
   },
   {
    "key": "canal_small",
+   "label": "Canal: small",
    "scenes": [
     {
      "scene": "paper",
@@ -16095,6 +16178,7 @@
   },
   {
    "key": "vegetation",
+   "label": "Vegetation fills",
    "scenes": [
     {
      "scene": "paper",
@@ -16191,6 +16275,7 @@
   },
   {
    "key": "shelter_belt",
+   "label": "Shelter belt",
    "scenes": [
     {
      "scene": "paper",
@@ -16412,6 +16497,7 @@
   },
   {
    "key": "trees",
+   "label": "Trees",
    "scenes": [
     {
      "scene": "paper",

@@ -16,6 +16,7 @@ const fmt = (ink: any) =>
   <p>{total} symbols. {counts.done} are done. {counts.proposed} have a proposal for review. {counts.blocked} are blocked: the sheet does not draw them, so the proposal waits for the layer or the data.</p>
   <p>The floors are {floors.contrast}:1 contrast on paper and on the fill under the mark (R-01, F-20), {floors.red}:1 under red light (R-01, R-11), lines and strokes at least {floors.line_mm} mm and marks at least {floors.mark_mm} mm (F-31), and no meaning by colour alone (R-17). Only the ink that draws the shape must meet the contrast floors. A fill or a hue that a casing backs up is shown, not gated.</p>
   <p class="note">Data: <code>src/nzat/site/symbol_rows.py</code>, built by <code>tools/export_symbol_table.py</code>. LINZ crops come from the stock legend image. Our crops come from the accessible legend, which redraws only some rows. Map crops are 1 km, 600 dpi, Map5View-all, centred on a parquet hit. Left out: rules that never draw a real class ({table.excluded.join("; ")}).</p>
+  <p><a href={url("symbol-tiles/")}>Symbol test tiles</a> show each symbol on every fill, and with another class across it, scored for each vision condition.</p>
   <nav aria-label="Sections">
     <ul class="sections">
       {table.sections.filter((s) => s.rows.length).map((s) => (
@@ -94,7 +95,7 @@ const fmt = (ink: any) =>
       </div>
     </section>
   ))}
-  <p><a href={url("inks/")}>Ink contrast pairs</a>. <a href={url("recommendations/R-01/")}>R-01 on the evidence trail</a>.</p>
+  <p><a href={url("symbol-tiles/")}>Symbol test tiles</a>: each symbol on each fill and under each vision condition. <a href={url("inks/")}>Ink contrast pairs</a>. <a href={url("recommendations/R-01/")}>R-01 on the evidence trail</a>.</p>
 </Base>
 <style>
   caption { text-align: left; font-weight: 700; margin-bottom: .75rem; }
