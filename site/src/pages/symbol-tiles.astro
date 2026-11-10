@@ -41,6 +41,7 @@ const percent = (v: number) => `${Math.round(v * 100)}%`;
   <ul>
     <li>An area fill is shown, not gated, in greyscale, red light and reduced acuity. Only the ink that draws a shape must meet the floors. Lines and points on each fill are gated in their own rows.</li>
     <li>Water and urban fills hide some classes completely. LINZ draws those classes under the fill, and the stock map does the same.</li>
+    <li>A fill that a class cannot sit on: ice contours off the ice.</li>
     <li>A road across a point mark. A road does not cross a point mark on the map.</li>
     <li>A name on top of a point mark. The name wins: its 0.4 mm halo keeps the name clear, and a thinner halo let the mark run into the letters. A name across a line is gated.</li>
     <li>Intermediate and supplementary contours. The 20 m mesh is recessive by design (log 0054).</li>

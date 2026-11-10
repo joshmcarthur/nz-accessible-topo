@@ -10530,12 +10530,8 @@
       "red": 0.0,
       "acuity": 0.0
      },
-     "exception": null,
-     "fails": [
-      "grey",
-      "red",
-      "acuity"
-     ]
+     "exception": "Ice contours draw only on ice.",
+     "fails": []
     },
     {
      "scene": "exotic",
@@ -10549,7 +10545,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "Ice contours draw only on ice.",
      "fails": []
     },
     {
@@ -10564,7 +10560,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "Ice contours draw only on ice.",
      "fails": []
     },
     {
@@ -10579,7 +10575,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "Ice contours draw only on ice.",
      "fails": []
     },
     {
@@ -10624,7 +10620,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "Ice contours draw only on ice.",
      "fails": []
     },
     {
@@ -10639,7 +10635,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "Ice contours draw only on ice.",
      "fails": []
     },
     {
@@ -10995,9 +10991,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.566,
-      "red": 0.547,
-      "acuity": 0.757
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11010,9 +11006,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.553,
-      "red": 0.54,
-      "acuity": 0.738
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11025,9 +11021,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.553,
-      "red": 0.54,
-      "acuity": 0.825
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11040,9 +11036,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.641,
-      "red": 0.618,
-      "acuity": 0.812
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11055,9 +11051,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.566,
-      "red": 0.547,
-      "acuity": 0.757
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11100,9 +11096,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.77,
-      "red": 0.754,
-      "acuity": 0.861
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.997
      },
      "exception": null,
      "fails": []
@@ -11115,8 +11111,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.961,
-      "red": 0.958,
+      "grey": 1.0,
+      "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
@@ -11130,9 +11126,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.566,
-      "red": 0.547,
-      "acuity": 0.757
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11145,9 +11141,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.994,
-      "red": 0.55,
-      "acuity": 0.955
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11160,9 +11156,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.566,
-      "red": 0.547,
-      "acuity": 0.796
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11175,9 +11171,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.566,
-      "red": 0.547,
-      "acuity": 0.809
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11190,9 +11186,9 @@
       "deutan": 0.987,
       "protan": 0.987,
       "tritan": 0.987,
-      "grey": 0.634,
-      "red": 0.544,
-      "acuity": 0.812
+      "grey": 0.987,
+      "red": 0.987,
+      "acuity": 0.987
      },
      "exception": null,
      "fails": []
@@ -11201,19 +11197,16 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.803,
-      "deutan": 0.803,
-      "protan": 0.803,
-      "tritan": 0.803,
-      "grey": 0.33,
-      "red": 0.317,
-      "acuity": 0.646
+      "normal": 0.716,
+      "deutan": 0.716,
+      "protan": 0.716,
+      "tritan": 0.716,
+      "grey": 0.693,
+      "red": 0.68,
+      "acuity": 0.528
      },
      "exception": null,
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     }
    ]
   },
@@ -15871,16 +15864,8 @@
       "red": 0.429,
       "acuity": 0.457
      },
-     "exception": null,
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red",
-      "acuity"
-     ]
+     "exception": "The gate mark draws. The sample watercourse beside it is under the fill, as on the stock map.",
+     "fails": []
     },
     {
      "scene": "urban",
@@ -15894,16 +15879,8 @@
       "red": 0.429,
       "acuity": 0.443
      },
-     "exception": null,
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red",
-      "acuity"
-     ]
+     "exception": "The gate mark draws. The sample watercourse beside it is under the fill, as on the stock map.",
+     "fails": []
     },
     {
      "scene": "sand",
@@ -16022,10 +15999,8 @@
       "red": 0.71,
       "acuity": 0.121
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
     }
    ]
   },

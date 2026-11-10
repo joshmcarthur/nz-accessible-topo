@@ -145,8 +145,24 @@ ACCEPTED = {
     "supplementary_contour": "It draws as an intermediate contour (log 0054).",
 }
 
-# Fills a class cannot sit on.
-NOT_ON = {}
+# Scenes that say nothing about a class, with the reason the page shows.
+_ICE_ONLY = "Ice contours draw only on ice."
+_GATE_ON_WATER = (
+    "The gate mark draws. The sample watercourse beside it is under the fill,"
+    " as on the stock map."
+)
+NOT_ON = {
+    "ice_contours": {
+        scene: _ICE_ONLY
+        for scene in ("native", "exotic", "scrub", "scattered", "sand", "swamp")
+    },
+    "floodgate": {
+        "water": _GATE_ON_WATER,
+        "urban": _GATE_ON_WATER,
+        # The gate is a point mark. Its sample has a watercourse line too.
+        "name": "The name wins. Its halo keeps the name clear of the mark.",
+    },
+}
 
 
 def is_point_swatch(features):
@@ -158,8 +174,8 @@ def scene_exception(key, scene, features, normal_visible):
     """Return why a tile does not gate the symbol, or None when it does."""
     if key in ACCEPTED:
         return ACCEPTED[key]
-    if scene in NOT_ON.get(key, ()):
-        return "This class does not sit on this fill."
+    if scene in NOT_ON.get(key, {}):
+        return NOT_ON[key][scene]
     if scene in ("water", "urban") and normal_visible < HIDDEN_BELOW:
         return "LINZ draws this class under the fill. The stock map does the same."
     if scene == "road" and is_point_swatch(features):

@@ -55,10 +55,13 @@ def patch_contour(layer, style=None):
     )
     set_option(casing, "line_width", str(intermediate["casing_width_mm"]))
     fill_props = properties_map(fill.find("data_defined_properties"))
+    # A depression contour takes the index ink at the intermediate width, so
+    # the line holds in greyscale and red light where a name cuts its ticks.
     put_expr(
         fill_props,
         "outlineColor",
-        'CASE WHEN "elevation" IS NOT NULL AND round("elevation") % 100 = 0'
+        'CASE WHEN ("elevation" IS NOT NULL AND round("elevation") % 100 = 0)'
+        f" OR {DEPRESSION}"
         f" THEN {rgba_call(index['colour'], index['alpha'])}"
         f" ELSE {rgba_call(intermediate['colour'], intermediate['alpha'])} END",
     )

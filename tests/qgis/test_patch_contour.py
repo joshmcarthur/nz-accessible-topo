@@ -123,6 +123,8 @@ def test_supplementary_contours_dash_and_depressions_gain_ticks():
     assert "0.35" in fill_width.get("value")
     assert "elevation" in fill_width.get("value")
     assert "color_rgba(122,85,66,217)" in fill_color.get("value")
+    # Catches a depression contour left in the pale intermediate ink (log 0114).
+    assert "'depression'" in fill_color.get("value").split("THEN")[0]
     dash = lines[1].find(
         "data_defined_properties//Option[@name='customDash']/Option[@name='expression']"
     )

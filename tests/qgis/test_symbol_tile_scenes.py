@@ -73,3 +73,9 @@ def test_name_on_a_point_mark_is_not_gated_but_a_name_on_a_line_is():
     assert scene_exception("trig", "name", _swatch("trig")["features"], 0.3)
     track = _swatch("foot_track")["features"]
     assert scene_exception("foot_track", "name", track, 0.3) is None
+
+
+def test_ice_contours_are_not_gated_on_forest_but_are_on_ice():
+    ice = _swatch("ice_contours")["features"]
+    assert "only on ice" in scene_exception("ice_contours", "native", ice, 0.6)
+    assert scene_exception("ice_contours", "ice", ice, 0.6) is None
