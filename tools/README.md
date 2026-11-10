@@ -69,6 +69,23 @@ python3 tools/override_topo50_project.py stock/nztopo50.qgs accessible/nztopo50.
 Run it with the QGIS Python. Other labels count as filled boxes. Point symbols
 are not counted. The glyph masks are about 2.5% smaller than the QGIS boxes.
 
+## render_symbol_tiles.py
+
+Draws each legend symbol in 10 mm test tiles at sheet size, 600 dpi. One
+tile for each fill under the symbol (paper, native, exotic, scrub, scattered,
+water, urban, sand, swamp, ice). One tile for each class across it on paper
+(contour mesh, grid line, stream, road, name). The samples come from the
+legend swatch table and draw through the applied map layers.
+
+```
+$QPY tools/render_symbol_tiles.py --project accessible/nztopo50.qgs \
+    --font fonts --out render/symbol-tiles
+```
+
+Run it with the QGIS Python, after the apply step. `--key` draws one swatch.
+The output is one folder of tiles and one strip PNG per swatch key, and
+`tiles.json`. 86 keys, 1146 tiles, about 60 s.
+
 ## find_symbol_sheets.py
 
 Find 4 km squares that hold legend classes BX24 does not. Uses DuckDB in the

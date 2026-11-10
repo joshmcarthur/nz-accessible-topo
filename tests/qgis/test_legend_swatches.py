@@ -10,7 +10,7 @@ from nzat.qgis.legend_metres_per_px import legend_metres_per_px
 from nzat.qgis.legend_swatches import LEGEND_DPI, LEGEND_SIZE, SWATCHES
 from nzat.qgis.legend_wkt import legend_wkt
 from nzat.qgis.patch_legend_picture import patch_legend_picture
-from nzat.qgis.render_legend_main import (
+from nzat.qgis.swatch_layers import (
     enable_inactive_swatch_rules,
     extra_swatch_field_names,
     known_swatch_attrs,
