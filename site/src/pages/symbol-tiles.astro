@@ -36,8 +36,15 @@ const percent = (v: number) => `${Math.round(v * 100)}%`;
   <h1>Symbol test tiles</h1>
   <p class="lede">Each legend symbol, drawn by the accessible map style on every fill it can sit on, and with another map class across it. Each tile is 10 mm of the printed sheet.</p>
   <p>{rows.length} symbols and {tiles} tiles. {failed} tiles fail in one vision condition or more. Symbols with the most failing tiles are first.</p>
-  <p>A part of the symbol counts as visible when it still differs from the ground just outside the symbol: {floors.contrast}:1 contrast for greyscale and red light (R-01), and a colour difference of {floors.delta_e} (CIEDE2000) for typical colour vision and the three colour vision deficiencies. Reduced acuity is typical colour vision through a blur as wide as the detail a 6/18 eye resolves at 400 mm, about 0.35 mm on the sheet (F-32). Where another class crosses the symbol, ink from that class does not count. A tile fails a condition when less than {percent(floors.visible)} of the symbol stays visible.</p>
-  <p class="note">The score counts ink, not shape. A road with a dark casing reads better than its score, because the casing is a third of the ink. Water and urban fills hide lines and points under them on the stock LINZ map too. The name tile puts a name on top of the symbol, which is the worst case. Data: <code>tools/render_symbol_tiles.py</code> and <code>tools/export_symbol_tiles.py</code>. Our own measurement, evidence grade D.</p>
+  <p>A part of the symbol counts as visible when it still differs from the ground just outside the symbol: {floors.contrast}:1 contrast for greyscale and red light (R-01), and a colour difference of {floors.delta_e} (CIEDE2000) for typical colour vision and the three colour vision deficiencies. Reduced acuity is typical colour vision through a blur as wide as the detail a 6/18 eye resolves at 400 mm, about 0.35 mm on the sheet (F-32). Where another class crosses the symbol, ink from that class does not count. Ink within 0.35 mm of visible ink counts with it, so a dark casing carries its road. A tile fails a condition when less than {percent(floors.visible)} of the symbol stays visible.</p>
+  <h2>What is not gated</h2>
+  <ul>
+    <li>An area fill is shown, not gated, in greyscale, red light and reduced acuity. Only the ink that draws a shape must meet the floors. Lines and points on each fill are gated in their own rows.</li>
+    <li>Water and urban fills hide some classes completely. LINZ draws those classes under the fill, and the stock map does the same.</li>
+    <li>A road across a point mark. A road does not cross a point mark on the map.</li>
+    <li>Intermediate and supplementary contours. The 20 m mesh is recessive by design (log 0054).</li>
+  </ul>
+  <p class="note">The name tile puts a name on top of the symbol, which is the worst case. Data: <code>tools/render_symbol_tiles.py</code> and <code>tools/export_symbol_tiles.py</code>. Our own measurement, evidence grade D.</p>
   <p><a href={url("symbols/")}>Back to the symbol definitions</a>.</p>
 
   {rows.map((row: any) => (
@@ -45,7 +52,7 @@ const percent = (v: number) => `${Math.round(v * 100)}%`;
       <h2 id={row.key}>{row.label}</h2>
       <div class="table-wrap" tabindex="0" role="region" aria-label={`${row.label} test tiles`}>
         <table style={`min-width: ${row.scenes.length * 5.5}rem`}>
-          <caption>{row.label}: {failing(row)} of {row.scenes.length} tiles fail.</caption>
+          <caption>{row.label}: {failing(row)} of {row.scenes.length} tiles fail.{row.gated.length < table.conditions.length ? " Area fill: gated on colour vision only." : ""}</caption>
           <thead>
             <tr>{row.scenes.map((s: any) => <th scope="col">{sceneName[s.scene]}</th>)}</tr>
           </thead>
@@ -58,12 +65,17 @@ const percent = (v: number) => `${Math.round(v * 100)}%`;
             <tr>
               {row.scenes.map((s: any) => (
                 <td>
-                  {s.fails.length
+                  {s.exception
                     ? <>
-                        <span class="verdict fail">Fail</span>
-                        <ul class="checks">{s.fails.map((c: string) => <li>{conditionName[c]}: {percent(s.visible[c])}</li>)}</ul>
+                        <span class="verdict">Not gated</span>
+                        <p class="why">{s.exception}</p>
                       </>
-                    : <span class="verdict pass">Pass</span>}
+                    : s.fails.length
+                      ? <>
+                          <span class="verdict fail">Fail</span>
+                          <ul class="checks">{s.fails.map((c: string) => <li>{conditionName[c]}: {percent(s.visible[c])}</li>)}</ul>
+                        </>
+                      : <span class="verdict pass">Pass</span>}
                 </td>
               ))}
             </tr>
@@ -80,6 +92,7 @@ const percent = (v: number) => `${Math.round(v * 100)}%`;
   td.strip { padding: 0; }
   img { display: block; width: 100%; height: auto; border: 1px solid var(--ink); background: #fff; }
   .checks { margin: .25rem 0 0; padding-left: 1rem; }
+  .why { margin: .25rem 0 0; }
   .verdict { font-weight: 700; }
   .verdict.fail::before, .verdict.pass::before {
     content: "";

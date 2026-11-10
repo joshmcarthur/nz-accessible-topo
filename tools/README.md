@@ -95,6 +95,11 @@ and red light, CIEDE2000 10 for the colour conditions. In a conflict tile
 the pixel must also keep its paper-tile colour. A seventh condition, reduced
 acuity, blurs the tile by the detail a 6/18 eye resolves at 400 mm (F-32). A tile fails a condition
 when under half of the ink stays visible. That half is our own floor (grade D).
+Ink within 0.35 mm of visible ink counts with it, so a casing carries its
+road. An area fill is gated on the colour conditions only. A tile is not
+gated when LINZ draws the class under a water or urban fill, when a road
+crosses a point mark, or for the accepted contour exceptions. The rules are
+in `src/nzat/qgis/symbol_tile_scenes.py`.
 
 ```
 uv run python tools/export_symbol_tiles.py

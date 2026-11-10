@@ -3,6 +3,8 @@ from nzat.qgis.symbol_tile_scenes import (
     BACKGROUNDS,
     CONFLICTS,
     TILE_PX,
+    gated_conditions,
+    scene_exception,
     tile_box,
     tile_scenes,
 )
@@ -35,3 +37,32 @@ def test_fill_sample_has_the_class_attributes():
 def test_area_symbol_skips_the_fills_under_it():
     names = [name for name, _ in tile_scenes(_swatch("swamp"))]
     assert names == ["paper", *CONFLICTS]
+
+
+CONDITIONS = ["normal", "grey", "red", "acuity"]
+
+
+def test_area_fill_is_gated_on_colour_conditions_only():
+    assert gated_conditions(_swatch("swamp")["features"], CONDITIONS) == ["normal"]
+    assert gated_conditions(_swatch("foot_track")["features"], CONDITIONS) == CONDITIONS
+
+
+def test_symbol_hidden_under_water_is_linz_layer_order_not_a_fail():
+    track = _swatch("foot_track")["features"]
+    assert "LINZ" in scene_exception("foot_track", "water", track, 0.0)
+    # A symbol that draws on water and is hard to see is still gated.
+    assert scene_exception("foot_track", "water", track, 0.4) is None
+    assert scene_exception("foot_track", "native", track, 0.0) is None
+
+
+def test_road_across_a_point_mark_is_not_gated():
+    assert scene_exception("trig", "road", _swatch("trig")["features"], 0.3)
+    assert (
+        scene_exception("foot_track", "road", _swatch("foot_track")["features"], 0.3)
+        is None
+    )
+
+
+def test_accepted_exception_covers_every_scene():
+    contours = _swatch("intermediate_contours")["features"]
+    assert "0054" in scene_exception("intermediate_contours", "paper", contours, 1.0)

@@ -8,7 +8,8 @@ from pathlib import Path
 from PIL import Image
 
 from nzat.paths import ROOT
-from nzat.qgis.symbol_tile_scenes import CONFLICTS
+from nzat.qgis.legend_swatches import SWATCHES
+from nzat.qgis.symbol_tile_scenes import CONFLICTS, gated_conditions, scene_exception
 from nzat.render.tile_visibility import (
     ACUITY,
     CONDITIONS,
@@ -42,27 +43,39 @@ def swatch_label(key, symbols=SYMBOLS):
     return GROUP_LABELS[key]
 
 
-def score_rows(tiles_dir, manifest):
+def score_rows(tiles_dir, manifest, swatches=SWATCHES):
     """Return one row per swatch key that has ink and ground around it."""
+    features = {swatch["key"]: swatch["features"] for swatch in swatches}
     rows = []
     for key, scenes in manifest.items():
         paper = Image.open(tiles_dir / key / "paper.png")
+        gated = gated_conditions(features[key], [*CONDITIONS, ACUITY])
         scored = []
         for scene in scenes:
             tile = Image.open(tiles_dir / key / f"{scene}.png")
             visible = visible_fractions(paper, tile, scene in CONFLICTS)
             if visible is None:
                 break
+            exception = scene_exception(key, scene, features[key], visible["normal"])
+            fails = [c for c in gated if visible[c] < VISIBLE_FLOOR]
             scored.append(
                 {
                     "scene": scene,
                     "kind": "conflict" if scene in CONFLICTS else "fill",
                     "visible": visible,
-                    "fails": [c for c, v in visible.items() if v < VISIBLE_FLOOR],
+                    "exception": exception,
+                    "fails": [] if exception else fails,
                 }
             )
         else:
-            rows.append({"key": key, "label": swatch_label(key), "scenes": scored})
+            rows.append(
+                {
+                    "key": key,
+                    "label": swatch_label(key),
+                    "gated": gated,
+                    "scenes": scored,
+                }
+            )
     return rows
 
 

@@ -4,7 +4,7 @@ The paper tile holds the symbol alone, so its ink pixels are the symbol mask.
 A mask pixel in a scene tile is visible when it still differs from the ground
 around the symbol by the floor for that vision condition. In a conflict tile
 the pixel must also keep its paper-tile colour: ink from the other class is
-not the symbol.
+not the symbol. Symbol ink beside visible ink counts with it.
 """
 
 import math
@@ -40,6 +40,9 @@ INK_DIFF = 48  # A paper-tile pixel this far from white is symbol ink.
 INTACT_DIFF = 32  # A conflict-tile pixel this close to the paper tile is intact.
 RING_INNER_PX = 2  # Skip the anti-aliased edge.
 RING_OUTER_PX = 12  # 0.5 mm of ground around the symbol.
+# Ink within 0.35 mm of visible ink is found with it: a casing carries its
+# road, an outline carries its area. 0.35 mm is the F-31 and F-32 figure.
+LOCATE_PX = 8
 _QUANT = 8
 
 
@@ -107,8 +110,13 @@ def _differs(pixels, ground, lightness_only):
     return passes[inverse.reshape(-1)]
 
 
+def _located_share(visible, mask):
+    """Return the share of the symbol that is visible ink or beside it."""
+    return round(float((_grow(visible, LOCATE_PX) & mask).sum()) / float(mask.sum()), 3)
+
+
 def visible_fractions(paper, tile, conflict):
-    """Return {condition: share of the symbol's ink that stays visible}.
+    """Return {condition: share of the symbol that stays visible}.
 
     Return None when the symbol has no ink or no ground around it.
     """
@@ -119,14 +127,16 @@ def visible_fractions(paper, tile, conflict):
     keep = mask
     if conflict:
         keep = mask & (np.abs(_rgb(tile) - _rgb(paper)).max(axis=2) <= INTACT_DIFF)
+    views = {
+        name: (_rgb(apply_matrix(tile.convert("RGB"), matrix)), name in LIGHTNESS_ONLY)
+        for name, matrix in CONDITIONS.items()
+    }
+    views[ACUITY] = (blur(_rgb(tile), acuity_sigma_px()), False)
     out = {}
-    for name, matrix in CONDITIONS.items():
-        seen = _rgb(apply_matrix(tile.convert("RGB"), matrix))
-        ground = np.median(seen[ring], axis=0)
-        differs = _differs(seen[keep], ground, name in LIGHTNESS_ONLY)
-        out[name] = round(float(differs.sum()) / float(mask.sum()), 3)
-    blurred = blur(_rgb(tile), acuity_sigma_px())
-    ground = np.median(blurred[ring], axis=0)
-    differs = _differs(blurred[keep], ground, False)
-    out[ACUITY] = round(float(differs.sum()) / float(mask.sum()), 3)
+    for name, (seen, lightness_only) in views.items():
+        visible = np.zeros(mask.shape, dtype=bool)
+        visible[keep] = _differs(
+            seen[keep], np.median(seen[ring], axis=0), lightness_only
+        )
+        out[name] = _located_share(visible, mask)
     return out

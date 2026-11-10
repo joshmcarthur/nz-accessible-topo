@@ -52,7 +52,16 @@ def test_other_ink_over_the_symbol_does_not_count_as_the_symbol():
         "white", ("black", (20, 45, 80, 55)), ((0, 76, 153), (20, 45, 49, 55))
     )
     visible = visible_fractions(paper, crossed, True)
-    assert 0.45 < visible["normal"] < 0.55
+    # Half is covered. The 0.35 mm beside the visible half counts with it.
+    assert 0.55 < visible["normal"] < 0.7
+
+
+def test_dark_casing_carries_a_red_fill_under_red_light():
+    # Catches a cased road scored as lost because its fill reflects like paper.
+    cased = _tile("white", ("black", (0, 40, 99, 60)), ((255, 0, 0), (0, 44, 99, 56)))
+    bare = _tile("white", ((255, 0, 0), (0, 40, 99, 60)))
+    assert visible_fractions(cased, cased, False)["red"] == 1.0
+    assert visible_fractions(bare, bare, False)["red"] == 0.0
 
 
 def test_symbol_with_no_ground_has_no_score():

@@ -132,3 +132,43 @@ def tile_scenes(swatch):
     for name, build in CONFLICTS.items():
         scenes.append((name, (*symbol, *build(tile))))
     return scenes
+
+
+# Conditions that do not gate an area fill. Only the ink that draws a shape
+# must meet the floors; lines and points on the fill stay gated.
+AREA_SHOWN = ("grey", "red", "acuity")
+HIDDEN_BELOW = 0.05
+
+# Josh accepted these as written exceptions.
+ACCEPTED = {
+    "intermediate_contours": "The 20 m mesh is recessive by design (log 0054).",
+    "supplementary_contour": "It draws as an intermediate contour (log 0054).",
+}
+
+# Fills a class cannot sit on.
+NOT_ON = {}
+
+
+def is_point_swatch(features):
+    """True when every sample is a point."""
+    return all(wkt.startswith("POINT") for _table, _attrs, wkt in features)
+
+
+def scene_exception(key, scene, features, normal_visible):
+    """Return why a tile does not gate the symbol, or None when it does."""
+    if key in ACCEPTED:
+        return ACCEPTED[key]
+    if scene in NOT_ON.get(key, ()):
+        return "This class does not sit on this fill."
+    if scene in ("water", "urban") and normal_visible < HIDDEN_BELOW:
+        return "LINZ draws this class under the fill. The stock map does the same."
+    if scene == "road" and is_point_swatch(features):
+        return "A road does not cross a point mark."
+    return None
+
+
+def gated_conditions(features, conditions):
+    """Return the conditions that can fail this symbol."""
+    if is_area_swatch(features):
+        return [c for c in conditions if c not in AREA_SHOWN]
+    return list(conditions)
