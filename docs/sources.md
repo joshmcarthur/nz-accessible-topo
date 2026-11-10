@@ -40,6 +40,8 @@ Grades per `method.md`. IDs are referenced from findings and log entries.
 | S-SPACING-2018 | B | (2018) Influence of increased letter spacing and font type on the reading ability of dyslexic children. *Annals of Dyslexia* (Oct 2018), PMID 30094714. Authors to be recorded. |
 | S-ATKINSON | C/D | Braille Institute / Applied Design, Atkinson Hyperlegible (2019). https://github.com/googlefonts/atkinson-hyperlegible |
 | S-ATKINSON-NEXT | C | Braille Institute press release (2025-02-10): Atkinson Hyperlegible Next — 7 weights, 150+ languages. |
+| S-WHO-ICD11-VISION | C | World Health Organization, ICD-11 9D90 *Vision impairment including blindness*: distance grades by presenting acuity in the better eye. No impairment is 6/12 or better; mild is worse than 6/12 to 6/18; moderate is worse than 6/18 to 6/60. https://icd.who.int/ (code 9D90) (grades read from the table in https://pmc.ncbi.nlm.nih.gov/articles/PMC7966694/table/tbl1 — **ICD page not read directly**). WHO fact sheet (2026-02-10): at least 2.2 billion people have a near or distance vision impairment. https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment |
+| S-XIONG-2021 | B | Xiong, Y.-Z., Lei, Q., Calabrèse, A. & Legge, G.E. (2021) Simulating visibility and reading performance in low vision. *Frontiers in Neuroscience* 15:671121. https://doi.org/10.3389/fnins.2021.671121 |
 
 ## Cartographic typography guidance
 

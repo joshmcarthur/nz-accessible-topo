@@ -53,3 +53,34 @@ marks use the ~1.4 mm symbol size. Do not copy USGS contour millimetres as a
 low-vision floor.
 
 **Grade:** C (practitioner guidance).
+
+## F-32 — Reduced acuity removes fine detail first, and a filter can show it
+The WHO grades distance vision by presenting acuity. Mild impairment is
+worse than 6/12 and no worse than 6/18. An eye at 6/18 resolves detail of
+3 arc minutes, three times the 1 arc minute of 6/6. At a 400 mm reading
+distance that is about **0.35 mm** on the sheet. The same loss comes to a
+reader with good distance vision who reads a map without reading glasses,
+or in poor light.
+
+Xiong and others (2021) simulated low vision for normally sighted readers
+with an image filter. The filter moves the normal contrast sensitivity
+curve along spatial frequency by the acuity loss, and down by the contrast
+sensitivity loss. Measured acuity through the filter was within 0.05 logMAR
+of the target (median, 36 readers, 40 conditions). Reading acuity and
+critical print size matched real low-vision readers. So acuity loss acts as
+a loss of high spatial frequencies, and a filter on the image is a fair
+stand-in.
+**Sources:** S-WHO-ICD11-VISION (C), S-XIONG-2021 (B).
+
+**Our model.** The symbol test tiles use a simpler filter: a Gaussian blur
+in linear light, as wide (full width at half maximum) as the 3 arc minute
+detail, which is 8.2 px at 600 dpi (sigma 3.5 px). It has no contrast
+sensitivity term. It is not the validated filter.
+**Sources:** S-XIONG-2021 (B) for the principle only.
+
+**Implication:** a mark thinner than about 0.35 mm keeps its place on the
+sheet but loses its contrast for this reader. That is the same figure as
+the 1 pt line floor in F-31. Thin strokes (the hot spring cross, relief
+ticks, pattern fills, the spot-height dot) are the first to go.
+
+**Grade:** B for the principle, D for our blur model.

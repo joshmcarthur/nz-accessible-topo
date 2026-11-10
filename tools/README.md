@@ -92,7 +92,8 @@ Scores the symbol test tiles and writes `site/src/data/symbol-tiles.json`.
 The ink pixels of the paper tile are the symbol. A pixel stays visible when
 it still differs from the ground just outside the symbol: 3:1 for greyscale
 and red light, CIEDE2000 10 for the colour conditions. In a conflict tile
-the pixel must also keep its paper-tile colour. A tile fails a condition
+the pixel must also keep its paper-tile colour. A seventh condition, reduced
+acuity, blurs the tile by the detail a 6/18 eye resolves at 400 mm (F-32). A tile fails a condition
 when under half of the ink stays visible. That half is our own floor (grade D).
 
 ```

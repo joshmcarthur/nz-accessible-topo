@@ -169,6 +169,20 @@
    "used": true
   },
   {
+   "id": "S-WHO-ICD11-VISION",
+   "grade": "C",
+   "title": "World Health Organization, ICD-11 9D90 *Vision impairment including blindness*: distance grades by presenting acuity in the better eye. No impairment is 6/12 or better; mild is worse than 6/12 to 6/18; moderate is worse than 6/18 to 6/60. (code 9D90) (grades read from the table in — **ICD page not read directly**). WHO fact sheet (2026-02-10): at least 2.2 billion people have a near or distance vision impairment.",
+   "url": "https://icd.who.int/",
+   "used": true
+  },
+  {
+   "id": "S-XIONG-2021",
+   "grade": "B",
+   "title": "Xiong, Y.-Z., Lei, Q., Calabrèse, A. & Legge, G.E. (2021) Simulating visibility and reading performance in low vision. *Frontiers in Neuroscience* 15:671121.",
+   "url": "https://doi.org/10.3389/fnins.2021.671121",
+   "used": true
+  },
+  {
    "id": "S-AXIS-LABELING",
    "grade": "C",
    "title": "Axis Maps, *Labeling and text hierarchy in cartography*.",
@@ -581,6 +595,18 @@
    ],
    "grade": "C",
    "html": "<p>WCAG 1.4.11 (F-20) sets contrast for graphics. It does not set a stroke\nwidth. Print size floors come from cartographic practice.</p>\n<p><strong>Conversion:</strong> 1 pt = 1/72 in ≈ <strong>0.35 mm</strong>.</p>\n<p><strong>Esri (print, 2008).</strong> Type on a printed map should not be smaller than\n5 pt. Symbol minimum sizes are about two thirds of the recommended text\nsize. For the 6 pt print floor in F-09, that is about <strong>4 pt ≈ 1.4 mm</strong>.\nThe same note uses a 2-minute visual angle as a conservative \"can be seen\"\nthreshold. At a 300 mm reading distance that angle is about <strong>0.17 mm</strong>.\nThe blog has no millimetre table for line width. It is about seeing a mark,\nnot about reading a thin line in a contour mesh.\n<strong>Sources:</strong> S-ESRI-MINSIZE (C).</p>\n<p><strong>Minnesota map-design guide.</strong> Labels: 6 pt minimum, 8 pt preferred\n(already F-09). Same-colour line weights should differ by at least 1 pt.\nThe worked example is <strong>3 pt / 2 pt / 1 pt</strong> (about 1.06 / 0.71 / 0.35 mm).\nA 0.5 pt step is allowed only if the thinner line is about 20% lighter.\nKeep line styles to six or fewer. Scale point symbols in 2× size steps.\nThe guide does not prove a laboratory minimum. It treats <strong>1 pt (0.35 mm)</strong>\nas the thin end of a same-colour line family.\n<strong>Sources:</strong> S-MN-MAPGUIDE (C).</p>\n<p><strong>USGS US Topo (1:24,000), not 1:50,000.</strong> These are product specs for\nstandard-vision maps, not a low-vision floor. StreamRiver perennial and\nintermittent strokes are <strong>0.80–1.00 pt (0.28–0.35 mm)</strong>. Index contours\nare <strong>0.504 pt (0.18 mm)</strong>. Intermediate contours are <strong>0.216 pt (0.08 mm)</strong>.\nPaper millimetres do not double when scale halves. Use the millimetre\nfigures as a same-paper check, not as a scale-up.\n<strong>Sources:</strong> S-USGS-SPECS (C).</p>\n<p><strong>This sheet today (BX24, millimetres on paper).</strong></p>\n<table>\n<thead>\n<tr>\n<th>Mark</th>\n<th>Width or size</th>\n<th>In points</th>\n<th>Against the floors</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Stock stream</td>\n<td>0.10 mm</td>\n<td>0.28 pt</td>\n<td>Below USGS stream stroke and MN 1 pt</td>\n</tr>\n<tr>\n<td>Accessible river and canal (log 0071)</td>\n<td>0.25 mm</td>\n<td>0.71 pt</td>\n<td>Above the 0.17 mm visual angle. Under the USGS stream stroke</td>\n</tr>\n<tr>\n<td>Accessible drain (log 0071)</td>\n<td>0.15 mm</td>\n<td>0.43 pt</td>\n<td>One MN 1 pt step thinner would be 0 mm, so the step is smaller</td>\n</tr>\n<tr>\n<td>Index contour</td>\n<td>0.35 mm</td>\n<td>1.0 pt</td>\n<td>Matches MN 1 pt</td>\n</tr>\n<tr>\n<td>Intermediate contour fill</td>\n<td>0.12 mm</td>\n<td>0.34 pt</td>\n<td>USGS-thin; stays recessive (OQ-09)</td>\n</tr>\n<tr>\n<td>Scrub plant <code>third_arc</code></td>\n<td>1.4 mm</td>\n<td>4.0 pt</td>\n<td>Matches Esri 2/3 of 6 pt</td>\n</tr>\n<tr>\n<td>Closed-track ×</td>\n<td>0.5 mm</td>\n<td>1.4 pt</td>\n<td>Line-on-line mark, not an area symbol. G1 locked</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Implication:</strong> A single line floor does not work on this sheet (log 0071).\nOne 0.35 mm width on every blue line made drains, pond rims and coastline\nlook like rivers. MN treats 1 pt as the thin end of a family, so each class\nneeds its own step. Rivers are 0.25 mm and drains 0.15 mm. Polygon outlines,\ncoastline, shelterbelt, and grid keep stock widths in the darker inks. Scrub\nmarks use the ~1.4 mm symbol size. Do not copy USGS contour millimetres as a\nlow-vision floor.</p>\n<p><strong>Grade:</strong> C (practitioner guidance).</p>"
+  },
+  {
+   "id": "F-32",
+   "title": "Reduced acuity removes fine detail first, and a filter can show it",
+   "topic": "line and symbol size",
+   "file": "findings/size-and-weight.md",
+   "sources": [
+    "S-WHO-ICD11-VISION",
+    "S-XIONG-2021"
+   ],
+   "grade": "B",
+   "html": "<p>The WHO grades distance vision by presenting acuity. Mild impairment is\nworse than 6/12 and no worse than 6/18. An eye at 6/18 resolves detail of\n3 arc minutes, three times the 1 arc minute of 6/6. At a 400 mm reading\ndistance that is about <strong>0.35 mm</strong> on the sheet. The same loss comes to a\nreader with good distance vision who reads a map without reading glasses,\nor in poor light.</p>\n<p>Xiong and others (2021) simulated low vision for normally sighted readers\nwith an image filter. The filter moves the normal contrast sensitivity\ncurve along spatial frequency by the acuity loss, and down by the contrast\nsensitivity loss. Measured acuity through the filter was within 0.05 logMAR\nof the target (median, 36 readers, 40 conditions). Reading acuity and\ncritical print size matched real low-vision readers. So acuity loss acts as\na loss of high spatial frequencies, and a filter on the image is a fair\nstand-in.\n<strong>Sources:</strong> S-WHO-ICD11-VISION (C), S-XIONG-2021 (B).</p>\n<p><strong>Our model.</strong> The symbol test tiles use a simpler filter: a Gaussian blur\nin linear light, as wide (full width at half maximum) as the 3 arc minute\ndetail, which is 8.2 px at 600 dpi (sigma 3.5 px). It has no contrast\nsensitivity term. It is not the validated filter.\n<strong>Sources:</strong> S-XIONG-2021 (B) for the principle only.</p>\n<p><strong>Implication:</strong> a mark thinner than about 0.35 mm keeps its place on the\nsheet but loses its contrast for this reader. That is the same figure as\nthe 1 pt line floor in F-31. Thin strokes (the hot spring cross, relief\nticks, pattern fills, the spot-height dot) are the first to go.</p>\n<p><strong>Grade:</strong> B for the principle, D for our blur model.</p>"
   },
   {
    "id": "F-19",

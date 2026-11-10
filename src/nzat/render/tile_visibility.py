@@ -7,6 +7,8 @@ the pixel must also keep its paper-tile colour: ink from the other class is
 not the symbol.
 """
 
+import math
+
 import numpy as np
 from PIL import Image, ImageFilter
 
@@ -14,7 +16,7 @@ from nzat.colour.apply_matrix import GREYSCALE, RED_HEADTORCH, apply_matrix
 from nzat.colour.ciede2000 import ciede2000
 from nzat.colour.rgb_to_lab import rgb_to_lab
 from nzat.colour.simulate import MACHADO
-from nzat.colour.srgb import srgb_to_linear
+from nzat.colour.srgb import linear_to_srgb, srgb_to_linear
 
 # Condition id (site/src/data/conditions.json) to linear-RGB matrix.
 CONDITIONS = {
@@ -26,6 +28,11 @@ CONDITIONS = {
     "red": RED_HEADTORCH,
 }
 LIGHTNESS_ONLY = ("grey", "red")
+# Reduced acuity (F-32): typical colour vision, then a blur. Scored last.
+ACUITY = "acuity"
+ACUITY_SNELLEN = 18  # 6/18, the WHO limit of mild vision impairment
+READING_MM = 400
+TILE_DPI = 600
 CONTRAST_FLOOR = 3.0  # R-01, grey and red light
 DELTA_E_FLOOR = 10.0  # R-04, colour conditions
 
@@ -34,6 +41,30 @@ INTACT_DIFF = 32  # A conflict-tile pixel this close to the paper tile is intact
 RING_INNER_PX = 2  # Skip the anti-aliased edge.
 RING_OUTER_PX = 12  # 0.5 mm of ground around the symbol.
 _QUANT = 8
+
+
+def acuity_sigma_px(snellen=ACUITY_SNELLEN, reading_mm=READING_MM, dpi=TILE_DPI):
+    """Return the blur for an eye that resolves snellen/6 arc minutes.
+
+    The Gaussian is as wide (full width at half maximum) as the smallest
+    detail that eye resolves at the reading distance.
+    """
+    detail_mm = reading_mm * math.tan(math.radians(snellen / 6 / 60))
+    return detail_mm * dpi / 25.4 / (2 * math.sqrt(2 * math.log(2)))
+
+
+def blur(rgb, sigma):
+    """Blur an sRGB array in linear light, as defocus does. Return sRGB ints."""
+    radius = int(math.ceil(3 * sigma))
+    x = np.arange(-radius, radius + 1)
+    kernel = np.exp(-(x**2) / (2 * sigma**2))
+    kernel /= kernel.sum()
+    lin = np.pad(
+        srgb_to_linear(rgb), ((radius, radius), (radius, radius), (0, 0)), "edge"
+    )
+    for axis in (0, 1):
+        lin = np.apply_along_axis(np.convolve, axis, lin, kernel, "valid")
+    return np.rint(linear_to_srgb(lin)).astype(int)
 
 
 def _rgb(image):
@@ -94,4 +125,8 @@ def visible_fractions(paper, tile, conflict):
         ground = np.median(seen[ring], axis=0)
         differs = _differs(seen[keep], ground, name in LIGHTNESS_ONLY)
         out[name] = round(float(differs.sum()) / float(mask.sum()), 3)
+    blurred = blur(_rgb(tile), acuity_sigma_px())
+    ground = np.median(blurred[ring], axis=0)
+    differs = _differs(blurred[keep], ground, False)
+    out[ACUITY] = round(float(differs.sum()) / float(mask.sum()), 3)
     return out

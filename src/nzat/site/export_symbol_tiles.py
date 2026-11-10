@@ -10,6 +10,7 @@ from PIL import Image
 from nzat.paths import ROOT
 from nzat.qgis.symbol_tile_scenes import CONFLICTS
 from nzat.render.tile_visibility import (
+    ACUITY,
     CONDITIONS,
     CONTRAST_FLOOR,
     DELTA_E_FLOOR,
@@ -74,7 +75,7 @@ def main():
         manifest = json.load(handle)
     rows = score_rows(tiles_dir, manifest)
     table = {
-        "conditions": list(CONDITIONS),
+        "conditions": [*CONDITIONS, ACUITY],
         "floors": {
             "contrast": CONTRAST_FLOOR,
             "delta_e": DELTA_E_FLOOR,
