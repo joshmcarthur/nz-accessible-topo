@@ -86,6 +86,23 @@ Run it with the QGIS Python, after the apply step. `--key` draws one swatch.
 The output is one folder of tiles and one strip PNG per swatch key, and
 `tiles.json`. 86 keys, 1146 tiles, about 60 s.
 
+## export_symbol_tiles.py
+
+Scores the symbol test tiles and writes `site/src/data/symbol-tiles.json`.
+The ink pixels of the paper tile are the symbol. A pixel stays visible when
+it still differs from the ground just outside the symbol: 3:1 for greyscale
+and red light, CIEDE2000 10 for the colour conditions. In a conflict tile
+the pixel must also keep its paper-tile colour. A tile fails a condition
+when under half of the ink stays visible. That half is our own floor (grade D).
+
+```
+uv run python tools/export_symbol_tiles.py
+```
+
+Run `render_symbol_tiles.py` first. CI does not run this: the tiles are not
+in the repo. The score does not test shape confusion, for example a spot
+height dot on the sand stipple.
+
 ## find_symbol_sheets.py
 
 Find 4 km squares that hold legend classes BX24 does not. Uses DuckDB in the
