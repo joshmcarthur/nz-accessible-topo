@@ -151,7 +151,13 @@ _GATE_ON_WATER = (
     "The gate mark draws. The sample watercourse beside it is under the fill,"
     " as on the stock map."
 )
+_RARE_ON_URBAN = (
+    "Accepted: rare inside the urban fill, and the stock map draws it the same"
+    " way. Its dark edges and white centre blur to the urban grey."
+)
 NOT_ON = {
+    "unmetalled": {"urban": _RARE_ON_URBAN},
+    "bridge_one_lane": {"urban": _RARE_ON_URBAN},
     "ice_contours": {
         scene: _ICE_ONLY
         for scene in ("native", "exotic", "scrub", "scattered", "sand", "swamp")

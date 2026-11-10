@@ -2529,10 +2529,8 @@
       "red": 1.0,
       "acuity": 0.0
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "Accepted: rare inside the urban fill, and the stock map draws it the same way. Its dark edges and white centre blur to the urban grey.",
+     "fails": []
     },
     {
      "scene": "sand",
@@ -3491,10 +3489,8 @@
       "red": 1.0,
       "acuity": 0.284
      },
-     "exception": null,
-     "fails": [
-      "acuity"
-     ]
+     "exception": "Accepted: rare inside the urban fill, and the stock map draws it the same way. Its dark edges and white centre blur to the urban grey.",
+     "fails": []
     },
     {
      "scene": "sand",
@@ -10047,7 +10043,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.535,
+      "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
@@ -10062,7 +10058,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.535,
+      "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
@@ -10183,7 +10179,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.968
+      "acuity": 0.88
      },
      "exception": null,
      "fails": []
@@ -10241,9 +10237,9 @@
       "deutan": 0.963,
       "protan": 0.963,
       "tritan": 0.963,
-      "grey": 0.957,
-      "red": 0.955,
-      "acuity": 0.913
+      "grey": 0.963,
+      "red": 0.961,
+      "acuity": 0.912
      },
      "exception": null,
      "fails": []
@@ -10903,7 +10899,7 @@
       "tritan": 1.0,
       "grey": 0.944,
       "red": 0.0,
-      "acuity": 0.231
+      "acuity": 0.237
      },
      "exception": "It draws as an intermediate contour (log 0054).",
      "fails": []
@@ -11008,7 +11004,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.812
      },
      "exception": null,
      "fails": []
@@ -11098,7 +11094,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.997
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11197,13 +11193,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.716,
-      "deutan": 0.716,
-      "protan": 0.716,
-      "tritan": 0.716,
-      "grey": 0.693,
-      "red": 0.68,
-      "acuity": 0.528
+      "normal": 0.732,
+      "deutan": 0.732,
+      "protan": 0.732,
+      "tritan": 0.732,
+      "grey": 0.71,
+      "red": 0.697,
+      "acuity": 0.573
      },
      "exception": null,
      "fails": []
@@ -14083,13 +14079,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.995,
-      "deutan": 0.995,
-      "protan": 0.995,
-      "tritan": 0.995,
-      "grey": 0.995,
-      "red": 0.995,
-      "acuity": 0.734
+      "normal": 0.992,
+      "deutan": 0.992,
+      "protan": 0.992,
+      "tritan": 0.992,
+      "grey": 0.992,
+      "red": 0.992,
+      "acuity": 0.73
      },
      "exception": null,
      "fails": []
@@ -14189,9 +14185,9 @@
       "deutan": 0.946,
       "protan": 0.946,
       "tritan": 0.946,
-      "grey": 0.909,
+      "grey": 0.887,
       "red": 0.937,
-      "acuity": 0.067
+      "acuity": 0.064
      },
      "exception": null,
      "fails": []
@@ -14293,7 +14289,7 @@
       "tritan": 0.996,
       "grey": 0.996,
       "red": 0.996,
-      "acuity": 0.088
+      "acuity": 0.089
      },
      "exception": null,
      "fails": []
@@ -14395,7 +14391,7 @@
       "tritan": 0.997,
       "grey": 0.997,
       "red": 0.997,
-      "acuity": 0.533
+      "acuity": 0.542
      },
      "exception": null,
      "fails": []
@@ -14497,7 +14493,7 @@
       "tritan": 0.993,
       "grey": 0.991,
       "red": 0.991,
-      "acuity": 0.784
+      "acuity": 0.798
      },
      "exception": null,
      "fails": []
@@ -17923,7 +17919,7 @@
       "tritan": 0.998,
       "grey": 0.97,
       "red": 0.998,
-      "acuity": 0.602
+      "acuity": 0.519
      },
      "exception": null,
      "fails": []

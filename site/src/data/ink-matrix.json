@@ -12,40 +12,40 @@
    "name": "Index vs intermediate contour",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "intermediate contour",
     "colour": "rgba(176, 136, 114, 0.5)"
    },
    "why": "R-04. Same hue, different weight and lightness.",
-   "normal": 26.2,
-   "protanopia": 26.8,
-   "deuteranopia": 25.3,
-   "tritanopia": 26.3,
-   "worst_cvd": 25.3,
-   "grey_cr": 2.73,
-   "red_cr": 2.29,
+   "normal": 36.7,
+   "protanopia": 37.9,
+   "deuteranopia": 35.3,
+   "tritanopia": 36.8,
+   "worst_cvd": 35.3,
+   "grey_cr": 3.88,
+   "red_cr": 3.0,
    "fails_r01": true
   },
   {
    "name": "Index contour vs print highway",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "print highway",
     "colour": "#EA6300"
    },
    "why": "R-04. Print highway ink is #EA6300. Map5View does not paint this ink.",
-   "normal": 22.2,
-   "protanopia": 17.9,
-   "deuteranopia": 21.6,
-   "tritanopia": 20.3,
-   "worst_cvd": 17.9,
-   "grey_cr": 1.38,
-   "red_cr": 2.72,
+   "normal": 26.3,
+   "protanopia": 20.2,
+   "deuteranopia": 27.2,
+   "tritanopia": 24.6,
+   "worst_cvd": 20.2,
+   "grey_cr": 1.96,
+   "red_cr": 3.57,
    "fails_r01": true
   },
   {
@@ -72,20 +72,20 @@
    "name": "Index contour vs project road",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "project road fill",
     "colour": "#EC7000"
    },
    "why": "R-04. Map5View paints two-lane and sealed roads as PMS151 #FF7F00. Gold #D5B43C is a bivouac marker, not the road fill.",
-   "normal": 23.0,
-   "protanopia": 19.4,
-   "deuteranopia": 23.0,
-   "tritanopia": 20.2,
-   "worst_cvd": 19.4,
-   "grey_cr": 1.51,
-   "red_cr": 2.77,
+   "normal": 28.2,
+   "protanopia": 23.2,
+   "deuteranopia": 29.1,
+   "tritanopia": 25.7,
+   "worst_cvd": 23.2,
+   "grey_cr": 2.15,
+   "red_cr": 3.63,
    "fails_r01": true
   },
   {
@@ -112,7 +112,7 @@
    "name": "Index contour vs project highway",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "project highway fill",
@@ -120,12 +120,12 @@
    },
    "why": "R-04. Map5View paints highway fills as #E31A1C.",
    "normal": 22.5,
-   "protanopia": 15.3,
-   "deuteranopia": 16.7,
-   "tritanopia": 22.7,
-   "worst_cvd": 15.3,
-   "grey_cr": 1.03,
-   "red_cr": 2.55,
+   "protanopia": 10.3,
+   "deuteranopia": 19.4,
+   "tritanopia": 24.3,
+   "worst_cvd": 10.3,
+   "grey_cr": 1.38,
+   "red_cr": 3.34,
    "fails_r01": true
   },
   {
@@ -152,20 +152,20 @@
    "name": "Index contour vs paper",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "paper",
     "colour": "#FFFFFF"
    },
    "why": "R-04. Index contours at least 3:1 on paper after stroke alpha.",
-   "normal": 39.7,
-   "protanopia": 39.8,
-   "deuteranopia": 38.0,
-   "tritanopia": 41.0,
-   "worst_cvd": 38.0,
-   "grey_cr": 4.6,
-   "red_cr": 3.28,
+   "normal": 49.5,
+   "protanopia": 50.2,
+   "deuteranopia": 47.4,
+   "tritanopia": 50.7,
+   "worst_cvd": 47.4,
+   "grey_cr": 6.55,
+   "red_cr": 4.29,
    "fails_r01": false
   },
   {
@@ -432,80 +432,80 @@
    "name": "Index contour vs scrub",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "scrub fill",
     "colour": "rgba(163, 204, 144, 0.101961)"
    },
    "why": "R-01. A line on a fill is measured against that fill (log 0058).",
-   "normal": 39.7,
-   "protanopia": 38.2,
-   "deuteranopia": 36.2,
-   "tritanopia": 41.3,
-   "worst_cvd": 36.2,
-   "grey_cr": 4.35,
-   "red_cr": 3.02,
+   "normal": 49.5,
+   "protanopia": 48.6,
+   "deuteranopia": 45.7,
+   "tritanopia": 51.0,
+   "worst_cvd": 45.7,
+   "grey_cr": 6.19,
+   "red_cr": 3.96,
    "fails_r01": false
   },
   {
    "name": "Index contour vs native forest",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "native forest fill",
     "colour": "rgba(225, 234, 195, 0.705882)"
    },
    "why": "R-01. A line on a fill is measured against that fill (log 0058).",
-   "normal": 39.4,
-   "protanopia": 35.3,
-   "deuteranopia": 32.9,
-   "tritanopia": 38.8,
-   "worst_cvd": 32.9,
-   "grey_cr": 3.93,
-   "red_cr": 2.72,
-   "fails_r01": true
+   "normal": 48.9,
+   "protanopia": 45.7,
+   "deuteranopia": 42.5,
+   "tritanopia": 48.5,
+   "worst_cvd": 42.5,
+   "grey_cr": 5.59,
+   "red_cr": 3.56,
+   "fails_r01": false
   },
   {
    "name": "Index contour vs water",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "water fill",
     "colour": "#D1E7F5"
    },
    "why": "R-01. A line on a fill is measured against that fill (log 0058).",
-   "normal": 40.4,
-   "protanopia": 38.1,
-   "deuteranopia": 37.0,
-   "tritanopia": 46.4,
-   "worst_cvd": 37.0,
-   "grey_cr": 3.61,
-   "red_cr": 2.15,
+   "normal": 49.8,
+   "protanopia": 48.5,
+   "deuteranopia": 46.2,
+   "tritanopia": 54.9,
+   "worst_cvd": 46.2,
+   "grey_cr": 5.13,
+   "red_cr": 2.81,
    "fails_r01": true
   },
   {
    "name": "Index contour vs urban",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "urban fill",
     "colour": "#BCBAB6"
    },
    "why": "R-01. A line on a fill is measured against that fill (log 0058).",
-   "normal": 25.8,
-   "protanopia": 25.0,
-   "deuteranopia": 23.3,
-   "tritanopia": 27.2,
-   "worst_cvd": 23.3,
-   "grey_cr": 2.37,
-   "red_cr": 1.73,
+   "normal": 36.1,
+   "protanopia": 36.2,
+   "deuteranopia": 33.3,
+   "tritanopia": 37.2,
+   "worst_cvd": 33.3,
+   "grey_cr": 3.38,
+   "red_cr": 2.26,
    "fails_r01": true
   },
   {
@@ -812,20 +812,20 @@
    "name": "Index contour vs stream",
    "a": {
     "label": "index contour",
-    "colour": "rgba(122, 85, 66, 0.85)"
+    "colour": "rgba(122, 85, 66, 1)"
    },
    "b": {
     "label": "stream",
     "colour": "#004C99"
    },
    "why": "R-01. Contour versus stream on steep slopes (G6, log 0057). Shape still differs in weight.",
-   "normal": 36.2,
-   "protanopia": 36.1,
-   "deuteranopia": 42.1,
-   "tritanopia": 46.6,
-   "worst_cvd": 36.1,
-   "grey_cr": 1.83,
-   "red_cr": 6.41,
+   "normal": 35.4,
+   "protanopia": 36.7,
+   "deuteranopia": 41.7,
+   "tritanopia": 46.3,
+   "worst_cvd": 36.7,
+   "grey_cr": 1.29,
+   "red_cr": 4.89,
    "fails_r01": true
   },
   {

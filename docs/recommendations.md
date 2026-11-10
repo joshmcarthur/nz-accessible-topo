@@ -9,7 +9,7 @@ Status: draft v0 (2026-11-01). Nothing here has been user-tested yet.
 **Implementation status (log 0053):** R-05, R-06, R-07, R-09, R-10, R-11,
 R-12, R-14, R-17 (springs, forest, contour numbers) are met for the classes
 the style owns. R-01 is met for owned classes that use casing, glyph, or 3:1
-grey. Index contours still meet 3:1 grey and red vs paper at alpha 0.85.
+grey. Index contours meet 3:1 grey and red vs paper at alpha 1.0 (log 0115).
 Intermediate strokes at 0.5 may fall below 3:1, especially under red light.
 R-04 is met against painted road `#EC7000` and highway `#E31A1C`. R-03
 and R-13 stay open. R-08 stays provisional. R-15 raster owns the road fill;
@@ -91,7 +91,7 @@ multidirectional/sky layer; evaluated on both Alpine and lowland sheets.
 
 ### R-04 — Contours that stay visible: strong index lines, recessive intermediates
 **Rests on:** F-18, F-20, F-31, W3, W5, W6, palette v0 · **Best evidence:** C (WCAG) + D (audit)
-**Starting values:** index `#7A5542` at alpha 0.85, intermediate `#B08872`
+**Starting values:** index `#7A5542` at alpha 1.0 (log 0115; 0.85 before), intermediate `#B08872`
 at alpha 0.5 (hexes from log 0050; alpha from logs 0053 and 0054). Lightness of the
 hexes is unchanged. Stroke alpha recedes the 20 m mesh on dense slopes
 (OQ-09).

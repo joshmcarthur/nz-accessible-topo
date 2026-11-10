@@ -23,7 +23,7 @@ def test_style_file_has_no_sheet_code():
     assert style["fonts"]["stock_family"] == "Nimbus Sans LINZ"
     assert style["contours"]["index"]["colour"] == "#7A5542"
     assert style["contours"]["index"]["width_mm"] == 0.35
-    assert style["contours"]["index"]["alpha"] == 0.85
+    assert style["contours"]["index"]["alpha"] == 1.0
     assert style["contours"]["intermediate"]["colour"] == "#B08872"
     assert style["contours"]["intermediate"]["casing_colour"] == "#7A5542"
     assert style["contours"]["intermediate"]["casing_width_mm"] == 0.2

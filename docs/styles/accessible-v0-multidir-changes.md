@@ -13,7 +13,7 @@ Total changes: 200.
 
 ## R-04 (5)
 
-- `Contours-Index` — colour → #7A5542 alpha 0.85, width ↑
+- `Contours-Index` — colour → #7A5542 alpha 1.0, width ↑
 - `Contours-Index-Halo` — hidden — darker index line no longer needs a 10% offset shadow
 - `Contours-All` — colour → #B08872 alpha 0.5
 - `Contours-Designated` — colour → #B08872 alpha 0.5

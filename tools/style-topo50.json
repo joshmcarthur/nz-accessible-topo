@@ -44,7 +44,7 @@
     "red_light_min": 3.0
   },
   "contours": {
-    "index": {"colour": "#7A5542", "width_mm": 0.35, "alpha": 0.85},
+    "index": {"colour": "#7A5542", "width_mm": 0.35, "alpha": 1.0},
     "intermediate": {
       "colour": "#B08872",
       "width_mm": 0.12,

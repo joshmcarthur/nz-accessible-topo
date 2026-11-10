@@ -17,7 +17,7 @@ def test_contour_casing_read_the_style_file():
     assert RULES["contours"]["index"]["width_mm"] == 0.35
     assert lookup_style_path(RULES, "contours.index.colour") == "#7A5542"
     assert lookup_style_path(RULES, "contours.intermediate.colour") == "#B08872"
-    assert lookup_style_path(RULES, "contours.index.alpha") == 0.85
+    assert lookup_style_path(RULES, "contours.index.alpha") == 1.0
     assert lookup_style_path(RULES, "contours.intermediate.alpha") == 0.5
     assert lookup_style_path(RULES, "contours.intermediate.casing_colour") == "#7A5542"
     assert intermediate_casing_width(RULES)["stops"] == [[12, 1.0], [16, 1.5]]
@@ -66,7 +66,7 @@ def test_contour_casing_read_the_style_file():
         "data_defined_properties//Option[@name='outlineColor']/Option[@name='expression']"
     )
     assert casing_color.get("value") == "color_rgba(122,85,66,128)"
-    assert "color_rgba(122,85,66,217)" in fill_color.get("value")
+    assert "color_rgba(122,85,66,255)" in fill_color.get("value")
     assert "color_rgba(176,136,114,128)" in fill_color.get("value")
     assert (
         lines[0].find("Option/Option[@name='line_color']").get("value")
@@ -122,7 +122,7 @@ def test_supplementary_contours_dash_and_depressions_gain_ticks():
     )
     assert "0.35" in fill_width.get("value")
     assert "elevation" in fill_width.get("value")
-    assert "color_rgba(122,85,66,217)" in fill_color.get("value")
+    assert "color_rgba(122,85,66,255)" in fill_color.get("value")
     # Catches a depression contour left in the pale intermediate ink (log 0114).
     assert "'depression'" in fill_color.get("value").split("THEN")[0]
     dash = lines[1].find(

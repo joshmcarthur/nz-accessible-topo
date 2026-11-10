@@ -60,7 +60,7 @@ def test_pair_audit_reads_the_style_file():
     index = next(pair for pair in resolved if pair["name"] == "Index contour vs paper")
     parsed_index = parse_colour(index["a"]["colour"])
     assert parsed_index[:3] == parse_colour(rules["contours"]["index"]["colour"])[:3]
-    assert parsed_index[3] == 0.85
+    assert parsed_index[3] == 1.0
 
     casing = next(
         pair for pair in resolved if pair["name"] == "Closed-track casing vs paper"

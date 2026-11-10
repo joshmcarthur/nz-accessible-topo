@@ -125,7 +125,7 @@ The vector hillshade layer stays visible while `painted` is true. Set `painted` 
 
 The vector build reads `contours.index.width_mm`, `contours.intermediate.casing_colour`, `contours.intermediate.casing_width_mm`, and the contour `alpha` values from this file.
 
-`contours.index.colour` is `#7A5542`. `contours.index.alpha` is 0.85. `contours.intermediate.colour` is `#B08872`. `contours.intermediate.alpha` is 0.5. `contours.index.width_mm` is 0.35. `contours.intermediate.casing_colour` is `#7A5542`. `contours.intermediate.casing_width_mm` is 0.2.
+`contours.index.colour` is `#7A5542`. `contours.index.alpha` is 1.0. `contours.intermediate.colour` is `#B08872`. `contours.intermediate.alpha` is 0.5. `contours.index.width_mm` is 0.35. `contours.intermediate.casing_colour` is `#7A5542`. `contours.intermediate.casing_width_mm` is 0.2.
 
 The QGIS apply step paints that casing under an intermediate contour. It paints those alphas with `color_rgba`. The index contour stays one heavier line. Contour-number FontMarkers stay opaque. A supplementary contour (`coalesce("designation", '') = 'supplementary'`) uses `contours.supplementary.dash` (`3;1` mm). A depression contour (`coalesce("formation", '') = 'depression'`) keeps those inks and adds index-ink ticks `contours.depression.tick_mm` (0.6 mm).
 

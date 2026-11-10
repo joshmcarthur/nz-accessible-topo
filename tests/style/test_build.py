@@ -19,5 +19,5 @@ def test_vector_build_reads_the_style_file():
         lookup_style_path(rules, "contours.intermediate.colour")
         == rules["contours"]["intermediate"]["colour"]
     )
-    assert lookup_style_path(rules, "contours.index.alpha") == 0.85
+    assert lookup_style_path(rules, "contours.index.alpha") == 1.0
     assert lookup_style_path(rules, "contours.intermediate.alpha") == 0.5
