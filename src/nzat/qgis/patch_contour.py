@@ -12,6 +12,9 @@ from nzat.qgis.set_option import set_option
 
 SUPPLEMENTARY = "coalesce(\"designation\", '') = 'supplementary'"
 DEPRESSION = "coalesce(\"formation\", '') = 'depression'"
+# QGIS applies a data-defined dash even when useCustomDash is false, and a
+# NULL dash falls back to the stock 5;2. One very long dash draws solid.
+SOLID_DASH = "10000;0"
 
 
 def patch_contour(layer, style=None):
@@ -68,7 +71,7 @@ def patch_contour(layer, style=None):
     names = [field.get("name") for field in layer.findall("fieldConfiguration/field")]
     if "designation" in names:
         dash = style["contours"]["supplementary"]["dash"]
-        dash_expr = f"if({SUPPLEMENTARY}, '{dash}', '5;2')"
+        dash_expr = f"if({SUPPLEMENTARY}, '{dash}', '{SOLID_DASH}')"
         put_expr(casing_props, "customDash", dash_expr)
         put_expr(fill_props, "customDash", dash_expr)
         put_expr(casing_props, "useCustomDash", SUPPLEMENTARY)

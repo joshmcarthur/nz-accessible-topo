@@ -130,6 +130,9 @@ def test_supplementary_contours_dash_and_depressions_gain_ticks():
         "data_defined_properties//Option[@name='useCustomDash']/Option[@name='expression']"
     )
     assert "3;1" in dash.get("value")
+    # A normal contour must not take the stock 5;2 dash (log 0110).
+    assert "'5;2'" not in dash.get("value")
+    assert "'10000;0'" in dash.get("value")
     assert "coalesce" in dash.get("value")
     assert "supplementary" in dash.get("value")
     assert "coalesce" in use_dash.get("value")
