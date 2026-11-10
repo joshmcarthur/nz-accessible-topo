@@ -142,6 +142,7 @@
   },
   "sizes": {
     "navigation_line_mm": 0.35,
+    "one_lane_road_casing_mm": 0.6,
     "line_floor_mm": 0.15
   },
   "draw_order": [

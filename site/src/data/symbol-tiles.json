@@ -216,11 +216,11 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.996,
+      "normal": 0.995,
       "deutan": 0.995,
-      "protan": 0.996,
-      "tritan": 0.996,
-      "grey": 0.889,
+      "protan": 0.995,
+      "tritan": 0.995,
+      "grey": 0.888,
       "red": 0.274
      },
      "fails": [
@@ -255,8 +255,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.943,
-      "red": 0.0
+      "grey": 0.895,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -270,8 +270,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -286,8 +286,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -302,8 +302,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.429,
+      "red": 0.324
      },
      "fails": [
       "grey",
@@ -318,8 +318,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.944,
-      "red": 0.0
+      "grey": 0.896,
+      "red": 0.317
      },
      "fails": [
       "red"
@@ -333,8 +333,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -349,8 +349,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.316,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -365,8 +365,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.946,
-      "red": 0.002
+      "grey": 0.901,
+      "red": 0.322
      },
      "fails": [
       "red"
@@ -380,8 +380,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.946,
-      "red": 0.003
+      "grey": 0.904,
+      "red": 0.325
      },
      "fails": [
       "red"
@@ -395,8 +395,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.943,
-      "red": 0.0
+      "grey": 0.895,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -406,12 +406,12 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.981,
-      "deutan": 0.981,
-      "protan": 0.981,
-      "tritan": 0.981,
-      "grey": 0.943,
-      "red": 0.0
+      "normal": 0.964,
+      "deutan": 0.964,
+      "protan": 0.964,
+      "tritan": 0.964,
+      "grey": 0.895,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -421,12 +421,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.911,
-      "red": 0.0
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.875,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -436,12 +436,12 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 0.997,
-      "deutan": 0.997,
-      "protan": 0.997,
-      "tritan": 0.997,
-      "grey": 0.943,
-      "red": 0.0
+      "normal": 0.994,
+      "deutan": 0.994,
+      "protan": 0.994,
+      "tritan": 0.994,
+      "grey": 0.895,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -451,12 +451,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.994,
-      "deutan": 0.994,
-      "protan": 0.994,
-      "tritan": 0.994,
-      "grey": 0.943,
-      "red": 0.0
+      "normal": 0.963,
+      "deutan": 0.963,
+      "protan": 0.963,
+      "tritan": 0.963,
+      "grey": 0.868,
+      "red": 0.296
      },
      "fails": [
       "red"
@@ -466,14 +466,19 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.577,
-      "deutan": 0.577,
-      "protan": 0.577,
-      "tritan": 0.577,
-      "grey": 0.528,
-      "red": 0.0
+      "normal": 0.478,
+      "deutan": 0.478,
+      "protan": 0.478,
+      "tritan": 0.478,
+      "grey": 0.418,
+      "red": 0.163
      },
      "fails": [
+      "normal",
+      "deutan",
+      "protan",
+      "tritan",
+      "grey",
       "red"
      ]
     }
@@ -491,7 +496,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -505,8 +510,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -521,8 +526,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -537,8 +542,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.113,
-      "red": 0.009
+      "grey": 0.429,
+      "red": 0.324
      },
      "fails": [
       "grey",
@@ -554,7 +559,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.896,
-      "red": 0.001
+      "red": 0.317
      },
      "fails": [
       "red"
@@ -568,8 +573,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -584,8 +589,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.316,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -601,7 +606,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.901,
-      "red": 0.006
+      "red": 0.322
      },
      "fails": [
       "red"
@@ -616,7 +621,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.904,
-      "red": 0.009
+      "red": 0.325
      },
      "fails": [
       "red"
@@ -631,7 +636,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -646,7 +651,7 @@
       "protan": 0.964,
       "tritan": 0.964,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -656,12 +661,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.864,
-      "red": 0.0
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.875,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -676,7 +681,7 @@
       "protan": 0.994,
       "tritan": 0.994,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -686,12 +691,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.989,
-      "deutan": 0.989,
-      "protan": 0.989,
-      "tritan": 0.989,
-      "grey": 0.895,
-      "red": 0.0
+      "normal": 0.963,
+      "deutan": 0.963,
+      "protan": 0.963,
+      "tritan": 0.963,
+      "grey": 0.868,
+      "red": 0.296
      },
      "fails": [
       "red"
@@ -701,12 +706,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.471,
-      "deutan": 0.471,
-      "protan": 0.471,
-      "tritan": 0.471,
-      "grey": 0.409,
-      "red": 0.0
+      "normal": 0.478,
+      "deutan": 0.478,
+      "protan": 0.478,
+      "tritan": 0.478,
+      "grey": 0.418,
+      "red": 0.163
      },
      "fails": [
       "normal",
@@ -731,7 +736,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -745,8 +750,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.429,
+      "red": 0.429
      },
      "fails": [
       "grey",
@@ -761,8 +766,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.429,
+      "red": 0.429
      },
      "fails": [
       "grey",
@@ -777,8 +782,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.429,
+      "red": 0.429
      },
      "fails": [
       "grey",
@@ -794,7 +799,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -808,8 +813,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.429,
+      "red": 0.429
      },
      "fails": [
       "grey",
@@ -824,8 +829,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.429,
+      "red": 0.429
      },
      "fails": [
       "grey",
@@ -841,7 +846,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -856,7 +861,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -871,7 +876,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -886,7 +891,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -896,12 +901,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.968,
-      "deutan": 0.968,
-      "protan": 0.968,
-      "tritan": 0.968,
-      "grey": 0.968,
-      "red": 0.323
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.977,
+      "red": 0.425
      },
      "fails": [
       "red"
@@ -916,7 +921,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.333
+      "red": 0.429
      },
      "fails": [
       "red"
@@ -926,12 +931,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.965,
-      "deutan": 0.965,
-      "protan": 0.965,
-      "tritan": 0.965,
-      "grey": 0.965,
-      "red": 0.298
+      "normal": 0.973,
+      "deutan": 0.973,
+      "protan": 0.973,
+      "tritan": 0.973,
+      "grey": 0.973,
+      "red": 0.401
      },
      "fails": [
       "red"
@@ -941,12 +946,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.451,
-      "deutan": 0.451,
-      "protan": 0.451,
-      "tritan": 0.451,
-      "grey": 0.447,
-      "red": 0.161
+      "normal": 0.461,
+      "deutan": 0.461,
+      "protan": 0.461,
+      "tritan": 0.461,
+      "grey": 0.458,
+      "red": 0.213
      },
      "fails": [
       "normal",
@@ -1135,12 +1140,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.872,
-      "deutan": 0.872,
-      "protan": 0.872,
-      "tritan": 0.872,
-      "grey": 0.862,
-      "red": 0.862
+      "normal": 0.883,
+      "deutan": 0.883,
+      "protan": 0.883,
+      "tritan": 0.883,
+      "grey": 0.872,
+      "red": 0.872
      },
      "fails": []
     },
@@ -1335,12 +1340,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.946,
-      "red": 0.946
+      "normal": 0.975,
+      "deutan": 0.975,
+      "protan": 0.975,
+      "tritan": 0.975,
+      "grey": 0.955,
+      "red": 0.955
      },
      "fails": []
     },
@@ -1535,12 +1540,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.955,
-      "deutan": 0.955,
-      "protan": 0.955,
-      "tritan": 0.955,
-      "grey": 0.903,
-      "red": 0.903
+      "normal": 0.962,
+      "deutan": 0.962,
+      "protan": 0.962,
+      "tritan": 0.962,
+      "grey": 0.91,
+      "red": 0.91
      },
      "fails": []
     },
@@ -1771,7 +1776,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -1785,8 +1790,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -1801,8 +1806,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -1817,8 +1822,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.113,
-      "red": 0.009
+      "grey": 0.429,
+      "red": 0.324
      },
      "fails": [
       "grey",
@@ -1834,7 +1839,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.896,
-      "red": 0.001
+      "red": 0.317
      },
      "fails": [
       "red"
@@ -1848,8 +1853,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.421,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -1864,8 +1869,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.316,
+      "red": 0.316
      },
      "fails": [
       "grey",
@@ -1881,7 +1886,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.901,
-      "red": 0.006
+      "red": 0.322
      },
      "fails": [
       "red"
@@ -1896,7 +1901,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.904,
-      "red": 0.009
+      "red": 0.325
      },
      "fails": [
       "red"
@@ -1911,7 +1916,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -1926,7 +1931,7 @@
       "protan": 0.964,
       "tritan": 0.964,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -1936,12 +1941,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.864,
-      "red": 0.0
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.875,
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -1956,7 +1961,7 @@
       "protan": 0.994,
       "tritan": 0.994,
       "grey": 0.895,
-      "red": 0.0
+      "red": 0.316
      },
      "fails": [
       "red"
@@ -1966,12 +1971,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.989,
-      "deutan": 0.989,
-      "protan": 0.989,
-      "tritan": 0.989,
-      "grey": 0.895,
-      "red": 0.0
+      "normal": 0.963,
+      "deutan": 0.963,
+      "protan": 0.963,
+      "tritan": 0.963,
+      "grey": 0.868,
+      "red": 0.296
      },
      "fails": [
       "red"
@@ -1981,12 +1986,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.471,
-      "deutan": 0.471,
-      "protan": 0.471,
-      "tritan": 0.471,
-      "grey": 0.409,
-      "red": 0.0
+      "normal": 0.478,
+      "deutan": 0.478,
+      "protan": 0.478,
+      "tritan": 0.478,
+      "grey": 0.418,
+      "red": 0.163
      },
      "fails": [
       "normal",
@@ -2010,8 +2015,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.83,
-      "red": 0.0
+      "grey": 0.862,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -2022,11 +2027,11 @@
      "kind": "fill",
      "visible": {
       "normal": 1.0,
-      "deutan": 0.962,
-      "protan": 0.962,
+      "deutan": 0.999,
+      "protan": 0.999,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.471,
+      "red": 0.384
      },
      "fails": [
       "grey",
@@ -2038,11 +2043,11 @@
      "kind": "fill",
      "visible": {
       "normal": 1.0,
-      "deutan": 0.962,
-      "protan": 0.962,
+      "deutan": 0.999,
+      "protan": 0.999,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.471,
+      "red": 0.384
      },
      "fails": [
       "grey",
@@ -2055,10 +2060,10 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.962,
+      "protan": 0.999,
       "tritan": 1.0,
-      "grey": 0.133,
-      "red": 0.01
+      "grey": 0.481,
+      "red": 0.395
      },
      "fails": [
       "grey",
@@ -2073,8 +2078,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.831,
-      "red": 0.001
+      "grey": 0.863,
+      "red": 0.385
      },
      "fails": [
       "red"
@@ -2088,8 +2093,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.471,
+      "red": 0.384
      },
      "fails": [
       "grey",
@@ -2104,8 +2109,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.0,
-      "red": 0.0
+      "grey": 0.384,
+      "red": 0.384
      },
      "fails": [
       "grey",
@@ -2120,8 +2125,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.837,
-      "red": 0.007
+      "grey": 0.869,
+      "red": 0.391
      },
      "fails": [
       "red"
@@ -2135,8 +2140,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.841,
-      "red": 0.011
+      "grey": 0.873,
+      "red": 0.396
      },
      "fails": [
       "red"
@@ -2150,8 +2155,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.83,
-      "red": 0.0
+      "grey": 0.862,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -2161,12 +2166,12 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.957,
-      "deutan": 0.957,
-      "protan": 0.957,
-      "tritan": 0.957,
-      "grey": 0.83,
-      "red": 0.0
+      "normal": 0.956,
+      "deutan": 0.956,
+      "protan": 0.956,
+      "tritan": 0.956,
+      "grey": 0.862,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -2176,12 +2181,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.96,
-      "deutan": 0.96,
-      "protan": 0.96,
-      "tritan": 0.96,
-      "grey": 0.794,
-      "red": 0.0
+      "normal": 0.972,
+      "deutan": 0.972,
+      "protan": 0.972,
+      "tritan": 0.972,
+      "grey": 0.838,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -2195,8 +2200,8 @@
       "deutan": 0.993,
       "protan": 0.993,
       "tritan": 0.993,
-      "grey": 0.83,
-      "red": 0.0
+      "grey": 0.862,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -2206,12 +2211,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.987,
-      "deutan": 0.987,
-      "protan": 0.987,
-      "tritan": 0.987,
+      "normal": 0.954,
+      "deutan": 0.954,
+      "protan": 0.954,
+      "tritan": 0.954,
       "grey": 0.83,
-      "red": 0.0
+      "red": 0.36
      },
      "fails": [
       "red"
@@ -2221,12 +2226,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.522,
-      "deutan": 0.522,
-      "protan": 0.522,
-      "tritan": 0.523,
-      "grey": 0.436,
-      "red": 0.0
+      "normal": 0.541,
+      "deutan": 0.541,
+      "protan": 0.541,
+      "tritan": 0.541,
+      "grey": 0.462,
+      "red": 0.199
      },
      "fails": [
       "grey",
@@ -2246,13 +2251,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "native",
@@ -2261,14 +2263,11 @@
       "normal": 1.0,
       "deutan": 1.0,
       "protan": 1.0,
-      "tritan": 0.667,
-      "grey": 0.333,
-      "red": 0.333
+      "tritan": 1.0,
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "exotic",
@@ -2278,13 +2277,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "scrub",
@@ -2294,13 +2290,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.355,
-      "red": 0.357
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "scattered",
@@ -2310,13 +2303,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "water",
@@ -2326,29 +2316,23 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "urban",
      "kind": "fill",
      "visible": {
-      "normal": 0.667,
-      "deutan": 0.667,
-      "protan": 0.667,
-      "tritan": 0.667,
-      "grey": 0.333,
-      "red": 0.333
+      "normal": 0.75,
+      "deutan": 0.75,
+      "protan": 0.75,
+      "tritan": 0.75,
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "sand",
@@ -2358,13 +2342,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.352,
-      "red": 0.352
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "swamp",
@@ -2374,13 +2355,10 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.371,
-      "red": 0.371
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "ice",
@@ -2390,94 +2368,75 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.333,
-      "red": 0.333
+      "grey": 0.75,
+      "red": 0.75
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.887,
-      "deutan": 0.887,
-      "protan": 0.887,
-      "tritan": 0.887,
-      "grey": 0.333,
-      "red": 0.333
+      "normal": 0.935,
+      "deutan": 0.935,
+      "protan": 0.935,
+      "tritan": 0.935,
+      "grey": 0.685,
+      "red": 0.685
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.977,
-      "deutan": 0.977,
-      "protan": 0.977,
-      "tritan": 0.977,
-      "grey": 0.333,
-      "red": 0.333
+      "normal": 0.983,
+      "deutan": 0.983,
+      "protan": 0.983,
+      "tritan": 0.983,
+      "grey": 0.742,
+      "red": 0.742
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 0.982,
-      "deutan": 0.982,
-      "protan": 0.982,
-      "tritan": 0.982,
-      "grey": 0.333,
-      "red": 0.333
+      "normal": 0.986,
+      "deutan": 0.986,
+      "protan": 0.986,
+      "tritan": 0.986,
+      "grey": 0.736,
+      "red": 0.736
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.299,
-      "red": 0.299
+      "normal": 0.926,
+      "deutan": 0.926,
+      "protan": 0.926,
+      "tritan": 0.926,
+      "grey": 0.692,
+      "red": 0.692
      },
-     "fails": [
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.493,
-      "deutan": 0.493,
-      "protan": 0.493,
-      "tritan": 0.493,
-      "grey": 0.165,
-      "red": 0.165
+      "normal": 0.505,
+      "deutan": 0.505,
+      "protan": 0.505,
+      "tritan": 0.505,
+      "grey": 0.38,
+      "red": 0.38
      },
      "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
       "grey",
       "red"
      ]
@@ -2660,12 +2619,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.879,
-      "deutan": 0.879,
-      "protan": 0.879,
-      "tritan": 0.879,
-      "grey": 0.879,
-      "red": 0.879
+      "normal": 0.889,
+      "deutan": 0.889,
+      "protan": 0.889,
+      "tritan": 0.889,
+      "grey": 0.889,
+      "red": 0.889
      },
      "fails": []
     },
@@ -2860,12 +2819,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.818,
-      "deutan": 0.818,
-      "protan": 0.818,
-      "tritan": 0.818,
-      "grey": 0.818,
-      "red": 0.818
+      "normal": 0.832,
+      "deutan": 0.832,
+      "protan": 0.832,
+      "tritan": 0.832,
+      "grey": 0.832,
+      "red": 0.832
      },
      "fails": []
     },
@@ -3310,7 +3269,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.157
+      "red": 0.473
      },
      "fails": [
       "red"
@@ -3324,8 +3283,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.157,
-      "red": 0.057
+      "grey": 0.473,
+      "red": 0.473
      },
      "fails": [
       "grey",
@@ -3340,8 +3299,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.157,
-      "red": 0.057
+      "grey": 0.473,
+      "red": 0.473
      },
      "fails": [
       "grey",
@@ -3356,8 +3315,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.157,
-      "red": 0.157
+      "grey": 0.473,
+      "red": 0.473
      },
      "fails": [
       "grey",
@@ -3373,7 +3332,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.157
+      "red": 0.473
      },
      "fails": [
       "red"
@@ -3387,8 +3346,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.157,
-      "red": 0.052
+      "grey": 0.473,
+      "red": 0.473
      },
      "fails": [
       "grey",
@@ -3403,8 +3362,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.157,
-      "red": 0.052
+      "grey": 0.473,
+      "red": 0.473
      },
      "fails": [
       "grey",
@@ -3420,7 +3379,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.157
+      "red": 0.473
      },
      "fails": [
       "red"
@@ -3435,7 +3394,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.157
+      "red": 0.473
      },
      "fails": [
       "red"
@@ -3450,7 +3409,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.157
+      "red": 0.473
      },
      "fails": [
       "red"
@@ -3465,7 +3424,7 @@
       "protan": 0.999,
       "tritan": 0.999,
       "grey": 0.999,
-      "red": 0.156
+      "red": 0.472
      },
      "fails": [
       "red"
@@ -3475,12 +3434,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.923,
-      "deutan": 0.923,
-      "protan": 0.923,
-      "tritan": 0.923,
-      "grey": 0.923,
-      "red": 0.147
+      "normal": 0.947,
+      "deutan": 0.947,
+      "protan": 0.947,
+      "tritan": 0.947,
+      "grey": 0.947,
+      "red": 0.462
      },
      "fails": [
       "red"
@@ -3490,12 +3449,12 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 0.157
+      "normal": 0.989,
+      "deutan": 0.989,
+      "protan": 0.989,
+      "tritan": 0.989,
+      "grey": 0.989,
+      "red": 0.462
      },
      "fails": [
       "red"
@@ -3505,12 +3464,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.957,
-      "deutan": 0.957,
-      "protan": 0.957,
-      "tritan": 0.957,
-      "grey": 0.957,
-      "red": 0.113
+      "normal": 0.928,
+      "deutan": 0.928,
+      "protan": 0.928,
+      "tritan": 0.928,
+      "grey": 0.928,
+      "red": 0.401
      },
      "fails": [
       "red"
@@ -3520,12 +3479,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.179,
-      "deutan": 0.179,
-      "protan": 0.179,
-      "tritan": 0.179,
-      "grey": 0.173,
-      "red": 0.059
+      "normal": 0.185,
+      "deutan": 0.185,
+      "protan": 0.185,
+      "tritan": 0.185,
+      "grey": 0.181,
+      "red": 0.129
      },
      "fails": [
       "normal",
@@ -3550,7 +3509,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.978,
-      "red": 0.147
+      "red": 0.459
      },
      "fails": [
       "red"
@@ -3564,8 +3523,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.147,
-      "red": 0.048
+      "grey": 0.459,
+      "red": 0.459
      },
      "fails": [
       "grey",
@@ -3580,8 +3539,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.147,
-      "red": 0.05
+      "grey": 0.459,
+      "red": 0.459
      },
      "fails": [
       "grey",
@@ -3596,8 +3555,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.153,
-      "red": 0.153
+      "grey": 0.464,
+      "red": 0.464
      },
      "fails": [
       "grey",
@@ -3613,7 +3572,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.978,
-      "red": 0.147
+      "red": 0.459
      },
      "fails": [
       "red"
@@ -3627,8 +3586,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.147,
-      "red": 0.043
+      "grey": 0.459,
+      "red": 0.459
      },
      "fails": [
       "grey",
@@ -3643,8 +3602,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.147,
-      "red": 0.043
+      "grey": 0.459,
+      "red": 0.459
      },
      "fails": [
       "grey",
@@ -3660,7 +3619,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.983,
-      "red": 0.152
+      "red": 0.463
      },
      "fails": [
       "red"
@@ -3675,7 +3634,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.978,
-      "red": 0.147
+      "red": 0.459
      },
      "fails": [
       "red"
@@ -3690,7 +3649,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 0.978,
-      "red": 0.147
+      "red": 0.459
      },
      "fails": [
       "red"
@@ -3705,7 +3664,7 @@
       "protan": 0.994,
       "tritan": 0.994,
       "grey": 0.978,
-      "red": 0.147
+      "red": 0.459
      },
      "fails": [
       "red"
@@ -3715,12 +3674,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.9,
-      "deutan": 0.9,
-      "protan": 0.9,
-      "tritan": 0.9,
-      "grey": 0.9,
-      "red": 0.139
+      "normal": 0.924,
+      "deutan": 0.924,
+      "protan": 0.924,
+      "tritan": 0.924,
+      "grey": 0.924,
+      "red": 0.448
      },
      "fails": [
       "red"
@@ -3730,12 +3689,12 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 0.978,
-      "red": 0.147
+      "normal": 0.988,
+      "deutan": 0.988,
+      "protan": 0.988,
+      "tritan": 0.988,
+      "grey": 0.966,
+      "red": 0.447
      },
      "fails": [
       "red"
@@ -3745,12 +3704,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.951,
-      "deutan": 0.951,
-      "protan": 0.951,
-      "tritan": 0.951,
-      "grey": 0.939,
-      "red": 0.107
+      "normal": 0.916,
+      "deutan": 0.916,
+      "protan": 0.916,
+      "tritan": 0.916,
+      "grey": 0.904,
+      "red": 0.384
      },
      "fails": [
       "red"
@@ -3760,12 +3719,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.182,
-      "deutan": 0.182,
-      "protan": 0.182,
-      "tritan": 0.182,
-      "grey": 0.161,
-      "red": 0.05
+      "normal": 0.187,
+      "deutan": 0.187,
+      "protan": 0.187,
+      "tritan": 0.187,
+      "grey": 0.169,
+      "red": 0.117
      },
      "fails": [
       "normal",
@@ -4161,12 +4120,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.896,
-      "deutan": 0.896,
-      "protan": 0.896,
-      "tritan": 0.896,
-      "grey": 0.889,
-      "red": 0.889
+      "normal": 0.905,
+      "deutan": 0.905,
+      "protan": 0.905,
+      "tritan": 0.905,
+      "grey": 0.898,
+      "red": 0.898
      },
      "fails": []
     },
@@ -4361,12 +4320,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.894,
-      "red": 0.894
+      "normal": 0.911,
+      "deutan": 0.911,
+      "protan": 0.911,
+      "tritan": 0.911,
+      "grey": 0.911,
+      "red": 0.911
      },
      "fails": []
     },
@@ -4561,12 +4520,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.859,
-      "deutan": 0.859,
-      "protan": 0.859,
-      "tritan": 0.859,
-      "grey": 0.859,
-      "red": 0.859
+      "normal": 0.87,
+      "deutan": 0.87,
+      "protan": 0.87,
+      "tritan": 0.87,
+      "grey": 0.87,
+      "red": 0.87
      },
      "fails": []
     },
@@ -4597,7 +4556,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4611,8 +4570,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.111,
-      "red": 0.0
+      "grey": 0.444,
+      "red": 0.444
      },
      "fails": [
       "grey",
@@ -4627,8 +4586,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.111,
-      "red": 0.0
+      "grey": 0.444,
+      "red": 0.444
      },
      "fails": [
       "grey",
@@ -4643,8 +4602,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.111,
-      "red": 0.111
+      "grey": 0.444,
+      "red": 0.444
      },
      "fails": [
       "grey",
@@ -4660,7 +4619,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4674,8 +4633,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.111,
-      "red": 0.0
+      "grey": 0.444,
+      "red": 0.444
      },
      "fails": [
       "grey",
@@ -4690,8 +4649,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.111,
-      "red": 0.0
+      "grey": 0.444,
+      "red": 0.444
      },
      "fails": [
       "grey",
@@ -4707,7 +4666,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4722,7 +4681,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4737,7 +4696,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4752,7 +4711,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.111
+      "red": 0.444
      },
      "fails": [
       "red"
@@ -4762,12 +4721,12 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.966,
-      "red": 0.107
+      "normal": 0.975,
+      "deutan": 0.975,
+      "protan": 0.975,
+      "tritan": 0.975,
+      "grey": 0.975,
+      "red": 0.438
      },
      "fails": [
       "red"
@@ -4777,12 +4736,12 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 0.111
+      "normal": 0.995,
+      "deutan": 0.995,
+      "protan": 0.995,
+      "tritan": 0.995,
+      "grey": 0.995,
+      "red": 0.439
      },
      "fails": [
       "red"
@@ -4792,12 +4751,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.989,
-      "deutan": 0.989,
-      "protan": 0.989,
-      "tritan": 0.989,
-      "grey": 0.989,
-      "red": 0.099
+      "normal": 0.971,
+      "deutan": 0.971,
+      "protan": 0.971,
+      "tritan": 0.971,
+      "grey": 0.971,
+      "red": 0.415
      },
      "fails": [
       "red"
@@ -4807,12 +4766,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.468,
-      "deutan": 0.468,
-      "protan": 0.468,
-      "tritan": 0.468,
-      "grey": 0.463,
-      "red": 0.057
+      "normal": 0.472,
+      "deutan": 0.472,
+      "protan": 0.472,
+      "tritan": 0.472,
+      "grey": 0.469,
+      "red": 0.227
      },
      "fails": [
       "normal",
@@ -5001,12 +4960,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.947,
-      "deutan": 0.947,
-      "protan": 0.947,
-      "tritan": 0.947,
-      "grey": 0.947,
-      "red": 0.947
+      "normal": 0.952,
+      "deutan": 0.952,
+      "protan": 0.952,
+      "tritan": 0.952,
+      "grey": 0.952,
+      "red": 0.952
      },
      "fails": []
     },
@@ -5185,12 +5144,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.894,
-      "red": 0.894
+      "normal": 0.903,
+      "deutan": 0.903,
+      "protan": 0.903,
+      "tritan": 0.903,
+      "grey": 0.903,
+      "red": 0.903
      },
      "fails": []
     },
@@ -5813,21 +5772,14 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.491,
-      "deutan": 0.491,
-      "protan": 0.491,
-      "tritan": 0.491,
-      "grey": 0.48,
-      "red": 0.48
+      "normal": 0.524,
+      "deutan": 0.524,
+      "protan": 0.524,
+      "tritan": 0.524,
+      "grey": 0.512,
+      "red": 0.512
      },
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
@@ -5903,12 +5855,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.599,
-      "red": 0.599
+      "normal": 0.9,
+      "deutan": 0.9,
+      "protan": 0.9,
+      "tritan": 0.9,
+      "grey": 0.605,
+      "red": 0.605
      },
      "fails": []
     },
@@ -6103,18 +6055,14 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.488,
-      "deutan": 0.488,
-      "protan": 0.488,
-      "tritan": 0.488,
-      "grey": 0.41,
-      "red": 0.41
+      "normal": 0.512,
+      "deutan": 0.512,
+      "protan": 0.512,
+      "tritan": 0.512,
+      "grey": 0.435,
+      "red": 0.435
      },
      "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
       "grey",
       "red"
      ]
@@ -6212,12 +6160,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.875,
-      "deutan": 0.875,
-      "protan": 0.215,
-      "tritan": 0.875,
-      "grey": 0.179,
-      "red": 0.875
+      "normal": 0.882,
+      "deutan": 0.882,
+      "protan": 0.222,
+      "tritan": 0.882,
+      "grey": 0.186,
+      "red": 0.882
      },
      "fails": [
       "protan",
@@ -6313,12 +6261,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.146,
-      "tritan": 0.894,
-      "grey": 0.119,
-      "red": 0.894
+      "normal": 0.9,
+      "deutan": 0.9,
+      "protan": 0.152,
+      "tritan": 0.9,
+      "grey": 0.125,
+      "red": 0.9
      },
      "fails": [
       "protan",
@@ -6533,21 +6481,14 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.439,
-      "deutan": 0.439,
-      "protan": 0.439,
-      "tritan": 0.439,
-      "grey": 0.409,
-      "red": 0.409
+      "normal": 0.541,
+      "deutan": 0.541,
+      "protan": 0.541,
+      "tritan": 0.541,
+      "grey": 0.511,
+      "red": 0.511
      },
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
@@ -6740,21 +6681,14 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.433,
-      "deutan": 0.433,
-      "protan": 0.433,
-      "tritan": 0.433,
-      "grey": 0.427,
-      "red": 0.427
+      "normal": 0.556,
+      "deutan": 0.556,
+      "protan": 0.556,
+      "tritan": 0.556,
+      "grey": 0.55,
+      "red": 0.55
      },
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
@@ -7045,12 +6979,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.587,
-      "deutan": 0.587,
-      "protan": 0.587,
-      "tritan": 0.587,
-      "grey": 0.541,
-      "red": 0.541
+      "normal": 0.721,
+      "deutan": 0.721,
+      "protan": 0.721,
+      "tritan": 0.721,
+      "grey": 0.674,
+      "red": 0.674
      },
      "fails": []
     },
@@ -7252,12 +7186,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.69,
-      "deutan": 0.69,
-      "protan": 0.69,
-      "tritan": 0.69,
-      "grey": 0.634,
-      "red": 0.634
+      "normal": 0.735,
+      "deutan": 0.735,
+      "protan": 0.735,
+      "tritan": 0.735,
+      "grey": 0.678,
+      "red": 0.678
      },
      "fails": []
     },
@@ -7459,12 +7393,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.58,
-      "deutan": 0.58,
-      "protan": 0.58,
-      "tritan": 0.58,
-      "grey": 0.57,
-      "red": 0.57
+      "normal": 0.611,
+      "deutan": 0.611,
+      "protan": 0.611,
+      "tritan": 0.611,
+      "grey": 0.601,
+      "red": 0.601
      },
      "fails": []
     },
@@ -7666,12 +7600,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.645,
-      "deutan": 0.645,
-      "protan": 0.645,
-      "tritan": 0.645,
-      "grey": 0.579,
-      "red": 0.579
+      "normal": 0.758,
+      "deutan": 0.758,
+      "protan": 0.758,
+      "tritan": 0.758,
+      "grey": 0.693,
+      "red": 0.693
      },
      "fails": []
     },
@@ -7873,12 +7807,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.632,
-      "deutan": 0.632,
-      "protan": 0.632,
-      "tritan": 0.632,
-      "grey": 0.545,
-      "red": 0.545
+      "normal": 0.668,
+      "deutan": 0.668,
+      "protan": 0.668,
+      "tritan": 0.668,
+      "grey": 0.58,
+      "red": 0.58
      },
      "fails": []
     },
@@ -8080,12 +8014,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.729,
-      "deutan": 0.729,
-      "protan": 0.729,
-      "tritan": 0.729,
-      "grey": 0.666,
-      "red": 0.666
+      "normal": 0.812,
+      "deutan": 0.812,
+      "protan": 0.812,
+      "tritan": 0.812,
+      "grey": 0.75,
+      "red": 0.75
      },
      "fails": []
     },
@@ -8287,12 +8221,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.716,
-      "deutan": 0.716,
-      "protan": 0.716,
-      "tritan": 0.716,
-      "grey": 0.649,
-      "red": 0.647
+      "normal": 0.758,
+      "deutan": 0.758,
+      "protan": 0.758,
+      "tritan": 0.758,
+      "grey": 0.691,
+      "red": 0.689
      },
      "fails": []
     },
@@ -8508,12 +8442,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.894,
-      "red": 0.894
+      "normal": 0.915,
+      "deutan": 0.915,
+      "protan": 0.915,
+      "tritan": 0.915,
+      "grey": 0.915,
+      "red": 0.915
      },
      "fails": []
     },
@@ -8931,12 +8865,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.389,
-      "deutan": 0.389,
-      "protan": 0.389,
-      "tritan": 0.389,
-      "grey": 0.331,
-      "red": 0.329
+      "normal": 0.488,
+      "deutan": 0.488,
+      "protan": 0.488,
+      "tritan": 0.488,
+      "grey": 0.43,
+      "red": 0.428
      },
      "fails": [
       "normal",
@@ -10350,21 +10284,14 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.384,
-      "deutan": 0.384,
-      "protan": 0.384,
-      "tritan": 0.384,
-      "grey": 0.357,
-      "red": 0.355
+      "normal": 0.571,
+      "deutan": 0.571,
+      "protan": 0.571,
+      "tritan": 0.571,
+      "grey": 0.544,
+      "red": 0.542
      },
-     "fails": [
-      "normal",
-      "deutan",
-      "protan",
-      "tritan",
-      "grey",
-      "red"
-     ]
+     "fails": []
     },
     {
      "scene": "name",
@@ -10578,12 +10505,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.304,
-      "deutan": 0.304,
-      "protan": 0.304,
-      "tritan": 0.304,
-      "grey": 0.291,
-      "red": 0.291
+      "normal": 0.353,
+      "deutan": 0.353,
+      "protan": 0.353,
+      "tritan": 0.353,
+      "grey": 0.34,
+      "red": 0.34
      },
      "fails": [
       "normal",
@@ -10806,12 +10733,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.304,
-      "deutan": 0.304,
-      "protan": 0.304,
-      "tritan": 0.304,
-      "grey": 0.291,
-      "red": 0.291
+      "normal": 0.353,
+      "deutan": 0.353,
+      "protan": 0.353,
+      "tritan": 0.353,
+      "grey": 0.34,
+      "red": 0.34
      },
      "fails": [
       "normal",
@@ -11262,12 +11189,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.8,
-      "deutan": 0.8,
-      "protan": 0.8,
-      "tritan": 0.8,
-      "grey": 0.731,
-      "red": 0.731
+      "normal": 0.811,
+      "deutan": 0.811,
+      "protan": 0.811,
+      "tritan": 0.811,
+      "grey": 0.742,
+      "red": 0.742
      },
      "fails": []
     },
@@ -11483,12 +11410,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.823,
-      "deutan": 0.823,
-      "protan": 0.823,
-      "tritan": 0.823,
-      "grey": 0.757,
-      "red": 0.755
+      "normal": 0.828,
+      "deutan": 0.828,
+      "protan": 0.828,
+      "tritan": 0.828,
+      "grey": 0.762,
+      "red": 0.76
      },
      "fails": []
     },
@@ -11719,12 +11646,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.546,
-      "deutan": 0.546,
-      "protan": 0.546,
-      "tritan": 0.546,
-      "grey": 0.539,
-      "red": 0.072
+      "normal": 0.548,
+      "deutan": 0.548,
+      "protan": 0.548,
+      "tritan": 0.548,
+      "grey": 0.541,
+      "red": 0.074
      },
      "fails": [
       "red"
@@ -11942,12 +11869,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.86,
-      "deutan": 0.86,
-      "protan": 0.86,
-      "tritan": 0.86,
-      "grey": 0.724,
-      "red": 0.724
+      "normal": 0.871,
+      "deutan": 0.871,
+      "protan": 0.871,
+      "tritan": 0.871,
+      "grey": 0.735,
+      "red": 0.735
      },
      "fails": []
     },
@@ -12163,12 +12090,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.851,
-      "deutan": 0.851,
-      "protan": 0.851,
-      "tritan": 0.851,
-      "grey": 0.78,
-      "red": 0.78
+      "normal": 0.858,
+      "deutan": 0.858,
+      "protan": 0.858,
+      "tritan": 0.858,
+      "grey": 0.787,
+      "red": 0.787
      },
      "fails": []
     },
@@ -12384,12 +12311,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.882,
-      "deutan": 0.882,
-      "protan": 0.882,
-      "tritan": 0.882,
-      "grey": 0.763,
-      "red": 0.763
+      "normal": 0.889,
+      "deutan": 0.889,
+      "protan": 0.889,
+      "tritan": 0.889,
+      "grey": 0.77,
+      "red": 0.77
      },
      "fails": []
     },
@@ -12598,12 +12525,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.404,
-      "deutan": 0.404,
-      "protan": 0.404,
-      "tritan": 0.404,
-      "grey": 0.372,
-      "red": 0.372
+      "normal": 0.439,
+      "deutan": 0.439,
+      "protan": 0.439,
+      "tritan": 0.439,
+      "grey": 0.406,
+      "red": 0.406
      },
      "fails": [
       "normal",
@@ -12695,12 +12622,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.796,
-      "deutan": 0.796,
-      "protan": 0.796,
-      "tritan": 0.796,
-      "grey": 0.714,
-      "red": 0.712
+      "normal": 0.813,
+      "deutan": 0.813,
+      "protan": 0.813,
+      "tritan": 0.813,
+      "grey": 0.732,
+      "red": 0.729
      },
      "fails": []
     },
@@ -12778,12 +12705,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.869,
-      "deutan": 0.869,
-      "protan": 0.869,
-      "tritan": 0.869,
-      "grey": 0.709,
-      "red": 0.709
+      "normal": 0.885,
+      "deutan": 0.885,
+      "protan": 0.885,
+      "tritan": 0.885,
+      "grey": 0.726,
+      "red": 0.726
      },
      "fails": []
     },
@@ -12861,12 +12788,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.89,
-      "deutan": 0.89,
-      "protan": 0.89,
-      "tritan": 0.89,
-      "grey": 0.784,
-      "red": 0.781
+      "normal": 0.901,
+      "deutan": 0.901,
+      "protan": 0.901,
+      "tritan": 0.901,
+      "grey": 0.795,
+      "red": 0.792
      },
      "fails": []
     },
@@ -13029,12 +12956,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.862,
-      "deutan": 0.862,
-      "protan": 0.862,
-      "tritan": 0.862,
-      "grey": 0.69,
-      "red": 0.689
+      "normal": 0.88,
+      "deutan": 0.88,
+      "protan": 0.88,
+      "tritan": 0.88,
+      "grey": 0.708,
+      "red": 0.707
      },
      "fails": []
     },
@@ -13112,12 +13039,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.867,
-      "deutan": 0.867,
-      "protan": 0.867,
-      "tritan": 0.867,
-      "grey": 0.721,
-      "red": 0.72
+      "normal": 0.893,
+      "deutan": 0.893,
+      "protan": 0.893,
+      "tritan": 0.893,
+      "grey": 0.747,
+      "red": 0.746
      },
      "fails": []
     },
@@ -14449,12 +14376,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.65,
-      "deutan": 0.65,
-      "protan": 0.65,
-      "tritan": 0.65,
-      "grey": 0.396,
-      "red": 0.396
+      "normal": 0.661,
+      "deutan": 0.661,
+      "protan": 0.661,
+      "tritan": 0.661,
+      "grey": 0.407,
+      "red": 0.407
      },
      "fails": [
       "grey",
@@ -14866,12 +14793,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.759,
-      "deutan": 0.759,
-      "protan": 0.759,
-      "tritan": 0.759,
-      "grey": 0.727,
-      "red": 0.727
+      "normal": 0.786,
+      "deutan": 0.786,
+      "protan": 0.786,
+      "tritan": 0.786,
+      "grey": 0.754,
+      "red": 0.754
      },
      "fails": []
     },
@@ -15152,12 +15079,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.549,
-      "deutan": 0.549,
-      "protan": 0.549,
-      "tritan": 0.549,
-      "grey": 0.535,
-      "red": 0.535
+      "normal": 0.551,
+      "deutan": 0.551,
+      "protan": 0.551,
+      "tritan": 0.551,
+      "grey": 0.538,
+      "red": 0.538
      },
      "fails": []
     },
@@ -15359,12 +15286,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.378,
-      "deutan": 0.378,
-      "protan": 0.378,
-      "tritan": 0.378,
-      "grey": 0.378,
-      "red": 0.378
+      "normal": 0.418,
+      "deutan": 0.418,
+      "protan": 0.418,
+      "tritan": 0.418,
+      "grey": 0.418,
+      "red": 0.418
      },
      "fails": [
       "normal",
@@ -15602,12 +15529,12 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.547,
-      "deutan": 0.547,
-      "protan": 0.547,
-      "tritan": 0.547,
-      "grey": 0.539,
-      "red": 0.073
+      "normal": 0.549,
+      "deutan": 0.549,
+      "protan": 0.549,
+      "tritan": 0.549,
+      "grey": 0.541,
+      "red": 0.075
      },
      "fails": [
       "red"

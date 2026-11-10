@@ -17,6 +17,7 @@ CARTO_FIT_FILE = "carto_fit.json"
 # carto_text row ids inside the urban fill, written by tools/tag_urban_text.py (log 0093).
 URBAN_TEXT_FILE = "urban_text.json"
 URBAN_FILL_LAYER = "residential_area map"
+ONE_LANE_CASING_LAYER = "road_line 1 lane background map"
 # Stock stores some straight names as one segment per letter. Such a name is
 # flat too when the larger type is wider than its baseline (log 0086).
 CARTO_POINT_FILTER = (

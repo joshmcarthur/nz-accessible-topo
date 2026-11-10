@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 from nzat.qgis.patch_road_fills import patch_road_fills
-from nzat.qgis.patch_road_widths import patch_road_widths
+from nzat.qgis.patch_road_widths import patch_one_lane_casing, patch_road_widths
 
 
 def test_road_fills_rise_to_the_navigation_floor():
@@ -33,6 +33,7 @@ def test_road_fills_rise_to_the_navigation_floor():
                 <data_defined_properties><Option type="Map">
                   <Option name="properties" type="Map">
                     <Option name="outlineWidth" type="Map">
+                      <Option name="active" type="bool" value="true"/>
                       <Option name="expression" type="QString" value="0.35764*(&quot;lane_count&quot;)"/>
                     </Option>
                   </Option>
@@ -57,3 +58,42 @@ def test_road_fills_rise_to_the_navigation_floor():
     assert expr == 'max(0.35, 0.35764*("lane_count"))'
     patch_road_widths(road)
     assert expr == 'max(0.35, 0.35764*("lane_count"))'
+
+
+def _line(width, extra=""):
+    return ET.fromstring(
+        f"""
+        <maplayer><renderer-v2 type="singleSymbol"><symbols><symbol name="0" type="line">
+          <layer class="SimpleLine">
+            <Option type="Map">
+              <Option name="line_color" type="QString" value="255,127,0,255"/>
+              <Option name="line_width" type="QString" value="{width}"/>
+            </Option>
+            {extra}
+          </layer>
+        </symbol></symbols></renderer-v2></maplayer>
+        """
+    )
+
+
+def test_inactive_stock_width_expression_stays_off():
+    # Catches the fill growing to the casing width: roads lost their dark edge (log 0111).
+    road = _line(
+        "0.45",
+        """<data_defined_properties><Option type="Map"><Option name="properties" type="Map">
+          <Option name="outlineWidth" type="Map">
+            <Option name="active" type="bool" value="false"/>
+            <Option name="expression" type="QString" value="0.35764*(&quot;lane_count&quot;)"/>
+          </Option>
+        </Option></Option></data_defined_properties>""",
+    )
+    patch_road_widths(road)
+    node = road.find(".//Option[@name='outlineWidth']")
+    assert node.find("Option[@name='active']").get("value") == "false"
+    assert node.find("Option[@name='expression']").get("value").startswith("0.35764")
+
+
+def test_one_lane_casing_widens_with_the_raised_fill():
+    casing = _line("0.5")
+    patch_one_lane_casing(casing)
+    assert casing.find(".//Option[@name='line_width']").get("value") == "0.6"

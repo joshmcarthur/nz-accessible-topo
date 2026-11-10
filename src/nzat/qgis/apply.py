@@ -1,3 +1,4 @@
+from nzat.qgis.defaults import ONE_LANE_CASING_LAYER
 from nzat.qgis.is_owned_road_layer import is_owned_road_layer
 from nzat.qgis.load_carto_fit import load_carto_fit
 from nzat.qgis.load_urban_text import load_urban_text
@@ -13,7 +14,7 @@ from nzat.qgis.patch_owned_lines import patch_owned_lines
 from nzat.qgis.patch_railway import patch_railway
 from nzat.qgis.patch_relief_point import patch_relief_point
 from nzat.qgis.patch_road_fills import patch_road_fills
-from nzat.qgis.patch_road_widths import patch_road_widths
+from nzat.qgis.patch_road_widths import patch_one_lane_casing, patch_road_widths
 from nzat.qgis.patch_shield_numbers import patch_shield_numbers
 from nzat.qgis.patch_springs import patch_springs
 from nzat.qgis.patch_structures import (
@@ -72,6 +73,8 @@ def apply(root, project_dir=None):
         elif is_owned_road_layer(name):
             patch_road_fills(layer)
             patch_road_widths(layer)
+        elif name == ONE_LANE_CASING_LAYER:
+            patch_one_lane_casing(layer)
         elif name == "nztopo50_carto_symbol":
             patch_contour_numbers(layer)
         elif name == "track_line map":

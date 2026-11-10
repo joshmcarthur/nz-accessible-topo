@@ -1,7 +1,7 @@
 # Backlog
 
-Status as of 2026-11-10, after log 0110. Start with "Next work" below.
-Contours draw solid again (log 0110): commit 8bf7282 had dashed every contour. `tools/render_symbol_tiles.py` draws each legend symbol on each fill and across each conflict; scoring is next. The `/symbols/` crops, the legend picture and the sheet rasters predate the fix.
+Status as of 2026-11-10, after log 0111. Start with "Next work" below.
+Contours draw solid again (log 0110): commit 8bf7282 had dashed every contour. `tools/render_symbol_tiles.py` draws each legend symbol on each fill and across each conflict; `tools/export_symbol_tiles.py` scores them (log 0111): 335 of 1146 tiles fail. Roads have their dark casing again; commit 4f18cee had covered it. The one-lane casing is 0.6 mm. The `/symbols/` crops, the legend picture and the sheet rasters predate the fix.
 Label placement (G2, B-31) is parked. N-1 to N-4 paint is in apply (logs 0097–0101). Stream is `#004C99` (log 0105; `#00276D` rejected beside tracks). Map themes are `Map5View-paper` and `Map5View-all` (logs 0103, 0104). N-6 legend rows are in the swatch table. Josh signed off the BX24 face (log 0107). The Shannon bivouac tent is 2.5 mm with the name off the mark (log 0109). N-8 vector parity is deferred. Legend classes that are missing on BX24 have extra 4 km squares (log 0108).
 `tools/render_sheets.py` draws all 445 sheet faces as 150 dpi GeoTIFFs, outside the repo. Flat names are not pinned off BX24. The sheets are a source for B-27 (log 0091). Those rasters predate the open foot-track fix, so open foot tracks show the closed cross (log 0092).
 `tools/render_legend.py` draws the accessible swatches into the sheet legend (B-46, log 0092).
