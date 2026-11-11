@@ -142,4 +142,5 @@ def patch_relief_point(layer, style=None):
             marker = symbol.find("layer[@class='SimpleMarker']")
             if marker is None:
                 continue
-            set_option(marker, "size", "0.3")
+            # A 0.3 mm dot hides under a stream or a grid line (log 0116).
+            set_option(marker, "size", str(style["relief"]["spot_height"]["dot_mm"]))

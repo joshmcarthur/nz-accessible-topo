@@ -124,6 +124,8 @@ def test_swatches_do_not_wipe_stock_rows():
     ]
     for symbol in leave:
         for swatch in SWATCHES:
+            if swatch.get("tiles_only"):
+                continue
             dx, dy = _overlap_wh(swatch["box"], symbol["box"])
             assert not (dx > ROW_BLEED_PX and dy > ROW_BLEED_PX), (
                 swatch["key"],

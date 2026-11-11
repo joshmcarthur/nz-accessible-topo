@@ -113,6 +113,16 @@ CONFLICTS = {
 }
 
 
+def conflict_alone(scene, tile):
+    """Return the features of a conflict scene with no symbol under them."""
+    return tuple(CONFLICTS[scene](tile))
+
+
+ALONE_SUFFIX = "-alone"
+# A name that covers this share of a mark has won: the mark is under it.
+NAME_WINS_SHARE = 0.8
+
+
 def is_area_swatch(features):
     """True when every sample is a polygon. A fill has no fill to sit on."""
     return all(wkt.startswith("POLYGON") for _table, _attrs, wkt in features)
@@ -162,6 +172,10 @@ NOT_ON = {
         scene: _ICE_ONLY
         for scene in ("native", "exotic", "scrub", "scattered", "sand", "swamp")
     },
+    "walkwire": {
+        "water": "The walkwire draws. The sample watercourse under it is under the fill.",
+        "urban": "The walkwire draws. The sample watercourse under it is under the fill.",
+    },
     "floodgate": {
         "water": _GATE_ON_WATER,
         "urban": _GATE_ON_WATER,
@@ -176,7 +190,7 @@ def is_point_swatch(features):
     return all(wkt.startswith("POINT") for _table, _attrs, wkt in features)
 
 
-def scene_exception(key, scene, features, normal_visible):
+def scene_exception(key, scene, features, normal_visible, covered=0.0):
     """Return why a tile does not gate the symbol, or None when it does."""
     if key in ACCEPTED:
         return ACCEPTED[key]
@@ -186,7 +200,7 @@ def scene_exception(key, scene, features, normal_visible):
         return "LINZ draws this class under the fill. The stock map does the same."
     if scene == "road" and is_point_swatch(features):
         return "A road does not cross a point mark."
-    if scene == "name" and is_point_swatch(features):
+    if scene == "name" and (is_point_swatch(features) or covered >= NAME_WINS_SHARE):
         return "The name wins. Its halo keeps the name clear of the mark."
     return None
 

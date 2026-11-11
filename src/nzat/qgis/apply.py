@@ -2,6 +2,7 @@ from nzat.qgis.defaults import ONE_LANE_CASING_LAYER
 from nzat.qgis.is_owned_road_layer import is_owned_road_layer
 from nzat.qgis.load_carto_fit import load_carto_fit
 from nzat.qgis.load_urban_text import load_urban_text
+from nzat.qgis.patch_class_paint import patch_class_paint
 from nzat.qgis.patch_contour import patch_contour
 from nzat.qgis.patch_contour_numbers import patch_contour_numbers
 from nzat.qgis.patch_draw_order import patch_draw_order
@@ -93,7 +94,10 @@ def apply(root, project_dir=None):
             patch_structure_point(layer)
             seen.add(name)
         elif name in ("structure_line", "structure_line map"):
+            patch_class_paint(layer)
             patch_structure_line(layer)
+        elif name == "landuse":
+            patch_class_paint(layer)
         elif name == "building_point map":
             patch_building_point(layer)
         elif name == "building map":

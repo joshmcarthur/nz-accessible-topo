@@ -85,6 +85,8 @@ def main():
         painter = QPainter(legend)
         try:
             for swatch in SWATCHES:
+                if swatch.get("tiles_only"):
+                    continue
                 marker_size_mm = None
                 size_path = swatch.get("legend_marker_size_mm")
                 if size_path:

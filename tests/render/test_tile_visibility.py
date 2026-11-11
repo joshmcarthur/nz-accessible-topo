@@ -67,3 +67,19 @@ def test_dark_casing_carries_a_red_fill_under_red_light():
 def test_symbol_with_no_ground_has_no_score():
     full = _tile("black")
     assert visible_fractions(full, full, False) is None
+
+
+def test_black_name_over_a_black_mark_does_not_count_as_the_mark():
+    # Catches a mark scored as visible because the name ink matches it.
+    paper = _tile("white", ("black", (20, 45, 80, 55)))
+    covered = _tile("white", ("black", (10, 40, 90, 60)))
+    assert visible_fractions(paper, covered, True, alone=covered)["normal"] == 0.0
+
+
+def test_line_under_a_name_is_measured_outside_the_name():
+    # The name owns its footprint. The line must still show on both sides.
+    paper = _tile("white", ("black", (0, 49, 99, 51)))
+    name = _tile("white", ("black", (40, 40, 60, 60)))
+    crossed = _tile("white", ("black", (0, 49, 99, 51)), ("black", (40, 40, 60, 60)))
+    assert visible_fractions(paper, crossed, True, name, yields=True)["normal"] == 1.0
+    assert visible_fractions(paper, crossed, True, name)["normal"] < 1.0

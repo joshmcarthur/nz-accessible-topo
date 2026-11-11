@@ -665,4 +665,23 @@ SWATCHES = (
         "features": (("vegetation_point", {"type": "tree"}, "POINT (1845 9352.5)"),),
         "legend_marker_size_mm": "vegetation.trees.legend_size_mm",
     },
+    _row(
+        "water_race_disused",
+        (1655, 4319, 2035, 4411),
+        _typed("structure_line", "water_race", _box_line((1655, 4319, 2035, 4411))),
+    ),
+    _row(
+        "orchard",
+        (1655, 9395, 2035, 9500),
+        _typed("landuse", "orchard", _box_strip((1655, 9395, 2035, 9500))),
+    ),
+    # The stock row prints the word "Walkwire" inside the swatch box, so the
+    # legend keeps the stock picture. The sample draws in the test tiles only.
+    _row(
+        "walkwire",
+        (1825, 1667, 2035, 1765),
+        ("water_line", {"type": "river"}, _line(1716, 1840, 2020)),
+        _typed("structure_line", "walkwire", "LINESTRING (1930 1692, 1930 1740)"),
+        tiles_only=True,
+    ),
 )

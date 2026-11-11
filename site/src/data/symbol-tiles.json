@@ -181,13 +181,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 0.867,
-      "acuity": 1.0
+      "normal": 0.999,
+      "deutan": 0.999,
+      "protan": 0.999,
+      "tritan": 0.999,
+      "grey": 0.999,
+      "red": 0.865,
+      "acuity": 0.999
      },
      "exception": null,
      "fails": []
@@ -196,13 +196,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 0.867,
-      "acuity": 1.0
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.977,
+      "red": 0.844,
+      "acuity": 0.977
      },
      "exception": null,
      "fails": []
@@ -226,13 +226,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 0.867,
-      "acuity": 1.0
+      "normal": 0.994,
+      "deutan": 0.994,
+      "protan": 0.994,
+      "tritan": 0.994,
+      "grey": 0.994,
+      "red": 0.859,
+      "acuity": 0.994
      },
      "exception": null,
      "fails": []
@@ -246,8 +246,8 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.859,
-      "acuity": 0.937
+      "red": 0.858,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -470,8 +470,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
+      "grey": 0.999,
+      "red": 0.978,
       "acuity": 1.0
      },
      "exception": null,
@@ -481,13 +481,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.982,
-      "deutan": 0.982,
-      "protan": 0.982,
-      "tritan": 0.982,
-      "grey": 0.982,
-      "red": 0.982,
-      "acuity": 0.944
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -710,8 +710,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
+      "grey": 0.999,
+      "red": 0.978,
       "acuity": 1.0
      },
      "exception": null,
@@ -721,13 +721,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.982,
-      "deutan": 0.982,
-      "protan": 0.982,
-      "tritan": 0.982,
-      "grey": 0.982,
-      "red": 0.982,
-      "acuity": 0.944
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -946,13 +946,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.999,
+      "deutan": 0.999,
+      "protan": 0.999,
+      "tritan": 0.999,
+      "grey": 0.999,
+      "red": 0.987,
+      "acuity": 0.999
      },
      "exception": null,
      "fails": []
@@ -961,13 +961,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.961,
-      "deutan": 0.961,
-      "protan": 0.961,
-      "tritan": 0.961,
-      "grey": 0.961,
-      "red": 0.95,
-      "acuity": 0.923
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -1186,13 +1186,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.99,
+      "deutan": 0.99,
+      "protan": 0.99,
+      "tritan": 0.99,
+      "grey": 0.99,
+      "red": 0.99,
+      "acuity": 0.99
      },
      "exception": null,
      "fails": []
@@ -1687,7 +1687,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.964
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -1867,7 +1867,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.853
+      "acuity": 0.709
      },
      "exception": null,
      "fails": []
@@ -2150,8 +2150,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
+      "grey": 0.999,
+      "red": 0.978,
       "acuity": 1.0
      },
      "exception": null,
@@ -2161,13 +2161,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.982,
-      "deutan": 0.982,
-      "protan": 0.982,
-      "tritan": 0.982,
-      "grey": 0.982,
-      "red": 0.982,
-      "acuity": 0.944
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -2347,7 +2347,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.999
+      "acuity": 0.993
      },
      "exception": null,
      "fails": []
@@ -2386,13 +2386,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.999,
+      "deutan": 0.999,
+      "protan": 0.999,
+      "tritan": 0.999,
+      "grey": 0.998,
+      "red": 0.973,
+      "acuity": 0.999
      },
      "exception": null,
      "fails": []
@@ -2401,13 +2401,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.978,
-      "deutan": 0.978,
-      "protan": 0.978,
-      "tritan": 0.978,
-      "grey": 0.978,
-      "red": 0.978,
-      "acuity": 0.922
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -2587,7 +2587,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.996
+      "acuity": 0.983
      },
      "exception": null,
      "fails": []
@@ -2626,13 +2626,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.992,
+      "deutan": 0.992,
+      "protan": 0.992,
+      "tritan": 0.992,
+      "grey": 0.992,
+      "red": 0.992,
+      "acuity": 0.992
      },
      "exception": null,
      "fails": []
@@ -2647,7 +2647,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.947
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -2866,13 +2866,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.99,
-      "deutan": 0.99,
-      "protan": 0.99,
-      "tritan": 0.99,
-      "grey": 0.99,
-      "red": 0.99,
-      "acuity": 0.99
+      "normal": 0.981,
+      "deutan": 0.981,
+      "protan": 0.981,
+      "tritan": 0.981,
+      "grey": 0.981,
+      "red": 0.981,
+      "acuity": 0.981
      },
      "exception": null,
      "fails": []
@@ -2889,7 +2889,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -3106,13 +3106,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.985,
-      "deutan": 0.985,
-      "protan": 0.985,
-      "tritan": 0.985,
-      "grey": 0.985,
-      "red": 0.985,
-      "acuity": 0.985
+      "normal": 0.971,
+      "deutan": 0.971,
+      "protan": 0.971,
+      "tritan": 0.971,
+      "grey": 0.971,
+      "red": 0.971,
+      "acuity": 0.971
      },
      "exception": null,
      "fails": []
@@ -3121,15 +3121,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.38,
+      "deutan": 0.38,
+      "protan": 0.38,
+      "tritan": 0.38,
+      "grey": 0.38,
+      "red": 0.38,
+      "acuity": 0.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -3346,13 +3346,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.987,
+      "deutan": 0.987,
+      "protan": 0.987,
+      "tritan": 0.987,
+      "grey": 0.987,
+      "red": 0.987,
+      "acuity": 0.987
      },
      "exception": null,
      "fails": []
@@ -3367,7 +3367,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.939
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -3586,13 +3586,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.978,
+      "deutan": 0.978,
+      "protan": 0.978,
+      "tritan": 0.978,
+      "grey": 0.978,
+      "red": 0.978,
+      "acuity": 0.978
      },
      "exception": null,
      "fails": []
@@ -3601,15 +3601,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.951,
-      "deutan": 0.951,
-      "protan": 0.951,
-      "tritan": 0.951,
-      "grey": 0.951,
-      "red": 0.951,
-      "acuity": 0.902
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.933
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -3796,13 +3796,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.99,
+      "deutan": 0.99,
+      "protan": 0.99,
+      "tritan": 0.99,
+      "grey": 0.99,
+      "red": 0.99,
+      "acuity": 0.99
      },
      "exception": null,
      "fails": []
@@ -3831,7 +3831,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 1.0,
+      "red": 0.994,
       "acuity": 1.0
      },
      "exception": null,
@@ -3841,15 +3841,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.976,
-      "deutan": 0.976,
-      "protan": 0.976,
-      "tritan": 0.976,
-      "grey": 0.976,
-      "red": 0.976,
-      "acuity": 0.833
+      "normal": 0.882,
+      "deutan": 0.882,
+      "protan": 0.882,
+      "tritan": 0.882,
+      "grey": 0.882,
+      "red": 0.878,
+      "acuity": 0.712
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -4036,13 +4036,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.987,
+      "deutan": 0.987,
+      "protan": 0.987,
+      "tritan": 0.987,
+      "grey": 0.987,
+      "red": 0.987,
+      "acuity": 0.987
      },
      "exception": null,
      "fails": []
@@ -4071,7 +4071,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 1.0,
+      "red": 0.994,
       "acuity": 1.0
      },
      "exception": null,
@@ -4081,15 +4081,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.983,
-      "deutan": 0.983,
-      "protan": 0.983,
-      "tritan": 0.983,
-      "grey": 0.98,
-      "red": 0.979,
-      "acuity": 0.886
+      "normal": 0.905,
+      "deutan": 0.905,
+      "protan": 0.905,
+      "tritan": 0.905,
+      "grey": 0.903,
+      "red": 0.899,
+      "acuity": 0.727
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -4306,13 +4306,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.998,
-      "deutan": 0.998,
-      "protan": 0.998,
-      "tritan": 0.998,
-      "grey": 0.993,
-      "red": 0.993,
-      "acuity": 0.998
+      "normal": 0.976,
+      "deutan": 0.976,
+      "protan": 0.976,
+      "tritan": 0.976,
+      "grey": 0.976,
+      "red": 0.976,
+      "acuity": 0.976
      },
      "exception": null,
      "fails": []
@@ -4321,15 +4321,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.795,
-      "deutan": 0.795,
-      "protan": 0.795,
-      "tritan": 0.795,
-      "grey": 0.793,
-      "red": 0.793,
-      "acuity": 0.533
+      "normal": 0.848,
+      "deutan": 0.848,
+      "protan": 0.848,
+      "tritan": 0.848,
+      "grey": 0.746,
+      "red": 0.746,
+      "acuity": 0.734
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -4507,7 +4507,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.998
+      "acuity": 0.994
      },
      "exception": null,
      "fails": []
@@ -4546,13 +4546,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.997,
-      "deutan": 0.997,
-      "protan": 0.997,
-      "tritan": 0.997,
-      "grey": 0.997,
-      "red": 0.997,
-      "acuity": 0.997
+      "normal": 0.995,
+      "deutan": 0.995,
+      "protan": 0.995,
+      "tritan": 0.995,
+      "grey": 0.995,
+      "red": 0.995,
+      "acuity": 0.995
      },
      "exception": null,
      "fails": []
@@ -4786,13 +4786,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.983,
+      "deutan": 0.983,
+      "protan": 0.983,
+      "tritan": 0.983,
+      "grey": 0.983,
+      "red": 0.983,
+      "acuity": 0.983
      },
      "exception": null,
      "fails": []
@@ -5026,13 +5026,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.989,
-      "deutan": 0.989,
-      "protan": 0.989,
-      "tritan": 0.989,
-      "grey": 0.989,
-      "red": 0.989,
-      "acuity": 0.989
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.977,
+      "red": 0.977,
+      "acuity": 0.977
      },
      "exception": null,
      "fails": []
@@ -5049,7 +5049,7 @@
       "red": 1.0,
       "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -5271,7 +5271,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 1.0,
+      "red": 0.983,
       "acuity": 1.0
      },
      "exception": null,
@@ -5281,13 +5281,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.984,
-      "deutan": 0.984,
-      "protan": 0.984,
-      "tritan": 0.984,
-      "grey": 0.984,
-      "red": 0.98,
-      "acuity": 0.931
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -5506,13 +5506,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.997,
+      "deutan": 0.997,
+      "protan": 0.997,
+      "tritan": 0.997,
+      "grey": 0.997,
+      "red": 0.997,
+      "acuity": 0.997
      },
      "exception": null,
      "fails": []
@@ -5527,7 +5527,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.988
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -5623,13 +5623,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.991,
-      "deutan": 0.991,
-      "protan": 0.991,
-      "tritan": 0.991,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
       "grey": 0.0,
       "red": 0.0,
-      "acuity": 0.971
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -5965,13 +5965,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.992,
-      "deutan": 0.992,
-      "protan": 0.992,
-      "tritan": 0.992,
-      "grey": 0.992,
-      "red": 0.992,
-      "acuity": 0.909
+      "normal": 0.909,
+      "deutan": 0.909,
+      "protan": 0.909,
+      "tritan": 0.909,
+      "grey": 0.909,
+      "red": 0.909,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -6205,13 +6205,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.818
+      "normal": 0.909,
+      "deutan": 0.909,
+      "protan": 0.909,
+      "tritan": 0.909,
+      "grey": 0.909,
+      "red": 0.909,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -6430,13 +6430,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.965,
-      "deutan": 0.965,
-      "protan": 0.965,
-      "tritan": 0.965,
-      "grey": 0.965,
-      "red": 0.965,
-      "acuity": 0.965
+      "normal": 0.939,
+      "deutan": 0.939,
+      "protan": 0.939,
+      "tritan": 0.939,
+      "grey": 0.932,
+      "red": 0.932,
+      "acuity": 0.939
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -6445,13 +6445,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.965,
-      "deutan": 0.965,
-      "protan": 0.965,
-      "tritan": 0.965,
-      "grey": 0.965,
-      "red": 0.965,
-      "acuity": 0.954
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.865
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -6772,13 +6772,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.983,
-      "deutan": 0.983,
-      "protan": 0.983,
-      "tritan": 0.983,
-      "grey": 0.983,
-      "red": 0.983,
-      "acuity": 0.983
+      "normal": 0.968,
+      "deutan": 0.968,
+      "protan": 0.968,
+      "tritan": 0.968,
+      "grey": 0.968,
+      "red": 0.968,
+      "acuity": 0.968
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -6787,13 +6787,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.978
+      "normal": 0.955,
+      "deutan": 0.955,
+      "protan": 0.955,
+      "tritan": 0.955,
+      "grey": 0.799,
+      "red": 0.799,
+      "acuity": 0.716
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -6816,16 +6816,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.461,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.433,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -6833,16 +6831,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.461,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.433,
+      "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.997
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
@@ -6850,16 +6846,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.461,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.433,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -6867,16 +6861,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.461,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.433,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
@@ -6884,9 +6876,9 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.648,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.433,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
@@ -6897,18 +6889,16 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.972,
-      "deutan": 0.972,
-      "protan": 0.458,
-      "tritan": 0.972,
-      "grey": 0.433,
-      "red": 0.966,
-      "acuity": 0.952
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     }
    ]
   },
@@ -6928,16 +6918,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.333,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.311,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "contours",
@@ -6945,16 +6933,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.333,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.311,
+      "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.993
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "grid",
@@ -6962,16 +6948,14 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.333,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.311,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "stream",
@@ -6979,28 +6963,26 @@
      "visible": {
       "normal": 1.0,
       "deutan": 1.0,
-      "protan": 0.333,
+      "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.311,
+      "grey": 1.0,
       "red": 1.0,
       "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     },
     {
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 0.5,
-      "tritan": 1.0,
-      "grey": 0.311,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.974,
+      "deutan": 0.974,
+      "protan": 0.974,
+      "tritan": 0.974,
+      "grey": 0.974,
+      "red": 0.974,
+      "acuity": 0.974
      },
      "exception": null,
      "fails": []
@@ -7009,18 +6991,16 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.975,
-      "deutan": 0.975,
-      "protan": 0.325,
-      "tritan": 0.975,
-      "grey": 0.304,
-      "red": 0.97,
-      "acuity": 0.959
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
-     "fails": [
-      "protan"
-     ]
+     "fails": []
     }
    ]
   },
@@ -7206,13 +7186,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.967,
+      "deutan": 0.967,
+      "protan": 0.967,
+      "tritan": 0.967,
+      "grey": 0.955,
+      "red": 0.955,
+      "acuity": 0.967
      },
      "exception": null,
      "fails": []
@@ -7236,13 +7216,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.99,
-      "deutan": 0.99,
-      "protan": 0.99,
-      "tritan": 0.99,
-      "grey": 0.99,
-      "red": 0.99,
-      "acuity": 0.99
+      "normal": 0.894,
+      "deutan": 0.894,
+      "protan": 0.894,
+      "tritan": 0.894,
+      "grey": 0.887,
+      "red": 0.887,
+      "acuity": 0.894
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -7251,13 +7231,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.96,
-      "deutan": 0.96,
-      "protan": 0.96,
-      "tritan": 0.96,
-      "grey": 0.96,
-      "red": 0.96,
-      "acuity": 0.908
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -7476,13 +7456,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.926,
+      "deutan": 0.926,
+      "protan": 0.926,
+      "tritan": 0.926,
+      "grey": 0.926,
+      "red": 0.926,
+      "acuity": 0.926
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -7491,13 +7471,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.772
+      "normal": 0.85,
+      "deutan": 0.85,
+      "protan": 0.85,
+      "tritan": 0.85,
+      "grey": 0.85,
+      "red": 0.85,
+      "acuity": 0.403
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -7539,7 +7519,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.924
      },
      "exception": null,
      "fails": []
@@ -7593,12 +7573,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.887,
-      "deutan": 0.887,
-      "protan": 0.887,
-      "tritan": 0.938,
-      "grey": 0.884,
-      "red": 0.884,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
       "acuity": 0.0
      },
      "exception": null,
@@ -7833,13 +7813,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.949,
-      "deutan": 0.949,
-      "protan": 0.949,
-      "tritan": 0.949,
-      "grey": 0.949,
-      "red": 0.949,
-      "acuity": 0.812
+      "normal": 0.816,
+      "deutan": 0.816,
+      "protan": 0.816,
+      "tritan": 0.816,
+      "grey": 0.805,
+      "red": 0.805,
+      "acuity": 0.424
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -8058,13 +8038,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.982,
+      "deutan": 0.982,
+      "protan": 0.982,
+      "tritan": 0.982,
+      "grey": 0.982,
+      "red": 0.982,
+      "acuity": 0.982
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -8073,13 +8053,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.992
+      "normal": 0.468,
+      "deutan": 0.468,
+      "protan": 0.468,
+      "tritan": 0.468,
+      "grey": 0.46,
+      "red": 0.46,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -8298,13 +8278,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.999,
+      "deutan": 0.999,
+      "protan": 0.999,
+      "tritan": 0.999,
+      "grey": 0.999,
+      "red": 0.999,
+      "acuity": 0.999
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -8313,13 +8293,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.994,
-      "deutan": 0.994,
-      "protan": 0.994,
-      "tritan": 0.994,
-      "grey": 0.994,
-      "red": 0.994,
-      "acuity": 0.977
+      "normal": 0.794,
+      "deutan": 0.794,
+      "protan": 0.794,
+      "tritan": 0.794,
+      "grey": 0.794,
+      "red": 0.794,
+      "acuity": 0.555
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -8499,7 +8479,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.968
      },
      "exception": null,
      "fails": []
@@ -8512,8 +8492,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
+      "grey": 0.99,
+      "red": 0.99,
       "acuity": 1.0
      },
      "exception": null,
@@ -8538,13 +8518,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.965,
+      "deutan": 0.965,
+      "protan": 0.965,
+      "tritan": 0.965,
+      "grey": 0.956,
+      "red": 0.956,
+      "acuity": 0.965
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -8553,13 +8533,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.98,
-      "deutan": 0.98,
-      "protan": 0.98,
-      "tritan": 0.98,
-      "grey": 0.98,
-      "red": 0.98,
-      "acuity": 0.786
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -8739,7 +8719,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.993
+      "acuity": 0.973
      },
      "exception": null,
      "fails": []
@@ -8778,13 +8758,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.97,
-      "deutan": 0.97,
-      "protan": 0.97,
-      "tritan": 0.97,
-      "grey": 0.97,
-      "red": 0.97,
-      "acuity": 0.97
+      "normal": 0.96,
+      "deutan": 0.96,
+      "protan": 0.96,
+      "tritan": 0.96,
+      "grey": 0.949,
+      "red": 0.949,
+      "acuity": 0.96
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -8793,13 +8773,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.948
+      "normal": 0.518,
+      "deutan": 0.518,
+      "protan": 0.518,
+      "tritan": 0.518,
+      "grey": 0.511,
+      "red": 0.511,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -9018,13 +8998,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.979,
+      "deutan": 0.979,
+      "protan": 0.979,
+      "tritan": 0.979,
+      "grey": 0.973,
+      "red": 0.973,
+      "acuity": 0.979
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -9033,13 +9013,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.849,
-      "deutan": 0.849,
-      "protan": 0.849,
-      "tritan": 0.849,
-      "grey": 0.835,
-      "red": 0.835,
-      "acuity": 0.629
+      "normal": 0.465,
+      "deutan": 0.465,
+      "protan": 0.465,
+      "tritan": 0.465,
+      "grey": 0.453,
+      "red": 0.453,
+      "acuity": 0.113
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -9258,13 +9238,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.998,
+      "deutan": 0.998,
+      "protan": 0.998,
+      "tritan": 0.998,
+      "grey": 0.998,
+      "red": 0.998,
+      "acuity": 0.998
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -9273,13 +9253,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.839
+      "normal": 0.58,
+      "deutan": 0.58,
+      "protan": 0.58,
+      "tritan": 0.58,
+      "grey": 0.58,
+      "red": 0.58,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -9498,13 +9478,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.983,
+      "deutan": 0.983,
+      "protan": 0.983,
+      "tritan": 0.983,
+      "grey": 0.983,
+      "red": 0.975,
+      "acuity": 0.983
      },
      "exception": null,
      "fails": []
@@ -9699,7 +9679,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.992
      },
      "exception": null,
      "fails": []
@@ -9738,13 +9718,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.999,
-      "deutan": 0.999,
-      "protan": 0.999,
-      "tritan": 0.999,
-      "grey": 0.998,
-      "red": 0.998,
-      "acuity": 0.999
+      "normal": 0.99,
+      "deutan": 0.99,
+      "protan": 0.99,
+      "tritan": 0.99,
+      "grey": 0.99,
+      "red": 0.99,
+      "acuity": 0.99
      },
      "exception": null,
      "fails": []
@@ -9753,13 +9733,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.913,
-      "deutan": 0.913,
-      "protan": 0.913,
-      "tritan": 0.913,
-      "grey": 0.904,
-      "red": 0.904,
-      "acuity": 0.681
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -9963,13 +9943,13 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 0.859,
-      "deutan": 0.859,
-      "protan": 0.859,
-      "tritan": 0.859,
-      "grey": 0.854,
-      "red": 0.854,
-      "acuity": 0.859
+      "normal": 0.852,
+      "deutan": 0.852,
+      "protan": 0.852,
+      "tritan": 0.852,
+      "grey": 0.847,
+      "red": 0.847,
+      "acuity": 0.852
      },
      "exception": null,
      "fails": []
@@ -9978,13 +9958,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.837,
-      "deutan": 0.837,
-      "protan": 0.837,
-      "tritan": 0.837,
-      "grey": 0.837,
-      "red": 0.837,
-      "acuity": 0.837
+      "normal": 0.792,
+      "deutan": 0.792,
+      "protan": 0.792,
+      "tritan": 0.792,
+      "grey": 0.792,
+      "red": 0.792,
+      "acuity": 0.792
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -9993,13 +9973,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.911,
-      "deutan": 0.911,
-      "protan": 0.911,
-      "tritan": 0.911,
-      "grey": 0.901,
-      "red": 0.901,
-      "acuity": 0.775
+      "normal": 0.638,
+      "deutan": 0.638,
+      "protan": 0.638,
+      "tritan": 0.638,
+      "grey": 0.628,
+      "red": 0.628,
+      "acuity": 0.322
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -10173,13 +10153,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.88
+      "normal": 0.998,
+      "deutan": 0.998,
+      "protan": 0.998,
+      "tritan": 0.998,
+      "grey": 0.998,
+      "red": 0.998,
+      "acuity": 0.811
      },
      "exception": null,
      "fails": []
@@ -10233,13 +10213,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.963,
-      "deutan": 0.963,
-      "protan": 0.963,
-      "tritan": 0.963,
-      "grey": 0.963,
-      "red": 0.961,
-      "acuity": 0.912
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.962
      },
      "exception": null,
      "fails": []
@@ -10417,7 +10397,7 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.989,
+      "grey": 0.0,
       "red": 0.0,
       "acuity": 0.293
      },
@@ -10473,13 +10453,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.949,
-      "deutan": 0.949,
-      "protan": 0.949,
-      "tritan": 0.949,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
       "grey": 0.0,
       "red": 0.0,
-      "acuity": 0.153
+      "acuity": 0.0
      },
      "exception": "The 20 m mesh is recessive by design (log 0054).",
      "fails": []
@@ -10897,7 +10877,7 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 0.944,
+      "grey": 0.0,
       "red": 0.0,
       "acuity": 0.237
      },
@@ -10953,13 +10933,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.811,
-      "deutan": 0.811,
-      "protan": 0.811,
-      "tritan": 0.811,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
       "grey": 0.0,
       "red": 0.0,
-      "acuity": 0.451
+      "acuity": 0.887
      },
      "exception": "It draws as an intermediate contour (log 0054).",
      "fails": []
@@ -11193,13 +11173,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.732,
-      "deutan": 0.732,
-      "protan": 0.732,
-      "tritan": 0.732,
-      "grey": 0.71,
-      "red": 0.697,
-      "acuity": 0.573
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -11418,13 +11398,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.997,
+      "deutan": 0.997,
+      "protan": 0.997,
+      "tritan": 0.997,
+      "grey": 0.997,
+      "red": 0.997,
+      "acuity": 0.997
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -11433,13 +11413,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.965,
-      "deutan": 0.965,
-      "protan": 0.965,
-      "tritan": 0.965,
-      "grey": 0.965,
-      "red": 0.965,
-      "acuity": 0.75
+      "normal": 0.893,
+      "deutan": 0.893,
+      "protan": 0.893,
+      "tritan": 0.893,
+      "grey": 0.893,
+      "red": 0.893,
+      "acuity": 0.533
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -11658,13 +11638,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.945,
+      "deutan": 0.945,
+      "protan": 0.945,
+      "tritan": 0.945,
+      "grey": 0.945,
+      "red": 0.945,
+      "acuity": 0.945
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -11673,13 +11653,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.985
+      "normal": 0.948,
+      "deutan": 0.948,
+      "protan": 0.948,
+      "tritan": 0.948,
+      "grey": 0.948,
+      "red": 0.948,
+      "acuity": 0.522
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -11898,13 +11878,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.945,
+      "deutan": 0.945,
+      "protan": 0.945,
+      "tritan": 0.945,
+      "grey": 0.945,
+      "red": 0.945,
+      "acuity": 0.945
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -11913,13 +11893,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.985
+      "normal": 0.948,
+      "deutan": 0.948,
+      "protan": 0.948,
+      "tritan": 0.948,
+      "grey": 0.948,
+      "red": 0.948,
+      "acuity": 0.522
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -12153,12 +12133,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.0,
-      "deutan": 0.0,
-      "protan": 0.0,
-      "tritan": 0.0,
-      "grey": 0.0,
-      "red": 0.0,
+      "normal": 0.921,
+      "deutan": 0.921,
+      "protan": 0.921,
+      "tritan": 0.921,
+      "grey": 0.921,
+      "red": 0.921,
       "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
@@ -12339,7 +12319,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.97
+      "acuity": 0.95
      },
      "exception": null,
      "fails": []
@@ -12363,13 +12343,13 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.979
+      "normal": 0.995,
+      "deutan": 0.995,
+      "protan": 0.995,
+      "tritan": 0.995,
+      "grey": 0.995,
+      "red": 0.995,
+      "acuity": 0.974
      },
      "exception": null,
      "fails": []
@@ -12378,13 +12358,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.99,
-      "deutan": 0.99,
-      "protan": 0.99,
-      "tritan": 0.99,
-      "grey": 0.99,
-      "red": 0.99,
-      "acuity": 0.974
+      "normal": 0.962,
+      "deutan": 0.962,
+      "protan": 0.962,
+      "tritan": 0.962,
+      "grey": 0.93,
+      "red": 0.93,
+      "acuity": 0.946
      },
      "exception": null,
      "fails": []
@@ -12393,15 +12373,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.995,
-      "deutan": 0.995,
-      "protan": 0.995,
-      "tritan": 0.995,
-      "grey": 0.995,
-      "red": 0.995,
-      "acuity": 0.944
+      "normal": 0.421,
+      "deutan": 0.421,
+      "protan": 0.421,
+      "tritan": 0.421,
+      "grey": 0.418,
+      "red": 0.418,
+      "acuity": 0.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -12579,7 +12559,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.991
      },
      "exception": null,
      "fails": []
@@ -12618,13 +12598,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.969,
-      "deutan": 0.969,
-      "protan": 0.969,
-      "tritan": 0.969,
-      "grey": 0.969,
-      "red": 0.969,
-      "acuity": 0.969
+      "normal": 0.958,
+      "deutan": 0.958,
+      "protan": 0.958,
+      "tritan": 0.958,
+      "grey": 0.955,
+      "red": 0.955,
+      "acuity": 0.958
      },
      "exception": null,
      "fails": []
@@ -12633,15 +12613,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.979,
-      "deutan": 0.979,
-      "protan": 0.979,
-      "tritan": 0.979,
-      "grey": 0.979,
-      "red": 0.979,
-      "acuity": 0.798
+      "normal": 0.623,
+      "deutan": 0.623,
+      "protan": 0.623,
+      "tritan": 0.623,
+      "grey": 0.614,
+      "red": 0.614,
+      "acuity": 0.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -12818,7 +12798,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.743,
+      "red": 0.732,
       "acuity": 1.0
      },
      "exception": null,
@@ -12848,7 +12828,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.743,
+      "red": 0.727,
       "acuity": 1.0
      },
      "exception": null,
@@ -12863,7 +12843,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.708,
+      "red": 0.688,
       "acuity": 1.0
      },
      "exception": "A road does not cross a point mark.",
@@ -12873,13 +12853,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.943,
-      "deutan": 0.943,
-      "protan": 0.943,
-      "tritan": 0.943,
-      "grey": 0.925,
-      "red": 0.542,
-      "acuity": 0.882
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -13057,9 +13037,9 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "grey": 0.997,
+      "red": 0.997,
+      "acuity": 0.994
      },
      "exception": null,
      "fails": []
@@ -13068,13 +13048,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.916,
+      "deutan": 0.916,
+      "protan": 0.916,
+      "tritan": 0.916,
+      "grey": 0.916,
+      "red": 0.916,
+      "acuity": 0.916
      },
      "exception": null,
      "fails": []
@@ -13113,15 +13093,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.973,
-      "deutan": 0.973,
-      "protan": 0.973,
-      "tritan": 0.973,
-      "grey": 0.949,
-      "red": 0.949,
-      "acuity": 0.675
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -13299,7 +13279,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.961
+      "acuity": 0.923
      },
      "exception": null,
      "fails": []
@@ -13308,13 +13288,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.957
+      "normal": 0.977,
+      "deutan": 0.977,
+      "protan": 0.977,
+      "tritan": 0.977,
+      "grey": 0.977,
+      "red": 0.977,
+      "acuity": 0.933
      },
      "exception": null,
      "fails": []
@@ -13338,13 +13318,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.96
+      "normal": 0.953,
+      "deutan": 0.953,
+      "protan": 0.953,
+      "tritan": 0.953,
+      "grey": 0.952,
+      "red": 0.952,
+      "acuity": 0.913
      },
      "exception": null,
      "fails": []
@@ -13353,15 +13333,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.974,
-      "deutan": 0.974,
-      "protan": 0.974,
-      "tritan": 0.974,
-      "grey": 0.968,
-      "red": 0.968,
-      "acuity": 0.906
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -13539,7 +13519,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.991
      },
      "exception": null,
      "fails": []
@@ -13582,8 +13562,8 @@
       "deutan": 0.964,
       "protan": 0.964,
       "tritan": 0.964,
-      "grey": 0.964,
-      "red": 0.964,
+      "grey": 0.959,
+      "red": 0.959,
       "acuity": 0.964
      },
      "exception": null,
@@ -13593,13 +13573,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.951,
-      "deutan": 0.951,
-      "protan": 0.951,
-      "tritan": 0.951,
-      "grey": 0.948,
-      "red": 0.948,
-      "acuity": 0.89
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 0.98,
+      "red": 0.98,
+      "acuity": 0.934
      },
      "exception": null,
      "fails": []
@@ -13803,13 +13783,13 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.919,
+      "deutan": 0.919,
+      "protan": 0.919,
+      "tritan": 0.919,
+      "grey": 0.908,
+      "red": 0.908,
+      "acuity": 0.919
      },
      "exception": null,
      "fails": []
@@ -13818,13 +13798,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.737,
-      "deutan": 0.737,
-      "protan": 0.737,
-      "tritan": 0.737,
-      "grey": 0.737,
-      "red": 0.737,
-      "acuity": 0.737
+      "normal": 0.628,
+      "deutan": 0.628,
+      "protan": 0.628,
+      "tritan": 0.628,
+      "grey": 0.628,
+      "red": 0.628,
+      "acuity": 0.628
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -13833,13 +13813,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.988,
-      "deutan": 0.988,
-      "protan": 0.988,
-      "tritan": 0.988,
-      "grey": 0.988,
-      "red": 0.988,
-      "acuity": 0.492
+      "normal": 0.762,
+      "deutan": 0.762,
+      "protan": 0.762,
+      "tritan": 0.762,
+      "grey": 0.762,
+      "red": 0.762,
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -13920,13 +13900,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.997,
-      "deutan": 0.997,
-      "protan": 0.997,
-      "tritan": 0.997,
-      "grey": 0.997,
-      "red": 0.997,
-      "acuity": 0.997
+      "normal": 0.976,
+      "deutan": 0.976,
+      "protan": 0.976,
+      "tritan": 0.976,
+      "grey": 0.968,
+      "red": 0.968,
+      "acuity": 0.976
      },
      "exception": null,
      "fails": []
@@ -13935,13 +13915,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.998,
-      "deutan": 0.998,
-      "protan": 0.998,
-      "tritan": 0.998,
-      "grey": 0.998,
-      "red": 0.998,
-      "acuity": 0.995
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -14022,13 +14002,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.937,
+      "deutan": 0.937,
+      "protan": 0.937,
+      "tritan": 0.937,
+      "grey": 0.937,
+      "red": 0.937,
+      "acuity": 0.937
      },
      "exception": null,
      "fails": []
@@ -14043,7 +14023,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 0.943
+      "acuity": 0.933
      },
      "exception": null,
      "fails": []
@@ -14094,13 +14074,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.953
+      "normal": 0.997,
+      "deutan": 0.997,
+      "protan": 0.997,
+      "tritan": 0.997,
+      "grey": 0.997,
+      "red": 0.997,
+      "acuity": 0.949
      },
      "exception": null,
      "fails": []
@@ -14128,8 +14108,8 @@
       "deutan": 0.964,
       "protan": 0.964,
       "tritan": 0.964,
-      "grey": 0.964,
-      "red": 0.964,
+      "grey": 0.932,
+      "red": 0.932,
       "acuity": 0.92
      },
      "exception": null,
@@ -14139,13 +14119,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.978,
-      "deutan": 0.978,
-      "protan": 0.978,
-      "tritan": 0.978,
-      "grey": 0.978,
-      "red": 0.978,
-      "acuity": 0.735
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.961
      },
      "exception": null,
      "fails": []
@@ -14196,13 +14176,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.073
+      "normal": 0.99,
+      "deutan": 0.99,
+      "protan": 0.99,
+      "tritan": 0.99,
+      "grey": 0.99,
+      "red": 0.99,
+      "acuity": 0.063
      },
      "exception": null,
      "fails": []
@@ -14211,13 +14191,13 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.121
+      "normal": 0.956,
+      "deutan": 0.956,
+      "protan": 0.956,
+      "tritan": 0.956,
+      "grey": 0.953,
+      "red": 0.953,
+      "acuity": 0.019
      },
      "exception": null,
      "fails": []
@@ -14241,12 +14221,12 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.779,
-      "deutan": 0.779,
-      "protan": 0.779,
-      "tritan": 0.779,
-      "grey": 0.742,
-      "red": 0.743,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
       "acuity": 0.0
      },
      "exception": null,
@@ -14283,13 +14263,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.996,
-      "deutan": 0.996,
-      "protan": 0.996,
-      "tritan": 0.996,
-      "grey": 0.996,
-      "red": 0.996,
-      "acuity": 0.089
+      "normal": 0.946,
+      "deutan": 0.946,
+      "protan": 0.946,
+      "tritan": 0.946,
+      "grey": 0.937,
+      "red": 0.937,
+      "acuity": 0.067
      },
      "exception": null,
      "fails": []
@@ -14298,13 +14278,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.073
+      "normal": 0.99,
+      "deutan": 0.99,
+      "protan": 0.99,
+      "tritan": 0.99,
+      "grey": 0.99,
+      "red": 0.99,
+      "acuity": 0.063
      },
      "exception": null,
      "fails": []
@@ -14328,13 +14308,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.943,
-      "deutan": 0.943,
-      "protan": 0.943,
-      "tritan": 0.943,
-      "grey": 0.943,
-      "red": 0.943,
-      "acuity": 0.148
+      "normal": 0.9,
+      "deutan": 0.9,
+      "protan": 0.9,
+      "tritan": 0.9,
+      "grey": 0.9,
+      "red": 0.9,
+      "acuity": 0.105
      },
      "exception": null,
      "fails": []
@@ -14343,13 +14323,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.966,
-      "deutan": 0.966,
-      "protan": 0.966,
-      "tritan": 0.966,
-      "grey": 0.894,
-      "red": 0.894,
-      "acuity": 0.227
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.0
      },
      "exception": null,
      "fails": []
@@ -14385,13 +14365,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 0.997,
-      "deutan": 0.997,
-      "protan": 0.997,
-      "tritan": 0.997,
-      "grey": 0.997,
-      "red": 0.997,
-      "acuity": 0.542
+      "normal": 0.97,
+      "deutan": 0.97,
+      "protan": 0.97,
+      "tritan": 0.97,
+      "grey": 0.961,
+      "red": 0.961,
+      "acuity": 0.455
      },
      "exception": null,
      "fails": []
@@ -14400,13 +14380,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 0.582
+      "normal": 0.993,
+      "deutan": 0.993,
+      "protan": 0.993,
+      "tritan": 0.993,
+      "grey": 0.993,
+      "red": 0.993,
+      "acuity": 0.575
      },
      "exception": null,
      "fails": []
@@ -14430,13 +14410,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.937,
-      "deutan": 0.937,
-      "protan": 0.937,
-      "tritan": 0.937,
-      "grey": 0.937,
-      "red": 0.937,
-      "acuity": 0.564
+      "normal": 0.907,
+      "deutan": 0.907,
+      "protan": 0.907,
+      "tritan": 0.907,
+      "grey": 0.907,
+      "red": 0.907,
+      "acuity": 0.533
      },
      "exception": null,
      "fails": []
@@ -14445,13 +14425,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.979,
-      "deutan": 0.979,
-      "protan": 0.979,
-      "tritan": 0.979,
-      "grey": 0.932,
-      "red": 0.932,
-      "acuity": 0.627
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.615
      },
      "exception": null,
      "fails": []
@@ -14506,8 +14486,8 @@
       "deutan": 1.0,
       "protan": 1.0,
       "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
+      "grey": 0.999,
+      "red": 0.999,
       "acuity": 1.0
      },
      "exception": null,
@@ -14547,13 +14527,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.952,
-      "deutan": 0.952,
-      "protan": 0.952,
-      "tritan": 0.952,
-      "grey": 0.914,
-      "red": 0.916,
-      "acuity": 0.57
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.494
      },
      "exception": null,
      "fails": []
@@ -14772,13 +14752,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.999,
-      "deutan": 0.999,
-      "protan": 0.999,
-      "tritan": 0.999,
-      "grey": 0.998,
-      "red": 0.998,
-      "acuity": 0.999
+      "normal": 0.983,
+      "deutan": 0.983,
+      "protan": 0.983,
+      "tritan": 0.983,
+      "grey": 0.979,
+      "red": 0.979,
+      "acuity": 0.983
      },
      "exception": null,
      "fails": []
@@ -14787,13 +14767,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.913,
-      "deutan": 0.913,
-      "protan": 0.913,
-      "tritan": 0.913,
-      "grey": 0.904,
-      "red": 0.904,
-      "acuity": 0.681
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -15027,13 +15007,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.902,
-      "deutan": 0.902,
-      "protan": 0.902,
-      "tritan": 0.902,
-      "grey": 0.863,
-      "red": 0.863,
-      "acuity": 0.718
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -15252,13 +15232,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.999,
-      "deutan": 0.999,
-      "protan": 0.999,
-      "tritan": 0.999,
-      "grey": 0.998,
-      "red": 0.998,
-      "acuity": 0.999
+      "normal": 0.981,
+      "deutan": 0.981,
+      "protan": 0.981,
+      "tritan": 0.981,
+      "grey": 0.981,
+      "red": 0.981,
+      "acuity": 0.981
      },
      "exception": null,
      "fails": []
@@ -15267,13 +15247,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.913,
-      "deutan": 0.913,
-      "protan": 0.913,
-      "tritan": 0.913,
-      "grey": 0.904,
-      "red": 0.904,
-      "acuity": 0.681
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -15492,13 +15472,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.999,
-      "deutan": 0.999,
-      "protan": 0.999,
-      "tritan": 0.999,
-      "grey": 0.997,
-      "red": 0.997,
-      "acuity": 0.999
+      "normal": 0.949,
+      "deutan": 0.949,
+      "protan": 0.949,
+      "tritan": 0.949,
+      "grey": 0.949,
+      "red": 0.949,
+      "acuity": 0.949
      },
      "exception": null,
      "fails": []
@@ -15507,15 +15487,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.894,
-      "deutan": 0.894,
-      "protan": 0.894,
-      "tritan": 0.894,
-      "grey": 0.883,
-      "red": 0.883,
-      "acuity": 0.609
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -15612,13 +15592,13 @@
      "scene": "water",
      "kind": "fill",
      "visible": {
-      "normal": 0.971,
-      "deutan": 0.971,
-      "protan": 0.971,
-      "tritan": 0.971,
-      "grey": 0.957,
-      "red": 0.957,
-      "acuity": 1.0
+      "normal": 0.908,
+      "deutan": 0.908,
+      "protan": 0.908,
+      "tritan": 0.908,
+      "grey": 0.908,
+      "red": 0.908,
+      "acuity": 0.919
      },
      "exception": null,
      "fails": []
@@ -15627,13 +15607,13 @@
      "scene": "urban",
      "kind": "fill",
      "visible": {
-      "normal": 0.971,
-      "deutan": 0.971,
-      "protan": 0.971,
-      "tritan": 0.971,
-      "grey": 0.957,
-      "red": 0.957,
-      "acuity": 1.0
+      "normal": 0.908,
+      "deutan": 0.908,
+      "protan": 0.908,
+      "tritan": 0.908,
+      "grey": 0.908,
+      "red": 0.908,
+      "acuity": 0.919
      },
      "exception": null,
      "fails": []
@@ -15732,13 +15712,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.998,
-      "deutan": 0.998,
-      "protan": 0.998,
-      "tritan": 0.998,
-      "grey": 0.998,
-      "red": 0.998,
-      "acuity": 0.998
+      "normal": 0.999,
+      "deutan": 0.999,
+      "protan": 0.999,
+      "tritan": 0.999,
+      "grey": 0.999,
+      "red": 0.999,
+      "acuity": 0.999
      },
      "exception": null,
      "fails": []
@@ -15747,15 +15727,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.847,
-      "deutan": 0.847,
-      "protan": 0.847,
-      "tritan": 0.847,
-      "grey": 0.847,
-      "red": 0.847,
-      "acuity": 0.549
+      "normal": 0.824,
+      "deutan": 0.824,
+      "protan": 0.824,
+      "tritan": 0.824,
+      "grey": 0.824,
+      "red": 0.824,
+      "acuity": 0.422
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -15942,13 +15922,13 @@
      "scene": "grid",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.851,
+      "deutan": 0.851,
+      "protan": 0.851,
+      "tritan": 0.851,
+      "grey": 0.834,
+      "red": 0.834,
+      "acuity": 0.851
      },
      "exception": null,
      "fails": []
@@ -15987,13 +15967,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.746,
-      "deutan": 0.746,
-      "protan": 0.746,
-      "tritan": 0.746,
+      "normal": 0.724,
+      "deutan": 0.724,
+      "protan": 0.724,
+      "tritan": 0.724,
       "grey": 0.71,
       "red": 0.71,
-      "acuity": 0.121
+      "acuity": 0.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -16212,13 +16192,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.999,
-      "deutan": 0.999,
-      "protan": 0.999,
-      "tritan": 0.999,
-      "grey": 0.999,
-      "red": 0.999,
-      "acuity": 0.999
+      "normal": 0.992,
+      "deutan": 0.992,
+      "protan": 0.992,
+      "tritan": 0.992,
+      "grey": 0.992,
+      "red": 0.992,
+      "acuity": 0.992
      },
      "exception": null,
      "fails": []
@@ -16227,15 +16207,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.819,
-      "deutan": 0.819,
-      "protan": 0.819,
-      "tritan": 0.819,
-      "grey": 0.819,
-      "red": 0.819,
-      "acuity": 0.606
+      "normal": 0.866,
+      "deutan": 0.866,
+      "protan": 0.866,
+      "tritan": 0.866,
+      "grey": 0.866,
+      "red": 0.866,
+      "acuity": 0.319
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -16569,13 +16549,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.975,
-      "deutan": 0.975,
-      "protan": 0.975,
-      "tritan": 0.975,
-      "grey": 0.964,
-      "red": 0.964,
-      "acuity": 0.958
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -16809,13 +16789,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.851,
-      "deutan": 0.851,
-      "protan": 0.851,
-      "tritan": 0.851,
-      "grey": 0.849,
-      "red": 0.849,
-      "acuity": 0.78
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -17019,13 +16999,13 @@
      "scene": "stream",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.65,
+      "deutan": 0.65,
+      "protan": 0.65,
+      "tritan": 0.65,
+      "grey": 0.65,
+      "red": 0.65,
+      "acuity": 0.65
      },
      "exception": null,
      "fails": []
@@ -17034,13 +17014,13 @@
      "scene": "road",
      "kind": "conflict",
      "visible": {
-      "normal": 0.62,
-      "deutan": 0.62,
-      "protan": 0.62,
-      "tritan": 0.62,
-      "grey": 0.62,
-      "red": 0.62,
-      "acuity": 0.62
+      "normal": 0.59,
+      "deutan": 0.59,
+      "protan": 0.59,
+      "tritan": 0.59,
+      "grey": 0.59,
+      "red": 0.59,
+      "acuity": 0.59
      },
      "exception": "A road does not cross a point mark.",
      "fails": []
@@ -17234,7 +17214,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.743,
+      "red": 0.727,
       "acuity": 1.0
      },
      "exception": null,
@@ -17264,7 +17244,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.743,
+      "red": 0.719,
       "acuity": 1.0
      },
      "exception": null,
@@ -17279,7 +17259,7 @@
       "protan": 1.0,
       "tritan": 1.0,
       "grey": 1.0,
-      "red": 0.708,
+      "red": 0.688,
       "acuity": 1.0
      },
      "exception": "A road does not cross a point mark.",
@@ -17289,13 +17269,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.862,
-      "deutan": 0.862,
-      "protan": 0.862,
-      "tritan": 0.862,
-      "grey": 0.849,
-      "red": 0.425,
-      "acuity": 0.837
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
@@ -17529,13 +17509,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.96,
-      "deutan": 0.96,
-      "protan": 0.96,
-      "tritan": 0.96,
-      "grey": 0.96,
-      "red": 0.96,
-      "acuity": 0.602
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -17577,7 +17557,7 @@
       "tritan": 1.0,
       "grey": 1.0,
       "red": 1.0,
-      "acuity": 1.0
+      "acuity": 0.96
      },
      "exception": null,
      "fails": []
@@ -17631,13 +17611,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.965,
-      "deutan": 0.965,
-      "protan": 0.965,
-      "tritan": 0.967,
-      "grey": 0.961,
-      "red": 0.961,
-      "acuity": 0.878
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -17871,15 +17851,15 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.762,
-      "deutan": 0.762,
-      "protan": 0.762,
-      "tritan": 0.762,
-      "grey": 0.762,
-      "red": 0.762,
-      "acuity": 0.557
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
-     "exception": null,
+     "exception": "The name wins. Its halo keeps the name clear of the mark.",
      "fails": []
     }
    ]
@@ -17917,9 +17897,9 @@
       "deutan": 0.998,
       "protan": 0.998,
       "tritan": 0.998,
-      "grey": 0.97,
+      "grey": 0.292,
       "red": 0.998,
-      "acuity": 0.519
+      "acuity": 0.498
      },
      "exception": null,
      "fails": []
@@ -17973,13 +17953,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.984,
-      "deutan": 0.984,
-      "protan": 0.984,
-      "tritan": 0.984,
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
       "grey": 0.0,
-      "red": 0.983,
-      "acuity": 0.231
+      "red": 1.0,
+      "acuity": 0.281
      },
      "exception": null,
      "fails": []
@@ -18213,13 +18193,13 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.653,
-      "deutan": 0.653,
-      "protan": 0.653,
-      "tritan": 0.653,
-      "grey": 0.653,
-      "red": 0.653,
-      "acuity": 0.644
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": null,
      "fails": []
@@ -18393,13 +18373,13 @@
      "scene": "contours",
      "kind": "conflict",
      "visible": {
-      "normal": 1.0,
-      "deutan": 1.0,
-      "protan": 1.0,
-      "tritan": 1.0,
-      "grey": 1.0,
-      "red": 1.0,
-      "acuity": 1.0
+      "normal": 0.984,
+      "deutan": 0.984,
+      "protan": 0.984,
+      "tritan": 0.984,
+      "grey": 0.984,
+      "red": 0.984,
+      "acuity": 0.984
      },
      "exception": null,
      "fails": []
@@ -18453,15 +18433,597 @@
      "scene": "name",
      "kind": "conflict",
      "visible": {
-      "normal": 0.741,
-      "deutan": 0.741,
-      "protan": 0.741,
-      "tritan": 0.741,
-      "grey": 0.734,
-      "red": 0.734,
-      "acuity": 0.669
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
      },
      "exception": "The name wins. Its halo keeps the name clear of the mark.",
+     "fails": []
+    }
+   ]
+  },
+  {
+   "key": "water_race_disused",
+   "label": "Disused water race",
+   "gated": [
+    "normal",
+    "deutan",
+    "protan",
+    "tritan",
+    "grey",
+    "red",
+    "acuity"
+   ],
+   "scenes": [
+    {
+     "scene": "paper",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "native",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "exotic",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "scrub",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "scattered",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "water",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "urban",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "sand",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "swamp",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "ice",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "contours",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "grid",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "stream",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "road",
+     "kind": "conflict",
+     "visible": {
+      "normal": 0.986,
+      "deutan": 0.986,
+      "protan": 0.986,
+      "tritan": 0.986,
+      "grey": 0.986,
+      "red": 0.986,
+      "acuity": 0.986
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "name",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    }
+   ]
+  },
+  {
+   "key": "orchard",
+   "label": "Orchard or vineyard or plantation",
+   "gated": [
+    "normal",
+    "deutan",
+    "protan",
+    "tritan"
+   ],
+   "scenes": [
+    {
+     "scene": "paper",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "contours",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 0.997
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "grid",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "stream",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "road",
+     "kind": "conflict",
+     "visible": {
+      "normal": 0.981,
+      "deutan": 0.981,
+      "protan": 0.981,
+      "tritan": 0.981,
+      "grey": 0.98,
+      "red": 0.981,
+      "acuity": 0.981
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "name",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    }
+   ]
+  },
+  {
+   "key": "walkwire",
+   "label": "Walkwire",
+   "gated": [
+    "normal",
+    "deutan",
+    "protan",
+    "tritan",
+    "grey",
+    "red",
+    "acuity"
+   ],
+   "scenes": [
+    {
+     "scene": "paper",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "native",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "exotic",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "scrub",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "scattered",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "water",
+     "kind": "fill",
+     "visible": {
+      "normal": 0.426,
+      "deutan": 0.426,
+      "protan": 0.426,
+      "tritan": 0.426,
+      "grey": 0.426,
+      "red": 0.426,
+      "acuity": 0.433
+     },
+     "exception": "The walkwire draws. The sample watercourse under it is under the fill.",
+     "fails": []
+    },
+    {
+     "scene": "urban",
+     "kind": "fill",
+     "visible": {
+      "normal": 0.426,
+      "deutan": 0.426,
+      "protan": 0.426,
+      "tritan": 0.426,
+      "grey": 0.426,
+      "red": 0.426,
+      "acuity": 0.433
+     },
+     "exception": "The walkwire draws. The sample watercourse under it is under the fill.",
+     "fails": []
+    },
+    {
+     "scene": "sand",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "swamp",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "ice",
+     "kind": "fill",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "contours",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "grid",
+     "kind": "conflict",
+     "visible": {
+      "normal": 0.979,
+      "deutan": 0.979,
+      "protan": 0.979,
+      "tritan": 0.979,
+      "grey": 0.979,
+      "red": 0.979,
+      "acuity": 0.979
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "stream",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "road",
+     "kind": "conflict",
+     "visible": {
+      "normal": 0.997,
+      "deutan": 0.997,
+      "protan": 0.997,
+      "tritan": 0.997,
+      "grey": 0.997,
+      "red": 0.997,
+      "acuity": 0.997
+     },
+     "exception": null,
+     "fails": []
+    },
+    {
+     "scene": "name",
+     "kind": "conflict",
+     "visible": {
+      "normal": 1.0,
+      "deutan": 1.0,
+      "protan": 1.0,
+      "tritan": 1.0,
+      "grey": 1.0,
+      "red": 1.0,
+      "acuity": 1.0
+     },
+     "exception": null,
      "fails": []
     }
    ]

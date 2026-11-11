@@ -11,7 +11,14 @@ from nzat.qgis.open_map import open_map
 from nzat.qgis.qgis_prefix import qgis_prefix
 from nzat.qgis.render_image import render_image
 from nzat.qgis.swatch_layers import swatch_layers
-from nzat.qgis.symbol_tile_scenes import TILE_PX, tile_box, tile_scenes
+from nzat.qgis.symbol_tile_scenes import (
+    ALONE_SUFFIX,
+    CONFLICTS,
+    TILE_PX,
+    conflict_alone,
+    tile_box,
+    tile_scenes,
+)
 
 MANIFEST_FILE = "tiles.json"
 
@@ -94,6 +101,34 @@ def main():
                         print(f"tile {key} {name} did not draw", file=sys.stderr)
                         return 1
                     painter.drawImage(column * TILE_PX, 0, image)
+                    if name in CONFLICTS:
+                        # The score needs to know which pixels the other class
+                        # inks, so a black name on a black mark is not a pass.
+                        alone = render_image(
+                            {
+                                **session,
+                                "layers": swatch_layers(
+                                    session["layers"],
+                                    conflict_alone(name, tile_box(swatch["box"])),
+                                    metres_per_px,
+                                ),
+                            },
+                            xmin,
+                            ymin,
+                            xmax,
+                            ymax,
+                            w,
+                            h,
+                            LEGEND_DPI,
+                        )
+                        alone_path = os.path.join(
+                            args.out, key, f"{name}{ALONE_SUFFIX}.png"
+                        )
+                        if alone.isNull() or not alone.save(alone_path):
+                            print(
+                                f"tile {key} {name} alone did not draw", file=sys.stderr
+                            )
+                            return 1
             finally:
                 painter.end()
             if not strip.save(os.path.join(args.out, f"{key}.png")):

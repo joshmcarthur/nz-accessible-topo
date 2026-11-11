@@ -84,7 +84,8 @@ $QPY tools/render_symbol_tiles.py --project accessible/nztopo50.qgs \
 
 Run it with the QGIS Python, after the apply step. `--key` draws one swatch.
 The output is one folder of tiles and one strip PNG per swatch key, and
-`tiles.json`. 86 keys, 1146 tiles, about 60 s.
+`tiles.json`. Each conflict also draws alone (`name-alone.png`), so the score
+knows which pixels the other class inks. 89 keys, 1182 tiles, about 2 minutes.
 
 ## export_symbol_tiles.py
 

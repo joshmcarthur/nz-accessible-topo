@@ -71,6 +71,7 @@
   },
   "relief": {
     "embankment": {"line_mm": 0.15, "tick_stroke_mm": 0.2},
+    "spot_height": {"dot_mm": 0.6},
     "saddle": {
       "marker": "./symbol/nztopo50_saddle.svg",
       "size_mm": 1.726,
@@ -269,6 +270,66 @@
       "colour": "#951600",
       "width_mm": 0.25,
       "dash": "2;0.5"
+    }
+  },
+  "class_paint": {
+    "structure_line": {
+      "classes": {
+        "cableway_people": {
+          "lines": [{"colour": "#000000", "width_mm": 0.2}],
+          "markers": [{"at": "ends", "shape": "circle", "filled": true, "colour": "#000000", "size_mm": 0.8, "stroke_mm": 0.1}]
+        },
+        "cableway_industrial": {
+          "lines": [{"colour": "#000000", "width_mm": 0.2}],
+          "markers": [{"at": "interval", "interval_mm": 3, "start_mm": 1.5, "shape": "square", "colour": "#000000", "size_mm": 0.9, "stroke_mm": 0.2}]
+        },
+        "walkwire": {
+          "lines": [{"colour": "#000000", "width_mm": 0.25}],
+          "markers": [
+            {"at": "end", "shape": "arrowhead", "angle": 180, "colour": "#000000", "size_mm": 1.4, "stroke_mm": 0.25},
+            {"at": "start", "shape": "arrowhead", "colour": "#000000", "size_mm": 1.4, "stroke_mm": 0.25}
+          ]
+        },
+        "water_race": {
+          "lines": [{"colour": "#000000", "width_mm": 0.2}],
+          "markers": [{"at": "interval", "interval_mm": 5, "start_mm": 2.5, "shape": "arrowhead", "colour": "#000000", "size_mm": 1.0, "stroke_mm": 0.2}]
+        },
+        "boatramp": {
+          "lines": [
+            {"colour": "#000000", "width_mm": 0.8},
+            {"colour": "#FFFFFF", "width_mm": 0.4}
+          ]
+        },
+        "breakwater": {"lines": [{"colour": "#000000", "width_mm": 0.5}]},
+        "wharf": {"lines": [{"colour": "#000000", "width_mm": 0.5}]},
+        "wharf_edge": {"lines": [{"colour": "#000000", "width_mm": 0.25}]},
+        "slipway": {
+          "lines": [{"colour": "#000000", "width_mm": 0.25}],
+          "markers": [{"at": "interval", "interval_mm": 1.2, "start_mm": 0.6, "shape": "line", "colour": "#000000", "size_mm": 1.2, "stroke_mm": 0.2}]
+        },
+        "marine_farm": {"lines": [{"colour": "#004C99", "width_mm": 0.35, "dash": "0.8;0.8"}]},
+        "dam": {"lines": [{"colour": "#000000", "width_mm": 0.6}]},
+        "weir": {"lines": [{"colour": "#000000", "width_mm": 0.35}]}
+      }
+    },
+    "landuse": {
+      "classes": {
+        "cemetery": {
+          "pattern": {"shape": "cross", "colour": "#000000", "size_mm": 1.4, "stroke_mm": 0.2, "spacing_mm": [3, 2.4], "offset_mm": [1.5, 1.2]},
+          "lines": [{"colour": "#000000", "width_mm": 0.2, "dash": "2;1"}]
+        },
+        "racetrack": {"lines": [{"colour": "#000000", "width_mm": 0.25, "dash": "2;1.2"}]},
+        "horse_track": {"lines": [{"colour": "#000000", "width_mm": 0.25, "dash": "2;1.2"}]},
+        "orchard": {
+          "pattern": {"shape": "line", "angle": 90, "colour": "#008A00", "size_mm": 0.7, "stroke_mm": 0.3, "spacing_mm": [1.4, 1.0]},
+          "lines": [{"colour": "#008A00", "width_mm": 0.2, "dash": "2;1"}]
+        },
+        "vineyard": {
+          "pattern": {"shape": "line", "angle": 90, "colour": "#008A00", "size_mm": 0.7, "stroke_mm": 0.3, "spacing_mm": [1.4, 1.0]},
+          "lines": [{"colour": "#008A00", "width_mm": 0.2, "dash": "2;1"}]
+        }
+      },
+      "stock_paint": ["vehicle_track"]
     }
   },
   "water": {

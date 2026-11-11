@@ -61,7 +61,7 @@ def test_saddle_is_two_arcs_and_spot_heights_stay_dots():
     )
     assert stroke / view[2] * spec["size_mm"] >= spec["stroke_mm"] - 1e-9
     spot = _option(layer, "0", "SimpleMarker", "size")
-    assert spot.get("value") == "0.3"
+    assert spot.get("value") == "0.6"  # wider than a stream (log 0116)
     patch_relief_point(layer)
     assert len(layer.findall(".//symbol[@name='1']/layer[@class='SvgMarker']")) == 1
     assert len(layer.findall(".//symbol[@name='0']/layer[@class='SimpleMarker']")) == 1

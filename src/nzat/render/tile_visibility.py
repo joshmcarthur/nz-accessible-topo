@@ -43,6 +43,8 @@ RING_OUTER_PX = 12  # 0.5 mm of ground around the symbol.
 # Ink within 0.35 mm of visible ink is found with it: a casing carries its
 # road, an outline carries its area. 0.35 mm is the F-31 and F-32 figure.
 LOCATE_PX = 8
+# A name owns the ground under its letters and halo, plus a 0.2 mm margin.
+NAME_FOOTPRINT_PX = 14
 _QUANT = 8
 
 
@@ -115,18 +117,41 @@ def _located_share(visible, mask):
     return round(float((_grow(visible, LOCATE_PX) & mask).sum()) / float(mask.sum()), 3)
 
 
-def visible_fractions(paper, tile, conflict):
+def name_footprint(alone):
+    """Return the pixels a name owns: its ink, its halo and a small margin."""
+    return _grow(symbol_mask(alone), NAME_FOOTPRINT_PX)
+
+
+def covered_share(paper, alone):
+    """Return the share of the symbol that lies under the name's footprint."""
+    mask = symbol_mask(paper)
+    if not mask.any():
+        return 0.0
+    return float((mask & name_footprint(alone)).sum()) / float(mask.sum())
+
+
+def visible_fractions(paper, tile, conflict, alone=None, yields=False):
     """Return {condition: share of the symbol that stays visible}.
 
+    `alone` is the conflict tile with no symbol. Where the other class inks a
+    pixel, that pixel is not the symbol, even when the two inks match.
+    With `yields`, the symbol gives way under a name: only the part outside
+    the name's footprint is measured.
     Return None when the symbol has no ink or no ground around it.
     """
     mask = symbol_mask(paper)
     ring = ground_ring(mask)
     if not mask.any() or not ring.any():
         return None
+    if yields and alone is not None:
+        outside = mask & ~name_footprint(alone)
+        if outside.any():
+            mask = outside
     keep = mask
     if conflict:
         keep = mask & (np.abs(_rgb(tile) - _rgb(paper)).max(axis=2) <= INTACT_DIFF)
+        if alone is not None:
+            keep &= ~symbol_mask(alone)
     views = {
         name: (_rgb(apply_matrix(tile.convert("RGB"), matrix)), name in LIGHTNESS_ONLY)
         for name, matrix in CONDITIONS.items()

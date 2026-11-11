@@ -7,9 +7,9 @@
   "mark_mm": 1.4
  },
  "counts": {
-  "done": 91,
-  "proposed": 4,
-  "blocked": 31
+  "done": 95,
+  "proposed": 3,
+  "blocked": 28
  },
  "excluded": [
   "relief_line map ELSE rule (#F000EC)",
@@ -1303,7 +1303,7 @@
      "map_image": "symbols/cableway-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black, 1.6 mm, stroke 0.2 mm.",
+      "text": "Keep the LINZ shape. Black 0.2 mm line with a 0.8 mm dot at each end.",
       "source": "applied project",
       "inks": [
        {
@@ -1331,15 +1331,9 @@
        },
        {
         "rule": "F-31",
-        "label": "Stroke width",
+        "label": "Line width",
         "pass": true,
         "detail": "0.2 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
        }
       ],
       "pass": true
@@ -1350,17 +1344,17 @@
      "key": "walkwire",
      "section": "Roads and tracks",
      "label": "Walkwire",
-     "layer": "structure_line (hidden in Map5View)",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (walkwire; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/walkwire-linz.png",
      "current_image": null,
      "map_image": "symbols/walkwire-map.png",
      "map_note": null,
      "measured": {
-      "text": "Black bars with splayed ends and the word Walkwire.",
-      "source": "stock legend image",
+      "text": "Keep the LINZ shape. Black 0.25 mm line with a 1.4 mm fork at each end. The legend keeps the stock picture: the word Walkwire is inside the swatch box.",
+      "source": "applied project",
       "inks": [
        {
         "hex": "#000000",
@@ -1395,53 +1389,12 @@
         "rule": "F-31",
         "label": "Mark size",
         "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
+        "detail": "1.4 mm, floor 1.4 mm"
        }
       ],
       "pass": true
      },
-     "proposal": {
-      "text": "Keep the LINZ shape. Black, 1.6 mm, stroke 0.2 mm, with the label.",
-      "source": "applied project",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Stroke width",
-        "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.6 mm, floor 1.4 mm"
-       }
-      ],
-      "pass": true
-     }
+     "proposal": null
     }
    ]
   },
@@ -2450,7 +2403,7 @@
      "map_image": "symbols/cemetery-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Dashed outline 0.2 mm, crosses 1.4 mm, stroke 0.15 mm.",
+      "text": "Keep the LINZ shape. Dashed outline 0.2 mm, crosses 1.4 mm, stroke 0.2 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -2480,7 +2433,7 @@
         "rule": "F-31",
         "label": "Stroke width",
         "pass": true,
-        "detail": "0.15 mm, floor 0.15 mm"
+        "detail": "0.2 mm, floor 0.15 mm"
        },
        {
         "rule": "F-31",
@@ -2594,7 +2547,7 @@
      "key": "training_track",
      "section": "Miscellaneous",
      "label": "Training track",
-     "layer": "landuse (racetrack; Map5View-all draws it; default print theme still Map5View)",
+     "layer": "landuse (racetrack, horse_track; Map5View-all draws it; default print theme still Map5View)",
      "drawn": "yes",
      "status": "done",
      "note": "Map5View-all draws it. Default print theme still Map5View.",
@@ -2603,7 +2556,7 @@
      "map_image": "symbols/training_track-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black dashed oval 0.25 mm.",
+      "text": "Keep the LINZ shape. Black dashed outline 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -3888,52 +3841,16 @@
      "key": "water_race_disused",
      "section": "Miscellaneous",
      "label": "Disused water race",
-     "layer": "no water race class on a Map5View layer",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "structure_line (water_race; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/water_race_disused-linz.png",
-     "current_image": null,
+     "current_image": "symbols/water_race_disused-ours.png",
      "map_image": "symbols/water_race_disused-map.png",
      "map_note": null,
      "measured": {
-      "text": "Thin black line with arrow heads.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#000000",
-        "name": "black",
-        "role": "carrier",
-        "on": null,
-        "grey": 21.0,
-        "red": 21.0,
-        "worst_cvd": 100.0
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "black #000000 on paper: 21.00:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": true
-     },
-     "proposal": {
-      "text": "Keep the LINZ shape. Black 0.17 mm with arrow heads.",
+      "text": "Keep the LINZ shape. Black 0.2 mm with 1 mm arrow heads every 5 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -3963,11 +3880,12 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
+        "detail": "0.2 mm, floor 0.15 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "power_pylons",
@@ -4237,7 +4155,7 @@
      "map_image": "symbols/industrial_cableway-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black 0.17 mm with open squares.",
+      "text": "Keep the LINZ shape. Black 0.2 mm with open 0.9 mm squares every 3 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -4267,7 +4185,7 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.17 mm, floor 0.15 mm"
+        "detail": "0.2 mm, floor 0.15 mm"
        }
       ],
       "pass": true
@@ -6185,7 +6103,7 @@
      "map_image": "symbols/boat_ramp-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black double bar 0.2 mm.",
+      "text": "Keep the LINZ shape. Black 0.8 mm bar with a white 0.4 mm centre.",
       "source": "applied project",
       "inks": [
        {
@@ -6235,7 +6153,7 @@
      "map_image": "symbols/breakwater_wharf_jetty-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black bars 0.4 mm.",
+      "text": "Keep the LINZ shape. Black bars 0.5 mm. A wharf edge is 0.25 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -6265,7 +6183,7 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.4 mm, floor 0.15 mm"
+        "detail": "0.5 mm, floor 0.15 mm"
        }
       ],
       "pass": true
@@ -6285,7 +6203,7 @@
      "map_image": "symbols/slipway-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black 0.2 mm with ticks.",
+      "text": "Keep the LINZ shape. Black 0.25 mm with 1.2 mm ticks every 1.2 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -6315,7 +6233,7 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.2 mm, floor 0.15 mm"
+        "detail": "0.25 mm, floor 0.15 mm"
        }
       ],
       "pass": true
@@ -6327,63 +6245,15 @@
      "section": "Water features",
      "label": "Marine farm",
      "layer": "structure_line (marine_farm; Map5View-all draws it; default print theme still Map5View)",
-     "drawn": "no",
-     "status": "proposed",
+     "drawn": "yes",
+     "status": "done",
      "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/marine_farm-linz.png",
      "current_image": "symbols/marine_farm-ours.png",
      "map_image": "symbols/marine_farm-map.png",
      "map_note": null,
      "measured": {
-      "text": "Rows of stock blue dashes.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#008BCA",
-        "name": "dashes",
-        "role": "carrier",
-        "on": "#D1E7F5",
-        "grey": 2.97,
-        "red": 13.75,
-        "worst_cvd": 26.6
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": true,
-        "detail": "dashes #008BCA on paper: 3.79:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "dashes #008BCA on paper: 21.00:1"
-       },
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": false,
-        "detail": "dashes #008BCA on #D1E7F5: 2.97:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": true,
-        "detail": "dashes #008BCA on #D1E7F5: 13.75:1"
-       },
-       {
-        "rule": "F-31",
-        "label": "Line width",
-        "pass": true,
-        "detail": "0.21 mm, floor 0.15 mm"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ rows of dashes in stream #004C99, 0.25 mm.",
+      "text": "Dashes in stream #004C99, 0.35 mm wide, 0.8 mm on and 0.8 mm off.",
       "source": "applied project",
       "inks": [
        {
@@ -6425,11 +6295,12 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.25 mm, floor 0.15 mm"
+        "detail": "0.35 mm, floor 0.15 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "seawall",
@@ -6529,7 +6400,7 @@
      "map_image": "symbols/dam-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black bar 0.4 mm.",
+      "text": "Keep the LINZ shape. Black bar 0.6 mm.",
       "source": "applied project",
       "inks": [
        {
@@ -6559,7 +6430,7 @@
         "rule": "F-31",
         "label": "Line width",
         "pass": true,
-        "detail": "0.4 mm, floor 0.15 mm"
+        "detail": "0.6 mm, floor 0.15 mm"
        }
       ],
       "pass": true
@@ -6635,7 +6506,7 @@
      "map_image": "symbols/weir-map.png",
      "map_note": null,
      "measured": {
-      "text": "Keep the LINZ shape. Black bar 1.4 mm, stroke 0.3 mm.",
+      "text": "Keep the LINZ shape. Black bar 0.35 mm across the watercourse.",
       "source": "applied project",
       "inks": [
        {
@@ -6663,15 +6534,9 @@
        },
        {
         "rule": "F-31",
-        "label": "Stroke width",
+        "label": "Line width",
         "pass": true,
-        "detail": "0.3 mm, floor 0.15 mm"
-       },
-       {
-        "rule": "F-31",
-        "label": "Mark size",
-        "pass": true,
-        "detail": "1.4 mm, floor 1.4 mm"
+        "detail": "0.35 mm, floor 0.15 mm"
        }
       ],
       "pass": true
@@ -7850,51 +7715,21 @@
      "key": "orchard",
      "section": "Vegetation features",
      "label": "Orchard or vineyard or plantation",
-     "layer": "vegetation has no orchard type in the data",
-     "drawn": "no",
-     "status": "blocked",
-     "note": "",
+     "layer": "landuse (orchard, vineyard; Map5View-all draws it; default print theme still Map5View)",
+     "drawn": "yes",
+     "status": "done",
+     "note": "Map5View-all draws it. Default print theme still Map5View.",
      "linz_image": "symbols/orchard-linz.png",
-     "current_image": null,
+     "current_image": "symbols/orchard-ours.png",
      "map_image": "symbols/orchard-map.png",
      "map_note": null,
      "measured": {
-      "text": "Rows of pale green dots.",
-      "source": "stock legend image",
-      "inks": [
-       {
-        "hex": "#B2CA62",
-        "name": "dots",
-        "role": "carrier",
-        "on": null,
-        "grey": 1.82,
-        "red": 2.12,
-        "worst_cvd": 16.6
-       }
-      ],
-      "checks": [
-       {
-        "rule": "R-01, F-20",
-        "label": "Contrast 3:1",
-        "pass": false,
-        "detail": "dots #B2CA62 on paper: 1.82:1"
-       },
-       {
-        "rule": "R-01, R-11",
-        "label": "Red light 3:1",
-        "pass": false,
-        "detail": "dots #B2CA62 on paper: 2.12:1"
-       }
-      ],
-      "pass": false
-     },
-     "proposal": {
-      "text": "Keep the LINZ rows of dots in #008A00.",
+      "text": "Rows of 0.7 mm dashes and a dashed 0.2 mm outline in #008A00.",
       "source": "applied project",
       "inks": [
        {
         "hex": "#008A00",
-        "name": "dots",
+        "name": "dashes",
         "role": "carrier",
         "on": null,
         "grey": 4.53,
@@ -7907,17 +7742,24 @@
         "rule": "R-01, F-20",
         "label": "Contrast 3:1",
         "pass": true,
-        "detail": "dots #008A00 on paper: 4.53:1"
+        "detail": "dashes #008A00 on paper: 4.53:1"
        },
        {
         "rule": "R-01, R-11",
         "label": "Red light 3:1",
         "pass": true,
-        "detail": "dots #008A00 on paper: 21.00:1"
+        "detail": "dashes #008A00 on paper: 21.00:1"
+       },
+       {
+        "rule": "F-31",
+        "label": "Line width",
+        "pass": true,
+        "detail": "0.2 mm, floor 0.15 mm"
        }
       ],
       "pass": true
-     }
+     },
+     "proposal": null
     },
     {
      "key": "mangroves",

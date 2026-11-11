@@ -9,12 +9,18 @@ from PIL import Image
 
 from nzat.paths import ROOT
 from nzat.qgis.legend_swatches import SWATCHES
-from nzat.qgis.symbol_tile_scenes import CONFLICTS, gated_conditions, scene_exception
+from nzat.qgis.symbol_tile_scenes import (
+    ALONE_SUFFIX,
+    CONFLICTS,
+    gated_conditions,
+    scene_exception,
+)
 from nzat.render.tile_visibility import (
     ACUITY,
     CONDITIONS,
     CONTRAST_FLOOR,
     DELTA_E_FLOOR,
+    covered_share,
     visible_fractions,
 )
 from nzat.site.symbol_rows import SYMBOLS
@@ -53,10 +59,22 @@ def score_rows(tiles_dir, manifest, swatches=SWATCHES):
         scored = []
         for scene in scenes:
             tile = Image.open(tiles_dir / key / f"{scene}.png")
-            visible = visible_fractions(paper, tile, scene in CONFLICTS)
+            alone = None
+            if scene in CONFLICTS:
+                alone = Image.open(tiles_dir / key / f"{scene}{ALONE_SUFFIX}.png")
+            named = scene == "name"
+            visible = visible_fractions(
+                paper, tile, scene in CONFLICTS, alone, yields=named
+            )
             if visible is None:
                 break
-            exception = scene_exception(key, scene, features[key], visible["normal"])
+            exception = scene_exception(
+                key,
+                scene,
+                features[key],
+                visible["normal"],
+                covered_share(paper, alone) if named else 0.0,
+            )
             fails = [c for c in gated if visible[c] < VISIBLE_FLOOR]
             scored.append(
                 {
