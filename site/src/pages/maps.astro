@@ -1,0 +1,134 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../lib/graph";
+import conditions from "../data/conditions.json";
+
+const panes = [
+  { id: "stock", label: "Stock Topo50", tiles: url("tiles/bx24-stock.pmtiles") },
+  { id: "accessible", label: "Accessible style", tiles: url("tiles/bx24-accessible.pmtiles") },
+];
+// Linear-RGB matrices, the same as tools/palette_audit.py (Machado 2009).
+const filters: Record<string, string> = {
+  protan: "0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0",
+  deutan: "0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0",
+  tritan: "1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.303900 0 0  0 0 0 1 0",
+  grey: "0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0",
+  red: "1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 1 0",
+};
+---
+<Base title="Maps" current="maps/">
+  <h1>The two maps, side by side</h1>
+  <p class="lede">The stock Topo50 map and the accessible style, drawn from the same LINZ data for the same ground. Move or zoom one map and the other follows.</p>
+  <p>The area is 12 km of sheet BX24: Cashmere, the Port Hills, Lyttelton and part of the estuary. Both maps are raster tiles. We drew each sheet at 300 dpi with the LINZ Topo50 QGIS project, then cut it into tiles. The accessible map uses the same project with our style changes applied.</p>
+
+  <form class="controls">
+    <label for="condition">Show both maps as seen with</label>
+    <select id="condition">
+      {conditions.map((c) => <option value={c.id}>{c.name}</option>)}
+    </select>
+  </form>
+
+  <div class="maps wide">
+    {panes.map((pane) => (
+      <section aria-labelledby={`${pane.id}-title`}>
+        <h2 id={`${pane.id}-title`}>{pane.label}</h2>
+        <div class="map" id={`map-${pane.id}`} data-tiles={pane.tiles} data-label={`${pane.label} map`}></div>
+      </section>
+    ))}
+  </div>
+  <p id="map-status" role="status"></p>
+
+  <h2>About these maps</h2>
+  <ul>
+    <li>Use the mouse or touch to move and zoom. With the keyboard, focus a map, then use the arrow keys to move and plus or minus to zoom.</li>
+    <li>The tiles stop at zoom 15, which is close to the printed scale of 1:50,000 on a screen. Closer zooms enlarge the same picture.</li>
+    <li>The blue grid lines lean a little. The grid is the New Zealand Transverse Mercator grid, and web map tiles use a different projection.</li>
+    <li>The vision conditions are simulations of the strongest form of each condition. They use the same models as our audits.</li>
+    <li>Each map is one file of tiles (PMTiles). <a href={url("log/0117-raster-tiles-from-sheets/")}>Research log 0117</a> records how the tiles are made and how big they are.</li>
+  </ul>
+  <p><a href={url("see/")}>Still pictures of the same comparison</a>, for a reader who cannot use the maps. <a href={url("symbols/")}>Every symbol, with its measurements</a>.</p>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    {Object.entries(filters).map(([id, values]) => (
+      <filter id={`sim-${id}`} color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values={values} /></filter>
+    ))}
+  </svg>
+</Base>
+
+<style>
+  .controls { display: flex; flex-wrap: wrap; gap: .5rem .75rem; align-items: center; margin: 1.5rem 0 1rem; }
+  .controls label { font-weight: 700; }
+  .controls select { font: inherit; padding: .3rem .5rem; }
+  .maps { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 800px) { .maps { grid-template-columns: 1fr; } }
+  .maps h2 { margin: 0 0 .5rem; font-size: var(--step-0); }
+  .map { height: 32rem; border: 1px solid var(--ink); background: #fff; }
+  @media (max-width: 800px) { .map { height: 22rem; } }
+</style>
+
+<script>
+  import "maplibre-gl/dist/maplibre-gl.css";
+  import { addProtocol, Map as MapLibreMap, NavigationControl, setWorkerUrl } from "maplibre-gl";
+  // MapLibre 6 is ESM only. The bundler must be told where the worker file is.
+  import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
+  import { Protocol } from "pmtiles";
+
+  setWorkerUrl(workerUrl);
+
+  // 12 km of sheet BX24 (log 0117).
+  const BOUNDS: [number, number, number, number] = [172.6032, -43.6407, 172.7525, -43.5322];
+  const ATTRIBUTION = "© Toitū Te Whenua LINZ, CC BY 4.0";
+
+  addProtocol("pmtiles", new Protocol().tile);
+
+  const status = document.getElementById("map-status")!;
+  const containers = [...document.querySelectorAll<HTMLElement>(".map")];
+  const maps = containers.map((el) => {
+    const tiles = new URL(el.dataset.tiles!, location.href).href;
+    const map = new MapLibreMap({
+      container: el,
+      locale: { "Map.Title": el.dataset.label! },
+      style: {
+        version: 8,
+        sources: {
+          topo: { type: "raster", url: `pmtiles://${tiles}`, tileSize: 256, attribution: ATTRIBUTION },
+        },
+        layers: [
+          { id: "paper", type: "background", paint: { "background-color": "#ffffff" } },
+          { id: "topo", type: "raster", source: "topo" },
+        ],
+      },
+      center: [172.678, -43.59],
+      zoom: 13,
+      minZoom: 11,
+      maxZoom: 17,
+      maxBounds: [BOUNDS[0] - 0.05, BOUNDS[1] - 0.04, BOUNDS[2] + 0.05, BOUNDS[3] + 0.04],
+      dragRotate: false,
+      pitchWithRotate: false,
+    });
+    map.touchZoomRotate.disableRotation();
+    map.addControl(new NavigationControl({ showCompass: false }), "top-right");
+    map.on("error", () => {
+      status.textContent = "A map could not load its tiles. The still pictures on the comparison page show the same maps.";
+    });
+    return map;
+  });
+
+  let syncing = false;
+  maps.forEach((map, index) =>
+    map.on("move", () => {
+      if (syncing) return;
+      syncing = true;
+      maps[1 - index].jumpTo({ center: map.getCenter(), zoom: map.getZoom() });
+      syncing = false;
+    }),
+  );
+
+  const select = document.getElementById("condition") as HTMLSelectElement;
+  select.addEventListener("change", () => {
+    const filter = select.value === "normal" ? "" : `url(#sim-${select.value})`;
+    for (const el of containers) {
+      el.querySelector<HTMLElement>(".maplibregl-canvas-container")!.style.filter = filter;
+    }
+  });
+</script>

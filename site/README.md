@@ -22,6 +22,7 @@ npm run dev       # or: npm run build && npm run check
 | Ink contrast matrix | `tools/pairs-topo50-accessible.json` + `tools/style-topo50.json` | `tools/export_ink_matrix.py` → `src/data/ink-matrix.json` |
 | Comparison images | `src/data/comparisons.json` + `conditions.json` | `tools/build_site_assets.py` → `public/compare/` (not committed) |
 | Research log | `docs/research-log/*.md` | Astro content collection (read directly) |
+| Maps page (`/maps/`), stock and accessible raster tiles | `public/tiles/*.pmtiles` | `tools/render_sheets.py`, then `tools/make_tiles.py` (inputs are outside the repo; CI does not run it) |
 
 ## Live-tile comparisons
 
