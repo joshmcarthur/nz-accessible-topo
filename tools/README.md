@@ -110,6 +110,22 @@ Run `render_symbol_tiles.py` first. CI does not run this: the tiles are not
 in the repo. The score does not test shape confusion, for example a spot
 height dot on the sand stipple.
 
+## make_tiles.py
+
+Turns sheet GeoTIFFs from `render_sheets.py` into one PMTiles file of web
+mercator WebP tiles. It needs GDAL 3 and the `pmtiles` CLI on the PATH. Run
+it with the host Python.
+
+```
+$QPY tools/render_sheets.py --project accessible/nztopo50.qgs --font fonts \
+    --index stock/nztopo50_map_sheet.parquet --out-dir sheets --dpi 300 --sheet BX24
+python3 tools/make_tiles.py sheets/BX24.tif --out site/public/tiles/bx24-accessible.pmtiles \
+    --extent 1568000,5168000,1580000,5180000
+```
+
+300 dpi gives zoom 15. With no `--extent` it tiles every input sheet: BX24
+is 21 MB. The demo area in `site/public/tiles/` is 12 km square (log 0117).
+
 ## find_symbol_sheets.py
 
 Find 4 km squares that hold legend classes BX24 does not. Uses DuckDB in the
